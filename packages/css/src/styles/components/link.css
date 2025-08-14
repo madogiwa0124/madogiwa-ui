@@ -1,0 +1,17 @@
+.link {
+  color: var(--color-secondary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+
+  &:hover {
+    color: rgb(from var(--color-secondary) r g b / 0.8);
+  }
+
+  &:active {
+    color: rgb(from var(--color-secondary) r g b / 0.5);
+  }
+
+  &:visited {
+    color: rgb(from var(--color-secondary) r g b / 1.2);
+  }
+}

@@ -1,0 +1,120 @@
+.tabs {
+  --tabs-default-border: 1px solid var(--color-border);
+  --tabs-scrollbar-color: rgb(from var(--color-primary) r g b / 50%) transparent;
+  --tabs-item-padding: var(--spacing-2) var(--spacing-4);
+  --tabs-active-item-border-color: var(--color-primary);
+  --tabs-active-item-border: 2px solid transparent;
+  --tabs-active-item-filter: brightness(0.95);
+  --tabs-hover-item-filter: brightness(0.95);
+  --tabs-disabled-item-filter: brightness(0.65);
+  --tabs-hover-transition: 0.3s ease;
+  --tabs-item-background-color: var(--color-bg-light);
+
+  /* ScrollHint */
+  --tabs-scrollhint-width: 32px;
+  --tabs-scrollhint-mask-stop: 32px;
+  --tabs-scrollhint-mask-color: #fff;
+  --tabs-scrollhint-mask-width: calc(var(--tabs-scrollhint-width) * 1.5);
+  --tabs-scrollhint-shadow-opacity: 0.4;
+  --tabs-scrollhint-item-opacity: 50%;
+  --tabs-scrollhint-shadow-color: rgb(
+    0 0 0 /
+    var(--tabs-scrollhint-shadow-opacity)
+  );
+
+  .tabs__list,
+  [role="tablist"] {
+    display: flex;
+    border-bottom: var(--tabs-default-border);
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--tabs-scrollbar-color);
+    text-wrap: nowrap;
+  }
+
+  .tabs__item,
+  [role="tab"] {
+    padding: var(--tabs-item-padding);
+    background-color: var(--tabs-item-background-color);
+    border-bottom: var(--tabs-active-item-border);
+
+    &.--active,
+    &[aria-selected="true"] {
+      filter: var(--tabs-active-item-filter);
+      border-color: var(--tabs-active-item-border-color);
+    }
+
+    &:hover:not(.--active, :disabled) {
+      filter: var(--tabs-hover-item-filter);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      filter: var(--tabs-disabled-item-filter);
+    }
+  }
+
+  &.--transition {
+    .tabs__item,
+    [role="tab"] {
+      &:hover {
+        transition: filter var(--tabs-hover-transition);
+      }
+    }
+  }
+
+  &.--scrollhint {
+    /*
+    NOTE:
+    Due to displaying scroll hints with the tabs_list background, the item opacity is specified with opacity,
+    and since the color tone changes depending on the presence of scroll hints, the brightness values are
+    adjusted to achieve a similar color tone.
+
+    ref: https://lea.verou.me/blog/2012/04/background-attachment-local/
+    */
+    --tabs-active-item-filter: brightness(0.9);
+    --tabs-hover-item-filter: brightness(0.9);
+    --tabs-disabled-item-filter: brightness(0.5);
+
+    background: linear-gradient(
+        to left,
+        transparent,
+        var(--tabs-scrollhint-shadow-color)
+      )
+      0 0 / var(--tabs-scrollhint-width) 100%,
+      linear-gradient(
+        to right,
+        transparent,
+        var(--tabs-scrollhint-shadow-color)
+      )
+      right / var(--tabs-scrollhint-width) 100%;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+
+    .tabs__list,
+    [role="tablist"] {
+      background: linear-gradient(
+          to left,
+          transparent,
+          var(--tabs-scrollhint-mask-color) var(--tabs-scrollhint-mask-stop)
+        )
+        0 0 / var(--tabs-scrollhint-mask-width) 100%,
+        linear-gradient(
+          to right,
+          transparent,
+          var(--tabs-scrollhint-mask-color) var(--tabs-scrollhint-mask-stop)
+        )
+        right / var(--tabs-scrollhint-mask-width) 100%;
+      background-repeat: no-repeat;
+      background-attachment: local;
+    }
+
+    .tabs__item,
+    [role="tab"] {
+      background-color: rgb(
+        from var(--tabs-item-background-color) r g b /
+        var(--tabs-scrollhint-item-opacity)
+      );
+    }
+  }
+}

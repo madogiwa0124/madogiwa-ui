@@ -1,0 +1,17 @@
+@property --zindex-max {
+  syntax: "<integer>";
+  initial-value: 9999;
+  inherits: true;
+}
+
+@property --zindex-modal {
+  syntax: "<integer>";
+  initial-value: 1050;
+  inherits: true;
+}
+
+@property --zindex-snackbar {
+  syntax: "<integer>";
+  initial-value: 100;
+  inherits: true;
+}
