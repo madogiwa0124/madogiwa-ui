@@ -1,0 +1,12 @@
+{
+  "name": "madogiwa-ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {},
+  "devDependencies": {
+    "@tsconfig/strictest": "^2.0.5",
+    "typescript": "~5.9.2"
+  },
+  "packageManager": "pnpm@10.14.0"
+}

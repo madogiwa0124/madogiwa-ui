@@ -1,0 +1,19 @@
+{
+  "build": {
+    "dockerfile": "./Dockerfile",
+    "args": {
+      "NODE_VERSION": "22"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "editorconfig.editorconfig",
+        "github.copilot",
+        "github.copilot-chat",
+        "jacobcassidy.css-nesting-syntax-highlighting"
+      ]
+    }
+  },
+  "appPort": [3000, 3001, 5173, 6006]
+}
