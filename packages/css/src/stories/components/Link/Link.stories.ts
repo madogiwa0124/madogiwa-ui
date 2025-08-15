@@ -1,15 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/html";
-import { createLink, type LinkProps } from "./Link";
 import { expect } from "storybook/test";
 
-const meta: Meta<LinkProps> = {
+const meta: Meta = {
   title: "Components/Link",
   tags: ["autodocs"],
   argTypes: {
     text: { control: "text" },
     href: { control: "text" },
     newTab: { control: "boolean" },
-    className: { control: "text" },
     onClick: { action: "clicked" },
   },
   parameters: {
@@ -23,17 +21,21 @@ const meta: Meta<LinkProps> = {
 };
 
 export default meta;
-type Story = StoryObj<LinkProps>;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: (args) => {
-    return createLink(args);
+  const link = document.createElement("a");
+  link.classList.add("link");
+  link.textContent = args["text"] || "";
+  link.href = args["href"] || "";
+  link.target = args["newTab"] ? "_blank" : "_self";
+    return link;
   },
   args: {
     text: "Link text",
     href: "https://example.com",
-    newTab: false,
-    className: "",
+    newTab: true,
   },
   play: async ({ canvasElement, args }) => {
     const canvas = canvasElement as HTMLElement;
@@ -41,8 +43,8 @@ export const Default: Story = {
 
     expect(link).not.toBeNull();
     expect(link).toHaveClass("link");
-    expect(link).toHaveTextContent(args.text || "Link text");
-    expect(link).toHaveAttribute("href", args.href || "https://example.com");
+    expect(link).toHaveTextContent(args["text"] || "Link text");
+    expect(link).toHaveAttribute("href", args["href"] || "https://example.com");
     expect(link).not.toHaveAttribute("target");
     expect(link).not.toHaveAttribute("rel");
   },
@@ -55,10 +57,10 @@ export const LinkInParagraph: Story = {
     const paragraph = document.createElement("p");
     paragraph.textContent = "This is a ";
 
-    const link = createLink({
-      text: "link",
-      href: "https://example.com",
-    });
+    const link = document.createElement("a");
+    link.classList.add("link");
+    link.textContent = "link";
+    link.href = "https://example.com";
 
     paragraph.appendChild(link);
     paragraph.appendChild(document.createTextNode(" is included in this example."));
