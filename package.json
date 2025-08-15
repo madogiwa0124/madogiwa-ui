@@ -3,7 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "css": "pnpm --filter @madogiwa-ui/css"
+  },
   "devDependencies": {
     "@tsconfig/strictest": "^2.0.5",
     "typescript": "~5.9.2"
