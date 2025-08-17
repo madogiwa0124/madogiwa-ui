@@ -3,6 +3,7 @@ import js from "@eslint/js";
 import ts from "typescript-eslint";
 import unicorn from "eslint-plugin-unicorn";
 import globals from "globals";
+import stylistic from '@stylistic/eslint-plugin'
 
 const ignoredFiles = [
   "eslint.config.js",
@@ -16,6 +17,11 @@ export default defineConfig([
   js.configs.recommended,
   ...ts.configs.strictTypeChecked,
   unicorn.configs.recommended,
+  stylistic.configs.customize({
+    indent: 2,
+    quotes: "double",
+    semi: true,
+  }),
   {
     languageOptions: {
       parserOptions: {
