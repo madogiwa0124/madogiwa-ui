@@ -47,7 +47,8 @@ export default defineConfig([
         ecmaVersion: 2022,
         parser: ts.parser,
         sourceType: "module",
-        project: ["./tsconfig.json"],
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
       },
       globals: {
         ...globals.browser,
