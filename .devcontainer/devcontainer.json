@@ -11,7 +11,8 @@
         "editorconfig.editorconfig",
         "github.copilot",
         "github.copilot-chat",
-        "jacobcassidy.css-nesting-syntax-highlighting"
+        "jacobcassidy.css-nesting-syntax-highlighting",
+        "dbaeumer.vscode-eslint"
       ]
     }
   },
