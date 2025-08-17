@@ -45,10 +45,13 @@ dialog.dialog {
       transform: translateY(0);
       opacity: 1;
 
+      /* NOTE: @starting-style doesn't seem to be supported, so disabled */
+      /* eslint-disable css/no-invalid-at-rules */
       @starting-style {
         opacity: 0;
         transform: var(--dialog-transition-transform-start);
       }
+      /* eslint-enable css/no-invalid-at-rules */
     }
   }
 }

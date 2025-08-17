@@ -17,10 +17,7 @@
   --tabs-scrollhint-mask-width: calc(var(--tabs-scrollhint-width) * 1.5);
   --tabs-scrollhint-shadow-opacity: 0.4;
   --tabs-scrollhint-item-opacity: 50%;
-  --tabs-scrollhint-shadow-color: rgb(
-    0 0 0 /
-    var(--tabs-scrollhint-shadow-opacity)
-  );
+  --tabs-scrollhint-shadow-color: rgb(0 0 0 / var(--tabs-scrollhint-shadow-opacity));
 
   .tabs__list,
   [role="tablist"] {
@@ -28,6 +25,8 @@
     border-bottom: var(--tabs-default-border);
     overflow-x: scroll;
     scrollbar-width: thin;
+    /* NOTE: Non-critical property, so this is acceptable */
+    /* eslint-disable-next-line css/use-baseline */
     scrollbar-color: var(--tabs-scrollbar-color);
     text-wrap: nowrap;
   }
@@ -76,45 +75,30 @@
     --tabs-hover-item-filter: brightness(0.9);
     --tabs-disabled-item-filter: brightness(0.5);
 
-    background: linear-gradient(
-        to left,
+    background: linear-gradient(to left,
         transparent,
-        var(--tabs-scrollhint-shadow-color)
-      )
-      0 0 / var(--tabs-scrollhint-width) 100%,
-      linear-gradient(
-        to right,
+        var(--tabs-scrollhint-shadow-color)) 0 0 / var(--tabs-scrollhint-width) 100%,
+      linear-gradient(to right,
         transparent,
-        var(--tabs-scrollhint-shadow-color)
-      )
-      right / var(--tabs-scrollhint-width) 100%;
+        var(--tabs-scrollhint-shadow-color)) right / var(--tabs-scrollhint-width) 100%;
     background-repeat: no-repeat;
     background-attachment: scroll;
 
     .tabs__list,
     [role="tablist"] {
-      background: linear-gradient(
-          to left,
+      background: linear-gradient(to left,
           transparent,
-          var(--tabs-scrollhint-mask-color) var(--tabs-scrollhint-mask-stop)
-        )
-        0 0 / var(--tabs-scrollhint-mask-width) 100%,
-        linear-gradient(
-          to right,
+          var(--tabs-scrollhint-mask-color) var(--tabs-scrollhint-mask-stop)) 0 0 / var(--tabs-scrollhint-mask-width) 100%,
+        linear-gradient(to right,
           transparent,
-          var(--tabs-scrollhint-mask-color) var(--tabs-scrollhint-mask-stop)
-        )
-        right / var(--tabs-scrollhint-mask-width) 100%;
+          var(--tabs-scrollhint-mask-color) var(--tabs-scrollhint-mask-stop)) right / var(--tabs-scrollhint-mask-width) 100%;
       background-repeat: no-repeat;
       background-attachment: local;
     }
 
     .tabs__item,
     [role="tab"] {
-      background-color: rgb(
-        from var(--tabs-item-background-color) r g b /
-        var(--tabs-scrollhint-item-opacity)
-      );
+      background-color: rgb(from var(--tabs-item-background-color) r g b / var(--tabs-scrollhint-item-opacity));
     }
   }
 }

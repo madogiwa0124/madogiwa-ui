@@ -6,31 +6,36 @@
 
 @property --font-size-xs {
   syntax: "<length>";
-  initial-value: 12px; /* 0.75rem × 16px */
+  initial-value: 12px;
+  /* 0.75rem × 16px */
   inherits: true;
 }
 
 @property --font-size-sm {
   syntax: "<length>";
-  initial-value: 14px; /* 0.875rem × 16px */
+  initial-value: 14px;
+  /* 0.875rem × 16px */
   inherits: true;
 }
 
 @property --font-size-base {
   syntax: "<length>";
-  initial-value: 16px; /* 1rem × 16px */
+  initial-value: 16px;
+  /* 1rem × 16px */
   inherits: true;
 }
 
 @property --font-size-lg {
   syntax: "<length>";
-  initial-value: 20px; /* 1.25rem × 16px */
+  initial-value: 20px;
+  /* 1.25rem × 16px */
   inherits: true;
 }
 
 @property --font-size-xl {
   syntax: "<length>";
-  initial-value: 24px; /* 1.5rem × 16px */
+  initial-value: 24px;
+  /* 1.5rem × 16px */
   inherits: true;
 }
 

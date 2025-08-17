@@ -49,9 +49,12 @@
       transition: opacity var(--snackbar-transition-duration) ease;
       opacity: 1;
 
+      /* NOTE: @starting-style doesn't seem to be supported, so disabled */
+      /* eslint-disable css/no-invalid-at-rules */
       @starting-style {
         opacity: 0;
       }
+      /* eslint-enable css/no-invalid-at-rules */
     }
   }
 
@@ -78,10 +81,13 @@
 
   /* TODO: custom-media queries */
   @media screen and (width < 480px) {
+    /* NOTE: Nesting styles within `@media` queries don't seem to be supported, so disabled. */
+    /* eslint-disable css/no-invalid-at-rules */
     margin-inline: var(--snackbar-margin-for-small-screens);
     left: auto;
     top: auto;
     right: auto;
+    /* eslint-enable css/no-invalid-at-rules */
 
     &.--right-bottom {
       left: auto;

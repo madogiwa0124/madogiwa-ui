@@ -6,8 +6,7 @@
   --accordion-summary-icon-color: var(--color-text);
   --accordion-summary-icon-clip-path: polygon(0 0, 100% 50%, 0 100%);
   --accordion-summary-icon-open-transform: rotate(90deg);
-  --accordion-content-padding: 0 var(--spacing-3) var(--spacing-3)
-    var(--spacing-3);
+  --accordion-content-padding: 0 var(--spacing-3) var(--spacing-3) var(--spacing-3);
   --accordion-outline-border: 1px solid var(--color-border);
   --accordion-outline-border-radius: var(--border-radius);
   --accordion-outline-padding: 0 var(--spacing-2) 0 var(--spacing-2);
@@ -39,6 +38,8 @@
   }
 
   .accordion__content,
+  /* NOTE: Class-based specification is also supported as a fallback, so this is not a problem */
+  /* eslint-disable-next-line css/use-baseline */
   &::details-content {
     block-size: 0;
     opacity: 0;
@@ -55,6 +56,8 @@
     }
 
     .accordion__content,
+    /* NOTE: Class-based specification is also supported as a fallback, so this is not a problem */
+    /* eslint-disable-next-line css/use-baseline */
     &::details-content {
       block-size: auto;
       opacity: 1;
@@ -72,18 +75,22 @@
     /* NOTE:
       Using interpolate-size to enable transitions even with block-size: auto
       https://developer.mozilla.org/en-US/docs/Web/CSS/interpolate-size
+
+      This is animation behavior and not critical, so non-compliance with baseline is acceptable.
     */
-    /* biome-ignore lint/correctness/noUnknownProperty: allow-keywords is a valid property */
+    /* eslint-disable-next-line css/use-baseline */
     interpolate-size: allow-keywords;
 
     .accordion__summary::before {
       transition: transform var(--accordion-transition-time) ease;
     }
     .accordion__content,
+    /* NOTE: Class-based specification is also supported as a fallback, so this is not a problem */
+    /* eslint-disable-next-line css/use-baseline */
     &::details-content {
-      transition: block-size var(--accordion-transition-time) ease, opacity
-        var(--accordion-transition-time) ease, content-visibility
-        var(--accordion-transition-time) allow-discrete;
+      transition: block-size var(--accordion-transition-time) ease,
+        opacity var(--accordion-transition-time) ease,
+        content-visibility var(--accordion-transition-time) allow-discrete;
     }
   }
 }

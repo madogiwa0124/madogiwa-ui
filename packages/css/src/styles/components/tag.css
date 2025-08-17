@@ -67,8 +67,7 @@
       &:not(:disabled) {
         &:hover,
         &:focus {
-          transition: filter var(--tag-transition-duration)
-            var(--tag-transition-timing);
+          transition: filter var(--tag-transition-duration) var(--tag-transition-timing);
         }
       }
     }

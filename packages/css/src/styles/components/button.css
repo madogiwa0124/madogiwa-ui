@@ -29,6 +29,8 @@
 
   display: inline-flex;
   white-space: nowrap;
+  /* NOTE: Non-critical property, so this is acceptable */
+  /* eslint-disable-next-line css/use-baseline */
   user-select: none;
   border: var(--btn-border-width) solid transparent;
   padding: var(--btn-padding-y) var(--btn-padding-x);

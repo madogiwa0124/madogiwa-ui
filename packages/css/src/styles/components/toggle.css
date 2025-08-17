@@ -37,8 +37,7 @@ input[type="checkbox"].toggle {
     background-color: var(--toggle-bg-color-checked);
 
     &::before {
-      transform: translateX(var(--toggle-checked-translate-x))
-        scale(var(--toggle-button-scale));
+      transform: translateX(var(--toggle-checked-translate-x)) scale(var(--toggle-button-scale));
     }
   }
 
