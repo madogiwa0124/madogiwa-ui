@@ -1,17 +1,24 @@
 .link {
-  color: var(--color-secondary);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  --link-color: var(--color-secondary);
+  --link-color-hover: rgb(from var(--link-color) r g b / 0.8);
+  --link-color-active: rgb(from var(--link-color) r g b / 0.5);
+  --link-color-visited: rgb(from var(--link-color) r g b / 1.2);
+  --link-text-decoration: underline;
+  --link-underline-offset: 0.2em;
+
+  color: var(--link-color);
+  text-decoration: var(--link-text-decoration);
+  text-underline-offset: var(--link-underline-offset);
 
   &:hover {
-    color: rgb(from var(--color-secondary) r g b / 0.8);
+    color: var(--link-color-hover);
   }
 
   &:active {
-    color: rgb(from var(--color-secondary) r g b / 0.5);
+    color: var(--link-color-active);
   }
 
   &:visited {
-    color: rgb(from var(--color-secondary) r g b / 1.2);
+    color: var(--link-color-visited);
   }
 }
