@@ -17,6 +17,7 @@ const meta: Meta<ButtonProperties> = {
     block: { control: "boolean" },
     disabled: { control: "boolean" },
     onClick: { action: "clicked" },
+    transition: { control: "boolean" },
   },
   parameters: {
     docs: {
@@ -40,6 +41,7 @@ export const Default: Story = {
     outline: false,
     block: false,
     disabled: false,
+    transition: false,
   },
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
@@ -52,7 +54,7 @@ export const Default: Story = {
 };
 
 export const Variants: Story = {
-  render: () => {
+  render: (args) => {
     const container = document.createElement("div");
     container.className = "d-flex";
     container.style.gap = "10px";
@@ -63,11 +65,15 @@ export const Variants: Story = {
       const button = createButton({
         label: variant,
         variant,
+        transition: args["transition"] ?? false,
       });
       container.append(button);
     }
 
     return container;
+  },
+  args: {
+    transition: false,
   },
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
@@ -84,7 +90,7 @@ export const Variants: Story = {
 };
 
 export const OutlineButtons: Story = {
-  render: () => {
+  render: (args) => {
     const container = document.createElement("div");
     container.className = "d-flex";
     container.style.gap = "10px";
@@ -96,11 +102,15 @@ export const OutlineButtons: Story = {
         label: variant,
         variant,
         outline: true,
+        transition: args["transition"] ?? false,
       });
       container.append(button);
     }
 
     return container;
+  },
+  args: {
+    transition: false,
   },
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;

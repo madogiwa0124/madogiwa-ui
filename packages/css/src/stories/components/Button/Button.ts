@@ -6,6 +6,7 @@ export interface ButtonProperties {
   disabled?: boolean;
   rounded?: boolean;
   iconOnly?: boolean;
+  transition?: boolean;
   onClick?: (event: MouseEvent) => void;
 }
 
@@ -18,6 +19,7 @@ export const createButton = (props: ButtonProperties = {}): HTMLButtonElement =>
     disabled = false,
     iconOnly = false,
     onClick = null,
+    transition = false,
   } = props;
 
   const button = document.createElement("button");
@@ -32,6 +34,7 @@ export const createButton = (props: ButtonProperties = {}): HTMLButtonElement =>
   if (props.rounded) button.classList.add("--rounded");
   if (iconOnly) button.classList.add("--icon-only");
   if (iconOnly) button.classList.add("--icon-only");
+  if (transition) button.classList.add("--transition");
 
   if (disabled) {
     button.disabled = true;

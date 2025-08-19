@@ -11,21 +11,14 @@
   --btn-darker-brightness: 90%;
   --btn-lighter-brightness: 110%;
   --btn-disabled-opacity: 0.65;
-
-  /* Spacing */
   --btn-padding-x: var(--spacing-6);
   --btn-padding-y: var(--spacing-2);
-
-  /* Shadow */
   --btn-box-shadow: var(--shadow-sm);
-
-  /* Border */
   --btn-border-radius: var(--border-radius);
   --btn-rounded-border-radius: var(--border-radius-full);
   --btn-border-width: var(--border-width);
-
-  /* Transform */
   --btn-active-transform: translateY(1px);
+  --btn-transition-duration: 0.2s;
 
   display: inline-flex;
   white-space: nowrap;
@@ -45,7 +38,6 @@
   &:focus-visible {
     text-decoration: none;
     filter: brightness(var(--btn-lighter-brightness));
-    transition: filter 0.2s ease;
 
     &:disabled {
       filter: none;
@@ -80,7 +72,6 @@
   }
 
   &.--outline {
-    transition: background-color 0.2s ease;
     background-color: transparent;
     border: 2px solid transparent;
 
@@ -150,6 +141,22 @@
       width: 1em;
       height: 1em;
       flex-shrink: 0;
+    }
+  }
+
+  &.--transition {
+    transition: filter var(--btn-transition-duration) ease;
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      transition: filter var(--btn-transition-duration) ease;
+    }
+
+    &.--outline,
+    &.--outline:hover {
+      transition: background-color var(--btn-transition-duration) ease,
+        color var(--btn-transition-duration) ease;
     }
   }
 }
