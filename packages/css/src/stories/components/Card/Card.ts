@@ -1,4 +1,4 @@
-export interface CardProps {
+export interface CardProperties {
   className?: string;
   floating?: boolean;
   content?: string;
@@ -6,7 +6,7 @@ export interface CardProps {
   style?: string;
 }
 
-export function createCard(props: CardProps = {}): HTMLDivElement {
+export function createCard(props: CardProperties = {}): HTMLDivElement {
   const { className = "card", floating = false, content, image, style } = props;
 
   const card = document.createElement("div");
@@ -24,14 +24,14 @@ export function createCard(props: CardProps = {}): HTMLDivElement {
     imageElement.className = "card__image";
     imageElement.src = image;
     imageElement.alt = "Card Image";
-    card.appendChild(imageElement);
+    card.append(imageElement);
   }
 
   if (content) {
     const contentElement = document.createElement("div");
     contentElement.className = "card__content";
     contentElement.innerHTML = content;
-    card.appendChild(contentElement);
+    card.append(contentElement);
   }
 
   return card;

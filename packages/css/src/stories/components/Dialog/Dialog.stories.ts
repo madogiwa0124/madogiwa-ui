@@ -56,11 +56,11 @@ export const Default: Story = {
     const openDialogButton = document.createElement("button");
     openDialogButton.textContent = "Open Dialog";
     openDialogButton.className = "btn --primary";
-    openDialogButton.onclick = () => {
+    openDialogButton.addEventListener("click", () => {
       dialog.showModal();
-    };
-    container.appendChild(openDialogButton);
-    container.appendChild(dialog);
+    });
+    container.append(openDialogButton);
+    container.append(dialog);
     return container;
   },
   args: {
@@ -68,14 +68,14 @@ export const Default: Story = {
     transition: false,
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const dialog = canvas.querySelector("dialog") as HTMLDialogElement;
-    expect(dialog).not.toBeNull();
-    expect(dialog.open).toBe(false);
+    await expect(dialog).not.toBeNull();
+    await expect(dialog.open).toBe(false);
     await userEvent.click(await within(canvas).findByText("Open Dialog"));
-    expect(dialog.open).toBe(true);
-    expect(dialog).toHaveTextContent("Are you sure?");
+    await expect(dialog.open).toBe(true);
+    await expect(dialog).toHaveTextContent("Are you sure?");
     await userEvent.click(await within(dialog).findByText("Cancel"));
-    expect(dialog.open).toBe(false);
+    await expect(dialog.open).toBe(false);
   },
 };

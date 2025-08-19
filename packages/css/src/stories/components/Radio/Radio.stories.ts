@@ -25,18 +25,18 @@ export const Default: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const radio = canvas.querySelector(
       "input[type='radio']",
     ) as HTMLInputElement;
 
-    expect(radio).not.toBeNull();
-    expect(radio).toHaveClass("radio");
-    expect(radio).not.toBeChecked();
-    expect(radio).not.toBeDisabled();
+    await expect(radio).not.toBeNull();
+    await expect(radio).toHaveClass("radio");
+    await expect(radio).not.toBeChecked();
+    await expect(radio).not.toBeDisabled();
 
     await userEvent.click(radio);
-    expect(radio).toBeChecked();
+    await expect(radio).toBeChecked();
   },
 };
 
@@ -56,23 +56,23 @@ export const Checked: Story = {
     root.style.display = "flex";
     root.style.flexDirection = "column";
     root.style.gap = "10px";
-    root.appendChild(checked);
-    root.appendChild(notChecked);
+    root.append(checked);
+    root.append(notChecked);
     root.classList.add("radio-group");
     return root;
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const radio = canvas.querySelector(
       "input[type='radio']",
     ) as HTMLInputElement;
 
-    expect(radio).not.toBeNull();
-    expect(radio).toHaveClass("radio");
-    expect(radio).toBeChecked();
-    expect(radio).toHaveAttribute("name", "radio-checked");
-    expect(radio).toHaveAttribute("value", "radio-checked");
+    await expect(radio).not.toBeNull();
+    await expect(radio).toHaveClass("radio");
+    await expect(radio).toBeChecked();
+    await expect(radio).toHaveAttribute("name", "radio-checked");
+    await expect(radio).toHaveAttribute("value", "radio-checked");
   },
 };
 
@@ -86,16 +86,16 @@ export const Disabled: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const radio = canvas.querySelector(
       "input[type='radio']",
     ) as HTMLInputElement;
 
-    expect(radio).not.toBeNull();
-    expect(radio).toHaveClass("radio");
-    expect(radio).not.toBeChecked();
-    expect(radio).toBeDisabled();
-    expect(radio).toHaveAttribute("name", "radio-disabled");
+    await expect(radio).not.toBeNull();
+    await expect(radio).toHaveClass("radio");
+    await expect(radio).not.toBeChecked();
+    await expect(radio).toBeDisabled();
+    await expect(radio).toHaveAttribute("name", "radio-disabled");
   },
 };
 
@@ -110,17 +110,17 @@ export const CheckedDisabled: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const radio = canvas.querySelector(
       "input[type='radio']",
     ) as HTMLInputElement;
 
-    expect(radio).not.toBeNull();
-    expect(radio).toHaveClass("radio");
-    expect(radio).toBeChecked();
-    expect(radio).toBeDisabled();
-    expect(radio).toHaveAttribute("name", "radio-checked-disabled");
-    expect(radio).toHaveAttribute("value", "radio-checked-disabled");
+    await expect(radio).not.toBeNull();
+    await expect(radio).toHaveClass("radio");
+    await expect(radio).toBeChecked();
+    await expect(radio).toBeDisabled();
+    await expect(radio).toHaveAttribute("name", "radio-checked-disabled");
+    await expect(radio).toHaveAttribute("value", "radio-checked-disabled");
   },
 };
 
@@ -137,24 +137,24 @@ export const WithLabel: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const radio = canvas.querySelector(
       "input[type='radio']",
     ) as HTMLInputElement;
     const label = canvas.querySelector("label") as HTMLLabelElement;
 
-    expect(radio).not.toBeNull();
-    expect(radio).toHaveAttribute("id", "radio-with-label");
-    expect(radio).toHaveAttribute("name", "radio-with-label");
-    expect(radio).toHaveAttribute("value", "radio-with-label");
+    await expect(radio).not.toBeNull();
+    await expect(radio).toHaveAttribute("id", "radio-with-label");
+    await expect(radio).toHaveAttribute("name", "radio-with-label");
+    await expect(radio).toHaveAttribute("value", "radio-with-label");
 
-    expect(label).not.toBeNull();
-    expect(label).toHaveAttribute("for", "radio-with-label");
-    expect(label).toHaveTextContent("Select this option");
+    await expect(label).not.toBeNull();
+    await expect(label).toHaveAttribute("for", "radio-with-label");
+    await expect(label).toHaveTextContent("Select this option");
 
-    expect(radio).not.toBeChecked();
+    await expect(radio).not.toBeChecked();
 
     await userEvent.click(label);
-    expect(radio).toBeChecked();
+    await expect(radio).toBeChecked();
   },
 };

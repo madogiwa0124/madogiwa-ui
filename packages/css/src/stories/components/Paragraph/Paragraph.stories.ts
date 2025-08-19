@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import { expect } from "storybook/test";
 
-interface ParagraphArgs {
+interface ParagraphArguments {
   text: string;
   className: string;
 }
 
-const meta: Meta<ParagraphArgs> = {
+const meta: Meta<ParagraphArguments> = {
   title: "Components/Paragraph",
   tags: ["autodocs"],
   argTypes: {
@@ -24,7 +24,7 @@ const meta: Meta<ParagraphArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ParagraphArgs>;
+type Story = StoryObj<ParagraphArguments>;
 
 const createParagraph = (
   props: { text?: string; className?: string } = {},
@@ -52,13 +52,13 @@ export const Default: Story = {
     className: "",
   },
   play: async ({ canvasElement, args }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const paragraph = canvas.querySelector("p") as HTMLParagraphElement;
 
-    expect(paragraph).not.toBeNull();
-    expect(paragraph).toHaveTextContent(args.text || "");
-    expect(paragraph.tagName.toLowerCase()).toBe("p");
-    expect(paragraph).toHaveClass("paragraph");
+    await expect(paragraph).not.toBeNull();
+    await expect(paragraph).toHaveTextContent(args.text || "");
+    await expect(paragraph.tagName.toLowerCase()).toBe("p");
+    await expect(paragraph).toHaveClass("paragraph");
   },
 };
 
@@ -81,17 +81,17 @@ export const MultipleParagraphs: Story = {
       text: "This is the third paragraph. Appropriate spacing is automatically set between paragraphs.",
     });
 
-    container.appendChild(paragraph1);
-    container.appendChild(paragraph2);
-    container.appendChild(paragraph3);
+    container.append(paragraph1);
+    container.append(paragraph2);
+    container.append(paragraph3);
 
     return container;
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const paragraphs = canvas.querySelectorAll("p");
 
-    expect(paragraphs).toHaveLength(3);
+    await expect(paragraphs).toHaveLength(3);
 
     const expectedTexts = [
       "This is the first paragraph. Appropriate spacing is automatically set between paragraphs.",
@@ -99,13 +99,13 @@ export const MultipleParagraphs: Story = {
       "This is the third paragraph. Appropriate spacing is automatically set between paragraphs.",
     ];
 
-    for (const [index, paragraph] of Array.from(paragraphs).entries()) {
-      expect(paragraph).not.toBeNull();
-      expect(paragraph.tagName.toLowerCase()).toBe("p");
-      expect(paragraph).toHaveClass("paragraph");
+    for (const [index, paragraph] of [...paragraphs].entries()) {
+      await expect(paragraph).not.toBeNull();
+      await expect(paragraph.tagName.toLowerCase()).toBe("p");
+      await expect(paragraph).toHaveClass("paragraph");
       const expectedText = expectedTexts[index];
       if (expectedText) {
-        expect(paragraph).toHaveTextContent(expectedText);
+        await expect(paragraph).toHaveTextContent(expectedText);
       }
     }
   },

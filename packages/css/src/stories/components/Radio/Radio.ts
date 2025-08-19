@@ -1,4 +1,4 @@
-export interface RadioProps {
+export interface RadioProperties {
   name?: string;
   value?: string;
   id?: string;
@@ -7,14 +7,14 @@ export interface RadioProps {
   className?: string;
 }
 
-export interface LabelProps {
+export interface LabelProperties {
   text: string;
   htmlFor: string;
   cursor?: string;
   userSelect?: string;
 }
 
-export function createRadio(props: RadioProps = {}): HTMLInputElement {
+export function createRadio(props: RadioProperties = {}): HTMLInputElement {
   const {
     name = "radio",
     value = "radio",
@@ -39,7 +39,7 @@ export function createRadio(props: RadioProps = {}): HTMLInputElement {
   return radio;
 }
 
-export function createLabel(props: LabelProps): HTMLLabelElement {
+export function createLabel(props: LabelProperties): HTMLLabelElement {
   const { text, htmlFor, cursor = "pointer", userSelect = "none" } = props;
 
   const label = document.createElement("label");
@@ -52,7 +52,7 @@ export function createLabel(props: LabelProps): HTMLLabelElement {
 }
 
 export function createRadioWithLabel(
-  radioProps: RadioProps & { id: string },
+  radioProperties: RadioProperties & { id: string },
   labelText: string,
 ): HTMLDivElement {
   const container = document.createElement("div");
@@ -60,14 +60,14 @@ export function createRadioWithLabel(
   container.style.alignItems = "center";
   container.style.gap = "0.5rem";
 
-  const radio = createRadio(radioProps);
+  const radio = createRadio(radioProperties);
   const label = createLabel({
     text: labelText,
-    htmlFor: radioProps.id,
+    htmlFor: radioProperties.id,
   });
 
-  container.appendChild(radio);
-  container.appendChild(label);
+  container.append(radio);
+  container.append(label);
 
   return container;
 }

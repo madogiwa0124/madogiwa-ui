@@ -42,10 +42,10 @@ export const Default: Story = {
         <p>More content can be added here.</p>
       </div>
     `;
-    container.appendChild(accordion);
+    container.append(accordion);
     const additionalContent = document.createElement("div");
     additionalContent.innerHTML = "Additional content";
-    container.appendChild(additionalContent);
+    container.append(additionalContent);
     return container;
   },
   args: {
@@ -53,21 +53,23 @@ export const Default: Story = {
     outline: true,
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const accordion = canvas.querySelector(".accordion") as HTMLDetailsElement;
     const summary = accordion.querySelector("summary") as HTMLElement;
     const content = accordion.querySelector(
       ".accordion__content",
     ) as HTMLElement;
-    expect(accordion.open).toBe(false);
-    expect(content).not.toBeVisible();
+    await expect(accordion.open).toBe(false);
+    await expect(content).not.toBeVisible();
     summary.click();
-    expect(accordion.open).toBe(true);
+    await expect(accordion.open).toBe(true);
     // Wait for transition to complete
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    expect(content).toBeVisible();
+    await new Promise((resolve) => {
+      setTimeout(resolve, 300);
+    });
+    await expect(content).toBeVisible();
     summary.click();
-    expect(accordion.open).toBe(false);
-    expect(content).not.toBeVisible();
+    await expect(accordion.open).toBe(false);
+    await expect(content).not.toBeVisible();
   },
 };

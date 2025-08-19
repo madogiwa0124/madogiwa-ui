@@ -9,6 +9,7 @@ import stylistic from '@stylistic/eslint-plugin'
 const ignoredFiles = [
   "eslint.config.js",
   "**/*/vite-env.d.ts",
+  "**/.storybook/**",
   "**/dist/**",
   "**/node_modules/**"
 ];

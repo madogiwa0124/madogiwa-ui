@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import { expect } from "storybook/test";
 
-const meta: Meta = {
+interface LabelProperties {
+  text: string;
+}
+
+const meta: Meta<LabelProperties> = {
   title: "Components/Label",
   tags: ["autodocs"],
   argTypes: {
@@ -18,7 +22,7 @@ const meta: Meta = {
 };
 
 export default meta;
-type Story = StoryObj;
+type Story = StoryObj<LabelProperties>;
 
 export const Default: Story = {
   render: (args) => {
@@ -26,18 +30,18 @@ export const Default: Story = {
     const label = document.createElement("label");
     label.className = "label";
     label.textContent = args["text"];
-    container.appendChild(label);
+    container.append(label);
     return container;
   },
   args: {
     text: "Label text",
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const label = canvas.querySelector("label") as HTMLLabelElement;
 
-    expect(label).not.toBeNull();
-    expect(label).toHaveClass("label");
+    await expect(label).not.toBeNull();
+    await expect(label).toHaveClass("label");
   },
 };
 
@@ -55,22 +59,22 @@ export const WithInput: Story = {
     input.type = "text";
     input.placeholder = "Type here...";
 
-    container.appendChild(label);
-    container.appendChild(input);
+    container.append(label);
+    container.append(input);
     return container;
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const label = canvas.querySelector("label") as HTMLLabelElement;
     const input = canvas.querySelector("input") as HTMLInputElement;
 
-    expect(label).not.toBeNull();
-    expect(label).toHaveClass("label");
-    expect(input).not.toBeNull();
-    expect(input).toHaveAttribute("type", "text");
-    expect(input).toHaveAttribute("placeholder", "Type here...");
+    await expect(label).not.toBeNull();
+    await expect(label).toHaveClass("label");
+    await expect(input).not.toBeNull();
+    await expect(input).toHaveAttribute("type", "text");
+    await expect(input).toHaveAttribute("placeholder", "Type here...");
 
     label.click();
-    expect(document.activeElement).toBe(input);
+    await expect(document.activeElement).toBe(input);
   },
 };

@@ -1,7 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import { expect } from "storybook/test";
 
-const meta: Meta = {
+interface TagProperties {
+  outline: boolean;
+  label: string;
+  size: "small" | "default";
+  disabled: boolean;
+  transition: boolean;
+}
+
+const meta: Meta<TagProperties> = {
   title: "Components/Tag",
   tags: ["autodocs"],
   argTypes: {
@@ -37,7 +45,7 @@ const meta: Meta = {
 };
 
 export default meta;
-type Story = StoryObj;
+type Story = StoryObj<TagProperties>;
 
 export const Default: Story = {
   render: (args) => {
@@ -45,12 +53,12 @@ export const Default: Story = {
     const tag = document.createElement("div");
     tag.className = "tag";
     if (args["outline"]) tag.classList.add("--outline");
-    tag.classList.add(`--${args["size"]}` || "default");
+    if (args["size"] !== "default") tag.classList.add(`--${args["size"]}`);
     if (args["transition"]) tag.classList.add("--transition");
     const tagText = document.createElement("span");
     tagText.textContent = args["label"];
-    tag.appendChild(tagText);
-    container.appendChild(tag);
+    tag.append(tagText);
+    container.append(tag);
     return container;
   },
   args: {
@@ -60,18 +68,18 @@ export const Default: Story = {
     transition: false,
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const tag = canvas.querySelector(".tag") as HTMLElement;
     const tagText = tag.querySelector("span") as HTMLSpanElement;
 
-    expect(canvas).not.toBeNull();
-    expect(tag).not.toBeNull();
-    expect(tag).toHaveClass("tag");
-    expect(tagText).toHaveTextContent("Tag label");
+    await expect(canvas).not.toBeNull();
+    await expect(tag).not.toBeNull();
+    await expect(tag).toHaveClass("tag");
+    await expect(tagText).toHaveTextContent("Tag label");
 
-    expect(tag).not.toHaveClass("--outline");
-    expect(tag).not.toHaveClass("--small");
-    expect(tag).not.toHaveClass("--transition");
+    await expect(tag).not.toHaveClass("--outline");
+    await expect(tag).not.toHaveClass("--small");
+    await expect(tag).not.toHaveClass("--transition");
   },
 };
 
@@ -85,8 +93,8 @@ export const Link: Story = {
     if (args["transition"]) tag.classList.add("--transition");
     const tagText = document.createElement("span");
     tagText.textContent = args["label"];
-    tag.appendChild(tagText);
-    container.appendChild(tag);
+    tag.append(tagText);
+    container.append(tag);
     return container;
   },
   args: {
@@ -96,17 +104,17 @@ export const Link: Story = {
     outline: false,
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const tag = canvas.querySelector(".tag") as HTMLButtonElement;
     const tagText = tag.querySelector("span") as HTMLSpanElement;
 
-    expect(canvas).not.toBeNull();
-    expect(tag).not.toBeNull();
-    expect(tag).toHaveClass("tag");
-    expect(tagText).toHaveTextContent("Tag label");
+    await expect(canvas).not.toBeNull();
+    await expect(tag).not.toBeNull();
+    await expect(tag).toHaveClass("tag");
+    await expect(tagText).toHaveTextContent("Tag label");
 
-    expect(tag.tagName).toBe("button");
-    expect(tag).not.toBeDisabled();
+    await expect(tag.tagName).toBe("button");
+    await expect(tag).not.toBeDisabled();
   },
 };
 
@@ -116,12 +124,12 @@ export const Outline: Story = {
     const tag = document.createElement("div");
     tag.className = "tag";
     tag.classList.add("--outline");
-    tag.classList.add(`--${args["size"]}` || "default");
+    if (args["size"] !== "default") tag.classList.add(`--${args["size"]}`);
     if (args["transition"]) tag.classList.add("--transition");
     const tagText = document.createElement("span");
     tagText.textContent = args["label"];
-    tag.appendChild(tagText);
-    container.appendChild(tag);
+    tag.append(tagText);
+    container.append(tag);
     return container;
   },
   args: {
@@ -131,15 +139,15 @@ export const Outline: Story = {
     disabled: false,
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const tag = canvas.querySelector(".tag") as HTMLElement;
     const tagText = tag.querySelector("span") as HTMLSpanElement;
 
-    expect(canvas).not.toBeNull();
-    expect(tag).not.toBeNull();
-    expect(tag).toHaveClass("tag");
-    expect(tag).toHaveClass("--outline");
-    expect(tagText).toHaveTextContent("Tag label");
+    await expect(canvas).not.toBeNull();
+    await expect(tag).not.toBeNull();
+    await expect(tag).toHaveClass("tag");
+    await expect(tag).toHaveClass("--outline");
+    await expect(tagText).toHaveTextContent("Tag label");
   },
 };
 
@@ -154,28 +162,28 @@ export const WithIcon: Story = {
     const tagIconRight = document.createElement("div");
     tagIconRight.className = "tag";
     tagIconRight.innerHTML = `<span>${args["label"]}</span> <span class="icon">-</span>`;
-    container.appendChild(tagIconLeft);
-    container.appendChild(tagIconRight);
+    container.append(tagIconLeft);
+    container.append(tagIconRight);
     return container;
   },
   args: {
     label: "tag with Icon",
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
-    const tags = canvas.querySelectorAll(".tag") as NodeListOf<HTMLElement>;
+    const canvas = canvasElement;
+    const tags = canvas.querySelectorAll(".tag");
 
-    expect(canvas).not.toBeNull();
-    expect(tags).toHaveLength(2);
+    await expect(canvas).not.toBeNull();
+    await expect(tags).toHaveLength(2);
 
     const leftIconTag = tags[0];
     if (leftIconTag) {
       const leftIcon = leftIconTag.querySelector(".icon") as HTMLSpanElement;
       const leftText = leftIconTag.querySelectorAll("span")[1] as HTMLSpanElement;
 
-      expect(leftIconTag).toHaveClass("tag");
-      expect(leftIcon).toHaveTextContent("+");
-      expect(leftText).toHaveTextContent("tag with Icon");
+      await expect(leftIconTag).toHaveClass("tag");
+      await expect(leftIcon).toHaveTextContent("+");
+      await expect(leftText).toHaveTextContent("tag with Icon");
     }
 
     const rightIconTag = tags[1];
@@ -185,9 +193,9 @@ export const WithIcon: Story = {
         "span",
       )[0] as HTMLSpanElement;
 
-      expect(rightIconTag).toHaveClass("tag");
-      expect(rightIcon).toHaveTextContent("-");
-      expect(rightText).toHaveTextContent("tag with Icon");
+      await expect(rightIconTag).toHaveClass("tag");
+      await expect(rightIcon).toHaveTextContent("-");
+      await expect(rightText).toHaveTextContent("tag with Icon");
     }
   },
 };

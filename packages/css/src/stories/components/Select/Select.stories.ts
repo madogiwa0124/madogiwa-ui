@@ -45,15 +45,15 @@ export const Default: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const select = canvas.querySelector("select") as HTMLSelectElement;
 
-    expect(select).not.toBeNull();
-    expect(select).toHaveClass("select");
-    expect(select).not.toBeDisabled();
+    await expect(select).not.toBeNull();
+    await expect(select).toHaveClass("select");
+    await expect(select).not.toBeDisabled();
 
     await userEvent.selectOptions(select, "");
-    expect(select).toHaveValue("");
+    await expect(select).toHaveValue("");
   },
 };
 
@@ -72,14 +72,14 @@ export const Separator: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const select = canvas.querySelector("select") as HTMLSelectElement;
     const separators = select.querySelectorAll("hr");
 
-    expect(select).not.toBeNull();
-    expect(select).toHaveClass("select");
-    expect(select).not.toBeDisabled();
-    expect(separators.length).toBe(1);
+    await expect(select).not.toBeNull();
+    await expect(select).toHaveClass("select");
+    await expect(select).not.toBeDisabled();
+    await expect(separators.length).toBe(1);
   },
 };
 
@@ -104,21 +104,21 @@ export const Group: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const select = canvas.querySelector("select") as HTMLSelectElement;
     const optgroups = select.querySelectorAll("optgroup");
 
-    expect(select).not.toBeNull();
-    expect(select).toHaveClass("select");
-    expect(select).not.toBeDisabled();
-    expect(optgroups.length).toBe(2);
+    await expect(select).not.toBeNull();
+    await expect(select).toHaveClass("select");
+    await expect(select).not.toBeDisabled();
+    await expect(optgroups.length).toBe(2);
     if (optgroups[0]) {
-      expect(optgroups[0].label).toBe("Group 1");
-      expect(optgroups[0].querySelectorAll("option").length).toBe(2);
+      await expect(optgroups[0].label).toBe("Group 1");
+      await expect(optgroups[0].querySelectorAll("option").length).toBe(2);
     }
     if (optgroups[1]) {
-      expect(optgroups[1].label).toBe("Group 2");
-      expect(optgroups[1].querySelectorAll("option").length).toBe(2);
+      await expect(optgroups[1].label).toBe("Group 2");
+      await expect(optgroups[1].querySelectorAll("option").length).toBe(2);
     }
   },
 };
@@ -130,7 +130,7 @@ export const Multiple: Story = {
     notSupportedMessage.textContent = "Multiple select is not supported";
     notSupportedMessage.style.color = "red";
     notSupportedMessage.style.fontWeight = "bold";
-    container.appendChild(notSupportedMessage);
+    container.append(notSupportedMessage);
     const select = document.createElement("select");
     select.className = "select";
     select.multiple = true;
@@ -139,20 +139,20 @@ export const Multiple: Story = {
       <option value="option2">Option 2</option>
       <option value="option3">Option 3</option>
       `;
-    container.appendChild(select);
+    container.append(select);
     return container;
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const select = canvas.querySelector("select") as HTMLSelectElement;
 
-    expect(select).not.toBeNull();
-    expect(select).toHaveClass("select");
-    expect(select.multiple).toBe(true);
+    await expect(select).not.toBeNull();
+    await expect(select).toHaveClass("select");
+    await expect(select.multiple).toBe(true);
 
     await userEvent.selectOptions(select, ["option1", "option2"]);
-    expect(select).toHaveValue(["option1", "option2"]);
+    await expect(select).toHaveValue(["option1", "option2"]);
   },
 };
 
@@ -170,17 +170,17 @@ export const Disabled: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const select = canvas.querySelector("select") as HTMLSelectElement;
 
-    expect(select).not.toBeNull();
-    expect(select).toHaveClass("select");
-    expect(select).toBeDisabled();
-    expect(select).toHaveValue("option2");
+    await expect(select).not.toBeNull();
+    await expect(select).toHaveClass("select");
+    await expect(select).toBeDisabled();
+    await expect(select).toHaveValue("option2");
 
     const initialValue = select.value;
     await userEvent.click(select);
-    expect(select).toHaveValue(initialValue);
+    await expect(select).toHaveValue(initialValue);
   },
 };
 
@@ -202,25 +202,25 @@ export const Invalid: Story = {
       `;
 
     form.reportValidity();
-    form.appendChild(select);
-    container.appendChild(form);
+    form.append(select);
+    container.append(form);
 
     return container;
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const select = canvas.querySelector("select") as HTMLSelectElement;
     const form = canvas.querySelector("form") as HTMLFormElement;
 
-    expect(select).not.toBeNull();
-    expect(select).toHaveClass("select");
-    expect(select).toBeRequired();
-    expect(select).toHaveValue("");
+    await expect(select).not.toBeNull();
+    await expect(select).toHaveClass("select");
+    await expect(select).toBeRequired();
+    await expect(select).toHaveValue("");
 
     form.reportValidity();
 
-    expect(select.validity.valid).toBe(false);
-    expect(select.validity.valueMissing).toBe(true);
+    await expect(select.validity.valid).toBe(false);
+    await expect(select.validity.valueMissing).toBe(true);
   },
 };

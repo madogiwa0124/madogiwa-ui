@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/html";
-import { createHeading, type HeadingProps } from "./Heading";
+import { type HeadingProperties, createHeading } from "./Heading";
+
 import { expect } from "storybook/test";
 
-const meta: Meta<HeadingProps> = {
+const meta: Meta<HeadingProperties> = {
   title: "Components/Heading",
   tags: ["autodocs"],
   argTypes: {
@@ -24,7 +25,7 @@ const meta: Meta<HeadingProps> = {
 };
 
 export default meta;
-type Story = StoryObj<HeadingProps>;
+type Story = StoryObj<HeadingProperties>;
 
 export const Default: Story = {
   render: (args) => {
@@ -36,13 +37,13 @@ export const Default: Story = {
     className: "",
   },
   play: async ({ canvasElement, args }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const heading = canvas.querySelector("h1") as HTMLHeadingElement;
 
-    expect(heading).not.toBeNull();
-    expect(heading).toHaveClass("h1");
-    expect(heading).toHaveTextContent(args.text || "Heading text");
-    expect(heading.tagName.toLowerCase()).toBe("h1");
+    await expect(heading).not.toBeNull();
+    await expect(heading).toHaveClass("h1");
+    await expect(heading).toHaveTextContent(args.text ?? "Heading text");
+    await expect(heading.tagName.toLowerCase()).toBe("h1");
   },
 };
 
@@ -55,24 +56,24 @@ export const AllHeadings: Story = {
 
     for (let level = 1; level <= 6; level++) {
       const heading = createHeading({
-        text: `Heading level ${level}`,
+        text: `Heading level ${level.toString()}`,
         level,
       });
-      container.appendChild(heading);
+      container.append(heading);
     }
 
     return container;
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
 
     // Verify that all heading levels (h1-h6) are rendered
     for (let level = 1; level <= 6; level++) {
-      const heading = canvas.querySelector(`h${level}`) as HTMLHeadingElement;
-      expect(heading).not.toBeNull();
-      expect(heading).toHaveClass(`h${level}`);
-      expect(heading).toHaveTextContent(`Heading level ${level}`);
-      expect(heading.tagName.toLowerCase()).toBe(`h${level}`);
+      const heading = canvas.querySelector(`h${level.toString()}`) as HTMLHeadingElement;
+      await expect(heading).not.toBeNull();
+      await expect(heading).toHaveClass(`h${level.toString()}`);
+      await expect(heading).toHaveTextContent(`Heading level ${level.toString()}`);
+      await expect(heading.tagName.toLowerCase()).toBe(`h${level.toString()}`);
     }
   },
 };

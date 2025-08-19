@@ -1,7 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import { expect } from "storybook/test";
 
-const meta: Meta = {
+interface InputProperties {
+  placeholder: string;
+  inputType: string;
+  block: boolean;
+  disabled: boolean;
+  onInput: (value: string) => void;
+}
+
+const meta: Meta<InputProperties> = {
   title: "Components/Input",
   tags: ["autodocs"],
   argTypes: {
@@ -47,7 +55,7 @@ const meta: Meta = {
 };
 
 export default meta;
-type Story = StoryObj;
+type Story = StoryObj<InputProperties>;
 
 export const Default: Story = {
   render: (args) => {
@@ -71,20 +79,20 @@ export const Default: Story = {
     disabled: false,
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const input = canvas.querySelector("input") as HTMLInputElement;
 
-    expect(input).not.toBeNull();
-    expect(input).toHaveClass("input");
-    expect(input).not.toBeDisabled();
+    await expect(input).not.toBeNull();
+    await expect(input).toHaveClass("input");
+    await expect(input).not.toBeDisabled();
   },
 };
 
 export const Types: Story = {
   render: () => {
     const container = document.createElement("div");
-    container.style =
-      "display: flex; flex-direction: column; gap: 10px; width: 350px;";
+    container.style
+      = "display: flex; flex-direction: column; gap: 10px; width: 350px;";
     const input = document.createElement("input");
     input.className = "input";
     input.type = "text";
@@ -114,13 +122,13 @@ export const Types: Story = {
     fileInput.type = "file";
     fileInput.accept = ".txt, .pdf";
 
-    container.appendChild(input);
-    container.appendChild(numericInput);
-    container.appendChild(emailInput);
-    container.appendChild(passwordInput);
-    container.appendChild(dateInput);
-    container.appendChild(colorInput);
-    container.appendChild(fileInput);
+    container.append(input);
+    container.append(numericInput);
+    container.append(emailInput);
+    container.append(passwordInput);
+    container.append(dateInput);
+    container.append(colorInput);
+    container.append(fileInput);
     return container;
   },
 };
@@ -135,12 +143,12 @@ export const Disabled: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const input = canvas.querySelector("input") as HTMLInputElement;
 
-    expect(input).not.toBeNull();
-    expect(input).toHaveClass("input");
-    expect(input).toBeDisabled();
+    await expect(input).not.toBeNull();
+    await expect(input).toHaveClass("input");
+    await expect(input).toBeDisabled();
   },
 };
 
@@ -153,17 +161,17 @@ export const Invalid: Story = {
     const input = document.createElement("input");
     input.className = "input";
     input.required = true;
-    form.appendChild(input);
+    form.append(input);
     form.reportValidity();
     return form;
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const input = canvas.querySelector("input") as HTMLInputElement;
 
-    expect(input).not.toBeNull();
-    expect(input).toHaveClass("input invalid");
+    await expect(input).not.toBeNull();
+    await expect(input).toHaveClass("input invalid");
   },
 };
 
@@ -176,11 +184,11 @@ export const Placeholder: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const input = canvas.querySelector("input") as HTMLInputElement;
 
-    expect(input).not.toBeNull();
-    expect(input).toHaveClass("input");
+    await expect(input).not.toBeNull();
+    await expect(input).toHaveClass("input");
   },
 };
 
@@ -193,10 +201,10 @@ export const Block: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const input = canvas.querySelector("input") as HTMLInputElement;
 
-    expect(input).not.toBeNull();
-    expect(input).toHaveClass("input --block");
+    await expect(input).not.toBeNull();
+    await expect(input).toHaveClass("input --block");
   },
 };

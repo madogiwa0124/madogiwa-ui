@@ -23,22 +23,23 @@ export const customProperties = (
   element: HTMLElement,
   prefixStyleMapping: typeof PREFIX_STYLE_MAPPING = PREFIX_STYLE_MAPPING,
 ): Property[] => {
-  const htmlStyle = element?.computedStyleMap() ?? [];
-  const entries = Array.from(htmlStyle.entries());
+  const htmlStyle = element.computedStyleMap();
+  const entries = [...htmlStyle.entries()];
   const properties = entries.filter(([propertyName, _]) =>
     propertyName.startsWith("--"),
   );
   return properties.map(([name, value]) => ({
     name,
-    value: value.toString(),
+    value: [...value].join(", "),
     styleType: calcStyleType(name, prefixStyleMapping),
   }));
 };
 
 export const designTokens = (properties: Property[]): DesignToken => {
-  const tokens = properties.filter((property) => property.styleType);
+  const tokens = properties.filter(property => property.styleType);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
-  const result = Object.groupBy(tokens, (property) => property.styleType);
+  const result = Object.groupBy(tokens, property => property.styleType);
   return result as DesignToken;
 };
 
@@ -53,7 +54,7 @@ export const createColorElement: CreatePropertyElement = (property) => {
   colorElement.style.padding = "1rem";
   colorElement.style.borderRadius = "0.25rem";
   colorElement.style.margin = "0.5rem";
-  colorElement.appendChild(text);
+  colorElement.append(text);
   return colorElement;
 };
 
@@ -70,8 +71,8 @@ export const createSpacingElement: CreatePropertyElement = (property) => {
   spacing.style.margin = "0.5rem";
   const text = document.createElement("div");
   text.textContent = `${property.name}: ${property.value}`;
-  spacingElement.appendChild(text);
-  spacingElement.appendChild(spacing);
+  spacingElement.append(text);
+  spacingElement.append(spacing);
   return spacingElement;
 };
 
@@ -102,18 +103,22 @@ export const createTypographyElement: CreatePropertyElement = (property) => {
 
   if (property.name.includes("font-size")) {
     sampleText.style.fontSize = property.value;
-  } else if (property.name.includes("font-weight")) {
+  }
+  else if (property.name.includes("font-weight")) {
     sampleText.style.fontWeight = property.value;
-  } else if (property.name.includes("line-height")) {
+  }
+  else if (property.name.includes("line-height")) {
     sampleText.style.lineHeight = property.value;
-  } else if (property.name.includes("letter-spacing")) {
+  }
+  else if (property.name.includes("letter-spacing")) {
     sampleText.style.letterSpacing = property.value;
-  } else if (property.name.includes("font-family")) {
+  }
+  else if (property.name.includes("font-family")) {
     sampleText.style.fontFamily = property.value;
   }
 
-  typographyElement.appendChild(propertyInfo);
-  typographyElement.appendChild(sampleText);
+  typographyElement.append(propertyInfo);
+  typographyElement.append(sampleText);
   return typographyElement;
 };
 
@@ -145,8 +150,8 @@ export const createShadowElement: CreatePropertyElement = (property) => {
   sampleBox.style.fontWeight = "500";
   sampleBox.style.boxShadow = property.value;
 
-  shadowElement.appendChild(propertyInfo);
-  shadowElement.appendChild(sampleBox);
+  shadowElement.append(propertyInfo);
+  shadowElement.append(sampleBox);
   return shadowElement;
 };
 
@@ -177,8 +182,8 @@ export const createCornerElement: CreatePropertyElement = (property) => {
   sampleBox.style.borderRadius = property.value;
   sampleBox.style.border = "2px solid #1e40af";
 
-  cornerElement.appendChild(propertyInfo);
-  cornerElement.appendChild(sampleBox);
+  cornerElement.append(propertyInfo);
+  cornerElement.append(sampleBox);
   return cornerElement;
 };
 
@@ -187,7 +192,7 @@ const convertPxToRem = (
   rootFontSize: number,
 ): string | undefined => {
   const match = value.match(/^([\d.]+)px$/);
-  if (match && match[1]) {
+  if (match?.[1]) {
     const pxValue = Number.parseFloat(match[1]);
     const remValue = pxValue / rootFontSize;
     return `${remValue.toFixed(3)}rem`;

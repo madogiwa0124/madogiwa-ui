@@ -1,7 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import { expect } from "storybook/test";
 
-const meta: Meta = {
+interface TextareaProperties {
+  placeholder: string;
+  rows: number | null;
+  cols: number | null;
+  block: boolean;
+  disabled: boolean;
+}
+
+const meta: Meta<TextareaProperties> = {
   title: "Components/Textarea",
   tags: ["autodocs"],
   argTypes: {
@@ -42,7 +50,7 @@ const meta: Meta = {
 };
 
 export default meta;
-type Story = StoryObj;
+type Story = StoryObj<TextareaProperties>;
 
 export const Default: Story = {
   render: (args) => {
@@ -63,12 +71,12 @@ export const Default: Story = {
     disabled: false,
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
 
-    expect(textarea).not.toBeNull();
-    expect(textarea).toHaveClass("textarea");
-    expect(textarea).not.toBeDisabled();
+    await expect(textarea).not.toBeNull();
+    await expect(textarea).toHaveClass("textarea");
+    await expect(textarea).not.toBeDisabled();
   },
 };
 
@@ -82,12 +90,12 @@ export const Disabled: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
 
-    expect(textarea).not.toBeNull();
-    expect(textarea).toHaveClass("textarea");
-    expect(textarea).toBeDisabled();
+    await expect(textarea).not.toBeNull();
+    await expect(textarea).toHaveClass("textarea");
+    await expect(textarea).toBeDisabled();
   },
 };
 
@@ -100,18 +108,18 @@ export const Invalid: Story = {
     const textarea = document.createElement("textarea");
     textarea.className = "textarea";
     textarea.required = true;
-    form.appendChild(textarea);
+    form.append(textarea);
     form.reportValidity();
     return form;
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
 
-    expect(textarea).not.toBeNull();
-    expect(textarea).toHaveClass("textarea");
-    expect(textarea).toBeRequired();
+    await expect(textarea).not.toBeNull();
+    await expect(textarea).toHaveClass("textarea");
+    await expect(textarea).toBeRequired();
   },
 };
 
@@ -124,12 +132,12 @@ export const Placeholder: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
 
-    expect(textarea).not.toBeNull();
-    expect(textarea).toHaveClass("textarea");
-    expect(textarea).toHaveAttribute(
+    await expect(textarea).not.toBeNull();
+    await expect(textarea).toHaveClass("textarea");
+    await expect(textarea).toHaveAttribute(
       "placeholder",
       "Enter your detailed message here...",
     );
@@ -145,12 +153,12 @@ export const Block: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
 
-    expect(textarea).not.toBeNull();
-    expect(textarea).toHaveClass("textarea");
-    expect(textarea).toHaveClass("--block");
+    await expect(textarea).not.toBeNull();
+    await expect(textarea).toHaveClass("textarea");
+    await expect(textarea).toHaveClass("--block");
   },
 };
 
@@ -163,11 +171,11 @@ export const AutoFit: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
 
-    expect(textarea).not.toBeNull();
-    expect(textarea).toHaveClass("textarea");
-    expect(textarea).toHaveClass("--auto-fit");
+    await expect(textarea).not.toBeNull();
+    await expect(textarea).toHaveClass("textarea");
+    await expect(textarea).toHaveClass("--auto-fit");
   },
 };

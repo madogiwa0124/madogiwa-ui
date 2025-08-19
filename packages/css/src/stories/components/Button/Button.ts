@@ -1,4 +1,4 @@
-export interface ButtonProps {
+export interface ButtonProperties {
   label?: string;
   variant?: "primary" | "secondary" | "tertiary" | "default";
   outline?: boolean;
@@ -9,7 +9,7 @@ export interface ButtonProps {
   onClick?: (event: MouseEvent) => void;
 }
 
-export const createButton = (props: ButtonProps = {}): HTMLButtonElement => {
+export const createButton = (props: ButtonProperties = {}): HTMLButtonElement => {
   const {
     label = "Button",
     variant = "",

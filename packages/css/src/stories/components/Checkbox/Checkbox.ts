@@ -1,4 +1,4 @@
-export interface CheckboxProps {
+export interface CheckboxProperties {
   name?: string;
   value?: string;
   id?: string;
@@ -7,14 +7,14 @@ export interface CheckboxProps {
   className?: string;
 }
 
-export interface LabelProps {
+export interface LabelProperties {
   text: string;
   htmlFor: string;
   cursor?: string;
   userSelect?: string;
 }
 
-export function createCheckbox(props: CheckboxProps = {}): HTMLInputElement {
+export function createCheckbox(props: CheckboxProperties = {}): HTMLInputElement {
   const {
     name = "checkbox",
     value = "checkbox",
@@ -39,7 +39,7 @@ export function createCheckbox(props: CheckboxProps = {}): HTMLInputElement {
   return checkbox;
 }
 
-export function createLabel(props: LabelProps): HTMLLabelElement {
+export function createLabel(props: LabelProperties): HTMLLabelElement {
   const { text, htmlFor, cursor = "pointer", userSelect = "none" } = props;
 
   const label = document.createElement("label");
@@ -52,7 +52,7 @@ export function createLabel(props: LabelProps): HTMLLabelElement {
 }
 
 export function createCheckboxWithLabel(
-  checkboxProps: CheckboxProps & { id: string },
+  checkboxProperties: CheckboxProperties & { id: string },
   labelText: string,
 ): HTMLDivElement {
   const container = document.createElement("div");
@@ -60,14 +60,14 @@ export function createCheckboxWithLabel(
   container.style.alignItems = "center";
   container.style.gap = "0.5rem";
 
-  const checkbox = createCheckbox(checkboxProps);
+  const checkbox = createCheckbox(checkboxProperties);
   const label = createLabel({
     text: labelText,
-    htmlFor: checkboxProps.id,
+    htmlFor: checkboxProperties.id,
   });
 
-  container.appendChild(checkbox);
-  container.appendChild(label);
+  container.append(checkbox);
+  container.append(label);
 
   return container;
 }

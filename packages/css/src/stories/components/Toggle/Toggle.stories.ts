@@ -1,7 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import { expect } from "storybook/test";
 
-const meta: Meta = {
+interface ToggleProperties {
+  disabled: boolean;
+  checked: boolean;
+}
+
+const meta: Meta<ToggleProperties> = {
   title: "Components/Toggle",
   tags: ["autodocs"],
   argTypes: {
@@ -31,7 +36,7 @@ const meta: Meta = {
 };
 
 export default meta;
-type Story = StoryObj;
+type Story = StoryObj<ToggleProperties>;
 
 export const Default: Story = {
   render: (args) => {
@@ -41,7 +46,7 @@ export const Default: Story = {
     toggle.className = "toggle";
     toggle.checked = args["checked"];
     toggle.disabled = args["disabled"];
-    container.appendChild(toggle);
+    container.append(toggle);
     return container;
   },
   args: {
@@ -49,15 +54,15 @@ export const Default: Story = {
     disabled: false,
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const toggle = canvas.querySelector(
       "input[type='checkbox'].toggle",
     ) as HTMLInputElement;
-    expect(toggle).not.toBeNull();
+    await expect(toggle).not.toBeNull();
     toggle.click();
-    expect(toggle).toBeChecked();
+    await expect(toggle).toBeChecked();
     toggle.click();
-    expect(toggle).not.toBeChecked();
+    await expect(toggle).not.toBeChecked();
   },
 };
 
@@ -68,16 +73,16 @@ export const Disabled: Story = {
     toggle.type = "checkbox";
     toggle.className = "toggle";
     toggle.disabled = true;
-    container.appendChild(toggle);
+    container.append(toggle);
     return container;
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const toggle = canvas.querySelector(
       "input[type='checkbox'].toggle",
     ) as HTMLInputElement;
-    expect(toggle).not.toBeNull();
-    expect(toggle).toBeDisabled();
+    await expect(toggle).not.toBeNull();
+    await expect(toggle).toBeDisabled();
   },
 };

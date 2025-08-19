@@ -25,21 +25,21 @@ export const Default: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const checkbox = canvas.querySelector(
       "input[type='checkbox']",
     ) as HTMLInputElement;
 
-    expect(checkbox).not.toBeNull();
-    expect(checkbox).toHaveClass("checkbox");
-    expect(checkbox).not.toBeChecked();
-    expect(checkbox).not.toBeDisabled();
+    await expect(checkbox).not.toBeNull();
+    await expect(checkbox).toHaveClass("checkbox");
+    await expect(checkbox).not.toBeChecked();
+    await expect(checkbox).not.toBeDisabled();
 
     await userEvent.click(checkbox);
-    expect(checkbox).toBeChecked();
+    await expect(checkbox).toBeChecked();
 
     await userEvent.click(checkbox);
-    expect(checkbox).not.toBeChecked();
+    await expect(checkbox).not.toBeChecked();
   },
 };
 
@@ -53,20 +53,20 @@ export const Checked: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const checkbox = canvas.querySelector(
       "input[type='checkbox']",
     ) as HTMLInputElement;
 
-    expect(checkbox).not.toBeNull();
-    expect(checkbox).toHaveClass("checkbox");
-    expect(checkbox).toBeChecked();
+    await expect(checkbox).not.toBeNull();
+    await expect(checkbox).toHaveClass("checkbox");
+    await expect(checkbox).toBeChecked();
 
     await userEvent.click(checkbox);
-    expect(checkbox).not.toBeChecked();
+    await expect(checkbox).not.toBeChecked();
 
     await userEvent.click(checkbox);
-    expect(checkbox).toBeChecked();
+    await expect(checkbox).toBeChecked();
   },
 };
 
@@ -80,15 +80,15 @@ export const Disabled: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const checkbox = canvas.querySelector(
       "input[type='checkbox']",
     ) as HTMLInputElement;
 
-    expect(checkbox).not.toBeNull();
-    expect(checkbox).toHaveClass("checkbox");
-    expect(checkbox).not.toBeChecked();
-    expect(checkbox).toBeDisabled();
+    await expect(checkbox).not.toBeNull();
+    await expect(checkbox).toHaveClass("checkbox");
+    await expect(checkbox).not.toBeChecked();
+    await expect(checkbox).toBeDisabled();
   },
 };
 
@@ -103,15 +103,15 @@ export const CheckedDisabled: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const checkbox = canvas.querySelector(
       "input[type='checkbox']",
     ) as HTMLInputElement;
 
-    expect(checkbox).not.toBeNull();
-    expect(checkbox).toHaveClass("checkbox");
-    expect(checkbox).toBeChecked();
-    expect(checkbox).toBeDisabled();
+    await expect(checkbox).not.toBeNull();
+    await expect(checkbox).toHaveClass("checkbox");
+    await expect(checkbox).toBeChecked();
+    await expect(checkbox).toBeDisabled();
   },
 };
 
@@ -128,22 +128,22 @@ export const WithLabel: Story = {
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const checkbox = canvas.querySelector(
       "input[type='checkbox']",
     ) as HTMLInputElement;
     const label = canvas.querySelector("label") as HTMLLabelElement;
-    expect(checkbox).not.toBeNull();
-    expect(label).not.toBeNull();
-    expect(label).toHaveAttribute("for", "checkbox-with-label");
-    expect(label).toHaveTextContent("I agree to the terms of service");
+    await expect(checkbox).not.toBeNull();
+    await expect(label).not.toBeNull();
+    await expect(label).toHaveAttribute("for", "checkbox-with-label");
+    await expect(label).toHaveTextContent("I agree to the terms of service");
 
-    expect(checkbox).not.toBeChecked();
-
-    await userEvent.click(label);
-    expect(checkbox).toBeChecked();
+    await expect(checkbox).not.toBeChecked();
 
     await userEvent.click(label);
-    expect(checkbox).not.toBeChecked();
+    await expect(checkbox).toBeChecked();
+
+    await userEvent.click(label);
+    await expect(checkbox).not.toBeChecked();
   },
 };

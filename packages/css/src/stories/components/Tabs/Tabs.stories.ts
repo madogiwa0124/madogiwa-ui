@@ -42,17 +42,17 @@ export const Default: Story = {
         <button class="tabs__item" role="tab" aria-selected="false" aria-controls="panel-4" tabindex="-1" disabled>Disabled</button>
       </div>
     `;
-    container.appendChild(nav);
+    container.append(nav);
     const buildPanel = (id: string) => {
       const panel = document.createElement("div");
       panel.id = id;
       panel.role = "tabpanel";
       return panel;
     };
-    container.appendChild(buildPanel("panel-1"));
-    container.appendChild(buildPanel("panel-2"));
-    container.appendChild(buildPanel("panel-3"));
-    container.appendChild(buildPanel("panel-4"));
+    container.append(buildPanel("panel-1"));
+    container.append(buildPanel("panel-2"));
+    container.append(buildPanel("panel-3"));
+    container.append(buildPanel("panel-4"));
     return container;
   },
   args: {
@@ -60,7 +60,7 @@ export const Default: Story = {
     scrollhint: false,
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const tabs = canvas.querySelector(".tabs") as HTMLElement;
     const activeTab = tabs.querySelector(
       ".tabs__item.--active",
@@ -71,19 +71,19 @@ export const Default: Story = {
     const disabledTab = tabs.querySelector(
       ".tabs__item[disabled]",
     ) as HTMLButtonElement;
-    expect(canvas).not.toBeNull();
-    expect(tabs).not.toBeNull();
-    expect(tabs.querySelectorAll(".tabs__item").length).toBe(4);
-    expect(tabs).toHaveClass("tabs");
-    expect(tab).toHaveTextContent("Tab 2");
-    expect(tab).toHaveAttribute("aria-selected", "false");
-    expect(tab).toHaveAttribute("tabindex", "-1");
-    expect(activeTab).toHaveTextContent("Active Tab");
-    expect(activeTab).toHaveAttribute("aria-selected", "true");
-    expect(activeTab).toHaveAttribute("tabindex", "0");
-    expect(disabledTab).toHaveTextContent("Disabled");
-    expect(disabledTab).toBeDisabled();
-    expect(disabledTab).toHaveAttribute("aria-selected", "false");
-    expect(disabledTab).toHaveAttribute("tabindex", "-1");
+    await expect(canvas).not.toBeNull();
+    await expect(tabs).not.toBeNull();
+    await expect(tabs.querySelectorAll(".tabs__item").length).toBe(4);
+    await expect(tabs).toHaveClass("tabs");
+    await expect(tab).toHaveTextContent("Tab 2");
+    await expect(tab).toHaveAttribute("aria-selected", "false");
+    await expect(tab).toHaveAttribute("tabindex", "-1");
+    await expect(activeTab).toHaveTextContent("Active Tab");
+    await expect(activeTab).toHaveAttribute("aria-selected", "true");
+    await expect(activeTab).toHaveAttribute("tabindex", "0");
+    await expect(disabledTab).toHaveTextContent("Disabled");
+    await expect(disabledTab).toBeDisabled();
+    await expect(disabledTab).toHaveAttribute("aria-selected", "false");
+    await expect(disabledTab).toHaveAttribute("tabindex", "-1");
   },
 };

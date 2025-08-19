@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import {
-  customProperties,
-  designTokens,
-  createColorElement,
   type Property,
+  createColorElement,
+  createCornerElement,
+  createShadowElement,
   createSpacingElement,
   createTypographyElement,
-  createShadowElement,
-  createCornerElement,
+  customProperties,
+  designTokens,
 } from "./Variables";
 import { expect } from "storybook/test";
 
@@ -30,97 +30,97 @@ type Story = StoryObj;
 
 export const Color: Story = {
   render: (_args) => {
-    const rootEl = document.querySelector<HTMLEmbedElement>("#storybook-root");
+    const rootElement = document.querySelector<HTMLEmbedElement>("#storybook-root");
     const container = document.createElement("div");
-    const tokens = getDesignTokens(rootEl ?? document.documentElement);
-    for (const property of tokens['color'] ?? []) {
+    const tokens = getDesignTokens(rootElement ?? document.documentElement);
+    for (const property of tokens["color"] ?? []) {
       createAndAppendElements(property, createColorElement, container);
     }
     return container;
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const container = canvas.querySelector("div");
 
-    expect(container).not.toBeNull();
+    await expect(container).not.toBeNull();
   },
 };
 
 export const Spacing: Story = {
   render: (_args) => {
-    const rootEl = document.querySelector<HTMLEmbedElement>("#storybook-root");
+    const rootElement = document.querySelector<HTMLEmbedElement>("#storybook-root");
     const container = document.createElement("div");
-    const tokens = getDesignTokens(rootEl ?? document.documentElement);
-    for (const property of tokens['spacing'] ?? []) {
+    const tokens = getDesignTokens(rootElement ?? document.documentElement);
+    for (const property of tokens["spacing"] ?? []) {
       createAndAppendElements(property, createSpacingElement, container);
     }
     return container;
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const container = canvas.querySelector("div");
 
-    expect(container).not.toBeNull();
+    await expect(container).not.toBeNull();
   },
 };
 
 export const Typography: Story = {
   render: (_args) => {
-    const rootEl = document.querySelector<HTMLEmbedElement>("#storybook-root");
+    const rootElement = document.querySelector<HTMLEmbedElement>("#storybook-root");
     const container = document.createElement("div");
-    const tokens = getDesignTokens(rootEl ?? document.documentElement);
-    for (const property of tokens['typography'] ?? []) {
+    const tokens = getDesignTokens(rootElement ?? document.documentElement);
+    for (const property of tokens["typography"] ?? []) {
       createAndAppendElements(property, createTypographyElement, container);
     }
     return container;
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const container = canvas.querySelector("div");
 
-    expect(container).not.toBeNull();
+    await expect(container).not.toBeNull();
   },
 };
 
 export const Shadow: Story = {
   render: (_args) => {
-    const rootEl = document.querySelector<HTMLEmbedElement>("#storybook-root");
+    const rootElement = document.querySelector<HTMLEmbedElement>("#storybook-root");
     const container = document.createElement("div");
-    const tokens = getDesignTokens(rootEl ?? document.documentElement);
-    for (const property of tokens['shadow'] ?? []) {
+    const tokens = getDesignTokens(rootElement ?? document.documentElement);
+    for (const property of tokens["shadow"] ?? []) {
       createAndAppendElements(property, createShadowElement, container);
     }
     return container;
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const container = canvas.querySelector("div");
 
-    expect(container).not.toBeNull();
+    await expect(container).not.toBeNull();
     // If shadow tokens exist, verify that child elements are present
   },
 };
 
 export const Corner: Story = {
   render: (_args) => {
-    const rootEl = document.querySelector<HTMLEmbedElement>("#storybook-root");
+    const rootElement = document.querySelector<HTMLEmbedElement>("#storybook-root");
     const container = document.createElement("div");
-    const tokens = getDesignTokens(rootEl ?? document.documentElement);
-    for (const property of tokens['corner'] ?? []) {
+    const tokens = getDesignTokens(rootElement ?? document.documentElement);
+    for (const property of tokens["corner"] ?? []) {
       createAndAppendElements(property, createCornerElement, container);
     }
     return container;
   },
   args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const container = canvas.querySelector("div");
 
-    expect(container).not.toBeNull();
+    await expect(container).not.toBeNull();
   },
 };
 
@@ -136,5 +136,5 @@ const createAndAppendElements = (
   appendTo: HTMLElement,
 ) => {
   const el = builder(property);
-  appendTo.appendChild(el);
+  appendTo.append(el);
 };

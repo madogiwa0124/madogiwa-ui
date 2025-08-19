@@ -1,7 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import { expect } from "storybook/test";
 
-const meta: Meta = {
+interface SnackbarProperties {
+  position: "default" | "right-top" | "right-bottom" | "left-top";
+  transition: boolean;
+}
+
+const meta: Meta<SnackbarProperties> = {
   title: "Components/Snackbar",
   tags: ["autodocs"],
   argTypes: {
@@ -28,7 +33,7 @@ const meta: Meta = {
 };
 
 export default meta;
-type Story = StoryObj;
+type Story = StoryObj<SnackbarProperties>;
 
 export const Default: Story = {
   render: (args) => {
@@ -62,8 +67,8 @@ export const Default: Story = {
       </div>
     </div>
     `;
-    container.appendChild(button);
-    container.appendChild(snackbar);
+    container.append(button);
+    container.append(snackbar);
     return container;
   },
   args: {
@@ -71,7 +76,7 @@ export const Default: Story = {
     transition: false,
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const button = canvas.querySelector("button") as HTMLButtonElement;
     const snackbar = canvas.querySelector(".snackbar") as HTMLElement;
     const snackbarClose = snackbar.querySelector(
@@ -82,7 +87,9 @@ export const Default: Story = {
     // Wait for transition to complete
     if (snackbar.classList.contains("--transition")) {
       await new Promise((resolve) => {
-        snackbar.addEventListener("transitionend", () => resolve(void 0), {
+        snackbar.addEventListener("transitionend", () => {
+          resolve(void 0);
+        }, {
           once: true,
         });
       });

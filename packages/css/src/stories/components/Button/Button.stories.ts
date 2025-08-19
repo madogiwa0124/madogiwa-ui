@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/html";
-import { createButton, type ButtonProps } from "./Button";
+import { type ButtonProperties, createButton } from "./Button";
 import { expect } from "storybook/test";
 
-const meta: Meta<ButtonProps> = {
+const meta: Meta<ButtonProperties> = {
   title: "Components/Button",
   tags: ["autodocs"],
   argTypes: {
@@ -29,7 +29,7 @@ const meta: Meta<ButtonProps> = {
 };
 
 export default meta;
-type Story = StoryObj<ButtonProps>;
+type Story = StoryObj<ButtonProperties>;
 
 export const Default: Story = {
   render: (args) => {
@@ -42,12 +42,12 @@ export const Default: Story = {
     disabled: false,
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const button = canvas.querySelector("button");
 
-    expect(button).not.toBeDisabled();
-    expect(button).toHaveTextContent("Button");
-    expect(button).toHaveClass("btn");
+    await expect(button).not.toBeDisabled();
+    await expect(button).toHaveTextContent("Button");
+    await expect(button).toHaveClass("btn");
   },
 };
 
@@ -64,22 +64,22 @@ export const Variants: Story = {
         label: variant,
         variant,
       });
-      container.appendChild(button);
+      container.append(button);
     }
 
     return container;
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const buttons = canvas.querySelectorAll("button");
-    buttons.forEach((button, index) => {
+    for (const [index, button] of buttons.entries()) {
       const variant = ["primary", "secondary", "tertiary"][index];
       if (variant) {
-        expect(button).toHaveClass("btn");
-        expect(button).toHaveClass(`--${variant}`);
-        expect(button).toHaveTextContent(variant);
+        await expect(button).toHaveClass("btn");
+        await expect(button).toHaveClass(`--${variant}`);
+        await expect(button).toHaveTextContent(variant);
       }
-    });
+    }
   },
 };
 
@@ -97,23 +97,23 @@ export const OutlineButtons: Story = {
         variant,
         outline: true,
       });
-      container.appendChild(button);
+      container.append(button);
     }
 
     return container;
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const buttons = canvas.querySelectorAll("button");
-    buttons.forEach((button, index) => {
+    for (const [index, button] of buttons.entries()) {
       const variant = ["default", "primary", "secondary", "tertiary"][index];
       if (variant) {
-        expect(button).toHaveClass("btn");
-        expect(button).toHaveClass(`--${variant}`);
-        expect(button).toHaveClass("--outline");
-        expect(button).toHaveTextContent(variant);
+        await expect(button).toHaveClass("btn");
+        await expect(button).toHaveClass(`--${variant}`);
+        await expect(button).toHaveClass("--outline");
+        await expect(button).toHaveTextContent(variant);
       }
-    });
+    }
   },
 };
 
@@ -127,15 +127,15 @@ export const BlockButton: Story = {
       variant: "primary",
       block: true,
     });
-    container.appendChild(button);
+    container.append(button);
 
     return container;
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const button = canvas.querySelector("button");
-    expect(button).toHaveClass("btn");
-    expect(button).toHaveStyle({
+    await expect(button).toHaveClass("btn");
+    await expect(button).toHaveStyle({
       display: "block",
     });
   },
@@ -149,25 +149,25 @@ export const RoundedButton: Story = {
       variant: "primary",
       rounded: true,
     });
-    container.appendChild(button);
+    container.append(button);
     const outlineButton = createButton({
       label: "Block Button",
       variant: "primary",
       outline: true,
       rounded: true,
     });
-    container.appendChild(outlineButton);
+    container.append(outlineButton);
 
     return container;
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const buttons = canvas.querySelectorAll("button");
 
     // Verify that rounded buttons are styled correctly
     for (const button of buttons) {
-      expect(button).toHaveClass("btn");
-      expect(button).toHaveStyle({
+      await expect(button).toHaveClass("btn");
+      await expect(button).toHaveStyle({
         borderRadius: "9999px", // Example: Specify extremely rounded corners
       });
     }
@@ -191,20 +191,20 @@ export const DisabledButton: Story = {
       disabled: true,
     });
 
-    container.appendChild(normalButton);
-    container.appendChild(disabledButton);
+    container.append(normalButton);
+    container.append(disabledButton);
 
     return container;
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const buttons = canvas.querySelectorAll("button");
 
     const disabledButton = buttons[1];
-    expect(disabledButton).toBeDisabled();
+    await expect(disabledButton).toBeDisabled();
 
     const normalButton = buttons[0];
-    expect(normalButton).not.toBeDisabled();
+    await expect(normalButton).not.toBeDisabled();
   },
 };
 
@@ -225,19 +225,19 @@ export const WithIconButton: Story = {
     icon.textContent = "+"; // Using simple text icon here
     buttonWithIcon.prepend(icon);
 
-    container.appendChild(buttonWithIcon);
+    container.append(buttonWithIcon);
 
     return container;
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const button = canvas.querySelector("button");
     const icon = button?.querySelector(".icon");
 
-    expect(button).toHaveClass("btn");
-    expect(button).toHaveTextContent("Button with Icon");
-    expect(icon).not.toBeNull();
-    expect(icon).toHaveTextContent("+");
+    await expect(button).toHaveClass("btn");
+    await expect(button).toHaveTextContent("Button with Icon");
+    await expect(icon).not.toBeNull();
+    await expect(icon).toHaveTextContent("+");
   },
 };
 
@@ -260,18 +260,18 @@ export const IconOnlyButton: Story = {
     icon.textContent = "+"; // Using simple text icon here
     buttonWithIcon.prepend(icon);
 
-    container.appendChild(buttonWithIcon);
+    container.append(buttonWithIcon);
 
     return container;
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement as HTMLElement;
+    const canvas = canvasElement;
     const button = canvas.querySelector("button");
     const icon = button?.querySelector(".icon");
 
-    expect(button).toHaveClass("btn");
-    expect(button).toHaveClass("--icon-only");
-    expect(icon).not.toBeNull();
-    expect(icon).toHaveTextContent("+");
+    await expect(button).toHaveClass("btn");
+    await expect(button).toHaveClass("--icon-only");
+    await expect(icon).not.toBeNull();
+    await expect(icon).toHaveTextContent("+");
   },
 };
