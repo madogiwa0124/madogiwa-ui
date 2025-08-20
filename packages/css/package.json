@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "setup": "playwright install chromium --with-deps",
     "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
@@ -13,7 +12,6 @@
     "storybook:test": "test-storybook"
   },
   "devDependencies": {
-    "@playwright/test": "^1.55.0",
     "@storybook/addon-a11y": "^9.1.2",
     "@storybook/addon-docs": "^9.1.2",
     "@storybook/builder-vite": "^9.1.2",
