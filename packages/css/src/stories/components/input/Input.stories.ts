@@ -171,7 +171,8 @@ export const Invalid: Story = {
     const input = canvas.querySelector("input") as HTMLInputElement;
 
     await expect(input).not.toBeNull();
-    await expect(input).toHaveClass("input invalid");
+    await expect(input).toHaveClass("input");
+    await expect(input).toBeInvalid();
   },
 };
 

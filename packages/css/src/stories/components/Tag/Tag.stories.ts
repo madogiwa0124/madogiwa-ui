@@ -113,7 +113,7 @@ export const Link: Story = {
     await expect(tag).toHaveClass("tag");
     await expect(tagText).toHaveTextContent("Tag label");
 
-    await expect(tag.tagName).toBe("button");
+    await expect(tag.tagName).toBe("BUTTON");
     await expect(tag).not.toBeDisabled();
   },
 };

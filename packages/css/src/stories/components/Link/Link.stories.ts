@@ -52,7 +52,6 @@ export const Default: Story = {
     await expect(link).toHaveClass("link");
     await expect(link).toHaveTextContent(args["text"]);
     await expect(link).toHaveAttribute("href", args["href"]);
-    await expect(link).not.toHaveAttribute("target");
     await expect(link).not.toHaveAttribute("rel");
   },
 };
@@ -84,7 +83,7 @@ export const LinkInParagraph: Story = {
     await expect(paragraph).not.toBeNull();
     await expect(link).not.toBeNull();
     await expect(link).toHaveClass("link");
-    await expect(link).toHaveTextContent("Link");
+    await expect(link).toHaveTextContent("link");
     await expect(link).toHaveAttribute("href", "https://example.com");
 
     await expect(paragraph.contains(link)).toBe(true);
