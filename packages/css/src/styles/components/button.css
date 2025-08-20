@@ -1,5 +1,4 @@
 .btn {
-  /* Color */
   --btn-color-default: var(--color-bg-grey);
   --btn-color-primary: var(--color-primary);
   --btn-color-secondary: var(--color-secondary);
