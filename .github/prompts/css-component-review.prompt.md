@@ -46,6 +46,16 @@ Please refer to [a11y.prompt.md](./a11y.prompt.md).
 - **Test Coverage**: Comprehensive testing of component states, user interactions, and edge cases
 - **Test Quality**: Meaningful assertions that validate component behavior and accessibility
 
+### 7. 🏭 **Production Readiness & Component Completeness**
+- **Essential Features**: Coverage of industry-standard component functionality and common use cases
+- **Edge Case Handling**: Proper behavior with empty states, long content, overflow scenarios
+- **State Management**: Complete lifecycle support (loading, error, success, disabled states)
+- **Integration Patterns**: Compatibility with form systems, validation, and common UI patterns
+- **Performance**: Efficient rendering and minimal layout thrashing
+- **Responsive Design**: Appropriate behavior across device sizes and orientations
+- **Content Flexibility**: Support for various content types (text, HTML, components)
+- **Developer Experience**: Intuitive API design and clear customization options
+
 ## Review Format
 
 ### Score by Evaluation Item (1-5 points)
@@ -55,6 +65,7 @@ Please refer to [a11y.prompt.md](./a11y.prompt.md).
 - **Technical Implementation Quality**: _/5
 - **Accessibility**: _/5
 - **Storybook Integration & Testing**: _/5
+- **Production Readiness & Component Completeness**: _/5
 
 ### Specific Feedback
 Provide the following for each perspective:
@@ -62,6 +73,7 @@ Provide the following for each perspective:
 - ⚠️ **Improvement Suggestions**: Specific modification proposals and code examples
 - ♿ **Accessibility Issues**: WCAG standard references and solutions
 - 🎪 **Storybook & Testing Issues**: Interaction test improvements and coverage gaps
+- 🏭 **Production Readiness Issues**: Missing features and edge cases for real-world usage
 - 🚀 **Extension Ideas**: Future feature enhancement proposals
 
 ### Code Example Format
