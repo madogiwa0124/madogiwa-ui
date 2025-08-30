@@ -1,3 +1,11 @@
+/*
+  NOTE:
+  workaround for the following error in `@supports` block.
+  TypeError: Cannot read properties of undefined (reading 'forEach')
+  Rule: "css/use-baseline" at Atrule[name=supports] > AtrulePrelude > Condition
+*/
+/* eslint css/use-baseline: off */
+
 @keyframes alert-dismiss {
   from {
     opacity: 1;
