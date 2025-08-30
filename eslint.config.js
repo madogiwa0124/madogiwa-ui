@@ -10,6 +10,7 @@ const ignoredFiles = [
   "eslint.config.js",
   "**/*/vite-env.d.ts",
   "**/.storybook/**",
+  "**/storybook-static/**",
   "**/dist/**",
   "**/node_modules/**"
 ];
