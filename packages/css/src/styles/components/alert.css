@@ -1,0 +1,180 @@
+@keyframes alert-dismiss {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes alert-progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.alert {
+  --alert-bg-color: var(--color-bg-grey);
+  --alert-text-color: var(--color-text);
+  --alert-border-color: var(--color-border);
+  --alert-border: 1px solid var(--color-border);
+  --alert-padding: var(--spacing-2);
+  --alert-item-gap: var(--spacing-2);
+  --alert-icon-size: 1rem;
+  --alert-primary-bg-color: var(--color-primary);
+  --alert-primary-text-color: var(--color-text-light);
+  --alert-primary-border-color: var(--color-primary);
+  --alert-secondary-bg-color: var(--color-secondary);
+  --alert-secondary-text-color: var(--color-text-light);
+  --alert-secondary-border-color: var(--color-secondary);
+  --alert-tertiary-bg-color: var(--color-tertiary);
+  --alert-tertiary-text-color: var(--color-text-light);
+  --alert-tertiary-border-color: var(--color-tertiary);
+  --alert-danger-bg-color: var(--color-danger);
+  --alert-danger-text-color: var(--color-text-light);
+  --alert-danger-border-color: var(--color-danger);
+  --alert-warning-bg-color: var(--color-warning);
+  --alert-warning-text-color: var(--color-text-light);
+  --alert-warning-border-color: var(--color-warning);
+  --alert-auto-dismiss-duration: 5s;
+  --alert-auto-dismiss-fade-duration: 0.3s;
+  --alert-auto-dismiss-progress-bg-color: rgb(255, 255, 255, 0.4);
+  --alert-auto-dismiss-progress-height: 4px;
+
+  background-color: var(--alert-bg-color);
+  border-radius: var(--border-radius);
+  padding: var(--alert-padding);
+  border: var(--alert-border);
+  display: grid;
+  align-items: center;
+  gap: var(--alert-item-gap);
+  grid-template-areas: "content";
+  grid-template-columns: 1fr;
+  overflow-wrap: anywhere;
+
+  &:has(.alert__icons) {
+    grid-template-areas: "icon content";
+    grid-template-columns: auto 1fr;
+  }
+
+  &:has(.alert__actions) {
+    grid-template-areas: "content actions";
+    grid-template-columns: 1fr auto;
+  }
+
+  &:has(.alert__icons):has(.alert__actions) {
+    grid-template-areas: "icon content actions";
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .alert__icons {
+    grid-area: icon;
+  }
+
+  .alert__content {
+    grid-area: content;
+  }
+
+  .alert__actions {
+    grid-area: actions;
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--alert-item-gap);
+  }
+
+  .icon,
+  svg {
+    display: inline-flex;
+    justify-content: center;
+    flex-shrink: 0;
+    width: var(--alert-icon-size);
+    height: var(--alert-icon-size);
+    /* NOTE: Align with text size to prevent misalignment when using strings as icons */
+    line-height: 1;
+    font-size: var(--alert-icon-size);
+  }
+
+  &.--primary {
+    background-color: var(--alert-primary-bg-color);
+    border-color: var(--alert-primary-border-color);
+    color: var(--alert-primary-text-color);
+  }
+
+  &.--secondary {
+    background-color: var(--alert-secondary-bg-color);
+    border-color: var(--alert-secondary-border-color);
+    color: var(--alert-secondary-text-color);
+  }
+
+  &.--tertiary {
+    background-color: var(--alert-tertiary-bg-color);
+    border-color: var(--alert-tertiary-border-color);
+    color: var(--alert-tertiary-text-color);
+  }
+
+  &.--danger {
+    background-color: var(--alert-danger-bg-color);
+    border-color: var(--alert-danger-border-color);
+    color: var(--alert-danger-text-color);
+  }
+
+  &.--warning {
+    background-color: var(--alert-warning-bg-color);
+    border-color: var(--alert-warning-border-color);
+    color: var(--alert-warning-text-color);
+  }
+
+  /* Auto Dismiss */
+
+  &[data-auto-dismiss] {
+    --auto-dismiss-duration: var(--alert-auto-dismiss-duration);
+
+    position: relative;
+    animation: alert-dismiss var(--alert-auto-dismiss-fade-duration) ease-in-out var(--auto-dismiss-duration) forwards;
+
+    &.--with-progress {
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: var(--alert-auto-dismiss-progress-height);
+        background-color: var(--alert-auto-dismiss-progress-bg-color);
+        animation: alert-progress var(--auto-dismiss-duration) linear forwards;
+      }
+    }
+  }
+
+  /*
+    NOTE:
+    attr `<type-or-unit>` id not supported yet for firefox and safari.
+    https://developer.mozilla.org/ja/docs/Web/CSS/attr#type
+  */
+  @supports(--alert-test-support-attr-type-or-unit: attr(data-test type(<time>))) {
+    &[data-auto-dismiss] {
+      --auto-dismiss-duration: attr(data-auto-dismiss type(<time>), var(--alert-auto-dismiss-duration));
+    }
+  }
+
+  /* NOTE: fallback not support attr `<type-or-unit>` */
+  &[data-auto-dismiss="0s"],
+  &[data-auto-dismiss=""],
+  &[data-auto-dismiss="false"] {
+    animation: none;
+  }
+
+  &[data-auto-dismiss="3s"] {
+    --auto-dismiss-duration: 3s;
+  }
+  &[data-auto-dismiss="5s"] {
+    --auto-dismiss-duration: 5s;
+  }
+  &[data-auto-dismiss="10s"] {
+    --auto-dismiss-duration: 10s;
+  }
+}
