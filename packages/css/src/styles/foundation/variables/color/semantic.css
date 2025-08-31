@@ -1,0 +1,20 @@
+@import "./primitive.css";
+
+:root {
+  --color-primary: var(--color-emerald-900);
+  --color-secondary: var(--color-emerald-600);
+  --color-tertiary: var(--color-emerald-400);
+  --color-danger: var(--color-red-600);
+  --color-warning: var(--color-yellow-400);
+  --color-light: var(--color-gray-100);
+  --color-dark: var(--color-gray-900);
+  --color-border: var(--color-gray-300);
+  --color-text: var(--color-gray-900);
+  --color-text-muted: var(--color-gray-600);
+  --color-text-light: var(--color-gray-100);
+  --color-text-gray: var(--color-gray-400);
+  --color-bg-light: var(--color-gray-50);
+  --color-bg-grey: var(--color-gray-200);
+  --color-bg-dark: var(--color-gray-900);
+  --color-overlay: rgb(0 0 0 / 50%);
+}

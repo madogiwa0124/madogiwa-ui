@@ -1,5 +1,6 @@
 const PREFIX_STYLE_MAPPING = {
-  color: /--color-(.*)/,
+  primitiveColor: /--color-(.*)-(\d+)/,
+  semanticColor: /--color-(.*)/,
   shadow: /--shadow-(.*)/,
   spacing: /--spacing-(.*)/,
   typography:

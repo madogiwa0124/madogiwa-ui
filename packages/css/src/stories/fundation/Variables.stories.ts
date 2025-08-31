@@ -28,12 +28,31 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Color: Story = {
+export const PrimitiveColor: Story = {
   render: (_args) => {
     const rootElement = document.querySelector<HTMLEmbedElement>("#storybook-root");
     const container = document.createElement("div");
     const tokens = getDesignTokens(rootElement ?? document.documentElement);
-    for (const property of tokens["color"] ?? []) {
+    for (const property of tokens["primitiveColor"] ?? []) {
+      createAndAppendElements(property, createColorElement, container);
+    }
+    return container;
+  },
+  args: {},
+  play: async ({ canvasElement }) => {
+    const canvas = canvasElement;
+    const container = canvas.querySelector("div");
+
+    await expect(container).not.toBeNull();
+  },
+};
+
+export const SemanticColor: Story = {
+  render: (_args) => {
+    const rootElement = document.querySelector<HTMLEmbedElement>("#storybook-root");
+    const container = document.createElement("div");
+    const tokens = getDesignTokens(rootElement ?? document.documentElement);
+    for (const property of tokens["semanticColor"] ?? []) {
       createAndAppendElements(property, createColorElement, container);
     }
     return container;
