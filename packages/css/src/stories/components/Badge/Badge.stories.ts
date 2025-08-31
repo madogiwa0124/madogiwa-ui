@@ -2,11 +2,13 @@ import type { Meta, StoryObj } from "@storybook/html";
 import { expect } from "storybook/test";
 
 interface BadgeProperties {
+  variant: "default" | "primary" | "secondary" | "tertiary" | "danger" | "warning";
   outline: boolean;
   label: string;
   size: "small" | "default";
   disabled: boolean;
   transition: boolean;
+  rounded: boolean;
 }
 
 const meta: Meta<BadgeProperties> = {
@@ -25,6 +27,24 @@ const meta: Meta<BadgeProperties> = {
       control: { type: "select" },
       options: ["small", "default"],
       description: "The size of the badge.",
+    },
+    rounded: {
+      control: { type: "boolean" },
+      description: "Enable or disable rounded style for the badge.",
+    },
+    variant: {
+      control: {
+        type: "select",
+      },
+      options: [
+        "default",
+        "primary",
+        "secondary",
+        "tertiary",
+        "danger",
+        "warning",
+      ],
+      description: "The variant color of the badge.",
     },
     disabled: {
       control: { type: "boolean" },
@@ -55,6 +75,10 @@ export const Default: Story = {
     if (args["outline"]) badge.classList.add("--outline");
     if (args["size"] !== "default") badge.classList.add(`--${args["size"]}`);
     if (args["transition"]) badge.classList.add("--transition");
+    if (args["rounded"]) badge.classList.add("--rounded");
+    if (args["variant"] !== "default") {
+      badge.classList.add(`--${args["variant"]}`);
+    }
     const badgeText = document.createElement("span");
     badgeText.textContent = args["label"];
     badge.append(badgeText);
@@ -62,10 +86,12 @@ export const Default: Story = {
     return container;
   },
   args: {
+    variant: "default",
     outline: false,
     label: "Badge label",
     size: "default",
     transition: false,
+    rounded: false,
   },
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
@@ -83,6 +109,67 @@ export const Default: Story = {
   },
 };
 
+export const Variants: Story = {
+  render: (args) => {
+    const container = document.createElement("div");
+    container.style.display = "flex";
+    container.style.gap = "10px";
+
+    const variants = [
+      "default",
+      "primary",
+      "secondary",
+      "tertiary",
+      "danger",
+      "warning",
+    ] as const;
+
+    for (const variant of variants) {
+      const badge = document.createElement("div");
+      badge.className = "badge";
+      if (variant !== "default") {
+        badge.classList.add(`--${variant}`);
+      }
+      if (args["outline"]) badge.classList.add("--outline");
+      if (args["size"] !== "default") badge.classList.add(`--${args["size"]}`);
+      if (args["transition"]) badge.classList.add("--transition");
+      if (args["rounded"]) badge.classList.add("--rounded");
+      const badgeText = document.createElement("span");
+      badgeText.textContent = variant;
+      badge.append(badgeText);
+      container.append(badge);
+    }
+
+    return container;
+  },
+  args: {
+    outline: false,
+    size: "default",
+    rounded: false,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = canvasElement;
+    const badges = canvas.querySelectorAll(".badge");
+    for (const [index, badge] of badges.entries()) {
+      const variant = [
+        "default",
+        "primary",
+        "secondary",
+        "tertiary",
+        "danger",
+        "warning",
+      ][index];
+      if (variant) {
+        await expect(badge).toHaveClass("badge");
+        if (variant !== "default") {
+          await expect(badge).toHaveClass(`--${variant}`);
+        }
+        await expect(badge).toHaveTextContent(variant);
+      }
+    }
+  },
+};
+
 export const Link: Story = {
   render: (args) => {
     const container = document.createElement("div");
@@ -91,6 +178,7 @@ export const Link: Story = {
     if (args["outline"]) badge.classList.add("--outline");
     if (args["disabled"]) badge.disabled = true;
     if (args["transition"]) badge.classList.add("--transition");
+    if (args["rounded"]) badge.classList.add("--rounded");
     const badgeText = document.createElement("span");
     badgeText.textContent = args["label"];
     badge.append(badgeText);
@@ -98,10 +186,12 @@ export const Link: Story = {
     return container;
   },
   args: {
+    variant: "default",
     label: "Badge label",
     disabled: false,
     transition: false,
     outline: false,
+    rounded: false,
   },
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
@@ -126,6 +216,7 @@ export const Outline: Story = {
     badge.classList.add("--outline");
     if (args["size"] !== "default") badge.classList.add(`--${args["size"]}`);
     if (args["transition"]) badge.classList.add("--transition");
+    if (args["rounded"]) badge.classList.add("--rounded");
     const badgeText = document.createElement("span");
     badgeText.textContent = args["label"];
     badge.append(badgeText);
@@ -133,10 +224,12 @@ export const Outline: Story = {
     return container;
   },
   args: {
+    variant: "default",
     label: "Badge label",
     size: "default",
     transition: false,
     disabled: false,
+    rounded: false,
   },
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
