@@ -12,7 +12,7 @@ import {
 import { expect } from "storybook/test";
 
 const meta: Meta = {
-  title: "Variables",
+  title: "Foundation/Variables",
   tags: ["autodocs"],
   argTypes: {},
   parameters: {
