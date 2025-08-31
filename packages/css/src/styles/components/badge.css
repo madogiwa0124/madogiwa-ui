@@ -1,0 +1,75 @@
+.badge {
+  --badge-padding: var(--spacing-1) var(--spacing-2);
+  --badge-item-gap: var(--spacing-2);
+  --badge-border-color: var(--color-border);
+  --badge-border: 1px solid var(--badge-border-color);
+  --badge-border-radius: var(--border-radius-sm);
+  --badge-bg-color: var(--color-bg-grey);
+  --badge-hover-filter: brightness(0.9);
+  --badge-disabled-opacity: 0.65;
+  --badge-transition-duration: 0.2s;
+  --badge-transition-timing: ease;
+  --badge-small-font-size: small;
+
+  display: inline-flex;
+  align-items: center;
+  border: var(--badge-border);
+  border-radius: var(--badge-border-radius);
+  background-color: var(--badge-bg-color);
+  padding: var(--badge-padding);
+  gap: var(--badge-item-gap);
+  text-decoration: none;
+
+  /*
+    NOTE: This selector targets the interactive elements within the badge component.
+  */
+  &:where(a, button) {
+    appearance: none;
+
+    &:not(:disabled) {
+      &:hover,
+      &:focus {
+        filter: var(--badge-hover-filter);
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: var(--badge-disabled-opacity);
+    }
+  }
+
+  &:has(.icon, svg) {
+    flex-shrink: 0;
+  }
+
+  &.--outline {
+    background-color: transparent;
+
+    &:where(a, button) {
+      appearance: none;
+
+      &:not(:disabled) {
+        &:hover,
+        &:focus {
+          background-color: var(--badge-border-color);
+        }
+      }
+    }
+  }
+
+  &.--small {
+    font-size: var(--badge-small-font-size);
+  }
+
+  &.--transition {
+    &:where(a, button) {
+      &:not(:disabled) {
+        &:hover,
+        &:focus {
+          transition: filter var(--badge-transition-duration) var(--badge-transition-timing);
+        }
+      }
+    }
+  }
+}
