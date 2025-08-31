@@ -1,7 +1,7 @@
 .card {
   --card-floating-shadow: var(--shadow-sm);
   --card-radius: var(--border-radius);
-  --card-bg-color: var(--color-bg-light);
+  --card-bg-color: var(--color-white);
   --card-border-color: var(--color-border);
   --card-content-padding: var(--spacing-2);
 

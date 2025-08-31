@@ -24,7 +24,7 @@ export const Default: Story = {
   render: () => {
     return createCard({
       content: `
-      <p style='font-weight: bold; margin-bottom: 4px;'>Card Title</p>
+      <p style='font-weight: bold;'>Card Title</p>
       <p>This is the card content. The main content is displayed here.</p>
       `,
     });
@@ -46,7 +46,7 @@ export const Floating: Story = {
   render: () => {
     return createCard({
       content: `
-      <p style='font-weight: bold; margin-bottom: 8px;'>Card Title</p>
+      <p style='font-weight: bold;'>Card Title</p>
       <p>This is the card content. The main content is displayed here.</p>
       `,
       floating: true,
