@@ -71,7 +71,7 @@ type Story = StoryObj<AlertProperties>;
 export const Default: Story = {
   render: (args) => {
     const container = document.createElement("div");
-    const alert = document.createElement("article");
+    const alert = document.createElement("div");
     alert.classList.add("alert");
     alert.setAttribute("role", "alert");
     alert.innerHTML = `
@@ -110,37 +110,37 @@ export const Variants: Story = {
     container.style.display = "flex";
     container.style.flexDirection = "column";
     container.style.gap = "8px";
-    const articleDefault = document.createElement("article");
-    articleDefault.setAttribute("role", "alert");
-    articleDefault.classList.add("alert");
-    articleDefault.innerHTML = "<div class=\"alert__content\">This is a default alert message.</div>";
-    container.append(articleDefault);
+    const alertDefault = document.createElement("div");
+    alertDefault.setAttribute("role", "alert");
+    alertDefault.classList.add("alert");
+    alertDefault.innerHTML = "<div class=\"alert__content\">This is a default alert message.</div>";
+    container.append(alertDefault);
 
-    const alertPrimary = document.createElement("article");
+    const alertPrimary = document.createElement("div");
     alertPrimary.setAttribute("role", "alert");
     alertPrimary.classList.add("alert", "--primary");
     alertPrimary.innerHTML = "<div class=\"alert__content\">This is a primary alert message.</div>";
     container.append(alertPrimary);
 
-    const alertSecondary = document.createElement("article");
+    const alertSecondary = document.createElement("div");
     alertSecondary.setAttribute("role", "alert");
     alertSecondary.classList.add("alert", "--secondary");
     alertSecondary.innerHTML = "<div class=\"alert__content\">This is a secondary alert message.</div>";
     container.append(alertSecondary);
 
-    const alertTertiary = document.createElement("article");
+    const alertTertiary = document.createElement("div");
     alertTertiary.setAttribute("role", "alert");
     alertTertiary.classList.add("alert", "--tertiary");
     alertTertiary.innerHTML = "<div class=\"alert__content\">This is a tertiary alert message.</div>";
     container.append(alertTertiary);
 
-    const alertDanger = document.createElement("article");
+    const alertDanger = document.createElement("div");
     alertDanger.setAttribute("role", "alert");
     alertDanger.classList.add("alert", "--danger");
     alertDanger.innerHTML = "<div class=\"alert__content\">This is a danger alert message.</div>";
     container.append(alertDanger);
 
-    const alertWarning = document.createElement("article");
+    const alertWarning = document.createElement("div");
     alertWarning.setAttribute("role", "alert");
     alertWarning.classList.add("alert", "--warning");
     alertWarning.innerHTML = "<div class=\"alert__content\">This is a warning alert message.</div>";
@@ -176,7 +176,7 @@ export const Variants: Story = {
 export const WithIcon: Story = {
   render: (args) => {
     const container = document.createElement("div");
-    const alert = document.createElement("article");
+    const alert = document.createElement("div");
     alert.setAttribute("role", "alert");
     alert.classList.add("alert");
 
@@ -219,7 +219,7 @@ export const WithIcon: Story = {
 export const withAction: Story = {
   render: (args) => {
     const container = document.createElement("div");
-    const alert = document.createElement("article");
+    const alert = document.createElement("div");
     alert.setAttribute("role", "alert");
     alert.classList.add("alert");
 
@@ -284,7 +284,7 @@ export const withAction: Story = {
 export const autoDismiss: Story = {
   render: (args) => {
     const container = document.createElement("div");
-    const alert = document.createElement("article");
+    const alert = document.createElement("div");
     alert.setAttribute("role", "alert");
     alert.classList.add("alert");
     if (args["autoDismiss"]) {

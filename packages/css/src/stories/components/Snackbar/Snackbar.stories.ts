@@ -42,7 +42,7 @@ export const Default: Story = {
     button.classList.add("btn", "--primary");
     button.textContent = "Show Snackbar";
     button.setAttribute("popovertarget", "snackbar");
-    const snackbar = document.createElement("article");
+    const snackbar = document.createElement("div");
     snackbar.classList.add("snackbar");
     snackbar.popover = "manual";
     snackbar.id = "snackbar";

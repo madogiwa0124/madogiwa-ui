@@ -1,10 +1,11 @@
 @import "./primitive.css";
 
 :root {
+  --color-default: var(--color-gray-400);
   --color-primary: var(--color-emerald-900);
-  --color-secondary: var(--color-emerald-600);
-  --color-tertiary: var(--color-emerald-400);
-  --color-danger: var(--color-red-600);
+  --color-secondary: var(--color-emerald-700);
+  --color-tertiary: var(--color-emerald-500);
+  --color-danger: var(--color-red-500);
   --color-warning: var(--color-yellow-400);
   --color-light: var(--color-gray-100);
   --color-dark: var(--color-gray-900);

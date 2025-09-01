@@ -23,10 +23,17 @@ const meta: Meta<ToggleProperties> = {
       config: {
         rules: [
           {
-            // NOTE: This rule is disabled because the input element is not required in storybook.
+            // NOTE: This rule is disabled because the toggle element is not required in storybook.
             // https://dequeuniversity.com/rules/axe/4.10/select-name?application=RuleDescription
             // https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-20-level-a--aa-rules
             id: "select-name",
+            enabled: false,
+          },
+          {
+            // NOTE: This rule is disabled because the toggle element is not required in storybook.
+            // https://dequeuniversity.com/rules/axe/4.10/select-name?application=RuleDescription
+            // https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md#wcag-20-level-a--aa-rules
+            id: "label",
             enabled: false,
           },
         ],

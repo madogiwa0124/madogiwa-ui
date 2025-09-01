@@ -2,7 +2,7 @@ textarea.textarea {
   --textarea-border-radius: var(--border-radius-sm);
   --textarea-border-color: var(--color-border);
   --textarea-border: 1px solid var(--textarea-border-color);
-  --textarea-bg-color: var(--color-bg-light);
+  --input-bg-color: initial;
   --textarea-placeholder-color: var(--color-text-muted);
   --textarea-hover-opacity: 0.8;
   --textarea-disabled-opacity: 0.65;

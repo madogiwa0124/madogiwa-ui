@@ -203,7 +203,7 @@ export const NestedContent: Story = {
     container.innerHTML = `
       <header style="margin-bottom: 2rem; padding: 1rem; background: #e0e0e0; border-radius: 4px;">
         <h1 style="margin: 0; font-size: 2rem;">Page Header</h1>
-        <p style="margin: 0.5rem 0 0 0; color: #666;">Subtitle or description</p>
+        <p style="margin: 0.5rem 0 0 0; color: #333;">Subtitle or description</p>
       </header>
 
       <main style="margin-bottom: 2rem;">
@@ -216,15 +216,15 @@ export const NestedContent: Story = {
         <section style="padding: 1.5rem; background: white; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
           <h3>Section Title</h3>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
-            <div style="padding: 1rem; background: #f9f9f9; border-radius: 4px;">
+            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
               <h4 style="margin-top: 0;">Card 1</h4>
               <p style="margin-bottom: 0;">Card content here.</p>
             </div>
-            <div style="padding: 1rem; background: #f9f9f9; border-radius: 4px;">
+            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
               <h4 style="margin-top: 0;">Card 2</h4>
               <p style="margin-bottom: 0;">Card content here.</p>
             </div>
-            <div style="padding: 1rem; background: #f9f9f9; border-radius: 4px;">
+            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
               <h4 style="margin-top: 0;">Card 3</h4>
               <p style="margin-bottom: 0;">Card content here.</p>
             </div>
@@ -233,7 +233,7 @@ export const NestedContent: Story = {
       </main>
 
       <footer style="padding: 1rem; background: #e0e0e0; border-radius: 4px; text-align: center;">
-        <p style="margin: 0; color: #666;">&copy; 2025 Example Footer</p>
+        <p style="margin: 0; color: #333;">&copy; 2025 Example Footer</p>
       </footer>
     `;
 

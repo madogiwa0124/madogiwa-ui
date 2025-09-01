@@ -4,7 +4,7 @@
   --badge-border-color: var(--color-border);
   --badge-border: 1px solid var(--badge-border-color);
   --badge-border-radius: var(--border-radius-sm);
-  --badge-bg-color: var(--color-bg-grey);
+  --badge-bg-color: var(--color-default);
   --badge-hover-filter: brightness(0.9);
   --badge-disabled-opacity: 0.65;
   --badge-transition-duration: 0.2s;
@@ -18,13 +18,13 @@
   --badge-secondary-text-color: var(--color-text-light);
   --badge-tertiary-color: var(--color-tertiary);
   --badge-tertiary-border-color: var(--color-tertiary);
-  --badge-tertiary-text-color: var(--color-text-light);
+  --badge-tertiary-text-color: var(--color-text);
   --badge-danger-color: var(--color-danger);
   --badge-danger-border-color: var(--color-danger);
-  --badge-danger-text-color: var(--color-text-light);
+  --badge-danger-text-color: var(--color-text);
   --badge-warning-color: var(--color-warning);
   --badge-warning-border-color: var(--color-warning);
-  --badge-warning-text-color: var(--color-text-dark);
+  --badge-warning-text-color: var(--color-text);
 
   display: inline-flex;
   align-items: center;

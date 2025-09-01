@@ -27,7 +27,7 @@
 }
 
 .alert {
-  --alert-bg-color: var(--color-bg-grey);
+  --alert-bg-color: var(--color-default);
   --alert-text-color: var(--color-text);
   --alert-border-color: var(--color-border);
   --alert-border: 1px solid var(--color-border);
@@ -41,13 +41,13 @@
   --alert-secondary-text-color: var(--color-text-light);
   --alert-secondary-border-color: var(--color-secondary);
   --alert-tertiary-bg-color: var(--color-tertiary);
-  --alert-tertiary-text-color: var(--color-text-light);
+  --alert-tertiary-text-color: var(--color-text);
   --alert-tertiary-border-color: var(--color-tertiary);
   --alert-danger-bg-color: var(--color-danger);
-  --alert-danger-text-color: var(--color-text-light);
+  --alert-danger-text-color: var(--color-text);
   --alert-danger-border-color: var(--color-danger);
   --alert-warning-bg-color: var(--color-warning);
-  --alert-warning-text-color: var(--color-text-light);
+  --alert-warning-text-color: var(--color-text);
   --alert-warning-border-color: var(--color-warning);
   --alert-auto-dismiss-duration: 5s;
   --alert-auto-dismiss-fade-duration: 0.3s;

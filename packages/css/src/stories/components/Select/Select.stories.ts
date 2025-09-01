@@ -128,7 +128,6 @@ export const Multiple: Story = {
     const container = document.createElement("div");
     const notSupportedMessage = document.createElement("p");
     notSupportedMessage.textContent = "Multiple select is not supported";
-    notSupportedMessage.style.color = "red";
     notSupportedMessage.style.fontWeight = "bold";
     container.append(notSupportedMessage);
     const select = document.createElement("select");

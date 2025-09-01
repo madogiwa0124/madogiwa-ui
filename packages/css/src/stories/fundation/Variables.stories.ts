@@ -22,6 +22,18 @@ const meta: Meta = {
           "example description",
       },
     },
+    a11y: {
+      config: {
+        rules: [
+          {
+            // NOTE: This rule is disabled because the color contrast cannot be guaranteed in storybook.
+            // https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=RuleDescription
+            id: "color-contrast",
+            enabled: false,
+          },
+        ],
+      },
+    },
   },
 };
 
