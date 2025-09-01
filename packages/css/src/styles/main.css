@@ -3,6 +3,8 @@
 @import "./foundation/reset.css" layer(base);
 @import "./foundation/base.css" layer(base);
 
+@import "./layouts/container.css" layer(layout);
+
 @import "./components/button.css" layer(components);
 @import "./components/heading.css" layer(components);
 @import "./components/link.css" layer(components);

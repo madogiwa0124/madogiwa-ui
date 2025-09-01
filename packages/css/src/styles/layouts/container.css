@@ -1,0 +1,30 @@
+/* NOTE: workaround for `max-width` in `@media` */
+/* eslint-disable css/no-invalid-at-rules */
+
+.container {
+  --container-lg-max-width: 1024px;
+  --container-md-max-width: 768px;
+  --container-sm-max-width: 540px;
+
+  margin-inline: auto;
+  max-inline-size: 100%;
+  padding-inline: var(--spacing-1);
+
+  /* TODO: use custom media queries */
+  @media (width > 576px) {
+    max-inline-size: var(--container-sm-max-width);
+    padding-inline: var(--spacing-2);
+  }
+  @media (width > 768px) {
+    max-inline-size: var(--container-md-max-width);
+    padding-inline: var(--spacing-4);
+  }
+  @media (width > 992px) {
+    max-inline-size: var(--container-lg-max-width);
+    padding-inline: var(--spacing-6);
+  }
+
+  &.--no-padding {
+    padding-inline: 0;
+  }
+}
