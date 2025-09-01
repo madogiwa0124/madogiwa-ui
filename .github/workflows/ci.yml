@@ -52,7 +52,13 @@ jobs:
           node-version: "22"
           cache: "pnpm"
       - run: pnpm install --frozen-lockfile
+      - name: Cache Playwright Browsers
+        uses: ./.github/actions/cache-playwright
+        id: playwright-cache
+        with:
+          working-directory: .
       - name: Setup project
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: pnpm run setup
       - name: Build storybook for css
         run: pnpm run css storybook:build

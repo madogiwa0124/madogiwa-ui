@@ -1,0 +1,36 @@
+# NOTE: cache playwright browsers to speed up CI
+# ref: https://github.com/microsoft/playwright/issues/7249#issuecomment-2806545369
+name: Cache Playwright
+description: Playwright browser caching with automatic installation
+inputs:
+  working-directory:
+    description: The working directory for the Playwright installation
+    required: true
+outputs:
+  cache-hit:
+    description: Whether the cache was hit
+    value: ${{ steps.playwright-cache.outputs.cache-hit }}
+runs:
+  using: 'composite'
+  steps:
+    - name: Get Playwright version
+      working-directory: ${{ inputs.working-directory }}
+      shell: bash
+      run: |
+        VERSION=$(jq -r '.devDependencies["@playwright/test"]' package.json | sed 's/^[^0-9]*//')
+        if [ -z "$VERSION" ]; then
+          echo "Error: Playwright version not found in package.json"
+          exit 1
+        fi
+        echo "PLAYWRIGHT_VERSION=$VERSION" >> $GITHUB_ENV
+        echo "Found Playwright version: $VERSION"
+
+    - name: Cache Playwright browsers
+      id: playwright-cache
+      uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
+      with:
+        path: ~/.cache/ms-playwright
+        key: 'playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}-${{ runner.os }}'
+        restore-keys: |
+          playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}-
+          playwright-browsers-
