@@ -67,3 +67,5 @@ jobs:
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "pnpm run css storybook:preview --port 6006 --silent" \
             "npx wait-on tcp:127.0.0.1:6006 && pnpm run css storybook:test"
+      - name: build for css
+        run: pnpm run css build
