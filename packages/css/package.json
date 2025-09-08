@@ -1,8 +1,17 @@
 {
   "name": "@madogiwa-ui/css",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "./dist/madogiwa-ui.min.css",
+  "style": "./dist/madogiwa-ui.min.css",
+  "exports": {
+    ".": {
+      "style": "./dist/madogiwa-ui.min.css",
+      "default": "./dist/madogiwa-ui.min.css"
+    },
+    "./dist/*": "./dist/*",
+    "./src/*": "./src/*"
+  },
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
@@ -12,6 +21,30 @@
     "storybook:test": "test-storybook",
     "storybook:preview": "pnpm dlx http-server storybook-static"
   },
+  "description": "A flexible, accessible, next-generation UI framework leveraging cutting-edge CSS features",
+  "keywords": [
+    "css",
+    "css-framework",
+    "ui-library",
+    "modern-css"
+  ],
+  "author": "madogiwa0124",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madogiwa0124/madogiwa-ui.git",
+    "directory": "packages/css"
+  },
+  "homepage": "https://github.com/madogiwa0124/madogiwa-ui#readme",
+  "bugs": {
+    "url": "https://github.com/madogiwa0124/madogiwa-ui/issues"
+  },
+  "files": [
+    "dist/**/*",
+    "src/**/*.css",
+    "README.md"
+  ],
+  "sideEffects": false,
   "devDependencies": {
     "@storybook/addon-a11y": "^9.1.3",
     "@storybook/addon-docs": "^9.1.3",
