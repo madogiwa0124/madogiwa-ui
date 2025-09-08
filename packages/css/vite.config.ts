@@ -36,7 +36,7 @@ export default defineConfig({
     lib: {
       entry: "src/index.ts",
       name: "main",
-      fileName: "madoginawa-ui.min",
+      fileName: "madogiwa-ui.min",
       formats: ["es"],
     },
     cssCodeSplit: false,
