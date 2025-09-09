@@ -73,6 +73,31 @@ import '@madogiwa-ui/css/src/components/button.css';
 }
 ```
 
+## 🏗️ Architecture
+
+### CSS Layer System
+
+```css
+@layer base, layout, components, utils, overrides;
+```
+
+- **base**: Reset CSS + base styles
+- **layout**: Layout components (Container, etc.)
+- **components**: UI components
+- **utils**: Utility classes
+- **overrides**: Customization layer
+
+### CSS Design
+
+We employ BEM-based CSS design while leveraging native CSS Nesting for style scoping.
+
+```css
+.block {
+  .block__element {}
+  .--modifier {}
+}
+```
+
 ## 🌐 Browser Support
 
 - **Chrome**: Last 3 versions
@@ -80,9 +105,30 @@ import '@madogiwa-ui/css/src/components/button.css';
 - **Safari**: Last 3 versions
 - **Edge**: Last 3 versions
 
-**Modern CSS Features Used:**
-- CSS Nesting
-- CSS `@property`
-- `:has()` selector
-- Logical properties
-- and more
+
+## 💻 Development
+
+```sh
+# Launch Storybook
+pnpm run css storybook
+
+# Run Storybook tests
+pnpm run css storybook:test
+```
+
+### Testing Strategy
+
+We use Storybook for Interaction Testing and accessibility checks with the a11y plugin.
+
+```typescript
+export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+
+    await expect(button).toBeInTheDocument();
+    await userEvent.click(button);
+    await expect(button).toHaveClass('--active');
+  }
+};
+```

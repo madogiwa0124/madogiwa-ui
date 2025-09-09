@@ -14,61 +14,17 @@ Madogiwa UI is a UI library that aims to actively leverage the latest CSS featur
 - **🔄 Tailwind CSS Compatible**: Adopting Tailwind CSS-compatible Reset CSS (Preflight) and color palette
 - **📱 Newly Baseline Support**: Sustainable design supporting the latest Web standards specifications
 
-## 🏗️ Architecture
-
-### CSS Layer System
-
-```css
-@layer base, layout, components, utils, overrides;
-```
-
-- **base**: Reset CSS + base styles
-- **layout**: Layout components (Container, etc.)
-- **components**: UI components
-- **utils**: Utility classes
-- **overrides**: Customization layer
-
-### CSS Design
-
-We employ BEM-based CSS design while leveraging native CSS Nesting for style scoping.
-
-```css
-.block {
-  .block__element {}
-  .--modifier {}
-}
-```
-
-### Design Token
-```
-├── foundation/
-│   └── variables/
-│       ├── colors/
-│       │   ├── primitive.css    # Base color palette
-│       │   └── semantic.css     # Semantic colors
-│       ├── spacing.css          # Spacing system
-│       ├── typography.css       # Typography
-│       ├── border.css          # Border & border-radius
-│       ├── shadow.css          # Shadow system
-│       └── zindex.css          # Z-index management
-```
-
 ### Package Structure
 
-```
+```sh
 madogiwa-ui/
 └── packages/
-    └── css/
-        └── src/
-            ├── styles/
-            │   ├── foundation/     # Design tokens
-            │   ├── layouts/        # Layout
-            │   ├── components/     # UI components
-            │   └── utils/          # Utilities
-            └── stories/            # Storybook
+  ├── css/
+  ├── react/ # Future implementation
+  └── vue/ # Future implementation
 ```
 
-## 🚀 Development
+## 💻 Development
 
 ### Setup
 
@@ -77,40 +33,10 @@ pnpm i
 pnpm run setup
 ```
 
-### CSS Development
-
-```sh
-# Launch Storybook
-pnpm run css storybook
-
-# Run Storybook tests
-pnpm run css storybook:test
-
-# Run Playwright E2E tests
-pnpm run css test:e2e
-```
-
 ### Lint & Code Quality
 
 Static analysis and code formatting using ESLint:
 
 ```sh
 pnpm run lint
-```
-
-### 🧪 Testing Strategy
-
-We use Storybook for Interaction Testing and accessibility checks with the a11y plugin.
-
-```typescript
-export const Default: Story = {
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-
-    await expect(button).toBeInTheDocument();
-    await userEvent.click(button);
-    await expect(button).toHaveClass('--active');
-  }
-};
 ```
