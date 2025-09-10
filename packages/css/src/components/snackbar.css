@@ -80,7 +80,7 @@
   }
 
   /* TODO: custom-media queries */
-  @media screen and (width < 480px) {
+  @media screen and (width < 576px) {
     /* NOTE: Nesting styles within `@media` queries don't seem to be supported, so disabled. */
     /* eslint-disable css/no-invalid-at-rules */
     margin-inline: var(--snackbar-margin-for-small-screens);
