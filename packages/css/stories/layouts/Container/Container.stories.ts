@@ -36,7 +36,7 @@ const meta: Meta<ContainerProperties> = {
 Container component provides responsive layout constraints with predefined breakpoints and responsive padding.
 
 - **Mobile**: max-width 100% with spacing-1 padding
-- **Small**: max-width 540px (>576px) with spacing-2 padding
+- **Small**: max-width 576px (>576px) with spacing-2 padding
 - **Medium**: max-width 768px (>768px) with spacing-4 padding
 - **Large**: max-width 1024px (>992px) with spacing-6 padding
 
@@ -106,7 +106,7 @@ export const Default: Story = {
     const mdMaxWidth = computedStyle.getPropertyValue("--container-md-max-width").trim();
     const lgMaxWidth = computedStyle.getPropertyValue("--container-lg-max-width").trim();
 
-    await expect(smMaxWidth).toBe("540px");
+    await expect(smMaxWidth).toBe("576px");
     await expect(mdMaxWidth).toBe("768px");
     await expect(lgMaxWidth).toBe("1024px");
   },
@@ -125,8 +125,7 @@ export const ResponsiveDemo: Story = {
     title.style.marginBottom = "2rem";
 
     const containers = [
-      { label: "Mobile (100% width, spacing-1 padding)", width: "100%", padding: "var(--spacing-1)", bgColor: "#fff3e0" },
-      { label: "Small (540px max, spacing-2 padding)", width: "540px", padding: "var(--spacing-2)", bgColor: "#e3f2fd" },
+      { label: "Small (576px max, spacing-2 padding)", width: "576px", padding: "var(--spacing-2)", bgColor: "#e3f2fd" },
       { label: "Medium (768px max, spacing-4 padding)", width: "768px", padding: "var(--spacing-4)", bgColor: "#f3e5f5" },
       { label: "Large (1024px max, spacing-6 padding)", width: "1024px", padding: "var(--spacing-6)", bgColor: "#e8f5e8" },
     ];
@@ -168,7 +167,7 @@ export const ResponsiveDemo: Story = {
   play: async ({ canvasElement }) => {
     const containers = canvasElement.querySelectorAll(".container");
 
-    await expect(containers).toHaveLength(4);
+    await expect(containers).toHaveLength(3);
 
     for (const container of containers) {
       await expect(container).toHaveClass("container");

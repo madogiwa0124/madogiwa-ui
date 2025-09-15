@@ -4,7 +4,7 @@
 .container {
   --container-lg-max-width: 1024px;
   --container-md-max-width: 768px;
-  --container-sm-max-width: 540px;
+  --container-sm-max-width: 576px;
 
   margin-inline: auto;
   max-inline-size: 100%;
