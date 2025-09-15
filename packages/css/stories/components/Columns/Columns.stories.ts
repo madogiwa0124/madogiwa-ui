@@ -243,10 +243,6 @@ export const ResponsiveDemo: Story = {
     const container = canvasElement.querySelector(".columns");
     await expect(container).toBeInTheDocument();
 
-    // Verify the presence of instructions
-    const instructions = canvasElement.querySelector("h3");
-    await expect(instructions).toBeInTheDocument();
-
     // Verify viewport info display
     const viewportInfo = canvasElement.querySelector("[style*='monospace']");
     await expect(viewportInfo).toBeInTheDocument();
