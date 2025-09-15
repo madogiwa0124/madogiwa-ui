@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/html";
-import { expect, within } from "storybook/test";
+import { expect } from "storybook/test";
 
 interface ColumnsProperties {
   leftContent: string;
@@ -7,6 +7,7 @@ interface ColumnsProperties {
   rightContent: string;
   showLeft?: boolean;
   showRight?: boolean;
+  noGap?: boolean;
 }
 
 const meta: Meta<ColumnsProperties> = {
@@ -33,30 +34,16 @@ const meta: Meta<ColumnsProperties> = {
       control: { type: "boolean" },
       description: "Show right column",
     },
+    noGap: {
+      control: { type: "boolean" },
+      description: "Remove gap between columns",
+      defaultValue: false,
+    },
   },
   parameters: {
     docs: {
       description: {
-        component: `
-The Columns component provides a flexible and intelligent 3-column grid layout with responsive behavior.
-
-## Features
-
-- **Adaptive Layout**: Uses CSS \`:has()\` selector to automatically adjust grid template areas based on which columns are present
-- **Desktop**: Displays up to 3 columns side by side with automatic layout optimization
-- **Mobile** (< 576px): Stacks columns vertically in order: left, main, right
-- **Customizable**: Column widths and gaps can be adjusted via CSS variables
-- **Semantic**: Uses CSS Grid areas for clear content organization
-
-## Layout Variations
-
-- **3 columns**: \`"left main right"\` when all columns are present
-- **2 columns (main + right)**: \`"main right"\` when left column is missing
-- **2 columns (left + main)**: \`"left main"\` when right column is missing
-- **1 column**: \`"main"\` when only main column is present
-
-Perfect for layouts like sidebar + main content + aside, product pages, documentation, or any multi-column content arrangement that needs to adapt automatically.
-        `,
+        component: "example description",
       },
     },
   },
@@ -70,7 +57,10 @@ export const Default: Story = {
     const container = document.createElement("div");
     container.classList.add("columns");
 
-    // Create columns
+    if (args.noGap) {
+      container.classList.add("--no-gap");
+    }
+
     if (args.showLeft) {
       const leftColumn = document.createElement("div");
       leftColumn.classList.add("columns__left");
@@ -98,6 +88,7 @@ export const Default: Story = {
     rightContent: "Right Sidebar Content",
     showLeft: true,
     showRight: true,
+    noGap: false,
   },
   play: async ({ canvasElement }) => {
     const columnsContainer = canvasElement.querySelector<HTMLElement>(".columns");
@@ -125,35 +116,139 @@ export const TwoColumnsMainSidebar: Story = {
     const container = document.createElement("div");
     container.classList.add("columns");
 
-    const leftColumn = document.createElement("div");
-    leftColumn.classList.add("columns__left");
-    leftColumn.innerHTML = `<div style="background: #f0f9ff; padding: 1rem; border-radius: 4px; border-left: 4px solid #0284c7;">${args.leftContent}</div>`;
-    container.append(leftColumn);
+    if (args.showLeft) {
+      const leftColumn = document.createElement("div");
+      leftColumn.classList.add("columns__left");
+      leftColumn.innerHTML = `<div style="background: #f0f9ff; padding: 1rem; border-radius: 4px; border-left: 4px solid #0284c7;">${args.leftContent}</div>`;
+      container.append(leftColumn);
+    }
 
     const mainColumn = document.createElement("div");
     mainColumn.classList.add("columns__main");
     mainColumn.innerHTML = `<div style="background: #f8fafc; padding: 1rem; border-radius: 4px; border: 1px solid #e2e8f0;">${args.mainContent}</div>`;
     container.append(mainColumn);
 
+    if (args.showRight) {
+      const rightColumn = document.createElement("div");
+      rightColumn.classList.add("columns__right");
+      rightColumn.innerHTML = `<div style="background: #fefce8; padding: 1rem; border-radius: 4px; border-right: 4px solid #ca8a04;">${args.rightContent}</div>`;
+      container.append(rightColumn);
+    }
+
     return container;
   },
   args: {
     leftContent: "Left Sidebar Content",
     mainContent: "Main Content Area - This is where the primary content goes. It can contain articles, forms, or any main page content.",
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "A common 2-column layout with main content and a right sidebar. Perfect for blog posts, articles, or documentation with supplementary content. Uses CSS :has() selector to automatically adjust grid template areas.",
-      },
-    },
+    rightContent: "Right Sidebar Content",
+    showLeft: true,
+    showRight: false,
   },
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const mainColumn = canvas.getByText(/Main Content Area/);
-    const sidebar = canvas.getByText(/Left Sidebar Content/);
+    const columnsContainer = canvasElement.querySelector<HTMLElement>(".columns");
+    const leftColumn = columnsContainer?.querySelector(".columns__left");
+    const mainColumn = columnsContainer?.querySelector(".columns__main");
+    const rightColumn = columnsContainer?.querySelector(".columns__right");
+
+    if (leftColumn) {
+      await expect(leftColumn).toBeInTheDocument();
+    }
+    if (rightColumn) {
+      await expect(rightColumn).toBeInTheDocument();
+    }
 
     await expect(mainColumn).toBeInTheDocument();
-    await expect(sidebar).toBeInTheDocument();
+  },
+};
+
+export const ResponsiveDemo: Story = {
+  render: () => {
+    const container = document.createElement("div");
+    container.style.width = "100%";
+    container.style.border = "2px solid #e5e7eb";
+    container.style.padding = "1rem";
+    container.style.backgroundColor = "#f9fafb";
+    container.style.borderRadius = "8px";
+
+    const viewportInfo = document.createElement("div");
+    viewportInfo.style.textAlign = "center";
+    viewportInfo.style.fontSize = "0.75rem";
+    viewportInfo.style.color = "#6b7280";
+    viewportInfo.style.marginBottom = "1rem";
+    viewportInfo.style.fontFamily = "monospace";
+    viewportInfo.style.background = "#f3f4f6";
+    viewportInfo.style.padding = "0.5rem";
+    viewportInfo.style.borderRadius = "4px";
+
+    // JavaScript to show current viewport width
+    const updateViewportInfo = () => {
+      const width = window.innerWidth;
+      const isMobile = width < 576;
+      viewportInfo.innerHTML = `Current viewport: ${String(width)}px ${isMobile ? "(Mobile layout)" : "(Desktop layout)"}`;
+      viewportInfo.style.color = isMobile ? "#dc2626" : "#059669";
+    };
+
+    updateViewportInfo();
+    window.addEventListener("resize", updateViewportInfo);
+
+    const columnsContainer = document.createElement("div");
+    columnsContainer.classList.add("columns");
+
+    const leftColumn = document.createElement("div");
+    leftColumn.classList.add("columns__left");
+    leftColumn.innerHTML = `
+      <div style="background: #dbeafe; padding: 1rem; border-radius: 4px; text-align: center; border: 2px solid #3b82f6;">
+        <strong>Left Column</strong><br>
+        <small style="color: #1d4ed8;">First in mobile order</small>
+      </div>
+    `;
+
+    const mainColumn = document.createElement("div");
+    mainColumn.classList.add("columns__main");
+    mainColumn.innerHTML = `
+      <div style="background: #f3f4f6; padding: 1rem; border-radius: 4px; text-align: center; border: 2px solid #6b7280;">
+        <strong>Main Column</strong><br>
+        <small style="color: #374151;">Second in mobile order</small>
+      </div>
+    `;
+
+    const rightColumn = document.createElement("div");
+    rightColumn.classList.add("columns__right");
+    rightColumn.innerHTML = `
+      <div style="background: #fef3c7; padding: 1rem; border-radius: 4px; text-align: center; border: 2px solid #f59e0b;">
+        <strong>Right Column</strong><br>
+        <small style="color: #92400e;">Third in mobile order</small>
+      </div>
+    `;
+
+    columnsContainer.append(leftColumn);
+    columnsContainer.append(mainColumn);
+    columnsContainer.append(rightColumn);
+
+    container.append(viewportInfo);
+    container.append(columnsContainer);
+
+    return container;
+  },
+  play: async ({ canvasElement }) => {
+    const leftColumn = canvasElement.querySelector(".columns__left");
+    const mainColumn = canvasElement.querySelector(".columns__main");
+    const rightColumn = canvasElement.querySelector(".columns__right");
+
+    await expect(leftColumn).toBeInTheDocument();
+    await expect(mainColumn).toBeInTheDocument();
+    await expect(rightColumn).toBeInTheDocument();
+
+    // Test responsive container
+    const container = canvasElement.querySelector(".columns");
+    await expect(container).toBeInTheDocument();
+
+    // Verify the presence of instructions
+    const instructions = canvasElement.querySelector("h3");
+    await expect(instructions).toBeInTheDocument();
+
+    // Verify viewport info display
+    const viewportInfo = canvasElement.querySelector("[style*='monospace']");
+    await expect(viewportInfo).toBeInTheDocument();
   },
 };

@@ -8,6 +8,10 @@
   gap: var(--columns-gap);
   grid-template-areas: "left main right";
 
+  &.--no-gap {
+    --columns-gap: 0;
+  }
+
   &.columns__left {
     grid-area: left;
   }
@@ -36,6 +40,7 @@
     /* eslint-disable css/no-invalid-at-rules */
     grid-template-areas: "left" "main" "right";
     grid-template-columns: 1fr;
+
     &:not(:has(.columns__left)) {
       grid-template-areas: "main" "right";
     }
