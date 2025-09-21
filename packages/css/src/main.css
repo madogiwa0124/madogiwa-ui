@@ -24,5 +24,6 @@
 @import "./components/accordion.css" layer(components);
 @import "./components/badge.css" layer(components);
 @import "./components/alert.css" layer(components);
+@import "./components/navbar.css" layer(components);
 
 @import "./utils/visibility.css" layer(utils);

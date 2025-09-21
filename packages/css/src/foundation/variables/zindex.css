@@ -4,6 +4,12 @@
   inherits: true;
 }
 
+@property --zindex-navbar {
+  syntax: "<integer>";
+  initial-value: 1000;
+  inherits: true;
+}
+
 @property --zindex-modal {
   syntax: "<integer>";
   initial-value: 1050;
