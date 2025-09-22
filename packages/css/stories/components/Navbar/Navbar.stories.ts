@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/html";
-import { expect, within } from "storybook/test";
+import { expect, userEvent, within } from "storybook/test";
 
 interface NavbarProperties {
   title: string;
@@ -71,7 +71,7 @@ export const Default: Story = {
     const hamburgerSection = args.showHamburger
       ? `
       <div class="navbar__hamburger">
-        <button class="hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
+        <button class="navbar__hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
       </div>`
       : "";
 
@@ -144,7 +144,7 @@ export const MinimalNavbar: Story = {
     const hamburgerSection = args.showHamburger
       ? `
       <div class="navbar__hamburger">
-        <button class="hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
+        <button class="navbar__hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
       </div>`
       : "";
 
@@ -190,44 +190,28 @@ export const MinimalNavbar: Story = {
   },
 };
 
-export const WithIcons: Story = {
+export const MobileView: Story = {
   render: (args) => {
     const container = document.createElement("div");
     const transitionClass = args.transition ? " --transition" : "";
     const hoverClass = args.hoverMenu ? " --hover-hamburger-menu" : "";
 
     const navigationItems = args.items.map(item =>
-      `<a href="${item.href}" class="navbar__item">
-        <span class="icon">${item.icon ?? ""}</span>
-        ${item.text}
-      </a>`,
-    ).join("");
-
-    const actionButtons = args.buttons.map(button =>
-      `<button class="btn${button.variant === "primary" ? " --primary" : ""}">
-        ${button.icon ? `<span class="icon">${button.icon}</span>` : ""}
-        ${button.text}
-      </button>`,
+      `<a href="${item.href}" class="navbar__item">${item.text}</a>`,
     ).join("");
 
     const hamburgerSection = args.showHamburger
       ? `
       <div class="navbar__hamburger">
-        <button class="hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
+        <button class="navbar__hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
       </div>`
       : "";
 
     container.innerHTML = `
       <nav role="navigation" class="navbar${transitionClass}${hoverClass}">
-        <a href="#" class="navbar__title">
-          <span class="icon">🏢</span>
-          ${args.title}
-        </a>
+        <a href="#" class="navbar__title">${args.title}</a>
         <div class="navbar__items" id="navigation-menu">
           ${navigationItems}
-          <div class="navbar__item --end">
-            ${actionButtons}
-          </div>
         </div>
         ${hamburgerSection}
       </nav>
@@ -236,30 +220,60 @@ export const WithIcons: Story = {
     return container;
   },
   args: {
-    title: "IconApp",
+    title: "Simple Brand",
     items: [
-      { text: "About", href: "#", icon: "ℹ️" },
-      { text: "Services", href: "#", icon: "⚙️" },
-      { text: "Contact", href: "#", icon: "📧" },
+      { text: "Home", href: "#" },
+      { text: "About", href: "#" },
+      { text: "Contact", href: "#" },
     ],
-    buttons: [
-      { text: "Login", variant: "secondary", icon: "👤" },
-      { text: "Sign Up", variant: "primary", icon: "✨" },
-    ],
-    transition: true,
+    buttons: [],
+    transition: false,
     hoverMenu: true,
     showHamburger: true,
+  },
+  // NOTE: set mobile viewport for test runner
+  // https://github.com/storybookjs/test-runner?tab=readme-ov-file#preconfiguring-viewport-size
+  parameters: {
+    viewport: { defaultViewport: "mobile1" },
+  },
+  // NOTE: set default mobile viewport for story
+  // https://storybook.js.org/docs/essentials/viewport#defining-the-viewport-for-a-story
+  globals: {
+    viewport: { value: "mobile1", isRotated: false },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const navbar = canvas.getByRole("navigation");
-    const icons = canvasElement.querySelectorAll(".icon");
+    const title = canvas.getByText("Simple Brand");
+    const hamburger = canvas.getByLabelText("Menu");
+
+    // NOTE: wait for change viewport for css
+    await new Promise((resolve) => {
+      setTimeout(resolve, 500);
+    });
 
     await expect(navbar).toBeInTheDocument();
-    await expect(icons.length).toBeGreaterThan(0);
+    await expect(title).toBeInTheDocument();
+    await expect(hamburger).toBeVisible();
 
-    const brandIcon = canvasElement.querySelector(".navbar__title .icon");
-    await expect(brandIcon).toBeInTheDocument();
+    const navItems = canvasElement.querySelector(".navbar__items") as HTMLElement;
+    let computedStyle = getComputedStyle(navItems);
+    await expect(computedStyle.opacity).toBe("0");
+    await expect(computedStyle.visibility).toBe("hidden");
+
+    await userEvent.click(hamburger);
+
+    computedStyle = getComputedStyle(navItems);
+    await expect(computedStyle.opacity).toBe("1");
+    await expect(computedStyle.visibility).toBe("visible");
+
+    // ホバー解除
+    await userEvent.click(document.body);
+
+    // 再度非表示になることを確認
+    computedStyle = getComputedStyle(navItems);
+    await expect(computedStyle.opacity).toBe("0");
+    await expect(computedStyle.visibility).toBe("hidden");
   },
 };
 
