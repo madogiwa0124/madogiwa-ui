@@ -57,6 +57,5 @@ input[type="checkbox"].checkbox {
   &:disabled {
     cursor: not-allowed;
     opacity: var(--checkbox-disabled-opacity);
-    pointer-events: none;
   }
 }

@@ -55,6 +55,5 @@ input[type="radio"].radio {
   &:disabled {
     cursor: not-allowed;
     opacity: var(--radio-disabled-opacity);
-    pointer-events: none;
   }
 }

@@ -55,7 +55,6 @@
   &:disabled {
     opacity: var(--btn-disabled-opacity);
     cursor: not-allowed;
-    pointer-events: none;
     transform: initial;
   }
 
