@@ -8,7 +8,9 @@ const DEFAULT_VIEWPORT_SIZE = { width: 1280, height: 720 };
 const config: TestRunnerConfig = {
   async preVisit(page, story) {
     const context = await getStoryContext(page, story);
-    const viewportName = context.parameters?.viewport?.defaultViewport;
+    // NOTE: storyGlobals is not typed in StoryContextForEnhancers but the return object includes it.
+    // @ts-expect-error
+    const viewportName = context.storyGlobals?.viewport?.value
     const viewportParameter = MINIMAL_VIEWPORTS[viewportName];
 
     if (viewportParameter) {

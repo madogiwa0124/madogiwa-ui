@@ -231,11 +231,6 @@ export const MobileView: Story = {
     hoverMenu: true,
     showHamburger: true,
   },
-  // NOTE: set mobile viewport for test runner
-  // https://github.com/storybookjs/test-runner?tab=readme-ov-file#preconfiguring-viewport-size
-  parameters: {
-    viewport: { defaultViewport: "mobile1" },
-  },
   // NOTE: set default mobile viewport for story
   // https://storybook.js.org/docs/essentials/viewport#defining-the-viewport-for-a-story
   globals: {
