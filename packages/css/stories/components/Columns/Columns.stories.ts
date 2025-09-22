@@ -185,7 +185,7 @@ export const ResponsiveDemo: Story = {
       const width = window.innerWidth;
       const isMobile = width < 576;
       viewportInfo.innerHTML = `Current viewport: ${String(width)}px ${isMobile ? "(Mobile layout)" : "(Desktop layout)"}`;
-      viewportInfo.style.color = isMobile ? "#dc2626" : "#059669";
+      viewportInfo.style.color = isMobile ? "red" : "green";
     };
 
     updateViewportInfo();
