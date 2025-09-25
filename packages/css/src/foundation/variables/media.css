@@ -1,0 +1,18 @@
+/* NOTE: not supported eslint/css */
+/** eslint-disable css/no-invalid-at-rules */
+
+/*
+  Configured based on Tailwind CSS breakpoints
+  ref: https://tailwindcss.com/docs/responsive-design
+*/
+
+@custom-media --media-breakpoint-2xl (width >=96rem); /* 1536px */
+@custom-media --media-breakpoint-xl (width >=80rem); /* 1280px */
+@custom-media --media-breakpoint-lg (width >=64rem); /* 1024px */
+@custom-media --media-breakpoint-md (width >=48rem); /* 768px */
+@custom-media --media-breakpoint-sm (width >=40rem); /* 640px */
+@custom-media --media-breakpoint-max-2xl (width < 96rem);
+@custom-media --media-breakpoint-max-xl (width < 80rem);
+@custom-media --media-breakpoint-max-lg (width < 64rem);
+@custom-media --media-breakpoint-max-md (width < 48rem);
+@custom-media --media-breakpoint-max-sm (width < 40rem);
