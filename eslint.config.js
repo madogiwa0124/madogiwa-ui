@@ -42,6 +42,7 @@ export default defineConfig([
         indent: 2,
         quotes: "double",
         semi: true,
+        braceStyle: "1tbs",
       })
     ],
     languageOptions: {
