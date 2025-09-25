@@ -101,8 +101,7 @@
   }
 
   &:has(.navbar__hamburger) {
-    /* TODO: use custom media queries */
-    @media screen and (width < 768px) {
+    @media (--media-breakpoint-md) {
       /* eslint-disable-next-line css/no-invalid-at-rules */
       position: relative;
 

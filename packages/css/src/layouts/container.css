@@ -10,16 +10,15 @@
   max-inline-size: 100%;
   padding-inline: var(--spacing-1);
 
-  /* TODO: use custom media queries */
-  @media (width > 576px) {
+  @media (--media-breakpoint-sm) {
     max-inline-size: var(--container-sm-max-width);
     padding-inline: var(--spacing-2);
   }
-  @media (width > 768px) {
+  @media (--media-breakpoint-md) {
     max-inline-size: var(--container-md-max-width);
     padding-inline: var(--spacing-4);
   }
-  @media (width > 992px) {
+  @media (--media-breakpoint-lg) {
     max-inline-size: var(--container-lg-max-width);
     padding-inline: var(--spacing-6);
   }

@@ -79,8 +79,7 @@
     left: auto;
   }
 
-  /* TODO: custom-media queries */
-  @media screen and (width < 576px) {
+  @media (--media-breakpoint-max-sm) {
     /* NOTE: Nesting styles within `@media` queries don't seem to be supported, so disabled. */
     /* eslint-disable css/no-invalid-at-rules */
     margin-inline: var(--snackbar-margin-for-small-screens);
