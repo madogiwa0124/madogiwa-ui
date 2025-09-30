@@ -104,17 +104,13 @@ export const createTypographyElement: CreatePropertyElement = (property) => {
 
   if (property.name.includes("font-size")) {
     sampleText.style.fontSize = property.value;
-  }
-  else if (property.name.includes("font-weight")) {
+  } else if (property.name.includes("font-weight")) {
     sampleText.style.fontWeight = property.value;
-  }
-  else if (property.name.includes("line-height")) {
+  } else if (property.name.includes("line-height")) {
     sampleText.style.lineHeight = property.value;
-  }
-  else if (property.name.includes("letter-spacing")) {
+  } else if (property.name.includes("letter-spacing")) {
     sampleText.style.letterSpacing = property.value;
-  }
-  else if (property.name.includes("font-family")) {
+  } else if (property.name.includes("font-family")) {
     sampleText.style.fontFamily = property.value;
   }
 

@@ -20,8 +20,7 @@ const removeFilePlugin = (glob: string, silent: boolean = false): Plugin => {
           // eslint-disable-next-line no-console
             console.info(`No files matched pattern: ${glob}`);
           }
-        }
-        catch (error) {
+        } catch (error) {
         // eslint-disable-next-line no-console
           console.error(`Error removing files with pattern ${glob}:`, error);
         }
