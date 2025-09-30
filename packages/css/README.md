@@ -100,11 +100,7 @@ We employ BEM-based CSS design while leveraging native CSS Nesting for style sco
 
 ## 🌐 Browser Support
 
-- **Chrome**: Last 3 versions
-- **Firefox**: Last 3 versions
-- **Safari**: Last 3 versions
-- **Edge**: Last 3 versions
-
+**Baseline Newly available**
 
 ## 💻 Development
 

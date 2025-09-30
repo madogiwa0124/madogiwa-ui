@@ -34,9 +34,10 @@ select.select {
   }
 
   /*
-    NOTE: modern customizable select
+    NOTE: modern customizable select for now chrome only
     https://developer.mozilla.org/ja/docs/Learn_web_development/Extensions/Forms/Customizable_select
   */
+  /* stylelint-disable plugin/use-baseline */
   @supports (appearance: base-select) {
     --select-picker-border: 1px solid var(--color-border);
     --select-picker-icon-border: 0.2em solid var(--select-border-color);
@@ -55,8 +56,9 @@ select.select {
     --select-separator-margin: var(--spacing-2) 0;
     --select-separator-size: 1px;
 
-    /* NOTE: No problem as it falls back with `@supports` */
-    /* eslint-disable-next-line css/no-invalid-at-rules */
+
+    /* NOTE: Using experimental base-select, so ignoring lint rules */
+    /* stylelint-disable-next-line declaration-property-value-no-unknown */
     appearance: base-select;
 
     &::picker-icon {
@@ -77,6 +79,8 @@ select.select {
     }
 
     &::picker(select) {
+      /* NOTE: Using experimental base-select, so ignoring lint rules */
+      /* stylelint-disable-next-line declaration-property-value-no-unknown */
       appearance: base-select;
       border-radius: var(--select-border-radius);
       border: var(--select-picker-border);
@@ -114,4 +118,5 @@ select.select {
       margin: var(--select-separator-margin);
     }
   }
+  /* stylelint-enable plugin/use-baseline */
 }

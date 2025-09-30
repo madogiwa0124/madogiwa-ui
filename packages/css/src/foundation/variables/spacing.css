@@ -1,6 +1,6 @@
 @property --spacing-0 {
   syntax: "<length>";
-  initial-value: 0px;
+  initial-value: 0;
   inherits: true;
 }
 

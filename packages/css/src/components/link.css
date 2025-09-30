@@ -1,8 +1,8 @@
 .link {
   --link-color: var(--color-secondary);
-  --link-color-hover: rgb(from var(--link-color) r g b / 0.8);
-  --link-color-active: rgb(from var(--link-color) r g b / 0.5);
-  --link-color-visited: rgb(from var(--link-color) r g b / 1.2);
+  --link-color-hover: rgb(from var(--link-color) r g b / 80%);
+  --link-color-active: rgb(from var(--link-color) r g b / 50%);
+  --link-color-visited: rgb(from var(--link-color) r g b / 120%);
   --link-text-decoration: underline;
   --link-underline-offset: 0.2em;
 

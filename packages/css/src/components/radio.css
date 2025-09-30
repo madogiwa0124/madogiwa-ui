@@ -12,10 +12,10 @@ input[type="radio"].radio {
   height: var(--radio-size);
   position: relative;
   border: 2px solid var(--radio-border-color);
-  border-radius: 50%;
+  border-radius: var(--border-radius-full);
   cursor: pointer;
   /* NOTE: Non-critical property, so this is acceptable */
-  /* eslint-disable-next-line css/use-baseline */
+  /* stylelint-disable-next-line plugin/use-baseline */
   user-select: none;
 
   &::after {
@@ -25,24 +25,13 @@ input[type="radio"].radio {
     width: calc(var(--radio-size) / 2);
     height: calc(var(--radio-size) / 2);
     background-color: transparent;
-    border-radius: 50%;
+    border-radius: var(--border-radius-full);
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
   }
 
-  &:hover,
-  &:focus,
-  &:focus-visible {
-    filter: brightness(var(--radio-lighter-brightness));
-    transition: filter 0.2s ease;
-
-    &:disabled {
-      filter: none;
-    }
-  }
-
-  &:checked {
+    &:checked {
     background-color: var(--color-text-light);
     transition: background-color 0.2s ease;
 
@@ -55,5 +44,16 @@ input[type="radio"].radio {
   &:disabled {
     cursor: not-allowed;
     opacity: var(--radio-disabled-opacity);
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    filter: brightness(var(--radio-lighter-brightness));
+    transition: filter 0.2s ease;
+
+    &:disabled {
+      filter: none;
+    }
   }
 }

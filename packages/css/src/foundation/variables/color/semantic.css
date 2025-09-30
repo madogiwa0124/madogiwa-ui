@@ -17,5 +17,5 @@
   --color-bg-light: var(--color-gray-50);
   --color-bg-grey: var(--color-gray-200);
   --color-bg-dark: var(--color-gray-900);
-  --color-overlay: rgb(0 0 0 / 50%);
+  --color-overlay: rgb(from var(--color-black) r g b / 50%);
 }

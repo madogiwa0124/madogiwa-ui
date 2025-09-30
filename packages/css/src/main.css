@@ -1,11 +1,14 @@
 @layer base, layout, components, utils, overrides;
 
+/* Base */
 @import "./foundation/reset.css" layer(base);
 @import "./foundation/base.css" layer(base);
 
+/* Layout */
 @import "./layouts/container.css" layer(layout);
 @import "./layouts/columns.css" layer(layout);
 
+/* Components */
 @import "./components/button.css" layer(components);
 @import "./components/heading.css" layer(components);
 @import "./components/link.css" layer(components);
@@ -26,4 +29,5 @@
 @import "./components/alert.css" layer(components);
 @import "./components/navbar.css" layer(components);
 
+/* Utils */
 @import "./utils/visibility.css" layer(utils);

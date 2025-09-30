@@ -44,7 +44,7 @@ textarea.textarea {
 
   &.--auto-fit {
     /* NOTE: This property has limited browser support - will be documented for users */
-    /* eslint-disable-next-line css/use-baseline */
+    /* stylelint-disable-next-line plugin/use-baseline */
     field-sizing: content;
   }
 }

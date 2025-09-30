@@ -13,7 +13,7 @@
   /* ScrollHint */
   --tabs-scrollhint-width: 32px;
   --tabs-scrollhint-mask-stop: 32px;
-  --tabs-scrollhint-mask-color: #fff;
+  --tabs-scrollhint-mask-color: var(--color-white);
   --tabs-scrollhint-mask-width: calc(var(--tabs-scrollhint-width) * 1.5);
   --tabs-scrollhint-shadow-opacity: 0.4;
   --tabs-scrollhint-item-opacity: 50%;
@@ -26,7 +26,7 @@
     overflow-x: scroll;
     scrollbar-width: thin;
     /* NOTE: Non-critical property, so this is acceptable */
-    /* eslint-disable-next-line css/use-baseline */
+    /* stylelint-disable-next-line plugin/use-baseline */
     scrollbar-color: var(--tabs-scrollbar-color);
     text-wrap: nowrap;
   }
@@ -43,13 +43,13 @@
       border-color: var(--tabs-active-item-border-color);
     }
 
-    &:hover:not(.--active, :disabled) {
-      filter: var(--tabs-hover-item-filter);
-    }
-
     &:disabled {
       cursor: not-allowed;
       filter: var(--tabs-disabled-item-filter);
+    }
+
+    &:hover:not(.--active, :disabled) {
+      filter: var(--tabs-hover-item-filter);
     }
   }
 
@@ -84,6 +84,13 @@
     background-repeat: no-repeat;
     background-attachment: scroll;
 
+
+    /* NOTE: Don't move this location as it's styling for scroll hints */
+    /* stylelint-disable-next-line no-descending-specificity */
+    .tabs__item, [role="tab"] {
+      background-color: rgb(from var(--tabs-item-background-color) r g b / var(--tabs-scrollhint-item-opacity));
+    }
+
     .tabs__list,
     [role="tablist"] {
       background: linear-gradient(to left,
@@ -94,11 +101,6 @@
           var(--tabs-scrollhint-mask-color) var(--tabs-scrollhint-mask-stop)) right / var(--tabs-scrollhint-mask-width) 100%;
       background-repeat: no-repeat;
       background-attachment: local;
-    }
-
-    .tabs__item,
-    [role="tab"] {
-      background-color: rgb(from var(--tabs-item-background-color) r g b / var(--tabs-scrollhint-item-opacity));
     }
   }
 }

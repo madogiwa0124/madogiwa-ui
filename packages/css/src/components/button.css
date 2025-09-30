@@ -26,7 +26,7 @@
   display: inline-flex;
   white-space: nowrap;
   /* NOTE: Non-critical property, so this is acceptable */
-  /* eslint-disable-next-line css/use-baseline */
+  /* stylelint-disable-next-line plugin/use-baseline */
   user-select: none;
   border: var(--btn-border-width) solid transparent;
   padding: var(--btn-padding-y) var(--btn-padding-x);
@@ -35,6 +35,34 @@
   box-shadow: var(--btn-box-shadow);
   color: var(--btn-text-color-default);
   background-color: var(--btn-color-default);
+
+  &:has(svg),
+  &:has(.icon) {
+    gap: var(--spacing-1);
+    align-items: center;
+    justify-content: center;
+
+    .icon,
+    svg {
+      /* NOTE: Ignoring design tokens for icon size adjustment */
+      /* stylelint-disable-next-line declaration-property-value-allowed-list */
+      line-height: 1em;
+      width: 1em;
+      height: 1em;
+      flex-shrink: 0;
+    }
+  }
+
+  &:disabled {
+    opacity: var(--btn-disabled-opacity);
+    cursor: not-allowed;
+    transform: initial;
+  }
+
+  &:active {
+    transform: var(--btn-active-transform);
+    box-shadow: initial;
+  }
 
   &:hover,
   &:focus,
@@ -47,16 +75,6 @@
     }
   }
 
-  &:active {
-    transform: var(--btn-active-transform);
-    box-shadow: initial;
-  }
-
-  &:disabled {
-    opacity: var(--btn-disabled-opacity);
-    cursor: not-allowed;
-    transform: initial;
-  }
 
   &.--primary {
     color: var(--btn-text-color-primary);
@@ -129,21 +147,6 @@
 
   &.--icon-only {
     padding: var(--btn-padding-y);
-  }
-
-  &:has(.icon),
-  &:has(svg) {
-    gap: var(--spacing-1);
-    align-items: center;
-    justify-content: center;
-
-    .icon,
-    svg {
-      line-height: 1em;
-      width: 1em;
-      height: 1em;
-      flex-shrink: 0;
-    }
   }
 
   &.--transition {

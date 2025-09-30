@@ -1,7 +1,6 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import js from "@eslint/js";
 import ts from "typescript-eslint";
-import css from "@eslint/css";
 import unicorn from "eslint-plugin-unicorn";
 import globals from "globals";
 import stylistic from '@stylistic/eslint-plugin'
@@ -17,21 +16,6 @@ const ignoredFiles = [
 
 export default defineConfig([
   globalIgnores(ignoredFiles),
-  {
-    files: ["**/*.css"],
-    language: "css/css",
-    plugins: { css },
-    extends: [css.configs.recommended],
-    languageOptions: {
-      // NOTE: Workaround for css nesting.
-      // ref: https://github.com/eslint/css/issues/123#issuecomment-2863356384
-      tolerant: true,
-    },
-    rules: {
-      "css/use-baseline": ["warn", { available: "newly" }],
-      "css/no-invalid-properties": ["error", { allowUnknownVariables: true }]
-    }
-  },
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
     extends: [

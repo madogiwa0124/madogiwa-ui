@@ -1,23 +1,23 @@
 @property --shadow-sm {
   syntax: "*";
-  initial-value: 0 2px 4px rgba(0, 0, 0, 0.1);
+  initial-value: 0 2px 4px rgb(0 0 0 / 10%);
   inherits: true;
 }
 
 @property --shadow-md {
   syntax: "*";
-  initial-value: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+  initial-value: 0 4px 8px rgb(0 0 0 / 12%), 0 2px 4px rgb(0 0 0 / 8%);
   inherits: true;
 }
 
 @property --shadow-lg {
   syntax: "*";
-  initial-value: 0 8px 16px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+  initial-value: 0 8px 16px rgb(0 0 0 / 15%), 0 4px 8px rgb(0 0 0 / 10%);
   inherits: true;
 }
 
 @property --shadow-xl {
   syntax: "*";
-  initial-value: 0 16px 32px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.15);
+  initial-value: 0 16px 32px rgb(0 0 0 / 20%), 0 8px 16px rgb(0 0 0 / 15%);
   inherits: true;
 }

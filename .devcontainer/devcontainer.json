@@ -12,9 +12,15 @@
         "github.copilot",
         "github.copilot-chat",
         "jacobcassidy.css-nesting-syntax-highlighting",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "stylelint.vscode-stylelint"
       ]
     }
   },
-  "appPort": [3000, 3001, 5173, 6006]
+  "appPort": [
+    3000,
+    3001,
+    5173,
+    6006
+  ]
 }

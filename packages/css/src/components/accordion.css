@@ -38,8 +38,6 @@
   }
 
   .accordion__content,
-  /* NOTE: Class-based specification is also supported as a fallback, so this is not a problem */
-  /* eslint-disable-next-line css/use-baseline */
   &::details-content {
     block-size: 0;
     opacity: 0;
@@ -56,8 +54,6 @@
     }
 
     .accordion__content,
-    /* NOTE: Class-based specification is also supported as a fallback, so this is not a problem */
-    /* eslint-disable-next-line css/use-baseline */
     &::details-content {
       block-size: auto;
       opacity: 1;
@@ -78,15 +74,14 @@
 
       This is animation behavior and not critical, so non-compliance with baseline is acceptable.
     */
-    /* eslint-disable-next-line css/use-baseline */
+    /* stylelint-disable-next-line plugin/use-baseline */
     interpolate-size: allow-keywords;
 
     .accordion__summary::before {
       transition: transform var(--accordion-transition-time) ease;
     }
+
     .accordion__content,
-    /* NOTE: Class-based specification is also supported as a fallback, so this is not a problem */
-    /* eslint-disable-next-line css/use-baseline */
     &::details-content {
       transition: block-size var(--accordion-transition-time) ease,
         opacity var(--accordion-transition-time) ease,

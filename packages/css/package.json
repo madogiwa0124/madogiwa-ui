@@ -58,12 +58,6 @@
     "vite": "^7.1.5"
   },
   "browserslist": [
-    "last 3 Chrome versions",
-    "last 3 Firefox versions",
-    "last 3 Safari versions",
-    "last 3 Edge versions",
-    "last 3 and_chr versions",
-    "last 3 ios_saf versions",
-    "not dead"
+    "baseline newly available"
   ]
 }

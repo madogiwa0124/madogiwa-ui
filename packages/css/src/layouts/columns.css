@@ -27,22 +27,23 @@
   &:not(:has(.columns__left)) {
     grid-template-areas: "main right";
   }
+
   &:not(:has(.columns__right)) {
     grid-template-areas: "left main";
   }
-  &:not(:has(.columns__left)):not(:has(.columns__right)) {
+
+  &:not(:has(.columns__left), :has(.columns__right)) {
     grid-template-areas: "main";
   }
 
   @media (--media-breakpoint-max-sm) {
-    /* NOTE: Nesting styles within `@media` queries don't seem to be supported, so disabled. */
-    /* eslint-disable css/no-invalid-at-rules */
     grid-template-areas: "left" "main" "right";
     grid-template-columns: 1fr;
 
     &:not(:has(.columns__left)) {
       grid-template-areas: "main" "right";
     }
+
     &:not(:has(.columns__right)) {
       grid-template-areas: "left" "main";
     }

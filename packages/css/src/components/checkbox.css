@@ -16,7 +16,7 @@ input[type="checkbox"].checkbox {
   border-radius: var(--checkbox-border-radius);
   cursor: pointer;
   /* NOTE: Non-critical property, so this is acceptable */
-  /* eslint-disable-next-line css/use-baseline */
+  /* stylelint-disable-next-line plugin/use-baseline */
   user-select: none;
 
   &::after {
@@ -33,18 +33,7 @@ input[type="checkbox"].checkbox {
     transform: rotate(45deg);
   }
 
-  &:hover,
-  &:focus,
-  &:focus-visible {
-    filter: brightness(var(--checkbox-lighter-brightness));
-    transition: filter 0.2s ease;
-
-    &:disabled {
-      filter: none;
-    }
-  }
-
-  &:checked {
+    &:checked {
     background-color: var(--color-primary);
     transition: background-color 0.2s ease;
 
@@ -57,5 +46,16 @@ input[type="checkbox"].checkbox {
   &:disabled {
     cursor: not-allowed;
     opacity: var(--checkbox-disabled-opacity);
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    filter: brightness(var(--checkbox-lighter-brightness));
+    transition: filter 0.2s ease;
+
+    &:disabled {
+      filter: none;
+    }
   }
 }

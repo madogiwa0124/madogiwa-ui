@@ -12,10 +12,7 @@
   --snackbar-transition-duration: 0.2s;
 
   position: fixed;
-  bottom: var(--snackbar-position-y);
-  left: var(--snackbar-position-x);
-  top: auto;
-  right: auto;
+  inset: auto auto var(--snackbar-position-y) var(--snackbar-position-x);
   margin: 0;
   padding: 0;
   box-shadow: var(--snackbar-box-shadow);
@@ -49,44 +46,29 @@
       transition: opacity var(--snackbar-transition-duration) ease;
       opacity: 1;
 
-      /* NOTE: @starting-style doesn't seem to be supported, so disabled */
-      /* eslint-disable css/no-invalid-at-rules */
       @starting-style {
         opacity: 0;
       }
-      /* eslint-enable css/no-invalid-at-rules */
     }
   }
 
   &.--right-bottom {
-    right: var(--snackbar-position-x);
-    bottom: var(--snackbar-position-y);
-    top: auto;
-    left: auto;
+    inset: auto var(--snackbar-position-x) var(--snackbar-position-y) auto;
   }
 
   &.--left-top {
-    right: auto;
-    bottom: auto;
-    top: var(--snackbar-position-y);
-    left: var(--snackbar-position-x);
+    inset: var(--snackbar-position-y) auto auto var(--snackbar-position-x);
   }
 
   &.--right-top {
-    right: var(--snackbar-position-x);
-    bottom: auto;
-    top: var(--snackbar-position-y);
-    left: auto;
+    inset: var(--snackbar-position-y) var(--snackbar-position-x) auto auto;
   }
 
   @media (--media-breakpoint-max-sm) {
-    /* NOTE: Nesting styles within `@media` queries don't seem to be supported, so disabled. */
-    /* eslint-disable css/no-invalid-at-rules */
     margin-inline: var(--snackbar-margin-for-small-screens);
     left: auto;
     top: auto;
     right: auto;
-    /* eslint-enable css/no-invalid-at-rules */
 
     &.--right-bottom {
       left: auto;
