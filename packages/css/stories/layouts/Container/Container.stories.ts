@@ -3,9 +3,8 @@ import { expect } from "storybook/test";
 
 interface ContainerProperties {
   content: string;
-  customMaxWidth?: string;
-  backgroundColor?: string;
-  noPadding?: boolean;
+  padding?: boolean;
+  noCentering?: boolean;
 }
 
 const meta: Meta<ContainerProperties> = {
@@ -16,31 +15,31 @@ const meta: Meta<ContainerProperties> = {
       control: { type: "text" },
       description: "Content to display inside the container.",
     },
-    customMaxWidth: {
-      control: { type: "text" },
-      description: "Custom max-width value (overrides default responsive breakpoints).",
-    },
-    backgroundColor: {
-      control: { type: "color" },
-      description: "Background color for visual demonstration (not part of component).",
-    },
-    noPadding: {
+    padding: {
       control: { type: "boolean" },
-      description: "Remove padding from container (--no-padding modifier).",
+      description: "Enable responsive padding inside the container.",
+      defaultValue: false,
+    },
+    noCentering: {
+      control: { type: "boolean" },
+      description: "Disable horizontal centering of the container.",
+      defaultValue: false,
     },
   },
   parameters: {
     docs: {
       description: {
         component: `
-Container component provides responsive layout constraints with predefined breakpoints and responsive padding.
+Container component provides responsive layout constraints with predefined breakpoints.
 
-- **Mobile**: max-width 100% with spacing-1 padding
-- **Small**: max-width 576px (>576px) with spacing-2 padding
-- **Medium**: max-width 768px (>768px) with spacing-4 padding
-- **Large**: max-width 1024px (>992px) with spacing-6 padding
+- **Mobile**: max-width 100%
+- **Small**: max-width 576px (>576px)
+- **Medium**: max-width 768px (>768px)
+- **Large**: max-width 1024px (>1024px)
+- **X Large**: max-width 1280px (>1280px)
+- **2X Large**: max-width 1536px (>1536px)
 
-The container is centered horizontally and uses logical properties (margin-inline, max-inline-size, padding-inline) for better internationalization support.
+The container is centered horizontally and uses logical properties (margin-inline, max-inline-size) for better internationalization support.
         `,
       },
     },
@@ -56,21 +55,10 @@ export const Default: Story = {
     const container = document.createElement("div");
     container.classList.add("container");
 
-    if (args.noPadding) {
-      container.classList.add("--no-padding");
-    }
+    if (args.padding) container.classList.add("--padding");
+    if (args.noCentering) container.classList.add("--no-centering");
 
-    if (args.customMaxWidth) {
-      container.style.setProperty("--container-lg-max-width", args.customMaxWidth);
-      container.style.setProperty("--container-md-max-width", args.customMaxWidth);
-      container.style.setProperty("--container-sm-max-width", args.customMaxWidth);
-    }
-
-    if (args.backgroundColor) {
-      container.style.backgroundColor = args.backgroundColor;
-      container.style.borderRadius = "8px";
-    }
-
+    container.style.backgroundColor = "#ffffff";
     container.innerHTML = `<p>${args.content}</p>`;
 
     // Wrapper for visual context
@@ -83,18 +71,14 @@ export const Default: Story = {
   },
   args: {
     content: "This is content inside the container. Resize the viewport to see responsive behavior and padding changes.",
-    backgroundColor: "#ffffff",
-    noPadding: false,
+    padding: false,
+    noCentering: false,
   },
   play: async ({ canvasElement, args }) => {
     const container = canvasElement.querySelector(".container") as HTMLElement;
 
     await expect(container).toBeInTheDocument();
     await expect(container).toHaveClass("container");
-
-    if (args.noPadding) {
-      await expect(container).toHaveClass("--no-padding");
-    }
 
     const content = container.querySelector("p") as HTMLElement;
     await expect(content).toBeInTheDocument();
@@ -105,32 +89,38 @@ export const Default: Story = {
     const smMaxWidth = computedStyle.getPropertyValue("--container-sm-max-width").trim();
     const mdMaxWidth = computedStyle.getPropertyValue("--container-md-max-width").trim();
     const lgMaxWidth = computedStyle.getPropertyValue("--container-lg-max-width").trim();
+    const xlMaxWidth = computedStyle.getPropertyValue("--container-xl-max-width").trim();
+    const xxlMaxWidth = computedStyle.getPropertyValue("--container-2xl-max-width").trim();
 
-    await expect(smMaxWidth).toBe("576px");
+    await expect(smMaxWidth).toBe("640px");
     await expect(mdMaxWidth).toBe("768px");
     await expect(lgMaxWidth).toBe("1024px");
+    await expect(xlMaxWidth).toBe("1280px");
+    await expect(xxlMaxWidth).toBe("1536px");
   },
 };
 
 export const ResponsiveDemo: Story = {
-  render: () => {
+  render: (args) => {
     const wrapper = document.createElement("div");
     wrapper.style.backgroundColor = "#f0f0f0";
     wrapper.style.padding = "1rem";
     wrapper.style.fontFamily = "system-ui, sans-serif";
 
     const title = document.createElement("h2");
-    title.textContent = "Container Responsive Breakpoints & Padding";
+    title.textContent = "Container Responsive Breakpoints";
     title.style.textAlign = "center";
     title.style.marginBottom = "2rem";
 
     const containers = [
-      { label: "Small (576px max, spacing-2 padding)", width: "576px", padding: "var(--spacing-2)", bgColor: "#e3f2fd" },
-      { label: "Medium (768px max, spacing-4 padding)", width: "768px", padding: "var(--spacing-4)", bgColor: "#f3e5f5" },
-      { label: "Large (1024px max, spacing-6 padding)", width: "1024px", padding: "var(--spacing-6)", bgColor: "#e8f5e8" },
+      { label: "Small", width: "640px", bgColor: "#e3f2fd", padding: "0 var(--spacing-2)" },
+      { label: "Medium", width: "768px", bgColor: "#f3e5f5", padding: "0 var(--spacing-3)" },
+      { label: "Large", width: "1024px", bgColor: "#e8f5e8", padding: "0 var(--spacing-4)" },
+      { label: "X Large", width: "1280px", bgColor: "#fff3e0", padding: "0 var(--spacing-5)" },
+      { label: "2X Large", width: "1536px", bgColor: "#fce4ec", padding: "0 var(--spacing-6)" },
     ];
 
-    for (const { label, width, padding, bgColor } of containers) {
+    for (const { label, width, bgColor, padding } of containers) {
       const section = document.createElement("div");
       section.style.marginBottom = "2rem";
 
@@ -143,14 +133,24 @@ export const ResponsiveDemo: Story = {
       container.classList.add("container");
       container.style.backgroundColor = bgColor;
       container.style.border = "2px dashed #666";
+      container.style.setProperty("--container-2xl-max-width", width);
+      container.style.setProperty("--container-xl-max-width", width);
       container.style.setProperty("--container-lg-max-width", width);
       container.style.setProperty("--container-md-max-width", width);
       container.style.setProperty("--container-sm-max-width", width);
 
+      container.style.setProperty("--container-default-padding", padding);
+      container.style.setProperty("--container-sm-padding", padding);
+      container.style.setProperty("--container-md-padding", padding);
+      container.style.setProperty("--container-lg-padding", padding);
+      container.style.setProperty("--container-xl-padding", padding);
+      container.style.setProperty("--container-2xl-padding", padding);
+      if (args.padding) container.classList.add("--padding");
+      if (args.noCentering) container.classList.add("--no-centering");
+
       const content = document.createElement("div");
       content.innerHTML = `
         <p><strong>Max-width:</strong> ${width}</p>
-        <p><strong>Padding:</strong> ${padding}</p>
         <p>This container demonstrates responsive behavior with both width and padding changes.</p>
         <p><code>margin-inline: auto</code> centers the container horizontally.</p>
       `;
@@ -163,11 +163,14 @@ export const ResponsiveDemo: Story = {
     wrapper.prepend(title);
     return wrapper;
   },
-  args: {},
+  args: {
+    padding: false,
+    noCentering: false,
+  },
   play: async ({ canvasElement }) => {
     const containers = canvasElement.querySelectorAll(".container");
 
-    await expect(containers).toHaveLength(3);
+    await expect(containers).toHaveLength(5);
 
     for (const container of containers) {
       await expect(container).toHaveClass("container");
@@ -188,15 +191,10 @@ export const NestedContent: Story = {
     const wrapper = document.createElement("div");
     const container = document.createElement("div");
     container.classList.add("container");
+    if (args.padding) container.classList.add("--padding");
+    if (args.noCentering) container.classList.add("--no-centering");
 
-    if (args.noPadding) {
-      container.classList.add("--no-padding");
-    }
-
-    container.style.backgroundColor = args.backgroundColor ?? "#f5f5f5";
-    if (!args.noPadding) {
-      // Let responsive padding handle spacing
-    }
+    container.style.backgroundColor = "#f5f5f5";
 
     // Create realistic content structure
     container.innerHTML = `
@@ -244,18 +242,14 @@ export const NestedContent: Story = {
   },
   args: {
     content: "This article content shows how the container constrains width while maintaining readability with responsive padding for complex layouts.",
-    backgroundColor: "#f8f9fa",
-    noPadding: false,
+    padding: false,
+    noCentering: false,
   },
   play: async ({ canvasElement, args }) => {
     const container = canvasElement.querySelector(".container") as HTMLElement;
 
     await expect(container).toBeInTheDocument();
     await expect(container).toHaveClass("container");
-
-    if (args.noPadding) {
-      await expect(container).toHaveClass("--no-padding");
-    }
 
     // Test that nested elements exist
     const header = container.querySelector("header") as HTMLElement;
