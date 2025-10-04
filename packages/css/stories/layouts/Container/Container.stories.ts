@@ -92,11 +92,11 @@ export const Default: Story = {
     const xlMaxWidth = computedStyle.getPropertyValue("--container-xl-max-width").trim();
     const xxlMaxWidth = computedStyle.getPropertyValue("--container-2xl-max-width").trim();
 
-    await expect(smMaxWidth).toBe("640px");
-    await expect(mdMaxWidth).toBe("768px");
-    await expect(lgMaxWidth).toBe("1024px");
-    await expect(xlMaxWidth).toBe("1280px");
-    await expect(xxlMaxWidth).toBe("1536px");
+    await expect(smMaxWidth).toBe("40rem");
+    await expect(mdMaxWidth).toBe("48rem");
+    await expect(lgMaxWidth).toBe("64rem");
+    await expect(xlMaxWidth).toBe("80rem");
+    await expect(xxlMaxWidth).toBe("96rem");
   },
 };
 
@@ -113,11 +113,11 @@ export const ResponsiveDemo: Story = {
     title.style.marginBottom = "2rem";
 
     const containers = [
-      { label: "Small", width: "640px", bgColor: "#e3f2fd", padding: "0 var(--spacing-2)" },
-      { label: "Medium", width: "768px", bgColor: "#f3e5f5", padding: "0 var(--spacing-3)" },
-      { label: "Large", width: "1024px", bgColor: "#e8f5e8", padding: "0 var(--spacing-4)" },
-      { label: "X Large", width: "1280px", bgColor: "#fff3e0", padding: "0 var(--spacing-5)" },
-      { label: "2X Large", width: "1536px", bgColor: "#fce4ec", padding: "0 var(--spacing-6)" },
+      { label: "Small", width: "40rem", bgColor: "#e3f2fd", padding: "0 var(--spacing-2)" },
+      { label: "Medium", width: "48rem", bgColor: "#f3e5f5", padding: "0 var(--spacing-3)" },
+      { label: "Large", width: "64rem", bgColor: "#e8f5e8", padding: "0 var(--spacing-4)" },
+      { label: "X Large", width: "80rem", bgColor: "#fff3e0", padding: "0 var(--spacing-5)" },
+      { label: "2X Large", width: "96rem", bgColor: "#fce4ec", padding: "0 var(--spacing-6)" },
     ];
 
     for (const { label, width, bgColor, padding } of containers) {
@@ -245,7 +245,7 @@ export const NestedContent: Story = {
     padding: false,
     noCentering: false,
   },
-  play: async ({ canvasElement, args }) => {
+  play: async ({ canvasElement }) => {
     const container = canvasElement.querySelector(".container") as HTMLElement;
 
     await expect(container).toBeInTheDocument();
