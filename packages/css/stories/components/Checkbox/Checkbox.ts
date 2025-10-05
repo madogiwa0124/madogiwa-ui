@@ -21,7 +21,7 @@ export function createCheckbox(props: CheckboxProperties = {}): HTMLInputElement
     id,
     checked = false,
     disabled = false,
-    className = "checkbox",
+    className = "m-checkbox",
   } = props;
 
   const checkbox = document.createElement("input");

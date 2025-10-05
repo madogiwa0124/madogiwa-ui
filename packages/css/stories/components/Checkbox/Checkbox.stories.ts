@@ -44,7 +44,7 @@ export const Default: Story = {
     ) as HTMLInputElement;
 
     await expect(checkbox).not.toBeNull();
-    await expect(checkbox).toHaveClass("checkbox");
+    await expect(checkbox).toHaveClass("m-checkbox");
     await expect(checkbox).not.toBeChecked();
     await expect(checkbox).not.toBeDisabled();
 
@@ -72,7 +72,7 @@ export const Checked: Story = {
     ) as HTMLInputElement;
 
     await expect(checkbox).not.toBeNull();
-    await expect(checkbox).toHaveClass("checkbox");
+    await expect(checkbox).toHaveClass("m-checkbox");
     await expect(checkbox).toBeChecked();
 
     await userEvent.click(checkbox);
@@ -99,7 +99,7 @@ export const Disabled: Story = {
     ) as HTMLInputElement;
 
     await expect(checkbox).not.toBeNull();
-    await expect(checkbox).toHaveClass("checkbox");
+    await expect(checkbox).toHaveClass("m-checkbox");
     await expect(checkbox).not.toBeChecked();
     await expect(checkbox).toBeDisabled();
   },
@@ -122,7 +122,7 @@ export const CheckedDisabled: Story = {
     ) as HTMLInputElement;
 
     await expect(checkbox).not.toBeNull();
-    await expect(checkbox).toHaveClass("checkbox");
+    await expect(checkbox).toHaveClass("m-checkbox");
     await expect(checkbox).toBeChecked();
     await expect(checkbox).toBeDisabled();
   },

@@ -1,4 +1,4 @@
-.label {
+.m-label {
   --label-display: block;
   --label-font-weight: var(--font-weight-medium);
   --label-spacing-bottom: var(--spacing-1);

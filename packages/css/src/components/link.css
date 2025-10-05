@@ -1,4 +1,4 @@
-.link {
+.m-link {
   --link-color: var(--color-secondary);
   --link-color-hover: rgb(from var(--link-color) r g b / 80%);
   --link-color-active: rgb(from var(--link-color) r g b / 50%);

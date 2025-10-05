@@ -39,11 +39,11 @@ export const Default: Story = {
   render: (args) => {
     const container = document.createElement("div");
     const button = document.createElement("button");
-    button.classList.add("btn", "--primary");
+    button.classList.add("m-btn", "--primary");
     button.textContent = "Show Snackbar";
     button.setAttribute("popovertarget", "snackbar");
     const snackbar = document.createElement("div");
-    snackbar.classList.add("snackbar");
+    snackbar.classList.add("m-snackbar");
     snackbar.popover = "manual";
     snackbar.id = "snackbar";
     snackbar.role = "alert";
@@ -53,11 +53,11 @@ export const Default: Story = {
       snackbar.classList.add(`--${args["position"]}`);
     }
     snackbar.innerHTML = `
-    <div class="snackbar__body">
-      <div class="snackbar__content">
+    <div class="m-snackbar__body">
+      <div class="m-snackbar__content">
         <span>This is a snackbar message.</span>
       </div>
-      <div class="snackbar__actions">
+      <div class="m-snackbar__actions">
         <button popovertarget="snackbar">
           OK
         </button>
@@ -78,7 +78,7 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
     const button = canvas.querySelector("button") as HTMLButtonElement;
-    const snackbar = canvas.querySelector(".snackbar") as HTMLElement;
+    const snackbar = canvas.querySelector(".m-snackbar") as HTMLElement;
     const snackbarClose = snackbar.querySelector(
       "button[aria-label='Close snackbar']",
     ) as HTMLButtonElement;

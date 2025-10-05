@@ -34,7 +34,7 @@ const createParagraph = (
   const paragraph = document.createElement("p");
   paragraph.textContent = text;
 
-  paragraph.classList.add("paragraph");
+  paragraph.classList.add("m-p");
 
   if (className) {
     paragraph.classList.add(className);
@@ -58,7 +58,7 @@ export const Default: Story = {
     await expect(paragraph).not.toBeNull();
     await expect(paragraph).toHaveTextContent(args.text || "");
     await expect(paragraph.tagName.toLowerCase()).toBe("p");
-    await expect(paragraph).toHaveClass("paragraph");
+    await expect(paragraph).toHaveClass("m-p");
   },
 };
 
@@ -102,7 +102,7 @@ export const MultipleParagraphs: Story = {
     for (const [index, paragraph] of [...paragraphs].entries()) {
       await expect(paragraph).not.toBeNull();
       await expect(paragraph.tagName.toLowerCase()).toBe("p");
-      await expect(paragraph).toHaveClass("paragraph");
+      await expect(paragraph).toHaveClass("m-p");
       const expectedText = expectedTexts[index];
       if (expectedText) {
         await expect(paragraph).toHaveTextContent(expectedText);

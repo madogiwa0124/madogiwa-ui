@@ -60,7 +60,7 @@ type Story = StoryObj<InputProperties>;
 export const Default: Story = {
   render: (args) => {
     const input = document.createElement("input");
-    input.className = "input";
+    input.className = "m-input";
     input.classList.toggle("--block", args["block"]);
     input.placeholder = args["placeholder"];
     input.type = args["inputType"];
@@ -83,7 +83,7 @@ export const Default: Story = {
     const input = canvas.querySelector("input") as HTMLInputElement;
 
     await expect(input).not.toBeNull();
-    await expect(input).toHaveClass("input");
+    await expect(input).toHaveClass("m-input");
     await expect(input).not.toBeDisabled();
   },
 };
@@ -94,31 +94,31 @@ export const Types: Story = {
     container.style
       = "display: flex; flex-direction: column; gap: 10px; width: 350px;";
     const input = document.createElement("input");
-    input.className = "input";
+    input.className = "m-input";
     input.type = "text";
     input.placeholder = "type text";
     const emailInput = document.createElement("input");
-    emailInput.className = "input";
+    emailInput.className = "m-input";
     emailInput.type = "email";
     emailInput.placeholder = "type email";
     const passwordInput = document.createElement("input");
-    passwordInput.className = "input";
+    passwordInput.className = "m-input";
     passwordInput.type = "password";
     passwordInput.placeholder = "type password";
     const numericInput = document.createElement("input");
-    numericInput.className = "input";
+    numericInput.className = "m-input";
     numericInput.type = "number";
     numericInput.placeholder = "type number";
     const dateInput = document.createElement("input");
-    dateInput.className = "input";
+    dateInput.className = "m-input";
     dateInput.type = "date";
     dateInput.placeholder = "type date";
     const colorInput = document.createElement("input");
-    colorInput.className = "input";
+    colorInput.className = "m-input";
     colorInput.type = "color";
     colorInput.value = "#ff0000";
     const fileInput = document.createElement("input");
-    fileInput.className = "input";
+    fileInput.className = "m-input";
     fileInput.type = "file";
     fileInput.accept = ".txt, .pdf";
 
@@ -136,7 +136,7 @@ export const Types: Story = {
 export const Disabled: Story = {
   render: () => {
     const input = document.createElement("input");
-    input.className = "input";
+    input.className = "m-input";
     input.value = "Disabled text field";
     input.disabled = true;
     return input;
@@ -147,7 +147,7 @@ export const Disabled: Story = {
     const input = canvas.querySelector("input") as HTMLInputElement;
 
     await expect(input).not.toBeNull();
-    await expect(input).toHaveClass("input");
+    await expect(input).toHaveClass("m-input");
     await expect(input).toBeDisabled();
   },
 };
@@ -159,7 +159,7 @@ export const Invalid: Story = {
     form.noValidate = true;
 
     const input = document.createElement("input");
-    input.className = "input";
+    input.className = "m-input";
     input.required = true;
     form.append(input);
     form.reportValidity();
@@ -171,7 +171,7 @@ export const Invalid: Story = {
     const input = canvas.querySelector("input") as HTMLInputElement;
 
     await expect(input).not.toBeNull();
-    await expect(input).toHaveClass("input");
+    await expect(input).toHaveClass("m-input");
     await expect(input).toBeInvalid();
   },
 };
@@ -179,7 +179,7 @@ export const Invalid: Story = {
 export const Placeholder: Story = {
   render: () => {
     const input = document.createElement("input");
-    input.className = "input";
+    input.className = "m-input";
     input.placeholder = "Placeholder text";
     return input;
   },
@@ -189,14 +189,14 @@ export const Placeholder: Story = {
     const input = canvas.querySelector("input") as HTMLInputElement;
 
     await expect(input).not.toBeNull();
-    await expect(input).toHaveClass("input");
+    await expect(input).toHaveClass("m-input");
   },
 };
 
 export const Block: Story = {
   render: () => {
     const input = document.createElement("input");
-    input.className = "input --block";
+    input.className = "m-input --block";
     input.placeholder = "Block level input";
     return input;
   },
@@ -206,6 +206,6 @@ export const Block: Story = {
     const input = canvas.querySelector("input") as HTMLInputElement;
 
     await expect(input).not.toBeNull();
-    await expect(input).toHaveClass("input --block");
+    await expect(input).toHaveClass("m-input --block");
   },
 };

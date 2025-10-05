@@ -34,7 +34,7 @@ type Story = StoryObj;
 export const Default: Story = {
   render: () => {
     const select = document.createElement("select");
-    select.className = "select";
+    select.className = "m-select";
     select.innerHTML = `
       <option value="">--- Select ---</option>
       <option value="option1">Option 1</option>
@@ -49,7 +49,7 @@ export const Default: Story = {
     const select = canvas.querySelector("select") as HTMLSelectElement;
 
     await expect(select).not.toBeNull();
-    await expect(select).toHaveClass("select");
+    await expect(select).toHaveClass("m-select");
     await expect(select).not.toBeDisabled();
 
     await userEvent.selectOptions(select, "");
@@ -60,7 +60,7 @@ export const Default: Story = {
 export const Separator: Story = {
   render: () => {
     const select = document.createElement("select");
-    select.className = "select";
+    select.className = "m-select";
     select.innerHTML = `
       <option value="">--- Select ---</option>
       <option value="option1">Option 1</option>
@@ -77,7 +77,7 @@ export const Separator: Story = {
     const separators = select.querySelectorAll("hr");
 
     await expect(select).not.toBeNull();
-    await expect(select).toHaveClass("select");
+    await expect(select).toHaveClass("m-select");
     await expect(select).not.toBeDisabled();
     await expect(separators.length).toBe(1);
   },
@@ -86,7 +86,7 @@ export const Separator: Story = {
 export const Group: Story = {
   render: () => {
     const select = document.createElement("select");
-    select.className = "select";
+    select.className = "m-select";
     select.innerHTML = `
       <option value="">--- Select ---</option>
       <option value="option1">Option 1</option>
@@ -109,7 +109,7 @@ export const Group: Story = {
     const optgroups = select.querySelectorAll("optgroup");
 
     await expect(select).not.toBeNull();
-    await expect(select).toHaveClass("select");
+    await expect(select).toHaveClass("m-select");
     await expect(select).not.toBeDisabled();
     await expect(optgroups.length).toBe(2);
     if (optgroups[0]) {
@@ -131,7 +131,7 @@ export const Multiple: Story = {
     notSupportedMessage.style.fontWeight = "bold";
     container.append(notSupportedMessage);
     const select = document.createElement("select");
-    select.className = "select";
+    select.className = "m-select";
     select.multiple = true;
     select.innerHTML = `
       <option value="option1">Option 1</option>
@@ -147,7 +147,7 @@ export const Multiple: Story = {
     const select = canvas.querySelector("select") as HTMLSelectElement;
 
     await expect(select).not.toBeNull();
-    await expect(select).toHaveClass("select");
+    await expect(select).toHaveClass("m-select");
     await expect(select.multiple).toBe(true);
 
     await userEvent.selectOptions(select, ["option1", "option2"]);
@@ -158,7 +158,7 @@ export const Multiple: Story = {
 export const Disabled: Story = {
   render: () => {
     const select = document.createElement("select");
-    select.className = "select";
+    select.className = "m-select";
     select.disabled = true;
     select.innerHTML = `
       <option value="option1">Option 1</option>
@@ -173,7 +173,7 @@ export const Disabled: Story = {
     const select = canvas.querySelector("select") as HTMLSelectElement;
 
     await expect(select).not.toBeNull();
-    await expect(select).toHaveClass("select");
+    await expect(select).toHaveClass("m-select");
     await expect(select).toBeDisabled();
     await expect(select).toHaveValue("option2");
 
@@ -190,7 +190,7 @@ export const Invalid: Story = {
     form.noValidate = true;
 
     const select = document.createElement("select");
-    select.className = "select";
+    select.className = "m-select";
     select.id = "required-select";
     select.required = true;
     select.innerHTML = `
@@ -213,7 +213,7 @@ export const Invalid: Story = {
     const form = canvas.querySelector("form") as HTMLFormElement;
 
     await expect(select).not.toBeNull();
-    await expect(select).toHaveClass("select");
+    await expect(select).toHaveClass("m-select");
     await expect(select).toBeRequired();
     await expect(select).toHaveValue("");
 

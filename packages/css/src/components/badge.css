@@ -1,4 +1,4 @@
-.badge {
+.m-badge {
   --badge-padding: var(--spacing-1) var(--spacing-2);
   --badge-item-gap: var(--spacing-2);
   --badge-border-color: var(--color-border);

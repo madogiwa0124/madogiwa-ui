@@ -55,7 +55,7 @@ type Story = StoryObj<TextareaProperties>;
 export const Default: Story = {
   render: (args) => {
     const textarea = document.createElement("textarea");
-    textarea.className = "textarea";
+    textarea.className = "m-textarea";
     textarea.classList.toggle("--block", args["block"]);
     textarea.placeholder = args["placeholder"];
     if (args["rows"]) textarea.rows = args["rows"];
@@ -75,7 +75,7 @@ export const Default: Story = {
     const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
 
     await expect(textarea).not.toBeNull();
-    await expect(textarea).toHaveClass("textarea");
+    await expect(textarea).toHaveClass("m-textarea");
     await expect(textarea).not.toBeDisabled();
   },
 };
@@ -83,7 +83,7 @@ export const Default: Story = {
 export const Disabled: Story = {
   render: () => {
     const textarea = document.createElement("textarea");
-    textarea.className = "textarea";
+    textarea.className = "m-textarea";
     textarea.value = "This is a disabled textarea";
     textarea.disabled = true;
     return textarea;
@@ -94,7 +94,7 @@ export const Disabled: Story = {
     const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
 
     await expect(textarea).not.toBeNull();
-    await expect(textarea).toHaveClass("textarea");
+    await expect(textarea).toHaveClass("m-textarea");
     await expect(textarea).toBeDisabled();
   },
 };
@@ -102,11 +102,11 @@ export const Disabled: Story = {
 export const Invalid: Story = {
   render: () => {
     const form = document.createElement("form");
-    form.className = "textarea-form";
+    form.className = "m-textarea-form";
     form.noValidate = true;
 
     const textarea = document.createElement("textarea");
-    textarea.className = "textarea";
+    textarea.className = "m-textarea";
     textarea.required = true;
     form.append(textarea);
     form.reportValidity();
@@ -118,7 +118,7 @@ export const Invalid: Story = {
     const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
 
     await expect(textarea).not.toBeNull();
-    await expect(textarea).toHaveClass("textarea");
+    await expect(textarea).toHaveClass("m-textarea");
     await expect(textarea).toBeRequired();
   },
 };
@@ -126,7 +126,7 @@ export const Invalid: Story = {
 export const Placeholder: Story = {
   render: () => {
     const textarea = document.createElement("textarea");
-    textarea.className = "textarea";
+    textarea.className = "m-textarea";
     textarea.placeholder = "Enter your detailed message here...";
     return textarea;
   },
@@ -136,7 +136,7 @@ export const Placeholder: Story = {
     const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
 
     await expect(textarea).not.toBeNull();
-    await expect(textarea).toHaveClass("textarea");
+    await expect(textarea).toHaveClass("m-textarea");
     await expect(textarea).toHaveAttribute(
       "placeholder",
       "Enter your detailed message here...",
@@ -147,7 +147,7 @@ export const Placeholder: Story = {
 export const Block: Story = {
   render: () => {
     const textarea = document.createElement("textarea");
-    textarea.className = "textarea --block";
+    textarea.className = "m-textarea --block";
     textarea.placeholder = "Block level textarea";
     return textarea;
   },
@@ -157,7 +157,7 @@ export const Block: Story = {
     const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
 
     await expect(textarea).not.toBeNull();
-    await expect(textarea).toHaveClass("textarea");
+    await expect(textarea).toHaveClass("m-textarea");
     await expect(textarea).toHaveClass("--block");
   },
 };
@@ -165,7 +165,7 @@ export const Block: Story = {
 export const AutoFit: Story = {
   render: () => {
     const textarea = document.createElement("textarea");
-    textarea.className = "textarea --auto-fit";
+    textarea.className = "m-textarea --auto-fit";
     textarea.placeholder = "Auto-fit textarea";
     return textarea;
   },
@@ -175,7 +175,7 @@ export const AutoFit: Story = {
     const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
 
     await expect(textarea).not.toBeNull();
-    await expect(textarea).toHaveClass("textarea");
+    await expect(textarea).toHaveClass("m-textarea");
     await expect(textarea).toHaveClass("--auto-fit");
   },
 };

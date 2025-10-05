@@ -1,4 +1,4 @@
-input[type="radio"].radio {
+input[type="radio"].m-radio {
   --radio-size: 1.2em;
   --radio-border-color: var(--color-dark);
   --radio-bg-color: var(--color-light);

@@ -61,26 +61,26 @@ export const Default: Story = {
     const hoverClass = args.hoverMenu ? " --hover-hamburger-menu" : "";
 
     const navigationItems = args.items.map(item =>
-      `<a href="${item.href}" class="navbar__item${item.end ? " --end" : ""}">${item.text}</a>`,
+      `<a href="${item.href}" class="m-navbar__item${item.end ? " --end" : ""}">${item.text}</a>`,
     ).join("");
 
     const actionButtons = args.buttons.map(button =>
-      `<button class="btn${button.variant === "primary" ? " --primary" : ""}">${button.text}</button>`,
+      `<button class="m-btn${button.variant === "primary" ? " --primary" : ""}">${button.text}</button>`,
     ).join("");
 
     const hamburgerSection = args.showHamburger
       ? `
-      <div class="navbar__hamburger">
-        <button class="navbar__hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
+      <div class="m-navbar__hamburger">
+        <button class="m-navbar__hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
       </div>`
       : "";
 
     container.innerHTML = `
-      <nav role="navigation" class="navbar${transitionClass}${hoverClass}">
-        <a href="#" class="navbar__title">${args.title}</a>
-        <div class="navbar__items" id="navigation-menu">
+      <nav role="navigation" class="m-navbar${transitionClass}${hoverClass}">
+        <a href="#" class="m-navbar__title">${args.title}</a>
+        <div class="m-navbar__items" id="navigation-menu">
           ${navigationItems}
-          <div class="navbar__item --end">
+          <div class="m-navbar__item --end">
             ${actionButtons}
           </div>
         </div>
@@ -112,7 +112,7 @@ export const Default: Story = {
     const title = canvas.getByText("Brand Name");
     const hamburger = canvas.getByLabelText("Menu");
 
-    await expect(navbar).toHaveClass("navbar");
+    await expect(navbar).toHaveClass("m-navbar");
     await expect(title).toBeInTheDocument();
     await expect(hamburger).toBeInTheDocument();
     await expect(hamburger).toHaveAttribute("aria-expanded", "false");
@@ -138,20 +138,20 @@ export const MinimalNavbar: Story = {
     const hoverClass = args.hoverMenu ? " --hover-hamburger-menu" : "";
 
     const navigationItems = args.items.map(item =>
-      `<a href="${item.href}" class="navbar__item">${item.text}</a>`,
+      `<a href="${item.href}" class="m-navbar__item">${item.text}</a>`,
     ).join("");
 
     const hamburgerSection = args.showHamburger
       ? `
-      <div class="navbar__hamburger">
-        <button class="navbar__hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
+      <div class="m-navbar__hamburger">
+        <button class="m-navbar__hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
       </div>`
       : "";
 
     container.innerHTML = `
-      <nav role="navigation" class="navbar${transitionClass}${hoverClass}">
-        <a href="#" class="navbar__title">${args.title}</a>
-        <div class="navbar__items" id="navigation-menu">
+      <nav role="navigation" class="m-navbar${transitionClass}${hoverClass}">
+        <a href="#" class="m-navbar__title">${args.title}</a>
+        <div class="m-navbar__items" id="navigation-menu">
           ${navigationItems}
         </div>
         ${hamburgerSection}
@@ -197,20 +197,20 @@ export const MobileView: Story = {
     const hoverClass = args.hoverMenu ? " --hover-hamburger-menu" : "";
 
     const navigationItems = args.items.map(item =>
-      `<a href="${item.href}" class="navbar__item">${item.text}</a>`,
+      `<a href="${item.href}" class="m-navbar__item">${item.text}</a>`,
     ).join("");
 
     const hamburgerSection = args.showHamburger
       ? `
-      <div class="navbar__hamburger">
-        <button class="navbar__hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
+      <div class="m-navbar__hamburger">
+        <button class="m-navbar__hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
       </div>`
       : "";
 
     container.innerHTML = `
-      <nav role="navigation" class="navbar${transitionClass}${hoverClass}">
-        <a href="#" class="navbar__title">${args.title}</a>
-        <div class="navbar__items" id="navigation-menu">
+      <nav role="navigation" class="m-navbar${transitionClass}${hoverClass}">
+        <a href="#" class="m-navbar__title">${args.title}</a>
+        <div class="m-navbar__items" id="navigation-menu">
           ${navigationItems}
         </div>
         ${hamburgerSection}
@@ -251,7 +251,7 @@ export const MobileView: Story = {
     await expect(title).toBeInTheDocument();
     await expect(hamburger).toBeVisible();
 
-    const navItems = canvasElement.querySelector(".navbar__items") as HTMLElement;
+    const navItems = canvasElement.querySelector(".m-navbar__items") as HTMLElement;
     let computedStyle = getComputedStyle(navItems);
     await expect(computedStyle.opacity).toBe("0");
     await expect(computedStyle.visibility).toBe("hidden");
@@ -278,19 +278,19 @@ export const NoHamburger: Story = {
     const transitionClass = args.transition ? " --transition" : "";
 
     const navigationItems = args.items.map(item =>
-      `<a href="${item.href}" class="navbar__item">${item.text}</a>`,
+      `<a href="${item.href}" class="m-navbar__item">${item.text}</a>`,
     ).join("");
 
     const actionButtons = args.buttons.map(button =>
-      `<button class="btn${button.variant === "primary" ? " --primary" : ""}">${button.text}</button>`,
+      `<button class="m-btn${button.variant === "primary" ? " --primary" : ""}">${button.text}</button>`,
     ).join("");
 
     container.innerHTML = `
-      <nav role="navigation" class="navbar${transitionClass}">
-        <a href="#" class="navbar__title">${args.title}</a>
-        <div class="navbar__items">
+      <nav role="navigation" class="m-navbar${transitionClass}">
+        <a href="#" class="m-navbar__title">${args.title}</a>
+        <div class="m-navbar__items">
           ${navigationItems}
-          <div class="navbar__item --end">
+          <div class="m-navbar__item --end">
             ${actionButtons}
           </div>
         </div>

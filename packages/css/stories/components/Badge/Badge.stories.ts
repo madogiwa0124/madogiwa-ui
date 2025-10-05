@@ -71,7 +71,7 @@ export const Default: Story = {
   render: (args) => {
     const container = document.createElement("div");
     const badge = document.createElement("div");
-    badge.className = "badge";
+    badge.className = "m-badge";
     if (args["outline"]) badge.classList.add("--outline");
     if (args["size"] !== "default") badge.classList.add(`--${args["size"]}`);
     if (args["transition"]) badge.classList.add("--transition");
@@ -95,12 +95,12 @@ export const Default: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
-    const badge = canvas.querySelector(".badge") as HTMLElement;
+    const badge = canvas.querySelector(".m-badge") as HTMLElement;
     const badgeText = badge.querySelector("span") as HTMLSpanElement;
 
     await expect(canvas).not.toBeNull();
     await expect(badge).not.toBeNull();
-    await expect(badge).toHaveClass("badge");
+    await expect(badge).toHaveClass("m-badge");
     await expect(badgeText).toHaveTextContent("Badge label");
 
     await expect(badge).not.toHaveClass("--outline");
@@ -126,7 +126,7 @@ export const Variants: Story = {
 
     for (const variant of variants) {
       const badge = document.createElement("div");
-      badge.className = "badge";
+      badge.className = "m-badge";
       if (variant !== "default") {
         badge.classList.add(`--${variant}`);
       }
@@ -149,7 +149,7 @@ export const Variants: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
-    const badges = canvas.querySelectorAll(".badge");
+    const badges = canvas.querySelectorAll(".m-badge");
     for (const [index, badge] of badges.entries()) {
       const variant = [
         "default",
@@ -160,7 +160,7 @@ export const Variants: Story = {
         "warning",
       ][index];
       if (variant) {
-        await expect(badge).toHaveClass("badge");
+        await expect(badge).toHaveClass("m-badge");
         if (variant !== "default") {
           await expect(badge).toHaveClass(`--${variant}`);
         }
@@ -174,7 +174,7 @@ export const Link: Story = {
   render: (args) => {
     const container = document.createElement("div");
     const badge = document.createElement("button");
-    badge.className = "badge";
+    badge.className = "m-badge";
     if (args["outline"]) badge.classList.add("--outline");
     if (args["disabled"]) badge.disabled = true;
     if (args["transition"]) badge.classList.add("--transition");
@@ -195,12 +195,12 @@ export const Link: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
-    const badge = canvas.querySelector(".badge") as HTMLButtonElement;
+    const badge = canvas.querySelector(".m-badge") as HTMLButtonElement;
     const badgeText = badge.querySelector("span") as HTMLSpanElement;
 
     await expect(canvas).not.toBeNull();
     await expect(badge).not.toBeNull();
-    await expect(badge).toHaveClass("badge");
+    await expect(badge).toHaveClass("m-badge");
     await expect(badgeText).toHaveTextContent("Badge label");
 
     await expect(badge.tagName).toBe("BUTTON");
@@ -212,7 +212,7 @@ export const Outline: Story = {
   render: (args) => {
     const container = document.createElement("div");
     const badge = document.createElement("div");
-    badge.className = "badge";
+    badge.className = "m-badge";
     badge.classList.add("--outline");
     if (args["size"] !== "default") badge.classList.add(`--${args["size"]}`);
     if (args["transition"]) badge.classList.add("--transition");
@@ -233,12 +233,12 @@ export const Outline: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
-    const badge = canvas.querySelector(".badge") as HTMLElement;
+    const badge = canvas.querySelector(".m-badge") as HTMLElement;
     const badgeText = badge.querySelector("span") as HTMLSpanElement;
 
     await expect(canvas).not.toBeNull();
     await expect(badge).not.toBeNull();
-    await expect(badge).toHaveClass("badge");
+    await expect(badge).toHaveClass("m-badge");
     await expect(badge).toHaveClass("--outline");
     await expect(badgeText).toHaveTextContent("Badge label");
   },
@@ -250,10 +250,10 @@ export const WithIcon: Story = {
     container.style.display = "flex";
     container.style.gap = "10px";
     const badgeIconLeft = document.createElement("div");
-    badgeIconLeft.className = "badge";
+    badgeIconLeft.className = "m-badge";
     badgeIconLeft.innerHTML = `<span class="icon">+</span> <span>${args["label"]}</span>`;
     const badgeIconRight = document.createElement("div");
-    badgeIconRight.className = "badge";
+    badgeIconRight.className = "m-badge";
     badgeIconRight.innerHTML = `<span>${args["label"]}</span> <span class="icon">-</span>`;
     container.append(badgeIconLeft);
     container.append(badgeIconRight);
@@ -264,7 +264,7 @@ export const WithIcon: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
-    const badges = canvas.querySelectorAll(".badge");
+    const badges = canvas.querySelectorAll(".m-badge");
 
     await expect(canvas).not.toBeNull();
     await expect(badges).toHaveLength(2);
@@ -274,7 +274,7 @@ export const WithIcon: Story = {
       const leftIcon = leftIconBadge.querySelector(".icon") as HTMLSpanElement;
       const leftText = leftIconBadge.querySelectorAll("span")[1] as HTMLSpanElement;
 
-      await expect(leftIconBadge).toHaveClass("badge");
+      await expect(leftIconBadge).toHaveClass("m-badge");
       await expect(leftIcon).toHaveTextContent("+");
       await expect(leftText).toHaveTextContent("badge with Icon");
     }
@@ -286,7 +286,7 @@ export const WithIcon: Story = {
         "span",
       )[0] as HTMLSpanElement;
 
-      await expect(rightIconBadge).toHaveClass("badge");
+      await expect(rightIconBadge).toHaveClass("m-badge");
       await expect(rightIcon).toHaveTextContent("-");
       await expect(rightText).toHaveTextContent("badge with Icon");
     }

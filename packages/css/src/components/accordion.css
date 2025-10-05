@@ -1,4 +1,4 @@
-.accordion {
+.m-accordion {
   --accordion-summary-padding: var(--spacing-3) 0 var(--spacing-3) 0;
   --accordion-summary-font-weight: var(--font-weight-bold);
   --accordion-summary-icon-gap: var(--spacing-2);
@@ -12,7 +12,7 @@
   --accordion-outline-padding: 0 var(--spacing-2) 0 var(--spacing-2);
   --accordion-transition-time: 0.2s;
 
-  .accordion__summary {
+  .m-accordion__summary {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -37,7 +37,7 @@
     }
   }
 
-  .accordion__content,
+  .m-accordion__content,
   &::details-content {
     block-size: 0;
     opacity: 0;
@@ -45,15 +45,15 @@
   }
 
   &[open] {
-    .accordion__summary::before {
+    .m-accordion__summary::before {
       transform: var(--accordion-summary-icon-open-transform);
     }
 
-    .accordion__content {
+    .m-accordion__content {
       padding: var(--accordion-content-padding);
     }
 
-    .accordion__content,
+    .m-accordion__content,
     &::details-content {
       block-size: auto;
       opacity: 1;
@@ -77,11 +77,11 @@
     /* stylelint-disable-next-line plugin/use-baseline */
     interpolate-size: allow-keywords;
 
-    .accordion__summary::before {
+    .m-accordion__summary::before {
       transition: transform var(--accordion-transition-time) ease;
     }
 
-    .accordion__content,
+    .m-accordion__content,
     &::details-content {
       transition: block-size var(--accordion-transition-time) ease,
         opacity var(--accordion-transition-time) ease,

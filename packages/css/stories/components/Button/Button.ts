@@ -26,7 +26,7 @@ export const createButton = (props: ButtonProperties = {}): HTMLButtonElement =>
   button.textContent = label;
   button.type = "button";
 
-  button.classList.add("btn");
+  button.classList.add("m-btn");
 
   if (outline) button.classList.add("--outline");
   if (variant) button.classList.add(`--${variant}`);

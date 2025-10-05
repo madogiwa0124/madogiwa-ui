@@ -55,7 +55,7 @@ type Story = StoryObj<ColumnsProperties>;
 export const Default: Story = {
   render: (args) => {
     const container = document.createElement("div");
-    container.classList.add("columns");
+    container.classList.add("m-columns");
 
     if (args.noGap) {
       container.classList.add("--no-gap");
@@ -63,19 +63,19 @@ export const Default: Story = {
 
     if (args.showLeft) {
       const leftColumn = document.createElement("div");
-      leftColumn.classList.add("columns__left");
+      leftColumn.classList.add("m-columns__left");
       leftColumn.innerHTML = `<div style="background: #f0f9ff; padding: 1rem; border-radius: 4px; border-left: 4px solid #0284c7;">${args.leftContent}</div>`;
       container.append(leftColumn);
     }
 
     const mainColumn = document.createElement("div");
-    mainColumn.classList.add("columns__main");
+    mainColumn.classList.add("m-columns__main");
     mainColumn.innerHTML = `<div style="background: #f8fafc; padding: 1rem; border-radius: 4px; border: 1px solid #e2e8f0;">${args.mainContent}</div>`;
     container.append(mainColumn);
 
     if (args.showRight) {
       const rightColumn = document.createElement("div");
-      rightColumn.classList.add("columns__right");
+      rightColumn.classList.add("m-columns__right");
       rightColumn.innerHTML = `<div style="background: #fefce8; padding: 1rem; border-radius: 4px; border-right: 4px solid #ca8a04;">${args.rightContent}</div>`;
       container.append(rightColumn);
     }
@@ -91,13 +91,13 @@ export const Default: Story = {
     noGap: false,
   },
   play: async ({ canvasElement }) => {
-    const columnsContainer = canvasElement.querySelector<HTMLElement>(".columns");
+    const columnsContainer = canvasElement.querySelector<HTMLElement>(".m-columns");
 
-    await expect(columnsContainer).toHaveClass("columns");
+    await expect(columnsContainer).toHaveClass("m-columns");
 
-    const leftColumn = columnsContainer?.querySelector(".columns__left");
-    const mainColumn = columnsContainer?.querySelector(".columns__main");
-    const rightColumn = columnsContainer?.querySelector(".columns__right");
+    const leftColumn = columnsContainer?.querySelector(".m-columns__left");
+    const mainColumn = columnsContainer?.querySelector(".m-columns__main");
+    const rightColumn = columnsContainer?.querySelector(".m-columns__right");
 
     await expect(mainColumn).toBeInTheDocument();
 
@@ -114,23 +114,23 @@ export const Default: Story = {
 export const TwoColumnsMainSidebar: Story = {
   render: (args) => {
     const container = document.createElement("div");
-    container.classList.add("columns");
+    container.classList.add("m-columns");
 
     if (args.showLeft) {
       const leftColumn = document.createElement("div");
-      leftColumn.classList.add("columns__left");
+      leftColumn.classList.add("m-columns__left");
       leftColumn.innerHTML = `<div style="background: #f0f9ff; padding: 1rem; border-radius: 4px; border-left: 4px solid #0284c7;">${args.leftContent}</div>`;
       container.append(leftColumn);
     }
 
     const mainColumn = document.createElement("div");
-    mainColumn.classList.add("columns__main");
+    mainColumn.classList.add("m-columns__main");
     mainColumn.innerHTML = `<div style="background: #f8fafc; padding: 1rem; border-radius: 4px; border: 1px solid #e2e8f0;">${args.mainContent}</div>`;
     container.append(mainColumn);
 
     if (args.showRight) {
       const rightColumn = document.createElement("div");
-      rightColumn.classList.add("columns__right");
+      rightColumn.classList.add("m-columns__right");
       rightColumn.innerHTML = `<div style="background: #fefce8; padding: 1rem; border-radius: 4px; border-right: 4px solid #ca8a04;">${args.rightContent}</div>`;
       container.append(rightColumn);
     }
@@ -145,10 +145,10 @@ export const TwoColumnsMainSidebar: Story = {
     showRight: false,
   },
   play: async ({ canvasElement }) => {
-    const columnsContainer = canvasElement.querySelector<HTMLElement>(".columns");
-    const leftColumn = columnsContainer?.querySelector(".columns__left");
-    const mainColumn = columnsContainer?.querySelector(".columns__main");
-    const rightColumn = columnsContainer?.querySelector(".columns__right");
+    const columnsContainer = canvasElement.querySelector<HTMLElement>(".m-columns");
+    const leftColumn = columnsContainer?.querySelector(".m-columns__left");
+    const mainColumn = columnsContainer?.querySelector(".m-columns__main");
+    const rightColumn = columnsContainer?.querySelector(".m-columns__right");
 
     if (leftColumn) {
       await expect(leftColumn).toBeInTheDocument();
@@ -192,10 +192,10 @@ export const ResponsiveDemo: Story = {
     window.addEventListener("resize", updateViewportInfo);
 
     const columnsContainer = document.createElement("div");
-    columnsContainer.classList.add("columns");
+    columnsContainer.classList.add("m-columns");
 
     const leftColumn = document.createElement("div");
-    leftColumn.classList.add("columns__left");
+    leftColumn.classList.add("m-columns__left");
     leftColumn.innerHTML = `
       <div style="background: #dbeafe; padding: 1rem; border-radius: 4px; text-align: center; border: 2px solid #3b82f6;">
         <strong>Left Column</strong><br>
@@ -204,7 +204,7 @@ export const ResponsiveDemo: Story = {
     `;
 
     const mainColumn = document.createElement("div");
-    mainColumn.classList.add("columns__main");
+    mainColumn.classList.add("m-columns__main");
     mainColumn.innerHTML = `
       <div style="background: #f3f4f6; padding: 1rem; border-radius: 4px; text-align: center; border: 2px solid #6b7280;">
         <strong>Main Column</strong><br>
@@ -213,7 +213,7 @@ export const ResponsiveDemo: Story = {
     `;
 
     const rightColumn = document.createElement("div");
-    rightColumn.classList.add("columns__right");
+    rightColumn.classList.add("m-columns__right");
     rightColumn.innerHTML = `
       <div style="background: #fef3c7; padding: 1rem; border-radius: 4px; text-align: center; border: 2px solid #f59e0b;">
         <strong>Right Column</strong><br>
@@ -231,16 +231,16 @@ export const ResponsiveDemo: Story = {
     return container;
   },
   play: async ({ canvasElement }) => {
-    const leftColumn = canvasElement.querySelector(".columns__left");
-    const mainColumn = canvasElement.querySelector(".columns__main");
-    const rightColumn = canvasElement.querySelector(".columns__right");
+    const leftColumn = canvasElement.querySelector(".m-columns__left");
+    const mainColumn = canvasElement.querySelector(".m-columns__main");
+    const rightColumn = canvasElement.querySelector(".m-columns__right");
 
     await expect(leftColumn).toBeInTheDocument();
     await expect(mainColumn).toBeInTheDocument();
     await expect(rightColumn).toBeInTheDocument();
 
     // Test responsive container
-    const container = canvasElement.querySelector(".columns");
+    const container = canvasElement.querySelector(".m-columns");
     await expect(container).toBeInTheDocument();
 
     // Verify viewport info display

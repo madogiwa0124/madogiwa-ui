@@ -33,29 +33,29 @@ export const Default: Story = {
   render: (args) => {
     const container = document.createElement("div");
     const dialog = document.createElement("dialog");
-    dialog.className = "dialog";
+    dialog.className = "m-dialog";
     if (args["backDropBlur"]) dialog.classList.add("--backdrop-blur");
     if (args["transition"]) dialog.classList.add("--transition");
 
     dialog.innerHTML = `
-      <header class="dialog__header">
+      <header class="m-dialog__header">
         <p style="font-weight: bold;">Are you sure?</p>
       </header>
-      <div class="dialog__content">
+      <div class="m-dialog__content">
         <p class="p">Do you really want to delete this item? Do you really want to delete this item?</p>
         <p class="p">This action cannot be undone.</p>
       </div>
-      <footer class="dialog__footer">
-        <button class="btn" onClick="const dialog = document.querySelector('.dialog'); dialog.close()">
+      <footer class="m-dialog__footer">
+        <button class="m-btn" onClick="const dialog = document.querySelector('.m-dialog'); dialog.close()">
           Cancel
         </button>
         &nbsp;
-        <button class="btn --primary">Save</button>
+        <button class="m-btn --primary">Save</button>
       </footer>
     `;
     const openDialogButton = document.createElement("button");
     openDialogButton.textContent = "Open Dialog";
-    openDialogButton.className = "btn --primary";
+    openDialogButton.className = "m-btn --primary";
     openDialogButton.addEventListener("click", () => {
       dialog.showModal();
     });

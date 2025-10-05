@@ -72,10 +72,10 @@ export const Default: Story = {
   render: (args) => {
     const container = document.createElement("div");
     const alert = document.createElement("div");
-    alert.classList.add("alert");
+    alert.classList.add("m-alert");
     alert.setAttribute("role", "alert");
     alert.innerHTML = `
-      <div class="alert__content">${args["content"]}</div>
+      <div class="m-alert__content">${args["content"]}</div>
     `;
     if (args["variants"] !== "default") {
       alert.classList.add(`--${args["variants"]}`);
@@ -92,13 +92,13 @@ export const Default: Story = {
 
     const alert = canvas.getByRole("alert");
     await expect(alert).toBeInTheDocument();
-    await expect(alert).toHaveClass("alert");
+    await expect(alert).toHaveClass("m-alert");
 
     if (args.variants !== "default") {
       await expect(alert).toHaveClass(`--${args.variants}`);
     }
 
-    const content = alert.querySelector(".alert__content") as HTMLElement;
+    const content = alert.querySelector(".m-alert__content") as HTMLElement;
     await expect(content).toBeInTheDocument();
     await expect(content).toHaveTextContent(args.content);
   },
@@ -112,38 +112,38 @@ export const Variants: Story = {
     container.style.gap = "8px";
     const alertDefault = document.createElement("div");
     alertDefault.setAttribute("role", "alert");
-    alertDefault.classList.add("alert");
-    alertDefault.innerHTML = "<div class=\"alert__content\">This is a default alert message.</div>";
+    alertDefault.classList.add("m-alert");
+    alertDefault.innerHTML = "<div class=\"m-alert__content\">This is a default alert message.</div>";
     container.append(alertDefault);
 
     const alertPrimary = document.createElement("div");
     alertPrimary.setAttribute("role", "alert");
-    alertPrimary.classList.add("alert", "--primary");
-    alertPrimary.innerHTML = "<div class=\"alert__content\">This is a primary alert message.</div>";
+    alertPrimary.classList.add("m-alert", "--primary");
+    alertPrimary.innerHTML = "<div class=\"m-alert__content\">This is a primary alert message.</div>";
     container.append(alertPrimary);
 
     const alertSecondary = document.createElement("div");
     alertSecondary.setAttribute("role", "alert");
-    alertSecondary.classList.add("alert", "--secondary");
-    alertSecondary.innerHTML = "<div class=\"alert__content\">This is a secondary alert message.</div>";
+    alertSecondary.classList.add("m-alert", "--secondary");
+    alertSecondary.innerHTML = "<div class=\"m-alert__content\">This is a secondary alert message.</div>";
     container.append(alertSecondary);
 
     const alertTertiary = document.createElement("div");
     alertTertiary.setAttribute("role", "alert");
-    alertTertiary.classList.add("alert", "--tertiary");
-    alertTertiary.innerHTML = "<div class=\"alert__content\">This is a tertiary alert message.</div>";
+    alertTertiary.classList.add("m-alert", "--tertiary");
+    alertTertiary.innerHTML = "<div class=\"m-alert__content\">This is a tertiary alert message.</div>";
     container.append(alertTertiary);
 
     const alertDanger = document.createElement("div");
     alertDanger.setAttribute("role", "alert");
-    alertDanger.classList.add("alert", "--danger");
-    alertDanger.innerHTML = "<div class=\"alert__content\">This is a danger alert message.</div>";
+    alertDanger.classList.add("m-alert", "--danger");
+    alertDanger.innerHTML = "<div class=\"m-alert__content\">This is a danger alert message.</div>";
     container.append(alertDanger);
 
     const alertWarning = document.createElement("div");
     alertWarning.setAttribute("role", "alert");
-    alertWarning.classList.add("alert", "--warning");
-    alertWarning.innerHTML = "<div class=\"alert__content\">This is a warning alert message.</div>";
+    alertWarning.classList.add("m-alert", "--warning");
+    alertWarning.innerHTML = "<div class=\"m-alert__content\">This is a warning alert message.</div>";
     container.append(alertWarning);
 
     return container;
@@ -160,13 +160,13 @@ export const Variants: Story = {
     for (const [index, variant] of variants.entries()) {
       const alert = alerts[index];
       await expect(alert).toBeInTheDocument();
-      await expect(alert).toHaveClass("alert");
+      await expect(alert).toHaveClass("m-alert");
 
       if (variant !== "default") {
         await expect(alert).toHaveClass(`--${variant}`);
       }
 
-      const content = alert?.querySelector(".alert__content") as HTMLElement;
+      const content = alert?.querySelector(".m-alert__content") as HTMLElement;
       await expect(content).toBeInTheDocument();
       await expect(content).toHaveTextContent(`This is a ${variant} alert message.`);
     }
@@ -178,11 +178,11 @@ export const WithIcon: Story = {
     const container = document.createElement("div");
     const alert = document.createElement("div");
     alert.setAttribute("role", "alert");
-    alert.classList.add("alert");
+    alert.classList.add("m-alert");
 
     alert.innerHTML = `
-      <div class="alert__icons">${args.icon}</div>
-      <div class="alert__content">${args.content}</div>
+      <div class="m-alert__icons">${args.icon}</div>
+      <div class="m-alert__content">${args.content}</div>
     `;
     if (args["variants"] !== "default") {
       alert.classList.add(`--${args["variants"]}`);
@@ -200,17 +200,17 @@ export const WithIcon: Story = {
 
     const alert = canvas.getByRole("alert");
     await expect(alert).toBeInTheDocument();
-    await expect(alert).toHaveClass("alert");
+    await expect(alert).toHaveClass("m-alert");
 
     if (args.variants !== "default") {
       await expect(alert).toHaveClass(`--${args.variants}`);
     }
 
-    const iconContainer = alert.querySelector(".alert__icons") as HTMLElement;
+    const iconContainer = alert.querySelector(".m-alert__icons") as HTMLElement;
     await expect(iconContainer).toBeInTheDocument();
     await expect(iconContainer).toContainHTML(args.icon);
 
-    const content = alert.querySelector(".alert__content") as HTMLElement;
+    const content = alert.querySelector(".m-alert__content") as HTMLElement;
     await expect(content).toBeInTheDocument();
     await expect(content).toHaveTextContent(args.content);
   },
@@ -221,11 +221,11 @@ export const withAction: Story = {
     const container = document.createElement("div");
     const alert = document.createElement("div");
     alert.setAttribute("role", "alert");
-    alert.classList.add("alert");
+    alert.classList.add("m-alert");
 
     alert.innerHTML = `
-      <div class="alert__icons">${args.icon}</div>
-      <div class="alert__content">${args.content}</div>
+      <div class="m-alert__icons">${args.icon}</div>
+      <div class="m-alert__content">${args.content}</div>
     `;
     if (args["variants"] !== "default") {
       alert.classList.add(`--${args["variants"]}`);
@@ -233,8 +233,8 @@ export const withAction: Story = {
 
     const actionButton = document.createElement("button");
     const action = document.createElement("div");
-    action.classList.add("alert__actions");
-    actionButton.classList.add("btn", "--icon-only", "--rounded");
+    action.classList.add("m-alert__actions");
+    actionButton.classList.add("m-btn", "--icon-only", "--rounded");
     if (args["variants"] !== "default") {
       actionButton.classList.add(`--${args["variants"]}`);
     }
@@ -254,28 +254,28 @@ export const withAction: Story = {
 
     const alert = canvas.getByRole("alert");
     await expect(alert).toBeInTheDocument();
-    await expect(alert).toHaveClass("alert");
+    await expect(alert).toHaveClass("m-alert");
 
     if (args.variants !== "default") {
       await expect(alert).toHaveClass(`--${args.variants}`);
     }
 
-    const iconContainer = alert.querySelector(".alert__icons") as HTMLElement;
+    const iconContainer = alert.querySelector(".m-alert__icons") as HTMLElement;
     await expect(iconContainer).toBeInTheDocument();
     await expect(iconContainer).toContainHTML(args.icon);
 
-    const content = alert.querySelector(".alert__content") as HTMLElement;
+    const content = alert.querySelector(".m-alert__content") as HTMLElement;
     await expect(content).toBeInTheDocument();
     await expect(content).toHaveTextContent(args.content);
 
     const actionButton = canvas.getByRole("button");
     await expect(actionButton).toBeInTheDocument();
-    await expect(actionButton).toHaveClass("btn", "--icon-only", "--rounded");
+    await expect(actionButton).toHaveClass("m-btn", "--icon-only", "--rounded");
 
     await userEvent.click(actionButton);
     await expect(actionButton).toHaveFocus();
 
-    const actionsContainer = alert.querySelector(".alert__actions") as HTMLElement;
+    const actionsContainer = alert.querySelector(".m-alert__actions") as HTMLElement;
     await expect(actionsContainer).toBeInTheDocument();
     await expect(actionsContainer).toContainElement(actionButton);
   },
@@ -286,13 +286,13 @@ export const autoDismiss: Story = {
     const container = document.createElement("div");
     const alert = document.createElement("div");
     alert.setAttribute("role", "alert");
-    alert.classList.add("alert");
+    alert.classList.add("m-alert");
     if (args["autoDismiss"]) {
       alert.classList.add("--auto-dismiss");
       alert.dataset["autoDismiss"] = args["autoDismiss"];
     }
     alert.innerHTML = `
-      <div class="alert__content">${args.content}</div>
+      <div class="m-alert__content">${args.content}</div>
     `;
     if (args["variants"] !== "default") {
       alert.classList.add(`--${args["variants"]}`);
@@ -314,13 +314,13 @@ export const autoDismiss: Story = {
 
     const alert = canvas.getByRole("alert");
     await expect(alert).toBeVisible();
-    await expect(alert).toHaveClass("alert");
+    await expect(alert).toHaveClass("m-alert");
 
     if (args.variants !== "default") {
       await expect(alert).toHaveClass(`--${args.variants}`);
     }
 
-    const content = alert.querySelector(".alert__content") as HTMLElement;
+    const content = alert.querySelector(".m-alert__content") as HTMLElement;
     await expect(content).toBeInTheDocument();
     await expect(content).toHaveTextContent(args.content);
 

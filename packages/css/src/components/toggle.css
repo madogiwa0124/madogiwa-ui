@@ -1,4 +1,4 @@
-input[type="checkbox"].toggle {
+input[type="checkbox"].m-toggle {
   --toggle-size: 1.2em;
   --toggle-transition: 0.1s ease;
   --toggle-width: calc(var(--toggle-size) * 1.8);

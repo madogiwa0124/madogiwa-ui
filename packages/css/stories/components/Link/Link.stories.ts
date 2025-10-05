@@ -33,7 +33,7 @@ type Story = StoryObj<LinkProperties>;
 export const Default: Story = {
   render: (args) => {
     const link = document.createElement("a");
-    link.classList.add("link");
+    link.classList.add("m-link");
     link.textContent = args["text"];
     link.href = args["href"];
     link.target = args["newTab"] ? "_blank" : "_self";
@@ -49,7 +49,7 @@ export const Default: Story = {
     const link = canvas.querySelector("a") as HTMLAnchorElement;
 
     await expect(link).not.toBeNull();
-    await expect(link).toHaveClass("link");
+    await expect(link).toHaveClass("m-link");
     await expect(link).toHaveTextContent(args["text"]);
     await expect(link).toHaveAttribute("href", args["href"]);
     await expect(link).not.toHaveAttribute("rel");
@@ -64,7 +64,7 @@ export const LinkInParagraph: Story = {
     paragraph.textContent = "This is a ";
 
     const link = document.createElement("a");
-    link.classList.add("link");
+    link.classList.add("m-link");
     link.textContent = "link";
     link.href = "https://example.com";
 
@@ -82,7 +82,7 @@ export const LinkInParagraph: Story = {
 
     await expect(paragraph).not.toBeNull();
     await expect(link).not.toBeNull();
-    await expect(link).toHaveClass("link");
+    await expect(link).toHaveClass("m-link");
     await expect(link).toHaveTextContent("link");
     await expect(link).toHaveAttribute("href", "https://example.com");
 

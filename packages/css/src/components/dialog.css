@@ -1,4 +1,4 @@
-dialog.dialog {
+dialog.m-dialog {
   --dialog-bg-color: var(--color-bg-light);
   --dialog-zindex: var(--zindex-modal);
   --dialog-padding: var(--spacing-3);

@@ -21,7 +21,7 @@ export function createRadio(props: RadioProperties = {}): HTMLInputElement {
     id,
     checked = false,
     disabled = false,
-    className = "radio",
+    className = "m-radio",
   } = props;
 
   const radio = document.createElement("input");

@@ -7,7 +7,7 @@ export interface CardProperties {
 }
 
 export function createCard(props: CardProperties = {}): HTMLDivElement {
-  const { className = "card", floating = false, content, image, style } = props;
+  const { className = "m-card", floating = false, content, image, style } = props;
 
   const card = document.createElement("div");
 
@@ -21,7 +21,7 @@ export function createCard(props: CardProperties = {}): HTMLDivElement {
 
   if (image) {
     const imageElement = document.createElement("img");
-    imageElement.className = "card__image";
+    imageElement.className = "m-card__image";
     imageElement.src = image;
     imageElement.alt = "Card Image";
     card.append(imageElement);
@@ -29,7 +29,7 @@ export function createCard(props: CardProperties = {}): HTMLDivElement {
 
   if (content) {
     const contentElement = document.createElement("div");
-    contentElement.className = "card__content";
+    contentElement.className = "m-card__content";
     contentElement.innerHTML = content;
     card.append(contentElement);
   }

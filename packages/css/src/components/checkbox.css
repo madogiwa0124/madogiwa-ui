@@ -1,4 +1,4 @@
-input[type="checkbox"].checkbox {
+input[type="checkbox"].m-checkbox {
   --checkbox-size: 1.2em;
   --checkbox-border-color: var(--color-dark);
   --checkbox-bg-color: var(--color-light);

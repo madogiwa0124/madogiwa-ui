@@ -1,4 +1,4 @@
-.container {
+.m-container {
   --container-2xl-max-width: var(--media-2xl-max-width);
   --container-xl-max-width: var(--media-xl-max-width);
   --container-lg-max-width: var(--media-lg-max-width);

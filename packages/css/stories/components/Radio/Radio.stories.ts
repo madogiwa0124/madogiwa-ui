@@ -44,7 +44,7 @@ export const Default: Story = {
     ) as HTMLInputElement;
 
     await expect(radio).not.toBeNull();
-    await expect(radio).toHaveClass("radio");
+    await expect(radio).toHaveClass("m-radio");
     await expect(radio).not.toBeChecked();
     await expect(radio).not.toBeDisabled();
 
@@ -82,7 +82,7 @@ export const Checked: Story = {
     ) as HTMLInputElement;
 
     await expect(radio).not.toBeNull();
-    await expect(radio).toHaveClass("radio");
+    await expect(radio).toHaveClass("m-radio");
     await expect(radio).toBeChecked();
     await expect(radio).toHaveAttribute("name", "radio-checked");
     await expect(radio).toHaveAttribute("value", "radio-checked");
@@ -105,7 +105,7 @@ export const Disabled: Story = {
     ) as HTMLInputElement;
 
     await expect(radio).not.toBeNull();
-    await expect(radio).toHaveClass("radio");
+    await expect(radio).toHaveClass("m-radio");
     await expect(radio).not.toBeChecked();
     await expect(radio).toBeDisabled();
     await expect(radio).toHaveAttribute("name", "radio-disabled");
@@ -129,7 +129,7 @@ export const CheckedDisabled: Story = {
     ) as HTMLInputElement;
 
     await expect(radio).not.toBeNull();
-    await expect(radio).toHaveClass("radio");
+    await expect(radio).toHaveClass("m-radio");
     await expect(radio).toBeChecked();
     await expect(radio).toBeDisabled();
     await expect(radio).toHaveAttribute("name", "radio-checked-disabled");

@@ -12,7 +12,7 @@ export const createHeading = (props: HeadingProperties = {}): HTMLElement => {
   const heading = document.createElement(`h${safeLevel.toString()}`);
   heading.textContent = text;
 
-  heading.classList.add(`h${safeLevel.toString()}`);
+  heading.classList.add(`m-h${safeLevel.toString()}`);
 
   if (className) {
     heading.classList.add(className);

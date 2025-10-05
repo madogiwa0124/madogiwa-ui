@@ -32,11 +32,11 @@ export const Default: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
-    const card = canvas.querySelector(".card") as HTMLDivElement;
-    const content = canvas.querySelector(".card__content") as HTMLDivElement;
+    const card = canvas.querySelector(".m-card") as HTMLDivElement;
+    const content = canvas.querySelector(".m-card__content") as HTMLDivElement;
 
     await expect(card).not.toBeNull();
-    await expect(card).toHaveClass("card");
+    await expect(card).toHaveClass("m-card");
     await expect(content).toHaveTextContent("Card Title");
     await expect(content).toHaveTextContent("This is the card content.");
   },
@@ -55,10 +55,10 @@ export const Floating: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
-    const card = canvas.querySelector(".card") as HTMLDivElement;
+    const card = canvas.querySelector(".m-card") as HTMLDivElement;
 
     await expect(card).not.toBeNull();
-    await expect(card).toHaveClass("card");
+    await expect(card).toHaveClass("m-card");
     await expect(card).toHaveClass("--floating");
   },
 };
@@ -77,8 +77,8 @@ export const WithImage: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
-    const card = canvas.querySelector(".card") as HTMLDivElement;
-    const image = canvas.querySelector(".card__image") as HTMLImageElement;
+    const card = canvas.querySelector(".m-card") as HTMLDivElement;
+    const image = canvas.querySelector(".m-card__image") as HTMLImageElement;
 
     await expect(card).not.toBeNull();
     await expect(image).not.toBeNull();

@@ -31,15 +31,15 @@ export const Default: Story = {
   render: (args) => {
     const container = document.createElement("div");
     const nav = document.createElement("nav");
-    nav.className = "tabs";
+    nav.className = "m-tabs";
     if (args["transition"]) nav.classList.add("--transition");
     if (args["scrollhint"]) nav.classList.add("--scrollhint");
     nav.innerHTML = `
-      <div class="tabs__list" role="tablist">
-        <button class="tabs__item --active" role="tab" aria-selected="true" aria-controls="panel-1" tabindex="0">Active Tab</button>
-        <button class="tabs__item" role="tab" aria-selected="false" aria-controls="panel-2" tabindex="-1">Tab 2</button>
-        <button class="tabs__item" role="tab" aria-selected="false" aria-controls="panel-3" tabindex="-1">Tab 3</button>
-        <button class="tabs__item" role="tab" aria-selected="false" aria-controls="panel-4" tabindex="-1" disabled>Disabled</button>
+      <div class="m-tabs__list" role="tablist">
+        <button class="m-tabs__item --active" role="tab" aria-selected="true" aria-controls="panel-1" tabindex="0">Active Tab</button>
+        <button class="m-tabs__item" role="tab" aria-selected="false" aria-controls="panel-2" tabindex="-1">Tab 2</button>
+        <button class="m-tabs__item" role="tab" aria-selected="false" aria-controls="panel-3" tabindex="-1">Tab 3</button>
+        <button class="m-tabs__item" role="tab" aria-selected="false" aria-controls="panel-4" tabindex="-1" disabled>Disabled</button>
       </div>
     `;
     container.append(nav);
@@ -61,20 +61,20 @@ export const Default: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
-    const tabs = canvas.querySelector(".tabs") as HTMLElement;
+    const tabs = canvas.querySelector(".m-tabs") as HTMLElement;
     const activeTab = tabs.querySelector(
-      ".tabs__item.--active",
+      ".m-tabs__item.--active",
     ) as HTMLButtonElement;
     const tab = tabs.querySelector(
-      ".tabs__item:not(.--active)",
+      ".m-tabs__item:not(.--active)",
     ) as HTMLButtonElement;
     const disabledTab = tabs.querySelector(
-      ".tabs__item[disabled]",
+      ".m-tabs__item[disabled]",
     ) as HTMLButtonElement;
     await expect(canvas).not.toBeNull();
     await expect(tabs).not.toBeNull();
-    await expect(tabs.querySelectorAll(".tabs__item").length).toBe(4);
-    await expect(tabs).toHaveClass("tabs");
+    await expect(tabs.querySelectorAll(".m-tabs__item").length).toBe(4);
+    await expect(tabs).toHaveClass("m-tabs");
     await expect(tab).toHaveTextContent("Tab 2");
     await expect(tab).toHaveAttribute("aria-selected", "false");
     await expect(tab).toHaveAttribute("tabindex", "-1");

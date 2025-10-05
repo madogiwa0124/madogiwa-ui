@@ -1,4 +1,4 @@
-.tabs {
+.m-tabs {
   --tabs-default-border: 1px solid var(--color-border);
   --tabs-scrollbar-color: rgb(from var(--color-primary) r g b / 50%) transparent;
   --tabs-item-padding: var(--spacing-2) var(--spacing-4);
@@ -19,7 +19,7 @@
   --tabs-scrollhint-item-opacity: 50%;
   --tabs-scrollhint-shadow-color: rgb(0 0 0 / var(--tabs-scrollhint-shadow-opacity));
 
-  .tabs__list,
+  .m-tabs__list,
   [role="tablist"] {
     display: flex;
     border-bottom: var(--tabs-default-border);
@@ -31,7 +31,7 @@
     text-wrap: nowrap;
   }
 
-  .tabs__item,
+  .m-tabs__item,
   [role="tab"] {
     padding: var(--tabs-item-padding);
     background-color: var(--tabs-item-background-color);
@@ -54,7 +54,7 @@
   }
 
   &.--transition {
-    .tabs__item,
+    .m-tabs__item,
     [role="tab"] {
       &:hover {
         transition: filter var(--tabs-hover-transition);
@@ -87,11 +87,11 @@
 
     /* NOTE: Don't move this location as it's styling for scroll hints */
     /* stylelint-disable-next-line no-descending-specificity */
-    .tabs__item, [role="tab"] {
+    .m-tabs__item, [role="tab"] {
       background-color: rgb(from var(--tabs-item-background-color) r g b / var(--tabs-scrollhint-item-opacity));
     }
 
-    .tabs__list,
+    .m-tabs__list,
     [role="tablist"] {
       background: linear-gradient(to left,
           transparent,

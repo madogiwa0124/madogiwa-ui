@@ -53,7 +53,7 @@ export const Default: Story = {
   render: (args) => {
     const wrapper = document.createElement("div");
     const container = document.createElement("div");
-    container.classList.add("container");
+    container.classList.add("m-container");
 
     if (args.padding) container.classList.add("--padding");
     if (args.noCentering) container.classList.add("--no-centering");
@@ -75,10 +75,10 @@ export const Default: Story = {
     noCentering: false,
   },
   play: async ({ canvasElement, args }) => {
-    const container = canvasElement.querySelector(".container") as HTMLElement;
+    const container = canvasElement.querySelector(".m-container") as HTMLElement;
 
     await expect(container).toBeInTheDocument();
-    await expect(container).toHaveClass("container");
+    await expect(container).toHaveClass("m-container");
 
     const content = container.querySelector("p") as HTMLElement;
     await expect(content).toBeInTheDocument();
@@ -130,7 +130,7 @@ export const ResponsiveDemo: Story = {
       heading.style.fontSize = "1rem";
 
       const container = document.createElement("div");
-      container.classList.add("container");
+      container.classList.add("m-container");
       container.style.backgroundColor = bgColor;
       container.style.border = "2px dashed #666";
       container.style.setProperty("--container-2xl-max-width", width);
@@ -168,12 +168,12 @@ export const ResponsiveDemo: Story = {
     noCentering: false,
   },
   play: async ({ canvasElement }) => {
-    const containers = canvasElement.querySelectorAll(".container");
+    const containers = canvasElement.querySelectorAll(".m-container");
 
     await expect(containers).toHaveLength(5);
 
     for (const container of containers) {
-      await expect(container).toHaveClass("container");
+      await expect(container).toHaveClass("m-container");
 
       const computedStyle = getComputedStyle(container as HTMLElement);
       const marginInlineStart = computedStyle.marginInlineStart;
@@ -190,7 +190,7 @@ export const NestedContent: Story = {
   render: (args) => {
     const wrapper = document.createElement("div");
     const container = document.createElement("div");
-    container.classList.add("container");
+    container.classList.add("m-container");
     if (args.padding) container.classList.add("--padding");
     if (args.noCentering) container.classList.add("--no-centering");
 
@@ -246,10 +246,10 @@ export const NestedContent: Story = {
     noCentering: false,
   },
   play: async ({ canvasElement }) => {
-    const container = canvasElement.querySelector(".container") as HTMLElement;
+    const container = canvasElement.querySelector(".m-container") as HTMLElement;
 
     await expect(container).toBeInTheDocument();
-    await expect(container).toHaveClass("container");
+    await expect(container).toHaveClass("m-container");
 
     // Test that nested elements exist
     const header = container.querySelector("header") as HTMLElement;

@@ -50,7 +50,7 @@ export const Default: Story = {
     const container = document.createElement("div");
     const toggle = document.createElement("input");
     toggle.type = "checkbox";
-    toggle.className = "toggle";
+    toggle.className = "m-toggle";
     toggle.checked = args["checked"];
     toggle.disabled = args["disabled"];
     container.append(toggle);
@@ -63,7 +63,7 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
     const toggle = canvas.querySelector(
-      "input[type='checkbox'].toggle",
+      "input[type='checkbox'].m-toggle",
     ) as HTMLInputElement;
     await expect(toggle).not.toBeNull();
     toggle.click();
@@ -78,7 +78,7 @@ export const Disabled: Story = {
     const container = document.createElement("div");
     const toggle = document.createElement("input");
     toggle.type = "checkbox";
-    toggle.className = "toggle";
+    toggle.className = "m-toggle";
     toggle.disabled = true;
     container.append(toggle);
     return container;
@@ -87,7 +87,7 @@ export const Disabled: Story = {
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
     const toggle = canvas.querySelector(
-      "input[type='checkbox'].toggle",
+      "input[type='checkbox'].m-toggle",
     ) as HTMLInputElement;
     await expect(toggle).not.toBeNull();
     await expect(toggle).toBeDisabled();

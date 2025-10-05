@@ -41,7 +41,7 @@ export const Default: Story = {
     const heading = canvas.querySelector("h1") as HTMLHeadingElement;
 
     await expect(heading).not.toBeNull();
-    await expect(heading).toHaveClass("h1");
+    await expect(heading).toHaveClass("m-h1");
     await expect(heading).toHaveTextContent(args.text ?? "Heading text");
     await expect(heading.tagName.toLowerCase()).toBe("h1");
   },
@@ -71,7 +71,7 @@ export const AllHeadings: Story = {
     for (let level = 1; level <= 6; level++) {
       const heading = canvas.querySelector(`h${level.toString()}`) as HTMLHeadingElement;
       await expect(heading).not.toBeNull();
-      await expect(heading).toHaveClass(`h${level.toString()}`);
+      await expect(heading).toHaveClass(`m-h${level.toString()}`);
       await expect(heading).toHaveTextContent(`Heading level ${level.toString()}`);
       await expect(heading.tagName.toLowerCase()).toBe(`h${level.toString()}`);
     }

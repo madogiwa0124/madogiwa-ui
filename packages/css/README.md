@@ -36,17 +36,17 @@ import '@madogiwa-ui/css/src/components/button.css';
 
 ```html
 <!-- Alert Component -->
-<div class="alert --primary">
-  <div class="alert__content">
+<div class="m-alert --primary">
+  <div class="m-alert__content">
     Primary alert message
   </div>
 </div>
 
 <!-- Button Component -->
-<button class="btn --primary">Primary Button</button>
+<button class="m-btn --primary">Primary Button</button>
 
 <!-- Container Layout -->
-<div class="container">
+<div class="m-container">
   <p>Responsive container content</p>
 </div>
 ```
@@ -68,7 +68,7 @@ import '@madogiwa-ui/css/src/components/button.css';
   --font-family-base: 'Your Font', sans-serif;
 }
 
-.btn {
+.m-btn {
   --btn-color-primary: #your-custom-color
 }
 ```
@@ -92,11 +92,14 @@ import '@madogiwa-ui/css/src/components/button.css';
 We employ BEM-based CSS design while leveraging native CSS Nesting for style scoping.
 
 ```css
-.block {
-  .block__element {}
+.prefix-block {
+  .prefix-block__element {}
   .--modifier {}
 }
 ```
+
+We use `m-` as the prefix for all CSS classes to avoid naming conflicts and ensure consistent component identification.
+This prefix system helps maintain clear separation between framework styles and your custom application styles.
 
 ## 🌐 Browser Support
 

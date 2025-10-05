@@ -1,12 +1,12 @@
-.hidden {
+.m-hidden {
   display: none !important;
 }
 
-.visible {
+.m-visible {
   display: block !important;
 }
 
-.invisible {
+.m-invisible {
   visibility: hidden !important;
 }
 
@@ -14,7 +14,7 @@
   Accessibility considerations for hiding text
   ref: https://tailwindcss.com/docs/display#screen-reader-only
 */
-.sr-only {
+.m-sr-only {
 position: absolute;
 width: 1px;
 height: 1px;

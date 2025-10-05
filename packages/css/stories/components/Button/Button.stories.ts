@@ -49,7 +49,7 @@ export const Default: Story = {
 
     await expect(button).not.toBeDisabled();
     await expect(button).toHaveTextContent("Button");
-    await expect(button).toHaveClass("btn");
+    await expect(button).toHaveClass("m-btn");
   },
 };
 
@@ -81,7 +81,7 @@ export const Variants: Story = {
     for (const [index, button] of buttons.entries()) {
       const variant = ["primary", "secondary", "tertiary"][index];
       if (variant) {
-        await expect(button).toHaveClass("btn");
+        await expect(button).toHaveClass("m-btn");
         await expect(button).toHaveClass(`--${variant}`);
         await expect(button).toHaveTextContent(variant);
       }
@@ -118,7 +118,7 @@ export const OutlineButtons: Story = {
     for (const [index, button] of buttons.entries()) {
       const variant = ["default", "primary", "secondary", "tertiary"][index];
       if (variant) {
-        await expect(button).toHaveClass("btn");
+        await expect(button).toHaveClass("m-btn");
         await expect(button).toHaveClass(`--${variant}`);
         await expect(button).toHaveClass("--outline");
         await expect(button).toHaveTextContent(variant);
@@ -144,7 +144,7 @@ export const BlockButton: Story = {
   play: async ({ canvasElement }) => {
     const canvas = canvasElement;
     const button = canvas.querySelector("button");
-    await expect(button).toHaveClass("btn");
+    await expect(button).toHaveClass("m-btn");
     await expect(button).toHaveStyle({
       display: "block",
     });
@@ -176,7 +176,7 @@ export const RoundedButton: Story = {
 
     // Verify that rounded buttons are styled correctly
     for (const button of buttons) {
-      await expect(button).toHaveClass("btn");
+      await expect(button).toHaveClass("m-btn");
       await expect(button).toHaveStyle({
         borderRadius: "9999px", // Example: Specify extremely rounded corners
       });
@@ -244,7 +244,7 @@ export const WithIconButton: Story = {
     const button = canvas.querySelector("button");
     const icon = button?.querySelector(".icon");
 
-    await expect(button).toHaveClass("btn");
+    await expect(button).toHaveClass("m-btn");
     await expect(button).toHaveTextContent("Button with Icon");
     await expect(icon).not.toBeNull();
     await expect(icon).toHaveTextContent("+");
@@ -279,7 +279,7 @@ export const IconOnlyButton: Story = {
     const button = canvas.querySelector("button");
     const icon = button?.querySelector(".icon");
 
-    await expect(button).toHaveClass("btn");
+    await expect(button).toHaveClass("m-btn");
     await expect(button).toHaveClass("--icon-only");
     await expect(icon).not.toBeNull();
     await expect(icon).toHaveTextContent("+");

@@ -1,4 +1,4 @@
-.navbar {
+.m-navbar {
   --navbar-bg-color: var(--color-bg-light);
   --navbar-min-height: 56px;
   --navbar-item-padding: var(--spacing-2) var(--spacing-3);
@@ -27,7 +27,7 @@
   align-items: stretch;
   justify-content: space-between;
 
-  .navbar__title {
+  .m-navbar__title {
     display: inline-flex;
     align-items: center;
     padding: var(--navbar-item-padding);
@@ -40,13 +40,13 @@
     }
   }
 
-  .navbar__items {
+  .m-navbar__items {
     width: 100%;
     display: flex;
     align-items: stretch;
   }
 
-  .navbar__item {
+  .m-navbar__item {
     display: inline-flex;
     align-items: center;
     padding: var(--navbar-item-padding);
@@ -68,19 +68,19 @@
   }
 
   &.--transition {
-    .navbar__item {
+    .m-navbar__item {
       transition: background-color 0.3s, color 0.3s;
     }
   }
 
   /* hamburger menu */
 
-  .navbar__hamburger {
+  .m-navbar__hamburger {
     padding: var(--navbar-item-padding);
     display: none;
   }
 
-  .navbar__hamburger-menu {
+  .m-navbar__hamburger-menu {
     display: inline-block;
     color: var(--navbar-hamburger-icon-color);
     text-decoration: none;
@@ -98,16 +98,16 @@
     }
   }
 
-  &:has(.navbar__hamburger) {
+  &:has(.m-navbar__hamburger) {
     @media (--media-breakpoint-max-md) {
       /* eslint-disable-next-line css/no-invalid-at-rules */
       position: relative;
 
-      .navbar__hamburger {
+      .m-navbar__hamburger {
         display: inline-flex;
       }
 
-      .navbar__items {
+      .m-navbar__items {
         z-index: var(--navbar-hamburger-menu-zindex);
         position: absolute;
         top: 100%;
@@ -123,7 +123,7 @@
         visibility: hidden;
       }
 
-      .navbar__item {
+      .m-navbar__item {
         &:last-child {
           border-radius: var(--navbar-hamburger-menu-border-radius);
         }
@@ -133,24 +133,24 @@
         }
       }
 
-      &:has(.navbar__hamburger-menu[aria-expanded="true"]) {
-        .navbar__items {
+      &:has(.m-navbar__hamburger-menu[aria-expanded="true"]) {
+        .m-navbar__items {
           visibility: visible;
           opacity: 1;
         }
       }
 
       &.--hover-hamburger-menu {
-        &:has(.navbar__hamburger:hover),
-        &:has(.navbar__hamburger:focus),
-        &:has(.navbar__hamburger:focus-visible),
-        &:has(.navbar__hamburger-menu:hover),
-        &:has(.navbar__hamburger-menu:focus),
-        &:has(.navbar__hamburger-menu:focus-visible),
-        &:has(.navbar__items:hover),
-        &:has(.navbar__item:focus),
-        &:has(.navbar__item:focus-visible) {
-          .navbar__items {
+        &:has(.m-navbar__hamburger:hover),
+        &:has(.m-navbar__hamburger:focus),
+        &:has(.m-navbar__hamburger:focus-visible),
+        &:has(.m-navbar__hamburger-menu:hover),
+        &:has(.m-navbar__hamburger-menu:focus),
+        &:has(.m-navbar__hamburger-menu:focus-visible),
+        &:has(.m-navbar__items:hover),
+        &:has(.m-navbar__item:focus),
+        &:has(.m-navbar__item:focus-visible) {
+          .m-navbar__items {
             visibility: visible;
             opacity: 1;
           }

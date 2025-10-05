@@ -1,4 +1,4 @@
-.card {
+.m-card {
   --card-floating-shadow: var(--shadow-sm);
   --card-radius: var(--border-radius);
   --card-bg-color: var(--color-white);
@@ -10,13 +10,13 @@
   border-radius: var(--card-radius);
   overflow-wrap: break-word;
 
-  .card__image {
+  .m-card__image {
     width: 100%;
     height: auto;
     object-fit: cover;
   }
 
-  .card__content {
+  .m-card__content {
     padding: var(--card-content-padding);
   }
 

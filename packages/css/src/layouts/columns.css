@@ -1,4 +1,4 @@
-.columns {
+.m-columns {
   --columns-gap: var(--spacing-2);
   --columns-left-width: 2fr;
   --columns-main-width: auto;
@@ -12,27 +12,27 @@
     --columns-gap: 0;
   }
 
-  &.columns__left {
+  &.m-columns__left {
     grid-area: left;
   }
 
-  &.columns__main {
+  &.m-columns__main {
     grid-area: main;
   }
 
-  &.columns__right {
+  &.m-columns__right {
     grid-area: right;
   }
 
-  &:not(:has(.columns__left)) {
+  &:not(:has(.m-columns__left)) {
     grid-template-areas: "main right";
   }
 
-  &:not(:has(.columns__right)) {
+  &:not(:has(.m-columns__right)) {
     grid-template-areas: "left main";
   }
 
-  &:not(:has(.columns__left), :has(.columns__right)) {
+  &:not(:has(.m-columns__left), :has(.m-columns__right)) {
     grid-template-areas: "main";
   }
 
@@ -40,11 +40,11 @@
     grid-template-areas: "left" "main" "right";
     grid-template-columns: 1fr;
 
-    &:not(:has(.columns__left)) {
+    &:not(:has(.m-columns__left)) {
       grid-template-areas: "main" "right";
     }
 
-    &:not(:has(.columns__right)) {
+    &:not(:has(.m-columns__right)) {
       grid-template-areas: "left" "main";
     }
   }
