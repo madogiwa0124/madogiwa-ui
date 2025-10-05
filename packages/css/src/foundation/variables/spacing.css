@@ -30,23 +30,47 @@
 
 @property --spacing-5 {
   syntax: "<length>";
-  initial-value: 24px;
+  initial-value: 20px;
   inherits: true;
 }
 
 @property --spacing-6 {
   syntax: "<length>";
-  initial-value: 32px;
+  initial-value: 24px;
   inherits: true;
 }
 
 @property --spacing-7 {
   syntax: "<length>";
-  initial-value: 40px;
+  initial-value: 28px;
   inherits: true;
 }
 
 @property --spacing-8 {
+  syntax: "<length>";
+  initial-value: 32px;
+  inherits: true;
+}
+
+@property --spacing-9 {
+  syntax: "<length>";
+  initial-value: 36px;
+  inherits: true;
+}
+
+@property --spacing-10 {
+  syntax: "<length>";
+  initial-value: 40px;
+  inherits: true;
+}
+
+@property --spacing-11 {
+  syntax: "<length>";
+  initial-value: 44px;
+  inherits: true;
+}
+
+@property --spacing-12 {
   syntax: "<length>";
   initial-value: 48px;
   inherits: true;
