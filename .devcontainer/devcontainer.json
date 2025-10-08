@@ -13,7 +13,9 @@
         "github.copilot-chat",
         "jacobcassidy.css-nesting-syntax-highlighting",
         "dbaeumer.vscode-eslint",
-        "stylelint.vscode-stylelint"
+        "stylelint.vscode-stylelint",
+        "fabiospampinato.vscode-open-in-github",
+        "redhat.vscode-yaml"
       ]
     }
   },
