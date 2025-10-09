@@ -17,6 +17,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
+    "test": "node --experimental-strip-types --test **/*.test.ts",
     "storybook:build": "storybook build",
     "storybook:test": "test-storybook",
     "storybook:preview": "pnpm dlx http-server storybook-static"

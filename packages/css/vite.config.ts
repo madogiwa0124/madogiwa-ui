@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import postcssPresetEnv from "postcss-preset-env";
-import { outputCssSnippetFilePlugin } from "./plugins/vite/outputCssSnippetFilePlugin"; 
-import  { removeFilePlugin } from "./plugins/vite/removeFilePlugin"
+import { outputCssSnippetFilePlugin } from "./plugins/vite/outputCssSnippetFilePlugin";
+import { removeFilePlugin } from "./plugins/vite/removeFilePlugin";
 
 export default defineConfig({
   plugins: [
