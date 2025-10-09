@@ -98,7 +98,7 @@ We employ BEM-based CSS design while leveraging native CSS Nesting for style sco
 ```css
 .prefix-block {
   .prefix-block__element {}
-  .--modifier {}
+  &.--modifier {}
 }
 ```
 
