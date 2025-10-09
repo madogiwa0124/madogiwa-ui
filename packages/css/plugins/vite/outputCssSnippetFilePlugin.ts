@@ -2,45 +2,82 @@
 import type { Plugin } from "vite";
 import { globSync, readFileSync, writeFileSync } from "node:fs";
 
-const isProduction = process.env["NODE_ENV"] === "production";
-
 type SnippetItem = {
-  scope?: string;
+  scope: string;
   prefix: string;
   body: string;
   description: string;
 };
 
-const buildSnippetItem = ({ descriptionPrefix, className, scope, placeholders }: {
-  descriptionPrefix: string;
-  className: string;
+// NOTE: We might need to create placeholders for each modifier length here
+// Currently, only one placeholder is created when there are multiple modifiers, so once you select one, you can't select other modifiers
+// Example) `.m-btn.--primary.--large` → `.m-btn${2|.--primary,.--large|}${3|.--primary,.--large|}` might be more user-friendly?
+const ZERO_WIDTH_SPACE = "\u200B" as const;
+const PLACEHOLDER_INDEX_BASE = 1 as const;
+const buildSnippetItem = ({ description, initBody, initPrefix, scope, placeholders }: {
+  description: string;
+  initPrefix: string;
   scope: string;
-  placeholders: string[];
-}) => {
-  const name = className.slice(1);
-  const prefix = className;
-  let body = className;
-  // NOTE: We might need to create placeholders for each modifier length here
-  // Currently, only one placeholder is created when there are multiple modifiers, so once you select one, you can't select other modifiers
-  // Example) `.m-btn.--primary.--large` → `.m-btn${1|.--primary,.--large|}${2|.--primary,.--large|}` might be more user-friendly?
-  if (placeholders.length > 0) body += `\${1|${placeholders.join(",")}|}`;
-  const description = `${descriptionPrefix} ${className}`;
-  return { scope, name, prefix, body, description };
+  initBody: string;
+  placeholders: string[][];
+}): SnippetItem => {
+  let body: string = initBody;
+  for (const [index, placeholder] of placeholders.entries()) {
+    const indexOffset = String(index + PLACEHOLDER_INDEX_BASE);
+    // NOTE: Add a blank character at the beginning so that elements or modifiers can be left empty when not needed
+    if (placeholder.length > 0) body += `\${${indexOffset}|${[ZERO_WIDTH_SPACE, ...placeholder].join(",")}|}`;
+  }
+  return { scope, prefix: initPrefix, body, description };
 };
 
 // NOTE: This function collects all modifiers for each base class.
-// e.g., for input [".m-btn", ".m-btn.--primary", ".m-btn.--large"],
-// it returns: { ".m-btn": { modifiers: [".--primary", ".--large"] } }
-type Modifiers = { [name: string]: { modifiers: Set<string> } };
-const collectModifiers = (classNames: string[]): Modifiers => {
-  const classWithModifiers: Modifiers = {};
+// e.g., for input [".m-btn", ".m-btn.--primary", ".m-btn.--large", ".m-card", ".m-card__img", ".m-card.--shadow"],
+// it returns: { ".m-btn": { elements: [], modifiers: [".--primary", ".--large"] }, ".m-card": { elements: ["__img"], modifiers: [".--shadow"] } }
+type BEMClassStructure = { [block: string]: { elements: Set<string>; modifiers: Set<string> } };
+const parseBEMClasses = (classNames: string[]): BEMClassStructure => {
+  const bemClassStructures: BEMClassStructure = {};
   for (const fullClassName of classNames) {
-    const [baseClass, ...modifiers] = fullClassName.split(/(?=\.--)/);
-    if (!baseClass) continue;
-    classWithModifiers[baseClass] ??= { modifiers: new Set<string>() };
-    if (modifiers.length > 0) for (const m of modifiers) classWithModifiers[baseClass].modifiers.add(m);
+    const { block, elements, modifiers } = extractBEMParts(fullClassName);
+    if (!block) continue;
+    bemClassStructures[block] ??= { elements: new Set<string>(), modifiers: new Set<string>() };
+    for (const elm of elements) bemClassStructures[block].elements.add(elm);
+    for (const mdf of modifiers) bemClassStructures[block].modifiers.add(mdf);
   }
-  return classWithModifiers;
+  return bemClassStructures;
+};
+
+const MODIFIER_PATTERN = /(?=\.--)/;
+const ELEMENT_PATTERN = /(?=__)/;
+const extractBEMParts = (className: string, modifiersPattern = MODIFIER_PATTERN, elementsPattern = ELEMENT_PATTERN) => {
+  const [blockElement = "", ...modifiers] = className.split(modifiersPattern);
+  const [block = "", ...elements] = blockElement.split(elementsPattern);
+  return {
+    block,
+    elements: elements.filter(Boolean),
+    modifiers: modifiers.filter(Boolean),
+  };
+};
+
+// NOTE: Transform the structure to be used for snippet generation
+// { ".m-btn": { elements: [], modifiers: [".--primary", ".--large"] }
+// → { "m-btn": { prefix: "m-btn", initBody: ".m-btn", placeholders: [[], [".--primary", ".--large"]] } }
+type SnippetSource = { [name: string]: { prefix: string; initBody: string; placeholders: string[][]; description: string } };
+const transformBemClassesToSnippetSource = (bemClassStructures: BEMClassStructure, descriptionPrefix: string): SnippetSource => {
+  const snippetSource = Object.fromEntries(
+    Object.entries(bemClassStructures).map(([block, structure]) => {
+      const snippetName = block.slice(1); // Remove the leading dot from the block name
+      return [
+        snippetName,
+        {
+          initBody: block,
+          prefix: block,
+          placeholders: [[...structure.elements], [...structure.modifiers]],
+          description: `${descriptionPrefix} ${block}`,
+        },
+      ];
+    }),
+  );
+  return snippetSource;
 };
 
 // NOTE: exported for testing
@@ -54,16 +91,19 @@ export const buildSnippets = ({ descriptionPrefix, classRegex, cssContent, initS
   const classNames = new Set<string>();
   let match;
   while ((match = classRegex.exec(cssContent)) !== null) classNames.add(match[0]);
-  const snippetSource = collectModifiers([...classNames]);
-  for (const className of Object.keys(snippetSource)) {
-    const modifiers = snippetSource[className]?.modifiers ?? [];
-    const snippetItem = buildSnippetItem({ descriptionPrefix, className, scope: initScope, placeholders: [...modifiers] });
-    const { name, scope, prefix, body, description } = snippetItem;
-    snippets.push({ [name]: { scope, prefix, body, description } });
+  const bemClassStructures = parseBEMClasses([...classNames]);
+  const snippetSource = transformBemClassesToSnippetSource(bemClassStructures, descriptionPrefix);
+  for (const snippetName of Object.keys(snippetSource)) {
+    if (!snippetSource[snippetName]) continue;
+    const { initBody, prefix: initPrefix, placeholders, description } = snippetSource[snippetName];
+    const snippetItem = buildSnippetItem({ description, initBody, initPrefix, scope: initScope, placeholders });
+    const { scope, prefix, body } = snippetItem;
+    snippets.push({ [snippetName]: { scope, prefix, body, description } });
   }
   return snippets;
 };
 
+const isProduction = process.env["NODE_ENV"] === "production";
 export const outputCssSnippetFilePlugin = (
   { scope, targetSelectorRegexp, snippetFileName, descriptionPrefix }: {
     scope: string;

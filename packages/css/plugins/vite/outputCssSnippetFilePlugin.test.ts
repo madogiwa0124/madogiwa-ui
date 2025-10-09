@@ -19,6 +19,9 @@ void describe("outputCssSnippetFilePlugin", () => {
       .m-accordion[open]{};
       .m-accordion.--transition .m-accordion__summary{};
       .m-navbar__item.--end{};
+      .m-card{}
+      .m-card__content{}
+      .m-card__image{}
   `;
     const descriptionPrefix = "Madogiwa UI class";
     const initScope = "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus";
@@ -29,7 +32,7 @@ void describe("outputCssSnippetFilePlugin", () => {
           "m-btn": {
             scope: "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
             prefix: ".m-btn",
-            body: ".m-btn${1|.--primary,.--secondary,.--outline,.--default|}",
+            body: ".m-btn${2|​,.--primary,.--secondary,.--outline,.--default|}",
             description: "Madogiwa UI class .m-btn",
           },
         },
@@ -37,24 +40,24 @@ void describe("outputCssSnippetFilePlugin", () => {
           "m-accordion": {
             scope: "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
             prefix: ".m-accordion",
-            body: ".m-accordion${1|.--transition|}",
+            body: ".m-accordion${1|​,__summary|}${2|​,.--transition|}",
             description: "Madogiwa UI class .m-accordion",
           },
         },
         {
-          "m-accordion__summary": {
+          "m-navbar": {
             scope: "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
-            prefix: ".m-accordion__summary",
-            body: ".m-accordion__summary",
-            description: "Madogiwa UI class .m-accordion__summary",
+            prefix: ".m-navbar",
+            body: ".m-navbar${1|​,__item|}${2|​,.--end|}",
+            description: "Madogiwa UI class .m-navbar",
           },
         },
         {
-          "m-navbar__item": {
+          "m-card": {
             scope: "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
-            prefix: ".m-navbar__item",
-            body: ".m-navbar__item${1|.--end|}",
-            description: "Madogiwa UI class .m-navbar__item",
+            prefix: ".m-card",
+            body: ".m-card${1|​,__content,__image|}",
+            description: "Madogiwa UI class .m-card",
           },
         },
       ];
