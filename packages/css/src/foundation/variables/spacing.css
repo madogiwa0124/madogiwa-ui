@@ -1,77 +1,24 @@
-@property --spacing-0 {
-  syntax: "<length>";
-  initial-value: 0;
-  inherits: true;
-}
+/*
+  NOTE: From Tailwind CSS v4.0.0
+  refs:
+   * https://tailwindcss.com/docs/theme#default-theme-variable-reference
+   * https://tailwindcss.com/docs/padding
+   * https://tailwindcss.com/docs/margin
+*/
 
-@property --spacing-1 {
-  syntax: "<length>";
-  initial-value: 4px;
-  inherits: true;
-}
-
-@property --spacing-2 {
-  syntax: "<length>";
-  initial-value: 8px;
-  inherits: true;
-}
-
-@property --spacing-3 {
-  syntax: "<length>";
-  initial-value: 12px;
-  inherits: true;
-}
-
-@property --spacing-4 {
-  syntax: "<length>";
-  initial-value: 16px;
-  inherits: true;
-}
-
-@property --spacing-5 {
-  syntax: "<length>";
-  initial-value: 20px;
-  inherits: true;
-}
-
-@property --spacing-6 {
-  syntax: "<length>";
-  initial-value: 24px;
-  inherits: true;
-}
-
-@property --spacing-7 {
-  syntax: "<length>";
-  initial-value: 28px;
-  inherits: true;
-}
-
-@property --spacing-8 {
-  syntax: "<length>";
-  initial-value: 32px;
-  inherits: true;
-}
-
-@property --spacing-9 {
-  syntax: "<length>";
-  initial-value: 36px;
-  inherits: true;
-}
-
-@property --spacing-10 {
-  syntax: "<length>";
-  initial-value: 40px;
-  inherits: true;
-}
-
-@property --spacing-11 {
-  syntax: "<length>";
-  initial-value: 44px;
-  inherits: true;
-}
-
-@property --spacing-12 {
-  syntax: "<length>";
-  initial-value: 48px;
-  inherits: true;
+:root {
+  --spacing: 0.25rem; /* 4px if 1rem = 16px */
+  --spacing-0: 0;
+  --spacing-1: calc(var(--spacing) * 1);
+  --spacing-2: calc(var(--spacing) * 2);
+  --spacing-3: calc(var(--spacing) * 3);
+  --spacing-4: calc(var(--spacing) * 4);
+  --spacing-5: calc(var(--spacing) * 5);
+  --spacing-6: calc(var(--spacing) * 6);
+  --spacing-7: calc(var(--spacing) * 7);
+  --spacing-8: calc(var(--spacing) * 8);
+  --spacing-9: calc(var(--spacing) * 9);
+  --spacing-10: calc(var(--spacing) * 10);
+  --spacing-11: calc(var(--spacing) * 11);
+  --spacing-12: calc(var(--spacing) * 12);
 }
