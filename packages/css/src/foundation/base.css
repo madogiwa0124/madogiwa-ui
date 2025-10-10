@@ -2,11 +2,11 @@
 
 html {
   font-family: var(--font-family-base);
-  line-height: var(--line-height-base);
+  line-height: var(--text-base--line-height);
   color: var(--color-text);
 }
 
 body {
-  font-size: var(--font-size-base);
+  font-size: var(--text-base);
   font-weight: var(--font-weight-normal);
 }

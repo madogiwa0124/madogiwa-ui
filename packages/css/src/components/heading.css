@@ -9,37 +9,37 @@
 }
 
 .m-h1 {
-  font-size: var(--font-size-xl);
+  font-size: var(--text-2xl);
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-lg);
+  line-height: var(--text-2xl--line-height);
 }
 
 .m-h2 {
-  font-size: var(--font-size-lg);
+  font-size: var(--text-xl);
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-base);
+  line-height: var(--text-xl--line-height);
 }
 
 .m-h3 {
-  font-size: var(--font-size-lg);
+  font-size: var(--text-lg);
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-base);
+  line-height: var(--text-lg--line-height);
 }
 
 .m-h4 {
-  font-size: var(--font-size-base);
+  font-size: var(--text-base);
   font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-base);
+  line-height: var(--text-base--line-height);
 }
 
 .m-h5 {
-  font-size: var(--font-size-base);
+  font-size: var(--text-base);
   font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-base);
+  line-height: var(--text-base--line-height);
 }
 
 .m-h6 {
-  font-size: var(--font-size-base);
+  font-size: var(--text-base);
   font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-base);
+  line-height: var(--text-base--line-height);
 }

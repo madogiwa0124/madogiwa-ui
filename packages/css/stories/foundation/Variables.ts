@@ -4,7 +4,7 @@ const PREFIX_STYLE_MAPPING = {
   shadow: /--shadow-(.*)/,
   spacing: /--spacing-(.*)/,
   typography:
-    /--(line-height|font-size|font-weight|font-family|letter-spacing)(.*)/,
+    /--(line-height|text|font-weight|font-family|letter-spacing)(.*)/,
   corner: /--radius(.*)/,
 };
 
@@ -102,7 +102,7 @@ export const createTypographyElement: CreatePropertyElement = (property) => {
   const sampleText = document.createElement("div");
   sampleText.textContent = "Sample Text 123";
 
-  if (property.name.includes("font-size")) {
+  if (property.name.includes("text")) {
     sampleText.style.fontSize = property.value;
   } else if (property.name.includes("font-weight")) {
     sampleText.style.fontWeight = property.value;

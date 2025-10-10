@@ -5,16 +5,3 @@
 @import "./typography.css";
 @import "./zindex.css";
 @import "./media.css";
-
-:root {
-  /*
-    NOTE: @property initial values must be computationally independent and cannot use relative values, so we define them as custom properties
-    > The initial-value must be computationally independent.
-    > https://www.w3.org/TR/css-properties-values-api-1/#initial-value-descriptor
-  */
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.25rem;
-  --font-size-xl: 1.5rem;
-}

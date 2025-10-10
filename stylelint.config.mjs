@@ -27,6 +27,9 @@ export default {
           `Unexpected value "${value}" for property "${property}". Please use design tokens defined in the foundation layer.`,
       },
     ],
+    // NOTE: support Tailwind Variables. ex) `--text-base--line-height`
+    // ref: https://tailwindcss.com/docs/theme#default-theme-variable-reference
+    "custom-property-pattern": "^([a-z][a-z0-9]*)(-[a-z0-9]+|--[a-z0-9]+)*$",
     "import-notation": "string",
     "comment-empty-line-before": null,
     "plugin/use-baseline": [true, { available: "newly" }],
