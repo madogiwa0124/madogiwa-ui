@@ -11,7 +11,7 @@ Madogiwa UI is a UI library that aims to actively leverage the latest CSS featur
 - **🚀 Modern CSS Features**: Actively utilize cutting-edge features like CSS `@property`, CSS Nesting, logical properties, and more
 - **🎨 CSS Variables System**: Systematic design tokens enabling flexible customization
 - **♿ WCAG A Compliance**: Prioritizing accessibility while respecting browser-native functionality
-- **🔄 Tailwind CSS Compatible**: Adopting Tailwind CSS-compatible Reset CSS (Preflight) and color palette
+- **🔄 Tailwind CSS Compatible**: Adopting Tailwind CSS-compatible Reset CSS (Preflight) and variables
 - **📱 Newly Baseline Support**: Sustainable design supporting the latest Web standards specifications
 
 ### Package Structure
