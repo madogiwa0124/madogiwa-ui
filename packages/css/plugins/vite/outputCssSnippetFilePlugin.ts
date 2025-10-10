@@ -19,38 +19,49 @@ const buildSnippetItem = ({ description, initBody, initPrefix, scope, placeholde
   initPrefix: string;
   scope: string;
   initBody: string;
-  placeholders: string[][];
+  placeholders: Set<string>[];
 }): SnippetItem => {
   let body: string = initBody;
   for (const [index, placeholder] of placeholders.entries()) {
     const indexOffset = String(index + PLACEHOLDER_INDEX_BASE);
     // NOTE: Add a blank character at the beginning so that elements or modifiers can be left empty when not needed
-    if (placeholder.length > 0) body += `\${${indexOffset}|${[ZERO_WIDTH_SPACE, ...placeholder].join(",")}|}`;
+    if (placeholder.size > 0) body += `\${${indexOffset}|${[ZERO_WIDTH_SPACE, ...placeholder].join(",")}|}`;
   }
   return { scope, prefix: initPrefix, body, description };
 };
 
-// NOTE: This function collects all modifiers for each base class.
+// NOTE: This function collects all elements and modifiers for each base class.
 // e.g., for input [".m-btn", ".m-btn.--primary", ".m-btn.--large", ".m-card", ".m-card__img", ".m-card.--shadow"],
 // it returns: { ".m-btn": { elements: [], modifiers: [".--primary", ".--large"] }, ".m-card": { elements: ["__img"], modifiers: [".--shadow"] } }
 type BEMClassStructure = { [block: string]: { elements: Set<string>; modifiers: Set<string> } };
-const parseBEMClasses = (classNames: string[]): BEMClassStructure => {
+const parseBEMClasses = (classNames: Set<string>): BEMClassStructure => {
   const bemClassStructures: BEMClassStructure = {};
   for (const fullClassName of classNames) {
-    const { block, elements, modifiers } = extractBEMParts(fullClassName);
-    if (!block) continue;
-    bemClassStructures[block] ??= { elements: new Set<string>(), modifiers: new Set<string>() };
-    for (const elm of elements) bemClassStructures[block].elements.add(elm);
-    for (const mdf of modifiers) bemClassStructures[block].modifiers.add(mdf);
+    try {
+      const { block, elements, modifiers } = extractBEMParts(fullClassName);
+      bemClassStructures[block] ??= { elements: new Set<string>(), modifiers: new Set<string>() };
+      for (const elm of elements) bemClassStructures[block].elements.add(elm);
+      for (const mdf of modifiers) bemClassStructures[block].modifiers.add(mdf);
+    } catch (error) {
+      console.warn(error);
+      continue;
+    }
   }
   return bemClassStructures;
 };
 
+class InvalidBEMClassError extends Error {
+  constructor(className: string) {
+    super(`Invalid BEM class name: ${className}`);
+    this.name = "InvalidBEMClassError";
+  }
+}
 const MODIFIER_PATTERN = /(?=\.--)/;
 const ELEMENT_PATTERN = /(?=__)/;
 const extractBEMParts = (className: string, modifiersPattern = MODIFIER_PATTERN, elementsPattern = ELEMENT_PATTERN) => {
   const [blockElement = "", ...modifiers] = className.split(modifiersPattern);
   const [block = "", ...elements] = blockElement.split(elementsPattern);
+  if (!block) throw new InvalidBEMClassError(className);
   return {
     block,
     elements: elements.filter(Boolean),
@@ -61,7 +72,7 @@ const extractBEMParts = (className: string, modifiersPattern = MODIFIER_PATTERN,
 // NOTE: Transform the structure to be used for snippet generation
 // { ".m-btn": { elements: [], modifiers: [".--primary", ".--large"] }
 // → { "m-btn": { prefix: "m-btn", initBody: ".m-btn", placeholders: [[], [".--primary", ".--large"]] } }
-type SnippetSource = { [name: string]: { prefix: string; initBody: string; placeholders: string[][]; description: string } };
+type SnippetSource = { [name: string]: { prefix: string; initBody: string; placeholders: Set<string>[]; description: string } };
 const transformBemClassesToSnippetSource = (bemClassStructures: BEMClassStructure, descriptionPrefix: string): SnippetSource => {
   const snippetSource = Object.fromEntries(
     Object.entries(bemClassStructures).map(([block, structure]) => {
@@ -71,7 +82,7 @@ const transformBemClassesToSnippetSource = (bemClassStructures: BEMClassStructur
         {
           initBody: block,
           prefix: block,
-          placeholders: [[...structure.elements], [...structure.modifiers]],
+          placeholders: [structure.elements, structure.modifiers],
           description: `${descriptionPrefix} ${block}`,
         },
       ];
@@ -91,7 +102,7 @@ export const buildSnippets = ({ descriptionPrefix, classRegex, cssContent, initS
   const classNames = new Set<string>();
   let match;
   while ((match = classRegex.exec(cssContent)) !== null) classNames.add(match[0]);
-  const bemClassStructures = parseBEMClasses([...classNames]);
+  const bemClassStructures = parseBEMClasses(classNames);
   const snippetSource = transformBemClassesToSnippetSource(bemClassStructures, descriptionPrefix);
   for (const snippetName of Object.keys(snippetSource)) {
     if (!snippetSource[snippetName]) continue;
@@ -123,6 +134,7 @@ export const outputCssSnippetFilePlugin = (
             return;
           }
 
+          // NOTE: For robustness, we might want to add ReDoS checks, but since this is an internal plugin, it's acceptable
           const classRegex = new RegExp(targetSelectorRegexp, "g");
           const snippets: { [name: string]: SnippetItem }[] = [];
           for (const file of files) {
