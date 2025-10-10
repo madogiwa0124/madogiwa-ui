@@ -79,6 +79,27 @@ To use Madogiwa UI CSS class snippets in VSCode, place the `dist/madogiwa-ui.cod
 
 ## 🏗️ Architecture
 
+### Directory Structure
+
+FLOCSS inspired structure:
+
+```sh
+root
+├── dist // Compiled CSS files
+├── plugins // For build tools
+├── src
+│   ├── components
+│   ├── foundation
+│   ├── layouts
+│   ├── utils
+│   └── main.css // Entry point
+└── stories // Storybook stories
+    ├── components
+    ├── foundation
+    ├── layouts
+    └── utils
+```
+
 ### CSS Layer System
 
 ```css
