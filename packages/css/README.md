@@ -126,6 +126,14 @@ We employ BEM-based CSS design while leveraging native CSS Nesting for style sco
 We use `m-` as the prefix for all CSS classes to avoid naming conflicts and ensure consistent component identification.
 This prefix system helps maintain clear separation between framework styles and your custom application styles.
 
+### Optional Transition
+
+Madogiwa UI provides optional CSS transitions for interactive components, considering users with visual sensitivities and motion preferences. You can enable or disable transitions using the `--transition` modifier class.
+
+```html
+<button class="m-btn --primary --transition">Primary Button</button>
+```
+
 ## 🌐 Browser Support
 
 **Baseline Newly available**
