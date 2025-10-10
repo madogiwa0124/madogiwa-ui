@@ -62,7 +62,7 @@ import '@madogiwa-ui/css/src/components/button.css';
   --color-secondary: #your-secondary-color;
 
   /* Spacing */
-  --spacing-4: 2rem;
+  --spacing: 4px;
 
   /* Typography */
   --font-family-base: 'Your Font', sans-serif;
