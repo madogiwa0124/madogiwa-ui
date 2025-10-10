@@ -8,7 +8,7 @@
   --accordion-summary-icon-open-transform: rotate(90deg);
   --accordion-content-padding: 0 var(--spacing-3) var(--spacing-3) var(--spacing-3);
   --accordion-outline-border: 1px solid var(--color-border);
-  --accordion-outline-border-radius: var(--border-radius);
+  --accordion-outline-border-radius: var(--radius-md);
   --accordion-outline-padding: 0 var(--spacing-2) 0 var(--spacing-2);
   --accordion-transition-time: 0.2s;
 

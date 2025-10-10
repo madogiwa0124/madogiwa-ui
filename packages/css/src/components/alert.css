@@ -57,7 +57,7 @@
   --alert-auto-dismiss-progress-height: 4px;
 
   background-color: var(--alert-bg-color);
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-md);
   padding: var(--alert-padding);
   border: var(--alert-border);
   display: grid;

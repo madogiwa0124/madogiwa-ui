@@ -17,8 +17,8 @@
   --btn-padding-x: var(--spacing-6);
   --btn-padding-y: var(--spacing-2);
   --btn-box-shadow: var(--shadow-sm);
-  --btn-border-radius: var(--border-radius);
-  --btn-rounded-border-radius: var(--border-radius-full);
+  --btn-border-radius: var(--radius-md);
+  --btn-rounded-border-radius: var(--radius-full);
   --btn-border-width: var(--border-width);
   --btn-active-transform: translateY(1px);
   --btn-transition-duration: 0.2s;

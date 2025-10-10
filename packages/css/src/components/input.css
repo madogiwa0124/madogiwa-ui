@@ -1,5 +1,5 @@
 input.m-input {
-  --input-border-radius: var(--border-radius-sm);
+  --input-border-radius: var(--radius-sm);
   --input-border-color: var(--color-border);
   --input-border: 1px solid var(--input-border-color);
   --input-bg-color: initial;

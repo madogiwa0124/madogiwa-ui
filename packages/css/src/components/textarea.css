@@ -1,5 +1,5 @@
 textarea.m-textarea {
-  --textarea-border-radius: var(--border-radius-sm);
+  --textarea-border-radius: var(--radius-sm);
   --textarea-border-color: var(--color-border);
   --textarea-border: 1px solid var(--textarea-border-color);
   --input-bg-color: initial;

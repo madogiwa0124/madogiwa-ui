@@ -1,6 +1,6 @@
 .m-card {
   --card-floating-shadow: var(--shadow-sm);
-  --card-radius: var(--border-radius);
+  --card-radius: var(--radius-md);
   --card-bg-color: var(--color-white);
   --card-border-color: var(--color-border);
   --card-content-padding: var(--spacing-2);

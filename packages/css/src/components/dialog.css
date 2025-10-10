@@ -2,7 +2,7 @@ dialog.m-dialog {
   --dialog-bg-color: var(--color-bg-light);
   --dialog-zindex: var(--zindex-modal);
   --dialog-padding: var(--spacing-3);
-  --dialog-border-radius: var(--border-radius-sm);
+  --dialog-border-radius: var(--radius-sm);
   --dialog-box-shadow: var(--shadow-lg);
   --dialog-content-gap: var(--spacing-2);
   --dialog-backdrop-bg-color: var(--color-overlay);

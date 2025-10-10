@@ -16,7 +16,7 @@ input[type="checkbox"].m-toggle {
   position: relative;
   width: var(--toggle-width);
   height: var(--toggle-size);
-  border-radius: var(--border-radius-full);
+  border-radius: var(--radius-full);
   background-color: var(--toggle-bg-color);
   transition: var(--toggle-transition);
 
@@ -27,7 +27,7 @@ input[type="checkbox"].m-toggle {
     content: "";
     width: var(--toggle-size);
     height: var(--toggle-size);
-    border-radius: var(--border-radius-full);
+    border-radius: var(--radius-full);
     transform: scale(var(--toggle-button-scale));
     background-color: var(--toggle-button-color);
     transition: inherit;

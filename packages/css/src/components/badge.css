@@ -3,7 +3,7 @@
   --badge-item-gap: var(--spacing-2);
   --badge-border-color: var(--color-border);
   --badge-border: 1px solid var(--badge-border-color);
-  --badge-border-radius: var(--border-radius-sm);
+  --badge-border-radius: var(--radius-sm);
   --badge-bg-color: var(--color-default);
   --badge-hover-filter: brightness(0.9);
   --badge-disabled-opacity: 0.65;
@@ -82,7 +82,7 @@
   }
 
   &.--rounded {
-    --badge-border-radius: var(--border-radius-full);
+    --badge-border-radius: var(--radius-full);
   }
 
   &.--primary {

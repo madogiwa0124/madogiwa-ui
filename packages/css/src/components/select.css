@@ -4,7 +4,7 @@ select.m-select {
   --select-bg-color: var(--color-bg-light);
   --select-border-color: var(--color-border);
   --select-border: 2px solid var(--select-border-color);
-  --select-border-radius: var(--border-radius-sm);
+  --select-border-radius: var(--radius-sm);
   --select-invalid-border-color: var(--color-danger);
   --select-hover-opacity: 0.8;
   --select-disabled-opacity: 0.65;

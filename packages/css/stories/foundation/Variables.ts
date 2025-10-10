@@ -5,7 +5,7 @@ const PREFIX_STYLE_MAPPING = {
   spacing: /--spacing-(.*)/,
   typography:
     /--(line-height|font-size|font-weight|font-family|letter-spacing)(.*)/,
-  corner: /--border-radius(.*)/,
+  corner: /--radius(.*)/,
 };
 
 type DesignToken = {

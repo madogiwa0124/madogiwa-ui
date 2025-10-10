@@ -11,10 +11,10 @@
   --navbar-hamburger-icon-padding: 0 var(--spacing-2);
   --navbar-hamburger-icon-color: var(--color-text);
   --navbar-hamburger-icon-hover-bg-color: color(from var(--navbar-bg-color) srgb calc(r * 0.8) calc(g * 0.8) calc(b * 0.8));
-  --navbar-hamburger-icon-border-radius: var(--border-radius-sm);
+  --navbar-hamburger-icon-border-radius: var(--radius-sm);
   --navbar-hamburger-menu-bg-color: var(--color-bg-light);
   --navbar-hamburger-menu-border: 2px solid var(--color-bg-light);
-  --navbar-hamburger-menu-border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+  --navbar-hamburger-menu-border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   --navbar-hamburger-menu-box-shadow: var(--shadow-md);
   --navbar-hamburger-menu-item-separate-border: 1px solid var(--color-bg-light);
   --navbar-hamburger-menu-zindex: var(--zindex-navbar);
