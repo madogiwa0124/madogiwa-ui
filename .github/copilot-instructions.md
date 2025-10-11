@@ -1,57 +1,230 @@
-# GitHub Copilot Instructions
+# GitHub Copilot Instructions for Madogiwa UI
 
-## Overview
+**For language-specific guidelines, see the corresponding files in the `.github/prompts/` directory.**
 
-This document provides guidelines and best practices for using GitHub Copilot in projects. By following these instructions, you can ensure that Copilot generates high-quality, maintainable code that adheres to industry standards.
+## Project Overview
 
-## Best Practices
+Madogiwa UI is a modern CSS framework leveraging cutting-edge CSS features like `@property`, CSS Nesting, and logical properties, and more. It's built as a monorepo using pnpm.
 
-### 1. Code Style
+**Monorepo Structure**
 
-- **Consistent Formatting**: Ensure that your code is consistently formatted. Use tools like Prettier or Biome to automatically format your code.
-- **Naming Conventions**: Use clear and descriptive names for variables, functions, and classes. Follow the appropriate naming conventions for your programming language.
-- **Comments**: Write meaningful comments to explain complex logic or important sections of your code. Avoid redundant comments.
+- **Root**: Workspace management with pnpm, shared linting/formatting configs
+- **`packages/css/`**: Main CSS framework package with Storybook for development
+- **Future packages**: `react/`, `vue/` component libraries planned
 
-*For language-specific guidelines, see the corresponding files in the `.github/prompts/` directory.*
+## Browser Support
 
-### 2. Project Structure
+**Baseline Newly available**
 
-- **Modularization**: Organize your code into modules to improve maintainability and reusability. Each module should have a clear responsibility.
-- **Directory Structure**: Follow a consistent directory structure that makes sense for your project and programming language.
+Actively utilize cutting-edge features like CSS `@property`, CSS Nesting, logical properties, and more.
 
-### 3. Testing (Optional)
+## Architecture
 
-- **Conditional Testing**: Write tests only when a testing framework is included in the project's dependencies. Since this is a learning project, testing is not mandatory for all features.
-- **When Testing is Appropriate**: Consider writing unit tests for critical functions and components to demonstrate testing practices.
-- **Simple Test Coverage**: When tests are included, focus on covering key functionality rather than aiming for comprehensive test coverage.
+### Package Structure
 
-### 4. Version Control
+```sh
+madogiwa-ui/
+└── packages/
+  ├── css/
+  ├── react/ # Future implementation
+  └── vue/ # Future implementation
+```
 
-- **Commit Messages**: Write clear and concise commit messages that describe the changes made. Follow a consistent commit message format.
-- **Branching Strategy**: Use a branching strategy like GitFlow or GitHub Flow to manage your codebase.
+### `@madogiwa-ui/css`
 
-### 5. Documentation
+#### Directory Structure
 
-- **README**: Keep your `README.md` up to date with instructions on how to set up and use the project.
-- **API Documentation**: Document your API endpoints and functions using appropriate documentation tools for your language.
+FLOCSS inspired structure:
 
-## Using GitHub Copilot
+```sh
+root
+├── dist // Compiled CSS files
+├── plugins // For build tools
+├── src
+│   ├── components
+│   ├── foundation
+│   ├── layouts
+│   ├── utils
+│   └── main.css // Entry point
+└── stories // Storybook stories
+    ├── components
+    ├── foundation
+    ├── layouts
+    └── utils
+```
 
-### 1. Prompting Copilot
+#### CSS Layer System (`src/main.css`)
 
-- **Clear Prompts**: Provide clear and specific prompts to Copilot to get the best suggestions. For example, instead of writing "create a function", write "create a function that adds two numbers".
-- **Context**: Provide enough context in your prompt so that Copilot understands the requirements. Include relevant code snippets or comments if necessary.
+```css
+@layer base, layout, components, utils, overrides;
+```
 
-### 2. Reviewing Suggestions
+- **base**: Reset CSS + foundation styles
+- **layout**: Container, columns system
+- **components**: UI components (buttons, forms, etc.)
+- **utils**: Utility classes
+- **overrides**: User customization layer
 
-- **Review Carefully**: Always review Copilot's suggestions carefully before accepting them. Ensure that the generated code meets your requirements and follows best practices.
-- **Refine and Edit**: Feel free to refine and edit Copilot's suggestions to better fit your needs. Use the suggestions as a starting point and make necessary adjustments.
+#### BEM + CSS Nesting Pattern
 
-### 3. Learning from Copilot
+All classes use `m-` prefix with BEM methodology:
 
-- **Explore Suggestions**: Use Copilot's suggestions as an opportunity to learn new coding techniques and best practices. Pay attention to the patterns and idioms used in the generated code.
-- **Ask for Explanations**: If you're unsure about a suggestion, ask Copilot for an explanation or clarification. This can help you understand the reasoning behind the generated code.
+```css
+.m-[component] {
+  /* CSS variables at top */
+  --component-property: value;
 
-## Conclusion
+  /* Base styles */
+  display: flex;
 
-By following these best practices and guidelines, you can effectively use GitHub Copilot to enhance your projects. Remember to always review and refine the generated code to ensure it meets your standards and requirements. For language-specific guidelines, refer to the corresponding files in the `.github/prompts/` directory.
+  /* Element styles with nesting */
+  .m-[component]__element {
+    /* Modifier variants for Element */
+    &.--modifier {
+    }
+  }
+
+  /* Modifier variants */
+  &.--variant {
+  }
+  &.--state {
+  }
+
+  /* Conditional transitions */
+  &.--transition {
+    transition: property duration ease;
+  }
+}
+```
+
+Madogiwa UI provides optional CSS transitions for interactive components, considering users with visual sensitivities and motion preferences. You can enable or disable transitions using the `--transition` modifier class.
+
+#### CSS Variables System
+
+CSS variables are designed with consideration for Tailwind CSS compatibility based on the following default CSS variables:
+
+refs: https://tailwindcss.com/docs/theme#default-theme-variable-reference
+
+## A11y
+
+**For basic guidelines, see the corresponding `.github/prompts/a11y.prompt.md`.**
+
+### Focus Visualization
+
+Madogiwa UI implements minimal focus visualization to respect native browser focus indicators across Firefox, Safari, Google Chrome, and other browsers, ensuring optimal accessibility.
+
+We believe that browser-native focus indicators are specifically designed and tested for accessibility compliance.
+
+## Development Workflows
+
+### Essential Commands
+
+- **Setup**: `pnpm i && pnpm run setup` (installs Playwright for testing)
+- **CSS Development**: `pnpm css storybook` (launches Storybook at :6006)
+- **CSS Build**: `pnpm css build` (outputs to `dist/` with VS Code snippets)
+- **CSS Unit Testing**: `pnpm css test` (Node.js unit tests for build plugins)
+- **CSS E2E Testing**: `pnpm css storybook:test` (Playwright + accessibility tests)
+- **Linting**: `pnpm lint` (ESLint), `pnpm lint:css` (Stylelint with baseline checks)
+
+## Storybook-Driven Development
+
+- Each component has `.stories.ts` with interaction tests using `@storybook/test`
+- Stories include accessibility testing via `@storybook/addon-a11y`
+- Test files use `canvasElement` pattern for DOM interaction testing
+
+### Storybook template
+
+```ts
+import { Meta, StoryObj } from "@storybook/web-components";
+import { expect } from "@storybook/test";
+
+const meta: Meta = {
+  title: "[Foundation|Components|Layouts|Utils]/ExampleName",
+  tags: ["autodocs"],
+  argTypes: {}, // Define component props here. For CSS, define modifiers and CSS Variables
+  parameters: {
+    docs: {
+      description: {
+        component: "example text.", // Component description for docs
+      },
+    },
+  },
+};
+
+export default meta;
+type Story = StoryObj;
+
+export const Default: Story = {
+  render: (_args) => {
+    // Choose between Storybook Story Pattern or TypeScript Helper Pattern based on the component
+    const container = document.createElement("div");
+    return container;
+  },
+  args: {}, // Default args for the story
+  play: async ({ canvasElement }) => {
+    const canvas = canvasElement as HTMLElement;
+    expect(canvas).not.toBeNull();
+  },
+};
+```
+
+### Storybook Story Pattern
+
+For components with few variations and minimal state management, write them simply as follows:
+
+```typescript
+// Button.stories.ts
+export const Default: Story = {
+  render: (args) => createButton(args),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole("button");
+    await expect(button).toHaveClass("m-btn");
+  },
+};
+```
+
+### TypeScript Helper Pattern
+
+For components with many variations and state management requirements, create TypeScript helpers as follows:
+
+```typescript
+// Button.ts
+export interface ButtonProperties {
+  variant?: "primary" | "secondary";
+  // ... other props
+}
+
+export const createButton = (
+  props: ButtonProperties = {}
+): HTMLButtonElement => {
+  const button = document.createElement("button");
+  button.classList.add("m-btn");
+  if (props.variant) button.classList.add(`--${props.variant}`);
+  return button;
+};
+```
+
+## When Adding New Components
+
+1. **Create CSS**: `packages/css/src/[components|layouts]/[name].css` with BEM + CSS variables
+2. **Add to Layer**: Import in `packages/css/src/main.css` under `@import ... layer([components|layouts])`
+3. **Create Story**: `packages/css/stories/[components|layouts]/[Name]/[Name].stories.ts` with interaction tests
+4. **Create Helper**: `packages/css/stories/[components|layouts]/[Name]/[Name].ts` with TypeScript interface
+5. **Test Accessibility**: Ensure a11y addon passes all checks
+6. **Verify Build**: Check generated snippets work in VS Code
+
+## Testing & Quality
+
+### Testing Strategy
+
+- **Unit Tests**: Node.js `--experimental-strip-types` for build plugins
+- **Integration**: Storybook interaction testing with Playwright
+- **Accessibility**: Automated a11y checks in all stories
+- **Visual**: Storybook viewport testing across device sizes
+
+### Code Quality
+
+- **ESLint**: Strict TypeScript config with `@tsconfig/strictest`
+- **Stylelint**: CSS standards + baseline compatibility checking
+- **TypeScript**: Strict mode with `noEmit` type checking
