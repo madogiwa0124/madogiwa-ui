@@ -140,7 +140,12 @@ Please create based on the following example:
 import type { Meta, StoryObj } from "@storybook/html";
 import { expect } from "storybook/test";
 
-const meta: Meta = {
+type ComponentProperties = {
+  label: string;
+  variant: "default" | "primary" | "secondary" | "tertiary";
+};
+
+const meta: Meta<ComponentProperties> = {
   title: "[Foundation|Components|Layouts|Utils]/ExampleName",
   tags: ["autodocs"],
   argTypes: {
@@ -194,7 +199,7 @@ const meta: Meta = {
 };
 
 export default meta;
-type Story = StoryObj;
+type Story = StoryObj<ComponentProperties>;
 
 export const Default: Story = {
   render: (args) => {
@@ -208,6 +213,8 @@ export const Default: Story = {
     variant: "default",
   },
   play: async ({ canvasElement }) => {
+    // Interaction tests using canvasElement
+    // Example: Check if the component renders correctly
     const canvas = canvasElement as HTMLElement;
     expect(canvas).not.toBeNull();
   },
