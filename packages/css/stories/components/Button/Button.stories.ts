@@ -52,6 +52,21 @@ Flexible button component implementing BEM + CSS Nesting pattern with m- prefix 
 
 Use buttons for primary actions, form submissions, navigation triggers, and interactive elements. Apply appropriate variants to establish visual hierarchy and provide clear user feedback. Consider accessibility requirements when implementing icon-only buttons and ensure sufficient color contrast for all variants.
 
+### Modifiers
+
+Describe **all modifiers** defined in this component.
+
+| Target | Name | Description |
+| ------ | ---- | ----------- |
+| .m-btn | .--primary | Apply primary color variant |
+| .m-btn | .--secondary | Apply secondary color variant |
+| .m-btn | .--tertiary | Apply tertiary color variant |
+| .m-btn | .--outline | Apply outline style with transparent background |
+| .m-btn | .--block | Make button full width (display: block) |
+| .m-btn | .--rounded | Apply fully rounded corners |
+| .m-btn | .--icon-only | Reduce padding for icon-only buttons |
+| .m-btn | .--transition | Enable smooth hover/focus transitions |
+
 ### CSS Variables
 
 Describe **all CSS variables** defined in this component.

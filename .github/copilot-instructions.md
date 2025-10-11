@@ -167,6 +167,14 @@ const meta: Meta = {
 
         **Sample code is unnecessary.**
 
+        ### Modifiers
+
+        Describe **all modifiers** defined in this component.
+
+        | Target | Name | Description |
+        |--- | ---- | ----------- |
+        | .m-example | .--example-modifier | Description of the modifier |
+
         ### CSS Variables
 
         Describe **all CSS variables** defined in this component.
