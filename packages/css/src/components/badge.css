@@ -1,5 +1,5 @@
 .m-badge {
-  --badge-padding: var(--spacing-1) var(--spacing-2);
+  --badge-padding: var(--spacing-1);
   --badge-item-gap: var(--spacing-2);
   --badge-border-color: var(--color-border);
   --badge-border: 1px solid var(--badge-border-color);
@@ -34,6 +34,7 @@
   padding: var(--badge-padding);
   gap: var(--badge-item-gap);
   text-decoration: none;
+  line-height: var(--line-height-none);
 
 
   &:has(.icon, svg) {
@@ -82,7 +83,7 @@
   }
 
   &.--rounded {
-    --badge-border-radius: var(--border-radius-full);
+    --badge-border-radius: var(--radius-full);
   }
 
   &.--primary {
