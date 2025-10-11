@@ -134,18 +134,52 @@ We believe that browser-native focus indicators are specifically designed and te
 
 ### Storybook template
 
+Please create based on the following example:
+
 ```ts
-import { Meta, StoryObj } from "@storybook/web-components";
-import { expect } from "@storybook/test";
+import type { Meta, StoryObj } from "@storybook/html";
+import { expect } from "storybook/test";
 
 const meta: Meta = {
   title: "[Foundation|Components|Layouts|Utils]/ExampleName",
   tags: ["autodocs"],
-  argTypes: {}, // Define component props here. For CSS, define modifiers and CSS Variables
+  argTypes: {
+    label: { control: "text" },
+    variant: {
+      control: {
+        type: "select",
+      },
+      options: ["default", "primary", "secondary", "tertiary"],
+    },
+  }, // Define component props here. For CSS, define modifiers.
   parameters: {
     docs: {
       description: {
-        component: "example text.", // Component description for docs
+        // Component description(usage, behavior, CSS variables, etc.) for docs
+        component: `
+        ### Overview
+
+        This is an example component for Madogiwa UI.
+
+        ### Usage
+
+        Describe the usage scenarios and instructions for this component in actual products, not technical content.
+
+        **Sample code is unnecessary.**
+
+        ### CSS Variables
+
+        Describe **all CSS variables** defined in this component.
+
+        | Name | Default | Description |
+        | ---- | ------- | ----------- |
+        | --example-variable | value | Description of the variable |
+
+        ### Caution
+
+        - This is an example component.
+        - Please customize it as needed.
+        `
       },
     },
   },
@@ -155,12 +189,16 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: (_args) => {
+  render: (args) => {
     // Choose between Storybook Story Pattern or TypeScript Helper Pattern based on the component
     const container = document.createElement("div");
     return container;
   },
-  args: {}, // Default args for the story
+  // Default args for the story
+  args: {
+    label: "Example",
+    variant: "default",
+  },
   play: async ({ canvasElement }) => {
     const canvas = canvasElement as HTMLElement;
     expect(canvas).not.toBeNull();
