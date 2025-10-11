@@ -19,17 +19,17 @@ yarn add @madogiwa-ui/css
 ### Import in your CSS
 
 ```css
-@import '@madogiwa-ui/css';
+@import "@madogiwa-ui/css";
 /* Import individual components */
-@import '@madogiwa-ui/css/src/components/button.css';
+@import "@madogiwa-ui/css/src/components/button.css";
 ```
 
 ### Import in JavaScript/TypeScript
 
 ```javascript
-import '@madogiwa-ui/css';
+import "@madogiwa-ui/css";
 /* Import individual components */
-import '@madogiwa-ui/css/src/components/button.css';
+import "@madogiwa-ui/css/src/components/button.css";
 ```
 
 ## 🎨 Basic Usage
@@ -37,9 +37,7 @@ import '@madogiwa-ui/css/src/components/button.css';
 ```html
 <!-- Alert Component -->
 <div class="m-alert --primary">
-  <div class="m-alert__content">
-    Primary alert message
-  </div>
+  <div class="m-alert__content">Primary alert message</div>
 </div>
 
 <!-- Button Component -->
@@ -65,11 +63,11 @@ import '@madogiwa-ui/css/src/components/button.css';
   --spacing: 4px;
 
   /* Typography */
-  --font-family-base: 'Your Font', sans-serif;
+  --font-family-base: "Your Font", sans-serif;
 }
 
 .m-btn {
-  --btn-color-primary: #your-custom-color
+  --btn-color-primary: #your-custom-color;
 }
 ```
 
@@ -118,13 +116,21 @@ We employ BEM-based CSS design while leveraging native CSS Nesting for style sco
 
 ```css
 .prefix-block {
-  .prefix-block__element {}
-  &.--modifier {}
+  .prefix-block__element {
+  }
+  &.--modifier {
+  }
 }
 ```
 
 We use `m-` as the prefix for all CSS classes to avoid naming conflicts and ensure consistent component identification.
 This prefix system helps maintain clear separation between framework styles and your custom application styles.
+
+### CSS Variables System
+
+CSS variables are designed with consideration for Tailwind CSS compatibility based on the following default CSS variables:
+
+refs: https://tailwindcss.com/docs/theme#default-theme-variable-reference
 
 ### Optional Transition
 
@@ -162,11 +168,11 @@ We use Storybook for Interaction Testing and accessibility checks with the a11y 
 export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
+    const button = canvas.getByRole("button");
 
     await expect(button).toBeInTheDocument();
     await userEvent.click(button);
-    await expect(button).toHaveClass('--active');
-  }
+    await expect(button).toHaveClass("--active");
+  },
 };
 ```
