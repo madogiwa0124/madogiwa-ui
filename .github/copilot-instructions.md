@@ -172,6 +172,14 @@ const meta: Meta<ComponentProperties> = {
 
         **Sample code is unnecessary.**
 
+        ### Elements
+
+        Describe **all elements** defined in this component.
+
+        | Name | Description |
+        | ---- | ----------- |
+        | .m-example__element | Description of the element |
+
         ### Modifiers
 
         Describe **all modifiers** defined in this component.
@@ -201,7 +209,14 @@ const meta: Meta<ComponentProperties> = {
 export default meta;
 type Story = StoryObj<ComponentProperties>;
 
-export const Default: Story = {
+export const Example: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "This is an example story for the Example component.",
+      },
+    },
+  },
   render: (args) => {
     // Choose between Storybook Story Pattern or TypeScript Helper Pattern based on the component
     const container = document.createElement("div");
