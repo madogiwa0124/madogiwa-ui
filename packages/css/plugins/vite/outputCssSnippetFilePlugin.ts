@@ -91,8 +91,7 @@ const transformBemClassesToSnippetSource = (bemClassStructures: BEMClassStructur
   return snippetSource;
 };
 
-// NOTE: exported for testing
-export const buildSnippets = ({ descriptionPrefix, classRegex, cssContent, initScope }: {
+const buildClassSnippets = ({ descriptionPrefix, classRegex, cssContent, initScope }: {
   descriptionPrefix: string;
   classRegex: RegExp;
   cssContent: string;
@@ -103,10 +102,10 @@ export const buildSnippets = ({ descriptionPrefix, classRegex, cssContent, initS
   let match;
   while ((match = classRegex.exec(cssContent)) !== null) classNames.add(match[0]);
   const bemClassStructures = parseBEMClasses(classNames);
-  const snippetSource = transformBemClassesToSnippetSource(bemClassStructures, descriptionPrefix);
-  for (const snippetName of Object.keys(snippetSource)) {
-    if (!snippetSource[snippetName]) continue;
-    const { initBody, prefix: initPrefix, placeholders, description } = snippetSource[snippetName];
+  const classSnippetSource = transformBemClassesToSnippetSource(bemClassStructures, `${descriptionPrefix} class`);
+  for (const snippetName of Object.keys(classSnippetSource)) {
+    if (!classSnippetSource[snippetName]) continue;
+    const { initBody, prefix: initPrefix, placeholders, description } = classSnippetSource[snippetName];
     const snippetItem = buildSnippetItem({ description, initBody, initPrefix, scope: initScope, placeholders });
     const { scope, prefix, body } = snippetItem;
     snippets.push({ [snippetName]: { scope, prefix, body, description } });
@@ -114,13 +113,69 @@ export const buildSnippets = ({ descriptionPrefix, classRegex, cssContent, initS
   return snippets;
 };
 
+const CSS_ROOT_REGEXP = /:root\s*\{([^}]*)\}/g;
+const CSS_VARIABLE_REGEXP = /(?<!\.)--[a-zA-Z0-9_-]+(?=\s*:)/g;
+// NOTE: Since variables do not need placeholders, pass an empty Set array
+const CSS_VARIABLE_SNIPPET_PLACEHOLDERS = new Array<Set<string>>();
+const buildRootCSSVariableSnippets = ({ descriptionPrefix, variableRegex = CSS_VARIABLE_REGEXP, cssContent, initScope }: {
+  descriptionPrefix: string;
+  variableRegex?: RegExp;
+  cssContent: string;
+  initScope: string;
+}) => {
+  const rootMatch = cssContent.match(CSS_ROOT_REGEXP);
+  if (!rootMatch) return [];
+
+  const snippets: { [name: string]: SnippetItem }[] = [];
+  let rootCSSVariables = new Set<string>([]);
+  for (const match of rootMatch) {
+    rootCSSVariables = rootCSSVariables.union(extractCSSVariables(match, variableRegex));
+  }
+  if (rootCSSVariables.size === 0) return [];
+
+  for (const variableName of rootCSSVariables) {
+    const snippetItem = buildSnippetItem({
+      description: `${descriptionPrefix} CSS variable ${variableName}`,
+      initBody: variableName,
+      initPrefix: variableName,
+      scope: initScope,
+      placeholders: CSS_VARIABLE_SNIPPET_PLACEHOLDERS,
+    });
+    snippets.push({ [variableName]: snippetItem });
+  }
+  return snippets;
+};
+
+const extractCSSVariables = (cssContent: string, variableRegex: RegExp): Set<string> => {
+  const variables = new Set<string>();
+  const matches = cssContent.match(variableRegex);
+  if (matches) for (const match of matches) variables.add(match);
+  return variables;
+};
+
+// NOTE: exported for testing
+const CSS_VARIABLES_SNIPPET_SCOPE = "css" as const;
+export const buildSnippets = ({ descriptionPrefix, classRegex, cssContent, initScope, outputRootCSSVariables }: {
+  descriptionPrefix: string;
+  classRegex: RegExp;
+  cssContent: string;
+  initScope: string;
+  outputRootCSSVariables: boolean;
+}) => {
+  const snippets: { [name: string]: SnippetItem }[] = [];
+  snippets.push(...buildClassSnippets({ descriptionPrefix, classRegex, cssContent, initScope }));
+  if (outputRootCSSVariables) snippets.push(...buildRootCSSVariableSnippets({ descriptionPrefix, cssContent, initScope: CSS_VARIABLES_SNIPPET_SCOPE }));
+  return snippets;
+};
+
 const isProduction = process.env["NODE_ENV"] === "production";
 export const outputCssSnippetFilePlugin = (
-  { scope, targetSelectorRegexp, snippetFileName, descriptionPrefix }: {
+  { scope, targetSelectorRegexp, snippetFileName, descriptionPrefix, outputRootCSSVariables = false }: {
     scope: string;
     targetSelectorRegexp: string;
     snippetFileName: string;
     descriptionPrefix: string;
+    outputRootCSSVariables?: boolean;
   },
 ): Plugin => {
   return {
@@ -139,7 +194,7 @@ export const outputCssSnippetFilePlugin = (
           const snippets: { [name: string]: SnippetItem }[] = [];
           for (const file of files) {
             const cssContent = readFileSync(file, "utf8");
-            snippets.push(...buildSnippets({ descriptionPrefix, classRegex, cssContent, initScope: scope }));
+            snippets.push(...buildSnippets({ descriptionPrefix, classRegex, cssContent, initScope: scope, outputRootCSSVariables }));
           }
           if (snippets.length > 0) {
             writeFileSync(snippetFileName, JSON.stringify(Object.assign({}, ...snippets), null, 2));

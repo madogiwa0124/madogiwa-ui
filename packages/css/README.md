@@ -71,9 +71,9 @@ import "@madogiwa-ui/css/src/components/button.css";
 }
 ```
 
-## 🔖 CSS Class Snippets (for VSCode)
+## 🔖 CSS Snippets (for VSCode)
 
-To use Madogiwa UI CSS class snippets in VSCode, place the `dist/madogiwa-ui.code-snippets` file in your `.vscode` directory (or any snippets directory). This will enable you to easily insert Madogiwa UI component classes like `.m-btn` when editing `html` or `css` files.
+To use Madogiwa UI CSS snippets in VS Code, place the `dist/madogiwa-ui.code-snippets` file in your `.vscode` directory (or any snippets directory). This enables you to easily insert Madogiwa UI component classes like `.m-btn` when editing HTML or CSS files, and CSS variables like `--color-primary` when editing CSS files.
 
 ## 🏗️ Architecture
 

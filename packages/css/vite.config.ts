@@ -15,7 +15,8 @@ export default defineConfig({
       */
       targetSelectorRegexp: `\\.m-([a-zA-Z0-9_-]+(?:__[a-zA-Z0-9_-]+)?)(?:\\.--[a-zA-Z0-9_-]+)*(?=[\\s,{])`,
       snippetFileName: "dist/madogiwa-ui.code-snippets",
-      descriptionPrefix: "Madogiwa UI class",
+      descriptionPrefix: "Madogiwa UI",
+      outputRootCSSVariables: true,
     }),
     removeFilePlugin("dist/*.js"),
   ],
