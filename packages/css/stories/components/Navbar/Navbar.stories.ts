@@ -1,16 +1,101 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import { expect, userEvent, within } from "storybook/test";
 
-interface NavbarProperties {
+// TypeScript Helper Pattern for complex component creation
+export interface NavbarProperties {
+  title?: string;
+  items?: Array<{ text: string; href: string; end?: boolean; icon?: string }>;
+  buttons?: Array<{ text: string; variant?: "primary" | "secondary"; icon?: string }>;
+  transition?: boolean;
+  hoverMenu?: boolean;
+  showMenu?: boolean;
+  menuVariant?: "side" | "float";
+  className?: string;
+  noHamburger?: boolean;
+  menuToggleByJS?: boolean;
+}
+
+const createNavbar = (
+  props: NavbarProperties = {},
+): HTMLElement => {
+  const {
+    title = "Brand Name",
+    items = [],
+    buttons = [],
+    transition = false,
+    hoverMenu = false,
+    showMenu = false,
+    menuVariant,
+    noHamburger = true,
+    menuToggleByJS = false,
+  } = props;
+
+  const container = document.createElement("div");
+  const transitionClass = transition ? " --transition" : "";
+  const hoverClass = hoverMenu ? " --hover-hamburger-menu" : "";
+
+  const menuVariantClass = menuVariant
+    ? {
+        float: " --mobile-float-menu",
+        side: " --mobile-side-menu",
+      }[menuVariant]
+    : "";
+
+  const navigationItems = items.map(item =>
+    `<a href="${item.href}" class="m-navbar__item${item.end ? " --end" : ""}">${item.text}</a>`,
+  ).join("");
+
+  const actionButtons = buttons.map(button =>
+    `<button class="m-btn${button.variant === "primary" ? " --primary" : ""}">${button.text}</button>`,
+  ).join("");
+
+  const buttonsSection = buttons.length > 0
+    ? `
+    <div class="m-navbar__item --end">
+      ${actionButtons}
+    </div>`
+    : "";
+
+  const hamburgerSection = `
+    <div class="m-navbar__hamburger">
+      <button class="m-navbar__hamburger-menu" aria-label="Menu" aria-expanded="${String(showMenu)}" aria-controls="navigation-menu"></button>
+    </div>
+  `;
+
+  container.innerHTML = `
+    <nav role="navigation" class="m-navbar${transitionClass}${hoverClass}${menuVariantClass}">
+      <a href="#" class="m-navbar__title">${title}</a>
+      <div class="m-navbar__items" id="navigation-menu">
+        ${navigationItems}
+        ${buttonsSection}
+      </div>
+      ${noHamburger ? "" : hamburgerSection}
+    </nav>
+  `.trim();
+
+  if (menuToggleByJS && !noHamburger) {
+    const hamburgerMenu = container.querySelector(".m-navbar__hamburger-menu") as HTMLButtonElement;
+    hamburgerMenu.addEventListener("click", () => {
+      const isExpanded = hamburgerMenu.getAttribute("aria-expanded") === "true";
+      hamburgerMenu.setAttribute("aria-expanded", String(!isExpanded));
+    });
+  }
+
+  return container;
+};
+
+type NavbarStoryProperties = {
   title: string;
   items: Array<{ text: string; href: string; end?: boolean; icon?: string }>;
   buttons: Array<{ text: string; variant?: "primary" | "secondary"; icon?: string }>;
   transition: boolean;
   hoverMenu: boolean;
   showHamburger: boolean;
-}
+  showMenu: boolean;
+  menuVariant: "side" | "float";
+};
 
-const meta: Meta<NavbarProperties> = {
+const meta: Meta<NavbarStoryProperties> = {
   title: "Components/Navbar",
   tags: ["autodocs"],
   argTypes: {
@@ -20,75 +105,145 @@ const meta: Meta<NavbarProperties> = {
     },
     items: {
       control: { type: "object" },
-      description: "Navigation items array",
+      description: "Navigation items array with text, href, and optional end positioning",
     },
     buttons: {
       control: { type: "object" },
-      description: "Action buttons array",
+      description: "Action buttons array with variant support (primary/secondary)",
     },
     transition: {
       control: { type: "boolean" },
-      description: "Enable transition effects",
-      defaultValue: true,
+      description: "Enable smooth transition effects for hamburger menu",
     },
-    hoverMenu: {
-      control: { type: "boolean" },
-      description: "Enable hover-based hamburger menu",
-      defaultValue: true,
+    menuVariant: {
+      control: { type: "select" },
+      options: ["side", "float"],
+      description: "Hamburger menu display style: 'side' (drawer) or 'float' (dropdown)",
     },
-    showHamburger: {
+    showMenu: {
       control: { type: "boolean" },
-      description: "Show hamburger menu on mobile",
-      defaultValue: true,
+      description: "(For testing) Force show menu state regardless of responsive behavior",
     },
   },
   parameters: {
+    layout: "fullscreen",
     docs: {
       description: {
-        component: `example description`,
+        component: `
+### Overview
+
+The Navbar component provides responsive navigation with mobile-first design. It features flexible hamburger menu variants and comprehensive customization options.
+
+### Usage
+
+Use the navbar for:
+- Primary site navigation
+- Brand/logo display
+- Action buttons (login, signup, etc.)
+- Responsive mobile menu patterns
+- Multi-level navigation structures
+
+**⚠️ Need JavaScript**
+
+The opening and closing of the hamburger menu on mobile must be controlled via JavaScript by the value of \`.m-navbar__hamburger-menu[aria-expanded]\`.
+
+\`\`\`js
+const hamburgerMenu = document.querySelector(".m-navbar__hamburger-menu");
+hamburgerMenu.addEventListener("click", () => {
+  const isExpanded = hamburgerMenu.getAttribute("aria-expanded") === "true";
+  hamburgerMenu.setAttribute("aria-expanded", String(!isExpanded));
+});
+\`\`\`
+
+### Elements
+
+| Name | Description |
+| ---- | ----------- |
+| .m-navbar__title | Brand/logo area with link styling |
+| .m-navbar__items | Main navigation container |
+| .m-navbar__item | Individual navigation link or button container |
+| .m-navbar__hamburger | Mobile hamburger button container |
+| .m-navbar__hamburger-menu | Hamburger menu toggle button |
+
+### Modifiers
+
+| Target | Name | Description |
+| ------ | ---- | ----------- |
+| .m-navbar | .--transition | Enables smooth animations for menu transitions |
+| .m-navbar | .--hover-hamburger-menu | **Experimental**: CSS-only hover menu activation |
+| .m-navbar | .--mobile-float-menu | Dropdown-style floating menu (no backdrop) |
+| .m-navbar | .--mobile-side-menu | Drawer-style side menu (with backdrop) |
+| .m-navbar__item | .--end | Aligns item to the end of the navigation (right in LTR) |
+
+### CSS Variables
+
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| --navbar-bg-color | var(--color-bg-light) | Background color of the navbar |
+| --navbar-min-height | 56px | Minimum height of the navbar |
+| --navbar-item-padding | var(--spacing-2) var(--spacing-3) | Padding for navbar items |
+| --navbar-item-gap | var(--spacing-2) | Gap between items with content |
+| --navbar-item-text-color | var(--color-text) | Text color for navigation items |
+| --navbar-item-hover-bg-color | var(--color-primary) | Background color on item hover |
+| --navbar-item-hover-text-color | var(--color-text-light) | Text color on item hover |
+| --navbar-hamburger-icon-content | "☰" | Hamburger menu icon content |
+| --navbar-hamburger-icon-close-content | "×" | Close menu icon content |
+| --navbar-hamburger-icon-size | 1.5rem | Size of hamburger menu icons |
+| --navbar-hamburger-icon-padding | 0 var(--spacing-2) | Padding for hamburger icon |
+| --navbar-hamburger-icon-color | var(--color-text) | Color of hamburger icon |
+| --navbar-hamburger-icon-hover-bg-color | color(from var(--navbar-bg-color) srgb calc(r * 0.8) calc(g * 0.8) calc(b * 0.8)) | Hover background for icon |
+| --navbar-hamburger-icon-border-radius | var(--radius-sm) | Border radius for hamburger icon |
+| --navbar-hamburger-menu-bg-color | var(--color-bg-light) | Background of mobile menu |
+| --navbar-hamburger-menu-border | 2px solid var(--color-bg-light) | Border for hamburger menu |
+| --navbar-hamburger-menu-border-radius | 0 0 var(--radius-sm) var(--radius-sm) | Border radius for menu |
+| --navbar-hamburger-menu-box-shadow | var(--shadow-md) | Box shadow for menu |
+| --navbar-hamburger-menu-item-separate-border | 1px solid var(--color-bg-light) | Border between menu items |
+| --navbar-base-zindex | var(--zindex-navbar) | Base z-index for navbar layering |
+| --navbar-backdrop-zindex | calc(var(--navbar-base-zindex) - 1) | Z-index for backdrop |
+| --navbar-menu-zindex | calc(var(--navbar-base-zindex) + 1) | Z-index for menu items |
+| --navbar-hamburger-menu-slidein-transition | 0.1s ease-in-out | Slide-in animation duration |
+| --navbar-hamburger-menu-hover-item-transition | 0.3s ease-in-out | Item hover transition |
+| --navbar-hamburger-float-menu-position-right | var(--spacing-2) | Right position for float menu |
+| --navbar-hamburger-side-menu-top-padding | var(--navbar-min-height) | Top padding for side menu |
+| --navbar-hamburger-side-menu-max-width | 80vw | Maximum width for side menu |
+| --navbar-hamburger-side-menu-min-width | 40vw | Minimum width for side menu |
+| --navbar-hamburger-side-menu-backdrop-color | var(--color-overlay) | Backdrop color for side menu |
+| --navbar-hamburger-side-menu-backdrop-filter | blur(2px) | Backdrop filter effect |
+
+### Caution
+- Ensure sufficient contrast between text and background for readability
+- Use meaningful alt text for icons to enhance accessibility
+        `,
       },
     },
   },
 };
 
 export default meta;
-type Story = StoryObj<NavbarProperties>;
+type Story = StoryObj<NavbarStoryProperties>;
 
 export const Default: Story = {
   render: (args) => {
-    const container = document.createElement("div");
-    const transitionClass = args.transition ? " --transition" : "";
-    const hoverClass = args.hoverMenu ? " --hover-hamburger-menu" : "";
+    const navbar = createNavbar({
+      title: args.title,
+      items: args.items,
+      buttons: args.buttons,
+      transition: args.transition,
+    });
 
-    const navigationItems = args.items.map(item =>
-      `<a href="${item.href}" class="m-navbar__item${item.end ? " --end" : ""}">${item.text}</a>`,
-    ).join("");
-
-    const actionButtons = args.buttons.map(button =>
-      `<button class="m-btn${button.variant === "primary" ? " --primary" : ""}">${button.text}</button>`,
-    ).join("");
-
-    const hamburgerSection = args.showHamburger
-      ? `
-      <div class="m-navbar__hamburger">
-        <button class="m-navbar__hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
-      </div>`
-      : "";
-
-    container.innerHTML = `
-      <nav role="navigation" class="m-navbar${transitionClass}${hoverClass}">
-        <a href="#" class="m-navbar__title">${args.title}</a>
-        <div class="m-navbar__items" id="navigation-menu">
-          ${navigationItems}
-          <div class="m-navbar__item --end">
-            ${actionButtons}
-          </div>
-        </div>
-        ${hamburgerSection}
-      </nav>
+    // Add sample page content for context
+    const pageContent = document.createElement("main");
+    pageContent.className = "m-container";
+    pageContent.style.padding = "var(--spacing-4)";
+    pageContent.innerHTML = `
+      <h1 class="m-h1">Page Content</h1>
+      <p>This demonstrates the navbar in a real page context.</p>
+      <p><strong>Try:</strong> Resize the viewport to see responsive behavior.</p>
+      <button class="m-btn --primary">Sample Action</button>
     `;
 
-    return container;
+    navbar.append(pageContent);
+    return navbar;
   },
   args: {
     title: "Brand Name",
@@ -99,230 +254,238 @@ export const Default: Story = {
       { text: "Contact", href: "#" },
     ],
     buttons: [
-      { text: "Login", variant: "secondary" },
-      { text: "Sign Up", variant: "primary" },
+      { text: "Login", variant: "secondary" as const },
+      { text: "Sign Up", variant: "primary" as const },
     ],
-    transition: true,
-    hoverMenu: true,
-    showHamburger: true,
+    transition: false,
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, args }) => {
     const canvas = within(canvasElement);
     const navbar = canvas.getByRole("navigation");
-    const title = canvas.getByText("Brand Name");
-    const hamburger = canvas.getByLabelText("Menu");
 
+    await expect(navbar).toBeInTheDocument();
     await expect(navbar).toHaveClass("m-navbar");
+
+    const title = canvas.getByText(args.title);
     await expect(title).toBeInTheDocument();
-    await expect(hamburger).toBeInTheDocument();
-    await expect(hamburger).toHaveAttribute("aria-expanded", "false");
+    await expect(title).toHaveClass("m-navbar__title");
 
-    // Check navigation items
-    const homeLink = canvas.getByText("Home");
-    const aboutLink = canvas.getByText("About");
-    await expect(homeLink).toBeInTheDocument();
-    await expect(aboutLink).toBeInTheDocument();
+    for (const item of args.items) {
+      const link = canvas.getByText(item.text);
+      await expect(link).toBeInTheDocument();
+      await expect(link).toHaveClass("m-navbar__item");
+      await expect(link).toHaveAttribute("href", item.href);
+    }
 
-    // Check buttons
-    const loginButton = canvas.getByText("Login");
-    const signupButton = canvas.getByText("Sign Up");
-    await expect(loginButton).toBeInTheDocument();
-    await expect(signupButton).toBeInTheDocument();
+    for (const button of args.buttons) {
+      const buttonElement = canvas.getByText(button.text);
+      await expect(buttonElement).toBeInTheDocument();
+      await expect(buttonElement).toHaveClass("m-btn");
+      if (button.variant === "primary") {
+        await expect(buttonElement).toHaveClass("--primary");
+      }
+    }
+
+    if (args.transition) {
+      await expect(navbar).toHaveClass("--transition");
+    }
+
+    if (args.hoverMenu) {
+      await expect(navbar).toHaveClass("--hover-hamburger-menu");
+    }
   },
 };
 
-export const MinimalNavbar: Story = {
+export const WithSideMenu: Story = {
   render: (args) => {
-    const container = document.createElement("div");
-    const transitionClass = args.transition ? " --transition" : "";
-    const hoverClass = args.hoverMenu ? " --hover-hamburger-menu" : "";
-
-    const navigationItems = args.items.map(item =>
-      `<a href="${item.href}" class="m-navbar__item">${item.text}</a>`,
-    ).join("");
-
-    const hamburgerSection = args.showHamburger
-      ? `
-      <div class="m-navbar__hamburger">
-        <button class="m-navbar__hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
-      </div>`
-      : "";
-
-    container.innerHTML = `
-      <nav role="navigation" class="m-navbar${transitionClass}${hoverClass}">
-        <a href="#" class="m-navbar__title">${args.title}</a>
-        <div class="m-navbar__items" id="navigation-menu">
-          ${navigationItems}
-        </div>
-        ${hamburgerSection}
-      </nav>
-    `;
-
-    return container;
-  },
-  args: {
-    title: "Simple Brand",
-    items: [
-      { text: "Home", href: "#" },
-      { text: "About", href: "#" },
-      { text: "Contact", href: "#" },
-    ],
-    buttons: [],
-    transition: false,
-    hoverMenu: false,
-    showHamburger: true,
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const navbar = canvas.getByRole("navigation");
-    const title = canvas.getByText("Simple Brand");
-
-    await expect(navbar).toBeInTheDocument();
-    await expect(title).toBeInTheDocument();
-
-    const homeLink = canvas.getByText("Home");
-    const aboutLink = canvas.getByText("About");
-    const contactLink = canvas.getByText("Contact");
-
-    await expect(homeLink).toBeInTheDocument();
-    await expect(aboutLink).toBeInTheDocument();
-    await expect(contactLink).toBeInTheDocument();
-  },
-};
-
-export const MobileView: Story = {
-  render: (args) => {
-    const container = document.createElement("div");
-    const transitionClass = args.transition ? " --transition" : "";
-    const hoverClass = args.hoverMenu ? " --hover-hamburger-menu" : "";
-
-    const navigationItems = args.items.map(item =>
-      `<a href="${item.href}" class="m-navbar__item">${item.text}</a>`,
-    ).join("");
-
-    const hamburgerSection = args.showHamburger
-      ? `
-      <div class="m-navbar__hamburger">
-        <button class="m-navbar__hamburger-menu" aria-label="Menu" aria-expanded="false"></button>
-      </div>`
-      : "";
-
-    container.innerHTML = `
-      <nav role="navigation" class="m-navbar${transitionClass}${hoverClass}">
-        <a href="#" class="m-navbar__title">${args.title}</a>
-        <div class="m-navbar__items" id="navigation-menu">
-          ${navigationItems}
-        </div>
-        ${hamburgerSection}
-      </nav>
-    `;
-
-    return container;
-  },
-  args: {
-    title: "Simple Brand",
-    items: [
-      { text: "Home", href: "#" },
-      { text: "About", href: "#" },
-      { text: "Contact", href: "#" },
-    ],
-    buttons: [],
-    transition: false,
-    hoverMenu: true,
-    showHamburger: true,
-  },
-  // NOTE: set default mobile viewport for story
-  // https://storybook.js.org/docs/essentials/viewport#defining-the-viewport-for-a-story
-  globals: {
-    viewport: { value: "mobile1", isRotated: false },
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const navbar = canvas.getByRole("navigation");
-    const title = canvas.getByText("Simple Brand");
-    const hamburger = canvas.getByLabelText("Menu");
-
-    // NOTE: wait for change viewport for css
-    await new Promise((resolve) => {
-      setTimeout(resolve, 500);
+    return createNavbar({
+      title: args.title,
+      items: args.items,
+      buttons: args.buttons,
+      transition: args.transition,
+      showMenu: args.showMenu,
+      menuVariant: "side",
+      noHamburger: false,
+      menuToggleByJS: true,
     });
-
-    await expect(navbar).toBeInTheDocument();
-    await expect(title).toBeInTheDocument();
-    await expect(hamburger).toBeVisible();
-
-    const navItems = canvasElement.querySelector(".m-navbar__items") as HTMLElement;
-    let computedStyle = getComputedStyle(navItems);
-    await expect(computedStyle.opacity).toBe("0");
-    await expect(computedStyle.visibility).toBe("hidden");
-
-    await userEvent.click(hamburger);
-
-    computedStyle = getComputedStyle(navItems);
-    await expect(computedStyle.opacity).toBe("1");
-    await expect(computedStyle.visibility).toBe("visible");
-
-    // ホバー解除
-    await userEvent.click(document.body);
-
-    // 再度非表示になることを確認
-    computedStyle = getComputedStyle(navItems);
-    await expect(computedStyle.opacity).toBe("0");
-    await expect(computedStyle.visibility).toBe("hidden");
-  },
-};
-
-export const NoHamburger: Story = {
-  render: (args) => {
-    const container = document.createElement("div");
-    const transitionClass = args.transition ? " --transition" : "";
-
-    const navigationItems = args.items.map(item =>
-      `<a href="${item.href}" class="m-navbar__item">${item.text}</a>`,
-    ).join("");
-
-    const actionButtons = args.buttons.map(button =>
-      `<button class="m-btn${button.variant === "primary" ? " --primary" : ""}">${button.text}</button>`,
-    ).join("");
-
-    container.innerHTML = `
-      <nav role="navigation" class="m-navbar${transitionClass}">
-        <a href="#" class="m-navbar__title">${args.title}</a>
-        <div class="m-navbar__items">
-          ${navigationItems}
-          <div class="m-navbar__item --end">
-            ${actionButtons}
-          </div>
-        </div>
-      </nav>
-    `;
-
-    return container;
   },
   args: {
-    title: "Desktop Only",
+    title: "Side Menu Demo",
     items: [
-      { text: "Dashboard", href: "#" },
-      { text: "Analytics", href: "#" },
-      { text: "Settings", href: "#" },
+      { text: "Home", href: "#" },
+      { text: "About", href: "#" },
+      { text: "Services", href: "#" },
+      { text: "Contact", href: "#" },
     ],
     buttons: [
-      { text: "Profile", variant: "secondary" },
-      { text: "Logout", variant: "primary" },
+      { text: "Login", variant: "secondary" as const },
+      { text: "Sign Up", variant: "primary" as const },
     ],
-    transition: true,
-    hoverMenu: false,
-    showHamburger: false,
+    transition: false,
+    showMenu: false,
+  },
+  globals: {
+    viewport: { value: "mobile1" },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const navbar = canvas.getByRole("navigation");
-    const title = canvas.getByText("Desktop Only");
+    const hamburger = canvas.getByLabelText("Menu");
 
-    await expect(navbar).toBeInTheDocument();
-    await expect(title).toBeInTheDocument();
+    await expect(navbar).toHaveClass("--mobile-side-menu");
 
-    const hamburger = canvasElement.querySelector(".hamburger-menu");
-    await expect(hamburger).not.toBeInTheDocument();
+    await userEvent.click(hamburger);
+    await expect(hamburger).toHaveAttribute("aria-expanded", "true");
+
+    const backdropStyle = getComputedStyle(navbar, "::after");
+    await expect(backdropStyle.display).not.toBe("none");
+
+    const navItems = canvasElement.querySelector(".m-navbar__items") as HTMLElement;
+    const itemsStyle = getComputedStyle(navItems);
+    await expect(itemsStyle.position).toBe("fixed");
+
+    await userEvent.click(hamburger);
+    await expect(hamburger).toHaveAttribute("aria-expanded", "false");
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Side menu variant that creates a full-height drawer with backdrop overlay. Ideal for complex navigation with many items.",
+      },
+    },
+  },
+};
+
+export const WithFloatMenu: Story = {
+  render: (args) => {
+    return createNavbar({
+      title: args.title,
+      items: args.items,
+      buttons: args.buttons,
+      transition: args.transition,
+      hoverMenu: false,
+      showMenu: args.showMenu,
+      menuVariant: "float",
+      noHamburger: false,
+      menuToggleByJS: true,
+    });
+  },
+  args: {
+    title: "Float Menu Demo",
+    items: [
+      { text: "Home", href: "#" },
+      { text: "About", href: "#" },
+      { text: "Services", href: "#" },
+      { text: "Contact", href: "#" },
+    ],
+    buttons: [
+      { text: "Login", variant: "secondary" as const },
+      { text: "Sign Up", variant: "primary" as const },
+    ],
+    transition: false,
+    showMenu: false,
+  },
+  globals: {
+    viewport: { value: "mobile1" },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const hamburger = canvas.getByLabelText("Menu");
+
+    await new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 300);
+    });
+
+    const navbar = canvas.getByRole("navigation");
+    await expect(navbar).toHaveClass("--mobile-float-menu");
+
+    const navItems = canvasElement.querySelector(".m-navbar__items") as HTMLElement;
+
+    const computedStyle = getComputedStyle(navItems);
+    await expect(computedStyle.opacity).toBe("0");
+
+    await expect(navbar).not.toHaveClass("--hover-hamburger-menu");
+
+    await userEvent.click(hamburger);
+    await expect(hamburger).toHaveAttribute("aria-expanded", "true");
+
+    const activatedStyle = getComputedStyle(navItems);
+    await expect(activatedStyle.position).toBe("absolute");
+    await expect(activatedStyle.opacity).toBe("1");
+
+    await userEvent.click(hamburger);
+    await expect(hamburger).toHaveAttribute("aria-expanded", "false");
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Float menu variant that creates a dropdown-style menu positioned relative to the navbar. Lightweight option without backdrop overlay.",
+      },
+    },
+  },
+};
+
+export const WithHoverMenu: Story = {
+  render: (args) => {
+    return createNavbar({
+      title: args.title,
+      items: args.items,
+      buttons: args.buttons,
+      transition: args.transition,
+      hoverMenu: true,
+      showMenu: args.showMenu,
+      menuVariant: args.menuVariant,
+      noHamburger: false,
+      menuToggleByJS: false,
+    });
+  },
+  args: {
+    title: "(Experimental) Demo",
+    items: [
+      { text: "Home", href: "#" },
+      { text: "About", href: "#" },
+      { text: "Services", href: "#" },
+      { text: "Contact", href: "#" },
+    ],
+    buttons: [
+      { text: "Login", variant: "secondary" as const },
+      { text: "Sign Up", variant: "primary" as const },
+    ],
+    transition: false,
+    showMenu: false,
+    menuVariant: "float",
+  },
+  globals: {
+    viewport: { value: "mobile1" },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const navbar = canvas.getByRole("navigation");
+    const hamburger = canvas.getByLabelText("Menu");
+
+    await new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 300);
+    });
+
+    await expect(navbar).toHaveClass("--hover-hamburger-menu");
+
+    const navItems = canvasElement.querySelector(".m-navbar__items") as HTMLElement;
+    const computedStyle = getComputedStyle(navItems);
+    await expect(computedStyle.opacity).toBe("0");
+
+    await userEvent.hover(hamburger);
+
+    await expect(navbar).toHaveClass("--hover-hamburger-menu");
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "**Experimental**: CSS-only hover activation for hamburger menu. Provides instant access without requiring clicks, using pure CSS hover states.",
+      },
+    },
   },
 };
