@@ -233,7 +233,7 @@
       &:has(.m-navbar__hamburger:hover),
       &:has(.m-navbar__hamburger-menu:hover),
       &:has(.m-navbar__items:hover) {
-        &:has(.m-navbar__hamburger-menu.--side-menu) {
+        &.--mobile-side-menu {
           .m-navbar__items {
             transform: translateX(0);
           }
