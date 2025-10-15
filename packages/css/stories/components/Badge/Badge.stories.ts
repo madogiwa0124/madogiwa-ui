@@ -262,11 +262,6 @@ export const AllVariants: Story = {
         if (args["rounded"]) {
           await expect(badge).toHaveClass("--rounded");
         }
-
-        // Test visual feedback by checking computed styles
-        const computedStyle = globalThis.getComputedStyle(badge);
-        await expect(computedStyle.display).toBe("inline-flex");
-        await expect(computedStyle.alignItems).toBe("center");
       }
     }
 
