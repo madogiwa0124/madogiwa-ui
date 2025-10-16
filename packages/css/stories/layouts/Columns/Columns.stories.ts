@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/html";
-import { expect, within } from "storybook/test";
+import { expect } from "storybook/test";
 import { createColumns } from "./Columns";
 
 type ColumnsStoryProperties = {
