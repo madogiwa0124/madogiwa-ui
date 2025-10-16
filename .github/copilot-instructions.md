@@ -75,7 +75,7 @@ All classes use `m-` prefix with BEM methodology:
   --component-property: value;
 
   /* Base styles */
-  display: flex;
+  property: value;
 
   /* Element styles with nesting */
   .m-[component]__element {
@@ -93,6 +93,25 @@ All classes use `m-` prefix with BEM methodology:
   /* Conditional transitions */
   &.--transition {
     transition: property duration ease;
+  }
+
+  /*
+    Data attribute variants
+
+    In cases where you want to specify CSS variables or properties directly from the markup, it is recommended to use data attributes instead of modifiers.
+
+    Example:
+
+    .m-[component] {
+      --component-property: value;
+      property: var(--component-property);
+
+      &[data-example="value"] {
+        --component-property: value;
+      }
+    }
+  */
+  &[data-example="value"] {
   }
 }
 ```
@@ -192,9 +211,17 @@ const meta: Meta<ComponentProperties> = {
 
         Describe **all CSS variables** defined in this component.
 
-        | Name | Default | Description |
-        | ---- | ------- | ----------- |
-        | --example-variable | value | Description of the variable |
+        | Target | Name | Default | Description |
+        | ------ | ---- | ------- | ----------- |
+        | .m-example | --example-variable | value | Description of the variable |
+
+        ### Data Attributes
+
+        Describe **all data attributes** defined in this component.
+
+        | Target | Attribute | Values | Description |
+        | ------ | --------- | ------ | ----------- |
+        | .m-example | data-example| value | Description of the attribute |
 
         ### Caution
 
