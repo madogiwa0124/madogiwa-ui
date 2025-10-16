@@ -114,7 +114,8 @@ const buildClassSnippets = ({ descriptionPrefix, classRegex, cssContent, initSco
 };
 
 const CSS_ROOT_REGEXP = /:root\s*\{([^}]*)\}/g;
-const CSS_VARIABLE_REGEXP = /(?<!\.)--[a-zA-Z0-9_-]+(?=\s*:)/g;
+const CSS_VARIABLE_REGEXP = /(?<!\.)--[a-zA-Z0-9_-]+/g;
+const CSS_AT_PROPERTY_REGEXP = /@property\s+--[a-zA-Z0-9_-]+\s*\{[^}]*\}/g;
 // NOTE: Since variables do not need placeholders, pass an empty Set array
 const CSS_VARIABLE_SNIPPET_PLACEHOLDERS = new Array<Set<string>>();
 const buildRootCSSVariableSnippets = ({ descriptionPrefix, variableRegex = CSS_VARIABLE_REGEXP, cssContent, initScope }: {
@@ -127,13 +128,16 @@ const buildRootCSSVariableSnippets = ({ descriptionPrefix, variableRegex = CSS_V
   if (!rootMatch) return [];
 
   const snippets: { [name: string]: SnippetItem }[] = [];
-  let rootCSSVariables = new Set<string>([]);
+  let cssVariables = new Set<string>([]);
   for (const match of rootMatch) {
-    rootCSSVariables = rootCSSVariables.union(extractCSSVariables(match, variableRegex));
+    cssVariables = cssVariables.union(extractCSSVariables(match, variableRegex));
   }
-  if (rootCSSVariables.size === 0) return [];
+  for (const match of cssContent.match(CSS_AT_PROPERTY_REGEXP) ?? []) {
+    cssVariables = cssVariables.union(extractCSSVariables(match, variableRegex));
+  }
+  if (cssVariables.size === 0) return [];
 
-  for (const variableName of rootCSSVariables) {
+  for (const variableName of cssVariables) {
     const snippetItem = buildSnippetItem({
       description: `${descriptionPrefix} CSS variable ${variableName}`,
       initBody: variableName,

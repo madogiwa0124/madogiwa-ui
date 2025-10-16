@@ -17,6 +17,11 @@ void describe("outputCssSnippetFilePlugin", () => {
         --spacing: 2px;
         .--modifier { color: red; }
       };
+      @property --example-property {
+        syntax: '<color>';
+        inherits: false;
+        initial-value: red;
+      }
       *{};
       body{};
       :root{};
@@ -92,6 +97,14 @@ void describe("outputCssSnippetFilePlugin", () => {
             prefix: "--spacing",
             body: "--spacing",
             description: "Madogiwa UI CSS variable --spacing",
+          },
+        },
+        {
+          "--example-property": {
+            scope: "css",
+            prefix: "--example-property",
+            body: "--example-property",
+            description: "Madogiwa UI CSS variable --example-property",
           },
         },
       ];
