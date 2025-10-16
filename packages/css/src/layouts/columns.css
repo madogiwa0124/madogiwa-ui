@@ -1,51 +1,189 @@
 .m-columns {
   --columns-gap: var(--spacing-2);
-  --columns-left-width: 2fr;
-  --columns-main-width: auto;
-  --columns-right-width: 2fr;
+  --columns-length-default: 12;
+  --columns-length: var(--columns-length-default);
+  --columns-length-xl: round(down, calc(var(--columns-length-default) * 0.750));
+  --columns-length-lg: round(down, calc(var(--columns-length-default) * 0.500));
+  --columns-length-md: round(down, calc(var(--columns-length-default) * 0.250));
+  --columns-length-sm: round(down, calc(var(--columns-length-default) * 0.125));
+  --columns-default-col-size: 1;
+  --columns-subgrid-gap: 0;
+  --columns-auto-fit-min: 0;
 
   display: grid;
   gap: var(--columns-gap);
-  grid-template-areas: "left main right";
+  grid-template-columns: repeat(var(--columns-length), 1fr);
+  container-type: inline-size;
+
+
+  /* NOTE:
+    Ideally, I would like to use `@container` to make responsive adjustments based on the size of `.m-columns` itself.
+    However, since CSS variables cannot be referenced within `@container`, it is difficult to manage as a library and for users to override them.
+    Therefore, I am compromising by using `@media` for adjustments.
+   */
+  @media (--media-breakpoint-max-xl) {
+    --columns-length: var(--columns-length-xl);
+  }
+
+  @media (--media-breakpoint-max-lg) {
+    --columns-length: var(--columns-length-lg);
+  }
+
+  @media (--media-breakpoint-max-md) {
+    --columns-length: var(--columns-length-md);
+  }
+
+  @media (--media-breakpoint-max-sm) {
+    --columns-length: var(--columns-length-sm);
+  }
+
+  &[data-columns-length="1"] {
+    --columns-length: 1;
+  }
+
+  &[data-columns-length="2"] {
+    --columns-length: 2;
+  }
+
+  &[data-columns-length="3"] {
+    --columns-length: 3;
+  }
+
+  &[data-columns-length="4"] {
+    --columns-length: 4;
+  }
+
+  &[data-columns-length="5"] {
+    --columns-length: 5;
+  }
+
+  &[data-columns-length="6"] {
+    --columns-length: 6;
+  }
+
+  &[data-columns-length="7"] {
+    --columns-length: 7;
+  }
+
+  &[data-columns-length="8"] {
+    --columns-length: 8;
+  }
+
+  &[data-columns-length="9"] {
+    --columns-length: 9;
+  }
+
+  &[data-columns-length="10"] {
+    --columns-length: 10;
+  }
+
+  &[data-columns-length="11"] {
+    --columns-length: 11;
+  }
+
+  &[data-columns-length="12"] {
+    --columns-length: 12;
+  }
+
+
+  >* {
+    --columns-col-size: var(--columns-default-col-size);
+
+    grid-column: span var(--columns-col-size);
+
+    &[data-col-size="1"] {
+      --columns-col-size: 1;
+    }
+
+    &[data-col-size="2"] {
+      --columns-col-size: 2;
+    }
+
+    &[data-col-size="3"] {
+      --columns-col-size: 3;
+    }
+
+    &[data-col-size="4"] {
+      --columns-col-size: 4;
+    }
+
+    &[data-col-size="5"] {
+      --columns-col-size: 5;
+    }
+
+    &[data-col-size="6"] {
+      --columns-col-size: 6;
+    }
+
+    &[data-col-size="7"] {
+      --columns-col-size: 7;
+    }
+
+    &[data-col-size="8"] {
+      --columns-col-size: 8;
+    }
+
+    &[data-col-size="9"] {
+      --columns-col-size: 9;
+    }
+
+    &[data-col-size="10"] {
+      --columns-col-size: 10;
+    }
+
+    &[data-col-size="11"] {
+      --columns-col-size: 11;
+    }
+
+    &[data-col-size="12"] {
+      --columns-col-size: 12;
+    }
+  }
+
+  &.--auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(var(--columns-auto-fit-min), 1fr));
+  }
 
   &.--no-gap {
     --columns-gap: 0;
   }
 
-  &.m-columns__left {
-    grid-area: left;
-  }
+  &.--align-rows {
+    >* {
+      --columns-subgrid-row: 1;
 
-  &.m-columns__main {
-    grid-area: main;
-  }
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span var(--columns-subgrid-row);
+      gap: var(--columns-subgrid-gap);
 
-  &.m-columns__right {
-    grid-area: right;
-  }
+      >* {
+        grid-column: 1 / -1;
+      }
 
-  &:not(:has(.m-columns__left)) {
-    grid-template-areas: "main right";
-  }
+      &[data-subgrid-rows="1"] {
+        --columns-subgrid-row: 1;
+      }
 
-  &:not(:has(.m-columns__right)) {
-    grid-template-areas: "left main";
-  }
+      &[data-subgrid-rows="2"] {
+        --columns-subgrid-row: 2;
+      }
 
-  &:not(:has(.m-columns__left), :has(.m-columns__right)) {
-    grid-template-areas: "main";
-  }
+      &[data-subgrid-rows="3"] {
+        --columns-subgrid-row: 3;
+      }
 
-  @media (--media-breakpoint-max-sm) {
-    grid-template-areas: "left" "main" "right";
-    grid-template-columns: 1fr;
+      &[data-subgrid-rows="4"] {
+        --columns-subgrid-row: 4;
+      }
 
-    &:not(:has(.m-columns__left)) {
-      grid-template-areas: "main" "right";
-    }
+      &[data-subgrid-rows="5"] {
+        --columns-subgrid-row: 5;
+      }
 
-    &:not(:has(.m-columns__right)) {
-      grid-template-areas: "left" "main";
+      &[data-subgrid-rows="6"] {
+        --columns-subgrid-row: 6;
+      }
     }
   }
 }
