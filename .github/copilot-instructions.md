@@ -178,12 +178,16 @@ const meta: Meta<ComponentProperties> = {
   title: "[Foundation|Components|Layouts|Utils]/ExampleName",
   tags: ["autodocs"],
   argTypes: {
-    label: { control: "text" },
+    label: {
+      control: "text",
+      description: "The label text for the component",
+    },
     variant: {
       control: {
         type: "select",
       },
       options: ["default", "primary", "secondary", "tertiary"],
+      description: "The variant style of the component",
     },
   }, // Define component props here. For CSS, define modifiers.
   parameters: {
@@ -191,52 +195,52 @@ const meta: Meta<ComponentProperties> = {
       description: {
         // Component description(usage, behavior, CSS variables, etc.) for docs
         component: `
-        ### Overview
+### Overview
 
-        This is an example component for Madogiwa UI.
+This is an example component for Madogiwa UI.
 
-        ### Usage
+### Usage
 
-        Describe the usage scenarios and instructions for this component in actual products, not technical content.
+Describe the usage scenarios and instructions for this component in actual products, not technical content.
 
-        **Sample code is unnecessary.**
+**Sample code is unnecessary.**
 
-        ### Elements
+### Elements
 
-        Describe **all elements** defined in this component.
+Describe **all elements** defined in this component.
 
-        | Name | Description |
-        | ---- | ----------- |
-        | .m-example__element | Description of the element |
+| Name | Description |
+| ---- | ----------- |
+| .m-example__element | Description of the element |
 
-        ### Modifiers
+### Modifiers
 
-        Describe **all modifiers** defined in this component.
+Describe **all modifiers** defined in this component.
 
-        | Target | Name | Description |
-        |--- | ---- | ----------- |
-        | .m-example | .--example-modifier | Description of the modifier |
+| Target | Name | Description |
+|--- | ---- | ----------- |
+| .m-example | .--example-modifier | Description of the modifier |
 
-        ### CSS Variables
+### CSS Variables
 
-        Describe **all CSS variables** defined in this component.
+Describe **all CSS variables** defined in this component.
 
-        | Target | Name | Default | Description |
-        | ------ | ---- | ------- | ----------- |
-        | .m-example | --example-variable | value | Description of the variable |
+| Target | Name | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| .m-example | --example-variable | value | Description of the variable |
 
-        ### Data Attributes
+### Data Attributes
 
-        Describe **all data attributes** defined in this component.
+Describe **all data attributes** defined in this component.
 
-        | Target | Attribute | Values | Description |
-        | ------ | --------- | ------ | ----------- |
-        | .m-example | data-example| value | Description of the attribute |
+| Target | Attribute | Values | Description |
+| ------ | --------- | ------ | ----------- |
+| .m-example | data-example| value | Description of the attribute |
 
-        ### Caution
+### Caution
 
-        - This is an example component.
-        - Please customize it as needed.
+- This is an example component.
+- Please customize it as needed.
         `
       },
     },
