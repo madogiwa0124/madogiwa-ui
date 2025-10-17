@@ -5,6 +5,7 @@ input.m-input {
   --input-bg-color: initial;
   --input-placeholder-color: var(--color-text-muted);
   --input-hover-opacity: 0.8;
+  --input-hover-border-color: var(--color-border);
   --input-disabled-opacity: 0.65;
   --input-disabled-color: var(--color-text-muted);
   --input-invalid-border-color: var(--color-danger);
@@ -29,7 +30,6 @@ input.m-input {
     cursor: not-allowed;
     opacity: var(--input-disabled-opacity);
     color: var(--input-disabled-color);
-    border-color: initial;
   }
 
   &:invalid,
@@ -40,5 +40,9 @@ input.m-input {
   &.--block {
     display: block;
     width: 100%;
+  }
+
+  &.--transition {
+    transition: border-color 0.2s ease, opacity 0.2s ease;
   }
 }
