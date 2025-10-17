@@ -122,7 +122,17 @@ Madogiwa UI provides optional CSS transitions for interactive components, consid
 
 CSS variables are designed with consideration for Tailwind CSS compatibility based on the following default CSS variables:
 
-refs: https://tailwindcss.com/docs/theme#default-theme-variable-reference
+refs: https://tailwindcss.com/docs/theme
+
+Madogiwa UI's custom CSS variables are robustly designed using `@property` for enhanced type safety and validation.
+
+```css
+@property --font-family-base {
+  syntax: "*";
+  initial-value: system-ui, -apple-system, sans-serif;
+  inherits: true;
+}
+```
 
 ## A11y
 

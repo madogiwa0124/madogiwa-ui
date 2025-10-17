@@ -132,6 +132,17 @@ CSS variables are designed with consideration for Tailwind CSS compatibility bas
 
 refs: https://tailwindcss.com/docs/theme#default-theme-variable-reference
 
+Madogiwa UI's custom CSS variables are robustly designed using `@property` for enhanced type safety and validation.
+
+```css
+@property --font-family-base {
+  syntax: "*";
+  initial-value: system-ui, -apple-system, sans-serif;
+  inherits: true;
+}
+```
+
+
 ### Optional Transition
 
 Madogiwa UI provides optional CSS transitions for interactive components, considering users with visual sensitivities and motion preferences. You can enable or disable transitions using the `--transition` modifier class.
