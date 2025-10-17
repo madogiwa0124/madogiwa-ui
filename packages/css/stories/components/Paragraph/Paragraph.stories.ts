@@ -1,112 +1,146 @@
 import type { Meta, StoryObj } from "@storybook/html";
-import { expect } from "storybook/test";
+import { expect, within } from "storybook/test";
+import { type ParagraphProperties, createParagraph } from "./Paragraph";
 
-interface ParagraphArguments {
-  text: string;
-  className: string;
-}
-
-const meta: Meta<ParagraphArguments> = {
+const meta: Meta<ParagraphProperties> = {
   title: "Components/Paragraph",
   tags: ["autodocs"],
   argTypes: {
-    text: { control: "text" },
-    className: { control: "text" },
+    text: {
+      control: "text",
+      description: "The text content of the paragraph.",
+    },
   },
   parameters: {
     docs: {
       description: {
-        component:
-          "example description",
+        component: `
+### Overview
+
+The Paragraph component provides a styled paragraph element with consistent spacing and typography. It ensures proper text flow and readability with automatic spacing management between paragraphs.
+
+### Usage
+
+Use Paragraph components for body text, descriptions, and any multi-sentence content that needs proper spacing and typography. The component automatically handles spacing between consecutive paragraphs and maintains consistent text styling.
+
+### Elements
+
+| Name | Description |
+| ---- | ----------- |
+| .m-p | The main paragraph element with automatic spacing and typography |
+
+### Modifiers
+
+No specific modifiers are defined for this component.
+
+### CSS Variables
+
+| Target | Name | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| .m-p | margin-top | var(--spacing-0) | Top margin for paragraph spacing |
+| .m-p | margin-bottom | var(--spacing-4) | Bottom margin for paragraph spacing |
+
+### Data Attributes
+
+No specific data attributes are defined for this component.
+
+### Caution
+
+- The component uses spacing variables that should be defined in the design system
+- Top margin is set to zero to prevent double spacing at the beginning of content
+- Bottom margin provides consistent spacing between paragraphs
+        `,
       },
     },
   },
 };
 
 export default meta;
-type Story = StoryObj<ParagraphArguments>;
-
-const createParagraph = (
-  props: { text?: string; className?: string } = {},
-): HTMLElement => {
-  const { text = "Paragraph text", className = "" } = props;
-
-  const paragraph = document.createElement("p");
-  paragraph.textContent = text;
-
-  paragraph.classList.add("m-p");
-
-  if (className) {
-    paragraph.classList.add(className);
-  }
-
-  return paragraph;
-};
+type Story = StoryObj<ParagraphProperties>;
 
 export const Default: Story = {
-  render: (args) => {
-    return createParagraph(args);
+  parameters: {
+    docs: {
+      description: {
+        story: "Default paragraph with standard spacing and typography.",
+      },
+    },
   },
+  render: args => createParagraph(args),
   args: {
     text: "This is sample text. Paragraphs are used to group multiple sentences and display related information together.",
-    className: "",
   },
-  play: async ({ canvasElement, args }) => {
-    const canvas = canvasElement;
-    const paragraph = canvas.querySelector("p") as HTMLParagraphElement;
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraph = canvas.getByText(/This is sample text/);
 
     await expect(paragraph).not.toBeNull();
-    await expect(paragraph).toHaveTextContent(args.text || "");
     await expect(paragraph.tagName.toLowerCase()).toBe("p");
     await expect(paragraph).toHaveClass("m-p");
   },
 };
 
 export const MultipleParagraphs: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Multiple paragraphs showing automatic spacing between elements.",
+      },
+    },
+  },
   render: () => {
     const container = document.createElement("div");
-    container.style.display = "flex";
-    container.style.flexDirection = "column";
-    container.style.gap = "0"; // No gap here as spacing is controlled by CSS
 
-    const paragraph1 = createParagraph({
-      text: "This is the first paragraph. Appropriate spacing is automatically set between paragraphs.",
-    });
-
-    const paragraph2 = createParagraph({
-      text: "This is the second paragraph. Appropriate spacing is automatically set between paragraphs.",
-    });
-
-    const paragraph3 = createParagraph({
-      text: "This is the third paragraph. Appropriate spacing is automatically set between paragraphs.",
-    });
-
-    container.append(paragraph1);
-    container.append(paragraph2);
-    container.append(paragraph3);
-
-    return container;
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const paragraphs = canvas.querySelectorAll("p");
-
-    await expect(paragraphs).toHaveLength(3);
-
-    const expectedTexts = [
+    const paragraphs = [
       "This is the first paragraph. Appropriate spacing is automatically set between paragraphs.",
       "This is the second paragraph. Appropriate spacing is automatically set between paragraphs.",
       "This is the third paragraph. Appropriate spacing is automatically set between paragraphs.",
     ];
 
-    for (const [index, paragraph] of [...paragraphs].entries()) {
+    for (const text of paragraphs) {
+      container.append(createParagraph({ text }));
+    }
+
+    return container;
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraphs = canvas.getAllByText(/This is the.*paragraph/);
+
+    await expect(paragraphs).toHaveLength(3);
+
+    for (const paragraph of paragraphs) {
       await expect(paragraph).not.toBeNull();
       await expect(paragraph.tagName.toLowerCase()).toBe("p");
       await expect(paragraph).toHaveClass("m-p");
-      const expectedText = expectedTexts[index];
-      if (expectedText) {
-        await expect(paragraph).toHaveTextContent(expectedText);
-      }
     }
+  },
+};
+
+export const LongContent: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Paragraph with longer content to demonstrate text flow and readability.",
+      },
+    },
+  },
+  render: () => {
+    const container = document.createElement("div");
+    container.style.cssText = "max-width: 600px;";
+
+    const paragraph = createParagraph({
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    });
+
+    container.append(paragraph);
+    return container;
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraph = canvas.getByText(/Lorem ipsum dolor sit amet/);
+
+    await expect(paragraph).not.toBeNull();
+    await expect(paragraph).toHaveClass("m-p");
   },
 };
