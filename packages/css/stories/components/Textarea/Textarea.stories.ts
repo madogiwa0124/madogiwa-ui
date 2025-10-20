@@ -1,29 +1,89 @@
 import type { Meta, StoryObj } from "@storybook/html";
-import { expect } from "storybook/test";
-
-interface TextareaProperties {
-  placeholder: string;
-  rows: number | null;
-  cols: number | null;
-  block: boolean;
-  disabled: boolean;
-}
+import { expect, within } from "storybook/test";
+import { type TextareaProperties, createTextarea } from "./Textarea";
 
 const meta: Meta<TextareaProperties> = {
   title: "Components/Textarea",
   tags: ["autodocs"],
   argTypes: {
-    placeholder: { control: "text" },
-    rows: { control: "number" },
-    cols: { control: "number" },
-    block: { control: "boolean" },
-    disabled: { control: "boolean" },
+    placeholder: {
+      control: "text",
+      description: "Placeholder text for the textarea",
+    },
+    rows: {
+      control: "number",
+      description: "Number of visible text lines",
+    },
+    cols: {
+      control: "number",
+      description: "Number of visible text columns",
+    },
+    block: {
+      control: "boolean",
+      description: "Display the textarea as a block element",
+    },
+    disabled: {
+      control: "boolean",
+      description: "Disable the textarea",
+    },
+    required: {
+      control: "boolean",
+      description: "Indicate whether the textarea is required",
+    },
+    error: {
+      control: "boolean",
+      description: "Indicate whether the textarea has an error",
+    },
+    autoFit: {
+      control: "boolean",
+      description: "Enable automatic height adjustment",
+    },
+    value: {
+      control: "text",
+      description: "Controlled value of the textarea",
+    },
+    onChange: { action: "input" },
   },
   parameters: {
     docs: {
       description: {
-        component:
-          "example description",
+        component: `
+### Overview
+
+The Textarea component provides a multi-line text input element with various styling options and responsive behavior. It supports automatic content sizing and proper validation states for enhanced user experience.
+
+### Usage
+
+Use Textarea components for collecting longer text input such as comments, descriptions, messages, and feedback. The component handles various states including validation, disabled, and auto-sizing for optimal user experience across different form scenarios.
+
+### Modifiers
+
+| Target | Name | Description |
+|--- | ---- | ----------- |
+| .m-textarea | .--block | Makes the textarea display as block-level with full width |
+| .m-textarea | .--error | Applies error styling with danger border color |
+| .m-textarea | .--auto-fit | Enables automatic height adjustment based on content |
+
+### CSS Variables
+
+| Target | Name | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| .m-textarea | --textarea-border-radius | var(--radius-sm) | Border radius of the textarea element |
+| .m-textarea | --textarea-border-color | var(--color-border) | Default border color |
+| .m-textarea | --textarea-border | 1px solid var(--textarea-border-color) | Complete border specification |
+| .m-textarea | --textarea-bg-color | initial | Background color of the textarea |
+| .m-textarea | --textarea-placeholder-color | var(--color-text-muted) | Color of placeholder text |
+| .m-textarea | --textarea-hover-opacity | 0.8 | Opacity on hover and focus states |
+| .m-textarea | --textarea-disabled-opacity | 0.65 | Opacity when disabled |
+| .m-textarea | --textarea-disabled-color | var(--color-text-muted) | Text color when disabled |
+| .m-textarea | --textarea-invalid-border-color | var(--color-danger) | Border color for invalid/error states |
+
+### Caution
+
+- The auto-fit modifier uses field-sizing property with limited browser support
+- Validation states (invalid, error) should be properly managed in forms
+- Proper labeling is essential for accessibility
+        `,
       },
     },
     a11y: {
@@ -53,45 +113,48 @@ export default meta;
 type Story = StoryObj<TextareaProperties>;
 
 export const Default: Story = {
-  render: (args) => {
-    const textarea = document.createElement("textarea");
-    textarea.className = "m-textarea";
-    textarea.classList.toggle("--block", args["block"]);
-    textarea.placeholder = args["placeholder"];
-    if (args["rows"]) textarea.rows = args["rows"];
-    if (args["cols"]) textarea.cols = args["cols"];
-    textarea.disabled = args["disabled"];
-    return textarea;
+  parameters: {
+    docs: {
+      description: {
+        story: "Default textarea with basic styling and placeholder text.",
+      },
+    },
   },
+  render: args => createTextarea(args),
   args: {
     placeholder: "Type your message here...",
-    rows: null,
-    cols: null,
     block: false,
     disabled: false,
+    required: false,
+    error: false,
+    autoFit: false,
   },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
+    const canvas = within(canvasElement);
+    const textarea = canvas.getByRole("textbox");
 
     await expect(textarea).not.toBeNull();
     await expect(textarea).toHaveClass("m-textarea");
     await expect(textarea).not.toBeDisabled();
+    await expect(textarea).not.toBeRequired();
   },
 };
 
 export const Disabled: Story = {
-  render: () => {
-    const textarea = document.createElement("textarea");
-    textarea.className = "m-textarea";
-    textarea.value = "This is a disabled textarea";
-    textarea.disabled = true;
-    return textarea;
+  parameters: {
+    docs: {
+      description: {
+        story: "Textarea in disabled state with reduced opacity and disabled cursor.",
+      },
+    },
   },
-  args: {},
+  render: () => createTextarea({
+    value: "This is a disabled textarea",
+    disabled: true,
+  }),
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
+    const canvas = within(canvasElement);
+    const textarea = canvas.getByDisplayValue("This is a disabled textarea");
 
     await expect(textarea).not.toBeNull();
     await expect(textarea).toHaveClass("m-textarea");
@@ -100,61 +163,53 @@ export const Disabled: Story = {
 };
 
 export const Invalid: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Textarea in invalid state showing validation error styling.",
+      },
+    },
+  },
   render: () => {
     const form = document.createElement("form");
-    form.className = "m-textarea-form";
+    form.style.cssText = "display: contents;";
     form.noValidate = true;
 
-    const textarea = document.createElement("textarea");
-    textarea.className = "m-textarea";
-    textarea.required = true;
+    const textarea = createTextarea({
+      placeholder: "Required field",
+      required: true,
+    });
+
     form.append(textarea);
     form.reportValidity();
     return form;
   },
-  args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
+    const canvas = within(canvasElement);
+    const textarea = canvas.getByRole("textbox");
 
     await expect(textarea).not.toBeNull();
     await expect(textarea).toHaveClass("m-textarea");
     await expect(textarea).toBeRequired();
-  },
-};
-
-export const Placeholder: Story = {
-  render: () => {
-    const textarea = document.createElement("textarea");
-    textarea.className = "m-textarea";
-    textarea.placeholder = "Enter your detailed message here...";
-    return textarea;
-  },
-  args: {},
-  play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
-
-    await expect(textarea).not.toBeNull();
-    await expect(textarea).toHaveClass("m-textarea");
-    await expect(textarea).toHaveAttribute(
-      "placeholder",
-      "Enter your detailed message here...",
-    );
+    await expect(textarea).toBeInvalid();
   },
 };
 
 export const Block: Story = {
-  render: () => {
-    const textarea = document.createElement("textarea");
-    textarea.className = "m-textarea --block";
-    textarea.placeholder = "Block level textarea";
-    return textarea;
+  parameters: {
+    docs: {
+      description: {
+        story: "Block-level textarea that takes full width of its container.",
+      },
+    },
   },
-  args: {},
+  render: () => createTextarea({
+    placeholder: "Block level textarea",
+    block: true,
+  }),
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
+    const canvas = within(canvasElement);
+    const textarea = canvas.getByPlaceholderText("Block level textarea");
 
     await expect(textarea).not.toBeNull();
     await expect(textarea).toHaveClass("m-textarea");
@@ -163,16 +218,20 @@ export const Block: Story = {
 };
 
 export const AutoFit: Story = {
-  render: () => {
-    const textarea = document.createElement("textarea");
-    textarea.className = "m-textarea --auto-fit";
-    textarea.placeholder = "Auto-fit textarea";
-    return textarea;
+  parameters: {
+    docs: {
+      description: {
+        story: "Textarea with auto-fit modifier that adjusts height based on content (limited browser support).",
+      },
+    },
   },
-  args: {},
+  render: () => createTextarea({
+    placeholder: "Auto-fit textarea",
+    autoFit: true,
+  }),
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const textarea = canvas.querySelector("textarea") as HTMLTextAreaElement;
+    const canvas = within(canvasElement);
+    const textarea = canvas.getByPlaceholderText("Auto-fit textarea");
 
     await expect(textarea).not.toBeNull();
     await expect(textarea).toHaveClass("m-textarea");
