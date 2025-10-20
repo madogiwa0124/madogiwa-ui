@@ -1,6 +1,5 @@
 # Commit Message Guidelines
-
-- Please write in English.
+- Commit messages must be written in English.
 - Use Conventional Commits format
   - Prefixes: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`
   - Example: `feat: add new button component with accessibility features`
