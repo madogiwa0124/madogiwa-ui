@@ -1,15 +1,80 @@
 import type { Meta, StoryObj } from "@storybook/html";
-import { expect, userEvent } from "storybook/test";
+import { expect, userEvent, within } from "storybook/test";
+import { type SelectProperties, createSelect } from "./Select";
 
-const meta: Meta = {
+const meta: Meta<SelectProperties> = {
   title: "Components/Select",
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    options: {
+      control: "object",
+      description: "Array of options for the select dropdown",
+    },
+    optgroups: {
+      control: "object",
+      description: "Array of option groups for the select dropdown",
+    },
+    separators: {
+      control: "object",
+      description: "Array of separators for the select dropdown",
+    },
+    value: {
+      control: "text",
+      description: "Current value of the select dropdown",
+    },
+    disabled: {
+      control: "boolean",
+      description: "Disables the select dropdown",
+    },
+    required: {
+      control: "boolean",
+      description: "Marks the select dropdown as required",
+    },
+    multiple: {
+      control: "boolean",
+      description: "Allows multiple selections in the select dropdown",
+    },
+    onChange: { action: "changed" },
+  },
   parameters: {
     docs: {
       description: {
-        component:
-          "example description",
+        component: `
+### Overview
+
+The Select component provides a customizable dropdown selection interface with support for grouping, separators, and modern styling. It enhances the native select element with improved visual design.
+
+### Usage
+
+Use Select components for choosing from a list of options, category selection, and form inputs requiring single or multiple selections. The component supports option grouping and visual separators for better organization.
+
+### Modifiers
+
+| Target | Name | Description |
+|--- | ---- | ----------- |
+| .m-select | .--error | Applies error styling with danger border color |
+
+### CSS Variables
+
+| Target | Name | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| .m-select | --select-padding | var(--spacing-3) | Internal padding for the select element |
+| .m-select | --select-checkmark-gap | var(--spacing-4) | Gap for checkmark indicator |
+| .m-select | --select-bg-color | var(--color-bg-light) | Background color of the select |
+| .m-select | --select-border-color | var(--color-border) | Default border color |
+| .m-select | --select-border | 2px solid var(--select-border-color) | Complete border specification |
+| .m-select | --select-border-radius | var(--radius-sm) | Border radius of the select |
+| .m-select | --select-invalid-border-color | var(--color-danger) | Border color for invalid state |
+| .m-select | --select-hover-opacity | 0.8 | Opacity on hover state |
+| .m-select | --select-disabled-opacity | 0.65 | Opacity when disabled |
+
+### Caution
+
+- Modern customizable select features require Chrome support
+- Multiple select styling not supported
+- Accessibility requires proper labeling
+- Custom styling may not work in all browsers
+        `,
       },
     },
     a11y: {
@@ -29,24 +94,28 @@ const meta: Meta = {
 };
 
 export default meta;
-type Story = StoryObj;
+type Story = StoryObj<SelectProperties>;
 
 export const Default: Story = {
-  render: () => {
-    const select = document.createElement("select");
-    select.className = "m-select";
-    select.innerHTML = `
-      <option value="">--- Select ---</option>
-      <option value="option1">Option 1</option>
-      <option value="option2">Option 2</option>
-      <option value="option3">Option 3</option>
-      `;
-    return select;
+  parameters: {
+    docs: {
+      description: {
+        story: "Default select dropdown with basic options.",
+      },
+    },
   },
-  args: {},
+  render: args => createSelect(args),
+  args: {
+    options: [
+      { value: "", label: "--- Select ---" },
+      { value: "option1", label: "Option 1" },
+      { value: "option2", label: "Option 2" },
+      { value: "option3", label: "Option 3" },
+    ],
+  },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const select = canvas.querySelector("select") as HTMLSelectElement;
+    const canvas = within(canvasElement);
+    const select = canvas.getByRole("combobox");
 
     await expect(select).not.toBeNull();
     await expect(select).toHaveClass("m-select");
@@ -58,22 +127,25 @@ export const Default: Story = {
 };
 
 export const Separator: Story = {
-  render: () => {
-    const select = document.createElement("select");
-    select.className = "m-select";
-    select.innerHTML = `
-      <option value="">--- Select ---</option>
-      <option value="option1">Option 1</option>
-      <option value="option2">Option 2</option>
-      <hr />
-      <option value="option3">Option 3</option>
-      `;
-    return select;
+  parameters: {
+    docs: {
+      description: {
+        story: "Select with visual separators between option groups.",
+      },
+    },
   },
-  args: {},
+  render: () => createSelect({
+    options: [
+      { value: "", label: "--- Select ---" },
+      { value: "option1", label: "Option 1" },
+      { value: "option2", label: "Option 2" },
+      { value: "option3", label: "Option 3" },
+    ],
+    separators: [3],
+  }),
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const select = canvas.querySelector("select") as HTMLSelectElement;
+    const canvas = within(canvasElement);
+    const select = canvas.getByRole("combobox");
     const separators = select.querySelectorAll("hr");
 
     await expect(select).not.toBeNull();
@@ -84,28 +156,39 @@ export const Separator: Story = {
 };
 
 export const Group: Story = {
-  render: () => {
-    const select = document.createElement("select");
-    select.className = "m-select";
-    select.innerHTML = `
-      <option value="">--- Select ---</option>
-      <option value="option1">Option 1</option>
-      <optgroup label="Group 1">
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-      </optgroup>
-      <optgroup label="Group 2">
-        <option value="option4">Option 4</option>
-        <option value="option5">Option 5</option>
-      </optgroup>
-      <option value="option6">Option 6</option>
-      `;
-    return select;
+  parameters: {
+    docs: {
+      description: {
+        story: "Select with option groups for better organization.",
+      },
+    },
   },
-  args: {},
+  render: () => createSelect({
+    options: [
+      { value: "", label: "--- Select ---" },
+      { value: "option1", label: "Option 1" },
+      { value: "option6", label: "Option 6" },
+    ],
+    optgroups: [
+      {
+        label: "Group 1",
+        options: [
+          { value: "option2", label: "Option 2" },
+          { value: "option3", label: "Option 3" },
+        ],
+      },
+      {
+        label: "Group 2",
+        options: [
+          { value: "option4", label: "Option 4" },
+          { value: "option5", label: "Option 5" },
+        ],
+      },
+    ],
+  }),
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const select = canvas.querySelector("select") as HTMLSelectElement;
+    const canvas = within(canvasElement);
+    const select = canvas.getByRole("combobox");
     const optgroups = select.querySelectorAll("optgroup");
 
     await expect(select).not.toBeNull();
@@ -124,31 +207,39 @@ export const Group: Story = {
 };
 
 export const Multiple: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Multiple select mode (note: styling not fully supported).",
+      },
+    },
+  },
   render: () => {
     const container = document.createElement("div");
     const notSupportedMessage = document.createElement("p");
     notSupportedMessage.textContent = "Multiple select is not supported";
     notSupportedMessage.style.fontWeight = "bold";
     container.append(notSupportedMessage);
-    const select = document.createElement("select");
-    select.className = "m-select";
-    select.multiple = true;
-    select.innerHTML = `
-      <option value="option1">Option 1</option>
-      <option value="option2">Option 2</option>
-      <option value="option3">Option 3</option>
-      `;
+
+    const select = createSelect({
+      multiple: true,
+      options: [
+        { value: "option1", label: "Option 1" },
+        { value: "option2", label: "Option 2" },
+        { value: "option3", label: "Option 3" },
+      ],
+    });
+
     container.append(select);
     return container;
   },
-  args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const select = canvas.querySelector("select") as HTMLSelectElement;
+    const canvas = within(canvasElement);
+    const select = canvas.getByRole("listbox");
 
     await expect(select).not.toBeNull();
     await expect(select).toHaveClass("m-select");
-    await expect(select.multiple).toBe(true);
+    await expect((select as HTMLSelectElement).multiple).toBe(true);
 
     await userEvent.selectOptions(select, ["option1", "option2"]);
     await expect(select).toHaveValue(["option1", "option2"]);
@@ -156,49 +247,60 @@ export const Multiple: Story = {
 };
 
 export const Disabled: Story = {
-  render: () => {
-    const select = document.createElement("select");
-    select.className = "m-select";
-    select.disabled = true;
-    select.innerHTML = `
-      <option value="option1">Option 1</option>
-      <option value="option2" selected>Option 2</option>
-      <option value="option3">Option 3</option>
-      `;
-    return select;
+  parameters: {
+    docs: {
+      description: {
+        story: "Select in disabled state with pre-selected value.",
+      },
+    },
   },
-  args: {},
+  render: () => createSelect({
+    disabled: true,
+    value: "option2",
+    options: [
+      { value: "option1", label: "Option 1" },
+      { value: "option2", label: "Option 2" },
+      { value: "option3", label: "Option 3" },
+    ],
+  }),
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const select = canvas.querySelector("select") as HTMLSelectElement;
+    const canvas = within(canvasElement);
+    const select = canvas.getByRole("combobox");
 
     await expect(select).not.toBeNull();
     await expect(select).toHaveClass("m-select");
     await expect(select).toBeDisabled();
     await expect(select).toHaveValue("option2");
 
-    const initialValue = select.value;
+    const initialValue = (select as HTMLSelectElement).value;
     await userEvent.click(select);
-    await expect(select).toHaveValue(initialValue);
+    await expect((select as HTMLSelectElement)).toHaveValue(initialValue);
   },
 };
 
 export const Invalid: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Select in invalid state showing validation error styling.",
+      },
+    },
+  },
   render: () => {
     const container = document.createElement("div");
     const form = document.createElement("form");
     form.noValidate = true;
 
-    const select = document.createElement("select");
-    select.className = "m-select";
-    select.id = "required-select";
-    select.required = true;
-    select.innerHTML = `
-      <option value="">-- Select --</option>
-      <option value="option1">Option 1</option>
-      <option value="option2">Option 2</option>
-      <option value="option3">Option 3</option>
-      `;
+    const select = createSelect({
+      required: true,
+      id: "required-select",
+      options: [
+        { value: "", label: "-- Select --" },
+        { value: "option1", label: "Option 1" },
+        { value: "option2", label: "Option 2" },
+        { value: "option3", label: "Option 3" },
+      ],
+    });
 
     form.reportValidity();
     form.append(select);
@@ -206,11 +308,10 @@ export const Invalid: Story = {
 
     return container;
   },
-  args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const select = canvas.querySelector("select") as HTMLSelectElement;
-    const form = canvas.querySelector("form") as HTMLFormElement;
+    const canvas = within(canvasElement);
+    const select = canvas.getByRole("combobox");
+    const form: HTMLFormElement = canvas.getByRole("form");
 
     await expect(select).not.toBeNull();
     await expect(select).toHaveClass("m-select");
@@ -219,7 +320,7 @@ export const Invalid: Story = {
 
     form.reportValidity();
 
-    await expect(select.validity.valid).toBe(false);
-    await expect(select.validity.valueMissing).toBe(true);
+    await expect((select as HTMLSelectElement).validity.valid).toBe(false);
+    await expect((select as HTMLSelectElement).validity.valueMissing).toBe(true);
   },
 };
