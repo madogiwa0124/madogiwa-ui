@@ -23,17 +23,99 @@ type CreatePropertyElement = (property: Property) => HTMLElement;
 export const customProperties = (
   element: HTMLElement,
   prefixStyleMapping: typeof PREFIX_STYLE_MAPPING = PREFIX_STYLE_MAPPING,
+  sortMode: "natural" | "numeric" = "natural",
 ): Property[] => {
   const htmlStyle = element.computedStyleMap();
   const entries = [...htmlStyle.entries()];
   const properties = entries.filter(([propertyName, _]) =>
     propertyName.startsWith("--"),
   );
-  return properties.map(([name, value]) => ({
+  const mappedProperties = properties.map(([name, value]) => ({
     name,
     value: [...value].join(", "),
     styleType: calcStyleType(name, prefixStyleMapping),
   }));
+
+  return sortMode === "natural" ? mappedProperties.sort(naturalSort) : mappedProperties.sort(numericSort);
+};
+
+// Natural sort function for CSS variables with numeric values and size variants
+const naturalSort = (a: Property, b: Property): number => {
+  // Define size order mapping
+  const sizeOrder = {
+    "xs": 1, "sm": 2, "md": 3, "lg": 4, "xl": 5, "2xl": 6, "3xl": 7, "4xl": 8, "5xl": 9,
+    "tiny": 1, "small": 2, "medium": 3, "large": 4, "huge": 5,
+    "none": 0, "auto": 100,
+  };
+
+  const regex = /(\\d+|xs|sm|md|lg|xl|\\d*xl|tiny|small|medium|large|huge|none|auto)/g;
+  const aParts = a.name.split(regex).filter(part => part !== "");
+  const bParts = b.name.split(regex).filter(part => part !== "");
+
+  const maxLength = Math.max(aParts.length, bParts.length);
+
+  for (let index = 0; index < maxLength; index++) {
+    const aPart = aParts[index] ?? "";
+    const bPart = bParts[index] ?? "";
+
+    // Check if both parts are size variants
+    const aSize = sizeOrder[aPart.toLowerCase() as keyof typeof sizeOrder];
+    const bSize = sizeOrder[bPart.toLowerCase() as keyof typeof sizeOrder];
+
+    if (typeof aSize === "number" && typeof bSize === "number") {
+      if (aSize !== bSize) {
+        return aSize - bSize;
+      }
+    } else {
+      // If both parts are numeric, compare as numbers
+      const aNumber = Number(aPart);
+      const bNumber = Number(bPart);
+
+      if (!Number.isNaN(aNumber) && !Number.isNaN(bNumber)) {
+        if (aNumber !== bNumber) {
+          return aNumber - bNumber;
+        }
+      } else {
+        // Compare as strings
+        if (aPart !== bPart) {
+          return aPart.localeCompare(bPart);
+        }
+      }
+    }
+  }
+
+  return 0;
+};
+
+// Numeric sort function that prioritizes numeric values over size variants
+const numericSort = (a: Property, b: Property): number => {
+  const regex = /(\\d+)/g;
+  const aParts = a.name.split(regex);
+  const bParts = b.name.split(regex);
+
+  const maxLength = Math.max(aParts.length, bParts.length);
+
+  for (let index = 0; index < maxLength; index++) {
+    const aPart = aParts[index] ?? "";
+    const bPart = bParts[index] ?? "";
+
+    // If both parts are numeric, compare as numbers
+    const aNumber = Number(aPart);
+    const bNumber = Number(bPart);
+
+    if (!Number.isNaN(aNumber) && !Number.isNaN(bNumber)) {
+      if (aNumber !== bNumber) {
+        return aNumber - bNumber;
+      }
+    } else {
+      // Compare as strings
+      if (aPart !== bPart) {
+        return aPart.localeCompare(bPart);
+      }
+    }
+  }
+
+  return 0;
 };
 
 export const designTokens = (properties: Property[]): DesignToken => {
@@ -121,6 +203,7 @@ export const createTypographyElement: CreatePropertyElement = (property) => {
 
 export const createShadowElement: CreatePropertyElement = (property) => {
   const shadowElement = document.createElement("div");
+  shadowElement.classList.add("shadow-variable");
   shadowElement.style.display = "flex";
   shadowElement.style.flexDirection = "column";
   shadowElement.style.gap = "0.5rem";

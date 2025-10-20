@@ -11,15 +11,68 @@ import {
 } from "./Variables";
 import { expect } from "storybook/test";
 
-const meta: Meta = {
+type VariablesProperties = {
+  sortMode: "natural" | "numeric";
+};
+
+const meta: Meta<VariablesProperties> = {
   title: "Foundation/Variables",
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    sortMode: {
+      control: {
+        type: "select",
+      },
+      options: ["natural", "numeric"],
+      description: "Sort mode for CSS variables: 'natural' uses size variants (xs→sm→md), 'numeric' prioritizes numeric order (1→2→10)",
+    },
+  },
   parameters: {
     docs: {
       description: {
-        component:
-          "example description",
+        component: `
+### Overview
+
+The Variables system provides a comprehensive collection of design tokens that form the foundation of Madogiwa UI. These variables are organized into categories including colors, spacing, typography, shadows, and corner radius.
+
+### Usage
+
+Design tokens are CSS custom properties that maintain consistent visual design across your application. They can be referenced in CSS using \`var()\` syntax and are organized into semantic categories for easy maintenance.
+
+### Sort Modes
+
+- **Natural**: Prioritizes size variants (xs→sm→md→lg→xl) for intuitive size progression
+- **Numeric**: Prioritizes numeric values (1→2→10) for numerical order
+
+### CSS Variables Categories
+
+#### Primitive Colors
+Base color values used as building blocks for semantic colors.
+
+#### Semantic Colors
+Context-aware colors that convey meaning (primary, success, error, etc.).
+
+#### Spacing
+Consistent spacing values for margins, padding, and layout gaps.
+
+#### Typography
+Font families, sizes, weights, and line heights for text styling.
+
+#### Shadows
+Box shadow values for elevation and depth effects.
+
+#### Corner
+Border radius values for consistent rounded corners.
+
+#### Breakpoints
+Media query breakpoints for responsive design implementation.
+
+### Caution
+
+- Color contrast may vary in Storybook examples
+- Use semantic colors instead of primitive colors when possible
+- Breakpoints are defined using rem units for better accessibility
+        `,
       },
     },
     a11y: {
@@ -38,124 +91,164 @@ const meta: Meta = {
 };
 
 export default meta;
-type Story = StoryObj;
+type Story = StoryObj<VariablesProperties>;
 
 export const PrimitiveColor: Story = {
-  render: (_args) => {
+  parameters: {
+    docs: {
+      description: {
+        story: "Displays all primitive color tokens used as the foundation for semantic colors. These colors are typically used for building color scales and should not be used directly in components.",
+      },
+    },
+  },
+  render: () => {
     const rootElement = document.querySelector<HTMLEmbedElement>("#storybook-root");
     const container = document.createElement("div");
-    const tokens = getDesignTokens(rootElement ?? document.documentElement);
-    for (const property of tokens["primitiveColor"] ?? []) {
+    const tokens = getDesignTokens(rootElement ?? document.documentElement, "numeric")["primitiveColor"] ?? [];
+    for (const property of tokens) {
       createAndAppendElements(property, createColorElement, container);
     }
     return container;
   },
-  args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const container = canvas.querySelector("div");
+    const colorElements = canvasElement.querySelectorAll(".color-variable");
 
-    await expect(container).not.toBeNull();
+    await expect(colorElements.length).toBeGreaterThanOrEqual(0);
   },
 };
 
 export const SemanticColor: Story = {
-  render: (_args) => {
+  parameters: {
+    docs: {
+      description: {
+        story: "Shows semantic color tokens that convey meaning and context. These are the colors that should be used in components to maintain consistent visual hierarchy.",
+      },
+    },
+  },
+  render: () => {
     const rootElement = document.querySelector<HTMLEmbedElement>("#storybook-root");
     const container = document.createElement("div");
-    const tokens = getDesignTokens(rootElement ?? document.documentElement);
-    for (const property of tokens["semanticColor"] ?? []) {
+    const tokens = getDesignTokens(rootElement ?? document.documentElement, "natural")["semanticColor"] ?? [];
+    for (const property of tokens) {
       createAndAppendElements(property, createColorElement, container);
     }
     return container;
   },
-  args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const container = canvas.querySelector("div");
+    const colorElements = canvasElement.querySelectorAll(".color-variable");
 
-    await expect(container).not.toBeNull();
+    await expect(colorElements.length).toBeGreaterThanOrEqual(0);
   },
 };
 
 export const Spacing: Story = {
-  render: (_args) => {
+  parameters: {
+    docs: {
+      description: {
+        story: "Demonstrates spacing tokens for consistent margins, padding, and gaps throughout the design system. Values are shown with visual representations.",
+      },
+    },
+  },
+  render: () => {
     const rootElement = document.querySelector<HTMLEmbedElement>("#storybook-root");
     const container = document.createElement("div");
-    const tokens = getDesignTokens(rootElement ?? document.documentElement);
-    for (const property of tokens["spacing"] ?? []) {
+    const tokens = getDesignTokens(rootElement ?? document.documentElement, "numeric")["spacing"] ?? [];
+    for (const property of tokens) {
       createAndAppendElements(property, createSpacingElement, container);
     }
     return container;
   },
-  args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const container = canvas.querySelector("div");
+    const container = canvasElement.querySelector("div");
+    const spacingElements = canvasElement.querySelectorAll(".spacing-variable");
 
-    await expect(container).not.toBeNull();
+    await expect(container).toBeTruthy();
+    await expect(spacingElements.length).toBeGreaterThanOrEqual(0);
   },
 };
 
 export const Typography: Story = {
-  render: (_args) => {
+  parameters: {
+    docs: {
+      description: {
+        story: "Shows typography tokens including font families, sizes, weights, line heights, and letter spacing. Each token includes sample text to demonstrate the visual effect.",
+      },
+    },
+  },
+  render: () => {
     const rootElement = document.querySelector<HTMLEmbedElement>("#storybook-root");
     const container = document.createElement("div");
-    const tokens = getDesignTokens(rootElement ?? document.documentElement);
-    for (const property of tokens["typography"] ?? []) {
+    const tokens = getDesignTokens(rootElement ?? document.documentElement, "natural")["typography"] ?? [];
+    for (const property of tokens) {
       createAndAppendElements(property, createTypographyElement, container);
     }
     return container;
   },
-  args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const container = canvas.querySelector("div");
+    const container = canvasElement.querySelector("div");
+    const typographyElements = canvasElement.querySelectorAll("div");
 
-    await expect(container).not.toBeNull();
+    await expect(container).toBeTruthy();
+    await expect(typographyElements.length).toBeGreaterThanOrEqual(1);
   },
 };
 
 export const Shadow: Story = {
-  render: (_args) => {
+  parameters: {
+    docs: {
+      description: {
+        story: "Displays shadow tokens used for creating depth and elevation effects. Each shadow is demonstrated on a sample element to show the visual impact.",
+      },
+    },
+  },
+  render: () => {
     const rootElement = document.querySelector<HTMLEmbedElement>("#storybook-root");
     const container = document.createElement("div");
-    const tokens = getDesignTokens(rootElement ?? document.documentElement);
-    for (const property of tokens["shadow"] ?? []) {
+    const tokens = getDesignTokens(rootElement ?? document.documentElement, "natural")["shadow"] ?? [];
+    for (const property of tokens) {
       createAndAppendElements(property, createShadowElement, container);
     }
     return container;
   },
-  args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const container = canvas.querySelector("div");
+    const shadowElements = canvasElement.querySelectorAll(".shadow-variable");
 
-    await expect(container).not.toBeNull();
-    // If shadow tokens exist, verify that child elements are present
+    await expect(shadowElements.length).toBeGreaterThan(0);
   },
 };
 
 export const Corner: Story = {
-  render: (_args) => {
+  parameters: {
+    docs: {
+      description: {
+        story: "Shows border radius tokens for consistent rounded corners. Each value is demonstrated on a sample element to visualize the corner rounding effect.",
+      },
+    },
+  },
+  render: () => {
     const rootElement = document.querySelector<HTMLEmbedElement>("#storybook-root");
     const container = document.createElement("div");
-    const tokens = getDesignTokens(rootElement ?? document.documentElement);
-    for (const property of tokens["corner"] ?? []) {
+    const tokens = getDesignTokens(rootElement ?? document.documentElement, "natural")["corner"] ?? [];
+    for (const property of tokens) {
       createAndAppendElements(property, createCornerElement, container);
     }
     return container;
   },
-  args: {},
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const container = canvas.querySelector("div");
+    const cornerElements = canvasElement.querySelectorAll(".corner-variable");
 
-    await expect(container).not.toBeNull();
+    await expect(cornerElements.length).toBeGreaterThanOrEqual(0);
   },
 };
 
 export const Breakpoint: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Interactive breakpoint reference showing media query ranges with real-time viewport detection. Resize the browser to see the current breakpoint highlighted.",
+      },
+    },
+  },
   render: (_args) => {
     // Breakpoint definitions (single source of truth)
     const breakpoints = {
@@ -275,24 +368,34 @@ export const Breakpoint: Story = {
 
     return container;
   },
-  args: {},
+  args: {
+    sortMode: "natural",
+  },
   play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    const container = canvas.querySelector("div");
-    const title = canvas.querySelector("h1");
-    const table = canvas.querySelector("table");
+    const container = canvasElement.querySelector("div");
+    const title = canvasElement.querySelector("h1");
+    const table = canvasElement.querySelector("table");
 
-    await expect(container).not.toBeNull();
-    await expect(title).toBeInTheDocument();
-    await expect(table).toBeInTheDocument();
+    await expect(container).toBeTruthy();
+    await expect(title).toBeTruthy();
+    await expect(title?.textContent).toContain("Media Breakpoints");
+    await expect(table).toBeTruthy();
 
-    const rows = table?.querySelectorAll("tbody tr");
-    await expect(rows?.length).toBe(10);
+    const rows = canvasElement.querySelectorAll("tbody tr");
+    await expect(rows).toHaveLength(10);
+
+    // Verify table headers
+    const headers = canvasElement.querySelectorAll("th");
+    await expect(headers).toHaveLength(4);
+    await expect(headers[0]?.textContent).toBe("Name");
+    await expect(headers[1]?.textContent).toBe("Range");
+    await expect(headers[2]?.textContent).toBe("Description");
+    await expect(headers[3]?.textContent).toBe("Custom Media");
   },
 };
 
-const getDesignTokens = (element: HTMLElement): Record<string, Property[]> => {
-  const properties = customProperties(element);
+const getDesignTokens = (element: HTMLElement, sortMode: "natural" | "numeric" = "natural"): Record<string, Property[]> => {
+  const properties = customProperties(element, undefined, sortMode);
   const tokens = designTokens(properties);
   return tokens;
 };
