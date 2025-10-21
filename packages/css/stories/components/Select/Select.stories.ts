@@ -311,14 +311,14 @@ export const Invalid: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const select = canvas.getByRole("combobox");
-    const form: HTMLFormElement = canvas.getByRole("form");
+    const form = document.querySelector<HTMLFormElement>("form");
 
     await expect(select).not.toBeNull();
     await expect(select).toHaveClass("m-select");
     await expect(select).toBeRequired();
     await expect(select).toHaveValue("");
 
-    form.reportValidity();
+    form?.reportValidity();
 
     await expect((select as HTMLSelectElement).validity.valid).toBe(false);
     await expect((select as HTMLSelectElement).validity.valueMissing).toBe(true);
