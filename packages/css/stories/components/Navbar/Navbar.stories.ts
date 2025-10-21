@@ -1,99 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import { expect, userEvent, within } from "storybook/test";
-
-// TypeScript Helper Pattern for complex component creation
-export interface NavbarProperties {
-  title?: string;
-  items?: Array<{ text: string; href: string; end?: boolean; icon?: string }>;
-  buttons?: Array<{ text: string; variant?: "primary" | "secondary"; icon?: string }>;
-  transition?: boolean;
-  hoverMenu?: boolean;
-  showMenu?: boolean;
-  menuVariant?: "side" | "float";
-  className?: string;
-  noHamburger?: boolean;
-  menuToggleByJS?: boolean;
-}
-
-const createNavbar = (
-  props: NavbarProperties = {},
-): HTMLElement => {
-  const {
-    title = "Brand Name",
-    items = [],
-    buttons = [],
-    transition = false,
-    hoverMenu = false,
-    showMenu = false,
-    menuVariant,
-    noHamburger = true,
-    menuToggleByJS = false,
-  } = props;
-
-  const container = document.createElement("div");
-  const transitionClass = transition ? " --transition" : "";
-  const hoverClass = hoverMenu ? " --hover-hamburger-menu" : "";
-
-  const menuVariantClass = menuVariant
-    ? {
-        float: " --mobile-float-menu",
-        side: " --mobile-side-menu",
-      }[menuVariant]
-    : "";
-
-  const navigationItems = items.map(item =>
-    `<a href="${item.href}" class="m-navbar__item${item.end ? " --end" : ""}">${item.text}</a>`,
-  ).join("");
-
-  const actionButtons = buttons.map(button =>
-    `<button class="m-btn${button.variant === "primary" ? " --primary" : ""}">${button.text}</button>`,
-  ).join("");
-
-  const buttonsSection = buttons.length > 0
-    ? `
-    <div class="m-navbar__item --end">
-      ${actionButtons}
-    </div>`
-    : "";
-
-  const hamburgerSection = `
-    <div class="m-navbar__hamburger">
-      <button class="m-navbar__hamburger-menu" aria-label="Menu" aria-expanded="${String(showMenu)}" aria-controls="navigation-menu"></button>
-    </div>
-  `;
-
-  container.innerHTML = `
-    <nav role="navigation" class="m-navbar${transitionClass}${hoverClass}${menuVariantClass}">
-      <a href="#" class="m-navbar__title">${title}</a>
-      <div class="m-navbar__items" id="navigation-menu">
-        ${navigationItems}
-        ${buttonsSection}
-      </div>
-      ${noHamburger ? "" : hamburgerSection}
-    </nav>
-  `.trim();
-
-  if (menuToggleByJS && !noHamburger) {
-    const hamburgerMenu = container.querySelector(".m-navbar__hamburger-menu") as HTMLButtonElement;
-    hamburgerMenu.addEventListener("click", () => {
-      const isExpanded = hamburgerMenu.getAttribute("aria-expanded") === "true";
-      hamburgerMenu.setAttribute("aria-expanded", String(!isExpanded));
-    });
-  }
-
-  return container;
-};
-
-type NavbarStoryProperties = {
-  title: string;
-  items: Array<{ text: string; href: string; end?: boolean; icon?: string }>;
-  buttons: Array<{ text: string; variant?: "primary" | "secondary"; icon?: string }>;
-  transition: boolean;
-  hoverMenu: boolean;
-  showHamburger: boolean;
-  showMenu: boolean;
-  menuVariant: "side" | "float";
-};
+import { type NavbarStoryProperties, createNavbar } from "./Navbar";
 
 const meta: Meta<NavbarStoryProperties> = {
   title: "Components/Navbar",
@@ -117,7 +24,7 @@ const meta: Meta<NavbarStoryProperties> = {
     },
     menuVariant: {
       control: { type: "select" },
-      options: ["side", "float"],
+      options: ["side", "float", "slide-left"],
       description: "Hamburger menu display style: 'side' (drawer) or 'float' (dropdown)",
     },
     showMenu: {
@@ -172,7 +79,8 @@ hamburgerMenu.addEventListener("click", () => {
 | .m-navbar | .--transition | Enables smooth animations for menu transitions |
 | .m-navbar | .--hover-hamburger-menu | **Experimental**: CSS-only hover menu activation |
 | .m-navbar | .--mobile-float-menu | Dropdown-style floating menu (no backdrop) |
-| .m-navbar | .--mobile-side-menu | Drawer-style side menu (with backdrop) |
+| .m-navbar | .--mobile-side-menu | Drawer-style right side menu (with backdrop) |
+| .m-navbar | .--mobile-side-menu .--slide-left | Drawer-style left side menu (with backdrop) |
 | .m-navbar__item | .--end | Aligns item to the end of the navigation (right in LTR) |
 
 ### CSS Variables
@@ -199,8 +107,9 @@ hamburgerMenu.addEventListener("click", () => {
 | --navbar-hamburger-menu-box-shadow | var(--shadow-md) | Box shadow for menu |
 | --navbar-hamburger-menu-item-separate-border | 1px solid var(--color-bg-light) | Border between menu items |
 | --navbar-base-zindex | var(--zindex-navbar) | Base z-index for navbar layering |
-| --navbar-backdrop-zindex | calc(var(--navbar-base-zindex) - 1) | Z-index for backdrop |
-| --navbar-menu-zindex | calc(var(--navbar-base-zindex) + 1) | Z-index for menu items |
+| --navbar-backdrop-zindex | calc(var(--navbar-base-zindex) + 1) | Z-index for backdrop |
+| --navbar-menu-zindex | calc(var(--navbar-backdrop-zindex) + 1) | Z-index for menu items |
+| --navbar-hamburger-menu-zindex | calc(var(--navbar-menu-zindex) + 1) | Z-index for hamburger menu button |
 | --navbar-hamburger-menu-slidein-transition | 0.1s ease-in-out | Slide-in animation duration |
 | --navbar-hamburger-menu-hover-item-transition | 0.3s ease-in-out | Item hover transition |
 | --navbar-hamburger-float-menu-position-right | var(--spacing-2) | Right position for float menu |
@@ -305,6 +214,66 @@ export const WithSideMenu: Story = {
       transition: args.transition,
       showMenu: args.showMenu,
       menuVariant: "side",
+      noHamburger: false,
+      menuToggleByJS: true,
+    });
+  },
+  args: {
+    title: "Side Menu Demo",
+    items: [
+      { text: "Home", href: "#" },
+      { text: "About", href: "#" },
+      { text: "Services", href: "#" },
+      { text: "Contact", href: "#" },
+    ],
+    buttons: [
+      { text: "Login", variant: "secondary" as const },
+      { text: "Sign Up", variant: "primary" as const },
+    ],
+    transition: false,
+    showMenu: false,
+  },
+  globals: {
+    viewport: { value: "mobile1" },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const navbar = canvas.getByRole("navigation");
+    const hamburger = canvas.getByLabelText("Menu");
+
+    await expect(navbar).toHaveClass("--mobile-side-menu");
+
+    await userEvent.click(hamburger);
+    await expect(hamburger).toHaveAttribute("aria-expanded", "true");
+
+    const backdropStyle = getComputedStyle(navbar, "::after");
+    await expect(backdropStyle.display).not.toBe("none");
+
+    const navItems = canvasElement.querySelector(".m-navbar__items") as HTMLElement;
+    const itemsStyle = getComputedStyle(navItems);
+    await expect(itemsStyle.position).toBe("fixed");
+
+    await userEvent.click(hamburger);
+    await expect(hamburger).toHaveAttribute("aria-expanded", "false");
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Side menu variant that creates a full-height drawer with backdrop overlay. Ideal for complex navigation with many items.",
+      },
+    },
+  },
+};
+
+export const WithSideLeftMenu: Story = {
+  render: (args) => {
+    return createNavbar({
+      title: args.title,
+      items: args.items,
+      buttons: args.buttons,
+      transition: args.transition,
+      showMenu: args.showMenu,
+      menuVariant: "slide-left",
       noHamburger: false,
       menuToggleByJS: true,
     });
