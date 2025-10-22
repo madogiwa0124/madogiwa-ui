@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type { Plugin } from "vite";
 import { globSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -109,7 +110,6 @@ const buildStorybookDocumentMarkdown = (
 ) => `---
 ${frontMatterSection}
 generated_at: ${timeStamp.toISOString()}
-
 ---
 
 # Madogiwa UI Components Documentation
@@ -117,7 +117,6 @@ generated_at: ${timeStamp.toISOString()}
 This documentation is automatically generated from Storybook stories for AI context and reference.
 
 ${componentsSection}
-
 ## Usage Notes
 
 - This documentation is auto-generated from \`parameters.docs.description.component\` in Storybook stories
