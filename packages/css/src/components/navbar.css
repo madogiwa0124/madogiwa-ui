@@ -13,6 +13,7 @@
   --navbar-hamburger-icon-color: var(--color-text);
   --navbar-hamburger-icon-hover-bg-color: color(from var(--navbar-bg-color) srgb calc(r * 0.8) calc(g * 0.8) calc(b * 0.8));
   --navbar-hamburger-icon-border-radius: var(--radius-sm);
+  --navbar-hamburger-menu-size: 2.5rem;
   --navbar-hamburger-menu-bg-color: var(--color-bg-light);
   --navbar-hamburger-menu-border: 2px solid var(--color-bg-light);
   --navbar-hamburger-menu-border-radius: 0 0 var(--radius-sm) var(--radius-sm);
@@ -25,7 +26,8 @@
   --navbar-hamburger-menu-slidein-transition: 0.1s ease-in-out;
   --navbar-hamburger-menu-hover-item-transition: 0.3s ease-in-out;
   --navbar-hamburger-float-menu-position-right: var(--spacing-2);
-  --navbar-hamburger-side-menu-top-padding: var(--navbar-min-height);
+  --navbar-hamburger-side-menu-close-x-position: var(--spacing-3);
+  --navbar-hamburger-side-menu-close-y-position: var(--spacing-2);
   --navbar-hamburger-side-menu-max-width: 80vw;
   --navbar-hamburger-side-menu-min-width: 40vw;
   --navbar-hamburger-side-menu-backdrop-color: var(--color-overlay);
@@ -80,8 +82,14 @@
   }
 
   &.--transition {
-    .m-navbar__items {
-      transition: transform var(--navbar-hamburger-menu-slidein-transition);
+    @media (--media-breakpoint-max-md) {
+      &.--mobile-side-menu {
+        .m-navbar__items {
+          transition: transform var(--navbar-hamburger-menu-slidein-transition),
+            opacity var(--navbar-hamburger-menu-slidein-transition),
+            visibility var(--navbar-hamburger-menu-slidein-transition);
+        }
+      }
     }
 
     .m-navbar__item {
@@ -98,7 +106,10 @@
   }
 
   .m-navbar__hamburger-menu {
+    height: var(--navbar-hamburger-menu-size);
+    width: var(--navbar-hamburger-menu-size);
     display: inline-block;
+    background-color: var(--navbar-bg-color);
     color: var(--navbar-hamburger-icon-color);
     text-decoration: none;
     padding: var(--navbar-hamburger-icon-padding);
@@ -175,16 +186,6 @@
 
     /* Side Menu */
     &.--mobile-side-menu {
-      &.--slide-left {
-        justify-content: initial;
-
-        .m-navbar__items {
-          right: auto;
-          left: 0;
-          transform: translateX(-100%);
-        }
-      }
-
       /* backdrop */
       &::after {
         content: "";
@@ -213,7 +214,7 @@
         align-items: stretch;
         background-color: var(--navbar-hamburger-menu-bg-color);
         box-shadow: var(--navbar-hamburger-menu-box-shadow);
-        transform: translateX(100%);
+        overflow-y: scroll;
       }
 
       .m-navbar__item {
@@ -229,12 +230,48 @@
         }
 
         .m-navbar__items {
-          padding-top: var(--navbar-hamburger-side-menu-top-padding);
           transform: translateX(0);
         }
 
         .m-navbar__hamburger-menu {
+          position: absolute;
+          top: var(--navbar-hamburger-side-menu-close-y-position);
+          left: var(--navbar-hamburger-side-menu-close-x-position);
           z-index: var(--navbar-hamburger-menu-zindex);
+        }
+      }
+
+      &:has(.m-navbar__hamburger-menu[aria-expanded="false"]) {
+        .m-navbar__items {
+          transform: translateX(100%);
+        }
+      }
+
+      &.--slide-left {
+        justify-content: initial;
+
+        /* NOTE: It is not a problem to overwrite it because I want to prioritize the display with `.m-navbar__hamburger-menu[aria-expanded="true"]` */
+        /* stylelint-disable-next-line no-descending-specificity */
+        .m-navbar__items {
+          right: auto;
+          left: 0;
+        }
+
+        &:has(.m-navbar__hamburger-menu[aria-expanded="true"]) {
+          .m-navbar__items {
+            transform: translateX(0);
+          }
+
+          .m-navbar__hamburger-menu {
+            left: initial;
+            right: var(--navbar-hamburger-side-menu-close-x-position);
+          }
+        }
+
+        &:has(.m-navbar__hamburger-menu[aria-expanded="false"]) {
+          .m-navbar__items {
+            transform: translateX(-100%);
+          }
         }
       }
     }

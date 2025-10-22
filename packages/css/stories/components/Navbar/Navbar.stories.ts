@@ -101,6 +101,7 @@ hamburgerMenu.addEventListener("click", () => {
 | --navbar-hamburger-icon-color | var(--color-text) | Color of hamburger icon |
 | --navbar-hamburger-icon-hover-bg-color | color(from var(--navbar-bg-color) srgb calc(r * 0.8) calc(g * 0.8) calc(b * 0.8)) | Hover background for icon |
 | --navbar-hamburger-icon-border-radius | var(--radius-sm) | Border radius for hamburger icon |
+| --navbar-hamburger-menu-size | 2.5rem | Size of hamburger menu button |
 | --navbar-hamburger-menu-bg-color | var(--color-bg-light) | Background of mobile menu |
 | --navbar-hamburger-menu-border | 2px solid var(--color-bg-light) | Border for hamburger menu |
 | --navbar-hamburger-menu-border-radius | 0 0 var(--radius-sm) var(--radius-sm) | Border radius for menu |
@@ -113,7 +114,8 @@ hamburgerMenu.addEventListener("click", () => {
 | --navbar-hamburger-menu-slidein-transition | 0.1s ease-in-out | Slide-in animation duration |
 | --navbar-hamburger-menu-hover-item-transition | 0.3s ease-in-out | Item hover transition |
 | --navbar-hamburger-float-menu-position-right | var(--spacing-2) | Right position for float menu |
-| --navbar-hamburger-side-menu-top-padding | var(--navbar-min-height) | Top padding for side menu |
+| --navbar-hamburger-side-menu-close-x-position | var(--spacing-3) | Horizontal position of close button in side menu |
+| --navbar-hamburger-side-menu-close-y-position | var(--spacing-2) | Vertical position of close button in side menu |
 | --navbar-hamburger-side-menu-max-width | 80vw | Maximum width for side menu |
 | --navbar-hamburger-side-menu-min-width | 40vw | Minimum width for side menu |
 | --navbar-hamburger-side-menu-backdrop-color | var(--color-overlay) | Backdrop color for side menu |
@@ -122,6 +124,7 @@ hamburgerMenu.addEventListener("click", () => {
 ### Caution
 - Ensure sufficient contrast between text and background for readability
 - Use meaningful alt text for icons to enhance accessibility
+- **Close Button Position**: The close button position in side menus can be optimized by dynamically adjusting \`--navbar-hamburger-side-menu-close-x-position\`, \`--navbar-hamburger-side-menu-close-y-position\` based on menu width using JavaScript for better user experience
         `,
       },
     },
@@ -138,6 +141,9 @@ export const Default: Story = {
       items: args.items,
       buttons: args.buttons,
       transition: args.transition,
+      noHamburger: false,
+      menuToggleByJS: true,
+      menuVariant: args.menuVariant,
     });
 
     // Add sample page content for context
