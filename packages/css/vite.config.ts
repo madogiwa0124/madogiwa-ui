@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import postcssPresetEnv from "postcss-preset-env";
 import { outputCssSnippetFilePlugin } from "./plugins/vite/outputCssSnippetFilePlugin";
 import { removeFilePlugin } from "./plugins/vite/removeFilePlugin";
+import { outputStoryDocumentPlugin } from "./plugins/vite/outputStoryDocumentPlugin";
 
 export default defineConfig({
   plugins: [
@@ -17,6 +18,15 @@ export default defineConfig({
       snippetFileName: "dist/madogiwa-ui.code-snippets",
       descriptionPrefix: "Madogiwa UI",
       outputRootCSSVariables: true,
+    }),
+    outputStoryDocumentPlugin({
+      outputPath: "dist/components-ai-context.md",
+      storiesPattern: "stories/**/*.stories.@(js|ts)",
+      frontMatter: {
+        title: "Madogiwa UI Components Documentation",
+        description: "Auto-generated documentation from Storybook stories for AI context",
+        generated: true,
+      },
     }),
     removeFilePlugin("dist/*.js"),
   ],
