@@ -1,0 +1,68 @@
+name: "Check Commit Status"
+description: "Check if the current commit has all checks passing"
+
+inputs:
+  sha:
+    description: "The commit SHA to check"
+    required: true
+  github-token:
+    description: "GitHub token"
+    required: true
+    default: ${{ github.token }}
+  ignored-check-names:
+    description: "Comma-separated list of check names to ignore"
+    required: false
+    default: ""
+
+outputs:
+  all-checks-passed:
+    description: "Whether all checks have passed"
+    value: ${{ steps.check.outputs.all-checks-passed }}
+  status-summary:
+    description: "Human readable status summary"
+    value: ${{ steps.check.outputs.status-summary }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Check commit status
+      id: check
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+      run: |
+        COMMIT_SHA="${{ inputs.sha }}"
+        echo "🔍 Checking status for commit: $COMMIT_SHA"
+
+        # Fetch check runs data once
+        CHECK_RUNS_DATA=$(gh api "repos/${{ github.repository }}/commits/$COMMIT_SHA/check-runs" 2>/dev/null || echo '{"check_runs": []}')
+
+        # Filter out self (check-commit-status) and ignored check names
+        IGNORED_CHECKS="${{ inputs.ignored-check-names }}"
+
+        echo "Info: Check Runs found:"
+        echo "$CHECK_RUNS_DATA" | jq --arg ignored "$IGNORED_CHECKS" '
+          .check_runs
+          | map(select(.name != "Check Commit Status" and (.name | IN($ignored | split(",") | map(select(length > 0)) | .[]) | not)))
+          | map({name: .name, conclusion: .conclusion})'
+
+        CHECK_RUNS_STATUS=$(echo "$CHECK_RUNS_DATA" | jq --arg ignored "$IGNORED_CHECKS" -r '
+          .check_runs
+          | map(select(.name != "Check Commit Status" and (.name | IN($ignored | split(",") | map(select(length > 0)) | .[]) | not)))
+          | if length == 0 then "no_checks"
+            else (map(.conclusion) | if all(. == "success") then "success" elif any(. == "failure") then "failure" else "pending" end)
+            end' 2>/dev/null || echo "unknown")
+
+        echo "Check Runs Status: $CHECK_RUNS_STATUS"
+
+        if [[ "$CHECK_RUNS_STATUS" == "success" ]]; then
+          echo "all-checks-passed=true" >> $GITHUB_OUTPUT
+          echo "status-summary=✅ All checks passed" >> $GITHUB_OUTPUT
+        else
+          echo "all-checks-passed=false" >> $GITHUB_OUTPUT
+          if [[ "$CHECK_RUNS_STATUS" == "unknown" ]]; then
+            echo "status-summary=❓ Unable to determine status for commit $COMMIT_SHA" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          echo "status-summary=❌ Some checks have not passed (check-runs: $CHECK_RUNS_STATUS)" >> $GITHUB_OUTPUT
+        fi

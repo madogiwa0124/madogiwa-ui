@@ -1,0 +1,90 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: "Skip build and deploy steps"
+        required: false
+        default: "true"
+      commit_message:
+        description: "Commit message for build artifacts"
+        required: false
+        default: ""
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - name: check commit status
+        id: commit-status
+        uses: ./.github/actions/check-commit-status
+        with:
+          sha: ${{ github.sha }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          ignored-check-names: "check,build-and-deploy"
+      - name: Skip release if checks failed
+        if: ${{ steps.commit-status.outputs.all-checks-passed != 'true' }}
+        run: |
+          echo "❌ Quality checks have not passed for this commit. Skipping release."
+          echo "Status Summary: ${{ steps.commit-status.outputs.status-summary }}"
+          exit 1
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: check
+
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - name: Install pnpm
+        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "22"
+          cache: "pnpm"
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Build documentation
+        run: pnpm build:docs
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add -A
+          if git diff --staged --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes to commit"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected"
+          fi
+
+      - name: Commit and push changes
+        if: steps.changes.outputs.has_changes == 'true' && github.event.inputs.dry-run != 'true'
+        run: |
+          COMMIT_MSG="${{ inputs.commit_message || 'chore: update build artifacts' }}"
+          COMMIT_MSG+=$'\n\nTriggered by: @${{ github.actor }}'
+          COMMIT_MSG+=$'\nSource commit: ${{ github.sha }}'
+
+          # NOTE: Use GitHub Actions Bot to ensure the user exists
+          # ref: https://github.com/orgs/community/discussions/26560#discussioncomment-3252340
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "$COMMIT_MSG"
+          git push

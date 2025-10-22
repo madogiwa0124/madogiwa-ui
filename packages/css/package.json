@@ -15,6 +15,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
+    "build:docs": "pnpm storybook:build --output-dir=../../docs/storybook/css",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "test": "node --experimental-strip-types --test **/*.test.ts",

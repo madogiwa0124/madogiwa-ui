@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "build": "pnpm css build",
+    "build:docs": "pnpm css build:docs",
     "setup": "playwright install chromium --with-deps",
     "css": "pnpm --filter @madogiwa-ui/css",
     "lint": "eslint --cache --cache-location node_modules/.cache/eslint/",
