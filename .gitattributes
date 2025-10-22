@@ -1,0 +1,4 @@
+# See https://git-scm.com/docs/gitattributes for more about git attribute files.
+pnpm-lock.yaml linguist-generated
+docs/storybook/** linguist-documentation
+packages/**/dist/** linguist-generated
