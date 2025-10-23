@@ -11,7 +11,8 @@ const ignoredFiles = [
   "**/.storybook/**",
   "**/storybook-static/**",
   "**/dist/**",
-  "**/node_modules/**"
+  "**/node_modules/**",
+  "docs/**",
 ];
 
 export default defineConfig([
