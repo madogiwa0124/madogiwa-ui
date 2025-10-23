@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2025-10-23T20:57:10.619Z
+generated_at: 2025-10-23T22:18:02.403Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -951,4 +951,4 @@ The container is centered horizontally and uses logical properties (margin-inlin
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 10/23/2025, 8:57:10 PM
+- Generated at: 10/23/2025, 10:18:02 PM
