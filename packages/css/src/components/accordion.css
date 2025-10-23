@@ -83,8 +83,10 @@
 
     .m-accordion__content,
     &::details-content {
-      transition: block-size var(--accordion-transition-time) ease,
+      transition:
+        block-size var(--accordion-transition-time) ease,
         opacity var(--accordion-transition-time) ease,
+        padding var(--accordion-transition-time) ease,
         content-visibility var(--accordion-transition-time) allow-discrete;
     }
   }
