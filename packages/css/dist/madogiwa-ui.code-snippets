@@ -1,0 +1,2198 @@
+{
+  "m-container": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-container",
+    "body": ".m-container${2|​,.--padding,.--no-centering|}",
+    "description": "Madogiwa UI class .m-container"
+  },
+  "m-columns": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-columns",
+    "body": ".m-columns${2|​,.--auto-fit,.--no-gap|}",
+    "description": "Madogiwa UI class .m-columns"
+  },
+  "m-btn": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-btn",
+    "body": ".m-btn${2|​,.--primary,.--secondary,.--tertiary,.--outline,.--default,.--block,.--rounded,.--icon-only,.--transition|}",
+    "description": "Madogiwa UI class .m-btn"
+  },
+  "m-h1": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-h1",
+    "body": ".m-h1",
+    "description": "Madogiwa UI class .m-h1"
+  },
+  "m-h2": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-h2",
+    "body": ".m-h2",
+    "description": "Madogiwa UI class .m-h2"
+  },
+  "m-h3": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-h3",
+    "body": ".m-h3",
+    "description": "Madogiwa UI class .m-h3"
+  },
+  "m-h4": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-h4",
+    "body": ".m-h4",
+    "description": "Madogiwa UI class .m-h4"
+  },
+  "m-h5": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-h5",
+    "body": ".m-h5",
+    "description": "Madogiwa UI class .m-h5"
+  },
+  "m-h6": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-h6",
+    "body": ".m-h6",
+    "description": "Madogiwa UI class .m-h6"
+  },
+  "m-link": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-link",
+    "body": ".m-link",
+    "description": "Madogiwa UI class .m-link"
+  },
+  "m-p": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-p",
+    "body": ".m-p",
+    "description": "Madogiwa UI class .m-p"
+  },
+  "m-checkbox": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-checkbox",
+    "body": ".m-checkbox",
+    "description": "Madogiwa UI class .m-checkbox"
+  },
+  "m-radio": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-radio",
+    "body": ".m-radio",
+    "description": "Madogiwa UI class .m-radio"
+  },
+  "m-card": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-card",
+    "body": ".m-card${1|​,__image,__content,__actions|}${2|​,.--floating|}",
+    "description": "Madogiwa UI class .m-card"
+  },
+  "m-select": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-select",
+    "body": ".m-select${2|​,.--error|}",
+    "description": "Madogiwa UI class .m-select"
+  },
+  "m-input": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-input",
+    "body": ".m-input${2|​,.--error,.--block,.--transition|}",
+    "description": "Madogiwa UI class .m-input"
+  },
+  "m-textarea": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-textarea",
+    "body": ".m-textarea${2|​,.--error,.--block,.--auto-fit|}",
+    "description": "Madogiwa UI class .m-textarea"
+  },
+  "m-label": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-label",
+    "body": ".m-label${2|​,.--disabled,.--required|}",
+    "description": "Madogiwa UI class .m-label"
+  },
+  "m-toggle": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-toggle",
+    "body": ".m-toggle",
+    "description": "Madogiwa UI class .m-toggle"
+  },
+  "m-dialog": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-dialog",
+    "body": ".m-dialog",
+    "description": "Madogiwa UI class .m-dialog"
+  },
+  "m-tabs": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-tabs",
+    "body": ".m-tabs${1|​,__list,__item|}${2|​,.--transition,.--scrollhint|}",
+    "description": "Madogiwa UI class .m-tabs"
+  },
+  "m-snackbar": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-snackbar",
+    "body": ".m-snackbar${1|​,__body,__actions|}${2|​,.--right-bottom,.--left-top,.--right-top|}",
+    "description": "Madogiwa UI class .m-snackbar"
+  },
+  "m-accordion": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-accordion",
+    "body": ".m-accordion${1|​,__summary,__content|}${2|​,.--outline,.--transition|}",
+    "description": "Madogiwa UI class .m-accordion"
+  },
+  "m-badge": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-badge",
+    "body": ".m-badge${2|​,.--outline,.--small,.--rounded,.--primary,.--secondary,.--tertiary,.--danger,.--warning|}",
+    "description": "Madogiwa UI class .m-badge"
+  },
+  "m-alert": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-alert",
+    "body": ".m-alert${1|​,__icons,__content,__actions|}${2|​,.--primary,.--secondary,.--tertiary,.--danger,.--warning|}",
+    "description": "Madogiwa UI class .m-alert"
+  },
+  "m-navbar": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-navbar",
+    "body": ".m-navbar${1|​,__title,__items,__item,__hamburger,__hamburger-menu|}${2|​,.--end,.--transition,.--mobile-side-menu,.--mobile-float-menu,.--slide-left|}",
+    "description": "Madogiwa UI class .m-navbar"
+  },
+  "m-hidden": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-hidden",
+    "body": ".m-hidden",
+    "description": "Madogiwa UI class .m-hidden"
+  },
+  "m-visible": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-visible",
+    "body": ".m-visible",
+    "description": "Madogiwa UI class .m-visible"
+  },
+  "m-invisible": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-invisible",
+    "body": ".m-invisible",
+    "description": "Madogiwa UI class .m-invisible"
+  },
+  "m-sr-only": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-sr-only",
+    "body": ".m-sr-only",
+    "description": "Madogiwa UI class .m-sr-only"
+  },
+  "--color-red-50": {
+    "scope": "css",
+    "prefix": "--color-red-50",
+    "body": "--color-red-50",
+    "description": "Madogiwa UI CSS variable --color-red-50"
+  },
+  "--color-red-100": {
+    "scope": "css",
+    "prefix": "--color-red-100",
+    "body": "--color-red-100",
+    "description": "Madogiwa UI CSS variable --color-red-100"
+  },
+  "--color-red-200": {
+    "scope": "css",
+    "prefix": "--color-red-200",
+    "body": "--color-red-200",
+    "description": "Madogiwa UI CSS variable --color-red-200"
+  },
+  "--color-red-300": {
+    "scope": "css",
+    "prefix": "--color-red-300",
+    "body": "--color-red-300",
+    "description": "Madogiwa UI CSS variable --color-red-300"
+  },
+  "--color-red-400": {
+    "scope": "css",
+    "prefix": "--color-red-400",
+    "body": "--color-red-400",
+    "description": "Madogiwa UI CSS variable --color-red-400"
+  },
+  "--color-red-500": {
+    "scope": "css",
+    "prefix": "--color-red-500",
+    "body": "--color-red-500",
+    "description": "Madogiwa UI CSS variable --color-red-500"
+  },
+  "--color-red-600": {
+    "scope": "css",
+    "prefix": "--color-red-600",
+    "body": "--color-red-600",
+    "description": "Madogiwa UI CSS variable --color-red-600"
+  },
+  "--color-red-700": {
+    "scope": "css",
+    "prefix": "--color-red-700",
+    "body": "--color-red-700",
+    "description": "Madogiwa UI CSS variable --color-red-700"
+  },
+  "--color-red-800": {
+    "scope": "css",
+    "prefix": "--color-red-800",
+    "body": "--color-red-800",
+    "description": "Madogiwa UI CSS variable --color-red-800"
+  },
+  "--color-red-900": {
+    "scope": "css",
+    "prefix": "--color-red-900",
+    "body": "--color-red-900",
+    "description": "Madogiwa UI CSS variable --color-red-900"
+  },
+  "--color-red-950": {
+    "scope": "css",
+    "prefix": "--color-red-950",
+    "body": "--color-red-950",
+    "description": "Madogiwa UI CSS variable --color-red-950"
+  },
+  "--color-orange-50": {
+    "scope": "css",
+    "prefix": "--color-orange-50",
+    "body": "--color-orange-50",
+    "description": "Madogiwa UI CSS variable --color-orange-50"
+  },
+  "--color-orange-100": {
+    "scope": "css",
+    "prefix": "--color-orange-100",
+    "body": "--color-orange-100",
+    "description": "Madogiwa UI CSS variable --color-orange-100"
+  },
+  "--color-orange-200": {
+    "scope": "css",
+    "prefix": "--color-orange-200",
+    "body": "--color-orange-200",
+    "description": "Madogiwa UI CSS variable --color-orange-200"
+  },
+  "--color-orange-300": {
+    "scope": "css",
+    "prefix": "--color-orange-300",
+    "body": "--color-orange-300",
+    "description": "Madogiwa UI CSS variable --color-orange-300"
+  },
+  "--color-orange-400": {
+    "scope": "css",
+    "prefix": "--color-orange-400",
+    "body": "--color-orange-400",
+    "description": "Madogiwa UI CSS variable --color-orange-400"
+  },
+  "--color-orange-500": {
+    "scope": "css",
+    "prefix": "--color-orange-500",
+    "body": "--color-orange-500",
+    "description": "Madogiwa UI CSS variable --color-orange-500"
+  },
+  "--color-orange-600": {
+    "scope": "css",
+    "prefix": "--color-orange-600",
+    "body": "--color-orange-600",
+    "description": "Madogiwa UI CSS variable --color-orange-600"
+  },
+  "--color-orange-700": {
+    "scope": "css",
+    "prefix": "--color-orange-700",
+    "body": "--color-orange-700",
+    "description": "Madogiwa UI CSS variable --color-orange-700"
+  },
+  "--color-orange-800": {
+    "scope": "css",
+    "prefix": "--color-orange-800",
+    "body": "--color-orange-800",
+    "description": "Madogiwa UI CSS variable --color-orange-800"
+  },
+  "--color-orange-900": {
+    "scope": "css",
+    "prefix": "--color-orange-900",
+    "body": "--color-orange-900",
+    "description": "Madogiwa UI CSS variable --color-orange-900"
+  },
+  "--color-orange-950": {
+    "scope": "css",
+    "prefix": "--color-orange-950",
+    "body": "--color-orange-950",
+    "description": "Madogiwa UI CSS variable --color-orange-950"
+  },
+  "--color-amber-50": {
+    "scope": "css",
+    "prefix": "--color-amber-50",
+    "body": "--color-amber-50",
+    "description": "Madogiwa UI CSS variable --color-amber-50"
+  },
+  "--color-amber-100": {
+    "scope": "css",
+    "prefix": "--color-amber-100",
+    "body": "--color-amber-100",
+    "description": "Madogiwa UI CSS variable --color-amber-100"
+  },
+  "--color-amber-200": {
+    "scope": "css",
+    "prefix": "--color-amber-200",
+    "body": "--color-amber-200",
+    "description": "Madogiwa UI CSS variable --color-amber-200"
+  },
+  "--color-amber-300": {
+    "scope": "css",
+    "prefix": "--color-amber-300",
+    "body": "--color-amber-300",
+    "description": "Madogiwa UI CSS variable --color-amber-300"
+  },
+  "--color-amber-400": {
+    "scope": "css",
+    "prefix": "--color-amber-400",
+    "body": "--color-amber-400",
+    "description": "Madogiwa UI CSS variable --color-amber-400"
+  },
+  "--color-amber-500": {
+    "scope": "css",
+    "prefix": "--color-amber-500",
+    "body": "--color-amber-500",
+    "description": "Madogiwa UI CSS variable --color-amber-500"
+  },
+  "--color-amber-600": {
+    "scope": "css",
+    "prefix": "--color-amber-600",
+    "body": "--color-amber-600",
+    "description": "Madogiwa UI CSS variable --color-amber-600"
+  },
+  "--color-amber-700": {
+    "scope": "css",
+    "prefix": "--color-amber-700",
+    "body": "--color-amber-700",
+    "description": "Madogiwa UI CSS variable --color-amber-700"
+  },
+  "--color-amber-800": {
+    "scope": "css",
+    "prefix": "--color-amber-800",
+    "body": "--color-amber-800",
+    "description": "Madogiwa UI CSS variable --color-amber-800"
+  },
+  "--color-amber-900": {
+    "scope": "css",
+    "prefix": "--color-amber-900",
+    "body": "--color-amber-900",
+    "description": "Madogiwa UI CSS variable --color-amber-900"
+  },
+  "--color-amber-950": {
+    "scope": "css",
+    "prefix": "--color-amber-950",
+    "body": "--color-amber-950",
+    "description": "Madogiwa UI CSS variable --color-amber-950"
+  },
+  "--color-yellow-50": {
+    "scope": "css",
+    "prefix": "--color-yellow-50",
+    "body": "--color-yellow-50",
+    "description": "Madogiwa UI CSS variable --color-yellow-50"
+  },
+  "--color-yellow-100": {
+    "scope": "css",
+    "prefix": "--color-yellow-100",
+    "body": "--color-yellow-100",
+    "description": "Madogiwa UI CSS variable --color-yellow-100"
+  },
+  "--color-yellow-200": {
+    "scope": "css",
+    "prefix": "--color-yellow-200",
+    "body": "--color-yellow-200",
+    "description": "Madogiwa UI CSS variable --color-yellow-200"
+  },
+  "--color-yellow-300": {
+    "scope": "css",
+    "prefix": "--color-yellow-300",
+    "body": "--color-yellow-300",
+    "description": "Madogiwa UI CSS variable --color-yellow-300"
+  },
+  "--color-yellow-400": {
+    "scope": "css",
+    "prefix": "--color-yellow-400",
+    "body": "--color-yellow-400",
+    "description": "Madogiwa UI CSS variable --color-yellow-400"
+  },
+  "--color-yellow-500": {
+    "scope": "css",
+    "prefix": "--color-yellow-500",
+    "body": "--color-yellow-500",
+    "description": "Madogiwa UI CSS variable --color-yellow-500"
+  },
+  "--color-yellow-600": {
+    "scope": "css",
+    "prefix": "--color-yellow-600",
+    "body": "--color-yellow-600",
+    "description": "Madogiwa UI CSS variable --color-yellow-600"
+  },
+  "--color-yellow-700": {
+    "scope": "css",
+    "prefix": "--color-yellow-700",
+    "body": "--color-yellow-700",
+    "description": "Madogiwa UI CSS variable --color-yellow-700"
+  },
+  "--color-yellow-800": {
+    "scope": "css",
+    "prefix": "--color-yellow-800",
+    "body": "--color-yellow-800",
+    "description": "Madogiwa UI CSS variable --color-yellow-800"
+  },
+  "--color-yellow-900": {
+    "scope": "css",
+    "prefix": "--color-yellow-900",
+    "body": "--color-yellow-900",
+    "description": "Madogiwa UI CSS variable --color-yellow-900"
+  },
+  "--color-yellow-950": {
+    "scope": "css",
+    "prefix": "--color-yellow-950",
+    "body": "--color-yellow-950",
+    "description": "Madogiwa UI CSS variable --color-yellow-950"
+  },
+  "--color-lime-50": {
+    "scope": "css",
+    "prefix": "--color-lime-50",
+    "body": "--color-lime-50",
+    "description": "Madogiwa UI CSS variable --color-lime-50"
+  },
+  "--color-lime-100": {
+    "scope": "css",
+    "prefix": "--color-lime-100",
+    "body": "--color-lime-100",
+    "description": "Madogiwa UI CSS variable --color-lime-100"
+  },
+  "--color-lime-200": {
+    "scope": "css",
+    "prefix": "--color-lime-200",
+    "body": "--color-lime-200",
+    "description": "Madogiwa UI CSS variable --color-lime-200"
+  },
+  "--color-lime-300": {
+    "scope": "css",
+    "prefix": "--color-lime-300",
+    "body": "--color-lime-300",
+    "description": "Madogiwa UI CSS variable --color-lime-300"
+  },
+  "--color-lime-400": {
+    "scope": "css",
+    "prefix": "--color-lime-400",
+    "body": "--color-lime-400",
+    "description": "Madogiwa UI CSS variable --color-lime-400"
+  },
+  "--color-lime-500": {
+    "scope": "css",
+    "prefix": "--color-lime-500",
+    "body": "--color-lime-500",
+    "description": "Madogiwa UI CSS variable --color-lime-500"
+  },
+  "--color-lime-600": {
+    "scope": "css",
+    "prefix": "--color-lime-600",
+    "body": "--color-lime-600",
+    "description": "Madogiwa UI CSS variable --color-lime-600"
+  },
+  "--color-lime-700": {
+    "scope": "css",
+    "prefix": "--color-lime-700",
+    "body": "--color-lime-700",
+    "description": "Madogiwa UI CSS variable --color-lime-700"
+  },
+  "--color-lime-800": {
+    "scope": "css",
+    "prefix": "--color-lime-800",
+    "body": "--color-lime-800",
+    "description": "Madogiwa UI CSS variable --color-lime-800"
+  },
+  "--color-lime-900": {
+    "scope": "css",
+    "prefix": "--color-lime-900",
+    "body": "--color-lime-900",
+    "description": "Madogiwa UI CSS variable --color-lime-900"
+  },
+  "--color-lime-950": {
+    "scope": "css",
+    "prefix": "--color-lime-950",
+    "body": "--color-lime-950",
+    "description": "Madogiwa UI CSS variable --color-lime-950"
+  },
+  "--color-green-50": {
+    "scope": "css",
+    "prefix": "--color-green-50",
+    "body": "--color-green-50",
+    "description": "Madogiwa UI CSS variable --color-green-50"
+  },
+  "--color-green-100": {
+    "scope": "css",
+    "prefix": "--color-green-100",
+    "body": "--color-green-100",
+    "description": "Madogiwa UI CSS variable --color-green-100"
+  },
+  "--color-green-200": {
+    "scope": "css",
+    "prefix": "--color-green-200",
+    "body": "--color-green-200",
+    "description": "Madogiwa UI CSS variable --color-green-200"
+  },
+  "--color-green-300": {
+    "scope": "css",
+    "prefix": "--color-green-300",
+    "body": "--color-green-300",
+    "description": "Madogiwa UI CSS variable --color-green-300"
+  },
+  "--color-green-400": {
+    "scope": "css",
+    "prefix": "--color-green-400",
+    "body": "--color-green-400",
+    "description": "Madogiwa UI CSS variable --color-green-400"
+  },
+  "--color-green-500": {
+    "scope": "css",
+    "prefix": "--color-green-500",
+    "body": "--color-green-500",
+    "description": "Madogiwa UI CSS variable --color-green-500"
+  },
+  "--color-green-600": {
+    "scope": "css",
+    "prefix": "--color-green-600",
+    "body": "--color-green-600",
+    "description": "Madogiwa UI CSS variable --color-green-600"
+  },
+  "--color-green-700": {
+    "scope": "css",
+    "prefix": "--color-green-700",
+    "body": "--color-green-700",
+    "description": "Madogiwa UI CSS variable --color-green-700"
+  },
+  "--color-green-800": {
+    "scope": "css",
+    "prefix": "--color-green-800",
+    "body": "--color-green-800",
+    "description": "Madogiwa UI CSS variable --color-green-800"
+  },
+  "--color-green-900": {
+    "scope": "css",
+    "prefix": "--color-green-900",
+    "body": "--color-green-900",
+    "description": "Madogiwa UI CSS variable --color-green-900"
+  },
+  "--color-green-950": {
+    "scope": "css",
+    "prefix": "--color-green-950",
+    "body": "--color-green-950",
+    "description": "Madogiwa UI CSS variable --color-green-950"
+  },
+  "--color-emerald-50": {
+    "scope": "css",
+    "prefix": "--color-emerald-50",
+    "body": "--color-emerald-50",
+    "description": "Madogiwa UI CSS variable --color-emerald-50"
+  },
+  "--color-emerald-100": {
+    "scope": "css",
+    "prefix": "--color-emerald-100",
+    "body": "--color-emerald-100",
+    "description": "Madogiwa UI CSS variable --color-emerald-100"
+  },
+  "--color-emerald-200": {
+    "scope": "css",
+    "prefix": "--color-emerald-200",
+    "body": "--color-emerald-200",
+    "description": "Madogiwa UI CSS variable --color-emerald-200"
+  },
+  "--color-emerald-300": {
+    "scope": "css",
+    "prefix": "--color-emerald-300",
+    "body": "--color-emerald-300",
+    "description": "Madogiwa UI CSS variable --color-emerald-300"
+  },
+  "--color-emerald-400": {
+    "scope": "css",
+    "prefix": "--color-emerald-400",
+    "body": "--color-emerald-400",
+    "description": "Madogiwa UI CSS variable --color-emerald-400"
+  },
+  "--color-emerald-500": {
+    "scope": "css",
+    "prefix": "--color-emerald-500",
+    "body": "--color-emerald-500",
+    "description": "Madogiwa UI CSS variable --color-emerald-500"
+  },
+  "--color-emerald-600": {
+    "scope": "css",
+    "prefix": "--color-emerald-600",
+    "body": "--color-emerald-600",
+    "description": "Madogiwa UI CSS variable --color-emerald-600"
+  },
+  "--color-emerald-700": {
+    "scope": "css",
+    "prefix": "--color-emerald-700",
+    "body": "--color-emerald-700",
+    "description": "Madogiwa UI CSS variable --color-emerald-700"
+  },
+  "--color-emerald-800": {
+    "scope": "css",
+    "prefix": "--color-emerald-800",
+    "body": "--color-emerald-800",
+    "description": "Madogiwa UI CSS variable --color-emerald-800"
+  },
+  "--color-emerald-900": {
+    "scope": "css",
+    "prefix": "--color-emerald-900",
+    "body": "--color-emerald-900",
+    "description": "Madogiwa UI CSS variable --color-emerald-900"
+  },
+  "--color-emerald-950": {
+    "scope": "css",
+    "prefix": "--color-emerald-950",
+    "body": "--color-emerald-950",
+    "description": "Madogiwa UI CSS variable --color-emerald-950"
+  },
+  "--color-teal-50": {
+    "scope": "css",
+    "prefix": "--color-teal-50",
+    "body": "--color-teal-50",
+    "description": "Madogiwa UI CSS variable --color-teal-50"
+  },
+  "--color-teal-100": {
+    "scope": "css",
+    "prefix": "--color-teal-100",
+    "body": "--color-teal-100",
+    "description": "Madogiwa UI CSS variable --color-teal-100"
+  },
+  "--color-teal-200": {
+    "scope": "css",
+    "prefix": "--color-teal-200",
+    "body": "--color-teal-200",
+    "description": "Madogiwa UI CSS variable --color-teal-200"
+  },
+  "--color-teal-300": {
+    "scope": "css",
+    "prefix": "--color-teal-300",
+    "body": "--color-teal-300",
+    "description": "Madogiwa UI CSS variable --color-teal-300"
+  },
+  "--color-teal-400": {
+    "scope": "css",
+    "prefix": "--color-teal-400",
+    "body": "--color-teal-400",
+    "description": "Madogiwa UI CSS variable --color-teal-400"
+  },
+  "--color-teal-500": {
+    "scope": "css",
+    "prefix": "--color-teal-500",
+    "body": "--color-teal-500",
+    "description": "Madogiwa UI CSS variable --color-teal-500"
+  },
+  "--color-teal-600": {
+    "scope": "css",
+    "prefix": "--color-teal-600",
+    "body": "--color-teal-600",
+    "description": "Madogiwa UI CSS variable --color-teal-600"
+  },
+  "--color-teal-700": {
+    "scope": "css",
+    "prefix": "--color-teal-700",
+    "body": "--color-teal-700",
+    "description": "Madogiwa UI CSS variable --color-teal-700"
+  },
+  "--color-teal-800": {
+    "scope": "css",
+    "prefix": "--color-teal-800",
+    "body": "--color-teal-800",
+    "description": "Madogiwa UI CSS variable --color-teal-800"
+  },
+  "--color-teal-900": {
+    "scope": "css",
+    "prefix": "--color-teal-900",
+    "body": "--color-teal-900",
+    "description": "Madogiwa UI CSS variable --color-teal-900"
+  },
+  "--color-teal-950": {
+    "scope": "css",
+    "prefix": "--color-teal-950",
+    "body": "--color-teal-950",
+    "description": "Madogiwa UI CSS variable --color-teal-950"
+  },
+  "--color-cyan-50": {
+    "scope": "css",
+    "prefix": "--color-cyan-50",
+    "body": "--color-cyan-50",
+    "description": "Madogiwa UI CSS variable --color-cyan-50"
+  },
+  "--color-cyan-100": {
+    "scope": "css",
+    "prefix": "--color-cyan-100",
+    "body": "--color-cyan-100",
+    "description": "Madogiwa UI CSS variable --color-cyan-100"
+  },
+  "--color-cyan-200": {
+    "scope": "css",
+    "prefix": "--color-cyan-200",
+    "body": "--color-cyan-200",
+    "description": "Madogiwa UI CSS variable --color-cyan-200"
+  },
+  "--color-cyan-300": {
+    "scope": "css",
+    "prefix": "--color-cyan-300",
+    "body": "--color-cyan-300",
+    "description": "Madogiwa UI CSS variable --color-cyan-300"
+  },
+  "--color-cyan-400": {
+    "scope": "css",
+    "prefix": "--color-cyan-400",
+    "body": "--color-cyan-400",
+    "description": "Madogiwa UI CSS variable --color-cyan-400"
+  },
+  "--color-cyan-500": {
+    "scope": "css",
+    "prefix": "--color-cyan-500",
+    "body": "--color-cyan-500",
+    "description": "Madogiwa UI CSS variable --color-cyan-500"
+  },
+  "--color-cyan-600": {
+    "scope": "css",
+    "prefix": "--color-cyan-600",
+    "body": "--color-cyan-600",
+    "description": "Madogiwa UI CSS variable --color-cyan-600"
+  },
+  "--color-cyan-700": {
+    "scope": "css",
+    "prefix": "--color-cyan-700",
+    "body": "--color-cyan-700",
+    "description": "Madogiwa UI CSS variable --color-cyan-700"
+  },
+  "--color-cyan-800": {
+    "scope": "css",
+    "prefix": "--color-cyan-800",
+    "body": "--color-cyan-800",
+    "description": "Madogiwa UI CSS variable --color-cyan-800"
+  },
+  "--color-cyan-900": {
+    "scope": "css",
+    "prefix": "--color-cyan-900",
+    "body": "--color-cyan-900",
+    "description": "Madogiwa UI CSS variable --color-cyan-900"
+  },
+  "--color-cyan-950": {
+    "scope": "css",
+    "prefix": "--color-cyan-950",
+    "body": "--color-cyan-950",
+    "description": "Madogiwa UI CSS variable --color-cyan-950"
+  },
+  "--color-sky-50": {
+    "scope": "css",
+    "prefix": "--color-sky-50",
+    "body": "--color-sky-50",
+    "description": "Madogiwa UI CSS variable --color-sky-50"
+  },
+  "--color-sky-100": {
+    "scope": "css",
+    "prefix": "--color-sky-100",
+    "body": "--color-sky-100",
+    "description": "Madogiwa UI CSS variable --color-sky-100"
+  },
+  "--color-sky-200": {
+    "scope": "css",
+    "prefix": "--color-sky-200",
+    "body": "--color-sky-200",
+    "description": "Madogiwa UI CSS variable --color-sky-200"
+  },
+  "--color-sky-300": {
+    "scope": "css",
+    "prefix": "--color-sky-300",
+    "body": "--color-sky-300",
+    "description": "Madogiwa UI CSS variable --color-sky-300"
+  },
+  "--color-sky-400": {
+    "scope": "css",
+    "prefix": "--color-sky-400",
+    "body": "--color-sky-400",
+    "description": "Madogiwa UI CSS variable --color-sky-400"
+  },
+  "--color-sky-500": {
+    "scope": "css",
+    "prefix": "--color-sky-500",
+    "body": "--color-sky-500",
+    "description": "Madogiwa UI CSS variable --color-sky-500"
+  },
+  "--color-sky-600": {
+    "scope": "css",
+    "prefix": "--color-sky-600",
+    "body": "--color-sky-600",
+    "description": "Madogiwa UI CSS variable --color-sky-600"
+  },
+  "--color-sky-700": {
+    "scope": "css",
+    "prefix": "--color-sky-700",
+    "body": "--color-sky-700",
+    "description": "Madogiwa UI CSS variable --color-sky-700"
+  },
+  "--color-sky-800": {
+    "scope": "css",
+    "prefix": "--color-sky-800",
+    "body": "--color-sky-800",
+    "description": "Madogiwa UI CSS variable --color-sky-800"
+  },
+  "--color-sky-900": {
+    "scope": "css",
+    "prefix": "--color-sky-900",
+    "body": "--color-sky-900",
+    "description": "Madogiwa UI CSS variable --color-sky-900"
+  },
+  "--color-sky-950": {
+    "scope": "css",
+    "prefix": "--color-sky-950",
+    "body": "--color-sky-950",
+    "description": "Madogiwa UI CSS variable --color-sky-950"
+  },
+  "--color-blue-50": {
+    "scope": "css",
+    "prefix": "--color-blue-50",
+    "body": "--color-blue-50",
+    "description": "Madogiwa UI CSS variable --color-blue-50"
+  },
+  "--color-blue-100": {
+    "scope": "css",
+    "prefix": "--color-blue-100",
+    "body": "--color-blue-100",
+    "description": "Madogiwa UI CSS variable --color-blue-100"
+  },
+  "--color-blue-200": {
+    "scope": "css",
+    "prefix": "--color-blue-200",
+    "body": "--color-blue-200",
+    "description": "Madogiwa UI CSS variable --color-blue-200"
+  },
+  "--color-blue-300": {
+    "scope": "css",
+    "prefix": "--color-blue-300",
+    "body": "--color-blue-300",
+    "description": "Madogiwa UI CSS variable --color-blue-300"
+  },
+  "--color-blue-400": {
+    "scope": "css",
+    "prefix": "--color-blue-400",
+    "body": "--color-blue-400",
+    "description": "Madogiwa UI CSS variable --color-blue-400"
+  },
+  "--color-blue-500": {
+    "scope": "css",
+    "prefix": "--color-blue-500",
+    "body": "--color-blue-500",
+    "description": "Madogiwa UI CSS variable --color-blue-500"
+  },
+  "--color-blue-600": {
+    "scope": "css",
+    "prefix": "--color-blue-600",
+    "body": "--color-blue-600",
+    "description": "Madogiwa UI CSS variable --color-blue-600"
+  },
+  "--color-blue-700": {
+    "scope": "css",
+    "prefix": "--color-blue-700",
+    "body": "--color-blue-700",
+    "description": "Madogiwa UI CSS variable --color-blue-700"
+  },
+  "--color-blue-800": {
+    "scope": "css",
+    "prefix": "--color-blue-800",
+    "body": "--color-blue-800",
+    "description": "Madogiwa UI CSS variable --color-blue-800"
+  },
+  "--color-blue-900": {
+    "scope": "css",
+    "prefix": "--color-blue-900",
+    "body": "--color-blue-900",
+    "description": "Madogiwa UI CSS variable --color-blue-900"
+  },
+  "--color-blue-950": {
+    "scope": "css",
+    "prefix": "--color-blue-950",
+    "body": "--color-blue-950",
+    "description": "Madogiwa UI CSS variable --color-blue-950"
+  },
+  "--color-indigo-50": {
+    "scope": "css",
+    "prefix": "--color-indigo-50",
+    "body": "--color-indigo-50",
+    "description": "Madogiwa UI CSS variable --color-indigo-50"
+  },
+  "--color-indigo-100": {
+    "scope": "css",
+    "prefix": "--color-indigo-100",
+    "body": "--color-indigo-100",
+    "description": "Madogiwa UI CSS variable --color-indigo-100"
+  },
+  "--color-indigo-200": {
+    "scope": "css",
+    "prefix": "--color-indigo-200",
+    "body": "--color-indigo-200",
+    "description": "Madogiwa UI CSS variable --color-indigo-200"
+  },
+  "--color-indigo-300": {
+    "scope": "css",
+    "prefix": "--color-indigo-300",
+    "body": "--color-indigo-300",
+    "description": "Madogiwa UI CSS variable --color-indigo-300"
+  },
+  "--color-indigo-400": {
+    "scope": "css",
+    "prefix": "--color-indigo-400",
+    "body": "--color-indigo-400",
+    "description": "Madogiwa UI CSS variable --color-indigo-400"
+  },
+  "--color-indigo-500": {
+    "scope": "css",
+    "prefix": "--color-indigo-500",
+    "body": "--color-indigo-500",
+    "description": "Madogiwa UI CSS variable --color-indigo-500"
+  },
+  "--color-indigo-600": {
+    "scope": "css",
+    "prefix": "--color-indigo-600",
+    "body": "--color-indigo-600",
+    "description": "Madogiwa UI CSS variable --color-indigo-600"
+  },
+  "--color-indigo-700": {
+    "scope": "css",
+    "prefix": "--color-indigo-700",
+    "body": "--color-indigo-700",
+    "description": "Madogiwa UI CSS variable --color-indigo-700"
+  },
+  "--color-indigo-800": {
+    "scope": "css",
+    "prefix": "--color-indigo-800",
+    "body": "--color-indigo-800",
+    "description": "Madogiwa UI CSS variable --color-indigo-800"
+  },
+  "--color-indigo-900": {
+    "scope": "css",
+    "prefix": "--color-indigo-900",
+    "body": "--color-indigo-900",
+    "description": "Madogiwa UI CSS variable --color-indigo-900"
+  },
+  "--color-indigo-950": {
+    "scope": "css",
+    "prefix": "--color-indigo-950",
+    "body": "--color-indigo-950",
+    "description": "Madogiwa UI CSS variable --color-indigo-950"
+  },
+  "--color-violet-50": {
+    "scope": "css",
+    "prefix": "--color-violet-50",
+    "body": "--color-violet-50",
+    "description": "Madogiwa UI CSS variable --color-violet-50"
+  },
+  "--color-violet-100": {
+    "scope": "css",
+    "prefix": "--color-violet-100",
+    "body": "--color-violet-100",
+    "description": "Madogiwa UI CSS variable --color-violet-100"
+  },
+  "--color-violet-200": {
+    "scope": "css",
+    "prefix": "--color-violet-200",
+    "body": "--color-violet-200",
+    "description": "Madogiwa UI CSS variable --color-violet-200"
+  },
+  "--color-violet-300": {
+    "scope": "css",
+    "prefix": "--color-violet-300",
+    "body": "--color-violet-300",
+    "description": "Madogiwa UI CSS variable --color-violet-300"
+  },
+  "--color-violet-400": {
+    "scope": "css",
+    "prefix": "--color-violet-400",
+    "body": "--color-violet-400",
+    "description": "Madogiwa UI CSS variable --color-violet-400"
+  },
+  "--color-violet-500": {
+    "scope": "css",
+    "prefix": "--color-violet-500",
+    "body": "--color-violet-500",
+    "description": "Madogiwa UI CSS variable --color-violet-500"
+  },
+  "--color-violet-600": {
+    "scope": "css",
+    "prefix": "--color-violet-600",
+    "body": "--color-violet-600",
+    "description": "Madogiwa UI CSS variable --color-violet-600"
+  },
+  "--color-violet-700": {
+    "scope": "css",
+    "prefix": "--color-violet-700",
+    "body": "--color-violet-700",
+    "description": "Madogiwa UI CSS variable --color-violet-700"
+  },
+  "--color-violet-800": {
+    "scope": "css",
+    "prefix": "--color-violet-800",
+    "body": "--color-violet-800",
+    "description": "Madogiwa UI CSS variable --color-violet-800"
+  },
+  "--color-violet-900": {
+    "scope": "css",
+    "prefix": "--color-violet-900",
+    "body": "--color-violet-900",
+    "description": "Madogiwa UI CSS variable --color-violet-900"
+  },
+  "--color-violet-950": {
+    "scope": "css",
+    "prefix": "--color-violet-950",
+    "body": "--color-violet-950",
+    "description": "Madogiwa UI CSS variable --color-violet-950"
+  },
+  "--color-purple-50": {
+    "scope": "css",
+    "prefix": "--color-purple-50",
+    "body": "--color-purple-50",
+    "description": "Madogiwa UI CSS variable --color-purple-50"
+  },
+  "--color-purple-100": {
+    "scope": "css",
+    "prefix": "--color-purple-100",
+    "body": "--color-purple-100",
+    "description": "Madogiwa UI CSS variable --color-purple-100"
+  },
+  "--color-purple-200": {
+    "scope": "css",
+    "prefix": "--color-purple-200",
+    "body": "--color-purple-200",
+    "description": "Madogiwa UI CSS variable --color-purple-200"
+  },
+  "--color-purple-300": {
+    "scope": "css",
+    "prefix": "--color-purple-300",
+    "body": "--color-purple-300",
+    "description": "Madogiwa UI CSS variable --color-purple-300"
+  },
+  "--color-purple-400": {
+    "scope": "css",
+    "prefix": "--color-purple-400",
+    "body": "--color-purple-400",
+    "description": "Madogiwa UI CSS variable --color-purple-400"
+  },
+  "--color-purple-500": {
+    "scope": "css",
+    "prefix": "--color-purple-500",
+    "body": "--color-purple-500",
+    "description": "Madogiwa UI CSS variable --color-purple-500"
+  },
+  "--color-purple-600": {
+    "scope": "css",
+    "prefix": "--color-purple-600",
+    "body": "--color-purple-600",
+    "description": "Madogiwa UI CSS variable --color-purple-600"
+  },
+  "--color-purple-700": {
+    "scope": "css",
+    "prefix": "--color-purple-700",
+    "body": "--color-purple-700",
+    "description": "Madogiwa UI CSS variable --color-purple-700"
+  },
+  "--color-purple-800": {
+    "scope": "css",
+    "prefix": "--color-purple-800",
+    "body": "--color-purple-800",
+    "description": "Madogiwa UI CSS variable --color-purple-800"
+  },
+  "--color-purple-900": {
+    "scope": "css",
+    "prefix": "--color-purple-900",
+    "body": "--color-purple-900",
+    "description": "Madogiwa UI CSS variable --color-purple-900"
+  },
+  "--color-purple-950": {
+    "scope": "css",
+    "prefix": "--color-purple-950",
+    "body": "--color-purple-950",
+    "description": "Madogiwa UI CSS variable --color-purple-950"
+  },
+  "--color-fuchsia-50": {
+    "scope": "css",
+    "prefix": "--color-fuchsia-50",
+    "body": "--color-fuchsia-50",
+    "description": "Madogiwa UI CSS variable --color-fuchsia-50"
+  },
+  "--color-fuchsia-100": {
+    "scope": "css",
+    "prefix": "--color-fuchsia-100",
+    "body": "--color-fuchsia-100",
+    "description": "Madogiwa UI CSS variable --color-fuchsia-100"
+  },
+  "--color-fuchsia-200": {
+    "scope": "css",
+    "prefix": "--color-fuchsia-200",
+    "body": "--color-fuchsia-200",
+    "description": "Madogiwa UI CSS variable --color-fuchsia-200"
+  },
+  "--color-fuchsia-300": {
+    "scope": "css",
+    "prefix": "--color-fuchsia-300",
+    "body": "--color-fuchsia-300",
+    "description": "Madogiwa UI CSS variable --color-fuchsia-300"
+  },
+  "--color-fuchsia-400": {
+    "scope": "css",
+    "prefix": "--color-fuchsia-400",
+    "body": "--color-fuchsia-400",
+    "description": "Madogiwa UI CSS variable --color-fuchsia-400"
+  },
+  "--color-fuchsia-500": {
+    "scope": "css",
+    "prefix": "--color-fuchsia-500",
+    "body": "--color-fuchsia-500",
+    "description": "Madogiwa UI CSS variable --color-fuchsia-500"
+  },
+  "--color-fuchsia-600": {
+    "scope": "css",
+    "prefix": "--color-fuchsia-600",
+    "body": "--color-fuchsia-600",
+    "description": "Madogiwa UI CSS variable --color-fuchsia-600"
+  },
+  "--color-fuchsia-700": {
+    "scope": "css",
+    "prefix": "--color-fuchsia-700",
+    "body": "--color-fuchsia-700",
+    "description": "Madogiwa UI CSS variable --color-fuchsia-700"
+  },
+  "--color-fuchsia-800": {
+    "scope": "css",
+    "prefix": "--color-fuchsia-800",
+    "body": "--color-fuchsia-800",
+    "description": "Madogiwa UI CSS variable --color-fuchsia-800"
+  },
+  "--color-fuchsia-900": {
+    "scope": "css",
+    "prefix": "--color-fuchsia-900",
+    "body": "--color-fuchsia-900",
+    "description": "Madogiwa UI CSS variable --color-fuchsia-900"
+  },
+  "--color-fuchsia-950": {
+    "scope": "css",
+    "prefix": "--color-fuchsia-950",
+    "body": "--color-fuchsia-950",
+    "description": "Madogiwa UI CSS variable --color-fuchsia-950"
+  },
+  "--color-pink-50": {
+    "scope": "css",
+    "prefix": "--color-pink-50",
+    "body": "--color-pink-50",
+    "description": "Madogiwa UI CSS variable --color-pink-50"
+  },
+  "--color-pink-100": {
+    "scope": "css",
+    "prefix": "--color-pink-100",
+    "body": "--color-pink-100",
+    "description": "Madogiwa UI CSS variable --color-pink-100"
+  },
+  "--color-pink-200": {
+    "scope": "css",
+    "prefix": "--color-pink-200",
+    "body": "--color-pink-200",
+    "description": "Madogiwa UI CSS variable --color-pink-200"
+  },
+  "--color-pink-300": {
+    "scope": "css",
+    "prefix": "--color-pink-300",
+    "body": "--color-pink-300",
+    "description": "Madogiwa UI CSS variable --color-pink-300"
+  },
+  "--color-pink-400": {
+    "scope": "css",
+    "prefix": "--color-pink-400",
+    "body": "--color-pink-400",
+    "description": "Madogiwa UI CSS variable --color-pink-400"
+  },
+  "--color-pink-500": {
+    "scope": "css",
+    "prefix": "--color-pink-500",
+    "body": "--color-pink-500",
+    "description": "Madogiwa UI CSS variable --color-pink-500"
+  },
+  "--color-pink-600": {
+    "scope": "css",
+    "prefix": "--color-pink-600",
+    "body": "--color-pink-600",
+    "description": "Madogiwa UI CSS variable --color-pink-600"
+  },
+  "--color-pink-700": {
+    "scope": "css",
+    "prefix": "--color-pink-700",
+    "body": "--color-pink-700",
+    "description": "Madogiwa UI CSS variable --color-pink-700"
+  },
+  "--color-pink-800": {
+    "scope": "css",
+    "prefix": "--color-pink-800",
+    "body": "--color-pink-800",
+    "description": "Madogiwa UI CSS variable --color-pink-800"
+  },
+  "--color-pink-900": {
+    "scope": "css",
+    "prefix": "--color-pink-900",
+    "body": "--color-pink-900",
+    "description": "Madogiwa UI CSS variable --color-pink-900"
+  },
+  "--color-pink-950": {
+    "scope": "css",
+    "prefix": "--color-pink-950",
+    "body": "--color-pink-950",
+    "description": "Madogiwa UI CSS variable --color-pink-950"
+  },
+  "--color-rose-50": {
+    "scope": "css",
+    "prefix": "--color-rose-50",
+    "body": "--color-rose-50",
+    "description": "Madogiwa UI CSS variable --color-rose-50"
+  },
+  "--color-rose-100": {
+    "scope": "css",
+    "prefix": "--color-rose-100",
+    "body": "--color-rose-100",
+    "description": "Madogiwa UI CSS variable --color-rose-100"
+  },
+  "--color-rose-200": {
+    "scope": "css",
+    "prefix": "--color-rose-200",
+    "body": "--color-rose-200",
+    "description": "Madogiwa UI CSS variable --color-rose-200"
+  },
+  "--color-rose-300": {
+    "scope": "css",
+    "prefix": "--color-rose-300",
+    "body": "--color-rose-300",
+    "description": "Madogiwa UI CSS variable --color-rose-300"
+  },
+  "--color-rose-400": {
+    "scope": "css",
+    "prefix": "--color-rose-400",
+    "body": "--color-rose-400",
+    "description": "Madogiwa UI CSS variable --color-rose-400"
+  },
+  "--color-rose-500": {
+    "scope": "css",
+    "prefix": "--color-rose-500",
+    "body": "--color-rose-500",
+    "description": "Madogiwa UI CSS variable --color-rose-500"
+  },
+  "--color-rose-600": {
+    "scope": "css",
+    "prefix": "--color-rose-600",
+    "body": "--color-rose-600",
+    "description": "Madogiwa UI CSS variable --color-rose-600"
+  },
+  "--color-rose-700": {
+    "scope": "css",
+    "prefix": "--color-rose-700",
+    "body": "--color-rose-700",
+    "description": "Madogiwa UI CSS variable --color-rose-700"
+  },
+  "--color-rose-800": {
+    "scope": "css",
+    "prefix": "--color-rose-800",
+    "body": "--color-rose-800",
+    "description": "Madogiwa UI CSS variable --color-rose-800"
+  },
+  "--color-rose-900": {
+    "scope": "css",
+    "prefix": "--color-rose-900",
+    "body": "--color-rose-900",
+    "description": "Madogiwa UI CSS variable --color-rose-900"
+  },
+  "--color-rose-950": {
+    "scope": "css",
+    "prefix": "--color-rose-950",
+    "body": "--color-rose-950",
+    "description": "Madogiwa UI CSS variable --color-rose-950"
+  },
+  "--color-slate-50": {
+    "scope": "css",
+    "prefix": "--color-slate-50",
+    "body": "--color-slate-50",
+    "description": "Madogiwa UI CSS variable --color-slate-50"
+  },
+  "--color-slate-100": {
+    "scope": "css",
+    "prefix": "--color-slate-100",
+    "body": "--color-slate-100",
+    "description": "Madogiwa UI CSS variable --color-slate-100"
+  },
+  "--color-slate-200": {
+    "scope": "css",
+    "prefix": "--color-slate-200",
+    "body": "--color-slate-200",
+    "description": "Madogiwa UI CSS variable --color-slate-200"
+  },
+  "--color-slate-300": {
+    "scope": "css",
+    "prefix": "--color-slate-300",
+    "body": "--color-slate-300",
+    "description": "Madogiwa UI CSS variable --color-slate-300"
+  },
+  "--color-slate-400": {
+    "scope": "css",
+    "prefix": "--color-slate-400",
+    "body": "--color-slate-400",
+    "description": "Madogiwa UI CSS variable --color-slate-400"
+  },
+  "--color-slate-500": {
+    "scope": "css",
+    "prefix": "--color-slate-500",
+    "body": "--color-slate-500",
+    "description": "Madogiwa UI CSS variable --color-slate-500"
+  },
+  "--color-slate-600": {
+    "scope": "css",
+    "prefix": "--color-slate-600",
+    "body": "--color-slate-600",
+    "description": "Madogiwa UI CSS variable --color-slate-600"
+  },
+  "--color-slate-700": {
+    "scope": "css",
+    "prefix": "--color-slate-700",
+    "body": "--color-slate-700",
+    "description": "Madogiwa UI CSS variable --color-slate-700"
+  },
+  "--color-slate-800": {
+    "scope": "css",
+    "prefix": "--color-slate-800",
+    "body": "--color-slate-800",
+    "description": "Madogiwa UI CSS variable --color-slate-800"
+  },
+  "--color-slate-900": {
+    "scope": "css",
+    "prefix": "--color-slate-900",
+    "body": "--color-slate-900",
+    "description": "Madogiwa UI CSS variable --color-slate-900"
+  },
+  "--color-slate-950": {
+    "scope": "css",
+    "prefix": "--color-slate-950",
+    "body": "--color-slate-950",
+    "description": "Madogiwa UI CSS variable --color-slate-950"
+  },
+  "--color-gray-50": {
+    "scope": "css",
+    "prefix": "--color-gray-50",
+    "body": "--color-gray-50",
+    "description": "Madogiwa UI CSS variable --color-gray-50"
+  },
+  "--color-gray-100": {
+    "scope": "css",
+    "prefix": "--color-gray-100",
+    "body": "--color-gray-100",
+    "description": "Madogiwa UI CSS variable --color-gray-100"
+  },
+  "--color-gray-200": {
+    "scope": "css",
+    "prefix": "--color-gray-200",
+    "body": "--color-gray-200",
+    "description": "Madogiwa UI CSS variable --color-gray-200"
+  },
+  "--color-gray-300": {
+    "scope": "css",
+    "prefix": "--color-gray-300",
+    "body": "--color-gray-300",
+    "description": "Madogiwa UI CSS variable --color-gray-300"
+  },
+  "--color-gray-400": {
+    "scope": "css",
+    "prefix": "--color-gray-400",
+    "body": "--color-gray-400",
+    "description": "Madogiwa UI CSS variable --color-gray-400"
+  },
+  "--color-gray-500": {
+    "scope": "css",
+    "prefix": "--color-gray-500",
+    "body": "--color-gray-500",
+    "description": "Madogiwa UI CSS variable --color-gray-500"
+  },
+  "--color-gray-600": {
+    "scope": "css",
+    "prefix": "--color-gray-600",
+    "body": "--color-gray-600",
+    "description": "Madogiwa UI CSS variable --color-gray-600"
+  },
+  "--color-gray-700": {
+    "scope": "css",
+    "prefix": "--color-gray-700",
+    "body": "--color-gray-700",
+    "description": "Madogiwa UI CSS variable --color-gray-700"
+  },
+  "--color-gray-800": {
+    "scope": "css",
+    "prefix": "--color-gray-800",
+    "body": "--color-gray-800",
+    "description": "Madogiwa UI CSS variable --color-gray-800"
+  },
+  "--color-gray-900": {
+    "scope": "css",
+    "prefix": "--color-gray-900",
+    "body": "--color-gray-900",
+    "description": "Madogiwa UI CSS variable --color-gray-900"
+  },
+  "--color-gray-950": {
+    "scope": "css",
+    "prefix": "--color-gray-950",
+    "body": "--color-gray-950",
+    "description": "Madogiwa UI CSS variable --color-gray-950"
+  },
+  "--color-zinc-50": {
+    "scope": "css",
+    "prefix": "--color-zinc-50",
+    "body": "--color-zinc-50",
+    "description": "Madogiwa UI CSS variable --color-zinc-50"
+  },
+  "--color-zinc-100": {
+    "scope": "css",
+    "prefix": "--color-zinc-100",
+    "body": "--color-zinc-100",
+    "description": "Madogiwa UI CSS variable --color-zinc-100"
+  },
+  "--color-zinc-200": {
+    "scope": "css",
+    "prefix": "--color-zinc-200",
+    "body": "--color-zinc-200",
+    "description": "Madogiwa UI CSS variable --color-zinc-200"
+  },
+  "--color-zinc-300": {
+    "scope": "css",
+    "prefix": "--color-zinc-300",
+    "body": "--color-zinc-300",
+    "description": "Madogiwa UI CSS variable --color-zinc-300"
+  },
+  "--color-zinc-400": {
+    "scope": "css",
+    "prefix": "--color-zinc-400",
+    "body": "--color-zinc-400",
+    "description": "Madogiwa UI CSS variable --color-zinc-400"
+  },
+  "--color-zinc-500": {
+    "scope": "css",
+    "prefix": "--color-zinc-500",
+    "body": "--color-zinc-500",
+    "description": "Madogiwa UI CSS variable --color-zinc-500"
+  },
+  "--color-zinc-600": {
+    "scope": "css",
+    "prefix": "--color-zinc-600",
+    "body": "--color-zinc-600",
+    "description": "Madogiwa UI CSS variable --color-zinc-600"
+  },
+  "--color-zinc-700": {
+    "scope": "css",
+    "prefix": "--color-zinc-700",
+    "body": "--color-zinc-700",
+    "description": "Madogiwa UI CSS variable --color-zinc-700"
+  },
+  "--color-zinc-800": {
+    "scope": "css",
+    "prefix": "--color-zinc-800",
+    "body": "--color-zinc-800",
+    "description": "Madogiwa UI CSS variable --color-zinc-800"
+  },
+  "--color-zinc-900": {
+    "scope": "css",
+    "prefix": "--color-zinc-900",
+    "body": "--color-zinc-900",
+    "description": "Madogiwa UI CSS variable --color-zinc-900"
+  },
+  "--color-zinc-950": {
+    "scope": "css",
+    "prefix": "--color-zinc-950",
+    "body": "--color-zinc-950",
+    "description": "Madogiwa UI CSS variable --color-zinc-950"
+  },
+  "--color-neutral-50": {
+    "scope": "css",
+    "prefix": "--color-neutral-50",
+    "body": "--color-neutral-50",
+    "description": "Madogiwa UI CSS variable --color-neutral-50"
+  },
+  "--color-neutral-100": {
+    "scope": "css",
+    "prefix": "--color-neutral-100",
+    "body": "--color-neutral-100",
+    "description": "Madogiwa UI CSS variable --color-neutral-100"
+  },
+  "--color-neutral-200": {
+    "scope": "css",
+    "prefix": "--color-neutral-200",
+    "body": "--color-neutral-200",
+    "description": "Madogiwa UI CSS variable --color-neutral-200"
+  },
+  "--color-neutral-300": {
+    "scope": "css",
+    "prefix": "--color-neutral-300",
+    "body": "--color-neutral-300",
+    "description": "Madogiwa UI CSS variable --color-neutral-300"
+  },
+  "--color-neutral-400": {
+    "scope": "css",
+    "prefix": "--color-neutral-400",
+    "body": "--color-neutral-400",
+    "description": "Madogiwa UI CSS variable --color-neutral-400"
+  },
+  "--color-neutral-500": {
+    "scope": "css",
+    "prefix": "--color-neutral-500",
+    "body": "--color-neutral-500",
+    "description": "Madogiwa UI CSS variable --color-neutral-500"
+  },
+  "--color-neutral-600": {
+    "scope": "css",
+    "prefix": "--color-neutral-600",
+    "body": "--color-neutral-600",
+    "description": "Madogiwa UI CSS variable --color-neutral-600"
+  },
+  "--color-neutral-700": {
+    "scope": "css",
+    "prefix": "--color-neutral-700",
+    "body": "--color-neutral-700",
+    "description": "Madogiwa UI CSS variable --color-neutral-700"
+  },
+  "--color-neutral-800": {
+    "scope": "css",
+    "prefix": "--color-neutral-800",
+    "body": "--color-neutral-800",
+    "description": "Madogiwa UI CSS variable --color-neutral-800"
+  },
+  "--color-neutral-900": {
+    "scope": "css",
+    "prefix": "--color-neutral-900",
+    "body": "--color-neutral-900",
+    "description": "Madogiwa UI CSS variable --color-neutral-900"
+  },
+  "--color-neutral-950": {
+    "scope": "css",
+    "prefix": "--color-neutral-950",
+    "body": "--color-neutral-950",
+    "description": "Madogiwa UI CSS variable --color-neutral-950"
+  },
+  "--color-stone-50": {
+    "scope": "css",
+    "prefix": "--color-stone-50",
+    "body": "--color-stone-50",
+    "description": "Madogiwa UI CSS variable --color-stone-50"
+  },
+  "--color-stone-100": {
+    "scope": "css",
+    "prefix": "--color-stone-100",
+    "body": "--color-stone-100",
+    "description": "Madogiwa UI CSS variable --color-stone-100"
+  },
+  "--color-stone-200": {
+    "scope": "css",
+    "prefix": "--color-stone-200",
+    "body": "--color-stone-200",
+    "description": "Madogiwa UI CSS variable --color-stone-200"
+  },
+  "--color-stone-300": {
+    "scope": "css",
+    "prefix": "--color-stone-300",
+    "body": "--color-stone-300",
+    "description": "Madogiwa UI CSS variable --color-stone-300"
+  },
+  "--color-stone-400": {
+    "scope": "css",
+    "prefix": "--color-stone-400",
+    "body": "--color-stone-400",
+    "description": "Madogiwa UI CSS variable --color-stone-400"
+  },
+  "--color-stone-500": {
+    "scope": "css",
+    "prefix": "--color-stone-500",
+    "body": "--color-stone-500",
+    "description": "Madogiwa UI CSS variable --color-stone-500"
+  },
+  "--color-stone-600": {
+    "scope": "css",
+    "prefix": "--color-stone-600",
+    "body": "--color-stone-600",
+    "description": "Madogiwa UI CSS variable --color-stone-600"
+  },
+  "--color-stone-700": {
+    "scope": "css",
+    "prefix": "--color-stone-700",
+    "body": "--color-stone-700",
+    "description": "Madogiwa UI CSS variable --color-stone-700"
+  },
+  "--color-stone-800": {
+    "scope": "css",
+    "prefix": "--color-stone-800",
+    "body": "--color-stone-800",
+    "description": "Madogiwa UI CSS variable --color-stone-800"
+  },
+  "--color-stone-900": {
+    "scope": "css",
+    "prefix": "--color-stone-900",
+    "body": "--color-stone-900",
+    "description": "Madogiwa UI CSS variable --color-stone-900"
+  },
+  "--color-stone-950": {
+    "scope": "css",
+    "prefix": "--color-stone-950",
+    "body": "--color-stone-950",
+    "description": "Madogiwa UI CSS variable --color-stone-950"
+  },
+  "--color-black": {
+    "scope": "css",
+    "prefix": "--color-black",
+    "body": "--color-black",
+    "description": "Madogiwa UI CSS variable --color-black"
+  },
+  "--color-white": {
+    "scope": "css",
+    "prefix": "--color-white",
+    "body": "--color-white",
+    "description": "Madogiwa UI CSS variable --color-white"
+  },
+  "--color-default": {
+    "scope": "css",
+    "prefix": "--color-default",
+    "body": "--color-default",
+    "description": "Madogiwa UI CSS variable --color-default"
+  },
+  "--color-primary": {
+    "scope": "css",
+    "prefix": "--color-primary",
+    "body": "--color-primary",
+    "description": "Madogiwa UI CSS variable --color-primary"
+  },
+  "--color-secondary": {
+    "scope": "css",
+    "prefix": "--color-secondary",
+    "body": "--color-secondary",
+    "description": "Madogiwa UI CSS variable --color-secondary"
+  },
+  "--color-tertiary": {
+    "scope": "css",
+    "prefix": "--color-tertiary",
+    "body": "--color-tertiary",
+    "description": "Madogiwa UI CSS variable --color-tertiary"
+  },
+  "--color-danger": {
+    "scope": "css",
+    "prefix": "--color-danger",
+    "body": "--color-danger",
+    "description": "Madogiwa UI CSS variable --color-danger"
+  },
+  "--color-warning": {
+    "scope": "css",
+    "prefix": "--color-warning",
+    "body": "--color-warning",
+    "description": "Madogiwa UI CSS variable --color-warning"
+  },
+  "--color-light": {
+    "scope": "css",
+    "prefix": "--color-light",
+    "body": "--color-light",
+    "description": "Madogiwa UI CSS variable --color-light"
+  },
+  "--color-dark": {
+    "scope": "css",
+    "prefix": "--color-dark",
+    "body": "--color-dark",
+    "description": "Madogiwa UI CSS variable --color-dark"
+  },
+  "--color-border": {
+    "scope": "css",
+    "prefix": "--color-border",
+    "body": "--color-border",
+    "description": "Madogiwa UI CSS variable --color-border"
+  },
+  "--color-text": {
+    "scope": "css",
+    "prefix": "--color-text",
+    "body": "--color-text",
+    "description": "Madogiwa UI CSS variable --color-text"
+  },
+  "--color-text-muted": {
+    "scope": "css",
+    "prefix": "--color-text-muted",
+    "body": "--color-text-muted",
+    "description": "Madogiwa UI CSS variable --color-text-muted"
+  },
+  "--color-text-light": {
+    "scope": "css",
+    "prefix": "--color-text-light",
+    "body": "--color-text-light",
+    "description": "Madogiwa UI CSS variable --color-text-light"
+  },
+  "--color-text-gray": {
+    "scope": "css",
+    "prefix": "--color-text-gray",
+    "body": "--color-text-gray",
+    "description": "Madogiwa UI CSS variable --color-text-gray"
+  },
+  "--color-bg-light": {
+    "scope": "css",
+    "prefix": "--color-bg-light",
+    "body": "--color-bg-light",
+    "description": "Madogiwa UI CSS variable --color-bg-light"
+  },
+  "--color-bg-grey": {
+    "scope": "css",
+    "prefix": "--color-bg-grey",
+    "body": "--color-bg-grey",
+    "description": "Madogiwa UI CSS variable --color-bg-grey"
+  },
+  "--color-bg-dark": {
+    "scope": "css",
+    "prefix": "--color-bg-dark",
+    "body": "--color-bg-dark",
+    "description": "Madogiwa UI CSS variable --color-bg-dark"
+  },
+  "--color-overlay": {
+    "scope": "css",
+    "prefix": "--color-overlay",
+    "body": "--color-overlay",
+    "description": "Madogiwa UI CSS variable --color-overlay"
+  },
+  "--spacing": {
+    "scope": "css",
+    "prefix": "--spacing",
+    "body": "--spacing",
+    "description": "Madogiwa UI CSS variable --spacing"
+  },
+  "--spacing-0": {
+    "scope": "css",
+    "prefix": "--spacing-0",
+    "body": "--spacing-0",
+    "description": "Madogiwa UI CSS variable --spacing-0"
+  },
+  "--spacing-1": {
+    "scope": "css",
+    "prefix": "--spacing-1",
+    "body": "--spacing-1",
+    "description": "Madogiwa UI CSS variable --spacing-1"
+  },
+  "--spacing-2": {
+    "scope": "css",
+    "prefix": "--spacing-2",
+    "body": "--spacing-2",
+    "description": "Madogiwa UI CSS variable --spacing-2"
+  },
+  "--spacing-3": {
+    "scope": "css",
+    "prefix": "--spacing-3",
+    "body": "--spacing-3",
+    "description": "Madogiwa UI CSS variable --spacing-3"
+  },
+  "--spacing-4": {
+    "scope": "css",
+    "prefix": "--spacing-4",
+    "body": "--spacing-4",
+    "description": "Madogiwa UI CSS variable --spacing-4"
+  },
+  "--spacing-5": {
+    "scope": "css",
+    "prefix": "--spacing-5",
+    "body": "--spacing-5",
+    "description": "Madogiwa UI CSS variable --spacing-5"
+  },
+  "--spacing-6": {
+    "scope": "css",
+    "prefix": "--spacing-6",
+    "body": "--spacing-6",
+    "description": "Madogiwa UI CSS variable --spacing-6"
+  },
+  "--spacing-7": {
+    "scope": "css",
+    "prefix": "--spacing-7",
+    "body": "--spacing-7",
+    "description": "Madogiwa UI CSS variable --spacing-7"
+  },
+  "--spacing-8": {
+    "scope": "css",
+    "prefix": "--spacing-8",
+    "body": "--spacing-8",
+    "description": "Madogiwa UI CSS variable --spacing-8"
+  },
+  "--spacing-9": {
+    "scope": "css",
+    "prefix": "--spacing-9",
+    "body": "--spacing-9",
+    "description": "Madogiwa UI CSS variable --spacing-9"
+  },
+  "--spacing-10": {
+    "scope": "css",
+    "prefix": "--spacing-10",
+    "body": "--spacing-10",
+    "description": "Madogiwa UI CSS variable --spacing-10"
+  },
+  "--spacing-11": {
+    "scope": "css",
+    "prefix": "--spacing-11",
+    "body": "--spacing-11",
+    "description": "Madogiwa UI CSS variable --spacing-11"
+  },
+  "--spacing-12": {
+    "scope": "css",
+    "prefix": "--spacing-12",
+    "body": "--spacing-12",
+    "description": "Madogiwa UI CSS variable --spacing-12"
+  },
+  "--radius-xs": {
+    "scope": "css",
+    "prefix": "--radius-xs",
+    "body": "--radius-xs",
+    "description": "Madogiwa UI CSS variable --radius-xs"
+  },
+  "--radius-sm": {
+    "scope": "css",
+    "prefix": "--radius-sm",
+    "body": "--radius-sm",
+    "description": "Madogiwa UI CSS variable --radius-sm"
+  },
+  "--radius-md": {
+    "scope": "css",
+    "prefix": "--radius-md",
+    "body": "--radius-md",
+    "description": "Madogiwa UI CSS variable --radius-md"
+  },
+  "--radius-lg": {
+    "scope": "css",
+    "prefix": "--radius-lg",
+    "body": "--radius-lg",
+    "description": "Madogiwa UI CSS variable --radius-lg"
+  },
+  "--radius-xl": {
+    "scope": "css",
+    "prefix": "--radius-xl",
+    "body": "--radius-xl",
+    "description": "Madogiwa UI CSS variable --radius-xl"
+  },
+  "--radius-2xl": {
+    "scope": "css",
+    "prefix": "--radius-2xl",
+    "body": "--radius-2xl",
+    "description": "Madogiwa UI CSS variable --radius-2xl"
+  },
+  "--radius-3xl": {
+    "scope": "css",
+    "prefix": "--radius-3xl",
+    "body": "--radius-3xl",
+    "description": "Madogiwa UI CSS variable --radius-3xl"
+  },
+  "--radius-4xl": {
+    "scope": "css",
+    "prefix": "--radius-4xl",
+    "body": "--radius-4xl",
+    "description": "Madogiwa UI CSS variable --radius-4xl"
+  },
+  "--radius-full": {
+    "scope": "css",
+    "prefix": "--radius-full",
+    "body": "--radius-full",
+    "description": "Madogiwa UI CSS variable --radius-full"
+  },
+  "--shadow-2xs": {
+    "scope": "css",
+    "prefix": "--shadow-2xs",
+    "body": "--shadow-2xs",
+    "description": "Madogiwa UI CSS variable --shadow-2xs"
+  },
+  "--shadow-xs": {
+    "scope": "css",
+    "prefix": "--shadow-xs",
+    "body": "--shadow-xs",
+    "description": "Madogiwa UI CSS variable --shadow-xs"
+  },
+  "--shadow-sm": {
+    "scope": "css",
+    "prefix": "--shadow-sm",
+    "body": "--shadow-sm",
+    "description": "Madogiwa UI CSS variable --shadow-sm"
+  },
+  "--shadow-md": {
+    "scope": "css",
+    "prefix": "--shadow-md",
+    "body": "--shadow-md",
+    "description": "Madogiwa UI CSS variable --shadow-md"
+  },
+  "--shadow-lg": {
+    "scope": "css",
+    "prefix": "--shadow-lg",
+    "body": "--shadow-lg",
+    "description": "Madogiwa UI CSS variable --shadow-lg"
+  },
+  "--shadow-xl": {
+    "scope": "css",
+    "prefix": "--shadow-xl",
+    "body": "--shadow-xl",
+    "description": "Madogiwa UI CSS variable --shadow-xl"
+  },
+  "--shadow-2xl": {
+    "scope": "css",
+    "prefix": "--shadow-2xl",
+    "body": "--shadow-2xl",
+    "description": "Madogiwa UI CSS variable --shadow-2xl"
+  },
+  "--text-xs": {
+    "scope": "css",
+    "prefix": "--text-xs",
+    "body": "--text-xs",
+    "description": "Madogiwa UI CSS variable --text-xs"
+  },
+  "--text-xs--line-height": {
+    "scope": "css",
+    "prefix": "--text-xs--line-height",
+    "body": "--text-xs--line-height",
+    "description": "Madogiwa UI CSS variable --text-xs--line-height"
+  },
+  "--text-sm": {
+    "scope": "css",
+    "prefix": "--text-sm",
+    "body": "--text-sm",
+    "description": "Madogiwa UI CSS variable --text-sm"
+  },
+  "--text-sm--line-height": {
+    "scope": "css",
+    "prefix": "--text-sm--line-height",
+    "body": "--text-sm--line-height",
+    "description": "Madogiwa UI CSS variable --text-sm--line-height"
+  },
+  "--text-base": {
+    "scope": "css",
+    "prefix": "--text-base",
+    "body": "--text-base",
+    "description": "Madogiwa UI CSS variable --text-base"
+  },
+  "--text-base--line-height": {
+    "scope": "css",
+    "prefix": "--text-base--line-height",
+    "body": "--text-base--line-height",
+    "description": "Madogiwa UI CSS variable --text-base--line-height"
+  },
+  "--text-lg": {
+    "scope": "css",
+    "prefix": "--text-lg",
+    "body": "--text-lg",
+    "description": "Madogiwa UI CSS variable --text-lg"
+  },
+  "--text-lg--line-height": {
+    "scope": "css",
+    "prefix": "--text-lg--line-height",
+    "body": "--text-lg--line-height",
+    "description": "Madogiwa UI CSS variable --text-lg--line-height"
+  },
+  "--text-xl": {
+    "scope": "css",
+    "prefix": "--text-xl",
+    "body": "--text-xl",
+    "description": "Madogiwa UI CSS variable --text-xl"
+  },
+  "--text-xl--line-height": {
+    "scope": "css",
+    "prefix": "--text-xl--line-height",
+    "body": "--text-xl--line-height",
+    "description": "Madogiwa UI CSS variable --text-xl--line-height"
+  },
+  "--text-2xl": {
+    "scope": "css",
+    "prefix": "--text-2xl",
+    "body": "--text-2xl",
+    "description": "Madogiwa UI CSS variable --text-2xl"
+  },
+  "--text-2xl--line-height": {
+    "scope": "css",
+    "prefix": "--text-2xl--line-height",
+    "body": "--text-2xl--line-height",
+    "description": "Madogiwa UI CSS variable --text-2xl--line-height"
+  },
+  "--text-3xl": {
+    "scope": "css",
+    "prefix": "--text-3xl",
+    "body": "--text-3xl",
+    "description": "Madogiwa UI CSS variable --text-3xl"
+  },
+  "--text-3xl--line-height": {
+    "scope": "css",
+    "prefix": "--text-3xl--line-height",
+    "body": "--text-3xl--line-height",
+    "description": "Madogiwa UI CSS variable --text-3xl--line-height"
+  },
+  "--text-4xl": {
+    "scope": "css",
+    "prefix": "--text-4xl",
+    "body": "--text-4xl",
+    "description": "Madogiwa UI CSS variable --text-4xl"
+  },
+  "--text-4xl--line-height": {
+    "scope": "css",
+    "prefix": "--text-4xl--line-height",
+    "body": "--text-4xl--line-height",
+    "description": "Madogiwa UI CSS variable --text-4xl--line-height"
+  },
+  "--text-5xl": {
+    "scope": "css",
+    "prefix": "--text-5xl",
+    "body": "--text-5xl",
+    "description": "Madogiwa UI CSS variable --text-5xl"
+  },
+  "--text-5xl--line-height": {
+    "scope": "css",
+    "prefix": "--text-5xl--line-height",
+    "body": "--text-5xl--line-height",
+    "description": "Madogiwa UI CSS variable --text-5xl--line-height"
+  },
+  "--text-6xl": {
+    "scope": "css",
+    "prefix": "--text-6xl",
+    "body": "--text-6xl",
+    "description": "Madogiwa UI CSS variable --text-6xl"
+  },
+  "--text-6xl--line-height": {
+    "scope": "css",
+    "prefix": "--text-6xl--line-height",
+    "body": "--text-6xl--line-height",
+    "description": "Madogiwa UI CSS variable --text-6xl--line-height"
+  },
+  "--text-7xl": {
+    "scope": "css",
+    "prefix": "--text-7xl",
+    "body": "--text-7xl",
+    "description": "Madogiwa UI CSS variable --text-7xl"
+  },
+  "--text-7xl--line-height": {
+    "scope": "css",
+    "prefix": "--text-7xl--line-height",
+    "body": "--text-7xl--line-height",
+    "description": "Madogiwa UI CSS variable --text-7xl--line-height"
+  },
+  "--text-8xl": {
+    "scope": "css",
+    "prefix": "--text-8xl",
+    "body": "--text-8xl",
+    "description": "Madogiwa UI CSS variable --text-8xl"
+  },
+  "--text-8xl--line-height": {
+    "scope": "css",
+    "prefix": "--text-8xl--line-height",
+    "body": "--text-8xl--line-height",
+    "description": "Madogiwa UI CSS variable --text-8xl--line-height"
+  },
+  "--text-9xl": {
+    "scope": "css",
+    "prefix": "--text-9xl",
+    "body": "--text-9xl",
+    "description": "Madogiwa UI CSS variable --text-9xl"
+  },
+  "--text-9xl--line-height": {
+    "scope": "css",
+    "prefix": "--text-9xl--line-height",
+    "body": "--text-9xl--line-height",
+    "description": "Madogiwa UI CSS variable --text-9xl--line-height"
+  },
+  "--font-weight-extralight": {
+    "scope": "css",
+    "prefix": "--font-weight-extralight",
+    "body": "--font-weight-extralight",
+    "description": "Madogiwa UI CSS variable --font-weight-extralight"
+  },
+  "--font-weight-light": {
+    "scope": "css",
+    "prefix": "--font-weight-light",
+    "body": "--font-weight-light",
+    "description": "Madogiwa UI CSS variable --font-weight-light"
+  },
+  "--font-weight-normal": {
+    "scope": "css",
+    "prefix": "--font-weight-normal",
+    "body": "--font-weight-normal",
+    "description": "Madogiwa UI CSS variable --font-weight-normal"
+  },
+  "--font-weight-medium": {
+    "scope": "css",
+    "prefix": "--font-weight-medium",
+    "body": "--font-weight-medium",
+    "description": "Madogiwa UI CSS variable --font-weight-medium"
+  },
+  "--font-weight-semibold": {
+    "scope": "css",
+    "prefix": "--font-weight-semibold",
+    "body": "--font-weight-semibold",
+    "description": "Madogiwa UI CSS variable --font-weight-semibold"
+  },
+  "--font-weight-bold": {
+    "scope": "css",
+    "prefix": "--font-weight-bold",
+    "body": "--font-weight-bold",
+    "description": "Madogiwa UI CSS variable --font-weight-bold"
+  },
+  "--font-weight-extrabold": {
+    "scope": "css",
+    "prefix": "--font-weight-extrabold",
+    "body": "--font-weight-extrabold",
+    "description": "Madogiwa UI CSS variable --font-weight-extrabold"
+  },
+  "--font-weight-black": {
+    "scope": "css",
+    "prefix": "--font-weight-black",
+    "body": "--font-weight-black",
+    "description": "Madogiwa UI CSS variable --font-weight-black"
+  },
+  "--media-2xl-max-width": {
+    "scope": "css",
+    "prefix": "--media-2xl-max-width",
+    "body": "--media-2xl-max-width",
+    "description": "Madogiwa UI CSS variable --media-2xl-max-width"
+  },
+  "--media-xl-max-width": {
+    "scope": "css",
+    "prefix": "--media-xl-max-width",
+    "body": "--media-xl-max-width",
+    "description": "Madogiwa UI CSS variable --media-xl-max-width"
+  },
+  "--media-lg-max-width": {
+    "scope": "css",
+    "prefix": "--media-lg-max-width",
+    "body": "--media-lg-max-width",
+    "description": "Madogiwa UI CSS variable --media-lg-max-width"
+  },
+  "--media-md-max-width": {
+    "scope": "css",
+    "prefix": "--media-md-max-width",
+    "body": "--media-md-max-width",
+    "description": "Madogiwa UI CSS variable --media-md-max-width"
+  },
+  "--media-sm-max-width": {
+    "scope": "css",
+    "prefix": "--media-sm-max-width",
+    "body": "--media-sm-max-width",
+    "description": "Madogiwa UI CSS variable --media-sm-max-width"
+  },
+  "--font-family-base": {
+    "scope": "css",
+    "prefix": "--font-family-base",
+    "body": "--font-family-base",
+    "description": "Madogiwa UI CSS variable --font-family-base"
+  },
+  "--line-height-none": {
+    "scope": "css",
+    "prefix": "--line-height-none",
+    "body": "--line-height-none",
+    "description": "Madogiwa UI CSS variable --line-height-none"
+  },
+  "--zindex-max": {
+    "scope": "css",
+    "prefix": "--zindex-max",
+    "body": "--zindex-max",
+    "description": "Madogiwa UI CSS variable --zindex-max"
+  },
+  "--zindex-navbar": {
+    "scope": "css",
+    "prefix": "--zindex-navbar",
+    "body": "--zindex-navbar",
+    "description": "Madogiwa UI CSS variable --zindex-navbar"
+  },
+  "--zindex-modal": {
+    "scope": "css",
+    "prefix": "--zindex-modal",
+    "body": "--zindex-modal",
+    "description": "Madogiwa UI CSS variable --zindex-modal"
+  },
+  "--zindex-snackbar": {
+    "scope": "css",
+    "prefix": "--zindex-snackbar",
+    "body": "--zindex-snackbar",
+    "description": "Madogiwa UI CSS variable --zindex-snackbar"
+  }
+}

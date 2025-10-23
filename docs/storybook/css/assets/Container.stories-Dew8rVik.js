@@ -1,0 +1,277 @@
+const{expect:t}=__STORYBOOK_MODULE_TEST__,u={title:"Layouts/Container",tags:["autodocs"],argTypes:{content:{control:{type:"text"},description:"Content to display inside the container."},padding:{control:{type:"boolean"},description:"Enable responsive padding inside the container.",defaultValue:!1},noCentering:{control:{type:"boolean"},description:"Disable horizontal centering of the container.",defaultValue:!1}},parameters:{docs:{description:{component:`
+Container component provides responsive layout constraints with predefined breakpoints.
+
+- **Mobile**: max-width 100%
+- **Small**: max-width 576px (>576px)
+- **Medium**: max-width 768px (>768px)
+- **Large**: max-width 1024px (>1024px)
+- **X Large**: max-width 1280px (>1280px)
+- **2X Large**: max-width 1536px (>1536px)
+
+The container is centered horizontally and uses logical properties (margin-inline, max-inline-size) for better internationalization support.
+        `}}}},m={render:r=>{const e=document.createElement("div"),n=document.createElement("div");return n.classList.add("m-container"),r.padding&&n.classList.add("--padding"),r.noCentering&&n.classList.add("--no-centering"),n.style.backgroundColor="#ffffff",n.innerHTML=`<p>${r.content}</p>`,e.style.backgroundColor="#f5f5f5",e.style.padding="1rem",e.style.minHeight="200px",e.append(n),e},args:{content:"This is content inside the container. Resize the viewport to see responsive behavior and padding changes.",padding:!1,noCentering:!1},play:async({canvasElement:r,args:e})=>{const n=r.querySelector(".m-container");await t(n).toBeInTheDocument(),await t(n).toHaveClass("m-container");const s=n.querySelector("p");await t(s).toBeInTheDocument(),await t(s).toHaveTextContent(e.content);const i=getComputedStyle(n),o=i.getPropertyValue("--container-sm-max-width").trim(),l=i.getPropertyValue("--container-md-max-width").trim(),d=i.getPropertyValue("--container-lg-max-width").trim(),p=i.getPropertyValue("--container-xl-max-width").trim(),c=i.getPropertyValue("--container-2xl-max-width").trim();await t(o).toBe("40rem"),await t(l).toBe("48rem"),await t(d).toBe("64rem"),await t(p).toBe("80rem"),await t(c).toBe("96rem")}},g={render:r=>{const e=document.createElement("div");e.style.backgroundColor="#f0f0f0",e.style.padding="1rem",e.style.fontFamily="system-ui, sans-serif";const n=document.createElement("h2");n.textContent="Container Responsive Breakpoints",n.style.textAlign="center",n.style.marginBottom="2rem";const s=[{label:"Small",width:"40rem",bgColor:"#e3f2fd",padding:"0 var(--spacing-2)"},{label:"Medium",width:"48rem",bgColor:"#f3e5f5",padding:"0 var(--spacing-3)"},{label:"Large",width:"64rem",bgColor:"#e8f5e8",padding:"0 var(--spacing-4)"},{label:"X Large",width:"80rem",bgColor:"#fff3e0",padding:"0 var(--spacing-5)"},{label:"2X Large",width:"96rem",bgColor:"#fce4ec",padding:"0 var(--spacing-6)"}];for(const{label:i,width:o,bgColor:l,padding:d}of s){const p=document.createElement("div");p.style.marginBottom="2rem";const c=document.createElement("h3");c.textContent=i,c.style.marginBottom="0.5rem",c.style.fontSize="1rem";const a=document.createElement("div");a.classList.add("m-container"),a.style.backgroundColor=l,a.style.border="2px dashed #666",a.style.setProperty("--container-2xl-max-width",o),a.style.setProperty("--container-xl-max-width",o),a.style.setProperty("--container-lg-max-width",o),a.style.setProperty("--container-md-max-width",o),a.style.setProperty("--container-sm-max-width",o),a.style.setProperty("--container-default-padding",d),a.style.setProperty("--container-sm-padding",d),a.style.setProperty("--container-md-padding",d),a.style.setProperty("--container-lg-padding",d),a.style.setProperty("--container-xl-padding",d),a.style.setProperty("--container-2xl-padding",d),r.padding&&a.classList.add("--padding"),r.noCentering&&a.classList.add("--no-centering");const y=document.createElement("div");y.innerHTML=`
+        <p><strong>Max-width:</strong> ${o}</p>
+        <p>This container demonstrates responsive behavior with both width and padding changes.</p>
+        <p><code>margin-inline: auto</code> centers the container horizontally.</p>
+      `,a.append(y),p.append(c,a),e.append(p)}return e.prepend(n),e},args:{padding:!1,noCentering:!1},play:async({canvasElement:r})=>{const e=r.querySelectorAll(".m-container");await t(e).toHaveLength(5);for(const n of e){await t(n).toHaveClass("m-container");const s=getComputedStyle(n),i=s.marginInlineStart,o=s.marginInlineEnd;await t(i).not.toBe("auto"),await t(o).not.toBe("auto")}}},h={render:r=>{const e=document.createElement("div"),n=document.createElement("div");return n.classList.add("m-container"),r.padding&&n.classList.add("--padding"),r.noCentering&&n.classList.add("--no-centering"),n.style.backgroundColor="#f5f5f5",n.innerHTML=`
+      <header style="margin-bottom: 2rem; padding: 1rem; background: #e0e0e0; border-radius: 4px;">
+        <h1 style="margin: 0; font-size: 2rem;">Page Header</h1>
+        <p style="margin: 0.5rem 0 0 0; color: #333;">Subtitle or description</p>
+      </header>
+
+      <main style="margin-bottom: 2rem;">
+        <article style="margin-bottom: 2rem; padding: 1.5rem; background: white; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <h2>Article Title</h2>
+          <p>${r.content}</p>
+          <p>This demonstrates how the container works with realistic nested content structure and responsive padding.</p>
+        </article>
+
+        <section style="padding: 1.5rem; background: white; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <h3>Section Title</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+              <h4 style="margin-top: 0;">Card 1</h4>
+              <p style="margin-bottom: 0;">Card content here.</p>
+            </div>
+            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+              <h4 style="margin-top: 0;">Card 2</h4>
+              <p style="margin-bottom: 0;">Card content here.</p>
+            </div>
+            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+              <h4 style="margin-top: 0;">Card 3</h4>
+              <p style="margin-bottom: 0;">Card content here.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer style="padding: 1rem; background: #e0e0e0; border-radius: 4px; text-align: center;">
+        <p style="margin: 0; color: #333;">&copy; 2025 Example Footer</p>
+      </footer>
+    `,e.style.backgroundColor="#fafafa",e.style.padding="1rem",e.append(n),e},args:{content:"This article content shows how the container constrains width while maintaining readability with responsive padding for complex layouts.",padding:!1,noCentering:!1},play:async({canvasElement:r})=>{const e=r.querySelector(".m-container");await t(e).toBeInTheDocument(),await t(e).toHaveClass("m-container");const n=e.querySelector("header"),s=e.querySelector("main"),i=e.querySelector("footer");await t(n).toBeInTheDocument(),await t(s).toBeInTheDocument(),await t(i).toBeInTheDocument();const o=e.querySelector("[style*='grid-template-columns']");await t(o).toBeInTheDocument();const l=o.querySelectorAll("div");await t(l.length).toBeGreaterThanOrEqual(3);const d=getComputedStyle(e);await t(d.marginInlineStart).not.toBe("auto"),await t(d.marginInlineEnd).not.toBe("auto")}};m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
+  render: args => {
+    const wrapper = document.createElement("div");
+    const container = document.createElement("div");
+    container.classList.add("m-container");
+    if (args.padding) container.classList.add("--padding");
+    if (args.noCentering) container.classList.add("--no-centering");
+    container.style.backgroundColor = "#ffffff";
+    container.innerHTML = \`<p>\${args.content}</p>\`;
+
+    // Wrapper for visual context
+    wrapper.style.backgroundColor = "#f5f5f5";
+    wrapper.style.padding = "1rem";
+    wrapper.style.minHeight = "200px";
+    wrapper.append(container);
+    return wrapper;
+  },
+  args: {
+    content: "This is content inside the container. Resize the viewport to see responsive behavior and padding changes.",
+    padding: false,
+    noCentering: false
+  },
+  play: async ({
+    canvasElement,
+    args
+  }) => {
+    const container = canvasElement.querySelector(".m-container") as HTMLElement;
+    await expect(container).toBeInTheDocument();
+    await expect(container).toHaveClass("m-container");
+    const content = container.querySelector("p") as HTMLElement;
+    await expect(content).toBeInTheDocument();
+    await expect(content).toHaveTextContent(args.content);
+
+    // Test responsive max-width CSS variables
+    const computedStyle = getComputedStyle(container);
+    const smMaxWidth = computedStyle.getPropertyValue("--container-sm-max-width").trim();
+    const mdMaxWidth = computedStyle.getPropertyValue("--container-md-max-width").trim();
+    const lgMaxWidth = computedStyle.getPropertyValue("--container-lg-max-width").trim();
+    const xlMaxWidth = computedStyle.getPropertyValue("--container-xl-max-width").trim();
+    const xxlMaxWidth = computedStyle.getPropertyValue("--container-2xl-max-width").trim();
+    await expect(smMaxWidth).toBe("40rem");
+    await expect(mdMaxWidth).toBe("48rem");
+    await expect(lgMaxWidth).toBe("64rem");
+    await expect(xlMaxWidth).toBe("80rem");
+    await expect(xxlMaxWidth).toBe("96rem");
+  }
+}`,...m.parameters?.docs?.source}}};g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`{
+  render: args => {
+    const wrapper = document.createElement("div");
+    wrapper.style.backgroundColor = "#f0f0f0";
+    wrapper.style.padding = "1rem";
+    wrapper.style.fontFamily = "system-ui, sans-serif";
+    const title = document.createElement("h2");
+    title.textContent = "Container Responsive Breakpoints";
+    title.style.textAlign = "center";
+    title.style.marginBottom = "2rem";
+    const containers = [{
+      label: "Small",
+      width: "40rem",
+      bgColor: "#e3f2fd",
+      padding: "0 var(--spacing-2)"
+    }, {
+      label: "Medium",
+      width: "48rem",
+      bgColor: "#f3e5f5",
+      padding: "0 var(--spacing-3)"
+    }, {
+      label: "Large",
+      width: "64rem",
+      bgColor: "#e8f5e8",
+      padding: "0 var(--spacing-4)"
+    }, {
+      label: "X Large",
+      width: "80rem",
+      bgColor: "#fff3e0",
+      padding: "0 var(--spacing-5)"
+    }, {
+      label: "2X Large",
+      width: "96rem",
+      bgColor: "#fce4ec",
+      padding: "0 var(--spacing-6)"
+    }];
+    for (const {
+      label,
+      width,
+      bgColor,
+      padding
+    } of containers) {
+      const section = document.createElement("div");
+      section.style.marginBottom = "2rem";
+      const heading = document.createElement("h3");
+      heading.textContent = label;
+      heading.style.marginBottom = "0.5rem";
+      heading.style.fontSize = "1rem";
+      const container = document.createElement("div");
+      container.classList.add("m-container");
+      container.style.backgroundColor = bgColor;
+      container.style.border = "2px dashed #666";
+      container.style.setProperty("--container-2xl-max-width", width);
+      container.style.setProperty("--container-xl-max-width", width);
+      container.style.setProperty("--container-lg-max-width", width);
+      container.style.setProperty("--container-md-max-width", width);
+      container.style.setProperty("--container-sm-max-width", width);
+      container.style.setProperty("--container-default-padding", padding);
+      container.style.setProperty("--container-sm-padding", padding);
+      container.style.setProperty("--container-md-padding", padding);
+      container.style.setProperty("--container-lg-padding", padding);
+      container.style.setProperty("--container-xl-padding", padding);
+      container.style.setProperty("--container-2xl-padding", padding);
+      if (args.padding) container.classList.add("--padding");
+      if (args.noCentering) container.classList.add("--no-centering");
+      const content = document.createElement("div");
+      content.innerHTML = \`
+        <p><strong>Max-width:</strong> \${width}</p>
+        <p>This container demonstrates responsive behavior with both width and padding changes.</p>
+        <p><code>margin-inline: auto</code> centers the container horizontally.</p>
+      \`;
+      container.append(content);
+      section.append(heading, container);
+      wrapper.append(section);
+    }
+    wrapper.prepend(title);
+    return wrapper;
+  },
+  args: {
+    padding: false,
+    noCentering: false
+  },
+  play: async ({
+    canvasElement
+  }) => {
+    const containers = canvasElement.querySelectorAll(".m-container");
+    await expect(containers).toHaveLength(5);
+    for (const container of containers) {
+      await expect(container).toHaveClass("m-container");
+      const computedStyle = getComputedStyle(container as HTMLElement);
+      const marginInlineStart = computedStyle.marginInlineStart;
+      const marginInlineEnd = computedStyle.marginInlineEnd;
+
+      // Test that containers are centered using logical properties
+      await expect(marginInlineStart).not.toBe("auto");
+      await expect(marginInlineEnd).not.toBe("auto");
+    }
+  }
+}`,...g.parameters?.docs?.source}}};h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
+  render: args => {
+    const wrapper = document.createElement("div");
+    const container = document.createElement("div");
+    container.classList.add("m-container");
+    if (args.padding) container.classList.add("--padding");
+    if (args.noCentering) container.classList.add("--no-centering");
+    container.style.backgroundColor = "#f5f5f5";
+
+    // Create realistic content structure
+    container.innerHTML = \`
+      <header style="margin-bottom: 2rem; padding: 1rem; background: #e0e0e0; border-radius: 4px;">
+        <h1 style="margin: 0; font-size: 2rem;">Page Header</h1>
+        <p style="margin: 0.5rem 0 0 0; color: #333;">Subtitle or description</p>
+      </header>
+
+      <main style="margin-bottom: 2rem;">
+        <article style="margin-bottom: 2rem; padding: 1.5rem; background: white; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <h2>Article Title</h2>
+          <p>\${args.content}</p>
+          <p>This demonstrates how the container works with realistic nested content structure and responsive padding.</p>
+        </article>
+
+        <section style="padding: 1.5rem; background: white; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <h3>Section Title</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+              <h4 style="margin-top: 0;">Card 1</h4>
+              <p style="margin-bottom: 0;">Card content here.</p>
+            </div>
+            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+              <h4 style="margin-top: 0;">Card 2</h4>
+              <p style="margin-bottom: 0;">Card content here.</p>
+            </div>
+            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+              <h4 style="margin-top: 0;">Card 3</h4>
+              <p style="margin-bottom: 0;">Card content here.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer style="padding: 1rem; background: #e0e0e0; border-radius: 4px; text-align: center;">
+        <p style="margin: 0; color: #333;">&copy; 2025 Example Footer</p>
+      </footer>
+    \`;
+    wrapper.style.backgroundColor = "#fafafa";
+    wrapper.style.padding = "1rem";
+    wrapper.append(container);
+    return wrapper;
+  },
+  args: {
+    content: "This article content shows how the container constrains width while maintaining readability with responsive padding for complex layouts.",
+    padding: false,
+    noCentering: false
+  },
+  play: async ({
+    canvasElement
+  }) => {
+    const container = canvasElement.querySelector(".m-container") as HTMLElement;
+    await expect(container).toBeInTheDocument();
+    await expect(container).toHaveClass("m-container");
+
+    // Test that nested elements exist
+    const header = container.querySelector("header") as HTMLElement;
+    const main = container.querySelector("main") as HTMLElement;
+    const footer = container.querySelector("footer") as HTMLElement;
+    await expect(header).toBeInTheDocument();
+    await expect(main).toBeInTheDocument();
+    await expect(footer).toBeInTheDocument();
+
+    // Test grid layout works within container
+    const cardGrid = container.querySelector("[style*='grid-template-columns']") as HTMLElement;
+    await expect(cardGrid).toBeInTheDocument();
+    const cards = cardGrid.querySelectorAll("div");
+    await expect(cards.length).toBeGreaterThanOrEqual(3);
+
+    // Test logical properties
+    const computedStyle = getComputedStyle(container);
+    await expect(computedStyle.marginInlineStart).not.toBe("auto");
+    await expect(computedStyle.marginInlineEnd).not.toBe("auto");
+  }
+}`,...h.parameters?.docs?.source}}};const x=["Default","ResponsiveDemo","NestedContent"];export{m as Default,h as NestedContent,g as ResponsiveDemo,x as __namedExportsOrder,u as default};
