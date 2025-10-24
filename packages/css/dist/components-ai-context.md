@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2025-10-23T22:18:02.403Z
+generated_at: 2025-10-24T12:43:04.029Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -13,7 +13,7 @@ This documentation is automatically generated from Storybook stories for AI cont
 
 ### Overview
 
-The Accordion component provides expandable/collapsible content sections using the native HTML \`<details>\` and \`<summary>\` elements, ensuring optimal accessibility and semantic structure.
+The Accordion component provides expandable/collapsible content sections using the native HTML `<details>` and `<summary>` elements, ensuring optimal accessibility and semantic structure.
 
 ### Usage
 
@@ -45,7 +45,7 @@ Use accordions to organize content into expandable sections, helping users focus
 
 ### Accessibility
 
-- Uses native \`<details>\` and \`<summary>\` elements for optimal screen reader support
+- Uses native `<details>` and `<summary>` elements for optimal screen reader support
 - Includes proper ARIA relationships between summary and content
 - Keyboard navigation is handled natively by the browser
 - Focus management follows standard HTML behavior
@@ -60,7 +60,55 @@ The Alert component provides contextual feedback messages to users about system 
 
 ### Usage
 
-Use alerts to communicate important information that requires user attention but doesn
+Use alerts to communicate important information that requires user attention but doesn't interrupt their workflow. Alerts are non-modal and can be dismissed by user action or automatically after a set time.
+
+**Common use cases:**
+- Success confirmations after form submissions
+- Error messages for validation or system issues
+- Warning notifications about potential problems
+- Informational messages about system changes
+
+### Modifiers
+
+| Target | Name | Description |
+|--- | ---- | ----------- |
+| .m-alert | .--primary | Primary alert style with brand colors |
+| .m-alert | .--secondary | Secondary alert style |
+| .m-alert | .--tertiary | Tertiary alert style with subtle appearance |
+| .m-alert | .--danger | Danger alert for errors and critical issues |
+| .m-alert | .--warning | Warning alert for caution messages |
+| .m-alert | .--auto-dismiss | Enable auto dismiss functionality |
+| .m-alert | .--with-progress | Show progress bar for auto dismiss |
+
+### CSS Variables
+
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| --alert-bg-color | var(--color-default) | Background color for default alert |
+| --alert-text-color | var(--color-text) | Text color for default alert |
+| --alert-border-color | var(--color-border) | Border color for default alert |
+| --alert-border | 1px solid var(--color-border) | Border style |
+| --alert-padding | var(--spacing-2) | Internal padding |
+| --alert-item-gap | var(--spacing-2) | Gap between alert elements |
+| --alert-icon-size | 1rem | Size of icons |
+| --alert-primary-bg-color | var(--color-primary) | Primary variant background |
+| --alert-primary-text-color | var(--color-text-light) | Primary variant text color |
+| --alert-secondary-bg-color | var(--color-secondary) | Secondary variant background |
+| --alert-tertiary-bg-color | var(--color-tertiary) | Tertiary variant background |
+| --alert-danger-bg-color | var(--color-danger) | Danger variant background |
+| --alert-warning-bg-color | var(--color-warning) | Warning variant background |
+| --alert-auto-dismiss-duration | 5s | Default auto dismiss duration |
+| --alert-auto-dismiss-fade-duration | 0.3s | Fade out animation duration |
+| --alert-auto-dismiss-progress-bg-color | rgb(from var(--color-white) r g b / 40%) | Progress bar background color |
+| --alert-auto-dismiss-progress-height | 4px | Progress bar height |
+
+### Accessibility
+
+- Uses `role="alert"` for screen reader announcements
+- Supports keyboard navigation for interactive elements
+- Color variants include sufficient contrast ratios
+- Auto dismiss can be controlled or disabled for users who need more time
+- Icons include appropriate semantic meaning through context
 
 ---
 
@@ -305,7 +353,7 @@ Use checkboxes for:
 
 ### Overview
 
-The Dialog component provides a modal dialog using the native HTML \`<dialog>\` element. It supports backdrop blur effects, smooth transitions, and flexible content layout with header, content, and footer sections.
+The Dialog component provides a modal dialog using the native HTML `<dialog>` element. It supports backdrop blur effects, smooth transitions, and flexible content layout with header, content, and footer sections.
 
 ### Usage
 
@@ -358,7 +406,9 @@ Use dialogs for:
 
 - **Use [HTMLDialogElement API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement) to open/close dialogs.**
 - Always provide a way to close the dialog (close button or cancel action)
-- Consider the user
+- Consider the user's workflow when using dialogs
+- Avoid nested dialogs as they can confuse user
+- Test keyboard navigation and screen reader compatibility
 
 ---
 
@@ -427,7 +477,8 @@ Use headings to:
 ### Caution
 
 - Use only one h1 per page for the main title
-- Don
+- Don't skip heading levels (h1 → h3 without h2)
+- Ensure headings are descriptive and meaningful
 
 ---
 
@@ -507,7 +558,17 @@ Use labels for:
 | --label-display | block | Display behavior of the label |
 | --label-font-weight | var(--font-weight-medium) | Font weight for label text |
 | --label-spacing-bottom | var(--spacing-1) | Bottom margin when not last child |
-| --label-required-icon-content |
+| --label-required-icon-content | "*" | Content for the required indicator |
+| --label-required-icon-size | 1em | Font size for the required indicator |
+| --label-required-icon-color | var(--color-danger) | Color of the required indicator |
+| --label-disabled-opacity | 0.6 | Opacity value when label is disabled |
+
+### Caution
+- Avoid using labels without associated form controls
+- Do not use labels for non-form elements
+- Ensure unique htmlFor values for proper association
+- Avoid excessive label text length
+- Do not rely solely on visual cues for required fields
 
 ---
 
@@ -562,10 +623,79 @@ Use the navbar for:
 
 **⚠️ Need JavaScript**
 
-The opening and closing of the hamburger menu on mobile must be controlled via JavaScript by the value of \`.m-navbar__hamburger-menu[aria-expanded]\`.
+The opening and closing of the hamburger menu on mobile must be controlled via JavaScript by the value of `.m-navbar__hamburger-menu[aria-expanded]`.
 
-\`\`\`js
-const hamburgerMenu = document.querySelector(
+```js
+const hamburgerMenu = document.querySelector(".m-navbar__hamburger-menu");
+hamburgerMenu.addEventListener("click", () => {
+  const isExpanded = hamburgerMenu.getAttribute("aria-expanded") === "true";
+  hamburgerMenu.setAttribute("aria-expanded", String(!isExpanded));
+});
+```
+
+### Elements
+
+| Name | Description |
+| ---- | ----------- |
+| .m-navbar__title | Brand/logo area with link styling |
+| .m-navbar__items | Main navigation container |
+| .m-navbar__item | Individual navigation link or button container |
+| .m-navbar__hamburger | Mobile hamburger button container |
+| .m-navbar__hamburger-menu | Hamburger menu toggle button |
+
+### Modifiers
+
+| Target | Name | Description |
+| ------ | ---- | ----------- |
+| .m-navbar | .--transition | Enables smooth animations for menu transitions |
+| .m-navbar | .--hover-hamburger-menu | **Experimental**: CSS-only hover menu activation |
+| .m-navbar | .--mobile-float-menu | Dropdown-style floating menu (no backdrop) |
+| .m-navbar | .--mobile-side-menu | Drawer-style right side menu (with backdrop) |
+| .m-navbar | .--mobile-side-menu .--slide-left | Drawer-style left side menu (with backdrop) |
+| .m-navbar__item | .--end | Aligns item to the end of the navigation (right in LTR) |
+
+### CSS Variables
+
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| --navbar-bg-color | var(--color-bg-light) | Background color of the navbar |
+| --navbar-min-height | 56px | Minimum height of the navbar |
+| --navbar-item-padding | var(--spacing-2) var(--spacing-3) | Padding for navbar items |
+| --navbar-item-gap | var(--spacing-2) | Gap between items with content |
+| --navbar-item-text-color | var(--color-text) | Text color for navigation items |
+| --navbar-item-hover-bg-color | var(--color-primary) | Background color on item hover |
+| --navbar-item-hover-text-color | var(--color-text-light) | Text color on item hover |
+| --navbar-hamburger-icon-content | "☰" | Hamburger menu icon content |
+| --navbar-hamburger-icon-close-content | "×" | Close menu icon content |
+| --navbar-hamburger-icon-size | 1.5rem | Size of hamburger menu icons |
+| --navbar-hamburger-icon-padding | 0 var(--spacing-2) | Padding for hamburger icon |
+| --navbar-hamburger-icon-color | var(--color-text) | Color of hamburger icon |
+| --navbar-hamburger-icon-hover-bg-color | color(from var(--navbar-bg-color) srgb calc(r * 0.8) calc(g * 0.8) calc(b * 0.8)) | Hover background for icon |
+| --navbar-hamburger-icon-border-radius | var(--radius-sm) | Border radius for hamburger icon |
+| --navbar-hamburger-menu-size | 2.5rem | Size of hamburger menu button |
+| --navbar-hamburger-menu-bg-color | var(--color-bg-light) | Background of mobile menu |
+| --navbar-hamburger-menu-border | 2px solid var(--color-bg-light) | Border for hamburger menu |
+| --navbar-hamburger-menu-border-radius | 0 0 var(--radius-sm) var(--radius-sm) | Border radius for menu |
+| --navbar-hamburger-menu-box-shadow | var(--shadow-md) | Box shadow for menu |
+| --navbar-hamburger-menu-item-separate-border | 1px solid var(--color-bg-light) | Border between menu items |
+| --navbar-base-zindex | var(--zindex-navbar) | Base z-index for navbar layering |
+| --navbar-backdrop-zindex | calc(var(--navbar-base-zindex) + 1) | Z-index for backdrop |
+| --navbar-menu-zindex | calc(var(--navbar-backdrop-zindex) + 1) | Z-index for menu items |
+| --navbar-hamburger-menu-zindex | calc(var(--navbar-menu-zindex) + 1) | Z-index for hamburger menu button |
+| --navbar-hamburger-menu-slidein-transition | 0.1s ease-in-out | Slide-in animation duration |
+| --navbar-hamburger-menu-hover-item-transition | 0.3s ease-in-out | Item hover transition |
+| --navbar-hamburger-float-menu-position-right | var(--spacing-2) | Right position for float menu |
+| --navbar-hamburger-side-menu-close-x-position | var(--spacing-3) | Horizontal position of close button in side menu |
+| --navbar-hamburger-side-menu-close-y-position | var(--spacing-2) | Vertical position of close button in side menu |
+| --navbar-hamburger-side-menu-max-width | 80vw | Maximum width for side menu |
+| --navbar-hamburger-side-menu-min-width | 40vw | Minimum width for side menu |
+| --navbar-hamburger-side-menu-backdrop-color | var(--color-overlay) | Backdrop color for side menu |
+| --navbar-hamburger-side-menu-backdrop-filter | blur(2px) | Backdrop filter effect |
+
+### Caution
+- Ensure sufficient contrast between text and background for readability
+- Use meaningful alt text for icons to enhance accessibility
+- **Close Button Position**: The close button position in side menus can be optimized by dynamically adjusting `--navbar-hamburger-side-menu-close-x-position`, `--navbar-hamburger-side-menu-close-y-position` based on menu width using JavaScript for better user experience
 
 ---
 
@@ -689,7 +819,49 @@ The Snackbar component provides temporary notification messages that appear at t
 
 ### Usage
 
-Use Snackbars for brief confirmations, error messages, and status updates that don
+Use Snackbars for brief confirmations, error messages, and status updates that don't require immediate user action. They automatically dismiss or can be manually closed by users. Ideal for form submission feedback, connection status, and non-critical notifications.
+
+### Elements
+
+| Name | Description |
+| ---- | ----------- |
+| .m-snackbar | The main container element with fixed positioning |
+| .m-snackbar__body | Content wrapper with flex layout for message and actions |
+| .m-snackbar__content | Container for the notification message |
+| .m-snackbar__actions | Container for action buttons (OK, Close, etc.) |
+
+### Modifiers
+
+| Target | Name | Description |
+|--- | ---- | ----------- |
+| .m-snackbar | .--transition | Enables smooth fade-in/out animations |
+| .m-snackbar | .--right-bottom | Positions snackbar at bottom-right corner |
+| .m-snackbar | .--left-top | Positions snackbar at top-left corner |
+| .m-snackbar | .--right-top | Positions snackbar at top-right corner |
+
+### CSS Variables
+
+| Target | Name | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| .m-snackbar | --snackbar-position-x | var(--spacing-4) | Horizontal distance from screen edge |
+| .m-snackbar | --snackbar-position-y | var(--spacing-4) | Vertical distance from screen edge |
+| .m-snackbar | --snackbar-zindex | var(--zindex-snackbar) | Z-index for proper layering |
+| .m-snackbar | --snackbar-margin-for-small-screens | var(--spacing-2) | Margin on mobile devices |
+| .m-snackbar | --snackbar-bg-color | var(--color-primary) | Background color of the snackbar |
+| .m-snackbar | --snackbar-text-color | var(--color-text-light) | Text color for message content |
+| .m-snackbar | --snackbar-border-radius | var(--radius-sm) | Border radius for rounded corners |
+| .m-snackbar | --snackbar-box-shadow | var(--shadow-md) | Drop shadow for elevation |
+| .m-snackbar | --snackbar-inner-spacing | var(--spacing-3) | Internal padding and gaps |
+| .m-snackbar | --snackbar-action-spacing | var(--spacing-2) | Spacing between action buttons |
+| .m-snackbar | --snackbar-transition-duration | 0.2s | Animation timing for transitions |
+
+### Caution
+
+- Requires modern browser support for Popover API
+- Z-index variables must be properly configured for layering
+- Mobile responsiveness handled through CSS media queries
+- Starting-style animations require recent browser versions
+- Position modifiers affect responsive behavior on small screens
 
 ---
 
@@ -833,7 +1005,7 @@ The Variables system provides a comprehensive collection of design tokens that f
 
 ### Usage
 
-Design tokens are CSS custom properties that maintain consistent visual design across your application. They can be referenced in CSS using \`var()\` syntax and are organized into semantic categories for easy maintenance.
+Design tokens are CSS custom properties that maintain consistent visual design across your application. They can be referenced in CSS using `var()` syntax and are organized into semantic categories for easy maintenance.
 
 ### Sort Modes
 
@@ -927,8 +1099,9 @@ The columns automatically adjust based on screen size:
 
 ### Caution
 
-* When using the \`data-col-size\` attribute, ensure that the sum of column spans in a single row does not exceed the total number of columns (default is 12). Exceeding this may lead to unexpected layout behavior.
-* The \`.--subgrid\` modifier changes the display of m-grid
+* When using the `data-col-size` attribute, ensure that the sum of column spans in a single row does not exceed the total number of columns (default is 12). Exceeding this may lead to unexpected layout behavior.
+* The `.--subgrid` modifier changes the display of m-grid's child elements to subgrid. Therefore, if the child element's display is flex or similar, it may result in an unintended layout.
+* CSS Subgrid is not supported in some older browsers, including Internet Explorer and early versions of Edge. Ensure to test across target browsers when using the `.--subgrid` modifier.
 
 ---
 
@@ -951,4 +1124,4 @@ The container is centered horizontally and uses logical properties (margin-inlin
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 10/23/2025, 10:18:02 PM
+- Generated at: 10/24/2025, 12:43:04 PM

@@ -57,9 +57,8 @@ export const outputStoryDocumentPlugin = (options: SoutputStoryDocumentPluginOpt
 };
 
 const COMPONENT_TITLE_REGEX = /title:\s*["']([^"']+)["']/;
-const COMPONENT_DESCRIPTION_REGEX
-  = /parameters:\s*{[^}]*docs:\s*{[^}]*description:\s*{[^}]*component:\s*[`"']([^`"'\\]*(?:\\.[^`"'\\]*)*)[`"']/s;
-const extractDocumentation = (
+const COMPONENT_DESCRIPTION_REGEX = /parameters:\s*{[^}]*docs:\s*{[^}]*description:\s*{[^}]*component:\s*["'`]([\s\S]*?)["'`],\n/;
+export const extractDocumentation = (
   content: string,
   filePath: string,
   componentTitleRegex = COMPONENT_TITLE_REGEX,
@@ -68,11 +67,12 @@ const extractDocumentation = (
   try {
     const title = content.match(componentTitleRegex)?.[1];
     const description = content.match(componentDescriptionRegex)?.[1];
+    const escapedDescription = description ? removeEscape(description) : "";
 
     if (title && description) {
       return {
         title,
-        description: description.trim(),
+        description: escapedDescription.trim(),
         filePath,
       };
     }
@@ -82,6 +82,10 @@ const extractDocumentation = (
     console.warn(`⚠️ Failed to parse ${filePath}:`, error);
     return null;
   }
+};
+
+const removeEscape = (string_: string): string => {
+  return string_.replaceAll("\\`", "`").replaceAll(String.raw`\$`, "$").replaceAll(String.raw`\*`, "*");
 };
 
 const generateMarkdown = (documents: ComponentDocument[], frontMatter: Record<string, unknown>): string => {
