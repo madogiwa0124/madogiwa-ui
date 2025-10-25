@@ -53,19 +53,19 @@ const meta: Meta<LabelStoryProperties> = {
   argTypes: {
     text: {
       control: { type: "text" },
-      description: "The label text content",
+      description: "The label text for the component",
     },
     htmlFor: {
       control: { type: "text" },
-      description: "The ID of the form element this label is associated with",
+      description: "The form element ID for the component",
     },
     required: {
       control: { type: "boolean" },
-      description: "Whether the associated form field is required",
+      description: "The required indicator modifier for the component",
     },
     disabled: {
       control: { type: "boolean" },
-      description: "Whether the label appears disabled",
+      description: "The disabled state modifier for the component",
     },
   },
   parameters: {
@@ -78,19 +78,23 @@ The Label component provides accessible and consistent labeling for form element
 
 ### Usage
 
-Use labels for:
-- Form input identification and description
-- Accessible form design and compliance
-- Clear user guidance and instruction
-- Required field indication
-- Form field grouping and organization
+Use labels to provide accessible and consistent labeling for form elements. Essential for screen readers and improving usability for all users. Perfect for form field identification, required field indicators, and associating labels with form controls.
 
-**Common use cases:**
-- Text inputs, textareas, and select elements
-- Checkbox and radio button groups
-- File upload controls
-- Form sections and fieldsets
-- Required field indicators
+### Example code
+
+\`\`\`html
+<!-- Basic label -->
+<label class="m-label" for="username">Username</label>
+<input class="m-input" type="text" id="username">
+
+<!-- Required field label -->
+<label class="m-label --required" for="email">Email Address</label>
+<input class="m-input" type="email" id="email" required>
+
+<!-- Disabled label -->
+<label class="m-label --disabled" for="disabled-field">Disabled Field</label>
+<input class="m-input" type="text" id="disabled-field" disabled>
+\`\`\`
 
 ### Modifiers
 
@@ -111,12 +115,17 @@ Use labels for:
 | --label-required-icon-color | var(--color-danger) | Color of the required indicator |
 | --label-disabled-opacity | 0.6 | Opacity value when label is disabled |
 
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
+
 ### Caution
-- Avoid using labels without associated form controls
-- Do not use labels for non-form elements
-- Ensure unique htmlFor values for proper association
-- Avoid excessive label text length
+
+- Always associate labels with form controls using \`for\` attribute
+- Ensure unique ID values for proper form element association
+- Avoid using labels for non-form elements
 - Do not rely solely on visual cues for required fields
+- Keep label text concise and descriptive
         `,
       },
     },

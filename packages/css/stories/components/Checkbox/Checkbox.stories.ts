@@ -7,23 +7,23 @@ const meta: Meta = {
   argTypes: {
     label: {
       control: { type: "text" },
-      description: "Label text for the checkbox",
+      description: "The label text for the component",
     },
     checked: {
       control: { type: "boolean" },
-      description: "Initial checked state",
+      description: "The checked state for the component",
     },
     disabled: {
       control: { type: "boolean" },
-      description: "Disable the checkbox",
+      description: "The disabled state for the component",
     },
     name: {
       control: { type: "text" },
-      description: "Name attribute for the checkbox",
+      description: "The name attribute for the component",
     },
     value: {
       control: { type: "text" },
-      description: "Value attribute for the checkbox",
+      description: "The value attribute for the component",
     },
   },
   parameters: {
@@ -32,48 +32,55 @@ const meta: Meta = {
         component: `
 ### Overview
 
-The Checkbox component provides a custom-styled checkbox input that maintains accessibility while offering visual consistency. It supports various states including checked, disabled, and hover effects.
+The Checkbox component provides a custom-styled checkbox input that maintains accessibility while offering visual consistency across different browsers and platforms.
 
 ### Usage
 
-Use checkboxes for:
-- Multi-select options where users can choose multiple items
-- Boolean settings and preferences
-- Terms and conditions acceptance
-- Feature toggles and permissions
-- Form controls requiring true/false selection
+Use checkboxes for multi-select options where users can choose multiple items, boolean settings and preferences, accepting terms and conditions, or toggling feature states. Checkboxes are ideal when users need to make independent yes/no decisions for multiple options.
 
-**Common use cases:**
-- Settings panels with multiple options
-- Multi-select lists and filters
-- Form agreements and consents
-- Feature enable/disable controls
-- Task lists with completion states
+### Example code
+
+\`\`\`html
+<input type="checkbox" class="m-checkbox" id="example" name="example" value="example-value">
+<label for="example">Example checkbox</label>
+
+<input type="checkbox" class="m-checkbox" id="checked" name="checked" value="checked-value" checked>
+<label for="checked">Pre-checked checkbox</label>
+
+<input type="checkbox" class="m-checkbox" id="disabled" name="disabled" value="disabled-value" disabled>
+<label for="disabled">Disabled checkbox</label>
+\`\`\`
+
+### Elements
+
+This component has no child elements - it's a single-level component.
+
+### Modifiers
+
+This component does not have modifiers - styling is handled through states.
 
 ### CSS Variables
 
-| Name | Default | Description |
-| ---- | ------- | ----------- |
-| --checkbox-size | 1.2em | Size of the checkbox |
-| --checkbox-border-color | var(--color-dark) | Border color |
-| --checkbox-bg-color | var(--color-light) | Background color |
-| --checkbox-border-radius | 0.2em | Border radius |
-| --checkbox-lighter-brightness | 150% | Brightness on hover/focus |
-| --checkbox-disabled-opacity | 0.65 | Opacity when disabled |
+| Target | Name | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| .m-checkbox | --checkbox-size | 1.2em | Size of the checkbox |
+| .m-checkbox | --checkbox-border-color | var(--color-dark) | Border color |
+| .m-checkbox | --checkbox-bg-color | var(--color-light) | Background color |
+| .m-checkbox | --checkbox-border-radius | 0.2em | Border radius |
+| .m-checkbox | --checkbox-lighter-brightness | 150% | Brightness on hover/focus |
+| .m-checkbox | --checkbox-disabled-opacity | 0.65 | Opacity when disabled |
 
-### States
+### Data Attributes
 
-- **Default**: Unchecked state with border styling
-- **Checked**: Shows checkmark with primary background color
-- **Disabled**: Reduced opacity and disabled cursor
-- **Hover/Focus**: Brightness filter for visual feedback
+This component does not use data attributes for styling or behavior.
 
 ### Caution
+
 - Ensure sufficient contrast between checkbox and background for visibility
 - Use clear and concise labels for better usability
 - Maintain consistent sizing and spacing in forms
-- Avoid using checkboxes for single binary choices (use switches instead)
 - Test across different browsers for consistent appearance
+- Always associate labels with inputs for accessibility
         `,
       },
     },

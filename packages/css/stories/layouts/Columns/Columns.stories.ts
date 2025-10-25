@@ -18,31 +18,31 @@ const meta: Meta<ColumnsStoryProperties> = {
   argTypes: {
     columnsLength: {
       control: { type: "range", min: 1, max: 12, step: 1 },
-      description: "Number of columns in the grid system (1-12)",
+      description: "The number of columns for the component",
     },
     gap: {
       control: { type: "boolean" },
-      description: "Enable gap between columns",
+      description: "The gap display modifier for the component",
     },
     alignRows: {
       control: { type: "boolean" },
-      description: "Enable alignment of nested content using subgrid rows",
+      description: "The row alignment subgrid modifier for the component",
     },
     itemCount: {
       control: { type: "range", min: 1, max: 24, step: 1 },
-      description: "Number of items to display",
+      description: "The number of demo items for the component",
     },
     itemColSize: {
       control: { type: "range", min: 1, max: 12, step: 1 },
-      description: "Number of columns each item spans (1-12)",
+      description: "The column span for demo items in the component",
     },
     autoFit: {
       control: { type: "boolean" },
-      description: "Enable auto-fit behavior for responsive layouts",
+      description: "The auto-fit responsive modifier for the component",
     },
     autoFitMin: {
       control: { type: "text" },
-      description: "Minimum size for auto-fit columns (e.g., '200px', '15rem')",
+      description: "The minimum column size for auto-fit in the component",
       if: { arg: "autoFit", truthy: true },
       defaultValue: "0",
     },
@@ -53,32 +53,66 @@ const meta: Meta<ColumnsStoryProperties> = {
         component: `
 ### Overview
 
-The Columns layout component provides a powerful 12-column grid system based on CSS Grid. It offers responsive behavior, flexible item sizing, and advanced features like subgrid support for perfect content alignment.
+The Columns component provides a powerful 12-column grid system based on CSS Grid with responsive behavior and subgrid support.
 
 ### Usage
 
-Use the columns layout for:
-- Responsive grid layouts with automatic column adjustment
-- Card grids with consistent spacing
-- Complex layouts requiring precise content alignment (using subgrid)
-- Dashboard widgets and content organization
-- Form layouts with structured field positioning
+Use Columns for responsive grid layouts, card grids, dashboard widgets, and complex layouts requiring precise content alignment. Perfect for organizing content with consistent spacing and automatic responsive adjustments.
 
-**Responsive Design:**
-The columns automatically adjust based on screen size:
-- XL screens (>1200px): 12 columns
-- Large screens (992-1200px): 9 columns
-- Medium screens (768-992px): 6 columns
-- Small screens (576-768px): 3 columns
-- XS screens (<576px): 1 column
+### Example code
+
+\`\`\`html
+<!-- Basic 12-column grid -->
+<div class="m-columns">
+  <div data-col-size="4">Item 1</div>
+  <div data-col-size="4">Item 2</div>
+  <div data-col-size="4">Item 3</div>
+</div>
+
+<!-- Auto-fit responsive columns -->
+<div class="m-columns --auto-fit" style="--columns-auto-fit-min: 200px;">
+  <div>Card 1</div>
+  <div>Card 2</div>
+  <div>Card 3</div>
+</div>
+
+<!-- Subgrid alignment for card layouts -->
+<div class="m-columns --align-rows">
+  <div class="m-card" data-col-size="4" data-subgrid-rows="3">
+    <img class="m-card__image" src="image.jpg" alt="">
+    <div class="m-card__content"><h3>Title</h3><p>Content</p></div>
+    <div class="m-card__actions"><button>Action</button></div>
+  </div>
+</div>
+\`\`\`
+
+### Elements
+
+This component has no child elements - it's a single-level component that acts as a container for grid items.
 
 ### Modifiers
 
 | Target | Name | Description |
-| ------ | ---- | ----------- |
+|--- | ---- | ----------- |
+| .m-columns | .--auto-fit | Enables auto-fit behavior for responsive column sizing |
 | .m-columns | .--no-gap | Removes spacing between columns |
 | .m-columns | .--align-rows | Enables alignment of nested content using subgrid rows |
-| .m-columns | .--auto-fit | Enables auto-fit behavior for responsive column sizing |
+
+### CSS Variables
+
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| --columns-gap | var(--spacing-2) | Gap between columns |
+| --columns-length-default | 12 | Default number of columns |
+| --columns-length | var(--columns-length-default) | Active number of columns |
+| --columns-length-xl | round(down, calc(var(--columns-length-default) * 0.750)) | Columns for XL breakpoint (9) |
+| --columns-length-lg | round(down, calc(var(--columns-length-default) * 0.500)) | Columns for large breakpoint (6) |
+| --columns-length-md | round(down, calc(var(--columns-length-default) * 0.250)) | Columns for medium breakpoint (3) |
+| --columns-length-sm | round(down, calc(var(--columns-length-default) * 0.125)) | Columns for small breakpoint (1) |
+| --columns-default-col-size | 1 | Default column span for items |
+| --columns-col-size | var(--columns-default-col-size) | Active column span for items |
+| --columns-subgrid-gap | 0 | Gap for subgrid items |
+| --columns-auto-fit-min | 0 | Minimum size for auto-fit columns |
 
 ### Data Attributes
 
@@ -86,28 +120,14 @@ The columns automatically adjust based on screen size:
 | ------ | --------- | ------ | ----------- |
 | .m-columns | data-columns-length | 1-12 | Override default column count |
 | .m-columns > * | data-col-size | 1-12 | Specify how many columns this item spans |
-| .m-columns > * | data-subgrid-rows | 1-6 | (With --subgrid) Number of subgrid rows to span |
-
-### CSS Variables
-
-| Target | Name | Default | Description |
-| ------ | ---- | ------- | ----------- |
-| .m-columns | --columns-gap | var(--spacing-2) | Gap between columns |
-| .m-columns | --columns-length-default | 12 | Default number of columns |
-| .m-columns | --columns-length | var(--columns-length-default) | Active number of columns |
-| .m-columns | --columns-length-xl | round(down, calc(12 * 0.750)) | Columns for XL breakpoint (9) |
-| .m-columns | --columns-length-lg | round(down, calc(12 * 0.500)) | Columns for large breakpoint (6) |
-| .m-columns | --columns-length-md | round(down, calc(12 * 0.250)) | Columns for medium breakpoint (3) |
-| .m-columns | --columns-length-sm | round(down, calc(12 * 0.125)) | Columns for small breakpoint (1) |
-| .m-columns | --columns-default-col-size | 1 | Default column span for items |
-| .m-columns > * | --columns-col-size | var(--columns-default-col-size) | Active column span |
-| .m-columns > * | --columns-subgrid-row | 1 | Number of subgrid rows to span |
+| .m-columns > * | data-subgrid-rows | 1-6 | Number of subgrid rows to span (with --align-rows) |
 
 ### Caution
 
-* When using the \`data-col-size\` attribute, ensure that the sum of column spans in a single row does not exceed the total number of columns (default is 12). Exceeding this may lead to unexpected layout behavior.
-* The \`.--subgrid\` modifier changes the display of m-grid's child elements to subgrid. Therefore, if the child element's display is flex or similar, it may result in an unintended layout.
-* CSS Subgrid is not supported in some older browsers, including Internet Explorer and early versions of Edge. Ensure to test across target browsers when using the \`.--subgrid\` modifier.
+- Ensure column spans don't exceed total columns to avoid layout issues
+- CSS Subgrid has limited browser support - test across target browsers
+- The --align-rows modifier changes child display to subgrid, which may conflict with flex layouts
+- Use container queries when available for better responsive behavior
         `,
       },
     },
@@ -118,6 +138,13 @@ export default meta;
 type Story = StoryObj<ColumnsStoryProperties>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic 12-column grid system with configurable gap, column spans, and responsive behavior.",
+      },
+    },
+  },
   render: (args) => {
     const children = Array.from({ length: args.itemCount }, (_, index) => ({
       content: `

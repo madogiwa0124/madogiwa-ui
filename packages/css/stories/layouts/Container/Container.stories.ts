@@ -13,33 +13,85 @@ const meta: Meta<ContainerProperties> = {
   argTypes: {
     content: {
       control: { type: "text" },
-      description: "Content to display inside the container.",
+      description: "The content for the component",
     },
     padding: {
       control: { type: "boolean" },
-      description: "Enable responsive padding inside the container.",
-      defaultValue: false,
+      description: "The responsive padding modifier for the component",
     },
     noCentering: {
       control: { type: "boolean" },
-      description: "Disable horizontal centering of the container.",
-      defaultValue: false,
+      description: "The centering disable modifier for the component",
     },
   },
   parameters: {
     docs: {
       description: {
         component: `
-Container component provides responsive layout constraints with predefined breakpoints.
+### Overview
 
-- **Mobile**: max-width 100%
-- **Small**: max-width 576px (>576px)
-- **Medium**: max-width 768px (>768px)
-- **Large**: max-width 1024px (>1024px)
-- **X Large**: max-width 1280px (>1280px)
-- **2X Large**: max-width 1536px (>1536px)
+The Container component provides responsive layout constraints with predefined breakpoints and automatic centering.
 
-The container is centered horizontally and uses logical properties (margin-inline, max-inline-size) for better internationalization support.
+### Usage
+
+Use Container to constrain content width and center it horizontally. Perfect for main content areas, article layouts, and ensuring optimal reading widths across different screen sizes.
+
+### Example code
+
+\`\`\`html
+<!-- Basic container -->
+<div class="m-container">
+  <p>Your content here</p>
+</div>
+
+<!-- Container with responsive padding -->
+<div class="m-container --padding">
+  <article>Article content with automatic padding</article>
+</div>
+
+<!-- Container without centering -->
+<div class="m-container --no-centering">
+  <nav>Navigation content aligned to start</nav>
+</div>
+\`\`\`
+
+### Elements
+
+This component has no child elements - it's a single-level component.
+
+### Modifiers
+
+| Target | Name | Description |
+|--- | ---- | ----------- |
+| .m-container | .--padding | Enables responsive padding that increases with screen size |
+| .m-container | .--no-centering | Disables horizontal centering (margin-inline: 0) |
+
+### CSS Variables
+
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| --container-2xl-max-width | var(--media-2xl-max-width) | Maximum width for 2XL breakpoint |
+| --container-xl-max-width | var(--media-xl-max-width) | Maximum width for XL breakpoint |
+| --container-lg-max-width | var(--media-lg-max-width) | Maximum width for large breakpoint |
+| --container-md-max-width | var(--media-md-max-width) | Maximum width for medium breakpoint |
+| --container-sm-max-width | var(--media-sm-max-width) | Maximum width for small breakpoint |
+| --container-default-padding | 0 var(--spacing-2) | Default padding for mobile |
+| --container-sm-padding | 0 var(--spacing-3) | Padding for small breakpoint |
+| --container-md-padding | 0 var(--spacing-4) | Padding for medium breakpoint |
+| --container-lg-padding | 0 var(--spacing-5) | Padding for large breakpoint |
+| --container-xl-padding | 0 var(--spacing-6) | Padding for XL breakpoint |
+| --container-2xl-padding | 0 var(--spacing-7) | Padding for 2XL breakpoint |
+
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
+
+### Caution
+
+- Container uses logical properties (margin-inline) for better internationalization
+- Responsive breakpoints are managed through CSS custom media queries
+- Padding modifier provides different spacing at each breakpoint
+- Consider content hierarchy when nesting containers
         `,
       },
     },
@@ -50,6 +102,13 @@ export default meta;
 type Story = StoryObj<ContainerProperties>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic container with centered layout and responsive max-width constraints.",
+      },
+    },
+  },
   render: (args) => {
     const wrapper = document.createElement("div");
     const container = document.createElement("div");
@@ -101,6 +160,13 @@ export const Default: Story = {
 };
 
 export const ResponsiveDemo: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Demonstrates container behavior across different breakpoints with visual indicators for max-width values.",
+      },
+    },
+  },
   render: (args) => {
     const wrapper = document.createElement("div");
     wrapper.style.backgroundColor = "#f0f0f0";
@@ -187,6 +253,13 @@ export const ResponsiveDemo: Story = {
 };
 
 export const NestedContent: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Container with realistic nested content structure showing how it works with complex layouts including headers, articles, and grid systems.",
+      },
+    },
+  },
   render: (args) => {
     const wrapper = document.createElement("div");
     const container = document.createElement("div");

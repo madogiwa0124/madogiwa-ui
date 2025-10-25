@@ -16,29 +16,29 @@ const meta: Meta<AlertProperties> = {
   argTypes: {
     content: {
       control: { type: "text" },
-      description: "The message content to display in the alert",
+      description: "The message content for the component",
     },
     icon: {
       control: { type: "text" },
-      description: "Icon markup (HTML or SVG) to display",
+      description: "The icon markup for the component",
     },
     variant: {
       control: { type: "select" },
       options: ["default", "primary", "secondary", "tertiary", "danger", "warning"],
-      description: "Visual style variant of the alert",
+      description: "The style variant for the component",
     },
     autoDismiss: {
       control: { type: "select" },
       options: ["0s", "3s", "5s", "10s"],
-      description: "Auto dismiss duration (0s means no auto dismiss)",
+      description: "The auto dismiss duration for the component",
     },
     autoDismissProgress: {
       control: { type: "boolean" },
-      description: "Show progress bar for auto dismiss",
+      description: "The progress bar visibility for the component",
     },
     hasActions: {
       control: { type: "boolean" },
-      description: "Include action buttons in the alert",
+      description: "The action buttons inclusion for the component",
     },
   },
   parameters: {
@@ -47,17 +47,43 @@ const meta: Meta<AlertProperties> = {
         component: `
 ### Overview
 
-The Alert component provides contextual feedback messages to users about system status, user actions, or important information. It supports various visual styles, icons, actions, and auto-dismiss functionality.
+The Alert component provides contextual feedback messages to users about system status, user actions, or important information with various visual styles and interactive features.
 
 ### Usage
 
-Use alerts to communicate important information that requires user attention but doesn't interrupt their workflow. Alerts are non-modal and can be dismissed by user action or automatically after a set time.
+Use alerts to communicate important information that requires user attention but doesn't interrupt workflow. Perfect for success confirmations, error messages, warnings, or informational updates. Alerts are non-modal and can be dismissed manually or automatically after a set time.
 
-**Common use cases:**
-- Success confirmations after form submissions
-- Error messages for validation or system issues
-- Warning notifications about potential problems
-- Informational messages about system changes
+### Example code
+
+\`\`\`html
+<!-- Basic alert -->
+<div class="m-alert" role="alert">
+  <div class="m-alert__content">This is a default alert message.</div>
+</div>
+
+<!-- Alert with icon and actions -->
+<div class="m-alert --primary" role="alert">
+  <div class="m-alert__icons">✓</div>
+  <div class="m-alert__content">Operation completed successfully!</div>
+  <div class="m-alert__actions">
+    <button class="m-button">View Details</button>
+  </div>
+</div>
+
+<!-- Auto-dismiss alert with progress -->
+<div class="m-alert --warning --with-progress" role="alert" data-auto-dismiss="5s">
+  <div class="m-alert__icons">⚠️</div>
+  <div class="m-alert__content">This alert will disappear in 5 seconds.</div>
+</div>
+\`\`\`
+
+### Elements
+
+| Name | Description |
+| ---- | ----------- |
+| .m-alert__icons | Container for alert icons or status indicators |
+| .m-alert__content | Main content area containing the alert message |
+| .m-alert__actions | Action area for buttons like dismiss or additional actions |
 
 ### Modifiers
 
@@ -68,7 +94,6 @@ Use alerts to communicate important information that requires user attention but
 | .m-alert | .--tertiary | Tertiary alert style with subtle appearance |
 | .m-alert | .--danger | Danger alert for errors and critical issues |
 | .m-alert | .--warning | Warning alert for caution messages |
-| .m-alert | .--auto-dismiss | Enable auto dismiss functionality |
 | .m-alert | .--with-progress | Show progress bar for auto dismiss |
 
 ### CSS Variables
@@ -84,22 +109,39 @@ Use alerts to communicate important information that requires user attention but
 | --alert-icon-size | 1rem | Size of icons |
 | --alert-primary-bg-color | var(--color-primary) | Primary variant background |
 | --alert-primary-text-color | var(--color-text-light) | Primary variant text color |
+| --alert-primary-border-color | var(--color-primary) | Primary variant border color |
 | --alert-secondary-bg-color | var(--color-secondary) | Secondary variant background |
+| --alert-secondary-text-color | var(--color-text-light) | Secondary variant text color |
+| --alert-secondary-border-color | var(--color-secondary) | Secondary variant border color |
 | --alert-tertiary-bg-color | var(--color-tertiary) | Tertiary variant background |
+| --alert-tertiary-text-color | var(--color-text) | Tertiary variant text color |
+| --alert-tertiary-border-color | var(--color-tertiary) | Tertiary variant border color |
 | --alert-danger-bg-color | var(--color-danger) | Danger variant background |
+| --alert-danger-text-color | var(--color-text) | Danger variant text color |
+| --alert-danger-border-color | var(--color-danger) | Danger variant border color |
 | --alert-warning-bg-color | var(--color-warning) | Warning variant background |
+| --alert-warning-text-color | var(--color-text) | Warning variant text color |
+| --alert-warning-border-color | var(--color-warning) | Warning variant border color |
 | --alert-auto-dismiss-duration | 5s | Default auto dismiss duration |
 | --alert-auto-dismiss-fade-duration | 0.3s | Fade out animation duration |
 | --alert-auto-dismiss-progress-bg-color | rgb(from var(--color-white) r g b / 40%) | Progress bar background color |
 | --alert-auto-dismiss-progress-height | 4px | Progress bar height |
 
-### Accessibility
+### Data Attributes
 
-- Uses \`role="alert"\` for screen reader announcements
-- Supports keyboard navigation for interactive elements
-- Color variants include sufficient contrast ratios
+| Target | Attribute | Values | Description |
+| ------ | --------- | ------ | ----------- |
+| .m-alert | data-auto-dismiss | "3s", "5s", "10s", "0s" | Set auto-dismiss duration (0s disables) |
+
+### Caution
+
+- Use \`role="alert"\` for screen reader announcements
+- Ensure sufficient color contrast for all variants
+- Consider motion preferences when using auto-dismiss animations
+- Provide alternative ways to dismiss alerts for accessibility
+- Ensure sufficient color contrast ratios for all variants
 - Auto dismiss can be controlled or disabled for users who need more time
-- Icons include appropriate semantic meaning through context
+- Icons should include appropriate semantic meaning through context
         `,
       },
     },

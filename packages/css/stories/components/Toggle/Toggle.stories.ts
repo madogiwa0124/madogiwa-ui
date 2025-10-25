@@ -8,11 +8,11 @@ const meta: Meta<ToggleProperties> = {
   argTypes: {
     disabled: {
       control: "boolean",
-      description: "Disables the toggle switch",
+      description: "The disabled state for the component",
     },
     checked: {
       control: "boolean",
-      description: "Indicates whether the toggle is checked",
+      description: "The checked state for the component",
     },
   },
   parameters: {
@@ -25,33 +25,63 @@ The Toggle component provides a switch-style checkbox input with smooth animatio
 
 ### Usage
 
-Use Toggle components for binary choices, settings toggles, and feature enable/disable controls. The component provides clear visual state indication and smooth transitions for better user experience.
+Use Toggle components for binary choices, settings toggles, and feature enable/disable controls. Perfect for on/off settings, preferences, and boolean state controls with clear visual feedback.
+
+### Example code
+
+\`\`\`html
+<!-- Basic toggle -->
+<label>
+  <input type="checkbox" class="m-toggle">
+  Enable notifications
+</label>
+
+<!-- Checked toggle -->
+<label>
+  <input type="checkbox" class="m-toggle" checked>
+  Dark mode enabled
+</label>
+
+<!-- Disabled toggle -->
+<label>
+  <input type="checkbox" class="m-toggle" disabled>
+  Feature unavailable
+</label>
+\`\`\`
+
+### Elements
+
+This component has no child elements - it's a single-level component.
+
+### Modifiers
+
+This component has no modifiers.
 
 ### CSS Variables
 
-| Target | Name | Default | Description |
-| ------ | ---- | ------- | ----------- |
-| .m-toggle | --toggle-size | 1.2em | Size of the toggle switch |
-| .m-toggle | --toggle-transition | 0.1s ease | Animation timing for state changes |
-| .m-toggle | --toggle-width | calc(var(--toggle-size) * 1.8) | Width of the toggle track |
-| .m-toggle | --toggle-checked-translate-x | calc(var(--toggle-size) * 0.8) | Translation distance when checked |
-| .m-toggle | --toggle-bg-color | var(--color-dark) | Background color when unchecked |
-| .m-toggle | --toggle-bg-color-checked | var(--color-primary) | Background color when checked |
-| .m-toggle | --toggle-button-color | var(--color-light) | Color of the sliding button |
-| .m-toggle | --toggle-button-scale | 0.8 | Scale factor for the button |
-| .m-toggle | --toggle-lighter-brightness | 150% | Brightness for hover/focus states |
-| .m-toggle | --toggle-disabled-opacity | 0.5 | Opacity when disabled |
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| --toggle-size | 1.2em | Size of the toggle switch |
+| --toggle-transition | 0.1s ease | Animation timing for state changes |
+| --toggle-width | calc(var(--toggle-size) * 1.8) | Width of the toggle track |
+| --toggle-checked-translate-x | calc(var(--toggle-size) * 0.8) | Translation distance when checked |
+| --toggle-bg-color | var(--color-dark) | Background color when unchecked |
+| --toggle-bg-color-checked | var(--color-primary) | Background color when checked |
+| --toggle-button-color | var(--color-light) | Color of the sliding button |
+| --toggle-button-scale | 0.8 | Scale factor for the button |
+| --toggle-lighter-brightness | 150% | Brightness for hover/focus states |
+| --toggle-disabled-opacity | 0.5 | Opacity when disabled |
 
 ### Data Attributes
 
-No specific data attributes are defined for this component.
+This component does not use data attributes for styling or behavior.
 
 ### Caution
 
-- The component requires proper labeling for accessibility
-- Animations depend on CSS transitions and transforms
-- Color variables should provide sufficient contrast
-- Disabled state prevents interaction but maintains visual clarity
+- Always provide labels for accessibility compliance
+- Ensure sufficient color contrast between states
+- Test keyboard navigation and screen reader compatibility
+- Consider motion preferences for transition animations
         `,
       },
     },

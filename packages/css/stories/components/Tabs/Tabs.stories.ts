@@ -8,15 +8,15 @@ const meta: Meta<TabsProperties> = {
   argTypes: {
     tabs: {
       control: "object",
-      description: "Array of tab objects for the tab navigation.",
+      description: "The tabs array for the component",
     },
     transition: {
       control: { type: "boolean" },
-      description: "Enable transition effects on tab hover.",
+      description: "The transition animation modifier for the component",
     },
     scrollhint: {
       control: { type: "boolean" },
-      description: "Enable scroll hint effects on tab list.",
+      description: "The scroll hint modifier for the component",
     },
   },
   parameters: {
@@ -29,13 +29,18 @@ The Tabs component provides a navigation interface for switching between multipl
 
 ### Usage
 
-Use Tabs for organizing content into separate views that users can switch between. Ideal for settings panels, product information sections, and any interface requiring content categorization. The component handles keyboard navigation and screen reader compatibility.
+Use Tabs for organizing content into separate views that users can switch between. Ideal for settings panels, product information sections, and any interface requiring content categorization.
+
+### Example code
+
+\`\`\`html
+<!-- Basic tabs -->\n<div class="m-tabs">\n  <div class="m-tabs__list" role="tablist">\n    <button class="m-tabs__item --active" role="tab" aria-selected="true">Tab 1</button>\n    <button class="m-tabs__item" role="tab">Tab 2</button>\n    <button class="m-tabs__item" role="tab">Tab 3</button>\n  </div>\n</div>\n\n<!-- Tabs with transitions and scroll hints -->\n<div class="m-tabs --transition --scrollhint">\n  <div class="m-tabs__list" role="tablist">\n    <button class="m-tabs__item --active" role="tab">Dashboard</button>\n    <button class="m-tabs__item" role="tab">Analytics</button>\n    <button class="m-tabs__item" role="tab" disabled>Settings</button>\n  </div>\n</div>
+\`\`\`
 
 ### Elements
 
 | Name | Description |
 | ---- | ----------- |
-| .m-tabs | The main container element for the tab navigation |
 | .m-tabs__list | Container for tab items with scrollable overflow |
 | .m-tabs__item | Individual tab button elements |
 
@@ -49,29 +54,30 @@ Use Tabs for organizing content into separate views that users can switch betwee
 
 ### CSS Variables
 
-| Target | Name | Default | Description |
-| ------ | ---- | ------- | ----------- |
-| .m-tabs | --tabs-default-border | 1px solid var(--color-border) | Border style for the tab list |
-| .m-tabs | --tabs-scrollbar-color | rgb(from var(--color-primary) r g b / 50%) transparent | Scrollbar color scheme |
-| .m-tabs | --tabs-item-padding | var(--spacing-2) var(--spacing-4) | Internal padding for tab items |
-| .m-tabs | --tabs-active-item-border-color | var(--color-primary) | Border color for active tabs |
-| .m-tabs | --tabs-active-item-border | 2px solid transparent | Border specification for active state |
-| .m-tabs | --tabs-active-item-filter | brightness(0.95) | Visual filter for active tabs |
-| .m-tabs | --tabs-hover-item-filter | brightness(0.95) | Visual filter for hover state |
-| .m-tabs | --tabs-disabled-item-filter | brightness(0.65) | Visual filter for disabled tabs |
-| .m-tabs | --tabs-hover-transition | 0.3s ease | Transition timing for hover effects |
-| .m-tabs | --tabs-item-background-color | var(--color-bg-light) | Background color for tab items |
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| --tabs-default-border | 1px solid var(--color-border) | Border style for the tab list |
+| --tabs-scrollbar-color | rgb(from var(--color-primary) r g b / 50%) transparent | Scrollbar color scheme |
+| --tabs-item-padding | var(--spacing-2) var(--spacing-4) | Internal padding for tab items |
+| --tabs-active-item-border-color | var(--color-primary) | Border color for active tabs |
+| --tabs-active-item-border | 2px solid transparent | Border specification for active state |
+| --tabs-active-item-filter | brightness(0.95) | Visual filter for active tabs |
+| --tabs-active-item-color | var(--color-primary) | Text color for active tabs |
+| --tabs-hover-item-filter | brightness(0.95) | Visual filter for hover state |
+| --tabs-disabled-item-filter | brightness(0.65) | Visual filter for disabled tabs |
+| --tabs-hover-transition | 0.3s ease | Transition timing for hover effects |
+| --tabs-item-background-color | var(--color-bg-light) | Background color for tab items |
 
 ### Data Attributes
 
-No specific data attributes are defined for this component. Uses standard ARIA attributes for accessibility.
+This component does not use data attributes for styling or behavior.標準的なARIA属性を使用します。
 
 ### Caution
 
-- This component provides styling only; JavaScript implementation required for tab switching functionality
-- Proper ARIA attributes (aria-controls, aria-selected, tabindex) must be managed dynamically by JavaScript.
+- JavaScript implementation required for tab switching functionality
+- Proper ARIA attributes (\`aria-controls\`, \`aria-selected\`, \`tabindex\`) must be managed dynamically
 - Scroll hints use advanced CSS features that may not work in older browsers
-- Background attachment local may have performance implications on some devices
+- Test keyboard navigation and screen reader compatibility
         `,
       },
     },

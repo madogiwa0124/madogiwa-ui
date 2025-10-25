@@ -8,35 +8,35 @@ const meta: Meta<TextareaProperties> = {
   argTypes: {
     placeholder: {
       control: "text",
-      description: "Placeholder text for the textarea",
+      description: "The placeholder text for the component",
     },
     rows: {
       control: "number",
-      description: "Number of visible text lines",
+      description: "The rows attribute for the component",
     },
     cols: {
       control: "number",
-      description: "Number of visible text columns",
+      description: "The cols attribute for the component",
     },
     block: {
       control: "boolean",
-      description: "Display the textarea as a block element",
+      description: "The block display modifier for the component",
     },
     disabled: {
       control: "boolean",
-      description: "Disable the textarea",
+      description: "The disabled state for the component",
     },
     required: {
       control: "boolean",
-      description: "Indicate whether the textarea is required",
+      description: "The required attribute for the component",
     },
     error: {
       control: "boolean",
-      description: "Indicate whether the textarea has an error",
+      description: "The error state modifier for the component",
     },
     autoFit: {
       control: "boolean",
-      description: "Enable automatic height adjustment",
+      description: "The auto-fit modifier for the component",
     },
     value: {
       control: "text",
@@ -54,7 +54,27 @@ The Textarea component provides a multi-line text input element with various sty
 
 ### Usage
 
-Use Textarea components for collecting longer text input such as comments, descriptions, messages, and feedback. The component handles various states including validation, disabled, and auto-sizing for optimal user experience across different form scenarios.
+Use Textarea components for collecting longer text input such as comments, descriptions, messages, and feedback. Perfect for forms requiring multi-line text input with proper validation and accessibility support.
+
+### Example code
+
+\`\`\`html
+<!-- Basic textarea -->
+<textarea class="m-textarea" placeholder="Enter your message..."></textarea>
+
+<!-- Block textarea with auto-fit -->
+<textarea class="m-textarea --block --auto-fit" rows="4" placeholder="Type your feedback here..."></textarea>
+
+<!-- Error state textarea -->
+<textarea class="m-textarea --error" placeholder="This field has an error"></textarea>
+
+<!-- Disabled textarea -->
+<textarea class="m-textarea" disabled>This textarea is disabled</textarea>
+\`\`\`
+
+### Elements
+
+This component has no child elements - it's a single-level component.
 
 ### Modifiers
 
@@ -66,23 +86,29 @@ Use Textarea components for collecting longer text input such as comments, descr
 
 ### CSS Variables
 
-| Target | Name | Default | Description |
-| ------ | ---- | ------- | ----------- |
-| .m-textarea | --textarea-border-radius | var(--radius-sm) | Border radius of the textarea element |
-| .m-textarea | --textarea-border-color | var(--color-border) | Default border color |
-| .m-textarea | --textarea-border | 1px solid var(--textarea-border-color) | Complete border specification |
-| .m-textarea | --textarea-bg-color | initial | Background color of the textarea |
-| .m-textarea | --textarea-placeholder-color | var(--color-text-muted) | Color of placeholder text |
-| .m-textarea | --textarea-hover-opacity | 0.8 | Opacity on hover and focus states |
-| .m-textarea | --textarea-disabled-opacity | 0.65 | Opacity when disabled |
-| .m-textarea | --textarea-disabled-color | var(--color-text-muted) | Text color when disabled |
-| .m-textarea | --textarea-invalid-border-color | var(--color-danger) | Border color for invalid/error states |
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| --textarea-border-radius | var(--radius-sm) | Border radius of the textarea element |
+| --textarea-border-color | var(--color-border) | Default border color |
+| --textarea-border | 1px solid var(--textarea-border-color) | Complete border specification |
+| --textarea-bg-color | initial | Background color of the textarea |
+| --textarea-placeholder-color | var(--color-text-muted) | Color of placeholder text |
+| --textarea-hover-opacity | 0.8 | Opacity on hover and focus states |
+| --textarea-hover-border-color | var(--color-border) | Border color on hover and focus |
+| --textarea-disabled-opacity | 0.65 | Opacity when disabled |
+| --textarea-disabled-color | var(--color-text-muted) | Text color when disabled |
+| --textarea-invalid-border-color | var(--color-danger) | Border color for invalid/error states |
+
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
 
 ### Caution
 
-- The auto-fit modifier uses field-sizing property with limited browser support
-- Validation states (invalid, error) should be properly managed in forms
-- Proper labeling is essential for accessibility
+- The auto-fit modifier uses \`field-sizing\` property with limited browser support
+- Always provide labels for accessibility compliance
+- Test validation states for proper error messaging
+- Consider content length limits for better user experience
         `,
       },
     },

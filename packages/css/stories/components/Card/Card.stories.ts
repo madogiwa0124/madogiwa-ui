@@ -17,30 +17,30 @@ const meta: Meta<CardProperties> = {
   argTypes: {
     content: {
       control: { type: "text" },
-      description: "HTML content for the card",
+      description: "The HTML content for the component",
     },
     floating: {
       control: { type: "boolean" },
-      description: "Add floating shadow effect",
+      description: "The floating shadow modifier for the component",
     },
     hasImage: {
       control: { type: "boolean" },
-      description: "Include an image in the card",
+      description: "The image inclusion for the component",
     },
     imageAlt: {
       control: { type: "text" },
-      description: "Alt text for the card image",
+      description: "The image alt text for the component",
     },
     hasActions: {
       control: { type: "boolean" },
-      description: "Include action buttons in the card",
+      description: "The action buttons inclusion for the component",
     },
     actionsJustify: {
       control: {
         type: "select",
       },
       options: ["flex-start", "center", "flex-end", "space-between"],
-      description: "Horizontal alignment of action buttons",
+      description: "The action buttons alignment for the component",
       if: { arg: "hasActions", truthy: true },
     },
   },
@@ -50,30 +50,41 @@ const meta: Meta<CardProperties> = {
         component: `
 ### Overview
 
-The Card component provides a flexible container for content with optional images, shadows, and various styling options. It follows a clean, minimal design approach suitable for displaying grouped information.
+The Card component provides a flexible container for content with optional images, shadows, and various styling options following a clean, minimal design approach.
 
 ### Usage
 
-Use cards to:
-- Display content in organized, digestible sections
-- Group related information together
-- Create product showcases or feature highlights
-- Present articles, blog posts, or media content
-- Build dashboard widgets or information panels
+Use cards to display content in organized, digestible sections and group related information together. Perfect for product showcases, article previews, profile cards, feature highlights, or dashboard widgets.
 
-**Common use cases:**
-- Product cards in e-commerce
-- Article previews in blogs
-- Profile cards for team members
-- Feature highlights on landing pages
-- Dashboard widgets and metrics
+### Example code
+
+\`\`\`html
+<div class="m-card">
+  <img class="m-card__image" src="image.jpg" alt="Card image">
+  <div class="m-card__content">
+    <h3>Card Title</h3>
+    <p>Card content goes here with relevant information.</p>
+  </div>
+  <div class="m-card__actions">
+    <button class="m-btn --default">Cancel</button>
+    <button class="m-btn --primary">Confirm</button>
+  </div>
+</div>
+
+<div class="m-card --floating">
+  <div class="m-card__content">
+    <h3>Floating Card</h3>
+    <p>This card has an elevated shadow effect.</p>
+  </div>
+</div>
+\`\`\`
 
 ### Elements
 
 | Name | Description |
-| ------- | ----------- |
-| .m-card__image | Card image element with responsive sizing |
-| .m-card__content | Content area with proper padding |
+| ---- | ----------- |
+| .m-card__image | Card image element with responsive sizing and proper aspect ratio |
+| .m-card__content | Main content area with proper padding for text and media |
 | .m-card__actions | Action area with flex layout for buttons and controls |
 
 ### Modifiers
@@ -96,9 +107,15 @@ Use cards to:
 | --card-actions-justify | flex-end | Horizontal alignment of action items |
 | --card-actions-border-top | initial | Top border for card actions area |
 
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
+
 ### Caution
+
 - Ensure sufficient contrast between text and background for readability
 - Use meaningful alt text for images to enhance accessibility
+- Consider loading performance when using multiple image cards
         `,
       },
     },

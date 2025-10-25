@@ -18,35 +18,35 @@ const meta: Meta<DialogProperties> = {
   argTypes: {
     title: {
       control: { type: "text" },
-      description: "Dialog title text",
+      description: "The title text for the component",
     },
     content: {
       control: { type: "text" },
-      description: "Dialog content text",
+      description: "The content text for the component",
     },
     backDropBlur: {
       control: { type: "boolean" },
-      description: "Enable backdrop blur effect",
+      description: "The backdrop blur modifier for the component",
     },
     transition: {
       control: { type: "boolean" },
-      description: "Enable dialog transition animations",
+      description: "The transition animation modifier for the component",
     },
     showCancel: {
       control: { type: "boolean" },
-      description: "Show cancel button",
+      description: "The cancel button visibility for the component",
     },
     showConfirm: {
       control: { type: "boolean" },
-      description: "Show confirm button",
+      description: "The confirm button visibility for the component",
     },
     cancelText: {
       control: { type: "text" },
-      description: "Cancel button text",
+      description: "The cancel button text for the component",
     },
     confirmText: {
       control: { type: "text" },
-      description: "Confirm button text",
+      description: "The confirm button text for the component",
     },
   },
   parameters: {
@@ -59,28 +59,40 @@ The Dialog component provides a modal dialog using the native HTML \`<dialog>\` 
 
 ### Usage
 
-Use dialogs for:
-- Confirmation prompts requiring user decision
-- Important notifications that need immediate attention
-- Form inputs that should be completed before continuing
-- Warning messages about destructive actions
-- Information displays that overlay the main content
+Use dialogs for confirmation prompts requiring user decision, important notifications that need immediate attention, form inputs that should be completed before continuing, or warning messages about destructive actions. Perfect for delete confirmations, settings panels, login forms, error messages, and multi-step workflows.
 
-**Common use cases:**
-- Delete confirmation dialogs
-- Settings and preference panels
-- Login and registration forms
-- Error messages and alerts
-- Image galleries and media viewers
-- Multi-step workflows
+### Example code
+
+\`\`\`html
+<dialog class="m-dialog --transition --backdrop-blur">
+  <div class="m-dialog__content">
+    <h2>Confirm Action</h2>
+    <p>Are you sure you want to delete this item? This action cannot be undone.</p>
+    <div class="m-dialog__actions">
+      <button class="m-button --secondary">Cancel</button>
+      <button class="m-button --danger">Delete</button>
+    </div>
+  </div>
+</dialog>
+\`\`\`
+
+
+**⚠️ JavaScript Required**
+
+opening and closing the dialog requires using the HTMLDialogElement API:
+
+
+\`\`\`js
+const dialog = document.querySelector('dialog.m-dialog');
+// To open the dialog
+dialog.showModal();
+// To close the dialog
+dialog.close();
+\`\`\`
 
 ### Elements
 
-| Name | Description |
-| ---- | ----------- |
-| .m-dialog__header | Dialog header section for titles and close buttons |
-| .m-dialog__content | Main content area for text, forms, or other elements |
-| .m-dialog__footer | Footer section for action buttons |
+This component has no child elements - it's a single-level component.
 
 ### Modifiers
 
@@ -98,18 +110,22 @@ Use dialogs for:
 | --dialog-padding | var(--spacing-3) | Internal padding of the dialog |
 | --dialog-border-radius | var(--radius-sm) | Border radius of the dialog |
 | --dialog-box-shadow | var(--shadow-lg) | Box shadow around the dialog |
-| --dialog-content-gap | var(--spacing-2) | Gap between header, content, and footer |
+| --dialog-content-gap | var(--spacing-2) | Gap between content elements |
 | --dialog-backdrop-bg-color | var(--color-overlay) | Backdrop overlay color |
 | --dialog-backdrop-blur | blur(4px) | Backdrop blur filter strength |
 | --dialog-transition-duration | 0.2s | Duration of transition animations |
 | --dialog-transition-transform-start | translateY(20%) | Initial transform for transition |
 
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
+
 ### Caution
 
-- **Use [HTMLDialogElement API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement) to open/close dialogs.**
+- Use HTMLDialogElement API to open/close dialogs properly
 - Always provide a way to close the dialog (close button or cancel action)
 - Consider the user's workflow when using dialogs
-- Avoid nested dialogs as they can confuse user
+- Avoid nested dialogs as they can confuse users
 - Test keyboard navigation and screen reader compatibility
         `,
       },

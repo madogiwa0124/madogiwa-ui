@@ -59,6 +59,7 @@ Show a simple code example of basic usage using a code block.
 \`\`\`
 
 For components that require JavaScript, a simple JS code example should also be provided.
+**Only include JavaScript code examples when absolutely necessary.**
 
 \`\`\`js
 const example = document.querySelector('.m-example');
@@ -68,6 +69,8 @@ const example = document.querySelector('.m-example');
 ### Elements
 
 Describe **all elements** defined in this component.
+
+**Do not include the top-level selector representing the component (e.g., \`.m-example\`).**
 
 | Name | Description |
 | ---- | ----------- |
@@ -134,7 +137,7 @@ export const Example: Story = {
     // Interaction tests using canvasElement
     // Example: Check if the component renders correctly
     const canvas = canvasElement as HTMLElement;
-    expect(canvas).not.toBeNull();
+    await expect(canvas).not.toBeNull();
   },
 };
 ```

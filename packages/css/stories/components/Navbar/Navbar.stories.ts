@@ -8,28 +8,28 @@ const meta: Meta<NavbarStoryProperties> = {
   argTypes: {
     title: {
       control: { type: "text" },
-      description: "Title/brand text for the navbar",
+      description: "The title/brand text for the component",
     },
     items: {
       control: { type: "object" },
-      description: "Navigation items array with text, href, and optional end positioning",
+      description: "The navigation items array for the component",
     },
     buttons: {
       control: { type: "object" },
-      description: "Action buttons array with variant support (primary/secondary)",
+      description: "The action buttons array for the component",
     },
     transition: {
       control: { type: "boolean" },
-      description: "Enable smooth transition effects for hamburger menu",
+      description: "The transition animation modifier for the component",
     },
     menuVariant: {
       control: { type: "select" },
       options: ["side", "float", "slide-left"],
-      description: "Hamburger menu display style: 'side' (drawer) or 'float' (dropdown)",
+      description: "The hamburger menu variant for the component",
     },
     showMenu: {
       control: { type: "boolean" },
-      description: "(For testing) Force show menu state regardless of responsive behavior",
+      description: "The forced menu visibility for the component",
     },
   },
   parameters: {
@@ -43,16 +43,38 @@ The Navbar component provides responsive navigation with mobile-first design. It
 
 ### Usage
 
-Use the navbar for:
-- Primary site navigation
-- Brand/logo display
-- Action buttons (login, signup, etc.)
-- Responsive mobile menu patterns
-- Multi-level navigation structures
+Use the navbar for primary site navigation, brand/logo display, action buttons, responsive mobile menu patterns, and multi-level navigation structures. Perfect for creating responsive navigation experiences.
 
-**⚠️ Need JavaScript**
+### Example code
 
-The opening and closing of the hamburger menu on mobile must be controlled via JavaScript by the value of \`.m-navbar__hamburger-menu[aria-expanded]\`.
+\`\`\`html
+<!-- Basic navbar -->
+<nav class="m-navbar">
+  <a href="/" class="m-navbar__title">Brand</a>
+  <div class="m-navbar__items">
+    <a href="/about" class="m-navbar__item">About</a>
+    <a href="/services" class="m-navbar__item">Services</a>
+    <a href="/contact" class="m-navbar__item --end">Contact</a>
+  </div>
+</nav>
+
+<!-- Responsive navbar with hamburger menu -->
+<nav class="m-navbar --transition --mobile-side-menu">
+  <a href="/" class="m-navbar__title">Brand</a>
+  <div class="m-navbar__hamburger">
+    <button class="m-navbar__hamburger-menu" aria-expanded="false"></button>
+  </div>
+  <div class="m-navbar__items">
+    <a href="/about" class="m-navbar__item">About</a>
+    <a href="/services" class="m-navbar__item">Services</a>
+    <button class="m-navbar__item m-button --primary">Sign Up</button>
+  </div>
+</nav>
+\`\`\`
+
+**⚠️ JavaScript Required**
+
+Hamburger menu requires JavaScript for \`aria-expanded\` control:
 
 \`\`\`js
 const hamburgerMenu = document.querySelector(".m-navbar__hamburger-menu");
@@ -111,7 +133,7 @@ hamburgerMenu.addEventListener("click", () => {
 | --navbar-backdrop-zindex | calc(var(--navbar-base-zindex) + 1) | Z-index for backdrop |
 | --navbar-menu-zindex | calc(var(--navbar-backdrop-zindex) + 1) | Z-index for menu items |
 | --navbar-hamburger-menu-zindex | calc(var(--navbar-menu-zindex) + 1) | Z-index for hamburger menu button |
-| --navbar-hamburger-menu-slidein-transition | 0.1s ease-in-out | Slide-in animation duration |
+| --navbar-hamburger-menu-slidein-transition | 0.25s ease-in-out | Slide-in animation duration |
 | --navbar-hamburger-menu-hover-item-transition | 0.3s ease-in-out | Item hover transition |
 | --navbar-hamburger-float-menu-position-right | var(--spacing-2) | Right position for float menu |
 | --navbar-hamburger-side-menu-close-x-position | var(--spacing-3) | Horizontal position of close button in side menu |
@@ -121,10 +143,21 @@ hamburgerMenu.addEventListener("click", () => {
 | --navbar-hamburger-side-menu-backdrop-color | var(--color-overlay) | Backdrop color for side menu |
 | --navbar-hamburger-side-menu-backdrop-filter | blur(2px) | Backdrop filter effect |
 
+### Data Attributes
+
+| Target | Attribute | Values | Description |
+| ------ | --------- | ------ | ----------- |
+| .m-navbar__hamburger-menu | aria-expanded | "true", "false" | Controls hamburger menu open/close state |
+
 ### Caution
-- Ensure sufficient contrast between text and background for readability
-- Use meaningful alt text for icons to enhance accessibility
+
+- JavaScript is required for hamburger menu functionality
+- Ensure sufficient color contrast for accessibility
+- Test keyboard navigation and screen reader compatibility
+- Consider motion preferences when using transition animations
+- Optimize close button position for different screen sizes
 - **Close Button Position**: The close button position in side menus can be optimized by dynamically adjusting \`--navbar-hamburger-side-menu-close-x-position\`, \`--navbar-hamburger-side-menu-close-y-position\` based on menu width using JavaScript for better user experience
+
         `,
       },
     },

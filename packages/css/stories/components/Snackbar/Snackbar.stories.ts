@@ -8,21 +8,27 @@ const meta: Meta<SnackbarProperties> = {
   argTypes: {
     message: {
       control: "text",
-      description: "The message content displayed in the snackbar.",
+      description: "The message content for the component",
     },
     position: {
       control: {
         type: "select",
       },
       options: ["default", "right-top", "right-bottom", "left-top"],
-      description: "Position of the snackbar on the screen.",
+      description: "The position modifier for the component",
     },
     transition: {
       control: { type: "boolean" },
-      description: "Enable or disable the transition effect.",
+      description: "The transition animation modifier for the component",
     },
-    actions: { control: "object" },
-    id: { control: "text" },
+    actions: {
+      control: "object",
+      description: "The actions array for the component",
+    },
+    id: {
+      control: "text",
+      description: "The ID attribute for the component",
+    },
   },
   parameters: {
     docs: {
@@ -34,15 +40,34 @@ The Snackbar component provides temporary notification messages that appear at t
 
 ### Usage
 
-Use Snackbars for brief confirmations, error messages, and status updates that don't require immediate user action. They automatically dismiss or can be manually closed by users. Ideal for form submission feedback, connection status, and non-critical notifications.
+Use Snackbars for brief confirmations, error messages, and status updates that don't require immediate user action. Ideal for form submission feedback, connection status, and non-critical notifications.
+
+### Example code
+
+\`\`\`html
+<!-- Basic snackbar -->
+<div class="m-snackbar" popover>
+  <div class="m-snackbar__body">
+    <div class="m-snackbar__content">Message sent successfully!</div>
+    <div class="m-snackbar__actions">
+      <button popovertarget="snackbar-1" popovertargetaction="hide">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Positioned snackbar with transition -->
+<div class="m-snackbar --right-top --transition" popover>
+  <div class="m-snackbar__body">
+    <div class="m-snackbar__content">Changes saved automatically</div>
+  </div>
+</div>
+\`\`\`
 
 ### Elements
 
 | Name | Description |
 | ---- | ----------- |
-| .m-snackbar | The main container element with fixed positioning |
 | .m-snackbar__body | Content wrapper with flex layout for message and actions |
-| .m-snackbar__content | Container for the notification message |
 | .m-snackbar__actions | Container for action buttons (OK, Close, etc.) |
 
 ### Modifiers
@@ -56,27 +81,30 @@ Use Snackbars for brief confirmations, error messages, and status updates that d
 
 ### CSS Variables
 
-| Target | Name | Default | Description |
-| ------ | ---- | ------- | ----------- |
-| .m-snackbar | --snackbar-position-x | var(--spacing-4) | Horizontal distance from screen edge |
-| .m-snackbar | --snackbar-position-y | var(--spacing-4) | Vertical distance from screen edge |
-| .m-snackbar | --snackbar-zindex | var(--zindex-snackbar) | Z-index for proper layering |
-| .m-snackbar | --snackbar-margin-for-small-screens | var(--spacing-2) | Margin on mobile devices |
-| .m-snackbar | --snackbar-bg-color | var(--color-primary) | Background color of the snackbar |
-| .m-snackbar | --snackbar-text-color | var(--color-text-light) | Text color for message content |
-| .m-snackbar | --snackbar-border-radius | var(--radius-sm) | Border radius for rounded corners |
-| .m-snackbar | --snackbar-box-shadow | var(--shadow-md) | Drop shadow for elevation |
-| .m-snackbar | --snackbar-inner-spacing | var(--spacing-3) | Internal padding and gaps |
-| .m-snackbar | --snackbar-action-spacing | var(--spacing-2) | Spacing between action buttons |
-| .m-snackbar | --snackbar-transition-duration | 0.2s | Animation timing for transitions |
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| --snackbar-position-x | var(--spacing-4) | Horizontal distance from screen edge |
+| --snackbar-position-y | var(--spacing-4) | Vertical distance from screen edge |
+| --snackbar-zindex | var(--zindex-snackbar) | Z-index for proper layering |
+| --snackbar-margin-for-small-screens | var(--spacing-2) | Margin on mobile devices |
+| --snackbar-bg-color | var(--color-primary) | Background color of the snackbar |
+| --snackbar-text-color | var(--color-text-light) | Text color for message content |
+| --snackbar-border-radius | var(--radius-sm) | Border radius for rounded corners |
+| --snackbar-box-shadow | var(--shadow-md) | Drop shadow for elevation |
+| --snackbar-inner-spacing | var(--spacing-3) | Internal padding and gaps |
+| --snackbar-action-spacing | var(--spacing-2) | Spacing between action buttons |
+| --snackbar-transition-duration | 0.2s | Animation timing for transitions |
+
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
 
 ### Caution
 
 - Requires modern browser support for Popover API
-- Z-index variables must be properly configured for layering
-- Mobile responsiveness handled through CSS media queries
-- Starting-style animations require recent browser versions
-- Position modifiers affect responsive behavior on small screens
+- Use lpopoverm attribute for proper accessibility behavior
+- Test across different screen sizes for responsive positioning
+- Consider motion preferences when using transition animations
         `,
       },
     },

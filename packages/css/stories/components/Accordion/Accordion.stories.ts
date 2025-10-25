@@ -13,19 +13,25 @@ const meta: Meta<AccordionProperties> = {
   title: "Components/Accordion",
   tags: ["autodocs"],
   argTypes: {
-    title: { control: "text" },
-    content: { control: "text" },
+    title: {
+      control: "text",
+      description: "The title text for the component",
+    },
+    content: {
+      control: "text",
+      description: "The content text for the component",
+    },
     transition: {
       control: { type: "boolean" },
-      description: "Enable smooth transitions for accordion expansion",
+      description: "The transition animation modifier for the component",
     },
     outline: {
       control: { type: "boolean" },
-      description: "Add border and padding styling",
+      description: "The outline style modifier for the component",
     },
     open: {
       control: { type: "boolean" },
-      description: "Initial open state of the accordion",
+      description: "The initial open state for the component",
     },
   },
   parameters: {
@@ -34,11 +40,36 @@ const meta: Meta<AccordionProperties> = {
         component: `
 ### Overview
 
-The Accordion component provides expandable/collapsible content sections using the native HTML \`<details>\` and \`<summary>\` elements, ensuring optimal accessibility and semantic structure.
+The Accordion component provides expandable/collapsible content sections using native HTML elements for optimal accessibility and semantic structure.
 
 ### Usage
 
-Use accordions to organize content into expandable sections, helping users focus on specific information while maintaining a clean interface. Perfect for FAQs, documentation sections, or any content that benefits from progressive disclosure.
+Use accordions to organize content into expandable sections that help users focus on specific information while maintaining a clean interface. Ideal for FAQs, documentation sections, or any content that benefits from progressive disclosure. They work well when you need to present multiple topics in a compact space.
+
+### Example code
+
+\`\`\`html
+<details class="m-accordion --transition">
+  <summary class="m-accordion__summary">What is Madogiwa UI?</summary>
+  <div class="m-accordion__content">
+    <p>Madogiwa UI is a modern CSS framework leveraging cutting-edge CSS features.</p>
+  </div>
+</details>
+
+<details class="m-accordion --outline --transition">
+  <summary class="m-accordion__summary">How do I get started?</summary>
+  <div class="m-accordion__content">
+    <p>Install the package and import the CSS in your project.</p>
+  </div>
+</details>
+\`\`\`
+
+### Elements
+
+| Name | Description |
+| ---- | ----------- |
+| .m-accordion__summary | Clickable header element that toggles accordion state |
+| .m-accordion__content | Expandable content area that contains accordion body |
 
 ### Modifiers
 
@@ -51,25 +82,39 @@ Use accordions to organize content into expandable sections, helping users focus
 
 | Name | Default | Description |
 | ---- | ------- | ----------- |
-| --accordion-summary-padding | var(--spacing-3) 0 | Padding for the accordion summary/header |
+| --accordion-summary-padding | var(--spacing-3) 0 var(--spacing-3) 0 | Padding for the accordion summary/header |
 | --accordion-summary-font-weight | var(--font-weight-bold) | Font weight of the summary text |
 | --accordion-summary-icon-gap | var(--spacing-2) | Gap between icon and summary text |
 | --accordion-summary-icon-size | 0.6rem | Size of the expand/collapse icon |
 | --accordion-summary-icon-color | var(--color-text) | Color of the expand/collapse icon |
-| --accordion-summary-icon-clip-path | polygon(0 0, 100% 50%, 0 100%) | Shape of the expand/collapse icon (triangle) |
-| --accordion-summary-icon-open-transform | rotate(90deg) | Transform applied to icon when accordion is open |
+| --accordion-summary-icon-clip-path | polygon(0 0, 100% 50%, 0 100%) | Shape of the expand/collapse icon |
+| --accordion-summary-icon-open-transform | rotate(90deg) | Transform applied to icon when open |
 | --accordion-content-padding | 0 var(--spacing-3) var(--spacing-3) var(--spacing-3) | Padding for the accordion content area |
 | --accordion-outline-border | 1px solid var(--color-border) | Border style for outline variant |
 | --accordion-outline-border-radius | var(--radius-md) | Border radius for outline variant |
-| --accordion-outline-padding | 0 var(--spacing-2) | Padding for outline variant |
+| --accordion-outline-padding | 0 var(--spacing-2) 0 var(--spacing-2) | Padding for outline variant |
 | --accordion-transition-time | 0.2s | Duration of expand/collapse animations |
 
-### Accessibility
+### Data Attributes
 
-- Uses native \`<details>\` and \`<summary>\` elements for optimal screen reader support
-- Includes proper ARIA relationships between summary and content
+This component does not use data attributes for styling or behavior.
+
+### Caution
+
+- Use semantic HTML structure with \`<details>\` and \`<summary>\` elements
+- Consider motion preferences when using the transition modifier
+- Ensure accordion content is accessible when expanded
+
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
+
+### Caution
+
+- Uses native details and summary elements for optimal screen reader support
 - Keyboard navigation is handled natively by the browser
-- Focus management follows standard HTML behavior
+- Focus management follows standard HTML behavior without additional JavaScript
+- Consider motion preferences when using the transition modifier
         `,
       },
     },

@@ -18,38 +18,38 @@ const meta: Meta<BadgeProperties> = {
   argTypes: {
     label: {
       control: { type: "text" },
-      description: "The text content of the badge",
+      description: "The text content for the component",
     },
     variant: {
       control: { type: "select" },
       options: ["default", "primary", "secondary", "tertiary", "danger", "warning"],
-      description: "Visual style variant of the badge",
+      description: "The style variant for the component",
     },
     size: {
       control: { type: "select" },
       options: ["default", "small"],
-      description: "Size of the badge",
+      description: "The size variant for the component",
     },
     outline: {
       control: { type: "boolean" },
-      description: "Use outline style instead of filled",
+      description: "The outline style modifier for the component",
     },
     rounded: {
       control: { type: "boolean" },
-      description: "Apply fully rounded border radius",
+      description: "The rounded corners modifier for the component",
     },
     transition: {
       control: { type: "boolean" },
-      description: "Enable hover/focus transitions",
+      description: "The transition animation modifier for the component",
     },
     disabled: {
       control: { type: "boolean" },
-      description: "Disable interactive badge (for buttons/links)",
+      description: "The disabled state for the component",
     },
     element: {
       control: { type: "select" },
       options: ["div", "button", "a"],
-      description: "HTML element type for the badge",
+      description: "The HTML element type for the component",
     },
   },
   parameters: {
@@ -58,23 +58,34 @@ const meta: Meta<BadgeProperties> = {
         component: `
 ### Overview
 
-The Badge component displays small pieces of information, status indicators, or labels. It supports various visual styles, sizes, and can be interactive when used as buttons or links.
+The Badge component displays small pieces of information, status indicators, or labels with various visual styles and interactive capabilities.
 
 ### Usage
 
-Use badges to:
-- Display status information (online, offline, new, etc.)
-- Show counts or quantities (notifications, items)
-- Label or categorize content
-- Create interactive tags or filters
-- Highlight important information
+Use badges to display status information, show counts or quantities, label or categorize content, create interactive tags or filters, or highlight important information. Perfect for notification counters, status indicators, category tags, interactive filters, and feature highlights.
 
-**Common use cases:**
-- Notification counters
-- Status indicators
-- Category tags
-- Interactive filters
-- Feature highlights
+### Example code
+
+\`\`\`html
+<!-- Basic usage -->
+<div class="m-badge">Default Badge</div>
+<div class="m-badge --primary">Primary Badge</div>
+<div class="m-badge --secondary --outline">Secondary Outline</div>
+
+<!-- Small rounded badge for counts -->
+<div class="m-badge --danger --small --rounded">3</div>
+
+<!-- Interactive badges -->
+<button class="m-badge --primary --transition">Interactive Badge</button>
+<a href="#" class="m-badge --tertiary --transition">Link Badge</a>
+
+<!-- Disabled state -->
+<button class="m-badge --primary" disabled>Disabled Badge</button>
+\`\`\`
+
+### Elements
+
+This component has no child elements - it's a single-level component.
 
 ### Modifiers
 
@@ -95,7 +106,7 @@ Use badges to:
 | Name | Default | Description |
 | ---- | ------- | ----------- |
 | --badge-padding | var(--spacing-1) var(--spacing-2) | Internal padding |
-| --badge-item-gap | var(--spacing-2) | Gap between badge elements (icon + text) |
+| --badge-item-gap | var(--spacing-2) | Gap between badge elements |
 | --badge-border-color | var(--color-border) | Default border color |
 | --badge-border | 1px solid var(--badge-border-color) | Border style |
 | --badge-border-radius | var(--radius-sm) | Border radius |
@@ -107,15 +118,29 @@ Use badges to:
 | --badge-small-font-size | var(--text-xs) | Font size for small variant |
 | --badge-primary-color | var(--color-primary) | Primary variant background |
 | --badge-primary-text-color | var(--color-text-light) | Primary variant text color |
+| --badge-primary-border-color | var(--badge-primary-color) | Primary variant border color |
 | --badge-secondary-color | var(--color-secondary) | Secondary variant background |
+| --badge-secondary-text-color | var(--color-text-light) | Secondary variant text color |
+| --badge-secondary-border-color | var(--badge-secondary-color) | Secondary variant border color |
 | --badge-tertiary-color | var(--color-tertiary) | Tertiary variant background |
+| --badge-tertiary-text-color | var(--color-text-light) | Tertiary variant text color |
+| --badge-tertiary-border-color | var(--badge-tertiary-color) | Tertiary variant border color |
 | --badge-danger-color | var(--color-danger) | Danger variant background |
+| --badge-danger-text-color | var(--color-text-light) | Danger variant text color |
+| --badge-danger-border-color | var(--badge-danger-color) | Danger variant border color |
 | --badge-warning-color | var(--color-warning) | Warning variant background |
+| --badge-warning-text-color | var(--color-text-dark) | Warning variant text color |
+| --badge-warning-border-color | var(--badge-warning-color) | Warning variant border color |
+
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
 
 ### Caution
 
-- Ensure sufficient color contrast for readability.
-- Use interactive badges (buttons/links) sparingly to avoid UI clutter.
+- Ensure sufficient color contrast for readability
+- Use interactive badges (buttons/links) sparingly to avoid UI clutter
+- Consider motion preferences when using the transition modifier
         `,
       },
     },

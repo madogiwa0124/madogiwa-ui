@@ -8,19 +8,19 @@ const meta: Meta<RadioProperties & { text: string }> = {
   argTypes: {
     name: {
       control: "text",
-      description: "The name attribute for grouping radio buttons",
+      description: "The name attribute for the component",
     },
     value: {
       control: "text",
-      description: "The value attribute of the radio button",
+      description: "The value attribute for the component",
     },
     checked: {
       control: "boolean",
-      description: "Sets the radio button as checked",
+      description: "The checked state for the component",
     },
     disabled: {
       control: "boolean",
-      description: "Disables the radio button",
+      description: "The disabled state for the component",
     },
   },
   parameters: {
@@ -35,27 +35,60 @@ The Radio component provides a circular selection input for exclusive choices wi
 
 Use Radio components for mutually exclusive options, preference selection, and form inputs where only one choice is allowed. Group related radio buttons with the same name attribute for proper behavior.
 
+### Example code
+
+\`\`\`html
+<!-- Basic radio buttons group -->
+<div>
+  <label>
+    <input type="radio" class="m-radio" name="size" value="small" checked>
+    Small
+  </label>
+  <label>
+    <input type="radio" class="m-radio" name="size" value="medium">
+    Medium
+  </label>
+  <label>
+    <input type="radio" class="m-radio" name="size" value="large">
+    Large
+  </label>
+</div>
+
+<!-- Disabled radio button -->
+<label>
+  <input type="radio" class="m-radio" name="color" value="red" disabled>
+  Red (Not available)
+</label>
+\`\`\`
+
+### Elements
+
+This component has no child elements - it's a single-level component.
+
 ### Modifiers
 
-No specific modifiers are defined for this component.
+This component has no modifiers.
 
 ### CSS Variables
 
-| Target | Name | Default | Description |
-| ------ | ---- | ------- | ----------- |
-| .m-radio | --radio-size | 1.2em | Size of the radio button |
-| .m-radio | --radio-border-color | var(--color-dark) | Border color of the radio button |
-| .m-radio | --radio-bg-color | var(--color-light) | Background color when unchecked |
-| .m-radio | --radio-lighter-brightness | 150% | Brightness for hover/focus states |
-| .m-radio | --radio-disabled-opacity | 0.65 | Opacity when disabled |
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| --radio-size | 1.2em | Size of the radio button |
+| --radio-border-color | var(--color-dark) | Border color of the radio button |
+| --radio-bg-color | var(--color-light) | Background color when unchecked |
+| --radio-lighter-brightness | 150% | Brightness for hover/focus states |
+| --radio-disabled-opacity | 0.65 | Opacity when disabled |
+
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
 
 ### Caution
 
-- Radio buttons with the same name attribute form an exclusive group
-- Proper labeling is essential for accessibility
-- The checked state uses ::after pseudo-element for the indicator
-- Disabled state prevents interaction while maintaining visual feedback
-- User-select property may not be supported in all browsers
+- Radio buttons with the same \`name\` attribute form an exclusive group
+- Always provide labels for accessibility compliance
+- Test keyboard navigation and screen reader compatibility
+- Ensure sufficient contrast for the checked indicator
         `,
       },
     },

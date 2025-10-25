@@ -8,31 +8,31 @@ const meta: Meta<SelectProperties> = {
   argTypes: {
     options: {
       control: "object",
-      description: "Array of options for the select dropdown",
+      description: "The options array for the component",
     },
     optgroups: {
       control: "object",
-      description: "Array of option groups for the select dropdown",
+      description: "The option groups array for the component",
     },
     separators: {
       control: "object",
-      description: "Array of separators for the select dropdown",
+      description: "The separators array for the component",
     },
     value: {
       control: "text",
-      description: "Current value of the select dropdown",
+      description: "The current value for the component",
     },
     disabled: {
       control: "boolean",
-      description: "Disables the select dropdown",
+      description: "The disabled state for the component",
     },
     required: {
       control: "boolean",
-      description: "Marks the select dropdown as required",
+      description: "The required attribute for the component",
     },
     multiple: {
       control: "boolean",
-      description: "Allows multiple selections in the select dropdown",
+      description: "The multiple selection modifier for the component",
     },
     onChange: { action: "changed" },
   },
@@ -48,6 +48,38 @@ The Select component provides a customizable dropdown selection interface with s
 
 Use Select components for choosing from a list of options, category selection, and form inputs requiring single or multiple selections. The component supports option grouping and visual separators for better organization.
 
+### Example code
+
+\`\`\`html
+<!-- Basic select -->
+<select class="m-select">
+  <option value="option1">Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3">Option 3</option>
+</select>
+
+<!-- Select with option groups -->
+<select class="m-select">
+  <optgroup label="Group 1">
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+  </optgroup>
+  <optgroup label="Group 2">
+    <option value="option3">Option 3</option>
+    <option value="option4">Option 4</option>
+  </optgroup>
+</select>
+
+<!-- Disabled select -->
+<select class="m-select" disabled>
+  <option value="option1">Option 1</option>
+</select>
+\`\`\`
+
+### Elements
+
+This component has no child elements - it's a single-level component.
+
 ### Modifiers
 
 | Target | Name | Description |
@@ -56,24 +88,29 @@ Use Select components for choosing from a list of options, category selection, a
 
 ### CSS Variables
 
-| Target | Name | Default | Description |
-| ------ | ---- | ------- | ----------- |
-| .m-select | --select-padding | var(--spacing-3) | Internal padding for the select element |
-| .m-select | --select-checkmark-gap | var(--spacing-4) | Gap for checkmark indicator |
-| .m-select | --select-bg-color | var(--color-bg-light) | Background color of the select |
-| .m-select | --select-border-color | var(--color-border) | Default border color |
-| .m-select | --select-border | 2px solid var(--select-border-color) | Complete border specification |
-| .m-select | --select-border-radius | var(--radius-sm) | Border radius of the select |
-| .m-select | --select-invalid-border-color | var(--color-danger) | Border color for invalid state |
-| .m-select | --select-hover-opacity | 0.8 | Opacity on hover state |
-| .m-select | --select-disabled-opacity | 0.65 | Opacity when disabled |
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| --select-padding | var(--spacing-3) | Internal padding for the select element |
+| --select-checkmark-gap | var(--spacing-4) | Gap for checkmark indicator |
+| --select-bg-color | var(--color-bg-light) | Background color of the select |
+| --select-border-color | var(--color-border) | Default border color |
+| --select-hover-border-color | var(--color-border) | Border color on hover |
+| --select-border | 2px solid var(--select-border-color) | Complete border specification |
+| --select-border-radius | var(--radius-sm) | Border radius of the select |
+| --select-invalid-border-color | var(--color-danger) | Border color for invalid state |
+| --select-hover-opacity | 0.8 | Opacity on hover state |
+| --select-disabled-opacity | 0.65 | Opacity when disabled |
+
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
 
 ### Caution
 
-- Modern customizable select features require Chrome support
-- Multiple select styling not supported
-- Accessibility requires proper labeling
-- Custom styling may not work in all browsers
+- Modern customizable select features require Chrome support (experimental)
+- Always provide labels for accessibility compliance
+- Test across different browsers for consistent behavior
+- Consider fallback styling for unsupported browsers
         `,
       },
     },
