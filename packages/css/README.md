@@ -17,7 +17,7 @@ yarn add @madogiwa-ui/css
 ## 📕 Documentation
 
 * [Storybook](https://madogiwa0124.github.io/madogiwa-ui/storybook/css/)
-  - [Markdown](https://github.com/madogiwa0124/madogiwa-ui/blob/main/packages/css/dist/components-ai-context.md)
+  - [Markdown](https://github.com/madogiwa0124/madogiwa-ui/blob/main/packages/css/dist/madogiwa-ui-components-docs.md)
 
 ## 🚀 Quick Start
 

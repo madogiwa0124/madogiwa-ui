@@ -20,7 +20,7 @@ export default defineConfig({
       outputRootCSSVariables: true,
     }),
     outputStoryDocumentPlugin({
-      outputPath: "dist/components-ai-context.md",
+      outputPath: "dist/madogiwa-ui-components-docs.md",
       storiesPattern: "stories/**/*.stories.@(js|ts)",
       frontMatter: {
         title: "Madogiwa UI Components Documentation",
