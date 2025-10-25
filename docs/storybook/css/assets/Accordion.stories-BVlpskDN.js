@@ -1,11 +1,36 @@
-const{expect:i}=__STORYBOOK_MODULE_TEST__,m={title:"Components/Accordion",tags:["autodocs"],argTypes:{title:{control:"text"},content:{control:"text"},transition:{control:{type:"boolean"},description:"Enable smooth transitions for accordion expansion"},outline:{control:{type:"boolean"},description:"Add border and padding styling"},open:{control:{type:"boolean"},description:"Initial open state of the accordion"}},parameters:{docs:{description:{component:`
+const{expect:i}=__STORYBOOK_MODULE_TEST__,m={title:"Components/Accordion",tags:["autodocs"],argTypes:{title:{control:"text",description:"The title text for the component"},content:{control:"text",description:"The content text for the component"},transition:{control:{type:"boolean"},description:"The transition animation modifier for the component"},outline:{control:{type:"boolean"},description:"The outline style modifier for the component"},open:{control:{type:"boolean"},description:"The initial open state for the component"}},parameters:{docs:{description:{component:`
 ### Overview
 
-The Accordion component provides expandable/collapsible content sections using the native HTML \`<details>\` and \`<summary>\` elements, ensuring optimal accessibility and semantic structure.
+The Accordion component provides expandable/collapsible content sections using native HTML elements for optimal accessibility and semantic structure.
 
 ### Usage
 
-Use accordions to organize content into expandable sections, helping users focus on specific information while maintaining a clean interface. Perfect for FAQs, documentation sections, or any content that benefits from progressive disclosure.
+Use accordions to organize content into expandable sections that help users focus on specific information while maintaining a clean interface. Ideal for FAQs, documentation sections, or any content that benefits from progressive disclosure. They work well when you need to present multiple topics in a compact space.
+
+### Example code
+
+\`\`\`html
+<details class="m-accordion --transition">
+  <summary class="m-accordion__summary">What is Madogiwa UI?</summary>
+  <div class="m-accordion__content">
+    <p>Madogiwa UI is a modern CSS framework leveraging cutting-edge CSS features.</p>
+  </div>
+</details>
+
+<details class="m-accordion --outline --transition">
+  <summary class="m-accordion__summary">How do I get started?</summary>
+  <div class="m-accordion__content">
+    <p>Install the package and import the CSS in your project.</p>
+  </div>
+</details>
+\`\`\`
+
+### Elements
+
+| Name | Description |
+| ---- | ----------- |
+| .m-accordion__summary | Clickable header element that toggles accordion state |
+| .m-accordion__content | Expandable content area that contains accordion body |
 
 ### Modifiers
 
@@ -18,61 +43,75 @@ Use accordions to organize content into expandable sections, helping users focus
 
 | Name | Default | Description |
 | ---- | ------- | ----------- |
-| --accordion-summary-padding | var(--spacing-3) 0 | Padding for the accordion summary/header |
+| --accordion-summary-padding | var(--spacing-3) 0 var(--spacing-3) 0 | Padding for the accordion summary/header |
 | --accordion-summary-font-weight | var(--font-weight-bold) | Font weight of the summary text |
 | --accordion-summary-icon-gap | var(--spacing-2) | Gap between icon and summary text |
 | --accordion-summary-icon-size | 0.6rem | Size of the expand/collapse icon |
 | --accordion-summary-icon-color | var(--color-text) | Color of the expand/collapse icon |
-| --accordion-summary-icon-clip-path | polygon(0 0, 100% 50%, 0 100%) | Shape of the expand/collapse icon (triangle) |
-| --accordion-summary-icon-open-transform | rotate(90deg) | Transform applied to icon when accordion is open |
+| --accordion-summary-icon-clip-path | polygon(0 0, 100% 50%, 0 100%) | Shape of the expand/collapse icon |
+| --accordion-summary-icon-open-transform | rotate(90deg) | Transform applied to icon when open |
 | --accordion-content-padding | 0 var(--spacing-3) var(--spacing-3) var(--spacing-3) | Padding for the accordion content area |
 | --accordion-outline-border | 1px solid var(--color-border) | Border style for outline variant |
 | --accordion-outline-border-radius | var(--radius-md) | Border radius for outline variant |
-| --accordion-outline-padding | 0 var(--spacing-2) | Padding for outline variant |
+| --accordion-outline-padding | 0 var(--spacing-2) 0 var(--spacing-2) | Padding for outline variant |
 | --accordion-transition-time | 0.2s | Duration of expand/collapse animations |
 
-### Accessibility
+### Data Attributes
 
-- Uses native \`<details>\` and \`<summary>\` elements for optimal screen reader support
-- Includes proper ARIA relationships between summary and content
+This component does not use data attributes for styling or behavior.
+
+### Caution
+
+- Use semantic HTML structure with \`<details>\` and \`<summary>\` elements
+- Consider motion preferences when using the transition modifier
+- Ensure accordion content is accessible when expanded
+
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
+
+### Caution
+
+- Uses native details and summary elements for optimal screen reader support
 - Keyboard navigation is handled natively by the browser
-- Focus management follows standard HTML behavior
-        `}}}},c={render:e=>{const t=document.createElement("div"),n=document.createElement("details");n.classList.add("m-accordion"),e.transition&&n.classList.add("--transition"),e.outline&&n.classList.add("--outline"),e.open&&(n.open=!0);const o=e.title,a=e.content;return n.innerHTML=`
+- Focus management follows standard HTML behavior without additional JavaScript
+- Consider motion preferences when using the transition modifier
+        `}}}},c={render:t=>{const e=document.createElement("div"),n=document.createElement("details");n.classList.add("m-accordion"),t.transition&&n.classList.add("--transition"),t.outline&&n.classList.add("--outline"),t.open&&(n.open=!0);const o=t.title,a=t.content;return n.innerHTML=`
       <summary class="m-accordion__summary" id="summary" aria-controls="content">
         ${o}
       </summary>
       <div class="m-accordion__content" id="content" aria-labelledby="summary">
         <p>${a}</p>
       </div>
-    `,t.append(n),t},args:{title:"What is Madogiwa UI?",content:"Madogiwa UI is a modern CSS framework leveraging cutting-edge CSS features like @property, CSS Nesting, and logical properties.",transition:!1,outline:!1,open:!1},play:async({canvasElement:e})=>{const t=e.querySelector(".m-accordion"),n=t.querySelector(".m-accordion__summary"),o=t.querySelector(".m-accordion__content");await i(t.open).toBe(!1),await i(o).not.toBeVisible(),n.click(),await i(t.open).toBe(!0),await new Promise(a=>{setTimeout(a,300)}),await i(o).toBeVisible(),n.click(),await i(t.open).toBe(!1)}},r={render:e=>{const t=document.createElement("div"),n=document.createElement("details");n.classList.add("m-accordion"),e.transition&&n.classList.add("--transition"),e.outline&&n.classList.add("--outline"),e.open&&(n.open=!0);const o=e.title,a=e.content;return n.innerHTML=`
+    `,e.append(n),e},args:{title:"What is Madogiwa UI?",content:"Madogiwa UI is a modern CSS framework leveraging cutting-edge CSS features like @property, CSS Nesting, and logical properties.",transition:!1,outline:!1,open:!1},play:async({canvasElement:t})=>{const e=t.querySelector(".m-accordion"),n=e.querySelector(".m-accordion__summary"),o=e.querySelector(".m-accordion__content");await i(e.open).toBe(!1),await i(o).not.toBeVisible(),n.click(),await i(e.open).toBe(!0),await new Promise(a=>{setTimeout(a,300)}),await i(o).toBeVisible(),n.click(),await i(e.open).toBe(!1)}},r={render:t=>{const e=document.createElement("div"),n=document.createElement("details");n.classList.add("m-accordion"),t.transition&&n.classList.add("--transition"),t.outline&&n.classList.add("--outline"),t.open&&(n.open=!0);const o=t.title,a=t.content;return n.innerHTML=`
       <summary class="m-accordion__summary">
         ${o}
       </summary>
       <div class="m-accordion__content">
         <p>${a}</p>
       </div>
-    `,t.append(n),t},args:{title:"Accordion with Smooth Transitions",content:"This accordion includes smooth expand/collapse animations for better user experience.",transition:!0,outline:!1,open:!1}},s={render:e=>{const t=document.createElement("div"),n=document.createElement("details");n.classList.add("m-accordion"),e.transition&&n.classList.add("--transition"),e.outline&&n.classList.add("--outline"),e.open&&(n.open=!0);const o=e.title,a=e.content;return n.innerHTML=`
+    `,e.append(n),e},args:{title:"Accordion with Smooth Transitions",content:"This accordion includes smooth expand/collapse animations for better user experience.",transition:!0,outline:!1,open:!1}},s={render:t=>{const e=document.createElement("div"),n=document.createElement("details");n.classList.add("m-accordion"),t.transition&&n.classList.add("--transition"),t.outline&&n.classList.add("--outline"),t.open&&(n.open=!0);const o=t.title,a=t.content;return n.innerHTML=`
       <summary class="m-accordion__summary">
         ${o}
       </summary>
       <div class="m-accordion__content">
         <p>${a}</p>
       </div>
-    `,t.append(n),t},args:{title:"Accordion with Outline Style",content:"This accordion has border and padding styling for visual separation.",transition:!1,outline:!0,open:!1}},d={render:e=>{const t=document.createElement("div"),n=document.createElement("details");n.classList.add("m-accordion"),e.transition&&n.classList.add("--transition"),e.outline&&n.classList.add("--outline"),e.open&&(n.open=!0);const o=e.title,a=e.content;return n.innerHTML=`
+    `,e.append(n),e},args:{title:"Accordion with Outline Style",content:"This accordion has border and padding styling for visual separation.",transition:!1,outline:!0,open:!1}},d={render:t=>{const e=document.createElement("div"),n=document.createElement("details");n.classList.add("m-accordion"),t.transition&&n.classList.add("--transition"),t.outline&&n.classList.add("--outline"),t.open&&(n.open=!0);const o=t.title,a=t.content;return n.innerHTML=`
       <summary class="m-accordion__summary">
         ${o}
       </summary>
       <div class="m-accordion__content">
         <p>${a}</p>
       </div>
-    `,t.append(n),t},args:{title:"Pre-expanded Accordion",content:"This accordion is open by default, useful for highlighting important content.",transition:!0,outline:!0,open:!0}},l={render:()=>{const e=document.createElement("div");e.style.display="flex",e.style.flexDirection="column",e.style.gap="1rem";const t=[{title:"Getting Started",content:"Learn how to install and configure Madogiwa UI in your project."},{title:"Components",content:"Explore the available components and their usage patterns."},{title:"Customization",content:"Discover how to customize the framework to match your design system."}];for(const n of t){const o=document.createElement("details");o.classList.add("m-accordion","--transition","--outline"),o.innerHTML=`
+    `,e.append(n),e},args:{title:"Pre-expanded Accordion",content:"This accordion is open by default, useful for highlighting important content.",transition:!0,outline:!0,open:!0}},l={render:()=>{const t=document.createElement("div");t.style.display="flex",t.style.flexDirection="column",t.style.gap="1rem";const e=[{title:"Getting Started",content:"Learn how to install and configure Madogiwa UI in your project."},{title:"Components",content:"Explore the available components and their usage patterns."},{title:"Customization",content:"Discover how to customize the framework to match your design system."}];for(const n of e){const o=document.createElement("details");o.classList.add("m-accordion","--transition","--outline"),o.innerHTML=`
         <summary class="m-accordion__summary">
           ${n.title}
         </summary>
         <div class="m-accordion__content">
           <p>${n.content}</p>
         </div>
-      `,e.append(o)}return e},parameters:{docs:{description:{story:"Multiple accordions can be used together to create expandable content sections."}}}};c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
+      `,t.append(o)}return t},parameters:{docs:{description:{story:"Multiple accordions can be used together to create expandable content sections."}}}};c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
   render: args => {
     const container = document.createElement("div");
     const accordion = document.createElement("details");

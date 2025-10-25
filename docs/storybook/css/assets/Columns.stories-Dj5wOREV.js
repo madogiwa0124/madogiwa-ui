@@ -1,32 +1,66 @@
-const g=(n={})=>{const{columnsLength:e,gap:a=!0,autoFit:i=!1,alignRows:r=!1,children:l=[],autoFitMin:c="0"}=n,t=document.createElement("div");t.className="m-columns".trim(),a||t.classList.add("--no-gap"),r&&t.classList.add("--align-rows"),i&&t.classList.add("--auto-fit"),i&&c&&c!=="0"&&t.style.setProperty("--columns-auto-fit-min",c),e&&e!==12&&(t.dataset.columnsLength=String(e));for(const o of l){const m=document.createElement("div");m.innerHTML=o.content,o.colSize&&(m.dataset.colSize=String(o.colSize)),r&&o.subgridRows&&o.subgridRows!==1&&(m.dataset.subgridRows=String(o.subgridRows)),t.append(m)}return t},{expect:s}=__STORYBOOK_MODULE_TEST__,p={title:"Layouts/Columns",tags:["autodocs"],argTypes:{columnsLength:{control:{type:"range",min:1,max:12,step:1},description:"Number of columns in the grid system (1-12)"},gap:{control:{type:"boolean"},description:"Enable gap between columns"},alignRows:{control:{type:"boolean"},description:"Enable alignment of nested content using subgrid rows"},itemCount:{control:{type:"range",min:1,max:24,step:1},description:"Number of items to display"},itemColSize:{control:{type:"range",min:1,max:12,step:1},description:"Number of columns each item spans (1-12)"},autoFit:{control:{type:"boolean"},description:"Enable auto-fit behavior for responsive layouts"},autoFitMin:{control:{type:"text"},description:"Minimum size for auto-fit columns (e.g., '200px', '15rem')",if:{arg:"autoFit",truthy:!0},defaultValue:"0"}},parameters:{docs:{description:{component:`
+const g=(n={})=>{const{columnsLength:t,gap:a=!0,autoFit:i=!1,alignRows:r=!1,children:l=[],autoFitMin:c="0"}=n,e=document.createElement("div");e.className="m-columns".trim(),a||e.classList.add("--no-gap"),r&&e.classList.add("--align-rows"),i&&e.classList.add("--auto-fit"),i&&c&&c!=="0"&&e.style.setProperty("--columns-auto-fit-min",c),t&&t!==12&&(e.dataset.columnsLength=String(t));for(const o of l){const m=document.createElement("div");m.innerHTML=o.content,o.colSize&&(m.dataset.colSize=String(o.colSize)),r&&o.subgridRows&&o.subgridRows!==1&&(m.dataset.subgridRows=String(o.subgridRows)),e.append(m)}return e},{expect:s}=__STORYBOOK_MODULE_TEST__,p={title:"Layouts/Columns",tags:["autodocs"],argTypes:{columnsLength:{control:{type:"range",min:1,max:12,step:1},description:"The number of columns for the component"},gap:{control:{type:"boolean"},description:"The gap display modifier for the component"},alignRows:{control:{type:"boolean"},description:"The row alignment subgrid modifier for the component"},itemCount:{control:{type:"range",min:1,max:24,step:1},description:"The number of demo items for the component"},itemColSize:{control:{type:"range",min:1,max:12,step:1},description:"The column span for demo items in the component"},autoFit:{control:{type:"boolean"},description:"The auto-fit responsive modifier for the component"},autoFitMin:{control:{type:"text"},description:"The minimum column size for auto-fit in the component",if:{arg:"autoFit",truthy:!0},defaultValue:"0"}},parameters:{docs:{description:{component:`
 ### Overview
 
-The Columns layout component provides a powerful 12-column grid system based on CSS Grid. It offers responsive behavior, flexible item sizing, and advanced features like subgrid support for perfect content alignment.
+The Columns component provides a powerful 12-column grid system based on CSS Grid with responsive behavior and subgrid support.
 
 ### Usage
 
-Use the columns layout for:
-- Responsive grid layouts with automatic column adjustment
-- Card grids with consistent spacing
-- Complex layouts requiring precise content alignment (using subgrid)
-- Dashboard widgets and content organization
-- Form layouts with structured field positioning
+Use Columns for responsive grid layouts, card grids, dashboard widgets, and complex layouts requiring precise content alignment. Perfect for organizing content with consistent spacing and automatic responsive adjustments.
 
-**Responsive Design:**
-The columns automatically adjust based on screen size:
-- XL screens (>1200px): 12 columns
-- Large screens (992-1200px): 9 columns
-- Medium screens (768-992px): 6 columns
-- Small screens (576-768px): 3 columns
-- XS screens (<576px): 1 column
+### Example code
+
+\`\`\`html
+<!-- Basic 12-column grid -->
+<div class="m-columns">
+  <div data-col-size="4">Item 1</div>
+  <div data-col-size="4">Item 2</div>
+  <div data-col-size="4">Item 3</div>
+</div>
+
+<!-- Auto-fit responsive columns -->
+<div class="m-columns --auto-fit" style="--columns-auto-fit-min: 200px;">
+  <div>Card 1</div>
+  <div>Card 2</div>
+  <div>Card 3</div>
+</div>
+
+<!-- Subgrid alignment for card layouts -->
+<div class="m-columns --align-rows">
+  <div class="m-card" data-col-size="4" data-subgrid-rows="3">
+    <img class="m-card__image" src="image.jpg" alt="">
+    <div class="m-card__content"><h3>Title</h3><p>Content</p></div>
+    <div class="m-card__actions"><button>Action</button></div>
+  </div>
+</div>
+\`\`\`
+
+### Elements
+
+This component has no child elements - it's a single-level component that acts as a container for grid items.
 
 ### Modifiers
 
 | Target | Name | Description |
-| ------ | ---- | ----------- |
+|--- | ---- | ----------- |
+| .m-columns | .--auto-fit | Enables auto-fit behavior for responsive column sizing |
 | .m-columns | .--no-gap | Removes spacing between columns |
 | .m-columns | .--align-rows | Enables alignment of nested content using subgrid rows |
-| .m-columns | .--auto-fit | Enables auto-fit behavior for responsive column sizing |
+
+### CSS Variables
+
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| --columns-gap | var(--spacing-2) | Gap between columns |
+| --columns-length-default | 12 | Default number of columns |
+| --columns-length | var(--columns-length-default) | Active number of columns |
+| --columns-length-xl | round(down, calc(var(--columns-length-default) * 0.750)) | Columns for XL breakpoint (9) |
+| --columns-length-lg | round(down, calc(var(--columns-length-default) * 0.500)) | Columns for large breakpoint (6) |
+| --columns-length-md | round(down, calc(var(--columns-length-default) * 0.250)) | Columns for medium breakpoint (3) |
+| --columns-length-sm | round(down, calc(var(--columns-length-default) * 0.125)) | Columns for small breakpoint (1) |
+| --columns-default-col-size | 1 | Default column span for items |
+| --columns-col-size | var(--columns-default-col-size) | Active column span for items |
+| --columns-subgrid-gap | 0 | Gap for subgrid items |
+| --columns-auto-fit-min | 0 | Minimum size for auto-fit columns |
 
 ### Data Attributes
 
@@ -34,34 +68,20 @@ The columns automatically adjust based on screen size:
 | ------ | --------- | ------ | ----------- |
 | .m-columns | data-columns-length | 1-12 | Override default column count |
 | .m-columns > * | data-col-size | 1-12 | Specify how many columns this item spans |
-| .m-columns > * | data-subgrid-rows | 1-6 | (With --subgrid) Number of subgrid rows to span |
-
-### CSS Variables
-
-| Target | Name | Default | Description |
-| ------ | ---- | ------- | ----------- |
-| .m-columns | --columns-gap | var(--spacing-2) | Gap between columns |
-| .m-columns | --columns-length-default | 12 | Default number of columns |
-| .m-columns | --columns-length | var(--columns-length-default) | Active number of columns |
-| .m-columns | --columns-length-xl | round(down, calc(12 * 0.750)) | Columns for XL breakpoint (9) |
-| .m-columns | --columns-length-lg | round(down, calc(12 * 0.500)) | Columns for large breakpoint (6) |
-| .m-columns | --columns-length-md | round(down, calc(12 * 0.250)) | Columns for medium breakpoint (3) |
-| .m-columns | --columns-length-sm | round(down, calc(12 * 0.125)) | Columns for small breakpoint (1) |
-| .m-columns | --columns-default-col-size | 1 | Default column span for items |
-| .m-columns > * | --columns-col-size | var(--columns-default-col-size) | Active column span |
-| .m-columns > * | --columns-subgrid-row | 1 | Number of subgrid rows to span |
+| .m-columns > * | data-subgrid-rows | 1-6 | Number of subgrid rows to span (with --align-rows) |
 
 ### Caution
 
-* When using the \`data-col-size\` attribute, ensure that the sum of column spans in a single row does not exceed the total number of columns (default is 12). Exceeding this may lead to unexpected layout behavior.
-* The \`.--subgrid\` modifier changes the display of m-grid's child elements to subgrid. Therefore, if the child element's display is flex or similar, it may result in an unintended layout.
-* CSS Subgrid is not supported in some older browsers, including Internet Explorer and early versions of Edge. Ensure to test across target browsers when using the \`.--subgrid\` modifier.
-        `}}}},d={render:n=>{const e=Array.from({length:n.itemCount},(i,r)=>({content:`
+- Ensure column spans don't exceed total columns to avoid layout issues
+- CSS Subgrid has limited browser support - test across target browsers
+- The --align-rows modifier changes child display to subgrid, which may conflict with flex layouts
+- Use container queries when available for better responsive behavior
+        `}}}},d={parameters:{docs:{description:{story:"Basic 12-column grid system with configurable gap, column spans, and responsive behavior."}}},render:n=>{const t=Array.from({length:n.itemCount},(i,r)=>({content:`
         <div style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; text-align: center;">
           <strong>Item ${String(r+1)}</strong><br>
           <small style="color: #64748b;">Column span: ${String(n.itemColSize)}</small>
         </div>
-      `,colSize:n.itemColSize})),a={gap:n.gap,subgrid:n.alignRows,autoFit:n.autoFit,autoFitMin:n.autoFitMin,children:e,...n.columnsLength!==12&&{columnsLength:n.columnsLength}};return g(a)},args:{columnsLength:12,gap:!0,alignRows:!1,itemCount:8,itemColSize:1,autoFit:!1,autoFitMin:"0"},play:async({args:n})=>{const e=document.querySelector(".m-columns");if(await s(e).toBeInTheDocument(),await s(e).toHaveClass("m-columns"),n.gap||await s(e).toHaveClass("--no-gap"),n.alignRows&&await s(e).toHaveClass("--subgrid"),n.columnsLength!==12&&await s(e).toHaveAttribute("data-columns-length",String(n.columnsLength)),!e)return;const a=e.querySelectorAll("& > div");await s(a).toHaveLength(n.itemCount);for(const i of a)await s(i).toHaveAttribute("data-col-size",String(n.itemColSize))}},u={render:n=>{const e={content:`
+      `,colSize:n.itemColSize})),a={gap:n.gap,subgrid:n.alignRows,autoFit:n.autoFit,autoFitMin:n.autoFitMin,children:t,...n.columnsLength!==12&&{columnsLength:n.columnsLength}};return g(a)},args:{columnsLength:12,gap:!0,alignRows:!1,itemCount:8,itemColSize:1,autoFit:!1,autoFitMin:"0"},play:async({args:n})=>{const t=document.querySelector(".m-columns");if(await s(t).toBeInTheDocument(),await s(t).toHaveClass("m-columns"),n.gap||await s(t).toHaveClass("--no-gap"),n.alignRows&&await s(t).toHaveClass("--subgrid"),n.columnsLength!==12&&await s(t).toHaveAttribute("data-columns-length",String(n.columnsLength)),!t)return;const a=t.querySelectorAll("& > div");await s(a).toHaveLength(n.itemCount);for(const i of a)await s(i).toHaveAttribute("data-col-size",String(n.itemColSize))}},u={render:n=>{const t={content:`
           <img class="m-card__image" src="/stories/components/Card/320x240.png" alt="Example card image showing 320x240 placeholder">
           <div class="m-card__content">
             <h3 class="m-h3">Image Card</h3>
@@ -94,7 +114,14 @@ The columns automatically adjust based on screen size:
           <div class="m-card__actions">
             <button class="m-btn --primary --rounded">Action</button>
           </div>
-        `,colSize:n.itemColSize,subgridRows:3},r=g({gap:n.gap,alignRows:n.alignRows,children:[]}),l=[e,i,a],c=[];for(let t=0;t<n.itemCount;t++)c.push(l[t%l.length]);for(const t of c){if(!t)continue;const o=document.createElement("div");o.className="m-card",o.innerHTML=t.content,o.dataset.colSize=String(t.colSize),t.subgridRows&&(o.dataset.subgridRows=String(t.subgridRows)),r.append(o)}return r},args:{columnsLength:12,gap:!0,alignRows:!0,itemCount:3,itemColSize:4,autoFit:!1},play:async({args:n})=>{const e=document.querySelector(".m-columns");if(await s(e).toBeInTheDocument(),await s(e).toHaveClass("m-columns"),n.alignRows){if(await s(e).toHaveClass("--align-rows"),!e)return;const a=e.querySelectorAll("div.m-card");for(const i of a)await s(i).toHaveAttribute("data-subgrid-rows","3")}},parameters:{docs:{description:{story:"Demonstrates CSS Subgrid alignment where cards with different content lengths have their action buttons perfectly aligned at the bottom. Toggle subgrid to see the difference."}}}};d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+        `,colSize:n.itemColSize,subgridRows:3},r=g({gap:n.gap,alignRows:n.alignRows,children:[]}),l=[t,i,a],c=[];for(let e=0;e<n.itemCount;e++)c.push(l[e%l.length]);for(const e of c){if(!e)continue;const o=document.createElement("div");o.className="m-card",o.innerHTML=e.content,o.dataset.colSize=String(e.colSize),e.subgridRows&&(o.dataset.subgridRows=String(e.subgridRows)),r.append(o)}return r},args:{columnsLength:12,gap:!0,alignRows:!0,itemCount:3,itemColSize:4,autoFit:!1},play:async({args:n})=>{const t=document.querySelector(".m-columns");if(await s(t).toBeInTheDocument(),await s(t).toHaveClass("m-columns"),n.alignRows){if(await s(t).toHaveClass("--align-rows"),!t)return;const a=t.querySelectorAll("div.m-card");for(const i of a)await s(i).toHaveAttribute("data-subgrid-rows","3")}},parameters:{docs:{description:{story:"Demonstrates CSS Subgrid alignment where cards with different content lengths have their action buttons perfectly aligned at the bottom. Toggle subgrid to see the difference."}}}};d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic 12-column grid system with configurable gap, column spans, and responsive behavior."
+      }
+    }
+  },
   render: args => {
     const children = Array.from({
       length: args.itemCount

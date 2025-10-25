@@ -1,23 +1,27 @@
-const{expect:n,userEvent:r,within:m}=__STORYBOOK_MODULE_TEST__,d=(a={})=>{const{text:l="Label",htmlFor:t,required:e=!1,disabled:s=!1,className:o=""}=a,i=document.createElement("label");return i.className=`m-label ${o}`.trim(),i.textContent=l,t&&(i.htmlFor=t),e&&i.classList.add("--required"),s&&i.classList.add("--disabled"),i},y={title:"Components/Label",tags:["autodocs"],argTypes:{text:{control:{type:"text"},description:"The label text content"},htmlFor:{control:{type:"text"},description:"The ID of the form element this label is associated with"},required:{control:{type:"boolean"},description:"Whether the associated form field is required"},disabled:{control:{type:"boolean"},description:"Whether the label appears disabled"}},parameters:{docs:{description:{component:`
+const{expect:n,userEvent:r,within:m}=__STORYBOOK_MODULE_TEST__,d=(a={})=>{const{text:l="Label",htmlFor:t,required:e=!1,disabled:s=!1,className:o=""}=a,i=document.createElement("label");return i.className=`m-label ${o}`.trim(),i.textContent=l,t&&(i.htmlFor=t),e&&i.classList.add("--required"),s&&i.classList.add("--disabled"),i},y={title:"Components/Label",tags:["autodocs"],argTypes:{text:{control:{type:"text"},description:"The label text for the component"},htmlFor:{control:{type:"text"},description:"The form element ID for the component"},required:{control:{type:"boolean"},description:"The required indicator modifier for the component"},disabled:{control:{type:"boolean"},description:"The disabled state modifier for the component"}},parameters:{docs:{description:{component:`
 ### Overview
 
 The Label component provides accessible and consistent labeling for form elements. It ensures proper association between labels and form controls, supporting screen readers and improving usability for all users.
 
 ### Usage
 
-Use labels for:
-- Form input identification and description
-- Accessible form design and compliance
-- Clear user guidance and instruction
-- Required field indication
-- Form field grouping and organization
+Use labels to provide accessible and consistent labeling for form elements. Essential for screen readers and improving usability for all users. Perfect for form field identification, required field indicators, and associating labels with form controls.
 
-**Common use cases:**
-- Text inputs, textareas, and select elements
-- Checkbox and radio button groups
-- File upload controls
-- Form sections and fieldsets
-- Required field indicators
+### Example code
+
+\`\`\`html
+<!-- Basic label -->
+<label class="m-label" for="username">Username</label>
+<input class="m-input" type="text" id="username">
+
+<!-- Required field label -->
+<label class="m-label --required" for="email">Email Address</label>
+<input class="m-input" type="email" id="email" required>
+
+<!-- Disabled label -->
+<label class="m-label --disabled" for="disabled-field">Disabled Field</label>
+<input class="m-input" type="text" id="disabled-field" disabled>
+\`\`\`
 
 ### Modifiers
 
@@ -38,12 +42,17 @@ Use labels for:
 | --label-required-icon-color | var(--color-danger) | Color of the required indicator |
 | --label-disabled-opacity | 0.6 | Opacity value when label is disabled |
 
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
+
 ### Caution
-- Avoid using labels without associated form controls
-- Do not use labels for non-form elements
-- Ensure unique htmlFor values for proper association
-- Avoid excessive label text length
+
+- Always associate labels with form controls using \`for\` attribute
+- Ensure unique ID values for proper form element association
+- Avoid using labels for non-form elements
 - Do not rely solely on visual cues for required fields
+- Keep label text concise and descriptive
         `}}}},c={render:a=>{const l=document.createElement("div"),t=d({text:a.text,htmlFor:a.htmlFor,required:a.required,disabled:a.disabled});return l.append(t),l},args:{text:"Default Label",htmlFor:"",required:!1,disabled:!1},play:async({canvasElement:a,args:l})=>{const e=m(a).getByRole("generic").querySelector("label");await n(e).toBeInTheDocument(),await n(e).toHaveClass("m-label"),await n(e).toHaveTextContent(l.text),await(l.required?n(e).toHaveClass("--required"):n(e).not.toHaveClass("--required")),await(l.disabled?n(e).toHaveClass("--disabled"):n(e).not.toHaveClass("--disabled")),l.htmlFor&&await n(e).toHaveAttribute("for",l.htmlFor);const s=globalThis.getComputedStyle(e);await n(s.display).toBe("block"),await n(Number.parseInt(s.fontWeight,10)).toBeGreaterThanOrEqual(500),l.disabled&&(await n(Number.parseFloat(s.opacity)).toBeLessThan(1),await n(s.cursor).toBe("not-allowed"))}},p={render:()=>{const a=document.createElement("div");a.style.display="flex",a.style.flexDirection="column",a.style.gap="0.5rem",a.style.maxWidth="300px";const l=d({text:"Email Address",htmlFor:"email-input"}),t=document.createElement("input");return t.className="m-input",t.id="email-input",t.type="email",t.placeholder="Enter your email",t.style.padding="0.5rem",t.style.border="1px solid #d1d5db",t.style.borderRadius="0.375rem",a.append(l,t),a},play:async({canvasElement:a})=>{const l=m(a),t=l.getByText("Email Address"),e=l.getByRole("textbox");await n(t).toBeInTheDocument(),await n(t).toHaveClass("m-label"),await n(e).toBeInTheDocument(),await n(t).toHaveAttribute("for","email-input"),await n(e).toHaveAttribute("id","email-input"),await n(e).toHaveAttribute("type","email"),await r.click(t),await n(e).toHaveFocus(),await r.clear(e),await r.type(e,"test@example.com"),await n(e).toHaveValue("test@example.com"),await n(e).toBeValid()},parameters:{docs:{description:{story:"Label properly associated with an input field using the for attribute. Demonstrates proper label-input relationship for accessibility."}}}},u={render:()=>{const a=document.createElement("div");a.style.display="flex",a.style.flexDirection="column",a.style.gap="0.5rem",a.style.maxWidth="300px";const l=d({text:"Full Name",htmlFor:"name-input",required:!0}),t=document.createElement("input");t.className="m-input",t.id="name-input",t.type="text",t.placeholder="Enter your full name",t.required=!0,t.style.padding="0.5rem",t.style.border="1px solid #d1d5db",t.style.borderRadius="0.375rem";const e=document.createElement("small");return e.textContent="This field is required",e.style.color="#6b7280",e.style.fontSize="0.75rem",a.append(l,t,e),a},play:async({canvasElement:a})=>{const l=m(a),t=l.getByText(/Full Name/),e=l.getByRole("textbox"),s=l.getByText("This field is required");await n(t).toBeInTheDocument(),await n(t).toHaveClass("--required"),await n(e).toHaveAttribute("required"),await n(s).toBeInTheDocument();const o=globalThis.getComputedStyle(t,"::after");await n(o.content).toBe('"*"'),await r.click(t),await n(e).toHaveFocus(),await n(e).toBeInvalid(),await r.type(e,"John Doe"),await n(e).toBeValid()},parameters:{docs:{description:{story:"Label for a required field with visual indicator. Shows the --required modifier and proper form validation integration."}}}},b={render:()=>{const a=document.createElement("div");a.style.display="flex",a.style.flexDirection="column",a.style.gap="1rem",a.style.maxWidth="300px";const l=document.createElement("div");l.style.display="flex",l.style.flexDirection="column",l.style.gap="0.5rem";const t=d({text:"Enabled Field",htmlFor:"enabled-input"}),e=document.createElement("input");e.id="enabled-input",e.type="text",e.placeholder="You can type here",e.style.padding="0.5rem",e.style.border="1px solid #d1d5db",e.style.borderRadius="0.375rem",l.append(t,e);const s=document.createElement("div");s.style.display="flex",s.style.flexDirection="column",s.style.gap="0.5rem";const o=d({text:"Disabled Field",htmlFor:"disabled-input",disabled:!0}),i=document.createElement("input");return i.id="disabled-input",i.type="text",i.placeholder="Cannot type here",i.disabled=!0,i.style.padding="0.5rem",i.style.border="1px solid #d1d5db",i.style.borderRadius="0.375rem",i.style.backgroundColor="#f3f4f6",i.style.cursor="not-allowed",s.append(o,i),a.append(l,s),a},play:async({canvasElement:a})=>{const l=m(a),t=l.getByText("Enabled Field"),e=a.querySelector("#enabled-input"),s=l.getByText("Disabled Field"),o=a.querySelector("#disabled-input");await n(t).not.toHaveClass("--disabled"),await r.click(t),await n(e).toHaveFocus(),await r.type(e,"test input"),await n(e).toHaveValue("test input"),await n(o).toBeDisabled(),await n(s).toHaveClass("--disabled");const i=globalThis.getComputedStyle(s);await n(Number.parseFloat(i.opacity)).toBeLessThan(1),await n(i.cursor).toBe("not-allowed"),await r.click(s),await n(o).not.toHaveFocus()},parameters:{docs:{description:{story:"Comparison between enabled and disabled label states. Shows the --disabled modifier behavior and visual differences."}}}};c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
   render: args => {
     const container = document.createElement("div");

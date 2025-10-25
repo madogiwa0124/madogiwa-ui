@@ -1,32 +1,44 @@
-const{expect:e,userEvent:f,within:T}=__STORYBOOK_MODULE_TEST__,C={title:"Components/Dialog",tags:["autodocs"],argTypes:{title:{control:{type:"text"},description:"Dialog title text"},content:{control:{type:"text"},description:"Dialog content text"},backDropBlur:{control:{type:"boolean"},description:"Enable backdrop blur effect"},transition:{control:{type:"boolean"},description:"Enable dialog transition animations"},showCancel:{control:{type:"boolean"},description:"Show cancel button"},showConfirm:{control:{type:"boolean"},description:"Show confirm button"},cancelText:{control:{type:"text"},description:"Cancel button text"},confirmText:{control:{type:"text"},description:"Confirm button text"}},parameters:{docs:{description:{component:`
+const{expect:e,userEvent:f,within:T}=__STORYBOOK_MODULE_TEST__,C={title:"Components/Dialog",tags:["autodocs"],argTypes:{title:{control:{type:"text"},description:"The title text for the component"},content:{control:{type:"text"},description:"The content text for the component"},backDropBlur:{control:{type:"boolean"},description:"The backdrop blur modifier for the component"},transition:{control:{type:"boolean"},description:"The transition animation modifier for the component"},showCancel:{control:{type:"boolean"},description:"The cancel button visibility for the component"},showConfirm:{control:{type:"boolean"},description:"The confirm button visibility for the component"},cancelText:{control:{type:"text"},description:"The cancel button text for the component"},confirmText:{control:{type:"text"},description:"The confirm button text for the component"}},parameters:{docs:{description:{component:`
 ### Overview
 
 The Dialog component provides a modal dialog using the native HTML \`<dialog>\` element. It supports backdrop blur effects, smooth transitions, and flexible content layout with header, content, and footer sections.
 
 ### Usage
 
-Use dialogs for:
-- Confirmation prompts requiring user decision
-- Important notifications that need immediate attention
-- Form inputs that should be completed before continuing
-- Warning messages about destructive actions
-- Information displays that overlay the main content
+Use dialogs for confirmation prompts requiring user decision, important notifications that need immediate attention, form inputs that should be completed before continuing, or warning messages about destructive actions. Perfect for delete confirmations, settings panels, login forms, error messages, and multi-step workflows.
 
-**Common use cases:**
-- Delete confirmation dialogs
-- Settings and preference panels
-- Login and registration forms
-- Error messages and alerts
-- Image galleries and media viewers
-- Multi-step workflows
+### Example code
+
+\`\`\`html
+<dialog class="m-dialog --transition --backdrop-blur">
+  <div class="m-dialog__content">
+    <h2>Confirm Action</h2>
+    <p>Are you sure you want to delete this item? This action cannot be undone.</p>
+    <div class="m-dialog__actions">
+      <button class="m-button --secondary">Cancel</button>
+      <button class="m-button --danger">Delete</button>
+    </div>
+  </div>
+</dialog>
+\`\`\`
+
+
+**⚠️ JavaScript Required**
+
+opening and closing the dialog requires using the HTMLDialogElement API:
+
+
+\`\`\`js
+const dialog = document.querySelector('dialog.m-dialog');
+// To open the dialog
+dialog.showModal();
+// To close the dialog
+dialog.close();
+\`\`\`
 
 ### Elements
 
-| Name | Description |
-| ---- | ----------- |
-| .m-dialog__header | Dialog header section for titles and close buttons |
-| .m-dialog__content | Main content area for text, forms, or other elements |
-| .m-dialog__footer | Footer section for action buttons |
+This component has no child elements - it's a single-level component.
 
 ### Modifiers
 
@@ -44,20 +56,24 @@ Use dialogs for:
 | --dialog-padding | var(--spacing-3) | Internal padding of the dialog |
 | --dialog-border-radius | var(--radius-sm) | Border radius of the dialog |
 | --dialog-box-shadow | var(--shadow-lg) | Box shadow around the dialog |
-| --dialog-content-gap | var(--spacing-2) | Gap between header, content, and footer |
+| --dialog-content-gap | var(--spacing-2) | Gap between content elements |
 | --dialog-backdrop-bg-color | var(--color-overlay) | Backdrop overlay color |
 | --dialog-backdrop-blur | blur(4px) | Backdrop blur filter strength |
 | --dialog-transition-duration | 0.2s | Duration of transition animations |
 | --dialog-transition-transform-start | translateY(20%) | Initial transform for transition |
 
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
+
 ### Caution
 
-- **Use [HTMLDialogElement API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement) to open/close dialogs.**
+- Use HTMLDialogElement API to open/close dialogs properly
 - Always provide a way to close the dialog (close button or cancel action)
 - Consider the user's workflow when using dialogs
-- Avoid nested dialogs as they can confuse user
+- Avoid nested dialogs as they can confuse users
 - Test keyboard navigation and screen reader compatibility
-        `}}}},w={render:o=>{const n=document.createElement("div"),t=document.createElement("dialog");t.className="m-dialog";const a=o.backDropBlur,s=o.transition,m=o.title,i=o.content,l=o.showCancel,d=o.showConfirm,h=o.cancelText,B=o.confirmText;a&&t.classList.add("--backdrop-blur"),s&&t.classList.add("--transition");const g=document.createElement("header");g.className="m-dialog__header";const p=document.createElement("h2");p.textContent=m,p.style.margin="0",p.style.fontWeight="bold",g.append(p);const c=document.createElement("div");c.className="m-dialog__content";const y=document.createElement("p");y.textContent=i,y.style.margin="0",c.append(y);const u=document.createElement("footer");if(u.className="m-dialog__footer",u.style.display="flex",u.style.gap="0.5rem",u.style.justifyContent="flex-end",l){const r=document.createElement("button");r.className="m-btn",r.textContent=h,r.addEventListener("click",()=>{t.close()}),u.append(r)}if(d){const r=document.createElement("button");r.className="m-btn --primary",r.textContent=B,r.addEventListener("click",()=>{t.close()}),u.append(r)}t.append(g,c,u);const b=document.createElement("button");return b.textContent="Open Dialog",b.className="m-btn --primary",b.addEventListener("click",()=>{t.showModal()}),n.append(b,t),n},args:{title:"Confirm Action",content:"Are you sure you want to proceed with this action?",backDropBlur:!1,transition:!1,showCancel:!0,showConfirm:!0,cancelText:"Cancel",confirmText:"Confirm"},play:async({canvasElement:o,args:n})=>{const t=o.querySelector("dialog"),a=o.querySelector("button");await e(t).toBeInTheDocument(),await e(t).toHaveClass("m-dialog"),await e(t.open).toBe(!1),await e(a).toBeInTheDocument();const s=n.backDropBlur,m=n.transition;await(s?e(t).toHaveClass("--backdrop-blur"):e(t).not.toHaveClass("--backdrop-blur")),await(m?e(t).toHaveClass("--transition"):e(t).not.toHaveClass("--transition")),await f.click(a),await e(t.open).toBe(!0),await e(t).toHaveTextContent(n.title),await e(t).toHaveTextContent(n.content);const i=t.querySelector(".m-dialog__header"),l=t.querySelector(".m-dialog__content"),d=t.querySelector(".m-dialog__footer");await e(i).toBeInTheDocument(),await e(l).toBeInTheDocument(),await e(d).toBeInTheDocument();const h=n.showCancel,B=n.showConfirm,g=n.cancelText,p=n.confirmText;if(h){const c=await T(t).findByText(g);await e(c).toBeInTheDocument(),await f.click(c),await e(t.open).toBe(!1)}if(B&&!h){const c=await T(t).findByText(p);await e(c).toBeInTheDocument(),await f.click(c),await e(t.open).toBe(!1)}}},x={render:o=>{const n=document.createElement("div"),t=document.createElement("dialog");t.className="m-dialog --backdrop-blur --transition";const a=document.createElement("header");a.className="m-dialog__header";const s=document.createElement("h2");s.textContent="Enhanced Dialog",s.style.margin="0",s.style.fontWeight="600",a.append(s);const m=document.createElement("div");m.className="m-dialog__content",m.innerHTML=`
+        `}}}},w={render:o=>{const n=document.createElement("div"),t=document.createElement("dialog");t.className="m-dialog";const a=o.backDropBlur,s=o.transition,m=o.title,i=o.content,l=o.showCancel,d=o.showConfirm,h=o.cancelText,y=o.confirmText;a&&t.classList.add("--backdrop-blur"),s&&t.classList.add("--transition");const g=document.createElement("header");g.className="m-dialog__header";const p=document.createElement("h2");p.textContent=m,p.style.margin="0",p.style.fontWeight="bold",g.append(p);const c=document.createElement("div");c.className="m-dialog__content";const B=document.createElement("p");B.textContent=i,B.style.margin="0",c.append(B);const u=document.createElement("footer");if(u.className="m-dialog__footer",u.style.display="flex",u.style.gap="0.5rem",u.style.justifyContent="flex-end",l){const r=document.createElement("button");r.className="m-btn",r.textContent=h,r.addEventListener("click",()=>{t.close()}),u.append(r)}if(d){const r=document.createElement("button");r.className="m-btn --primary",r.textContent=y,r.addEventListener("click",()=>{t.close()}),u.append(r)}t.append(g,c,u);const b=document.createElement("button");return b.textContent="Open Dialog",b.className="m-btn --primary",b.addEventListener("click",()=>{t.showModal()}),n.append(b,t),n},args:{title:"Confirm Action",content:"Are you sure you want to proceed with this action?",backDropBlur:!1,transition:!1,showCancel:!0,showConfirm:!0,cancelText:"Cancel",confirmText:"Confirm"},play:async({canvasElement:o,args:n})=>{const t=o.querySelector("dialog"),a=o.querySelector("button");await e(t).toBeInTheDocument(),await e(t).toHaveClass("m-dialog"),await e(t.open).toBe(!1),await e(a).toBeInTheDocument();const s=n.backDropBlur,m=n.transition;await(s?e(t).toHaveClass("--backdrop-blur"):e(t).not.toHaveClass("--backdrop-blur")),await(m?e(t).toHaveClass("--transition"):e(t).not.toHaveClass("--transition")),await f.click(a),await e(t.open).toBe(!0),await e(t).toHaveTextContent(n.title),await e(t).toHaveTextContent(n.content);const i=t.querySelector(".m-dialog__header"),l=t.querySelector(".m-dialog__content"),d=t.querySelector(".m-dialog__footer");await e(i).toBeInTheDocument(),await e(l).toBeInTheDocument(),await e(d).toBeInTheDocument();const h=n.showCancel,y=n.showConfirm,g=n.cancelText,p=n.confirmText;if(h){const c=await T(t).findByText(g);await e(c).toBeInTheDocument(),await f.click(c),await e(t.open).toBe(!1)}if(y&&!h){const c=await T(t).findByText(p);await e(c).toBeInTheDocument(),await f.click(c),await e(t.open).toBe(!1)}}},x={render:o=>{const n=document.createElement("div"),t=document.createElement("dialog");t.className="m-dialog --backdrop-blur --transition";const a=document.createElement("header");a.className="m-dialog__header";const s=document.createElement("h2");s.textContent="Enhanced Dialog",s.style.margin="0",s.style.fontWeight="600",a.append(s);const m=document.createElement("div");m.className="m-dialog__content",m.innerHTML=`
       <p style="margin: 0 0 1rem 0;">This dialog demonstrates the backdrop blur and transition effects.</p>
       <p style="margin: 0;">Notice how the background is blurred and the dialog animates smoothly.</p>
     `;const i=document.createElement("footer");i.className="m-dialog__footer",i.style.display="flex",i.style.gap="0.5rem",i.style.justifyContent="flex-end";const l=document.createElement("button");l.className="m-btn --primary",l.textContent="Got it!",l.addEventListener("click",()=>{t.close()}),i.append(l),t.append(a,m,i);const d=document.createElement("button");return d.textContent="Open Enhanced Dialog",d.className="m-btn --primary",d.addEventListener("click",()=>{t.showModal()}),n.append(d,t),n},play:async({canvasElement:o})=>{const n=o.querySelector("dialog"),t=o.querySelector("button");await e(n).toHaveClass("--backdrop-blur"),await e(n).toHaveClass("--transition"),await e(n.open).toBe(!1),await f.click(t),await e(n.open).toBe(!0),await e(n).toHaveTextContent("Enhanced Dialog");const a=await T(n).findByText("Got it!");await f.click(a),await e(n.open).toBe(!1)},parameters:{docs:{description:{story:"Dialog with backdrop blur and smooth transition animations enabled."}}}};w.parameters={...w.parameters,docs:{...w.parameters?.docs,source:{originalSource:`{

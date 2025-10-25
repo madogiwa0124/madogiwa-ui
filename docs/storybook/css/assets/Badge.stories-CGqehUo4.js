@@ -1,23 +1,34 @@
-const{expect:e,userEvent:I,within:k}=__STORYBOOK_MODULE_TEST__,D={title:"Components/Badge",tags:["autodocs"],argTypes:{label:{control:{type:"text"},description:"The text content of the badge"},variant:{control:{type:"select"},options:["default","primary","secondary","tertiary","danger","warning"],description:"Visual style variant of the badge"},size:{control:{type:"select"},options:["default","small"],description:"Size of the badge"},outline:{control:{type:"boolean"},description:"Use outline style instead of filled"},rounded:{control:{type:"boolean"},description:"Apply fully rounded border radius"},transition:{control:{type:"boolean"},description:"Enable hover/focus transitions"},disabled:{control:{type:"boolean"},description:"Disable interactive badge (for buttons/links)"},element:{control:{type:"select"},options:["div","button","a"],description:"HTML element type for the badge"}},parameters:{docs:{description:{component:`
+const{expect:e,userEvent:I,within:k}=__STORYBOOK_MODULE_TEST__,D={title:"Components/Badge",tags:["autodocs"],argTypes:{label:{control:{type:"text"},description:"The text content for the component"},variant:{control:{type:"select"},options:["default","primary","secondary","tertiary","danger","warning"],description:"The style variant for the component"},size:{control:{type:"select"},options:["default","small"],description:"The size variant for the component"},outline:{control:{type:"boolean"},description:"The outline style modifier for the component"},rounded:{control:{type:"boolean"},description:"The rounded corners modifier for the component"},transition:{control:{type:"boolean"},description:"The transition animation modifier for the component"},disabled:{control:{type:"boolean"},description:"The disabled state for the component"},element:{control:{type:"select"},options:["div","button","a"],description:"The HTML element type for the component"}},parameters:{docs:{description:{component:`
 ### Overview
 
-The Badge component displays small pieces of information, status indicators, or labels. It supports various visual styles, sizes, and can be interactive when used as buttons or links.
+The Badge component displays small pieces of information, status indicators, or labels with various visual styles and interactive capabilities.
 
 ### Usage
 
-Use badges to:
-- Display status information (online, offline, new, etc.)
-- Show counts or quantities (notifications, items)
-- Label or categorize content
-- Create interactive tags or filters
-- Highlight important information
+Use badges to display status information, show counts or quantities, label or categorize content, create interactive tags or filters, or highlight important information. Perfect for notification counters, status indicators, category tags, interactive filters, and feature highlights.
 
-**Common use cases:**
-- Notification counters
-- Status indicators
-- Category tags
-- Interactive filters
-- Feature highlights
+### Example code
+
+\`\`\`html
+<!-- Basic usage -->
+<div class="m-badge">Default Badge</div>
+<div class="m-badge --primary">Primary Badge</div>
+<div class="m-badge --secondary --outline">Secondary Outline</div>
+
+<!-- Small rounded badge for counts -->
+<div class="m-badge --danger --small --rounded">3</div>
+
+<!-- Interactive badges -->
+<button class="m-badge --primary --transition">Interactive Badge</button>
+<a href="#" class="m-badge --tertiary --transition">Link Badge</a>
+
+<!-- Disabled state -->
+<button class="m-badge --primary" disabled>Disabled Badge</button>
+\`\`\`
+
+### Elements
+
+This component has no child elements - it's a single-level component.
 
 ### Modifiers
 
@@ -38,7 +49,7 @@ Use badges to:
 | Name | Default | Description |
 | ---- | ------- | ----------- |
 | --badge-padding | var(--spacing-1) var(--spacing-2) | Internal padding |
-| --badge-item-gap | var(--spacing-2) | Gap between badge elements (icon + text) |
+| --badge-item-gap | var(--spacing-2) | Gap between badge elements |
 | --badge-border-color | var(--color-border) | Default border color |
 | --badge-border | 1px solid var(--badge-border-color) | Border style |
 | --badge-border-radius | var(--radius-sm) | Border radius |
@@ -50,19 +61,30 @@ Use badges to:
 | --badge-small-font-size | var(--text-xs) | Font size for small variant |
 | --badge-primary-color | var(--color-primary) | Primary variant background |
 | --badge-primary-text-color | var(--color-text-light) | Primary variant text color |
+| --badge-primary-border-color | var(--badge-primary-color) | Primary variant border color |
 | --badge-secondary-color | var(--color-secondary) | Secondary variant background |
+| --badge-secondary-text-color | var(--color-text-light) | Secondary variant text color |
+| --badge-secondary-border-color | var(--badge-secondary-color) | Secondary variant border color |
 | --badge-tertiary-color | var(--color-tertiary) | Tertiary variant background |
+| --badge-tertiary-text-color | var(--color-text-light) | Tertiary variant text color |
+| --badge-tertiary-border-color | var(--badge-tertiary-color) | Tertiary variant border color |
 | --badge-danger-color | var(--color-danger) | Danger variant background |
+| --badge-danger-text-color | var(--color-text-light) | Danger variant text color |
+| --badge-danger-border-color | var(--badge-danger-color) | Danger variant border color |
 | --badge-warning-color | var(--color-warning) | Warning variant background |
+| --badge-warning-text-color | var(--color-text-dark) | Warning variant text color |
+| --badge-warning-border-color | var(--badge-warning-color) | Warning variant border color |
 
-### Accessibility
+### Data Attributes
 
-- Supports keyboard navigation when used as button or link
-- Color variants maintain sufficient contrast ratios
-- Disabled state is properly conveyed to screen readers
-- Semantic HTML elements (button, a) provide appropriate roles
-- Icon badges include proper text alternatives when needed
-        `}}}},f={render:n=>{const a=document.createElement("div"),t=document.createElement("div");t.classList.add("m-badge");const o=n.label,s=n.variant,i=n.size;return s!=="default"&&t.classList.add(`--${s}`),i!=="default"&&t.classList.add(`--${i}`),n.outline&&t.classList.add("--outline"),n.rounded&&t.classList.add("--rounded"),n.transition&&t.classList.add("--transition"),t.textContent=o,a.append(t),a},args:{label:"Badge",variant:"default",size:"default",outline:!1,rounded:!1,transition:!1,disabled:!1},play:async({canvasElement:n,args:a})=>{const o=k(n).getByText("Badge");await e(o).toBeInTheDocument(),await e(o).toHaveClass("m-badge"),await e(o).toHaveTextContent("Badge");const s=a.variant;s!=="default"&&await e(o).toHaveClass(`--${s}`);const i=a.size;i!=="default"&&await e(o).toHaveClass(`--${i}`),a.outline&&await e(o).toHaveClass("--outline"),a.rounded&&await e(o).toHaveClass("--rounded"),a.transition&&await e(o).toHaveClass("--transition")}},x={render:n=>{const a=document.createElement("div");a.style.display="flex",a.style.flexWrap="wrap",a.style.gap="0.5rem";const t=[{name:"default",class:"",label:"Default"},{name:"primary",class:"--primary",label:"Primary"},{name:"secondary",class:"--secondary",label:"Secondary"},{name:"tertiary",class:"--tertiary",label:"Tertiary"},{name:"danger",class:"--danger",label:"Danger"},{name:"warning",class:"--warning",label:"Warning"}],o=n.outline,s=n.rounded;for(const i of t){const d=document.createElement("div");d.classList.add("m-badge"),i.class&&d.classList.add(i.class),o&&d.classList.add("--outline"),s&&d.classList.add("--rounded"),d.textContent=i.label,a.append(d)}return a},args:{outline:!1,rounded:!1},play:async({canvasElement:n,args:a})=>{const t=n.querySelectorAll(".m-badge");await e(t).toHaveLength(6);const o=[{name:"default",expectedText:"Default"},{name:"primary",expectedText:"Primary"},{name:"secondary",expectedText:"Secondary"},{name:"tertiary",expectedText:"Tertiary"},{name:"danger",expectedText:"Danger"},{name:"warning",expectedText:"Warning"}];for(const[g,l]of t.entries()){const c=o[g];c&&(await e(l).toHaveClass("m-badge"),c.name!=="default"&&await e(l).toHaveClass(`--${c.name}`),await e(l).toHaveTextContent(c.expectedText),a.outline&&await e(l).toHaveClass("--outline"),a.rounded&&await e(l).toHaveClass("--rounded"))}const s=n.querySelector(".m-badge.--primary"),i=n.querySelector(".m-badge.--secondary"),d=globalThis.getComputedStyle(s),r=globalThis.getComputedStyle(i);a.outline||await e(d.backgroundColor).not.toBe(r.backgroundColor)},parameters:{docs:{description:{story:"All available badge variants with their respective colors and styling."}}}},w={render:n=>{const a=document.createElement("div");a.style.display="flex",a.style.gap="1rem",a.style.alignItems="center";const t=n.label,o=n.variant,s=n.disabled,i=document.createElement("button");i.classList.add("m-badge","--transition"),o!=="default"&&i.classList.add(`--${o}`),s&&(i.disabled=!0),i.textContent=`${t} Button`;const d=document.createElement("a");return d.classList.add("m-badge","--transition"),o!=="default"&&d.classList.add(`--${o}`),d.href="#",d.textContent=`${t} Link`,d.setAttribute("target","_blank"),a.append(i,d),a},args:{label:"Interactive",variant:"primary",disabled:!1},play:async({canvasElement:n,args:a})=>{const t=n.querySelector("button.m-badge"),o=n.querySelector("a.m-badge");if(await e(t).toBeInTheDocument(),await e(t).toHaveClass("m-badge"),await e(t.tagName).toBe("BUTTON"),await e(t).toHaveTextContent(/Interactive.*Button/),await e(o).toBeInTheDocument(),await e(o).toHaveClass("m-badge"),await e(o.tagName).toBe("A"),await e(o).toHaveTextContent(/Interactive.*Link/),await e(o).toHaveAttribute("href","#"),a.transition&&(await e(t).toHaveClass("--transition"),await e(o).toHaveClass("--transition")),a.disabled){await e(t).toBeDisabled();const s=globalThis.getComputedStyle(t);await e(s.opacity).toBe("0.65")}else await e(t).not.toBeDisabled();await I.click(t),a.disabled||await e(t).toHaveFocus()}},B={render:n=>{const a=document.createElement("div");a.style.display="flex",a.style.gap="0.5rem",a.style.flexWrap="wrap";const t=["primary","secondary","tertiary","danger","warning"];for(const o of t){const s=document.createElement("div");s.classList.add("m-badge","--outline",`--${o}`),n.rounded&&s.classList.add("--rounded"),s.textContent=o.charAt(0).toUpperCase()+o.slice(1),a.append(s)}return a},args:{rounded:!1},play:async({canvasElement:n,args:a})=>{const t=n.querySelectorAll(".m-badge"),o=["primary","secondary","tertiary","danger","warning"];await e(t).toHaveLength(5);for(const[g,l]of t.entries()){const c=o[g];if(c){await e(l).toHaveClass("m-badge"),await e(l).toHaveClass("--outline"),await e(l).toHaveClass(`--${c}`);const m=c.charAt(0).toUpperCase()+c.slice(1);await e(l).toHaveTextContent(m),a.rounded&&await e(l).toHaveClass("--rounded");const p=globalThis.getComputedStyle(l);await e(p.backgroundColor).toBe("rgba(0, 0, 0, 0)");const y=p.borderWidth;await e(y).not.toBe("0px")}}const s=n.querySelector(".m-badge.--primary"),i=n.querySelector(".m-badge.--danger"),d=globalThis.getComputedStyle(s),r=globalThis.getComputedStyle(i);await e(d.borderColor).not.toBe(r.borderColor)},parameters:{docs:{description:{story:"Outline style badges with transparent backgrounds and colored borders."}}}},C={render:n=>{const a=document.createElement("div");a.style.display="flex",a.style.gap="1rem",a.style.flexWrap="wrap",a.style.alignItems="center";const t=n.label,o=n.variant,s=document.createElement("div");s.classList.add("m-badge"),o!=="default"&&s.classList.add(`--${o}`),s.innerHTML=`<span class="icon">✓</span> <span>${t}</span>`;const i=document.createElement("div");i.classList.add("m-badge"),o!=="default"&&i.classList.add(`--${o}`),i.innerHTML=`<span>${t}</span> <span class="icon">✕</span>`;const d=document.createElement("div");d.classList.add("m-badge","--rounded"),o!=="default"&&d.classList.add(`--${o}`),d.innerHTML='<span class="icon">★</span>';const r=document.createElement("div");return r.classList.add("m-badge","--danger","--small","--rounded"),r.textContent="3",a.append(s,i,d,r),a},args:{label:"Badge",variant:"primary"},play:async({canvasElement:n,args:a})=>{const t=n.querySelectorAll(".m-badge");await e(t).toHaveLength(4);const o=t[0];await e(o).toHaveClass("m-badge");const s=o.querySelector(".icon"),i=o.querySelector("span:not(.icon)");await e(s).toBeInTheDocument(),await e(s).toHaveTextContent("✓"),await e(i).toHaveTextContent(a.label);const d=o.children;await e(d[0]).toHaveClass("icon"),await e(d[1]).not.toHaveClass("icon");const r=t[1];await e(r).toHaveClass("m-badge");const g=r.querySelector(".icon"),l=r.querySelector("span:not(.icon)");await e(g).toBeInTheDocument(),await e(g).toHaveTextContent("✕"),await e(l).toHaveTextContent(a.label);const c=r.children;await e(c[0]).not.toHaveClass("icon"),await e(c[1]).toHaveClass("icon");const m=t[2];await e(m).toHaveClass("m-badge"),await e(m).toHaveClass("--rounded");const p=m.querySelector(".icon");await e(p).toBeInTheDocument(),await e(p).toHaveTextContent("★");const y=[...m.childNodes].filter(v=>v.nodeType===Node.TEXT_NODE&&v.textContent?.trim());await e(y).toHaveLength(0);const b=t[3];await e(b).toHaveClass("m-badge"),await e(b).toHaveClass("--danger"),await e(b).toHaveClass("--small"),await e(b).toHaveClass("--rounded"),await e(b).toHaveTextContent("3");const H=globalThis.getComputedStyle(b),L=Number.parseFloat(H.fontSize);await e(L).toBeLessThan(16);const E=globalThis.getComputedStyle(o);await e(E.gap).not.toBe("0px")},parameters:{docs:{description:{story:"Badges with icons in various configurations: icon+text, text+icon, icon-only, and notification count."}}}},T={render:()=>{const n=document.createElement("div");n.style.display="flex",n.style.gap="1rem",n.style.alignItems="center";const a=document.createElement("div");a.classList.add("m-badge","--primary"),a.textContent="Default Size";const t=document.createElement("div");return t.classList.add("m-badge","--primary","--small"),t.textContent="Small Size",n.append(a,t),n},play:async({canvasElement:n})=>{const a=n.querySelector(".m-badge:not(.--small)"),t=n.querySelector(".m-badge.--small");await e(a).toBeInTheDocument(),await e(t).toBeInTheDocument(),await e(a).toHaveClass("m-badge","--primary"),await e(t).toHaveClass("m-badge","--primary","--small"),await e(a).not.toHaveClass("--small"),await e(t).toHaveClass("--small");const o=globalThis.getComputedStyle(a),s=globalThis.getComputedStyle(t),i=Number.parseFloat(o.fontSize),d=Number.parseFloat(s.fontSize);await e(d).toBeLessThan(i),await e(o.backgroundColor).toBe(s.backgroundColor)},parameters:{docs:{description:{story:"Comparison of default and small badge sizes."}}}},S={render:()=>{const n=document.createElement("div");n.style.display="flex",n.style.gap="1rem",n.style.alignItems="center";const a=document.createElement("div");a.classList.add("m-badge","--secondary"),a.textContent="Default";const t=document.createElement("div");return t.classList.add("m-badge","--secondary","--rounded"),t.textContent="Rounded",n.append(a,t),n},play:async({canvasElement:n})=>{const a=n.querySelector(".m-badge:not(.--rounded)"),t=n.querySelector(".m-badge.--rounded");await e(a).toBeInTheDocument(),await e(t).toBeInTheDocument(),await e(a).toHaveClass("m-badge","--secondary"),await e(t).toHaveClass("m-badge","--secondary","--rounded"),await e(a).not.toHaveClass("--rounded"),await e(t).toHaveClass("--rounded");const o=globalThis.getComputedStyle(a),s=globalThis.getComputedStyle(t),i=Number.parseFloat(o.borderRadius),d=Number.parseFloat(s.borderRadius);await e(d).toBeGreaterThan(i),await e(o.backgroundColor).toBe(s.backgroundColor);const r=Number.parseFloat(s.height);await e(d).toBeGreaterThanOrEqual(r/2)},parameters:{docs:{description:{story:"Comparison of default and fully rounded badge shapes."}}}},h={render:()=>{const n=document.createElement("div");n.style.display="flex",n.style.flexDirection="column",n.style.gap="1.5rem";const a=document.createElement("div");a.innerHTML=`
+This component does not use data attributes for styling or behavior.
+
+### Caution
+
+- Ensure sufficient color contrast for readability
+- Use interactive badges (buttons/links) sparingly to avoid UI clutter
+- Consider motion preferences when using the transition modifier
+        `}}}},f={render:a=>{const t=document.createElement("div"),n=document.createElement("div");n.classList.add("m-badge");const o=a.label,s=a.variant,r=a.size;return s!=="default"&&n.classList.add(`--${s}`),r!=="default"&&n.classList.add(`--${r}`),a.outline&&n.classList.add("--outline"),a.rounded&&n.classList.add("--rounded"),a.transition&&n.classList.add("--transition"),n.textContent=o,t.append(n),t},args:{label:"Badge",variant:"default",size:"default",outline:!1,rounded:!1,transition:!1,disabled:!1},play:async({canvasElement:a,args:t})=>{const o=k(a).getByText("Badge");await e(o).toBeInTheDocument(),await e(o).toHaveClass("m-badge"),await e(o).toHaveTextContent("Badge");const s=t.variant;s!=="default"&&await e(o).toHaveClass(`--${s}`);const r=t.size;r!=="default"&&await e(o).toHaveClass(`--${r}`),t.outline&&await e(o).toHaveClass("--outline"),t.rounded&&await e(o).toHaveClass("--rounded"),t.transition&&await e(o).toHaveClass("--transition")}},x={render:a=>{const t=document.createElement("div");t.style.display="flex",t.style.flexWrap="wrap",t.style.gap="0.5rem";const n=[{name:"default",class:"",label:"Default"},{name:"primary",class:"--primary",label:"Primary"},{name:"secondary",class:"--secondary",label:"Secondary"},{name:"tertiary",class:"--tertiary",label:"Tertiary"},{name:"danger",class:"--danger",label:"Danger"},{name:"warning",class:"--warning",label:"Warning"}],o=a.outline,s=a.rounded;for(const r of n){const d=document.createElement("div");d.classList.add("m-badge"),r.class&&d.classList.add(r.class),o&&d.classList.add("--outline"),s&&d.classList.add("--rounded"),d.textContent=r.label,t.append(d)}return t},args:{outline:!1,rounded:!1},play:async({canvasElement:a,args:t})=>{const n=a.querySelectorAll(".m-badge");await e(n).toHaveLength(6);const o=[{name:"default",expectedText:"Default"},{name:"primary",expectedText:"Primary"},{name:"secondary",expectedText:"Secondary"},{name:"tertiary",expectedText:"Tertiary"},{name:"danger",expectedText:"Danger"},{name:"warning",expectedText:"Warning"}];for(const[g,l]of n.entries()){const c=o[g];c&&(await e(l).toHaveClass("m-badge"),c.name!=="default"&&await e(l).toHaveClass(`--${c.name}`),await e(l).toHaveTextContent(c.expectedText),t.outline&&await e(l).toHaveClass("--outline"),t.rounded&&await e(l).toHaveClass("--rounded"))}const s=a.querySelector(".m-badge.--primary"),r=a.querySelector(".m-badge.--secondary"),d=globalThis.getComputedStyle(s),i=globalThis.getComputedStyle(r);t.outline||await e(d.backgroundColor).not.toBe(i.backgroundColor)},parameters:{docs:{description:{story:"All available badge variants with their respective colors and styling."}}}},B={render:a=>{const t=document.createElement("div");t.style.display="flex",t.style.gap="1rem",t.style.alignItems="center";const n=a.label,o=a.variant,s=a.disabled,r=document.createElement("button");r.classList.add("m-badge"),a.transition&&r.classList.add("--transition"),a.size&&r.classList.add(`--${a.size}`),a.rounded&&r.classList.add("--rounded"),a.outline&&r.classList.add("--outline"),o!=="default"&&r.classList.add(`--${o}`),s&&(r.disabled=!0),r.textContent=`${n} Button`;const d=document.createElement("a");return d.classList.add("m-badge"),a.transition&&d.classList.add("--transition"),a.size&&d.classList.add(`--${a.size}`),a.rounded&&d.classList.add("--rounded"),a.outline&&d.classList.add("--outline"),o!=="default"&&d.classList.add(`--${o}`),d.href="#",d.textContent=`${n} Link`,d.setAttribute("target","_blank"),t.append(r,d),t},args:{label:"Interactive",variant:"primary",disabled:!1,transition:!0,size:"default",rounded:!1,outline:!1},play:async({canvasElement:a,args:t})=>{const n=a.querySelector("button.m-badge"),o=a.querySelector("a.m-badge");if(await e(n).toBeInTheDocument(),await e(n).toHaveClass("m-badge"),await e(n.tagName).toBe("BUTTON"),await e(n).toHaveTextContent(/Interactive.*Button/),await e(o).toBeInTheDocument(),await e(o).toHaveClass("m-badge"),await e(o.tagName).toBe("A"),await e(o).toHaveTextContent(/Interactive.*Link/),await e(o).toHaveAttribute("href","#"),t.transition&&(await e(n).toHaveClass("--transition"),await e(o).toHaveClass("--transition")),t.disabled){await e(n).toBeDisabled();const s=globalThis.getComputedStyle(n);await e(s.opacity).toBe("0.65")}else await e(n).not.toBeDisabled();await I.click(n),t.disabled||await e(n).toHaveFocus()}},w={render:a=>{const t=document.createElement("div");t.style.display="flex",t.style.gap="0.5rem",t.style.flexWrap="wrap";const n=["primary","secondary","tertiary","danger","warning"];for(const o of n){const s=document.createElement("div");s.classList.add("m-badge","--outline",`--${o}`),a.rounded&&s.classList.add("--rounded"),s.textContent=o.charAt(0).toUpperCase()+o.slice(1),t.append(s)}return t},args:{rounded:!1},play:async({canvasElement:a,args:t})=>{const n=a.querySelectorAll(".m-badge"),o=["primary","secondary","tertiary","danger","warning"];await e(n).toHaveLength(5);for(const[g,l]of n.entries()){const c=o[g];if(c){await e(l).toHaveClass("m-badge"),await e(l).toHaveClass("--outline"),await e(l).toHaveClass(`--${c}`);const m=c.charAt(0).toUpperCase()+c.slice(1);await e(l).toHaveTextContent(m),t.rounded&&await e(l).toHaveClass("--rounded");const p=globalThis.getComputedStyle(l);await e(p.backgroundColor).toBe("rgba(0, 0, 0, 0)");const y=p.borderWidth;await e(y).not.toBe("0px")}}const s=a.querySelector(".m-badge.--primary"),r=a.querySelector(".m-badge.--danger"),d=globalThis.getComputedStyle(s),i=globalThis.getComputedStyle(r);await e(d.borderColor).not.toBe(i.borderColor)},parameters:{docs:{description:{story:"Outline style badges with transparent backgrounds and colored borders."}}}},T={render:a=>{const t=document.createElement("div");t.style.display="flex",t.style.gap="1rem",t.style.flexWrap="wrap",t.style.alignItems="center";const n=a.label,o=a.variant,s=document.createElement("div");s.classList.add("m-badge"),o!=="default"&&s.classList.add(`--${o}`),s.innerHTML=`<span class="icon">✓</span> <span>${n}</span>`;const r=document.createElement("div");r.classList.add("m-badge"),o!=="default"&&r.classList.add(`--${o}`),r.innerHTML=`<span>${n}</span> <span class="icon">✕</span>`;const d=document.createElement("div");d.classList.add("m-badge","--rounded"),o!=="default"&&d.classList.add(`--${o}`),d.innerHTML='<span class="icon">★</span>';const i=document.createElement("div");return i.classList.add("m-badge","--danger","--small","--rounded"),i.textContent="3",t.append(s,r,d,i),t},args:{label:"Badge",variant:"primary"},play:async({canvasElement:a,args:t})=>{const n=a.querySelectorAll(".m-badge");await e(n).toHaveLength(4);const o=n[0];await e(o).toHaveClass("m-badge");const s=o.querySelector(".icon"),r=o.querySelector("span:not(.icon)");await e(s).toBeInTheDocument(),await e(s).toHaveTextContent("✓"),await e(r).toHaveTextContent(t.label);const d=o.children;await e(d[0]).toHaveClass("icon"),await e(d[1]).not.toHaveClass("icon");const i=n[1];await e(i).toHaveClass("m-badge");const g=i.querySelector(".icon"),l=i.querySelector("span:not(.icon)");await e(g).toBeInTheDocument(),await e(g).toHaveTextContent("✕"),await e(l).toHaveTextContent(t.label);const c=i.children;await e(c[0]).not.toHaveClass("icon"),await e(c[1]).toHaveClass("icon");const m=n[2];await e(m).toHaveClass("m-badge"),await e(m).toHaveClass("--rounded");const p=m.querySelector(".icon");await e(p).toBeInTheDocument(),await e(p).toHaveTextContent("★");const y=[...m.childNodes].filter(v=>v.nodeType===Node.TEXT_NODE&&v.textContent?.trim());await e(y).toHaveLength(0);const b=n[3];await e(b).toHaveClass("m-badge"),await e(b).toHaveClass("--danger"),await e(b).toHaveClass("--small"),await e(b).toHaveClass("--rounded"),await e(b).toHaveTextContent("3");const H=globalThis.getComputedStyle(b),L=Number.parseFloat(H.fontSize);await e(L).toBeLessThan(16);const E=globalThis.getComputedStyle(o);await e(E.gap).not.toBe("0px")},parameters:{docs:{description:{story:"Badges with icons in various configurations: icon+text, text+icon, icon-only, and notification count."}}}},C={render:()=>{const a=document.createElement("div");a.style.display="flex",a.style.gap="1rem",a.style.alignItems="center";const t=document.createElement("div");t.classList.add("m-badge","--primary"),t.textContent="Default Size";const n=document.createElement("div");return n.classList.add("m-badge","--primary","--small"),n.textContent="Small Size",a.append(t,n),a},play:async({canvasElement:a})=>{const t=a.querySelector(".m-badge:not(.--small)"),n=a.querySelector(".m-badge.--small");await e(t).toBeInTheDocument(),await e(n).toBeInTheDocument(),await e(t).toHaveClass("m-badge","--primary"),await e(n).toHaveClass("m-badge","--primary","--small"),await e(t).not.toHaveClass("--small"),await e(n).toHaveClass("--small");const o=globalThis.getComputedStyle(t),s=globalThis.getComputedStyle(n),r=Number.parseFloat(o.fontSize),d=Number.parseFloat(s.fontSize);await e(d).toBeLessThan(r),await e(o.backgroundColor).toBe(s.backgroundColor)},parameters:{docs:{description:{story:"Comparison of default and small badge sizes."}}}},h={render:()=>{const a=document.createElement("div");a.style.display="flex",a.style.gap="1rem",a.style.alignItems="center";const t=document.createElement("div");t.classList.add("m-badge","--secondary"),t.textContent="Default";const n=document.createElement("div");return n.classList.add("m-badge","--secondary","--rounded"),n.textContent="Rounded",a.append(t,n),a},play:async({canvasElement:a})=>{const t=a.querySelector(".m-badge:not(.--rounded)"),n=a.querySelector(".m-badge.--rounded");await e(t).toBeInTheDocument(),await e(n).toBeInTheDocument(),await e(t).toHaveClass("m-badge","--secondary"),await e(n).toHaveClass("m-badge","--secondary","--rounded"),await e(t).not.toHaveClass("--rounded"),await e(n).toHaveClass("--rounded");const o=globalThis.getComputedStyle(t),s=globalThis.getComputedStyle(n),r=Number.parseFloat(o.borderRadius),d=Number.parseFloat(s.borderRadius);await e(d).toBeGreaterThan(r),await e(o.backgroundColor).toBe(s.backgroundColor);const i=Number.parseFloat(s.height);await e(d).toBeGreaterThanOrEqual(i/2)},parameters:{docs:{description:{story:"Comparison of default and fully rounded badge shapes."}}}},S={render:()=>{const a=document.createElement("div");a.style.display="flex",a.style.flexDirection="column",a.style.gap="1.5rem";const t=document.createElement("div");t.innerHTML=`
       <h4 style="margin: 0 0 0.5rem 0;">Status Indicators</h4>
       <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
         <div class="m-badge --primary --small --rounded">Online</div>
@@ -70,7 +92,7 @@ Use badges to:
         <div class="m-badge --warning --small --rounded">Away</div>
         <div class="m-badge --tertiary --small --rounded">Busy</div>
       </div>
-    `;const t=document.createElement("div");t.innerHTML=`
+    `;const n=document.createElement("div");n.innerHTML=`
       <h4 style="margin: 0 0 0.5rem 0;">Notification Counts</h4>
       <div style="display: flex; gap: 0.5rem; align-items: center;">
         <span>Messages</span>
@@ -88,7 +110,7 @@ Use badges to:
         <div class="m-badge --outline --tertiary">CSS</div>
         <div class="m-badge --outline --warning">JavaScript</div>
       </div>
-    `,n.append(a,t,o),n},play:async({canvasElement:n})=>{const a=n.querySelector("h4");await e(a).toBeInTheDocument(),await e(a).toHaveTextContent("Status Indicators");const t=n.querySelector(".m-badge.--primary"),o=n.querySelector(".m-badge.--danger"),s=n.querySelector(".m-badge.--warning"),i=n.querySelector(".m-badge.--tertiary");await e(t).toHaveClass("m-badge","--primary","--small","--rounded"),await e(o).toHaveClass("m-badge","--danger","--small","--rounded"),await e(s).toHaveClass("m-badge","--warning","--small","--rounded"),await e(i).toHaveClass("m-badge","--tertiary","--small","--rounded");const d=n.querySelectorAll("h4"),r=d[1];await e(r).toBeInTheDocument(),await e(r).toHaveTextContent("Notification Counts");const g=n.querySelectorAll(".m-badge"),l=[...g].find(u=>u.textContent==="12"),c=[...g].find(u=>u.textContent==="3"),m=[...g].find(u=>u.textContent==="New");await e(l).toHaveClass("m-badge","--danger","--small","--rounded"),await e(c).toHaveClass("m-badge","--warning","--small","--rounded"),await e(m).toHaveClass("m-badge","--primary","--small","--rounded");const p=d[2];await e(p).toBeInTheDocument(),await e(p).toHaveTextContent("Category Tags");const y=[...g].find(u=>u.textContent==="React"),b=[...g].find(u=>u.textContent==="TypeScript"),H=[...g].find(u=>u.textContent==="CSS"),L=[...g].find(u=>u.textContent==="JavaScript");await e(y).toHaveClass("m-badge","--outline","--primary"),await e(b).toHaveClass("m-badge","--outline","--secondary"),await e(H).toHaveClass("m-badge","--outline","--tertiary"),await e(L).toHaveClass("m-badge","--outline","--warning");const E=globalThis.getComputedStyle(t),v=globalThis.getComputedStyle(y);await e(E.backgroundColor).not.toBe("rgba(0, 0, 0, 0)"),await e(v.backgroundColor).toBe("rgba(0, 0, 0, 0)"),await e(l.textContent).toMatch(/^\d+$/),await e(c.textContent).toMatch(/^\d+$/),await e(m.textContent).toBe("New")},parameters:{docs:{description:{story:"Real-world usage examples showing badges as status indicators, notification counts, and category tags."}}}};f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
+    `,a.append(t,n,o),a},play:async({canvasElement:a})=>{const t=a.querySelector("h4");await e(t).toBeInTheDocument(),await e(t).toHaveTextContent("Status Indicators");const n=a.querySelector(".m-badge.--primary"),o=a.querySelector(".m-badge.--danger"),s=a.querySelector(".m-badge.--warning"),r=a.querySelector(".m-badge.--tertiary");await e(n).toHaveClass("m-badge","--primary","--small","--rounded"),await e(o).toHaveClass("m-badge","--danger","--small","--rounded"),await e(s).toHaveClass("m-badge","--warning","--small","--rounded"),await e(r).toHaveClass("m-badge","--tertiary","--small","--rounded");const d=a.querySelectorAll("h4"),i=d[1];await e(i).toBeInTheDocument(),await e(i).toHaveTextContent("Notification Counts");const g=a.querySelectorAll(".m-badge"),l=[...g].find(u=>u.textContent==="12"),c=[...g].find(u=>u.textContent==="3"),m=[...g].find(u=>u.textContent==="New");await e(l).toHaveClass("m-badge","--danger","--small","--rounded"),await e(c).toHaveClass("m-badge","--warning","--small","--rounded"),await e(m).toHaveClass("m-badge","--primary","--small","--rounded");const p=d[2];await e(p).toBeInTheDocument(),await e(p).toHaveTextContent("Category Tags");const y=[...g].find(u=>u.textContent==="React"),b=[...g].find(u=>u.textContent==="TypeScript"),H=[...g].find(u=>u.textContent==="CSS"),L=[...g].find(u=>u.textContent==="JavaScript");await e(y).toHaveClass("m-badge","--outline","--primary"),await e(b).toHaveClass("m-badge","--outline","--secondary"),await e(H).toHaveClass("m-badge","--outline","--tertiary"),await e(L).toHaveClass("m-badge","--outline","--warning");const E=globalThis.getComputedStyle(n),v=globalThis.getComputedStyle(y);await e(E.backgroundColor).not.toBe("rgba(0, 0, 0, 0)"),await e(v.backgroundColor).toBe("rgba(0, 0, 0, 0)"),await e(l.textContent).toMatch(/^\d+$/),await e(c.textContent).toMatch(/^\d+$/),await e(m.textContent).toBe("New")},parameters:{docs:{description:{story:"Real-world usage examples showing badges as status indicators, notification counts, and category tags."}}}};f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
   render: args => {
     const container = document.createElement("div");
     const badge = document.createElement("div");
@@ -264,7 +286,7 @@ Use badges to:
       }
     }
   }
-}`,...x.parameters?.docs?.source}}};w.parameters={...w.parameters,docs:{...w.parameters?.docs,source:{originalSource:`{
+}`,...x.parameters?.docs?.source}}};B.parameters={...B.parameters,docs:{...B.parameters?.docs,source:{originalSource:`{
   render: args => {
     const container = document.createElement("div");
     container.style.display = "flex";
@@ -276,14 +298,22 @@ Use badges to:
 
     // Button badge
     const buttonBadge = document.createElement("button");
-    buttonBadge.classList.add("m-badge", "--transition");
+    buttonBadge.classList.add("m-badge");
+    if (args["transition"]) buttonBadge.classList.add("--transition");
+    if (args["size"]) buttonBadge.classList.add(\`--\${args["size"]}\`);
+    if (args["rounded"]) buttonBadge.classList.add("--rounded");
+    if (args["outline"]) buttonBadge.classList.add("--outline");
     if (variant !== "default") buttonBadge.classList.add(\`--\${variant}\`);
     if (disabled) buttonBadge.disabled = true;
     buttonBadge.textContent = \`\${label} Button\`;
 
     // Link badge
     const linkBadge = document.createElement("a");
-    linkBadge.classList.add("m-badge", "--transition");
+    linkBadge.classList.add("m-badge");
+    if (args["transition"]) linkBadge.classList.add("--transition");
+    if (args["size"]) linkBadge.classList.add(\`--\${args["size"]}\`);
+    if (args["rounded"]) linkBadge.classList.add("--rounded");
+    if (args["outline"]) linkBadge.classList.add("--outline");
     if (variant !== "default") linkBadge.classList.add(\`--\${variant}\`);
     linkBadge.href = "#";
     linkBadge.textContent = \`\${label} Link\`;
@@ -294,7 +324,11 @@ Use badges to:
   args: {
     label: "Interactive",
     variant: "primary",
-    disabled: false
+    disabled: false,
+    transition: true,
+    size: "default",
+    rounded: false,
+    outline: false
   },
   play: async ({
     canvasElement,
@@ -337,7 +371,7 @@ Use badges to:
       await expect(buttonBadge).toHaveFocus();
     }
   }
-}`,...w.parameters?.docs?.source}}};B.parameters={...B.parameters,docs:{...B.parameters?.docs,source:{originalSource:`{
+}`,...B.parameters?.docs?.source}}};w.parameters={...w.parameters,docs:{...w.parameters?.docs,source:{originalSource:`{
   render: args => {
     const container = document.createElement("div");
     container.style.display = "flex";
@@ -406,7 +440,7 @@ Use badges to:
       }
     }
   }
-}`,...B.parameters?.docs?.source}}};C.parameters={...C.parameters,docs:{...C.parameters?.docs,source:{originalSource:`{
+}`,...w.parameters?.docs?.source}}};T.parameters={...T.parameters,docs:{...T.parameters?.docs,source:{originalSource:`{
   render: args => {
     const container = document.createElement("div");
     container.style.display = "flex";
@@ -517,7 +551,7 @@ Use badges to:
       }
     }
   }
-}`,...C.parameters?.docs?.source}}};T.parameters={...T.parameters,docs:{...T.parameters?.docs,source:{originalSource:`{
+}`,...T.parameters?.docs?.source}}};C.parameters={...C.parameters,docs:{...C.parameters?.docs,source:{originalSource:`{
   render: () => {
     const container = document.createElement("div");
     container.style.display = "flex";
@@ -569,7 +603,7 @@ Use badges to:
       }
     }
   }
-}`,...T.parameters?.docs?.source}}};S.parameters={...S.parameters,docs:{...S.parameters?.docs,source:{originalSource:`{
+}`,...C.parameters?.docs?.source}}};h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
   render: () => {
     const container = document.createElement("div");
     container.style.display = "flex";
@@ -626,7 +660,7 @@ Use badges to:
       }
     }
   }
-}`,...S.parameters?.docs?.source}}};h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
+}`,...h.parameters?.docs?.source}}};S.parameters={...S.parameters,docs:{...S.parameters?.docs,source:{originalSource:`{
   render: () => {
     const container = document.createElement("div");
     container.style.display = "flex";
@@ -741,4 +775,4 @@ Use badges to:
       }
     }
   }
-}`,...h.parameters?.docs?.source}}};const q=["Default","AllVariants","Interactive","OutlineStyle","WithIcon","SizeComparison","ShapeVariations","UseCaseExamples"];export{x as AllVariants,f as Default,w as Interactive,B as OutlineStyle,S as ShapeVariations,T as SizeComparison,h as UseCaseExamples,C as WithIcon,q as __namedExportsOrder,D as default};
+}`,...S.parameters?.docs?.source}}};const z=["Default","AllVariants","Interactive","OutlineStyle","WithIcon","SizeComparison","ShapeVariations","UseCaseExamples"];export{x as AllVariants,f as Default,B as Interactive,w as OutlineStyle,h as ShapeVariations,C as SizeComparison,S as UseCaseExamples,T as WithIcon,z as __namedExportsOrder,D as default};

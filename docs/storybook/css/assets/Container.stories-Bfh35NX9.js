@@ -1,19 +1,73 @@
-const{expect:t}=__STORYBOOK_MODULE_TEST__,u={title:"Layouts/Container",tags:["autodocs"],argTypes:{content:{control:{type:"text"},description:"Content to display inside the container."},padding:{control:{type:"boolean"},description:"Enable responsive padding inside the container.",defaultValue:!1},noCentering:{control:{type:"boolean"},description:"Disable horizontal centering of the container.",defaultValue:!1}},parameters:{docs:{description:{component:`
-Container component provides responsive layout constraints with predefined breakpoints.
+const{expect:t}=__STORYBOOK_MODULE_TEST__,y={title:"Layouts/Container",tags:["autodocs"],argTypes:{content:{control:{type:"text"},description:"The content for the component"},padding:{control:{type:"boolean"},description:"The responsive padding modifier for the component"},noCentering:{control:{type:"boolean"},description:"The centering disable modifier for the component"}},parameters:{docs:{description:{component:`
+### Overview
 
-- **Mobile**: max-width 100%
-- **Small**: max-width 576px (>576px)
-- **Medium**: max-width 768px (>768px)
-- **Large**: max-width 1024px (>1024px)
-- **X Large**: max-width 1280px (>1280px)
-- **2X Large**: max-width 1536px (>1536px)
+The Container component provides responsive layout constraints with predefined breakpoints and automatic centering.
 
-The container is centered horizontally and uses logical properties (margin-inline, max-inline-size) for better internationalization support.
-        `}}}},m={render:r=>{const e=document.createElement("div"),n=document.createElement("div");return n.classList.add("m-container"),r.padding&&n.classList.add("--padding"),r.noCentering&&n.classList.add("--no-centering"),n.style.backgroundColor="#ffffff",n.innerHTML=`<p>${r.content}</p>`,e.style.backgroundColor="#f5f5f5",e.style.padding="1rem",e.style.minHeight="200px",e.append(n),e},args:{content:"This is content inside the container. Resize the viewport to see responsive behavior and padding changes.",padding:!1,noCentering:!1},play:async({canvasElement:r,args:e})=>{const n=r.querySelector(".m-container");await t(n).toBeInTheDocument(),await t(n).toHaveClass("m-container");const s=n.querySelector("p");await t(s).toBeInTheDocument(),await t(s).toHaveTextContent(e.content);const i=getComputedStyle(n),o=i.getPropertyValue("--container-sm-max-width").trim(),l=i.getPropertyValue("--container-md-max-width").trim(),d=i.getPropertyValue("--container-lg-max-width").trim(),p=i.getPropertyValue("--container-xl-max-width").trim(),c=i.getPropertyValue("--container-2xl-max-width").trim();await t(o).toBe("40rem"),await t(l).toBe("48rem"),await t(d).toBe("64rem"),await t(p).toBe("80rem"),await t(c).toBe("96rem")}},g={render:r=>{const e=document.createElement("div");e.style.backgroundColor="#f0f0f0",e.style.padding="1rem",e.style.fontFamily="system-ui, sans-serif";const n=document.createElement("h2");n.textContent="Container Responsive Breakpoints",n.style.textAlign="center",n.style.marginBottom="2rem";const s=[{label:"Small",width:"40rem",bgColor:"#e3f2fd",padding:"0 var(--spacing-2)"},{label:"Medium",width:"48rem",bgColor:"#f3e5f5",padding:"0 var(--spacing-3)"},{label:"Large",width:"64rem",bgColor:"#e8f5e8",padding:"0 var(--spacing-4)"},{label:"X Large",width:"80rem",bgColor:"#fff3e0",padding:"0 var(--spacing-5)"},{label:"2X Large",width:"96rem",bgColor:"#fce4ec",padding:"0 var(--spacing-6)"}];for(const{label:i,width:o,bgColor:l,padding:d}of s){const p=document.createElement("div");p.style.marginBottom="2rem";const c=document.createElement("h3");c.textContent=i,c.style.marginBottom="0.5rem",c.style.fontSize="1rem";const a=document.createElement("div");a.classList.add("m-container"),a.style.backgroundColor=l,a.style.border="2px dashed #666",a.style.setProperty("--container-2xl-max-width",o),a.style.setProperty("--container-xl-max-width",o),a.style.setProperty("--container-lg-max-width",o),a.style.setProperty("--container-md-max-width",o),a.style.setProperty("--container-sm-max-width",o),a.style.setProperty("--container-default-padding",d),a.style.setProperty("--container-sm-padding",d),a.style.setProperty("--container-md-padding",d),a.style.setProperty("--container-lg-padding",d),a.style.setProperty("--container-xl-padding",d),a.style.setProperty("--container-2xl-padding",d),r.padding&&a.classList.add("--padding"),r.noCentering&&a.classList.add("--no-centering");const y=document.createElement("div");y.innerHTML=`
-        <p><strong>Max-width:</strong> ${o}</p>
+### Usage
+
+Use Container to constrain content width and center it horizontally. Perfect for main content areas, article layouts, and ensuring optimal reading widths across different screen sizes.
+
+### Example code
+
+\`\`\`html
+<!-- Basic container -->
+<div class="m-container">
+  <p>Your content here</p>
+</div>
+
+<!-- Container with responsive padding -->
+<div class="m-container --padding">
+  <article>Article content with automatic padding</article>
+</div>
+
+<!-- Container without centering -->
+<div class="m-container --no-centering">
+  <nav>Navigation content aligned to start</nav>
+</div>
+\`\`\`
+
+### Elements
+
+This component has no child elements - it's a single-level component.
+
+### Modifiers
+
+| Target | Name | Description |
+|--- | ---- | ----------- |
+| .m-container | .--padding | Enables responsive padding that increases with screen size |
+| .m-container | .--no-centering | Disables horizontal centering (margin-inline: 0) |
+
+### CSS Variables
+
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| --container-2xl-max-width | var(--media-2xl-max-width) | Maximum width for 2XL breakpoint |
+| --container-xl-max-width | var(--media-xl-max-width) | Maximum width for XL breakpoint |
+| --container-lg-max-width | var(--media-lg-max-width) | Maximum width for large breakpoint |
+| --container-md-max-width | var(--media-md-max-width) | Maximum width for medium breakpoint |
+| --container-sm-max-width | var(--media-sm-max-width) | Maximum width for small breakpoint |
+| --container-default-padding | 0 var(--spacing-2) | Default padding for mobile |
+| --container-sm-padding | 0 var(--spacing-3) | Padding for small breakpoint |
+| --container-md-padding | 0 var(--spacing-4) | Padding for medium breakpoint |
+| --container-lg-padding | 0 var(--spacing-5) | Padding for large breakpoint |
+| --container-xl-padding | 0 var(--spacing-6) | Padding for XL breakpoint |
+| --container-2xl-padding | 0 var(--spacing-7) | Padding for 2XL breakpoint |
+
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
+
+### Caution
+
+- Container uses logical properties (margin-inline) for better internationalization
+- Responsive breakpoints are managed through CSS custom media queries
+- Padding modifier provides different spacing at each breakpoint
+- Consider content hierarchy when nesting containers
+        `}}}},m={parameters:{docs:{description:{story:"Basic container with centered layout and responsive max-width constraints."}}},render:r=>{const e=document.createElement("div"),n=document.createElement("div");return n.classList.add("m-container"),r.padding&&n.classList.add("--padding"),r.noCentering&&n.classList.add("--no-centering"),n.style.backgroundColor="#ffffff",n.innerHTML=`<p>${r.content}</p>`,e.style.backgroundColor="#f5f5f5",e.style.padding="1rem",e.style.minHeight="200px",e.append(n),e},args:{content:"This is content inside the container. Resize the viewport to see responsive behavior and padding changes.",padding:!1,noCentering:!1},play:async({canvasElement:r,args:e})=>{const n=r.querySelector(".m-container");await t(n).toBeInTheDocument(),await t(n).toHaveClass("m-container");const d=n.querySelector("p");await t(d).toBeInTheDocument(),await t(d).toHaveTextContent(e.content);const o=getComputedStyle(n),i=o.getPropertyValue("--container-sm-max-width").trim(),l=o.getPropertyValue("--container-md-max-width").trim(),s=o.getPropertyValue("--container-lg-max-width").trim(),p=o.getPropertyValue("--container-xl-max-width").trim(),c=o.getPropertyValue("--container-2xl-max-width").trim();await t(i).toBe("40rem"),await t(l).toBe("48rem"),await t(s).toBe("64rem"),await t(p).toBe("80rem"),await t(c).toBe("96rem")}},g={parameters:{docs:{description:{story:"Demonstrates container behavior across different breakpoints with visual indicators for max-width values."}}},render:r=>{const e=document.createElement("div");e.style.backgroundColor="#f0f0f0",e.style.padding="1rem",e.style.fontFamily="system-ui, sans-serif";const n=document.createElement("h2");n.textContent="Container Responsive Breakpoints",n.style.textAlign="center",n.style.marginBottom="2rem";const d=[{label:"Small",width:"40rem",bgColor:"#e3f2fd",padding:"0 var(--spacing-2)"},{label:"Medium",width:"48rem",bgColor:"#f3e5f5",padding:"0 var(--spacing-3)"},{label:"Large",width:"64rem",bgColor:"#e8f5e8",padding:"0 var(--spacing-4)"},{label:"X Large",width:"80rem",bgColor:"#fff3e0",padding:"0 var(--spacing-5)"},{label:"2X Large",width:"96rem",bgColor:"#fce4ec",padding:"0 var(--spacing-6)"}];for(const{label:o,width:i,bgColor:l,padding:s}of d){const p=document.createElement("div");p.style.marginBottom="2rem";const c=document.createElement("h3");c.textContent=o,c.style.marginBottom="0.5rem",c.style.fontSize="1rem";const a=document.createElement("div");a.classList.add("m-container"),a.style.backgroundColor=l,a.style.border="2px dashed #666",a.style.setProperty("--container-2xl-max-width",i),a.style.setProperty("--container-xl-max-width",i),a.style.setProperty("--container-lg-max-width",i),a.style.setProperty("--container-md-max-width",i),a.style.setProperty("--container-sm-max-width",i),a.style.setProperty("--container-default-padding",s),a.style.setProperty("--container-sm-padding",s),a.style.setProperty("--container-md-padding",s),a.style.setProperty("--container-lg-padding",s),a.style.setProperty("--container-xl-padding",s),a.style.setProperty("--container-2xl-padding",s),r.padding&&a.classList.add("--padding"),r.noCentering&&a.classList.add("--no-centering");const u=document.createElement("div");u.innerHTML=`
+        <p><strong>Max-width:</strong> ${i}</p>
         <p>This container demonstrates responsive behavior with both width and padding changes.</p>
         <p><code>margin-inline: auto</code> centers the container horizontally.</p>
-      `,a.append(y),p.append(c,a),e.append(p)}return e.prepend(n),e},args:{padding:!1,noCentering:!1},play:async({canvasElement:r})=>{const e=r.querySelectorAll(".m-container");await t(e).toHaveLength(5);for(const n of e){await t(n).toHaveClass("m-container");const s=getComputedStyle(n),i=s.marginInlineStart,o=s.marginInlineEnd;await t(i).not.toBe("auto"),await t(o).not.toBe("auto")}}},h={render:r=>{const e=document.createElement("div"),n=document.createElement("div");return n.classList.add("m-container"),r.padding&&n.classList.add("--padding"),r.noCentering&&n.classList.add("--no-centering"),n.style.backgroundColor="#f5f5f5",n.innerHTML=`
+      `,a.append(u),p.append(c,a),e.append(p)}return e.prepend(n),e},args:{padding:!1,noCentering:!1},play:async({canvasElement:r})=>{const e=r.querySelectorAll(".m-container");await t(e).toHaveLength(5);for(const n of e){await t(n).toHaveClass("m-container");const d=getComputedStyle(n),o=d.marginInlineStart,i=d.marginInlineEnd;await t(o).not.toBe("auto"),await t(i).not.toBe("auto")}}},h={parameters:{docs:{description:{story:"Container with realistic nested content structure showing how it works with complex layouts including headers, articles, and grid systems."}}},render:r=>{const e=document.createElement("div"),n=document.createElement("div");return n.classList.add("m-container"),r.padding&&n.classList.add("--padding"),r.noCentering&&n.classList.add("--no-centering"),n.style.backgroundColor="#f5f5f5",n.innerHTML=`
       <header style="margin-bottom: 2rem; padding: 1rem; background: #e0e0e0; border-radius: 4px;">
         <h1 style="margin: 0; font-size: 2rem;">Page Header</h1>
         <p style="margin: 0.5rem 0 0 0; color: #333;">Subtitle or description</p>
@@ -48,7 +102,14 @@ The container is centered horizontally and uses logical properties (margin-inlin
       <footer style="padding: 1rem; background: #e0e0e0; border-radius: 4px; text-align: center;">
         <p style="margin: 0; color: #333;">&copy; 2025 Example Footer</p>
       </footer>
-    `,e.style.backgroundColor="#fafafa",e.style.padding="1rem",e.append(n),e},args:{content:"This article content shows how the container constrains width while maintaining readability with responsive padding for complex layouts.",padding:!1,noCentering:!1},play:async({canvasElement:r})=>{const e=r.querySelector(".m-container");await t(e).toBeInTheDocument(),await t(e).toHaveClass("m-container");const n=e.querySelector("header"),s=e.querySelector("main"),i=e.querySelector("footer");await t(n).toBeInTheDocument(),await t(s).toBeInTheDocument(),await t(i).toBeInTheDocument();const o=e.querySelector("[style*='grid-template-columns']");await t(o).toBeInTheDocument();const l=o.querySelectorAll("div");await t(l.length).toBeGreaterThanOrEqual(3);const d=getComputedStyle(e);await t(d.marginInlineStart).not.toBe("auto"),await t(d.marginInlineEnd).not.toBe("auto")}};m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
+    `,e.style.backgroundColor="#fafafa",e.style.padding="1rem",e.append(n),e},args:{content:"This article content shows how the container constrains width while maintaining readability with responsive padding for complex layouts.",padding:!1,noCentering:!1},play:async({canvasElement:r})=>{const e=r.querySelector(".m-container");await t(e).toBeInTheDocument(),await t(e).toHaveClass("m-container");const n=e.querySelector("header"),d=e.querySelector("main"),o=e.querySelector("footer");await t(n).toBeInTheDocument(),await t(d).toBeInTheDocument(),await t(o).toBeInTheDocument();const i=e.querySelector("[style*='grid-template-columns']");await t(i).toBeInTheDocument();const l=i.querySelectorAll("div");await t(l.length).toBeGreaterThanOrEqual(3);const s=getComputedStyle(e);await t(s.marginInlineStart).not.toBe("auto"),await t(s.marginInlineEnd).not.toBe("auto")}};m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic container with centered layout and responsive max-width constraints."
+      }
+    }
+  },
   render: args => {
     const wrapper = document.createElement("div");
     const container = document.createElement("div");
@@ -95,6 +156,13 @@ The container is centered horizontally and uses logical properties (margin-inlin
     await expect(xxlMaxWidth).toBe("96rem");
   }
 }`,...m.parameters?.docs?.source}}};g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`{
+  parameters: {
+    docs: {
+      description: {
+        story: "Demonstrates container behavior across different breakpoints with visual indicators for max-width values."
+      }
+    }
+  },
   render: args => {
     const wrapper = document.createElement("div");
     wrapper.style.backgroundColor = "#f0f0f0";
@@ -193,6 +261,13 @@ The container is centered horizontally and uses logical properties (margin-inlin
     }
   }
 }`,...g.parameters?.docs?.source}}};h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
+  parameters: {
+    docs: {
+      description: {
+        story: "Container with realistic nested content structure showing how it works with complex layouts including headers, articles, and grid systems."
+      }
+    }
+  },
   render: args => {
     const wrapper = document.createElement("div");
     const container = document.createElement("div");
@@ -274,4 +349,4 @@ The container is centered horizontally and uses logical properties (margin-inlin
     await expect(computedStyle.marginInlineStart).not.toBe("auto");
     await expect(computedStyle.marginInlineEnd).not.toBe("auto");
   }
-}`,...h.parameters?.docs?.source}}};const x=["Default","ResponsiveDemo","NestedContent"];export{m as Default,h as NestedContent,g as ResponsiveDemo,x as __namedExportsOrder,u as default};
+}`,...h.parameters?.docs?.source}}};const w=["Default","ResponsiveDemo","NestedContent"];export{m as Default,h as NestedContent,g as ResponsiveDemo,w as __namedExportsOrder,y as default};

@@ -1,49 +1,56 @@
-const{expect:c,userEvent:n}=__STORYBOOK_MODULE_TEST__,p={title:"Components/Checkbox",tags:["autodocs"],argTypes:{label:{control:{type:"text"},description:"Label text for the checkbox"},checked:{control:{type:"boolean"},description:"Initial checked state"},disabled:{control:{type:"boolean"},description:"Disable the checkbox"},name:{control:{type:"text"},description:"Name attribute for the checkbox"},value:{control:{type:"text"},description:"Value attribute for the checkbox"}},parameters:{docs:{description:{component:`
+const{expect:c,userEvent:s}=__STORYBOOK_MODULE_TEST__,p={title:"Components/Checkbox",tags:["autodocs"],argTypes:{label:{control:{type:"text"},description:"The label text for the component"},checked:{control:{type:"boolean"},description:"The checked state for the component"},disabled:{control:{type:"boolean"},description:"The disabled state for the component"},name:{control:{type:"text"},description:"The name attribute for the component"},value:{control:{type:"text"},description:"The value attribute for the component"}},parameters:{docs:{description:{component:`
 ### Overview
 
-The Checkbox component provides a custom-styled checkbox input that maintains accessibility while offering visual consistency. It supports various states including checked, disabled, and hover effects.
+The Checkbox component provides a custom-styled checkbox input that maintains accessibility while offering visual consistency across different browsers and platforms.
 
 ### Usage
 
-Use checkboxes for:
-- Multi-select options where users can choose multiple items
-- Boolean settings and preferences
-- Terms and conditions acceptance
-- Feature toggles and permissions
-- Form controls requiring true/false selection
+Use checkboxes for multi-select options where users can choose multiple items, boolean settings and preferences, accepting terms and conditions, or toggling feature states. Checkboxes are ideal when users need to make independent yes/no decisions for multiple options.
 
-**Common use cases:**
-- Settings panels with multiple options
-- Multi-select lists and filters
-- Form agreements and consents
-- Feature enable/disable controls
-- Task lists with completion states
+### Example code
+
+\`\`\`html
+<input type="checkbox" class="m-checkbox" id="example" name="example" value="example-value">
+<label for="example">Example checkbox</label>
+
+<input type="checkbox" class="m-checkbox" id="checked" name="checked" value="checked-value" checked>
+<label for="checked">Pre-checked checkbox</label>
+
+<input type="checkbox" class="m-checkbox" id="disabled" name="disabled" value="disabled-value" disabled>
+<label for="disabled">Disabled checkbox</label>
+\`\`\`
+
+### Elements
+
+This component has no child elements - it's a single-level component.
+
+### Modifiers
+
+This component does not have modifiers - styling is handled through states.
 
 ### CSS Variables
 
-| Name | Default | Description |
-| ---- | ------- | ----------- |
-| --checkbox-size | 1.2em | Size of the checkbox |
-| --checkbox-border-color | var(--color-dark) | Border color |
-| --checkbox-bg-color | var(--color-light) | Background color |
-| --checkbox-border-radius | 0.2em | Border radius |
-| --checkbox-lighter-brightness | 150% | Brightness on hover/focus |
-| --checkbox-disabled-opacity | 0.65 | Opacity when disabled |
+| Target | Name | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| .m-checkbox | --checkbox-size | 1.2em | Size of the checkbox |
+| .m-checkbox | --checkbox-border-color | var(--color-dark) | Border color |
+| .m-checkbox | --checkbox-bg-color | var(--color-light) | Background color |
+| .m-checkbox | --checkbox-border-radius | 0.2em | Border radius |
+| .m-checkbox | --checkbox-lighter-brightness | 150% | Brightness on hover/focus |
+| .m-checkbox | --checkbox-disabled-opacity | 0.65 | Opacity when disabled |
 
-### States
+### Data Attributes
 
-- **Default**: Unchecked state with border styling
-- **Checked**: Shows checkmark with primary background color
-- **Disabled**: Reduced opacity and disabled cursor
-- **Hover/Focus**: Brightness filter for visual feedback
+This component does not use data attributes for styling or behavior.
 
 ### Caution
+
 - Ensure sufficient contrast between checkbox and background for visibility
 - Use clear and concise labels for better usability
 - Maintain consistent sizing and spacing in forms
-- Avoid using checkboxes for single binary choices (use switches instead)
 - Test across different browsers for consistent appearance
-        `}},a11y:{config:{rules:[{id:"label",enabled:!1}]}}}},l={render:a=>{const e=document.createElement("div"),t=document.createElement("input");t.type="checkbox",t.classList.add("m-checkbox");const o=a.checked?!!a.checked:!1,s=a.disabled?!!a.disabled:!1,i=a.name?String(a.name):"checkbox",k=a.value?String(a.value):"checkbox";return t.name=i,t.value=k,t.checked=o,t.disabled=s,e.append(t),e},args:{checked:!1,disabled:!1,name:"example",value:"example-value"},play:async({canvasElement:a,args:e})=>{const t=a.querySelector("input[type='checkbox']");await c(t).toBeInTheDocument(),await c(t).toHaveClass("m-checkbox"),await c(t).toHaveAttribute("name",String(e.name)),await c(t).toHaveAttribute("value",String(e.value));const o=!!e.checked,s=!!e.disabled;await c(t.checked).toBe(o),s?await c(t).toBeDisabled():(await c(t).not.toBeDisabled(),await n.click(t),await c(t.checked).toBe(!o),await n.click(t),await c(t.checked).toBe(o));const i=globalThis.getComputedStyle(t);await c(i.appearance).toBe("none"),await c(i.cursor).toBe(s?"not-allowed":"pointer")}},r={render:a=>{const e=document.createElement("div"),t=document.createElement("input");return t.type="checkbox",t.classList.add("m-checkbox"),t.name="checkbox-checked",t.value="checked-value",t.checked=!0,e.append(t),e},args:{checked:!0},play:async({canvasElement:a})=>{const e=a.querySelector("input[type='checkbox']");await c(e).toBeInTheDocument(),await c(e).toHaveClass("m-checkbox"),await c(e).toBeChecked(),await c(e).not.toBeDisabled(),await n.click(e),await c(e).not.toBeChecked(),await n.click(e),await c(e).toBeChecked();const t=globalThis.getComputedStyle(e);await c(t.backgroundColor).not.toBe("rgba(0, 0, 0, 0)")},parameters:{docs:{description:{story:"Checkbox in checked state by default."}}}},d={render:()=>{const a=document.createElement("div"),e=document.createElement("input");return e.type="checkbox",e.classList.add("m-checkbox"),e.name="checkbox-disabled",e.value="disabled-value",e.disabled=!0,a.append(e),a},play:async({canvasElement:a})=>{const e=a.querySelector("input[type='checkbox']");await c(e).toBeInTheDocument(),await c(e).toHaveClass("m-checkbox"),await c(e).not.toBeChecked(),await c(e).toBeDisabled();const t=e.checked;await n.click(e),await c(e.checked).toBe(t);const o=globalThis.getComputedStyle(e);await c(o.cursor).toBe("not-allowed"),await c(Number.parseFloat(o.opacity)).toBeLessThan(1)},parameters:{docs:{description:{story:"Disabled checkbox that cannot be interacted with."}}}},b={render:()=>{const a=document.createElement("div"),e=document.createElement("input");return e.type="checkbox",e.classList.add("m-checkbox"),e.name="checkbox-checked-disabled",e.value="checked-disabled-value",e.checked=!0,e.disabled=!0,a.append(e),a},play:async({canvasElement:a})=>{const e=a.querySelector("input[type='checkbox']");await c(e).toBeInTheDocument(),await c(e).toHaveClass("m-checkbox"),await c(e).toBeChecked(),await c(e).toBeDisabled(),await n.click(e),await c(e).toBeChecked();const t=globalThis.getComputedStyle(e);await c(t.cursor).toBe("not-allowed"),await c(Number.parseFloat(t.opacity)).toBeLessThan(1)},parameters:{docs:{description:{story:"Disabled checkbox in checked state."}}}},h={render:a=>{const e=document.createElement("div");e.style.display="flex",e.style.alignItems="center",e.style.gap="0.5rem";const t=document.createElement("input");t.type="checkbox",t.classList.add("m-checkbox"),t.id="checkbox-with-label",t.name="agreement",t.value="agreed";const o=a.label?String(a.label):"I agree to the terms of service",s=document.createElement("label");return s.htmlFor="checkbox-with-label",s.textContent=o,s.style.cursor="pointer",s.style.userSelect="none",e.append(t,s),e},args:{label:"I agree to the terms of service"},play:async({canvasElement:a,args:e})=>{const t=a.querySelector("input[type='checkbox']"),o=a.querySelector("label");await c(t).toBeInTheDocument(),await c(o).toBeInTheDocument(),await c(o).toHaveAttribute("for","checkbox-with-label"),await c(o).toHaveTextContent(String(e.label)),await c(t.id).toBe("checkbox-with-label"),await c(t).not.toBeChecked(),await n.click(o),await c(t).toBeChecked(),await n.click(o),await c(t).not.toBeChecked(),o.focus(),await n.keyboard(" "),await c(t).toBeChecked();const s=globalThis.getComputedStyle(o);await c(s.cursor).toBe("pointer")},parameters:{docs:{description:{story:"Checkbox with associated label for improved accessibility and usability."}}}};l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+- Always associate labels with inputs for accessibility
+        `}},a11y:{config:{rules:[{id:"label",enabled:!1}]}}}},l={render:a=>{const e=document.createElement("div"),t=document.createElement("input");t.type="checkbox",t.classList.add("m-checkbox");const o=a.checked?!!a.checked:!1,n=a.disabled?!!a.disabled:!1,i=a.name?String(a.name):"checkbox",k=a.value?String(a.value):"checkbox";return t.name=i,t.value=k,t.checked=o,t.disabled=n,e.append(t),e},args:{checked:!1,disabled:!1,name:"example",value:"example-value"},play:async({canvasElement:a,args:e})=>{const t=a.querySelector("input[type='checkbox']");await c(t).toBeInTheDocument(),await c(t).toHaveClass("m-checkbox"),await c(t).toHaveAttribute("name",String(e.name)),await c(t).toHaveAttribute("value",String(e.value));const o=!!e.checked,n=!!e.disabled;await c(t.checked).toBe(o),n?await c(t).toBeDisabled():(await c(t).not.toBeDisabled(),await s.click(t),await c(t.checked).toBe(!o),await s.click(t),await c(t.checked).toBe(o));const i=globalThis.getComputedStyle(t);await c(i.appearance).toBe("none"),await c(i.cursor).toBe(n?"not-allowed":"pointer")}},r={render:a=>{const e=document.createElement("div"),t=document.createElement("input");return t.type="checkbox",t.classList.add("m-checkbox"),t.name="checkbox-checked",t.value="checked-value",t.checked=!0,e.append(t),e},args:{checked:!0},play:async({canvasElement:a})=>{const e=a.querySelector("input[type='checkbox']");await c(e).toBeInTheDocument(),await c(e).toHaveClass("m-checkbox"),await c(e).toBeChecked(),await c(e).not.toBeDisabled(),await s.click(e),await c(e).not.toBeChecked(),await s.click(e),await c(e).toBeChecked();const t=globalThis.getComputedStyle(e);await c(t.backgroundColor).not.toBe("rgba(0, 0, 0, 0)")},parameters:{docs:{description:{story:"Checkbox in checked state by default."}}}},d={render:()=>{const a=document.createElement("div"),e=document.createElement("input");return e.type="checkbox",e.classList.add("m-checkbox"),e.name="checkbox-disabled",e.value="disabled-value",e.disabled=!0,a.append(e),a},play:async({canvasElement:a})=>{const e=a.querySelector("input[type='checkbox']");await c(e).toBeInTheDocument(),await c(e).toHaveClass("m-checkbox"),await c(e).not.toBeChecked(),await c(e).toBeDisabled();const t=e.checked;await s.click(e),await c(e.checked).toBe(t);const o=globalThis.getComputedStyle(e);await c(o.cursor).toBe("not-allowed"),await c(Number.parseFloat(o.opacity)).toBeLessThan(1)},parameters:{docs:{description:{story:"Disabled checkbox that cannot be interacted with."}}}},b={render:()=>{const a=document.createElement("div"),e=document.createElement("input");return e.type="checkbox",e.classList.add("m-checkbox"),e.name="checkbox-checked-disabled",e.value="checked-disabled-value",e.checked=!0,e.disabled=!0,a.append(e),a},play:async({canvasElement:a})=>{const e=a.querySelector("input[type='checkbox']");await c(e).toBeInTheDocument(),await c(e).toHaveClass("m-checkbox"),await c(e).toBeChecked(),await c(e).toBeDisabled(),await s.click(e),await c(e).toBeChecked();const t=globalThis.getComputedStyle(e);await c(t.cursor).toBe("not-allowed"),await c(Number.parseFloat(t.opacity)).toBeLessThan(1)},parameters:{docs:{description:{story:"Disabled checkbox in checked state."}}}},h={render:a=>{const e=document.createElement("div");e.style.display="flex",e.style.alignItems="center",e.style.gap="0.5rem";const t=document.createElement("input");t.type="checkbox",t.classList.add("m-checkbox"),t.id="checkbox-with-label",t.name="agreement",t.value="agreed";const o=a.label?String(a.label):"I agree to the terms of service",n=document.createElement("label");return n.htmlFor="checkbox-with-label",n.textContent=o,n.style.cursor="pointer",n.style.userSelect="none",e.append(t,n),e},args:{label:"I agree to the terms of service"},play:async({canvasElement:a,args:e})=>{const t=a.querySelector("input[type='checkbox']"),o=a.querySelector("label");await c(t).toBeInTheDocument(),await c(o).toBeInTheDocument(),await c(o).toHaveAttribute("for","checkbox-with-label"),await c(o).toHaveTextContent(String(e.label)),await c(t.id).toBe("checkbox-with-label"),await c(t).not.toBeChecked(),await s.click(o),await c(t).toBeChecked(),await s.click(o),await c(t).not.toBeChecked(),o.focus(),await s.keyboard(" "),await c(t).toBeChecked();const n=globalThis.getComputedStyle(o);await c(n.cursor).toBe("pointer")},parameters:{docs:{description:{story:"Checkbox with associated label for improved accessibility and usability."}}}};l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
   render: args => {
     const container = document.createElement("div");
     const checkbox = document.createElement("input");
@@ -288,4 +295,4 @@ Use checkboxes for:
       }
     }
   }
-}`,...h.parameters?.docs?.source}}};const u=["Default","Checked","Disabled","CheckedDisabled","WithLabel"];export{r as Checked,b as CheckedDisabled,l as Default,d as Disabled,h as WithLabel,u as __namedExportsOrder,p as default};
+}`,...h.parameters?.docs?.source}}};const x=["Default","Checked","Disabled","CheckedDisabled","WithLabel"];export{r as Checked,b as CheckedDisabled,l as Default,d as Disabled,h as WithLabel,x as __namedExportsOrder,p as default};
