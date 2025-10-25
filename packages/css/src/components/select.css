@@ -3,6 +3,7 @@ select.m-select {
   --select-checkmark-gap: var(--spacing-4);
   --select-bg-color: var(--color-bg-light);
   --select-border-color: var(--color-border);
+  --select-hover-border-color: var(--color-border);
   --select-border: 2px solid var(--select-border-color);
   --select-border-radius: var(--radius-sm);
   --select-invalid-border-color: var(--color-danger);
@@ -20,12 +21,14 @@ select.m-select {
   &:hover,
   &:focus {
     opacity: var(--select-hover-opacity);
+    border-color: var(--select-hover-border-color);
     cursor: pointer;
   }
 
   &:disabled {
     cursor: not-allowed;
     opacity: var(--select-disabled-opacity);
+    border-color: initial;
   }
 
   &:invalid,

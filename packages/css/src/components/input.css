@@ -30,6 +30,7 @@ input.m-input {
     cursor: not-allowed;
     opacity: var(--input-disabled-opacity);
     color: var(--input-disabled-color);
+    border-color: initial;
   }
 
   &:invalid,

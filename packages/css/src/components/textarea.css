@@ -5,6 +5,7 @@ textarea.m-textarea {
   --input-bg-color: initial;
   --textarea-placeholder-color: var(--color-text-muted);
   --textarea-hover-opacity: 0.8;
+  --textarea-hover-border-color: var(--color-border);
   --textarea-disabled-opacity: 0.65;
   --textarea-disabled-color: var(--color-text-muted);
   --textarea-invalid-border-color: var(--color-danger);
