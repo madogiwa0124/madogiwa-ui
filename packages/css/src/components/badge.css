@@ -1,6 +1,7 @@
 .m-badge {
   --badge-padding: var(--spacing-1);
   --badge-item-gap: var(--spacing-2);
+  --badge-text-color: var(--color-text);
   --badge-border-color: var(--color-border);
   --badge-border: 1px solid var(--badge-border-color);
   --badge-border-radius: var(--radius-sm);
@@ -35,6 +36,7 @@
   gap: var(--badge-item-gap);
   text-decoration: none;
   line-height: var(--line-height-none);
+  color: var(--badge-text-color);
 
 
   &:has(.icon, svg) {
@@ -72,7 +74,8 @@
       &:not(:disabled) {
         &:hover,
         &:focus {
-          background-color: var(--badge-border-color);
+          background-color: var(--badge-bg-color);
+          color: var(--badge-text-color);
         }
       }
     }
@@ -89,76 +92,68 @@
   &.--primary {
     --badge-bg-color: var(--badge-primary-color);
     --badge-border-color: var(--badge-primary-border-color);
-
-    color: var(--badge-primary-text-color);
+    --badge-text-color: var(--badge-primary-text-color);
 
     &.--outline {
       --badge-border-color: var(--badge-primary-border-color);
 
-      color: var(--badge-primary-color);
+      color: var(--badge-primary-border-color);
     }
   }
 
   &.--secondary {
     --badge-bg-color: var(--badge-secondary-color);
     --badge-border-color: var(--badge-secondary-border-color);
-
-    color: var(--badge-secondary-text-color);
+    --badge-text-color: var(--badge-secondary-text-color);
 
     &.--outline {
       --badge-border-color: var(--badge-secondary-border-color);
 
-      color: var(--badge-secondary-color);
+      color: var(--badge-secondary-border-color);
     }
   }
 
   &.--tertiary {
     --badge-bg-color: var(--badge-tertiary-color);
     --badge-border-color: var(--badge-tertiary-border-color);
-
-    color: var(--badge-tertiary-text-color);
+    --badge-text-color: var(--badge-tertiary-text-color);
 
     &.--outline {
       --badge-border-color: var(--badge-tertiary-border-color);
 
-      color: var(--badge-tertiary-color);
+      color: var(--badge-tertiary-border-color);
     }
   }
 
   &.--danger {
     --badge-bg-color: var(--badge-danger-color);
     --badge-border-color: var(--badge-danger-border-color);
-
-    color: var(--badge-danger-text-color);
+    --badge-text-color: var(--badge-danger-text-color);
 
     &.--outline {
       --badge-border-color: var(--badge-danger-border-color);
 
-      color: var(--badge-danger-color);
+      color: var(--badge-danger-border-color);
     }
   }
 
   &.--warning {
     --badge-bg-color: var(--badge-warning-color);
     --badge-border-color: var(--badge-warning-border-color);
-
-    color: var(--badge-warning-text-color);
+    --badge-text-color: var(--badge-warning-text-color);
 
     &.--outline {
       --badge-border-color: var(--badge-warning-border-color);
 
-      color: var(--badge-warning-color);
+      color: var(--badge-warning-border-color);
     }
   }
 
   &.--transition {
     &:where(a, button) {
-      &:not(:disabled) {
-        &:hover,
-        &:focus {
-          transition: filter var(--badge-transition-duration) var(--badge-transition-timing);
-        }
-      }
+      transition:
+        filter var(--badge-transition-duration) var(--badge-transition-timing),
+        background-color var(--badge-transition-duration) var(--badge-transition-timing);
     }
   }
 }

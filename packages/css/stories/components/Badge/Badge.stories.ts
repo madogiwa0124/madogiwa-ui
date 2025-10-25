@@ -112,13 +112,10 @@ Use badges to:
 | --badge-danger-color | var(--color-danger) | Danger variant background |
 | --badge-warning-color | var(--color-warning) | Warning variant background |
 
-### Accessibility
+### Caution
 
-- Supports keyboard navigation when used as button or link
-- Color variants maintain sufficient contrast ratios
-- Disabled state is properly conveyed to screen readers
-- Semantic HTML elements (button, a) provide appropriate roles
-- Icon badges include proper text alternatives when needed
+- Ensure sufficient color contrast for readability.
+- Use interactive badges (buttons/links) sparingly to avoid UI clutter.
         `,
       },
     },
@@ -299,14 +296,22 @@ export const Interactive: Story = {
 
     // Button badge
     const buttonBadge = document.createElement("button");
-    buttonBadge.classList.add("m-badge", "--transition");
+    buttonBadge.classList.add("m-badge");
+    if (args["transition"]) buttonBadge.classList.add("--transition");
+    if (args["size"]) buttonBadge.classList.add(`--${args["size"]}`);
+    if (args["rounded"]) buttonBadge.classList.add("--rounded");
+    if (args["outline"]) buttonBadge.classList.add("--outline");
     if (variant !== "default") buttonBadge.classList.add(`--${variant}`);
     if (disabled) buttonBadge.disabled = true;
     buttonBadge.textContent = `${label} Button`;
 
     // Link badge
     const linkBadge = document.createElement("a");
-    linkBadge.classList.add("m-badge", "--transition");
+    linkBadge.classList.add("m-badge");
+    if (args["transition"]) linkBadge.classList.add("--transition");
+    if (args["size"]) linkBadge.classList.add(`--${args["size"]}`);
+    if (args["rounded"]) linkBadge.classList.add("--rounded");
+    if (args["outline"]) linkBadge.classList.add("--outline");
     if (variant !== "default") linkBadge.classList.add(`--${variant}`);
     linkBadge.href = "#";
     linkBadge.textContent = `${label} Link`;
@@ -319,6 +324,10 @@ export const Interactive: Story = {
     label: "Interactive",
     variant: "primary",
     disabled: false,
+    transition: true,
+    size: "default",
+    rounded: false,
+    outline: false,
   },
   play: async ({ canvasElement, args }) => {
     const buttonBadge = canvasElement.querySelector("button.m-badge") as HTMLButtonElement;
