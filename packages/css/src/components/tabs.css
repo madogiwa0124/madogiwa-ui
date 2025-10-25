@@ -5,6 +5,7 @@
   --tabs-active-item-border-color: var(--color-primary);
   --tabs-active-item-border: 2px solid transparent;
   --tabs-active-item-filter: brightness(0.95);
+  --tabs-active-item-color: var(--color-primary);
   --tabs-hover-item-filter: brightness(0.95);
   --tabs-disabled-item-filter: brightness(0.65);
   --tabs-hover-transition: 0.3s ease;
@@ -39,6 +40,7 @@
 
     &.--active,
     &[aria-selected="true"] {
+      color: var(--tabs-active-item-color);
       filter: var(--tabs-active-item-filter);
       border-color: var(--tabs-active-item-border-color);
     }
@@ -87,7 +89,9 @@
 
     /* NOTE: Don't move this location as it's styling for scroll hints */
     /* stylelint-disable-next-line no-descending-specificity */
-    .m-tabs__item, [role="tab"] {
+    .m-tabs__item,
+    /* stylelint-disable-next-line no-descending-specificity */
+    [role="tab"] {
       background-color: rgb(from var(--tabs-item-background-color) r g b / var(--tabs-scrollhint-item-opacity));
     }
 
