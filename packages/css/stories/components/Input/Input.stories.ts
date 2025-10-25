@@ -6,40 +6,44 @@ const meta: Meta<InputProperties> = {
   title: "Components/Input",
   tags: ["autodocs"],
   argTypes: {
-    placeholder: { control: "text" },
+    placeholder: {
+      control: "text",
+      description: "The placeholder text for the component",
+    },
     inputType: {
       control: {
         type: "select",
       },
       options: ["text", "email", "password", "number", "date", "color", "file"],
+      description: "The input type for the component",
     },
     block: {
       control: "boolean",
-      description: "Makes the input element display as block-level with full width",
+      description: "The block display modifier for the component",
     },
     disabled: {
       control: "boolean",
-      description: "Disables the input element",
+      description: "The disabled state for the component",
     },
     required: {
       control: "boolean",
-      description: "Marks the input element as required",
+      description: "The required attribute for the component",
     },
     error: {
       control: "boolean",
-      description: "Applies error styling to the input element",
+      description: "The error state modifier for the component",
     },
     value: {
       control: "text",
-      description: "Sets the value of the input element",
+      description: "The value attribute for the component",
     },
     accept: {
       control: "text",
-      description: "Specifies the accepted file types for file inputs",
+      description: "The accept attribute for the component",
     },
     transition: {
       control: "boolean",
-      description: "Enables transitions for the input element",
+      description: "The transition animation modifier for the component",
     },
     onInput: { action: "input" },
   },
@@ -49,11 +53,31 @@ const meta: Meta<InputProperties> = {
         component: `
 ### Overview
 
-The Input component provides a styled form input element with various type support and validation states. It supports all standard HTML input types and includes visual feedback for different states.
+The Input component provides a styled form input element with various type support and validation states.
 
 ### Usage
 
-Use Input components for collecting user data in forms. The component automatically handles focus states, validation feedback, and responsive behavior. It can be used standalone or within form layouts for various data collection scenarios.
+Use Input components for collecting user data in forms. Perfect for text input, email addresses, passwords, numbers, dates, and file uploads with proper validation feedback and responsive behavior.
+
+### Example code
+
+\`\`\`html
+<!-- Basic text input -->
+<input class="m-input" type="text" placeholder="Enter your name">
+
+<!-- Block input with transition -->
+<input class="m-input --block --transition" type="email" placeholder="Enter your email" required>
+
+<!-- Error state input -->
+<input class="m-input --error" type="password" placeholder="Enter password">
+
+<!-- Disabled input -->
+<input class="m-input" type="text" value="Read only value" disabled>
+\`\`\`
+
+### Elements
+
+This component has no child elements - it's a single-level component.
 
 ### Modifiers
 
@@ -61,27 +85,33 @@ Use Input components for collecting user data in forms. The component automatica
 |--- | ---- | ----------- |
 | .m-input | .--block | Makes the input element display as block-level with full width |
 | .m-input | .--error | Applies error styling with danger border color |
+| .m-input | .--transition | Enables smooth transitions for border color and opacity |
 
 ### CSS Variables
 
-| Target | Name | Default | Description |
-| ------ | ---- | ------- | ----------- |
-| .m-input | --input-border-radius | var(--radius-sm) | Border radius of the input element |
-| .m-input | --input-border-color | var(--color-border) | Default border color |
-| .m-input | --input-border | 1px solid var(--input-border-color) | Complete border specification |
-| .m-input | --input-bg-color | initial | Background color of the input |
-| .m-input | --input-placeholder-color | var(--color-text-muted) | Color of placeholder text |
-| .m-input | --input-hover-opacity | 0.8 | Opacity on hover and focus states |
-| .m-input | --input-disabled-opacity | 0.65 | Opacity when disabled |
-| .m-input | --input-disabled-color | var(--color-text-muted) | Text color when disabled |
-| .m-input | --input-invalid-border-color | var(--color-danger) | Border color for invalid/error states |
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| --input-border-radius | var(--radius-sm) | Border radius of the input element |
+| --input-border-color | var(--color-border) | Default border color |
+| --input-border | 1px solid var(--input-border-color) | Complete border specification |
+| --input-bg-color | initial | Background color of the input |
+| --input-placeholder-color | var(--color-text-muted) | Color of placeholder text |
+| --input-hover-opacity | 0.8 | Opacity on hover and focus states |
+| --input-hover-border-color | var(--color-border) | Border color on hover and focus |
+| --input-disabled-opacity | 0.65 | Opacity when disabled |
+| --input-disabled-color | var(--color-text-muted) | Text color when disabled |
+| --input-invalid-border-color | var(--color-danger) | Border color for invalid/error states |
+
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
 
 ### Caution
 
-- The component relies on CSS custom properties for theming
-- Validation states (invalid, error) should be properly managed in forms
-- File inputs may require additional styling for different browsers
-- Color inputs have limited styling options due to browser constraints
+- Use proper input types for better user experience and validation
+- Ensure sufficient color contrast for accessibility
+- Consider motion preferences when using the transition modifier
+- Provide clear validation feedback and error messages
         `,
       },
     },
