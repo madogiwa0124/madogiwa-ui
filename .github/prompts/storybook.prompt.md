@@ -48,6 +48,23 @@ Describe the usage scenarios and instructions for this component in actual produ
 
 **Sample code is unnecessary.**
 
+### Example code
+
+Show a simple code example of basic usage using a code block.
+
+\`\`\`html
+<div class="m-example --{variant}">
+  <!-- sample code -->
+</div>
+\`\`\`
+
+For components that require JavaScript, a simple JS code example should also be provided.
+
+\`\`\`js
+const example = document.querySelector('.m-example');
+// sample code
+\`\`\`
+
 ### Elements
 
 Describe **all elements** defined in this component.
