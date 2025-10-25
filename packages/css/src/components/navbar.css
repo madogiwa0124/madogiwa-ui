@@ -23,7 +23,7 @@
   --navbar-backdrop-zindex: calc(var(--navbar-base-zindex) + 1);
   --navbar-menu-zindex: calc(var(--navbar-backdrop-zindex) + 1);
   --navbar-hamburger-menu-zindex: calc(var(--navbar-menu-zindex) + 1);
-  --navbar-hamburger-menu-slidein-transition: 0.1s ease-in-out;
+  --navbar-hamburger-menu-slidein-transition: 0.25s ease-in-out;
   --navbar-hamburger-menu-hover-item-transition: 0.3s ease-in-out;
   --navbar-hamburger-float-menu-position-right: var(--spacing-2);
   --navbar-hamburger-side-menu-close-x-position: var(--spacing-3);
