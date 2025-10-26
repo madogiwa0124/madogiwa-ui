@@ -63,9 +63,9 @@ jobs:
         run: pnpm run css storybook:build
       - name: Serve Storybook and run tests for css
         run: |
-          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+          pnpm dlx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "pnpm run css storybook:preview --port 6006 --silent" \
-            "npx wait-on tcp:127.0.0.1:6006 && pnpm run css storybook:test"
+            "pnpm dlx wait-on tcp:127.0.0.1:6006 && pnpm run css storybook:test"
       - name: Unit tests for css
         run: pnpm css test
       - name: Build for css
