@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2025-10-25T15:02:19.711Z
+generated_at: 2025-10-26T13:44:37.343Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -312,7 +312,6 @@ This component has no child elements - it's a single-level component.
 
 | Target | Name | Description |
 |--- | ---- | ----------- |
-| .m-btn | .--default | Apply default color variant (base styling) |
 | .m-btn | .--primary | Apply primary color variant for main actions |
 | .m-btn | .--secondary | Apply secondary color variant for secondary actions |
 | .m-btn | .--tertiary | Apply tertiary color variant for subtle actions |
@@ -383,7 +382,7 @@ Use cards to display content in organized, digestible sections and group related
     <p>Card content goes here with relevant information.</p>
   </div>
   <div class="m-card__actions">
-    <button class="m-btn --default">Cancel</button>
+    <button class="m-btn">Cancel</button>
     <button class="m-btn --primary">Confirm</button>
   </div>
 </div>
@@ -1602,4 +1601,4 @@ This component does not use data attributes for styling or behavior.
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 10/25/2025, 3:02:19 PM
+- Generated at: 10/26/2025, 1:44:37 PM

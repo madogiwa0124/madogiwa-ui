@@ -17,7 +17,7 @@ Use cards to display content in organized, digestible sections and group related
     <p>Card content goes here with relevant information.</p>
   </div>
   <div class="m-card__actions">
-    <button class="m-btn --default">Cancel</button>
+    <button class="m-btn">Cancel</button>
     <button class="m-btn --primary">Confirm</button>
   </div>
 </div>
@@ -71,7 +71,7 @@ This component does not use data attributes for styling or behavior.
       <h3 style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600;">Card Title</h3>
       <p style="margin: 0; color: #666; line-height: 1.5;">${o}</p>
     `,e.append(c),s){const d=document.createElement("div");d.classList.add("m-card__actions"),d.style.setProperty("--card-actions-justify",r),d.innerHTML=`
-        <button class="m-btn --default">Cancel</button>
+        <button class="m-btn">Cancel</button>
         <button class="m-btn --primary">Confirm</button>
       `,e.append(d)}return a.append(e),a},args:{content:"This is a basic card with content. Cards are perfect for organizing related information in a clean, digestible format.",floating:!1,hasActions:!1,actionsJustify:"flex-end"},play:async({canvasElement:n,args:a})=>{const e=n.querySelector(".m-card"),o=n.querySelector(".m-card__content");await t(e).toBeInTheDocument(),await t(e).toHaveClass("m-card"),await t(o).toBeInTheDocument(),await t(o).toHaveClass("m-card__content"),await t(o).toHaveTextContent("Card Title"),await t(o).toHaveTextContent(/basic card with content/),await(a.floating?t(e).toHaveClass("--floating"):t(e).not.toHaveClass("--floating"));const s=a.hasActions,r=n.querySelector(".m-card__actions");s?(await t(r).toBeInTheDocument(),await t(r).toHaveClass("m-card__actions")):await t(r).not.toBeInTheDocument();const c=globalThis.getComputedStyle(e);await t(c.backgroundColor).not.toBe("rgba(0, 0, 0, 0)"),await t(c.borderRadius).not.toBe("0px")}},m={render:n=>{const a=document.createElement("div"),e=document.createElement("div");e.classList.add("m-card","--floating");const o=n.content,i=document.createElement("div");return i.classList.add("m-card__content"),i.innerHTML=`
       <h3 style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600;">Floating Card</h3>
@@ -79,7 +79,7 @@ This component does not use data attributes for styling or behavior.
     `,e.append(i),a.append(e),a},args:{content:"This card uses the floating modifier to add an elevated shadow effect. Hover over it to see the interaction."},play:async({canvasElement:n})=>{const a=n.querySelector(".m-card");await t(a).toBeInTheDocument(),await t(a).toHaveClass("m-card"),await t(a).toHaveClass("--floating");const e=globalThis.getComputedStyle(a);await t(e.boxShadow).not.toBe("none"),await h.hover(a),await t(a).toHaveClass("--floating"),await h.unhover(a)},parameters:{docs:{description:{story:"Card with floating shadow effect and hover interaction."}}}},g={render:n=>{const a=document.createElement("div"),e=document.createElement("div");e.classList.add("m-card"),e.style.width="320px",n.floating&&e.classList.add("--floating");const o=n.hasImage,i=n.content,s=n.imageAlt;if(o){const c=document.createElement("img");c.classList.add("m-card__image"),c.src=u,c.alt=s,e.append(c)}const r=document.createElement("div");if(r.classList.add("m-card__content"),r.innerHTML=`
       <h3 style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600;">Image Card</h3>
       <p style="margin: 0; color: #666; line-height: 1.5;">${i}</p>
-    `,e.append(r),n.hasActions){const c=document.createElement("div");c.classList.add("m-card__actions"),c.style.justifyContent=n.actionsJustify;const d=document.createElement("button");d.classList.add("m-btn","--default"),d.textContent="Cancel";const p=document.createElement("button");p.classList.add("m-btn","--primary"),p.textContent="Confirm",c.append(d,p),e.append(c)}return a.append(e),a},args:{content:"This card demonstrates how images can be integrated with content. The image is responsive and maintains proper aspect ratio.",hasImage:!0,imageAlt:"Example card image showing 320x240 placeholder",hasActions:!1,actionsJustify:"flex-end",floating:!1},play:async({canvasElement:n,args:a})=>{const e=n.querySelector(".m-card"),o=n.querySelector(".m-card__image"),i=n.querySelector(".m-card__content");if(await t(e).toBeInTheDocument(),await t(e).toHaveClass("m-card"),await t(i).toBeInTheDocument(),a.hasImage){await t(o).toBeInTheDocument(),await t(o).toHaveClass("m-card__image"),await t(o).toHaveAttribute("src",u),await t(o).toHaveAttribute("alt",a.imageAlt);const s=globalThis.getComputedStyle(o);await t(s.width).toBe("318px"),await t(s.objectFit).toBe("cover")}if(a.hasActions){const s=n.querySelector(".m-card__actions");await t(s).toBeInTheDocument(),await t(s).toHaveClass("m-card__actions"),await t(s).toHaveStyle(`justify-content: ${a.actionsJustify}`)}await t(i).toHaveTextContent("Image Card"),await t(i).toHaveTextContent(/image/)},parameters:{docs:{description:{story:"Card with image header and content area."}}}};l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+    `,e.append(r),n.hasActions){const c=document.createElement("div");c.classList.add("m-card__actions"),c.style.justifyContent=n.actionsJustify;const d=document.createElement("button");d.classList.add("m-btn"),d.textContent="Cancel";const p=document.createElement("button");p.classList.add("m-btn","--primary"),p.textContent="Confirm",c.append(d,p),e.append(c)}return a.append(e),a},args:{content:"This card demonstrates how images can be integrated with content. The image is responsive and maintains proper aspect ratio.",hasImage:!0,imageAlt:"Example card image showing 320x240 placeholder",hasActions:!1,actionsJustify:"flex-end",floating:!1},play:async({canvasElement:n,args:a})=>{const e=n.querySelector(".m-card"),o=n.querySelector(".m-card__image"),i=n.querySelector(".m-card__content");if(await t(e).toBeInTheDocument(),await t(e).toHaveClass("m-card"),await t(i).toBeInTheDocument(),a.hasImage){await t(o).toBeInTheDocument(),await t(o).toHaveClass("m-card__image"),await t(o).toHaveAttribute("src",u),await t(o).toHaveAttribute("alt",a.imageAlt);const s=globalThis.getComputedStyle(o);await t(s.width).toBe("318px"),await t(s.objectFit).toBe("cover")}if(a.hasActions){const s=n.querySelector(".m-card__actions");await t(s).toBeInTheDocument(),await t(s).toHaveClass("m-card__actions"),await t(s).toHaveStyle(`justify-content: ${a.actionsJustify}`)}await t(i).toHaveTextContent("Image Card"),await t(i).toHaveTextContent(/image/)},parameters:{docs:{description:{story:"Card with image header and content area."}}}};l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
   render: args => {
     const container = document.createElement("div");
     const card = document.createElement("div");
@@ -101,7 +101,7 @@ This component does not use data attributes for styling or behavior.
       actionsElement.classList.add("m-card__actions");
       actionsElement.style.setProperty("--card-actions-justify", actionsJustify);
       actionsElement.innerHTML = \`
-        <button class="m-btn --default">Cancel</button>
+        <button class="m-btn">Cancel</button>
         <button class="m-btn --primary">Confirm</button>
       \`;
       card.append(actionsElement);
@@ -227,7 +227,7 @@ This component does not use data attributes for styling or behavior.
       actionsElement.classList.add("m-card__actions");
       actionsElement.style.justifyContent = args["actionsJustify"];
       const cancelButton = document.createElement("button");
-      cancelButton.classList.add("m-btn", "--default");
+      cancelButton.classList.add("m-btn");
       cancelButton.textContent = "Cancel";
       const confirmButton = document.createElement("button");
       confirmButton.classList.add("m-btn", "--primary");
