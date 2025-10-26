@@ -73,7 +73,6 @@ This component has no child elements - it's a single-level component.
 
 | Target | Name | Description |
 |--- | ---- | ----------- |
-| .m-btn | .--default | Apply default color variant (base styling) |
 | .m-btn | .--primary | Apply primary color variant for main actions |
 | .m-btn | .--secondary | Apply secondary color variant for secondary actions |
 | .m-btn | .--tertiary | Apply tertiary color variant for subtle actions |

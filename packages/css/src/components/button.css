@@ -94,15 +94,12 @@
   &.--outline {
     background-color: transparent;
     border: 2px solid transparent;
+    color: var(--btn-outline-text-color-default);
+    border-color: var(--btn-color-default);
 
-    &.--default {
-      color: var(--btn-outline-text-color-default);
-      border-color: var(--btn-color-default);
-
-      &:hover {
-        color: var(--btn-text-color-default);
-        background-color: var(--btn-color-default);
-      }
+    &:hover {
+      color: var(--btn-text-color-default);
+      background-color: var(--btn-color-default);
     }
 
     &.--primary {
@@ -153,14 +150,7 @@
   &.--transition {
     transition: filter var(--btn-transition-duration) ease;
 
-    &:hover,
-    &:focus,
-    &:focus-visible {
-      transition: filter var(--btn-transition-duration) ease;
-    }
-
-    &.--outline,
-    &.--outline:hover {
+    &.--outline {
       transition: background-color var(--btn-transition-duration) ease,
         color var(--btn-transition-duration) ease;
     }

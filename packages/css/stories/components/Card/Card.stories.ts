@@ -66,7 +66,7 @@ Use cards to display content in organized, digestible sections and group related
     <p>Card content goes here with relevant information.</p>
   </div>
   <div class="m-card__actions">
-    <button class="m-btn --default">Cancel</button>
+    <button class="m-btn">Cancel</button>
     <button class="m-btn --primary">Confirm</button>
   </div>
 </div>
@@ -151,7 +151,7 @@ export const Default: Story = {
       actionsElement.classList.add("m-card__actions");
       actionsElement.style.setProperty("--card-actions-justify", actionsJustify);
       actionsElement.innerHTML = `
-        <button class="m-btn --default">Cancel</button>
+        <button class="m-btn">Cancel</button>
         <button class="m-btn --primary">Confirm</button>
       `;
       card.append(actionsElement);
@@ -288,7 +288,7 @@ export const FullCardSample: Story = {
       actionsElement.style.justifyContent = args["actionsJustify"];
 
       const cancelButton = document.createElement("button");
-      cancelButton.classList.add("m-btn", "--default");
+      cancelButton.classList.add("m-btn");
       cancelButton.textContent = "Cancel";
 
       const confirmButton = document.createElement("button");
