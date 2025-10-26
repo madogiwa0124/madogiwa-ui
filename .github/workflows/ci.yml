@@ -39,7 +39,7 @@ jobs:
       - name: lint css
         run: pnpm run lint:css
 
-  test:
+  css:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -70,3 +70,28 @@ jobs:
         run: pnpm css test
       - name: Build for css
         run: pnpm css build
+
+  vue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - name: Install pnpm
+        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "22"
+          cache: "pnpm"
+      - run: pnpm install --frozen-lockfile
+      - name: Cache Playwright Browsers
+        uses: ./.github/actions/cache-playwright
+        id: playwright-cache
+        with:
+          working-directory: .
+      - name: Setup project
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: pnpm run setup
+      - name: Unit tests for vue
+        run: pnpm vue test
+      - name: Build for vue
+        run: pnpm vue build

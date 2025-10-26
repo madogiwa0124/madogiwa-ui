@@ -15,7 +15,8 @@
         "dbaeumer.vscode-eslint",
         "stylelint.vscode-stylelint",
         "fabiospampinato.vscode-open-in-github",
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+        "Vue.volar"
       ]
     }
   },

@@ -8,9 +8,10 @@
     "build:docs": "pnpm css build:docs --output-dir=../../docs/storybook/css",
     "setup": "playwright install chromium --with-deps",
     "css": "pnpm --filter @madogiwa-ui/css",
+    "vue": "pnpm --filter @madogiwa-ui/vue",
     "lint": "eslint --cache --cache-location node_modules/.cache/eslint/",
     "lint:css": "stylelint \"**/*.css\" --cache --cache-location node_modules/.cache/stylelint/ --ignore-path .stylelintignore",
-    "lint:type-check": "tsc --noEmit"
+    "lint:type-check": "tsc --noEmit && pnpm vue type-check"
   },
   "devDependencies": {
     "@eslint/js": "^9.38.0",
@@ -20,12 +21,14 @@
     "@tsconfig/strictest": "^2.0.6",
     "eslint": "^9.38.0",
     "eslint-plugin-unicorn": "60.0.0",
+    "eslint-plugin-vue": "^10.5.1",
     "globals": "^16.4.0",
     "stylelint": "^16.25.0",
     "stylelint-config-standard": "^39.0.1",
     "stylelint-plugin-use-baseline": "^1.0.3",
     "typescript": "~5.9.3",
-    "typescript-eslint": "^8.46.2"
+    "typescript-eslint": "^8.46.2",
+    "vue-eslint-parser": "^10.2.0"
   },
   "packageManager": "pnpm@10.19.0"
 }

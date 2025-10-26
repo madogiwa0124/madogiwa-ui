@@ -2,5 +2,10 @@ packages:
   - packages/*
 
 onlyBuiltDependencies:
-  - '@swc/core'
+  - "@swc/core"
   - esbuild
+
+catalog:
+  vite: ^7.1.11
+  postcss-preset-env: ^10.4.0
+  typescript: ~5.9.3
