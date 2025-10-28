@@ -39,7 +39,7 @@ export const createNavbar = (
     : "";
 
   const navigationItems = items.map(item =>
-    `<a href="${item.href}" class="m-navbar__item${item.end ? " --end" : ""}">${item.text}</a>`,
+    `<li class="m-navbar__item${item.end ? " --end" : ""}"><a href="${item.href}" class="m-navbar__link">${item.text}</a></li>`,
   ).join("");
 
   const actionButtons = buttons.map(button =>
@@ -48,9 +48,9 @@ export const createNavbar = (
 
   const buttonsSection = buttons.length > 0
     ? `
-    <div class="m-navbar__item --end">
+    <li class="m-navbar__item --end">
       ${actionButtons}
-    </div>`
+    </li>`
     : "";
 
   const hamburgerSection = `
@@ -63,10 +63,10 @@ export const createNavbar = (
     <nav role="navigation" class="m-navbar${transitionClass}${hoverClass}${menuVariantClass}">
       ${menuVariant == "slide-left" ? hamburgerSection : ""}
       <a href="#" class="m-navbar__title">${title}</a>
-      <div class="m-navbar__items" id="navigation-menu">
+      <ul class="m-navbar__items" id="navigation-menu">
         ${navigationItems}
         ${buttonsSection}
-      </div>
+      </ul>
       ${noHamburger || menuVariant == "slide-left" ? "" : hamburgerSection}
     </nav>
   `.trim();

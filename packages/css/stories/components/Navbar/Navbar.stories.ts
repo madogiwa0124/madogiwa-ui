@@ -51,11 +51,11 @@ Use the navbar for primary site navigation, brand/logo display, action buttons, 
 <!-- Basic navbar -->
 <nav class="m-navbar">
   <a href="/" class="m-navbar__title">Brand</a>
-  <div class="m-navbar__items">
-    <a href="/about" class="m-navbar__item">About</a>
-    <a href="/services" class="m-navbar__item">Services</a>
-    <a href="/contact" class="m-navbar__item --end">Contact</a>
-  </div>
+  <ul class="m-navbar__items">
+    <li class="m-navbar__item"><a href="/about">About</a></li>
+    <li class="m-navbar__item"><a href="/services">Services</a></li>
+    <li class="m-navbar__item --end"><a href="/contact">Contact</a></li>
+  </ul>
 </nav>
 
 <!-- Responsive navbar with hamburger menu -->
@@ -64,11 +64,11 @@ Use the navbar for primary site navigation, brand/logo display, action buttons, 
   <div class="m-navbar__hamburger">
     <button class="m-navbar__hamburger-menu" aria-expanded="false"></button>
   </div>
-  <div class="m-navbar__items">
-    <a href="/about" class="m-navbar__item">About</a>
-    <a href="/services" class="m-navbar__item">Services</a>
-    <button class="m-navbar__item m-button --primary">Sign Up</button>
-  </div>
+  <ul class="m-navbar__items">
+    <li class="m-navbar__item"><a href="/about">About</a></li>
+    <li class="m-navbar__item"><a href="/services">Services</a></li>
+    <li class="m-navbar__item"><button class="m-button --primary">Sign Up</button></li>
+  </ul>
 </nav>
 \`\`\`
 
@@ -217,11 +217,13 @@ export const Default: Story = {
     const title = canvas.getByText(args.title);
     await expect(title).toBeInTheDocument();
     await expect(title).toHaveClass("m-navbar__title");
+    for (const item of document.querySelectorAll(".m-navbar__item")) {
+      await expect(item).toBeInstanceOf(HTMLLIElement);
+    }
 
     for (const item of args.items) {
       const link = canvas.getByText(item.text);
       await expect(link).toBeInTheDocument();
-      await expect(link).toHaveClass("m-navbar__item");
       await expect(link).toHaveAttribute("href", item.href);
     }
 
