@@ -36,12 +36,6 @@ madogiwa-ui/
 
 **For basic guidelines, see the corresponding `.github/prompts/a11y.prompt.md`.**
 
-### Focus Visualization
-
-Madogiwa UI implements minimal focus visualization to respect native browser focus indicators across Firefox, Safari, Google Chrome, and other browsers, ensuring optimal accessibility.
-
-We believe that browser-native focus indicators are specifically designed and tested for accessibility compliance.
-
 ## Development Workflows
 
 ### Essential Commands
