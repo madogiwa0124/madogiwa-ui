@@ -268,8 +268,6 @@
       }
 
       &.--slide-left {
-        justify-content: initial;
-
         /* NOTE: It is not a problem to overwrite it because I want to prioritize the display with `.m-navbar__hamburger-menu[aria-expanded="true"]` */
         /* stylelint-disable-next-line no-descending-specificity */
         .m-navbar__items {
