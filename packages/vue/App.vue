@@ -1,22 +1,12 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
-import { MButton } from "./src/index";
-
-onMounted(() => {
-  document.querySelector(".m-navbar__hamburger-menu")?.addEventListener("click", (event) => {
-    const button = event.currentTarget as HTMLButtonElement;
-    const expanded = button.getAttribute("aria-expanded") === "true" || false;
-    button.setAttribute("aria-expanded", (!expanded).toString());
-  });
-});
-
+import { MButton, MNavbar, MNavbarItem, MNavbarTitle } from "./src/index";
 </script>
 
 <template>
   <MNavbar mobile-menu-variant="side" transition>
     <template #title>
       <MNavbarTitle href="/">
-        Madogiwa UI
+        <b>MNavbar</b>
       </MNavbarTitle>
     </template>
     <template #items>
