@@ -201,6 +201,10 @@
     }
 
     /* Side Menu */
+    /*
+      TODO: When the window size changes from PC to Mobile,
+            the animation for switching the visibility of the side menu runs and the layout is slightly disrupted.
+    */
     &.--mobile-side-menu {
       /* backdrop */
       &::after {
