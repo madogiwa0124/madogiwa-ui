@@ -66,15 +66,15 @@ packages/vue/
 └── src/
     ├── components/
     │   └── MButton/
-    │       ├── index.ts
-    │       ├── MButton.vue
-    │       └── MButton.test.ts
+    │       ├── index.ts // exports MButton component
+    │       ├── MButton.vue // component body
+    │       └── MButton.test.ts // unit test
     ├── layouts/
     │   └── MContainer/
     │       ├── index.ts
     │       ├── MContainer.vue
     │       └── MContainer.test.ts
-    ├── index.ts
+    ├── index.ts // exports all components
     └── types/
 ```
 
@@ -92,12 +92,18 @@ const { modifier, dataAttribute = 1} = defineProps<{
 <template>
   <element :class="[
     'm-element',
-    { '--modifier': modifier },
-    { 'data-attribute': dataAttribute }
-  ]">
+    { '--modifier': modifier }
+  ]"
+  :data-attribute="dataAttribute">
     <slot />
   </element>
 </template>
+```
+
+Each component is exported in the index.ts in the same directory,
+
+```ts
+import { default as MElement }  from "./MElement.vue";
 ```
 
 For elements that have sub-elements, create a Component representing the Element, and apply the corresponding CSS class within that.
@@ -117,8 +123,7 @@ For elements that have sub-elements, create a Component representing the Element
 ```vue
 <!-- App.vue -->
 <script setup lang="ts">
-import MBlock from "./MBlock";
-import MElement from "./MElement";
+import { MBlock, MElement } from "index.ts";
 </script>
 <template>
   <MBlock>
@@ -137,9 +142,9 @@ pnpm install
 pnpm dev
 ```
 
-開発用にrootディレクトリに`index.html`と`index.ts`と`App.vue`を用意しています。
+For development, `index.html`, `index.ts`, and `App.vue` are provided in the root directory.
 
-index.tsで`@madogiwa-ui/css`をimportしているので`App.vue`を修正することでMadogiwa UIのコンポーネントを使用できます。
+Since `@madogiwa-ui/css` is imported in `index.ts`, you can use Madogiwa UI components by modifying `App.vue`.
 
 ```vue
 <script setup lang="ts">
@@ -154,14 +159,13 @@ import { MButton } from "@madogiwa-ui/vue";
 
 ### Testing Strategy
 
-Vitest(browser mode)を利用したユニットテスト環境を用意しています。以下のコマンドでテストを実行できます。
+Vitest (browser mode) is used for unit testing. You can run the tests with the following command:
 
 ```sh
 pnpm test
 ```
 
-各コンポーネントの動作確認を行い、期待される出力が得られることを検証します。
-snapshotテストは`toMatchInlineSnapshot`を利用してコンポーネントのHTML出力を検証してください。
+Each component's behavior is verified to ensure it produces the expected output.
 
 ```ts
 import { mount } from "@vue/test-utils";
