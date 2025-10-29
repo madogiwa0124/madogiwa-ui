@@ -63,6 +63,6 @@ madogiwa-ui/
 
 ### Code Quality
 
-- **ESLint**: Strict TypeScript config with `@tsconfig/strictest`
+- **ESLint**: Recommended rules for various plugins (`@eslint/js`, `typescript-eslint`, `eslint-plugin-vue`, `eslint-plugin-unicorn`, `@stylistics/eslint-plugin`) are configured.
 - **Stylelint**: CSS standards + baseline compatibility checking
-- **TypeScript**: Strict mode with `noEmit` type checking
+- **TypeScript**: Strict TypeScript config with `@tsconfig/strictest` and `noEmit` type checking
