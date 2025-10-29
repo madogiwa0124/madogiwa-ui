@@ -1,1 +1,1 @@
-export { default as MButton } from "./components/MButton";
+export { MButton } from "./components/MButton";

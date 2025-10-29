@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-import MButton from "./src/components/MButton";
+import { MButton } from "./src/index";
 
 onMounted(() => {
   document.querySelector(".m-navbar__hamburger-menu")?.addEventListener("click", (event) => {
@@ -13,25 +13,32 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav class="m-navbar --mobile-side-menu --transition">
-    <a href="/" class="m-navbar__title">Madogiwa UI</a>
-    <div class="m-navbar__items">
-      <a href="/home" class="m-navbar__item --start">Home</a>
-      <a href="/about" class="m-navbar__item">About</a>
-      <a href="/services" class="m-navbar__item">Services</a>
-      <div class="m-navbar__item --end">
+  <MNavbar mobile-menu-variant="side" transition>
+    <template #title>
+      <MNavbarTitle href="/">
+        Madogiwa UI
+      </MNavbarTitle>
+    </template>
+    <template #items>
+      <MNavbarItem>
+        <a href="/home">Home</a>
+      </MNavbarItem>
+      <MNavbarItem>
+        <a href="/about">About</a>
+      </MNavbarItem>
+      <MNavbarItem>
+        <a href="/services">Services</a>
+      </MNavbarItem>
+      <MNavbarItem :end="true">
         <MButton variant="primary">
           Sign Up
         </MButton>
         <MButton variant="secondary" outline>
           Log In
         </MButton>
-      </div>
-    </div>
-    <div class="m-navbar__hamburger">
-      <button class="m-navbar__hamburger-menu" aria-expanded="false" />
-    </div>
-  </nav>
+      </MNavbarItem>
+    </template>
+  </MNavbar>
   <div class="m-container --padding">
     <h1 class="m-h1">
       Madogiwa UI - Vue

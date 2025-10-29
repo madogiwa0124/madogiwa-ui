@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import MButton from "./MButton.vue";
+import { MButton } from "./index";
 import { describe, expect, it } from "vitest";
 
 describe("MButton", () => {
