@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2025-10-26T13:44:37.343Z
+generated_at: 2025-10-29T14:55:06.063Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -839,11 +839,11 @@ Use the navbar for primary site navigation, brand/logo display, action buttons, 
 <!-- Basic navbar -->
 <nav class="m-navbar">
   <a href="/" class="m-navbar__title">Brand</a>
-  <div class="m-navbar__items">
-    <a href="/about" class="m-navbar__item">About</a>
-    <a href="/services" class="m-navbar__item">Services</a>
-    <a href="/contact" class="m-navbar__item --end">Contact</a>
-  </div>
+  <ul class="m-navbar__items">
+    <li class="m-navbar__item"><a href="/about">About</a></li>
+    <li class="m-navbar__item"><a href="/services">Services</a></li>
+    <li class="m-navbar__item --end"><a href="/contact">Contact</a></li>
+  </ul>
 </nav>
 
 <!-- Responsive navbar with hamburger menu -->
@@ -852,11 +852,11 @@ Use the navbar for primary site navigation, brand/logo display, action buttons, 
   <div class="m-navbar__hamburger">
     <button class="m-navbar__hamburger-menu" aria-expanded="false"></button>
   </div>
-  <div class="m-navbar__items">
-    <a href="/about" class="m-navbar__item">About</a>
-    <a href="/services" class="m-navbar__item">Services</a>
-    <button class="m-navbar__item m-button --primary">Sign Up</button>
-  </div>
+  <ul class="m-navbar__items">
+    <li class="m-navbar__item"><a href="/about">About</a></li>
+    <li class="m-navbar__item"><a href="/services">Services</a></li>
+    <li class="m-navbar__item"><button class="m-button --primary">Sign Up</button></li>
+  </ul>
 </nav>
 ```
 
@@ -1601,4 +1601,4 @@ This component does not use data attributes for styling or behavior.
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 10/26/2025, 1:44:37 PM
+- Generated at: 10/29/2025, 2:55:06 PM

@@ -1,21 +1,21 @@
-const l=(e={})=>{const{title:a="Brand Name",items:n=[],buttons:r=[],transition:s=!1,hoverMenu:i=!1,showMenu:o=!1,menuVariant:u,noHamburger:y=!0,menuToggleByJS:w=!1}=e,f=document.createElement("div"),S=s?" --transition":"",_=i?" --hover-hamburger-menu":"",B=u?{float:" --mobile-float-menu",side:" --mobile-side-menu","slide-left":" --mobile-side-menu --slide-left"}[u]:"",C=n.map(m=>`<a href="${m.href}" class="m-navbar__item${m.end?" --end":""}">${m.text}</a>`).join(""),H=r.map(m=>`<button class="m-btn${m.variant==="primary"?" --primary":""}">${m.text}</button>`).join(""),M=r.length>0?`
-    <div class="m-navbar__item --end">
+const l=(e={})=>{const{title:a="Brand Name",items:n=[],buttons:r=[],transition:s=!1,hoverMenu:o=!1,showMenu:i=!1,menuVariant:u,noHamburger:y=!0,menuToggleByJS:w=!1}=e,f=document.createElement("div"),S=s?" --transition":"",_=o?" --hover-hamburger-menu":"",B=u?{float:" --mobile-float-menu",side:" --mobile-side-menu","slide-left":" --mobile-side-menu --slide-left"}[u]:"",M=n.map(m=>`<li class="m-navbar__item${m.end?" --end":""}"><a href="${m.href}" class="m-navbar__link">${m.text}</a></li>`).join(""),H=r.map(m=>`<button class="m-btn${m.variant==="primary"?" --primary":""}">${m.text}</button>`).join(""),C=r.length>0?`
+    <li class="m-navbar__item --end">
       ${H}
-    </div>`:"",x=`
+    </li>`:"",x=`
     <div class="m-navbar__hamburger">
-      <button class="m-navbar__hamburger-menu" aria-label="Menu" aria-expanded="${String(o)}" aria-controls="navigation-menu"></button>
+      <button class="m-navbar__hamburger-menu" aria-label="Menu" aria-expanded="${String(i)}" aria-controls="navigation-menu"></button>
     </div>
   `;if(f.innerHTML=`
     <nav role="navigation" class="m-navbar${S}${_}${B}">
       ${u=="slide-left"?x:""}
       <a href="#" class="m-navbar__title">${a}</a>
-      <div class="m-navbar__items" id="navigation-menu">
-        ${C}
+      <ul class="m-navbar__items" id="navigation-menu">
         ${M}
-      </div>
+        ${C}
+      </ul>
       ${y||u=="slide-left"?"":x}
     </nav>
-  `.trim(),w&&!y){const m=f.querySelector(".m-navbar__hamburger-menu");m.addEventListener("click",()=>{const T=m.getAttribute("aria-expanded")==="true";m.setAttribute("aria-expanded",String(!T))})}return f},{expect:t,userEvent:c,within:v}=__STORYBOOK_MODULE_TEST__,k={title:"Components/Navbar",tags:["autodocs"],argTypes:{title:{control:{type:"text"},description:"The title/brand text for the component"},items:{control:{type:"object"},description:"The navigation items array for the component"},buttons:{control:{type:"object"},description:"The action buttons array for the component"},transition:{control:{type:"boolean"},description:"The transition animation modifier for the component"},menuVariant:{control:{type:"select"},options:["side","float","slide-left"],description:"The hamburger menu variant for the component"},showMenu:{control:{type:"boolean"},description:"The forced menu visibility for the component"}},parameters:{layout:"fullscreen",docs:{description:{component:`
+  `.trim(),w&&!y){const m=f.querySelector(".m-navbar__hamburger-menu");m.addEventListener("click",()=>{const T=m.getAttribute("aria-expanded")==="true";m.setAttribute("aria-expanded",String(!T))})}return f},{expect:t,userEvent:c,within:b}=__STORYBOOK_MODULE_TEST__,k={title:"Components/Navbar",tags:["autodocs"],argTypes:{title:{control:{type:"text"},description:"The title/brand text for the component"},items:{control:{type:"object"},description:"The navigation items array for the component"},buttons:{control:{type:"object"},description:"The action buttons array for the component"},transition:{control:{type:"boolean"},description:"The transition animation modifier for the component"},menuVariant:{control:{type:"select"},options:["side","float","slide-left"],description:"The hamburger menu variant for the component"},showMenu:{control:{type:"boolean"},description:"The forced menu visibility for the component"}},parameters:{layout:"fullscreen",docs:{description:{component:`
 ### Overview
 
 The Navbar component provides responsive navigation with mobile-first design. It features flexible hamburger menu variants and comprehensive customization options.
@@ -30,11 +30,11 @@ Use the navbar for primary site navigation, brand/logo display, action buttons, 
 <!-- Basic navbar -->
 <nav class="m-navbar">
   <a href="/" class="m-navbar__title">Brand</a>
-  <div class="m-navbar__items">
-    <a href="/about" class="m-navbar__item">About</a>
-    <a href="/services" class="m-navbar__item">Services</a>
-    <a href="/contact" class="m-navbar__item --end">Contact</a>
-  </div>
+  <ul class="m-navbar__items">
+    <li class="m-navbar__item"><a href="/about">About</a></li>
+    <li class="m-navbar__item"><a href="/services">Services</a></li>
+    <li class="m-navbar__item --end"><a href="/contact">Contact</a></li>
+  </ul>
 </nav>
 
 <!-- Responsive navbar with hamburger menu -->
@@ -43,11 +43,11 @@ Use the navbar for primary site navigation, brand/logo display, action buttons, 
   <div class="m-navbar__hamburger">
     <button class="m-navbar__hamburger-menu" aria-expanded="false"></button>
   </div>
-  <div class="m-navbar__items">
-    <a href="/about" class="m-navbar__item">About</a>
-    <a href="/services" class="m-navbar__item">Services</a>
-    <button class="m-navbar__item m-button --primary">Sign Up</button>
-  </div>
+  <ul class="m-navbar__items">
+    <li class="m-navbar__item"><a href="/about">About</a></li>
+    <li class="m-navbar__item"><a href="/services">Services</a></li>
+    <li class="m-navbar__item"><button class="m-button --primary">Sign Up</button></li>
+  </ul>
 </nav>
 \`\`\`
 
@@ -137,12 +137,12 @@ hamburgerMenu.addEventListener("click", () => {
 - Optimize close button position for different screen sizes
 - **Close Button Position**: The close button position in side menus can be optimized by dynamically adjusting \`--navbar-hamburger-side-menu-close-x-position\`, \`--navbar-hamburger-side-menu-close-y-position\` based on menu width using JavaScript for better user experience
 
-        `}}}},b={render:e=>{const a=l({title:e.title,items:e.items,buttons:e.buttons,transition:e.transition,noHamburger:!1,menuToggleByJS:!0,menuVariant:e.menuVariant}),n=document.createElement("main");return n.className="m-container",n.style.padding="var(--spacing-4)",n.innerHTML=`
+        `}}}},v={render:e=>{const a=l({title:e.title,items:e.items,buttons:e.buttons,transition:e.transition,noHamburger:!1,menuToggleByJS:!0,menuVariant:e.menuVariant}),n=document.createElement("main");return n.className="m-container",n.style.padding="var(--spacing-4)",n.innerHTML=`
       <h1 class="m-h1">Page Content</h1>
       <p>This demonstrates the navbar in a real page context.</p>
       <p><strong>Try:</strong> Resize the viewport to see responsive behavior.</p>
       <button class="m-btn --primary">Sample Action</button>
-    `,a.append(n),a},args:{title:"Brand Name",items:[{text:"Home",href:"#"},{text:"About",href:"#"},{text:"Services",href:"#"},{text:"Contact",href:"#"}],buttons:[{text:"Login",variant:"secondary"},{text:"Sign Up",variant:"primary"}],transition:!1},play:async({canvasElement:e,args:a})=>{const n=v(e),r=n.getByRole("navigation");await t(r).toBeInTheDocument(),await t(r).toHaveClass("m-navbar");const s=n.getByText(a.title);await t(s).toBeInTheDocument(),await t(s).toHaveClass("m-navbar__title");for(const i of a.items){const o=n.getByText(i.text);await t(o).toBeInTheDocument(),await t(o).toHaveClass("m-navbar__item"),await t(o).toHaveAttribute("href",i.href)}for(const i of a.buttons){const o=n.getByText(i.text);await t(o).toBeInTheDocument(),await t(o).toHaveClass("m-btn"),i.variant==="primary"&&await t(o).toHaveClass("--primary")}a.transition&&await t(r).toHaveClass("--transition"),a.hoverMenu&&await t(r).toHaveClass("--hover-hamburger-menu")}},d={render:e=>l({title:e.title,items:e.items,buttons:e.buttons,transition:e.transition,showMenu:e.showMenu,menuVariant:"side",noHamburger:!1,menuToggleByJS:!0}),args:{title:"Side Menu Demo",items:[{text:"Home",href:"#"},{text:"About",href:"#"},{text:"Services",href:"#"},{text:"Contact",href:"#"}],buttons:[{text:"Login",variant:"secondary"},{text:"Sign Up",variant:"primary"}],transition:!1,showMenu:!1},globals:{viewport:{value:"mobile1"}},play:async({canvasElement:e})=>{const a=v(e),n=a.getByRole("navigation"),r=a.getByLabelText("Menu");await t(n).toHaveClass("--mobile-side-menu"),await c.click(r),await t(r).toHaveAttribute("aria-expanded","true");const s=getComputedStyle(n,"::after");await t(s.display).not.toBe("none");const i=e.querySelector(".m-navbar__items"),o=getComputedStyle(i);await t(o.position).toBe("fixed"),await c.click(r),await t(r).toHaveAttribute("aria-expanded","false")},parameters:{docs:{description:{story:"Side menu variant that creates a full-height drawer with backdrop overlay. Ideal for complex navigation with many items."}}}},g={render:e=>l({title:e.title,items:e.items,buttons:e.buttons,transition:e.transition,showMenu:e.showMenu,menuVariant:"slide-left",noHamburger:!1,menuToggleByJS:!0}),args:{title:"Side Menu Demo",items:[{text:"Home",href:"#"},{text:"About",href:"#"},{text:"Services",href:"#"},{text:"Contact",href:"#"}],buttons:[{text:"Login",variant:"secondary"},{text:"Sign Up",variant:"primary"}],transition:!1,showMenu:!1},globals:{viewport:{value:"mobile1"}},play:async({canvasElement:e})=>{const a=v(e),n=a.getByRole("navigation"),r=a.getByLabelText("Menu");await t(n).toHaveClass("--mobile-side-menu"),await c.click(r),await t(r).toHaveAttribute("aria-expanded","true");const s=getComputedStyle(n,"::after");await t(s.display).not.toBe("none");const i=e.querySelector(".m-navbar__items"),o=getComputedStyle(i);await t(o.position).toBe("fixed"),await c.click(r),await t(r).toHaveAttribute("aria-expanded","false")},parameters:{docs:{description:{story:"Side menu variant that creates a full-height drawer with backdrop overlay. Ideal for complex navigation with many items."}}}},p={render:e=>l({title:e.title,items:e.items,buttons:e.buttons,transition:e.transition,hoverMenu:!1,showMenu:e.showMenu,menuVariant:"float",noHamburger:!1,menuToggleByJS:!0}),args:{title:"Float Menu Demo",items:[{text:"Home",href:"#"},{text:"About",href:"#"},{text:"Services",href:"#"},{text:"Contact",href:"#"}],buttons:[{text:"Login",variant:"secondary"},{text:"Sign Up",variant:"primary"}],transition:!1,showMenu:!1},globals:{viewport:{value:"mobile1"}},play:async({canvasElement:e})=>{const a=v(e),n=a.getByLabelText("Menu");await new Promise(u=>{setTimeout(()=>{u()},300)});const r=a.getByRole("navigation");await t(r).toHaveClass("--mobile-float-menu");const s=e.querySelector(".m-navbar__items"),i=getComputedStyle(s);await t(i.opacity).toBe("0"),await t(r).not.toHaveClass("--hover-hamburger-menu"),await c.click(n),await t(n).toHaveAttribute("aria-expanded","true");const o=getComputedStyle(s);await t(o.position).toBe("absolute"),await t(o.opacity).toBe("1"),await c.click(n),await t(n).toHaveAttribute("aria-expanded","false")},parameters:{docs:{description:{story:"Float menu variant that creates a dropdown-style menu positioned relative to the navbar. Lightweight option without backdrop overlay."}}}},h={render:e=>l({title:e.title,items:e.items,buttons:e.buttons,transition:e.transition,hoverMenu:!0,showMenu:e.showMenu,menuVariant:e.menuVariant,noHamburger:!1,menuToggleByJS:!1}),args:{title:"(Experimental) Demo",items:[{text:"Home",href:"#"},{text:"About",href:"#"},{text:"Services",href:"#"},{text:"Contact",href:"#"}],buttons:[{text:"Login",variant:"secondary"},{text:"Sign Up",variant:"primary"}],transition:!1,showMenu:!1,menuVariant:"float"},globals:{viewport:{value:"mobile1"}},play:async({canvasElement:e})=>{const a=v(e),n=a.getByRole("navigation"),r=a.getByLabelText("Menu");await new Promise(o=>{setTimeout(()=>{o()},300)}),await t(n).toHaveClass("--hover-hamburger-menu");const s=e.querySelector(".m-navbar__items"),i=getComputedStyle(s);await t(i.opacity).toBe("0"),await c.hover(r),await t(n).toHaveClass("--hover-hamburger-menu")},parameters:{docs:{description:{story:"**Experimental**: CSS-only hover activation for hamburger menu. Provides instant access without requiring clicks, using pure CSS hover states."}}}};b.parameters={...b.parameters,docs:{...b.parameters?.docs,source:{originalSource:`{
+    `,a.append(n),a},args:{title:"Brand Name",items:[{text:"Home",href:"#"},{text:"About",href:"#"},{text:"Services",href:"#"},{text:"Contact",href:"#"}],buttons:[{text:"Login",variant:"secondary"},{text:"Sign Up",variant:"primary"}],transition:!1},play:async({canvasElement:e,args:a})=>{const n=b(e),r=n.getByRole("navigation");await t(r).toBeInTheDocument(),await t(r).toHaveClass("m-navbar");const s=n.getByText(a.title);await t(s).toBeInTheDocument(),await t(s).toHaveClass("m-navbar__title");for(const o of document.querySelectorAll(".m-navbar__item"))await t(o).toBeInstanceOf(HTMLLIElement);for(const o of a.items){const i=n.getByText(o.text);await t(i).toBeInTheDocument(),await t(i).toHaveAttribute("href",o.href)}for(const o of a.buttons){const i=n.getByText(o.text);await t(i).toBeInTheDocument(),await t(i).toHaveClass("m-btn"),o.variant==="primary"&&await t(i).toHaveClass("--primary")}a.transition&&await t(r).toHaveClass("--transition"),a.hoverMenu&&await t(r).toHaveClass("--hover-hamburger-menu")}},d={render:e=>l({title:e.title,items:e.items,buttons:e.buttons,transition:e.transition,showMenu:e.showMenu,menuVariant:"side",noHamburger:!1,menuToggleByJS:!0}),args:{title:"Side Menu Demo",items:[{text:"Home",href:"#"},{text:"About",href:"#"},{text:"Services",href:"#"},{text:"Contact",href:"#"}],buttons:[{text:"Login",variant:"secondary"},{text:"Sign Up",variant:"primary"}],transition:!1,showMenu:!1},globals:{viewport:{value:"mobile1"}},play:async({canvasElement:e})=>{const a=b(e),n=a.getByRole("navigation"),r=a.getByLabelText("Menu");await t(n).toHaveClass("--mobile-side-menu"),await c.click(r),await t(r).toHaveAttribute("aria-expanded","true");const s=getComputedStyle(n,"::after");await t(s.display).not.toBe("none");const o=e.querySelector(".m-navbar__items"),i=getComputedStyle(o);await t(i.position).toBe("fixed"),await c.click(r),await t(r).toHaveAttribute("aria-expanded","false")},parameters:{docs:{description:{story:"Side menu variant that creates a full-height drawer with backdrop overlay. Ideal for complex navigation with many items."}}}},g={render:e=>l({title:e.title,items:e.items,buttons:e.buttons,transition:e.transition,showMenu:e.showMenu,menuVariant:"slide-left",noHamburger:!1,menuToggleByJS:!0}),args:{title:"Side Menu Demo",items:[{text:"Home",href:"#"},{text:"About",href:"#"},{text:"Services",href:"#"},{text:"Contact",href:"#"}],buttons:[{text:"Login",variant:"secondary"},{text:"Sign Up",variant:"primary"}],transition:!1,showMenu:!1},globals:{viewport:{value:"mobile1"}},play:async({canvasElement:e})=>{const a=b(e),n=a.getByRole("navigation"),r=a.getByLabelText("Menu");await t(n).toHaveClass("--mobile-side-menu"),await c.click(r),await t(r).toHaveAttribute("aria-expanded","true");const s=getComputedStyle(n,"::after");await t(s.display).not.toBe("none");const o=e.querySelector(".m-navbar__items"),i=getComputedStyle(o);await t(i.position).toBe("fixed"),await c.click(r),await t(r).toHaveAttribute("aria-expanded","false")},parameters:{docs:{description:{story:"Side menu variant that creates a full-height drawer with backdrop overlay. Ideal for complex navigation with many items."}}}},p={render:e=>l({title:e.title,items:e.items,buttons:e.buttons,transition:e.transition,hoverMenu:!1,showMenu:e.showMenu,menuVariant:"float",noHamburger:!1,menuToggleByJS:!0}),args:{title:"Float Menu Demo",items:[{text:"Home",href:"#"},{text:"About",href:"#"},{text:"Services",href:"#"},{text:"Contact",href:"#"}],buttons:[{text:"Login",variant:"secondary"},{text:"Sign Up",variant:"primary"}],transition:!1,showMenu:!1},globals:{viewport:{value:"mobile1"}},play:async({canvasElement:e})=>{const a=b(e),n=a.getByLabelText("Menu");await new Promise(u=>{setTimeout(()=>{u()},300)});const r=a.getByRole("navigation");await t(r).toHaveClass("--mobile-float-menu");const s=e.querySelector(".m-navbar__items"),o=getComputedStyle(s);await t(o.opacity).toBe("0"),await t(r).not.toHaveClass("--hover-hamburger-menu"),await c.click(n),await t(n).toHaveAttribute("aria-expanded","true");const i=getComputedStyle(s);await t(i.position).toBe("absolute"),await t(i.opacity).toBe("1"),await c.click(n),await t(n).toHaveAttribute("aria-expanded","false")},parameters:{docs:{description:{story:"Float menu variant that creates a dropdown-style menu positioned relative to the navbar. Lightweight option without backdrop overlay."}}}},h={render:e=>l({title:e.title,items:e.items,buttons:e.buttons,transition:e.transition,hoverMenu:!0,showMenu:e.showMenu,menuVariant:e.menuVariant,noHamburger:!1,menuToggleByJS:!1}),args:{title:"(Experimental) Demo",items:[{text:"Home",href:"#"},{text:"About",href:"#"},{text:"Services",href:"#"},{text:"Contact",href:"#"}],buttons:[{text:"Login",variant:"secondary"},{text:"Sign Up",variant:"primary"}],transition:!1,showMenu:!1,menuVariant:"float"},globals:{viewport:{value:"mobile1"}},play:async({canvasElement:e})=>{const a=b(e),n=a.getByRole("navigation"),r=a.getByLabelText("Menu");await new Promise(i=>{setTimeout(()=>{i()},300)}),await t(n).toHaveClass("--hover-hamburger-menu");const s=e.querySelector(".m-navbar__items"),o=getComputedStyle(s);await t(o.opacity).toBe("0"),await c.hover(r),await t(n).toHaveClass("--hover-hamburger-menu")},parameters:{docs:{description:{story:"**Experimental**: CSS-only hover activation for hamburger menu. Provides instant access without requiring clicks, using pure CSS hover states."}}}};v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
   render: args => {
     const navbar = createNavbar({
       title: args.title,
@@ -202,10 +202,12 @@ hamburgerMenu.addEventListener("click", () => {
     const title = canvas.getByText(args.title);
     await expect(title).toBeInTheDocument();
     await expect(title).toHaveClass("m-navbar__title");
+    for (const item of document.querySelectorAll(".m-navbar__item")) {
+      await expect(item).toBeInstanceOf(HTMLLIElement);
+    }
     for (const item of args.items) {
       const link = canvas.getByText(item.text);
       await expect(link).toBeInTheDocument();
-      await expect(link).toHaveClass("m-navbar__item");
       await expect(link).toHaveAttribute("href", item.href);
     }
     for (const button of args.buttons) {
@@ -223,7 +225,7 @@ hamburgerMenu.addEventListener("click", () => {
       await expect(navbar).toHaveClass("--hover-hamburger-menu");
     }
   }
-}`,...b.parameters?.docs?.source}}};d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+}`,...v.parameters?.docs?.source}}};d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
   render: args => {
     return createNavbar({
       title: args.title,
@@ -502,4 +504,4 @@ hamburgerMenu.addEventListener("click", () => {
       }
     }
   }
-}`,...h.parameters?.docs?.source}}};const E=["Default","WithSideMenu","WithSideLeftMenu","WithFloatMenu","WithHoverMenu"];export{b as Default,p as WithFloatMenu,h as WithHoverMenu,g as WithSideLeftMenu,d as WithSideMenu,E as __namedExportsOrder,k as default};
+}`,...h.parameters?.docs?.source}}};const E=["Default","WithSideMenu","WithSideLeftMenu","WithFloatMenu","WithHoverMenu"];export{v as Default,p as WithFloatMenu,h as WithHoverMenu,g as WithSideLeftMenu,d as WithSideMenu,E as __namedExportsOrder,k as default};
