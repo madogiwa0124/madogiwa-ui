@@ -80,9 +80,12 @@ packages/vue/
 
 ### Component Design
 
+Components are designed following the [official Vue.js style guide](https://vuejs.org/style-guide/).
+
 Each component is designed to be a thin wrapper around the corresponding CSS class, passing props as class modifiers or data attributes.
 
 ```vue
+<!-- NOTE: use script setup style -->
 <script setup lang="ts">
 const { modifier, dataAttribute = 1} = defineProps<{
   modifier?: string;
@@ -90,11 +93,13 @@ const { modifier, dataAttribute = 1} = defineProps<{
 }>();
 </script>
 <template>
-  <element :class="[
-    'm-element',
+  <element
+    class="m-element"
+    :class="[
     { '--modifier': modifier }
-  ]"
-  :data-attribute="dataAttribute">
+    ]"
+    :data-attribute="dataAttribute"
+  >
     <slot />
   </element>
 </template>
@@ -133,6 +138,20 @@ import { MBlock, MElement } from "index.ts";
   </MBlock>
 </template>
 ```
+
+## Accessibility
+
+**For basic guidelines, see the corresponding `.github/prompts/a11y.prompt.md`.**
+
+For Vue-specific accessibility best practices, refer to the [official Vue.js documentation](https://vuejs.org/guide/best-practices/accessibility.html#accessibility).
+
+## Performance
+
+For Vue-specific performance best practices, refer to the [official Vue.js documentation](https://vuejs.org/guide/best-practices/performance.html).
+
+## Security
+
+For Vue-specific security best practices, refer to the [official Vue.js documentation](https://vuejs.org/guide/best-practices/security.html).
 
 ## 💻 Development
 
