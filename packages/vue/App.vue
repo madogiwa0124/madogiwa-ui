@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MButton, MNavbar, MNavbarItem, MNavbarTitle } from "./src/index";
+import { MButton, MContainer, MNavbar, MNavbarItem, MNavbarTitle } from "./src/index";
 </script>
 
 <template>
@@ -29,7 +29,7 @@ import { MButton, MNavbar, MNavbarItem, MNavbarTitle } from "./src/index";
       </MNavbarItem>
     </template>
   </MNavbar>
-  <div class="m-container --padding">
+  <MContainer padding>
     <h1 class="m-h1">
       Madogiwa UI - Vue
     </h1>
@@ -49,7 +49,7 @@ import { MButton, MNavbar, MNavbarItem, MNavbarTitle } from "./src/index";
         </MButton>
       </div>
     </section>
-  </div>
+  </MContainer>
 </template>
 <!-- eslint-disable-next-line vue/no-restricted-block -->
 <style scoped>
