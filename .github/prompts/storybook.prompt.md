@@ -178,3 +178,20 @@ export const createButton = (
   return button;
 };
 ```
+
+### Accessibility Testing
+
+We use Storybook for Interaction Testing and accessibility checks with the a11y plugin.
+
+```typescript
+export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole("button");
+
+    await expect(button).toBeInTheDocument();
+    await userEvent.click(button);
+    await expect(button).toHaveClass("--active");
+  },
+};
+```

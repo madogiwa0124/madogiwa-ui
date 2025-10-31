@@ -50,114 +50,16 @@ import { MButton, MHeading, MContainer } from "@madogiwa-ui/vue";
 </template>
 ```
 
-## Architecture
-
 ## 🏗️ Architecture
 
-### Directory Structure
-
-The directory structure under src follows the directory structure of @madogiwa-ui/css to make the target elements easy to understand.
-The directory name adopts the UpperCamelCase of the root class name of the target CSS element. (ex: `.m-button` → `.MButton`)
-The element directory collocates the component body, entry point, and test code.
-
-```sh
-packages/vue/
-├── dist/
-└── src/
-    ├── components/
-    │   └── MButton/
-    │       ├── index.ts // exports MButton component
-    │       ├── MButton.vue // component body
-    │       └── MButton.test.ts // unit test
-    ├── layouts/
-    │   └── MContainer/
-    │       ├── index.ts
-    │       ├── MContainer.vue
-    │       └── MContainer.test.ts
-    ├── index.ts // exports all components
-    └── types/
-```
-
-### Component Design
-
-Components are designed following the [official Vue.js style guide](https://vuejs.org/style-guide/).
-
-Each component is designed to be a thin wrapper around the corresponding CSS class, passing props as class modifiers or data attributes.
-
-```vue
-<!-- NOTE: use script setup style -->
-<script setup lang="ts">
-const { modifier, dataAttribute = 1} = defineProps<{
-  modifier?: string;
-  dataAttribute?: number;
-}>();
-</script>
-<template>
-  <element
-    class="m-element"
-    :class="[
-    { '--modifier': modifier }
-    ]"
-    :data-attribute="dataAttribute"
-  >
-    <slot />
-  </element>
-</template>
-```
-
-Each component is exported in the index.ts in the same directory,
-
-```ts
-import { default as MElement }  from "./MElement.vue";
-```
-
-For elements that have sub-elements, create a Component representing the Element, and apply the corresponding CSS class within that.
-
-```sh
-  components/
-    └── MBlock/
-        ├── index.ts
-        ├── MBlock.vue
-        ├── MBlock.test.ts
-        └── MElement/
-            ├── index.ts
-            ├── MElement.vue
-            └── MElement.test.ts
-```
-
-```vue
-<!-- App.vue -->
-<script setup lang="ts">
-import { MBlock, MElement } from "index.ts";
-</script>
-<template>
-  <MBlock>
-    <MElement>
-      <slot />
-    </MElement>
-  </MBlock>
-</template>
-```
-
-## Accessibility
-
-**For basic guidelines, see the corresponding `.github/prompts/a11y.prompt.md`.**
-
-For Vue-specific accessibility best practices, refer to the [official Vue.js documentation](https://vuejs.org/guide/best-practices/accessibility.html#accessibility).
-
-## Performance
-
-For Vue-specific performance best practices, refer to the [official Vue.js documentation](https://vuejs.org/guide/best-practices/performance.html).
-
-## Security
-
-For Vue-specific security best practices, refer to the [official Vue.js documentation](https://vuejs.org/guide/best-practices/security.html).
+[Architecture Documentation](../../.github/prompts/vue.prompt.md)
 
 ## 💻 Development
 
 ```bash
 # Install dependencies
 pnpm install
+# Start development server
 pnpm dev
 ```
 
@@ -182,25 +84,4 @@ Vitest (browser mode) is used for unit testing. You can run the tests with the f
 
 ```sh
 pnpm test
-```
-
-Each component's behavior is verified to ensure it produces the expected output.
-
-```ts
-import { mount } from "@vue/test-utils";
-import MButton from "./MButton.vue";
-import { describe, expect, it } from "vitest";
-
-describe("MButton", () => {
-  it("renders correctly with default props", () => {
-    const wrapper = mount(MButton, {
-      slots: {
-        default: "Click Me",
-      },
-    });
-    expect(wrapper.classes()).toContain("m-btn");
-    expect(wrapper.text()).toBe("Click Me");
-    expect(wrapper.html()).toMatchInlineSnapshot(`"<button data-v-15066eb7="" class="m-btn">Click Me</button>"`);
-  });
-});
 ```

@@ -82,85 +82,7 @@ To use Madogiwa UI CSS snippets in VS Code, place the `dist/madogiwa-ui.code-sni
 
 ## 🏗️ Architecture
 
-### Directory Structure
-
-FLOCSS inspired structure:
-
-```sh
-root
-├── dist // Compiled CSS files
-├── plugins // For build tools
-├── src
-│   ├── components
-│   ├── foundation
-│   ├── layouts
-│   ├── utils
-│   └── main.css // Entry point
-└── stories // Storybook stories
-    ├── components
-    ├── foundation
-    ├── layouts
-    └── utils
-```
-
-### CSS Layer System
-
-```css
-@layer base, layout, components, utils, overrides;
-```
-
-- **base**: Reset CSS + base styles
-- **layout**: Layout components (Container, etc.)
-- **components**: UI components
-- **utils**: Utility classes
-- **overrides**: Customization layer
-
-### CSS Design
-
-We employ BEM-based CSS design while leveraging native CSS Nesting for style scoping.
-
-```css
-.prefix-block {
-  .prefix-block__element {
-  }
-  &.--modifier {
-  }
-}
-```
-
-We use `m-` as the prefix for all CSS classes to avoid naming conflicts and ensure consistent component identification.
-This prefix system helps maintain clear separation between framework styles and your custom application styles.
-
-### CSS Variables System
-
-CSS variables are designed with consideration for Tailwind CSS compatibility based on the following default CSS variables:
-
-refs: https://tailwindcss.com/docs/theme#default-theme-variable-reference
-
-Madogiwa UI's custom CSS variables are robustly designed using `@property` for enhanced type safety and validation.
-
-```css
-@property --font-family-base {
-  syntax: "*";
-  initial-value: system-ui, -apple-system, sans-serif;
-  inherits: true;
-}
-```
-
-
-### Optional Transition
-
-Madogiwa UI provides optional CSS transitions for interactive components, considering users with visual sensitivities and motion preferences. You can enable or disable transitions using the `--transition` modifier class.
-
-```html
-<button class="m-btn --primary --transition">Primary Button</button>
-```
-
-### Focus Visualization
-
-Madogiwa UI implements minimal focus visualization to respect native browser focus indicators across Firefox, Safari, Google Chrome, and other browsers, ensuring optimal accessibility.
-
-We believe that browser-native focus indicators are specifically designed and tested for accessibility compliance.
+[Architecture Documentation](../../.github/prompts/css.prompt.md)
 
 ## 🌐 Browser Support
 
@@ -174,21 +96,13 @@ pnpm run css storybook
 
 # Run Storybook tests
 pnpm run css storybook:test
-```
 
-### Testing Strategy
+# Run CSS package unit tests
+pnpm run test
 
-We use Storybook for Interaction Testing and accessibility checks with the a11y plugin.
+# Build CSS package
+pnpm run css build
 
-```typescript
-export const Default: Story = {
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole("button");
-
-    await expect(button).toBeInTheDocument();
-    await userEvent.click(button);
-    await expect(button).toHaveClass("--active");
-  },
-};
+# Build CSS docs
+pnpm run css build:docs
 ```

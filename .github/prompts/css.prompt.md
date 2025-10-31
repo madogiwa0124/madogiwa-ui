@@ -10,12 +10,15 @@ root
 ├── plugins // For build tools
 ├── src
 │   ├── components
+│   │   └── button.css
 │   ├── foundation
 │   ├── layouts
 │   ├── utils
 │   └── main.css // Entry point
 └── stories // Storybook stories
     ├── components
+    │   └── Button
+    │       └── Button.stories.ts // Story for src/components/button.css
     ├── foundation
     ├── layouts
     └── utils
@@ -102,15 +105,19 @@ Madogiwa UI's custom CSS variables are robustly designed using `@property` for e
 }
 ```
 
+### Optional Transition
+
+Madogiwa UI provides optional CSS transitions for interactive components, considering users with visual sensitivities and motion preferences. You can enable or disable transitions using the `--transition` modifier class.
+
+```html
+<button class="m-btn --primary --transition">Primary Button</button>
+```
+
+## Aceessibility
+
+**For basic guidelines, see the corresponding [A11y Guideline](./a11y.prompt.md).**
+
 ## Storybook-Driven Development
 
-**For basic guidelines, see the corresponding `.github/prompts/storybook.prompt.md`.**
+**For basic guidelines, see the corresponding [Storybook Documentation](./storybook.prompt.md).**
 
-## When Adding New Components
-
-1. **Create CSS**: `packages/css/src/[components|layouts]/[name].css` with BEM + CSS variables
-2. **Add to Layer**: Import in `packages/css/src/main.css` under `@import ... layer([components|layouts])`
-3. **Create Story**: `packages/css/stories/[components|layouts]/[Name]/[Name].stories.ts` with interaction tests
-4. **Create Helper**: `packages/css/stories/[components|layouts]/[Name]/[Name].ts` with TypeScript interface
-5. **Test Accessibility**: Ensure a11y addon passes all checks
-6. **Verify Build**: Check generated snippets work in VS Code

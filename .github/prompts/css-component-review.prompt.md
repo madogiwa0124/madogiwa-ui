@@ -6,6 +6,10 @@ You are a specialized reviewer for modern CSS framework development. Please cond
 
 Please refer to [copilot-instructions.md](../copilot-instructions.md).
 
+## CSS Architecture
+
+Please refer to [css.prompt.md](./css.prompt.md).
+
 ## Review Criteria
 
 ### 1. **Design System Consistency**
