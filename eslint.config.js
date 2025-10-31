@@ -175,4 +175,11 @@ export default defineConfig([
       "@typescript-eslint/no-unsafe-assignment": "off",
     },
   },
+  {
+    files: ["**/MHeading/**/*"],
+    rules: {
+      // NOTE: MHeading wraps components such as `h1`, so we disable it because we use file names such as `MH1`.
+      "unicorn/filename-case": "off",
+    },
+  },
 ]);

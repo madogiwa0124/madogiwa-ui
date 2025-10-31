@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MButton, MContainer, MNavbar, MNavbarItem, MNavbarTitle } from "./src/index";
+import { MButton, MContainer, MH1, MH2, MNavbar, MNavbarItem, MNavbarTitle } from "./src/index";
 </script>
 
 <template>
@@ -30,13 +30,13 @@ import { MButton, MContainer, MNavbar, MNavbarItem, MNavbarTitle } from "./src/i
     </template>
   </MNavbar>
   <MContainer padding>
-    <h1 class="m-h1">
+    <MH1>
       Madogiwa UI - Vue
-    </h1>
+    </MH1>
     <section>
-      <h2 class="m-h2">
+      <MH2>
         MButton
-      </h2>
+      </MH2>
       <div style="display: flex; gap: var(--spacing-2); flex-wrap: wrap;">
         <MButton variant="primary" rounded outline transition>
           Primary Button
