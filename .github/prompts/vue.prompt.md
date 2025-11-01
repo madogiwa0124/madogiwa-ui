@@ -97,7 +97,7 @@ For components that only add CSS classes, basic usage case snapshot tests are su
 
 ```ts
 import { mount } from "@vue/test-utils";
-import MButton from "./MButton.vue";
+import { MButton } from "./index";
 import { describe, expect, it } from "vitest";
 
 describe("MButton", () => {
@@ -112,7 +112,7 @@ describe("MButton", () => {
     });
     expect(wrapper.classes()).toContain("m-btn");
     expect(wrapper.text()).toBe("Click Me");
-    expect(wrapper.html()).toMatchInlineSnapshot(`"<button data-v-15066eb7="" class="m-btn">Click Me</button>"`);
+    expect(wrapper.html()).toMatchInlineSnapshot(`"<button class="m-btn">Click Me</button>"`);
   });
 
   it("applies modifier class when variant prop is set", () => {
