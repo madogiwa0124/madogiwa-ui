@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { MButton, MContainer, MH1, MH2, MNavbar, MNavbarItem, MNavbarTitle } from "./src/index";
-</script>
+import { ref } from "vue";
+import { MButton, MContainer, MH1, MH2, MNavbar, MNavbarItem, MNavbarTitle, MTabs, MTabsItem, MTabsList } from "./src/index";
 
+type DemoTabs = "buttons" | "cards" | "modals";
+const activeTab = ref<DemoTabs>("buttons");
+</script>
+<!-- eslint-disable vue/max-lines-per-block -->
 <template>
   <MNavbar mobile-menu-variant="side" transition>
     <template #title>
@@ -19,7 +23,7 @@ import { MButton, MContainer, MH1, MH2, MNavbar, MNavbarItem, MNavbarTitle } fro
       <MNavbarItem>
         <a href="/services">Services</a>
       </MNavbarItem>
-      <MNavbarItem :end="true">
+      <MNavbarItem end>
         <MButton variant="primary">
           Sign Up
         </MButton>
@@ -33,7 +37,20 @@ import { MButton, MContainer, MH1, MH2, MNavbar, MNavbarItem, MNavbarTitle } fro
     <MH1>
       Madogiwa UI - Vue
     </MH1>
-    <section>
+    <MTabs scrollhint transition style="margin-bottom: var(--spacing-4)">
+      <MTabsList aria-label="Components">
+        <MTabsItem id="components-buttons-tab" :active="activeTab === 'buttons'" aria-controls="components-buttons" @click="activeTab = 'buttons'">
+          Buttons
+        </MTabsItem>
+        <MTabsItem id="components-cards-tab" :active="activeTab === 'cards'" aria-controls="components-cards" @click="activeTab = 'cards'">
+          Cards
+        </MTabsItem>
+        <MTabsItem id="components-modals-tab" :active="activeTab === 'modals'" aria-controls="components-modals" @click="activeTab = 'modals'">
+          Modals
+        </MTabsItem>
+      </MTabsList>
+    </MTabs>
+    <section id="components-buttons" role="tabpanel" aria-labelledby="components-buttons-tab" :class="{ 'm-hidden': activeTab !== 'buttons' }">
       <MH2>
         MButton
       </MH2>
@@ -47,6 +64,22 @@ import { MButton, MContainer, MH1, MH2, MNavbar, MNavbarItem, MNavbarTitle } fro
         <MButton variant="tertiary">
           Tertiary Button
         </MButton>
+      </div>
+    </section>
+    <section id="components-cards" role="tabpanel" aria-labelledby="components-cards-tab" :class="{ 'm-hidden': activeTab !== 'cards' }">
+      <MH2>
+        MCard
+      </MH2>
+      <div>
+        tobe implemented
+      </div>
+    </section>
+    <section id="components-modals" role="tabpanel" aria-labelledby="components-modals-tab" :class="{ 'm-hidden': activeTab !== 'modals' }">
+      <MH2>
+        MModal
+      </MH2>
+      <div>
+        tobe implemented
       </div>
     </section>
   </MContainer>
