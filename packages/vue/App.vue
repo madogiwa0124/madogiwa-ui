@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { MButton, MContainer, MH1, MH2, MNavbar, MNavbarItem, MNavbarTitle, MTabs, MTabsItem, MTabsList } from "./src/index";
+import { MButton, MContainer, MH1, MH2, MNavbar, MNavbarItem, MNavbarTitle, MP, MTabs, MTabsItem, MTabsList } from "./src/index";
 
 type DemoTabs = "buttons" | "cards" | "modals";
 const activeTab = ref<DemoTabs>("buttons");
@@ -71,7 +71,7 @@ const activeTab = ref<DemoTabs>("buttons");
         MCard
       </MH2>
       <div>
-        tobe implemented
+        <MP>tobe implemented</MP>
       </div>
     </section>
     <section id="components-modals" role="tabpanel" aria-labelledby="components-modals-tab" :class="{ 'm-hidden': activeTab !== 'modals' }">
@@ -79,7 +79,7 @@ const activeTab = ref<DemoTabs>("buttons");
         MModal
       </MH2>
       <div>
-        tobe implemented
+        <MP>tobe implemented</MP>
       </div>
     </section>
   </MContainer>

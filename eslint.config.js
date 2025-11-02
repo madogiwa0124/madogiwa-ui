@@ -176,9 +176,9 @@ export default defineConfig([
     },
   },
   {
-    files: ["**/MHeading/**/*"],
+    files: ["**/MHeading/**/*", "**/MParagraph/**/*"],
     rules: {
-      // NOTE: MHeading wraps components such as `h1`, so we disable it because we use file names such as `MH1`.
+      // NOTE: MHeading wraps components such as `h1` and `p`, so we disable it because we use file names such as `MH1` and `MP`.
       "unicorn/filename-case": "off",
     },
   },
