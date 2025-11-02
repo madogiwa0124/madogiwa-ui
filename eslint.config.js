@@ -173,6 +173,14 @@ export default defineConfig([
       ],
       "@typescript-eslint/no-redundant-type-constituents": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
+      "unicorn/prevent-abbreviations": [
+        "error",
+        {
+          "replacements": {
+            "btn": false,
+          }
+        }
+      ]
     },
   },
   {

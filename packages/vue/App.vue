@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { MButton, MContainer, MH1, MH2, MNavbar, MNavbarItem, MNavbarTitle, MP, MTabs, MTabsItem, MTabsList } from "./src/index";
+import { MBtn, MContainer, MH1, MH2, MNavbar, MNavbarItem, MNavbarTitle, MP, MTabs, MTabsItem, MTabsList } from "./src/index";
 
 type DemoTabs = "buttons" | "cards" | "modals";
 const activeTab = ref<DemoTabs>("buttons");
@@ -24,12 +24,12 @@ const activeTab = ref<DemoTabs>("buttons");
         <a href="/services">Services</a>
       </MNavbarItem>
       <MNavbarItem end>
-        <MButton variant="primary">
+        <MBtn variant="primary">
           Sign Up
-        </MButton>
-        <MButton variant="secondary" outline>
+        </MBtn>
+        <MBtn variant="secondary" outline>
           Log In
-        </MButton>
+        </MBtn>
       </MNavbarItem>
     </template>
   </MNavbar>
@@ -55,15 +55,15 @@ const activeTab = ref<DemoTabs>("buttons");
         MButton
       </MH2>
       <div style="display: flex; gap: var(--spacing-2); flex-wrap: wrap;">
-        <MButton variant="primary" rounded outline transition>
+        <MBtn variant="primary" rounded outline transition>
           Primary Button
-        </MButton>
-        <MButton variant="secondary">
+        </MBtn>
+        <MBtn variant="secondary">
           Secondary Button
-        </MButton>
-        <MButton variant="tertiary">
+        </MBtn>
+        <MBtn variant="tertiary">
           Tertiary Button
-        </MButton>
+        </MBtn>
       </div>
     </section>
     <section id="components-cards" role="tabpanel" aria-labelledby="components-cards-tab" :class="{ 'm-hidden': activeTab !== 'cards' }">

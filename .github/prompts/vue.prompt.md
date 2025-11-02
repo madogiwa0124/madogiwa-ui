@@ -2,8 +2,11 @@
 
 ## Directory Structure
 
-The directory structure under src follows the directory structure of `@madogiwa-ui/css` to make the target elements easy to understand.
-The directory name adopts the UpperCamelCase of the root class name of the target CSS element. (ex: `.m-button` → `.MButton`)
+The directory structure under src follows the directory structure of `@madogiwa-ui/css` to make the target elements easy to understand. For example, the component for `.m-block` in `components/block-name` directory -> `MBlcok` component in `components/MBlock` directory.
+
+However, in cases where the block name and the file name do not match (for example, when `button.css` targets `.m-btn`), use the CSS file name as the directory name and use the block name for the component name. For example: `button.css` (for `.m-btn`) -> `MButton/MBtn.vue`.
+
+The directory name adopts the UpperCamelCase of the root class name of the target CSS element. (ex: `.m-btn` -> `.MButton`)
 The element directory collocates the component body, entry point, and test code.
 
 ```sh
@@ -11,10 +14,14 @@ packages/vue/
 ├── dist/
 └── src/
     ├── components/
+    │   ├── MBlock/
+    │   │   ├── index.ts // exports MBlock component
+    │   │   ├── MBlock.vue // component body
+    │   │   └── MBlock.test.ts // unit test
     │   └── MButton/
-    │       ├── index.ts // exports MButton component
-    │       ├── MButton.vue // component body
-    │       └── MButton.test.ts // unit test
+    │       ├── index.ts
+    │       ├── MBtn.vue
+    │       └── MBtn.test.ts
     ├── layouts/
     │   └── MContainer/
     │       ├── index.ts
