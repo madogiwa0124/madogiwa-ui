@@ -1,5 +1,5 @@
 input[type="radio"].m-radio {
-  --radio-size: 1.2em;
+  --radio-size: 1em;
   --radio-border-color: var(--color-dark);
   --radio-bg-color: var(--color-light);
   --radio-lighter-brightness: 150%;
@@ -31,7 +31,7 @@ input[type="radio"].m-radio {
     transform: translate(-50%, -50%);
   }
 
-    &:checked {
+  &:checked {
     background-color: var(--color-text-light);
     transition: background-color 0.2s ease;
 

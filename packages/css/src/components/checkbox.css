@@ -1,6 +1,9 @@
 input[type="checkbox"].m-checkbox {
-  --checkbox-size: 1.2em;
+  --checkbox-size: 1em;
   --checkbox-border-color: var(--color-dark);
+  --checkbox-mark-border: 2px solid transparent;
+  --checkbox-mark-position-top: 0;
+  --checkbox-mark-position-left: 20%;
   --checkbox-bg-color: var(--color-light);
   --checkbox-border-radius: 0.2em;
   --checkbox-lighter-brightness: 150%;
@@ -25,15 +28,15 @@ input[type="checkbox"].m-checkbox {
     content: "";
     width: calc(var(--checkbox-size) / 2);
     height: calc(var(--checkbox-size) / 2);
-    border: 2px solid transparent;
+    border: var(--checkbox-mark-border);
     border-top: 0;
     border-left: 0;
-    left: calc(var(--checkbox-size) / 6);
-    top: calc(var(--checkbox-size) / 12);
+    left: var(--checkbox-mark-position-left);
+    top: var(--checkbox-mark-position-top);
     transform: rotate(45deg);
   }
 
-    &:checked {
+  &:checked {
     background-color: var(--color-primary);
     transition: background-color 0.2s ease;
 
