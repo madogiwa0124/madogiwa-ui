@@ -1,5 +1,13 @@
 export { MBtn } from "./components/MButton";
+export { MCheckbox } from "./components/MCheckbox";
+export { MInput } from "./components/MInput";
+export { MLabel } from "./components/MLabel";
+export { MLink } from "./components/MLink";
 export { MNavbar, MNavbarItem, MNavbarHamburger, MNavbarHamburgerMenu, MNavbarTitle } from "./components/MNavbar";
+export { MRadio } from "./components/MRadio";
+export { MSelect } from "./components/MSelect";
+export { MTextarea } from "./components/MTextarea";
+export { MToggle } from "./components/MToggle";
 export { MContainer } from "./layouts/MContainer";
 export { MH1, MH2, MH3, MH4, MH5, MH6 } from "./components/MHeading";
 export { MTabs, MTabsList, MTabsItem } from "./components/MTabs";
