@@ -51,7 +51,7 @@ This component has no child elements - it's a single-level component.
 | ---- | ------- | ----------- |
 | --select-padding | var(--spacing-3) | Internal padding for the select element |
 | --select-checkmark-gap | var(--spacing-4) | Gap for checkmark indicator |
-| --select-bg-color | var(--color-bg-light) | Background color of the select |
+| --select-bg-color | initial | Background color of the select |
 | --select-border-color | var(--color-border) | Default border color |
 | --select-hover-border-color | var(--color-border) | Border color on hover |
 | --select-border | 2px solid var(--select-border-color) | Complete border specification |
@@ -59,6 +59,13 @@ This component has no child elements - it's a single-level component.
 | --select-invalid-border-color | var(--color-danger) | Border color for invalid state |
 | --select-hover-opacity | 0.8 | Opacity on hover state |
 | --select-disabled-opacity | 0.65 | Opacity when disabled |
+| --select-optgroup-bg-color | var(--select-bg-color) | Background color for optgroup elements (inherited from select) |
+| --select-optgroup-font-weight | var(--font-weight-bold) | Font weight for optgroup labels |
+| --select-option-bg-color | var(--select-bg-color) | Background color for option elements (inherited from select) |
+| --select-option-padding | var(--spacing-2) | Padding for option elements |
+| --select-option-checked-bg-color | var(--color-tertiary) | Background color for checked options |
+| --select-option-checked-text-color | var(--color-text) | Text color for checked options |
+| --select-option-hover-darker-rate | 0.9 | Darkness rate for option hover state |
 
 ### Data Attributes
 

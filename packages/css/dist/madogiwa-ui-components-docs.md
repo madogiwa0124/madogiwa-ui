@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2025-10-29T14:55:06.063Z
+generated_at: 2025-11-03T12:53:47.607Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -470,8 +470,11 @@ This component does not have modifiers - styling is handled through states.
 
 | Target | Name | Default | Description |
 | ------ | ---- | ------- | ----------- |
-| .m-checkbox | --checkbox-size | 1.2em | Size of the checkbox |
+| .m-checkbox | --checkbox-size | 1em | Size of the checkbox |
 | .m-checkbox | --checkbox-border-color | var(--color-dark) | Border color |
+| .m-checkbox | --checkbox-mark-border | 2px solid transparent | Border style for the checkmark |
+| .m-checkbox | --checkbox-mark-position-top | 0 | Top position of the checkmark |
+| .m-checkbox | --checkbox-mark-position-left | 20% | Left position of the checkmark |
 | .m-checkbox | --checkbox-bg-color | var(--color-light) | Background color |
 | .m-checkbox | --checkbox-border-radius | 0.2em | Border radius |
 | .m-checkbox | --checkbox-lighter-brightness | 150% | Brightness on hover/focus |
@@ -745,7 +748,6 @@ Use labels to provide accessible and consistent labeling for form elements. Esse
 | ---- | ------- | ----------- |
 | --label-display | block | Display behavior of the label |
 | --label-font-weight | var(--font-weight-medium) | Font weight for label text |
-| --label-spacing-bottom | var(--spacing-1) | Bottom margin when not last child |
 | --label-required-icon-content | "*" | Content for the required indicator |
 | --label-required-icon-size | 1em | Font size for the required indicator |
 | --label-required-icon-color | var(--color-danger) | Color of the required indicator |
@@ -1035,7 +1037,7 @@ This component has no modifiers.
 
 | Name | Default | Description |
 | ---- | ------- | ----------- |
-| --radio-size | 1.2em | Size of the radio button |
+| --radio-size | 1em | Size of the radio button |
 | --radio-border-color | var(--color-dark) | Border color of the radio button |
 | --radio-bg-color | var(--color-light) | Background color when unchecked |
 | --radio-lighter-brightness | 150% | Brightness for hover/focus states |
@@ -1108,7 +1110,7 @@ This component has no child elements - it's a single-level component.
 | ---- | ------- | ----------- |
 | --select-padding | var(--spacing-3) | Internal padding for the select element |
 | --select-checkmark-gap | var(--spacing-4) | Gap for checkmark indicator |
-| --select-bg-color | var(--color-bg-light) | Background color of the select |
+| --select-bg-color | initial | Background color of the select |
 | --select-border-color | var(--color-border) | Default border color |
 | --select-hover-border-color | var(--color-border) | Border color on hover |
 | --select-border | 2px solid var(--select-border-color) | Complete border specification |
@@ -1116,6 +1118,13 @@ This component has no child elements - it's a single-level component.
 | --select-invalid-border-color | var(--color-danger) | Border color for invalid state |
 | --select-hover-opacity | 0.8 | Opacity on hover state |
 | --select-disabled-opacity | 0.65 | Opacity when disabled |
+| --select-optgroup-bg-color | var(--select-bg-color) | Background color for optgroup elements (inherited from select) |
+| --select-optgroup-font-weight | var(--font-weight-bold) | Font weight for optgroup labels |
+| --select-option-bg-color | var(--select-bg-color) | Background color for option elements (inherited from select) |
+| --select-option-padding | var(--spacing-2) | Padding for option elements |
+| --select-option-checked-bg-color | var(--color-tertiary) | Background color for checked options |
+| --select-option-checked-text-color | var(--color-text) | Text color for checked options |
+| --select-option-hover-darker-rate | 0.9 | Darkness rate for option hover state |
 
 ### Data Attributes
 
@@ -1601,4 +1610,4 @@ This component does not use data attributes for styling or behavior.
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 10/29/2025, 2:55:06 PM
+- Generated at: 11/3/2025, 12:53:47 PM

@@ -36,7 +36,6 @@ Use labels to provide accessible and consistent labeling for form elements. Esse
 | ---- | ------- | ----------- |
 | --label-display | block | Display behavior of the label |
 | --label-font-weight | var(--font-weight-medium) | Font weight for label text |
-| --label-spacing-bottom | var(--spacing-1) | Bottom margin when not last child |
 | --label-required-icon-content | "*" | Content for the required indicator |
 | --label-required-icon-size | 1em | Font size for the required indicator |
 | --label-required-icon-color | var(--color-danger) | Color of the required indicator |
