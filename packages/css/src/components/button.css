@@ -24,6 +24,7 @@
   --btn-transition-duration: 0.2s;
 
   display: inline-flex;
+  align-items: center;
   white-space: nowrap;
   /* NOTE: Non-critical property, so this is acceptable */
   /* stylelint-disable-next-line plugin/use-baseline */
