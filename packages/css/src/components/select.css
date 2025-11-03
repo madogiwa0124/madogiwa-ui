@@ -1,7 +1,7 @@
 select.m-select {
   --select-padding: var(--spacing-3);
   --select-checkmark-gap: var(--spacing-4);
-  --select-bg-color: var(--color-bg-light);
+  --select-bg-color: initial;
   --select-border-color: var(--color-border);
   --select-hover-border-color: var(--color-border);
   --select-border: 2px solid var(--select-border-color);
@@ -50,7 +50,9 @@ select.m-select {
     /* NOTE: Adjust the transform values to fine-tune the icon position */
     --select-picker-icon-transform-translate-y: 0.1em;
     --select-picker-icon-transform-translate-x: 0.3em;
-    --select-optgroup-bg-color: var(--color-text-gray);
+    --select-optgroup-bg-color: var(--select-bg-color);
+    --select-optgroup-font-weight: var(--font-weight-bold);
+    --select-option-bg-color: var(--select-bg-color);
     --select-option-padding: var(--spacing-2);
     --select-option-checked-bg-color: var(--color-tertiary);
     --select-option-checked-text-color: var(--color-text);
@@ -91,16 +93,17 @@ select.m-select {
 
     optgroup {
       background-color: var(--select-optgroup-bg-color);
+      font-weight: var(--select-optgroup-font-weight);
     }
 
     option {
       padding: var(--select-option-padding);
-      background-color: var(--select-bg-color);
+      background-color: var(--select-option-bg-color);
 
       &:hover {
         opacity: var(--select-hover-opacity);
         cursor: pointer;
-        background-color: hsl(from var(--select-bg-color) h s calc(l * var(--select-option-hover-darker-rate)));
+        background-color: hsl(from var(--select-option-bg-color) h s calc(l * var(--select-option-hover-darker-rate)));
       }
 
       &:checked {
