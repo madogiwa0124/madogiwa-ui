@@ -65,21 +65,8 @@ const unicornRules = {
       },
     },
   ],
-  "unicorn/prevent-abbreviations": [
-    "error",
-    {
-      allowList: {
-        "args": true,
-        "props": true,
-        "ref": true,
-        "refs": true,
-        "param": true,
-        "params": true,
-        "el": true,
-        "elem": true,
-      },
-    },
-  ],
+  // NOTE: Adopting file names like `MBtn` makes it difficult to properly ignore, so it is disabled.
+  "unicorn/prevent-abbreviations": "off",
 }
 
 export default defineConfig([
@@ -173,15 +160,7 @@ export default defineConfig([
       ],
       "@typescript-eslint/no-redundant-type-constituents": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
-      "unicorn/prevent-abbreviations": [
-        "error",
-        {
-          "replacements": {
-            "btn": false,
-          }
-        }
-      ]
-    },
+    }
   },
   {
     files: ["**/MHeading/**/*", "**/MParagraph/**/*"],
