@@ -1,21 +1,19 @@
 import { type BuildEnvironmentOptions, defineConfig } from "vite";
 import postcssPresetEnv from "postcss-preset-env";
 import vue from "@vitejs/plugin-vue";
-import dts from "vite-plugin-dts";
+import dts from "unplugin-dts/vite";
 
 const plugins = (mode: string) => {
   if (mode === "demo") return [vue()];
 
   return [
     vue(),
-    // TODO: all types into a single file.
-    // https://github.com/qmhc/unplugin-dts?tab=readme-ov-file#usage
     dts({
+      processor: "vue",
       tsconfigPath: "./tsconfig.json",
-      outDir: "dist/types",
-      include: ["src/**/*.ts", "src/**/*.vue"],
-      exclude: ["src/**/*.test.ts"],
+      outDirs: "dist/types",
       insertTypesEntry: true,
+      bundleTypes: true,
       compilerOptions: {
         declaration: true,
         declarationMap: true,
