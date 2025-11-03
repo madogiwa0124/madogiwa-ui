@@ -1,10 +1,12 @@
-import { defineConfig } from "vite";
+import { type BuildEnvironmentOptions, defineConfig } from "vite";
 import postcssPresetEnv from "postcss-preset-env";
 import vue from "@vitejs/plugin-vue";
 import dts from "vite-plugin-dts";
 
-export default defineConfig({
-  plugins: [
+const plugins = (mode: string) => {
+  if (mode === "demo") return [vue()];
+
+  return [
     vue(),
     // TODO: all types into a single file.
     // https://github.com/qmhc/unplugin-dts?tab=readme-ov-file#usage
@@ -19,8 +21,21 @@ export default defineConfig({
         declarationMap: true,
       },
     }),
-  ],
-  build: {
+  ];
+};
+
+const build = (mode: string): BuildEnvironmentOptions => {
+  if (mode === "demo") {
+    return {
+      outDir: "dist/demo",
+      emptyOutDir: false,
+      rollupOptions: {
+        input: "./index.html",
+      },
+    };
+  }
+
+  return {
     lib: {
       entry: "src/index.ts",
       name: "main",
@@ -36,7 +51,14 @@ export default defineConfig({
       },
     },
     emptyOutDir: true,
-  },
+  };
+};
+
+export default defineConfig(({ mode }) => ({
+  plugins: [
+    ...plugins(mode),
+  ],
+  build: build(mode),
   css: {
     postcss: {
       plugins: [
@@ -44,4 +66,4 @@ export default defineConfig({
       ],
     },
   },
-});
+}));

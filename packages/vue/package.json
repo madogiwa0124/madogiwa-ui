@@ -17,6 +17,8 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
+    "build:demo": "vite build --mode demo",
+    "preview:demo": "pnpm dlx http-server dist/demo",
     "test": "vitest run",
     "test:watch": "vitest --watch",
     "type-check": "vue-tsc --noEmit",
