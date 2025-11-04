@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2025-11-04T13:13:26.649Z
+generated_at: 2025-11-04T13:24:08.253Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -1610,4 +1610,4 @@ This component does not use data attributes for styling or behavior.
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 11/4/2025, 1:13:26 PM
+- Generated at: 11/4/2025, 1:24:08 PM
