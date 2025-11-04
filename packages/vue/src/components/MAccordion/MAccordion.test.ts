@@ -13,6 +13,12 @@ describe("MAccordion", () => {
     expect(wrapper.classes()).toContain("m-accordion");
     expect(wrapper.text()).toContain("Title");
     expect(wrapper.text()).toContain("Content");
+    expect(wrapper.html()).toMatchInlineSnapshot(`
+      "<details class="m-accordion">
+        <summary class="m-accordion__summary">Title</summary>
+        <div class="m-accordion__content">Content</div>
+      </details>"
+    `);
   });
 
   it("applies transition modifier", () => {
