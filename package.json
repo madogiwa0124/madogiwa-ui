@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "pnpm css build",
+    "build": "pnpm css build && pnpm vue build",
     "build:docs": "pnpm css build:docs --output-dir=../../docs/storybook/css; pnpm vue build:demo; mkdir -p ./docs/demo/vue && mv ./packages/vue/dist/demo ./docs/demo/vue",
     "setup": "playwright install chromium --with-deps",
     "css": "pnpm --filter @madogiwa-ui/css",
