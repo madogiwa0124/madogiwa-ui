@@ -78,16 +78,32 @@ For elements that have sub-elements, create a Component representing the Element
             └── MElement.test.ts
 ```
 
+Elements are basically intended to be used within Block components, so they are used as a wrap for the slot of the Block component.
+
+```vue
+<!-- MBlock.vue -->
+<script setup lang="ts">
+import MElement from "./MElement/MElement.vue";
+</script>
+<template>
+  <div class="m-block">
+    <MElement v-if="$slots['default']">
+      <slot />
+    </MElement>
+  </div>
+</template>
+```
+
 ```vue
 <!-- App.vue -->
 <script setup lang="ts">
-import { MBlock, MElement } from "index.ts";
+import { MBlock } from "index.ts";
 </script>
 <template>
   <MBlock>
-    <MElement>
-      <slot />
-    </MElement>
+      <div>
+        Content inside MBlock
+      </div>
   </MBlock>
 </template>
 ```
