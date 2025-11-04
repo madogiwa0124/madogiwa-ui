@@ -52,7 +52,13 @@ const build = (mode: string): BuildEnvironmentOptions => {
   };
 };
 
+const base = (mode: string) => {
+  // NOTE: In demo mode, the hosting is assumed to be in a subdirectory, so the base is set to "./" to prevent broken links
+  return mode === "demo" ? "./" : "/";
+};
+
 export default defineConfig(({ mode }) => ({
+  base: base(mode),
   plugins: [
     ...plugins(mode),
   ],
