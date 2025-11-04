@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { MBtn, MCheckbox, MContainer, MH1, MH2, MH3, MInput, MLabel, MNavbar, MNavbarItem, MNavbarTitle, MP, MRadio, MSelect, MTabs, MTabsItem, MTabsList, MTextarea, MToggle } from "./src/index";
+import { MAccordion, MAlert, MBadge, MBtn, MCard, MCardImage, MCheckbox, MColumns, MContainer, MDialog, MH1, MH2, MH3, MInput, MLabel, MNavbar, MNavbarItem, MNavbarTitle, MP, MRadio, MSelect, MSnackbar, MTabs, MTabsItem, MTabsList, MTextarea, MToggle } from "../src/index";
+const SampleImage = new URL("320x240.png", import.meta.url).href;
 
-type DemoTabs = "buttons" | "cards" | "modals" | "inputs";
+type DemoTabs = "buttons" | "cards" | "modals" | "inputs" | "accordion" | "badge" | "snackbar" | "columns" | "alert";
 const activeTab = ref<DemoTabs>("buttons");
 const checkboxValue = ref<boolean>(false);
 const radioValue = ref<string>("option1");
@@ -11,6 +12,10 @@ const inputValue = ref<string>("");
 const emailValue = ref<string>("");
 const selectValue = ref<string>("");
 const textareaValue = ref<string>("");
+
+// Dialog and Snackbar state
+const isDialogOpen = ref<boolean>(false);
+const isSnackbarOpen = ref<boolean>(false);
 </script>
 <!-- eslint-disable vue/max-lines-per-block -->
 <template>
@@ -58,6 +63,21 @@ const textareaValue = ref<string>("");
         <MTabsItem id="components-inputs-tab" :active="activeTab === 'inputs'" aria-controls="components-inputs" @click="activeTab = 'inputs'">
           Inputs
         </MTabsItem>
+        <MTabsItem id="components-accordion-tab" :active="activeTab === 'accordion'" aria-controls="components-accordion" @click="activeTab = 'accordion'">
+          Accordion
+        </MTabsItem>
+        <MTabsItem id="components-badge-tab" :active="activeTab === 'badge'" aria-controls="components-badge" @click="activeTab = 'badge'">
+          Badge
+        </MTabsItem>
+        <MTabsItem id="components-snackbar-tab" :active="activeTab === 'snackbar'" aria-controls="components-snackbar" @click="activeTab = 'snackbar'">
+          Snackbar
+        </MTabsItem>
+        <MTabsItem id="components-columns-tab" :active="activeTab === 'columns'" aria-controls="components-columns" @click="activeTab = 'columns'">
+          Columns
+        </MTabsItem>
+        <MTabsItem id="components-alert-tab" :active="activeTab === 'alert'" aria-controls="components-alert" @click="activeTab = 'alert'">
+          Alert
+        </MTabsItem>
       </MTabsList>
     </MTabs>
     <section id="components-buttons" role="tabpanel" aria-labelledby="components-buttons-tab" :class="{ 'm-hidden': activeTab !== 'buttons' }">
@@ -80,16 +100,74 @@ const textareaValue = ref<string>("");
       <MH2>
         MCard
       </MH2>
-      <div>
-        <MP>tobe implemented</MP>
+      <div style="display: flex; gap: var(--spacing-4); flex-wrap: wrap;">
+        <MCard style="max-width: 320px;">
+          <template #image>
+            <MCardImage :src="SampleImage" alt="Sample image" />
+          </template>
+          <MH3 style="margin-top: 0;">
+            Card Title
+          </MH3>
+          <MP>
+            This is a basic card component with an image, content, and actions.
+          </MP>
+          <template #actions>
+            <MBtn variant="primary">
+              Action
+            </MBtn>
+            <MBtn outline>
+              Cancel
+            </MBtn>
+          </template>
+        </MCard>
+
+        <MCard floating style="max-width: 320px;">
+          <MH3 style="margin-top: 0;">
+            Floating Card
+          </MH3>
+          <MP>
+            This card has a floating shadow effect with hover interaction.
+          </MP>
+          <template #actions>
+            <MBtn variant="secondary">
+              Learn More
+            </MBtn>
+          </template>
+        </MCard>
       </div>
     </section>
     <section id="components-modals" role="tabpanel" aria-labelledby="components-modals-tab" :class="{ 'm-hidden': activeTab !== 'modals' }">
       <MH2>
-        MModal
+        Modals
       </MH2>
-      <div>
-        <MP>tobe implemented</MP>
+
+      <div style="margin-bottom: var(--spacing-6);">
+        <MH3>
+          MDialog
+        </MH3>
+        <MP>
+          <MBtn variant="primary" @click="isDialogOpen = true">
+            Open Dialog
+          </MBtn>
+        </MP>
+        <MDialog :open="isDialogOpen" backdrop-blur transition @close="isDialogOpen = false">
+          <div style="padding: var(--spacing-3);">
+            <MH3 style="margin-top: 0;">
+              Dialog Title
+            </MH3>
+            <MP>
+              This is a dialog component that can be controlled via props. It includes backdrop blur and smooth transitions.
+            </MP>
+            <div style="display: flex; gap: var(--spacing-2); justify-content: flex-end; margin-top: var(--spacing-4);">
+              <MBtn outline @click="isDialogOpen = false">
+                Cancel
+              </MBtn>
+              <MBtn variant="primary" @click="isDialogOpen = false">
+                Confirm
+              </MBtn>
+            </div>
+          </div>
+        </MDialog>
       </div>
     </section>
     <section id="components-inputs" role="tabpanel" aria-labelledby="components-inputs-tab" :class="{ 'm-hidden': activeTab !== 'inputs' }">
@@ -340,6 +418,216 @@ const textareaValue = ref<string>("");
         <MP>
           Message: {{ textareaValue }}
         </MP>
+      </div>
+    </section>
+    <section id="components-accordion" role="tabpanel" aria-labelledby="components-accordion-tab" :class="{ 'm-hidden': activeTab !== 'accordion' }">
+      <MH2>
+        MAccordion
+      </MH2>
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-3);">
+        <MAccordion transition>
+          <template #summary>
+            What is Madogiwa UI?
+          </template>
+          <MP>
+            Madogiwa UI is a modern CSS framework leveraging cutting-edge CSS features like @property, CSS Nesting, and logical properties.
+          </MP>
+        </MAccordion>
+
+        <MAccordion outline transition>
+          <template #summary>
+            How do I get started?
+          </template>
+          <MP>
+            Install the package via npm or yarn, import the CSS, and start using the components in your Vue application.
+          </MP>
+        </MAccordion>
+
+        <MAccordion transition>
+          <template #summary>
+            Is it accessible?
+          </template>
+          <MP>
+            Yes! Madogiwa UI uses semantic HTML elements like details and summary for optimal accessibility.
+          </MP>
+        </MAccordion>
+      </div>
+    </section>
+    <section id="components-badge" role="tabpanel" aria-labelledby="components-badge-tab" :class="{ 'm-hidden': activeTab !== 'badge' }">
+      <MH2>
+        MBadge
+      </MH2>
+      <!-- eslint-disable vue/singleline-html-element-content-newline -->
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-4);">
+        <div>
+          <MH3>
+            Basic Badges
+          </MH3>
+          <div style="display: flex; gap: var(--spacing-2); flex-wrap: wrap; align-items: center;">
+            <MBadge>Default</MBadge>
+            <MBadge variant="primary">Primary</MBadge>
+            <MBadge variant="secondary">Secondary</MBadge>
+            <MBadge variant="tertiary">Tertiary</MBadge>
+            <MBadge variant="danger">Danger</MBadge>
+            <MBadge variant="warning">Warning</MBadge>
+          </div>
+        </div>
+
+        <div>
+          <MH3>
+            Outline Badges
+          </MH3>
+          <div style="display: flex; gap: var(--spacing-2); flex-wrap: wrap; align-items: center;">
+            <MBadge outline>Default</MBadge>
+            <MBadge variant="primary" outline>Primary</MBadge>
+            <MBadge variant="secondary" outline>Secondary</MBadge>
+          </div>
+        </div>
+
+        <div>
+          <MH3>
+            Small & Rounded Badges
+          </MH3>
+          <div style="display: flex; gap: var(--spacing-2); flex-wrap: wrap; align-items: center;">
+            <MBadge small>Small</MBadge>
+            <MBadge rounded>Rounded</MBadge>
+            <MBadge variant="danger" small rounded>5</MBadge>
+            <MBadge variant="primary" small rounded>99+</MBadge>
+          </div>
+        </div>
+
+        <div>
+          <MH3>
+            Interactive Badges
+          </MH3>
+          <div style="display: flex; gap: var(--spacing-2); flex-wrap: wrap; align-items: center;">
+            <MBadge as="button" variant="primary" transition>
+              Button Badge
+            </MBadge>
+            <MBadge as="a" variant="secondary" transition>
+              Link Badge
+            </MBadge>
+          </div>
+        </div>
+      </div>
+      <!-- eslint-enable vue/singleline-html-element-content-newline -->
+    </section>
+    <section id="components-snackbar" role="tabpanel" aria-labelledby="components-snackbar-tab" :class="{ 'm-hidden': activeTab !== 'snackbar' }">
+      <MH2>
+        MSnackbar (Popover API)
+      </MH2>
+      <MP>
+        Snackbar component uses the modern Popover API for temporary notifications at screen edges.
+      </MP>
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-3); margin-top: var(--spacing-4);">
+        <div>
+          <MH3>
+            Position: Left Bottom (Default)
+          </MH3>
+          <MBtn variant="primary" @click="isSnackbarOpen = true">
+            Show Snackbar
+          </MBtn>
+        </div>
+      </div>
+      <MSnackbar :open="isSnackbarOpen" transition @close="isSnackbarOpen = false">
+        This is a snackbar notification.
+        <template #actions>
+          <MBtn variant="secondary" icon-only rounded @click="isSnackbarOpen = false">
+            ×
+          </MBtn>
+        </template>
+      </MSnackbar>
+    </section>
+    <section id="components-columns" role="tabpanel" aria-labelledby="components-columns-tab" :class="{ 'm-hidden': activeTab !== 'columns' }">
+      <MH2>
+        MColumns
+      </MH2>
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-6);">
+        <div>
+          <MH3>
+            12-Column Grid
+          </MH3>
+          <MColumns :columns-length="12">
+            <div data-col-size="6" style="background: var(--color-primary); color: var(--color-text-light); padding: var(--spacing-2); text-align: center;">
+              6 columns
+            </div>
+            <div data-col-size="6" style="background: var(--color-secondary); color: var(--color-text-light); padding: var(--spacing-2); text-align: center;">
+              6 columns
+            </div>
+            <div data-col-size="4" style="background: var(--color-tertiary); padding: var(--spacing-2); text-align: center;">
+              4 columns
+            </div>
+            <div data-col-size="4" style="background: var(--color-tertiary); padding: var(--spacing-2); text-align: center;">
+              4 columns
+            </div>
+            <div data-col-size="4" style="background: var(--color-tertiary); padding: var(--spacing-2); text-align: center;">
+              4 columns
+            </div>
+          </MColumns>
+        </div>
+
+        <div>
+          <MH3>
+            No Gap
+          </MH3>
+          <MColumns :columns-length="3" no-gap>
+            <div style="background: var(--color-primary); color: var(--color-text-light); padding: var(--spacing-2); text-align: center;">
+              Column 1
+            </div>
+            <div style="background: var(--color-secondary); color: var(--color-text-light); padding: var(--spacing-2); text-align: center;">
+              Column 2
+            </div>
+            <div style="background: var(--color-tertiary); padding: var(--spacing-2); text-align: center;">
+              Column 3
+            </div>
+          </MColumns>
+        </div>
+
+        <div>
+          <MH3>
+            Auto Fit (Responsive)
+          </MH3>
+          <MP>
+            Resize the browser window to see columns automatically adjust.
+          </MP>
+          <MColumns auto-fit style="--columns-auto-fit-min: 200px;">
+            <MCard>Auto-fit Card 1</MCard>
+            <MCard>Auto-fit Card 2</MCard>
+            <MCard>Auto-fit Card 3</MCard>
+          </MColumns>
+        </div>
+      </div>
+    </section>
+    <section id="components-alert" role="tabpanel" aria-labelledby="components-alert-tab" :class="{ 'm-hidden': activeTab !== 'alert' }">
+      <MH2>
+        MAlert
+      </MH2>
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-4);">
+        <MAlert variant="primary" transition>
+          <template #icons>
+            ℹ️
+          </template>
+          This is an informational alert message.
+          <template #actions>
+            <MBtn variant="primary">
+              Take Action
+            </MBtn>
+          </template>
+        </MAlert>
+
+        <MAlert variant="warning" transition>
+          <template #icons>
+            ⚠️
+          </template>
+          This is a warning alert message.
+        </MAlert>
+
+        <MAlert variant="danger" transition auto-dismiss="5s" with-progress>
+          <template #icons>
+            ❌
+          </template>
+          This is a danger alert message.
+        </MAlert>
       </div>
     </section>
   </MContainer>
