@@ -45,9 +45,9 @@ onMounted(() => {
   >
     <MSnackbarBody v-if="$slots['default']">
       <slot />
+      <MSnackbarActions v-if="$slots['actions']">
+        <slot name="actions" />
+      </MSnackbarActions>
     </MSnackbarBody>
-    <MSnackbarActions v-if="$slots['actions']">
-      <slot name="actions" />
-    </MSnackbarActions>
   </div>
 </template>

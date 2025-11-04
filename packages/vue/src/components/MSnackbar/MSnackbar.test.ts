@@ -7,11 +7,18 @@ describe("MSnackbar", () => {
     const wrapper = mount(MSnackbar, {
       slots: {
         default: "Snackbar message",
+        actions: "Snackbar action",
       },
     });
     expect(wrapper.classes()).toContain("m-snackbar");
     expect(wrapper.attributes("popover")).toBe("manual");
-    expect(wrapper.text()).toBe("Snackbar message");
+    expect(wrapper.text()).toBe("Snackbar messageSnackbar action");
+    expect(wrapper.html()).toMatchInlineSnapshot(`
+      "<div popover="manual" class="m-snackbar">
+        <div class="m-snackbar__body">Snackbar message<div class="m-snackbar__actions">Snackbar action</div>
+        </div>
+      </div>"
+    `);
   });
 
   it("applies transition modifier", () => {
