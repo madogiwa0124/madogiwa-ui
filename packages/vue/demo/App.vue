@@ -546,7 +546,7 @@ const isSnackbarOpen = ref<boolean>(false);
         This is a snackbar notification.
         <template #actions>
           <MBtn variant="secondary" icon-only rounded @click="isSnackbarOpen = false">
-            ×
+            <span class="icon">×</span>
           </MBtn>
         </template>
       </MSnackbar>

@@ -143,7 +143,6 @@
     border-radius: var(--btn-rounded-border-radius);
   }
 
-  /* TODO: There are cases where the layout collapses without being a perfect square when it comes to text */
   &.--icon-only {
     line-height: var(--line-height-none);
     padding: var(--btn-padding-y);
