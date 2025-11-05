@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 
 const {
   showMenu = false,
@@ -19,6 +19,11 @@ const toggleMenu = () => {
   menuOpen.value = !menuOpen.value;
   emits("showMenu", menuOpen.value);
 };
+
+watch(() => showMenu, (newValue) => {
+  menuOpen.value = newValue;
+});
+
 </script>
 <template>
   <button

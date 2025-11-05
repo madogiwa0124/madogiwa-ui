@@ -19,7 +19,7 @@ const isSnackbarOpen = ref<boolean>(false);
 </script>
 <!-- eslint-disable vue/max-lines-per-block -->
 <template>
-  <MNavbar mobile-menu-variant="side" transition>
+  <MNavbar mobile-menu-variant="side" transition close-outside-click>
     <template #title>
       <MNavbarTitle href="/">
         <b>MNavbar</b>

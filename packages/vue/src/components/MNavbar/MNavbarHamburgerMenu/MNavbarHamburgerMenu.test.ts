@@ -41,4 +41,23 @@ describe("MNavbarHamburgerMenu", () => {
     expect(wrapper.attributes("aria-expanded")).toBe("false");
     expect(wrapper.attributes("aria-label")).toBe("Open menu");
   });
+
+  it("syncs internal state when showMenu prop changes", async () => {
+    const wrapper = mount(MNavbarHamburgerMenu, {
+      props: { showMenu: false },
+    });
+    expect(wrapper.attributes("aria-expanded")).toBe("false");
+
+    // Update prop from parent (simulating external state change)
+    await wrapper.setProps({ showMenu: true });
+    await wrapper.vm.$nextTick();
+    expect(wrapper.attributes("aria-expanded")).toBe("true");
+    expect(wrapper.attributes("aria-label")).toBe("Close menu");
+
+    // Update prop back to false
+    await wrapper.setProps({ showMenu: false });
+    await wrapper.vm.$nextTick();
+    expect(wrapper.attributes("aria-expanded")).toBe("false");
+    expect(wrapper.attributes("aria-label")).toBe("Open menu");
+  });
 });
