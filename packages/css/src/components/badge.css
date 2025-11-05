@@ -26,16 +26,20 @@
   --badge-warning-color: var(--color-warning);
   --badge-warning-border-color: var(--color-warning);
   --badge-warning-text-color: var(--color-text);
+  --badge-line-height: var(--line-height-none);
+  --badge-min-width: 1.8em;
 
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-width: var(--badge-min-width);
   border: var(--badge-border);
   border-radius: var(--badge-border-radius);
   background-color: var(--badge-bg-color);
   padding: var(--badge-padding);
   gap: var(--badge-item-gap);
   text-decoration: none;
-  line-height: var(--line-height-none);
+  line-height: var(--badge-line-height);
   color: var(--badge-text-color);
 
 

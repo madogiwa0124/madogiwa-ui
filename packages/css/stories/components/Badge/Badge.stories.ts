@@ -103,34 +103,37 @@ This component has no child elements - it's a single-level component.
 
 ### CSS Variables
 
-| Name | Default | Description |
-| ---- | ------- | ----------- |
-| --badge-padding | var(--spacing-1) var(--spacing-2) | Internal padding |
-| --badge-item-gap | var(--spacing-2) | Gap between badge elements |
-| --badge-border-color | var(--color-border) | Default border color |
-| --badge-border | 1px solid var(--badge-border-color) | Border style |
-| --badge-border-radius | var(--radius-sm) | Border radius |
-| --badge-bg-color | var(--color-default) | Background color |
-| --badge-hover-filter | brightness(0.9) | Hover effect filter |
-| --badge-disabled-opacity | 0.65 | Opacity when disabled |
-| --badge-transition-duration | 0.2s | Transition duration |
-| --badge-transition-timing | ease | Transition timing function |
-| --badge-small-font-size | var(--text-xs) | Font size for small variant |
-| --badge-primary-color | var(--color-primary) | Primary variant background |
-| --badge-primary-text-color | var(--color-text-light) | Primary variant text color |
-| --badge-primary-border-color | var(--badge-primary-color) | Primary variant border color |
-| --badge-secondary-color | var(--color-secondary) | Secondary variant background |
-| --badge-secondary-text-color | var(--color-text-light) | Secondary variant text color |
-| --badge-secondary-border-color | var(--badge-secondary-color) | Secondary variant border color |
-| --badge-tertiary-color | var(--color-tertiary) | Tertiary variant background |
-| --badge-tertiary-text-color | var(--color-text-light) | Tertiary variant text color |
-| --badge-tertiary-border-color | var(--badge-tertiary-color) | Tertiary variant border color |
-| --badge-danger-color | var(--color-danger) | Danger variant background |
-| --badge-danger-text-color | var(--color-text-light) | Danger variant text color |
-| --badge-danger-border-color | var(--badge-danger-color) | Danger variant border color |
-| --badge-warning-color | var(--color-warning) | Warning variant background |
-| --badge-warning-text-color | var(--color-text-dark) | Warning variant text color |
-| --badge-warning-border-color | var(--badge-warning-color) | Warning variant border color |
+| Target | Name | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| .m-badge | --badge-padding | var(--spacing-1) | Internal padding |
+| .m-badge | --badge-item-gap | var(--spacing-2) | Gap between badge elements |
+| .m-badge | --badge-text-color | var(--color-text) | Text color |
+| .m-badge | --badge-border-color | var(--color-border) | Border color |
+| .m-badge | --badge-border | 1px solid var(--badge-border-color) | Border style |
+| .m-badge | --badge-border-radius | var(--radius-sm) | Border radius |
+| .m-badge | --badge-bg-color | var(--color-default) | Background color |
+| .m-badge | --badge-hover-filter | brightness(0.9) | Hover effect filter |
+| .m-badge | --badge-disabled-opacity | 0.65 | Opacity when disabled |
+| .m-badge | --badge-transition-duration | 0.2s | Transition duration |
+| .m-badge | --badge-transition-timing | ease | Transition timing function |
+| .m-badge | --badge-small-font-size | var(--text-xs) | Font size for small variant |
+| .m-badge | --badge-primary-color | var(--color-primary) | Primary variant background |
+| .m-badge | --badge-primary-border-color | var(--color-primary) | Primary variant border color |
+| .m-badge | --badge-primary-text-color | var(--color-text-light) | Primary variant text color |
+| .m-badge | --badge-secondary-color | var(--color-secondary) | Secondary variant background |
+| .m-badge | --badge-secondary-border-color | var(--color-secondary) | Secondary variant border color |
+| .m-badge | --badge-secondary-text-color | var(--color-text-light) | Secondary variant text color |
+| .m-badge | --badge-tertiary-color | var(--color-tertiary) | Tertiary variant background |
+| .m-badge | --badge-tertiary-border-color | var(--color-tertiary) | Tertiary variant border color |
+| .m-badge | --badge-tertiary-text-color | var(--color-text) | Tertiary variant text color |
+| .m-badge | --badge-danger-color | var(--color-danger) | Danger variant background |
+| .m-badge | --badge-danger-border-color | var(--color-danger) | Danger variant border color |
+| .m-badge | --badge-danger-text-color | var(--color-text) | Danger variant text color |
+| .m-badge | --badge-warning-color | var(--color-warning) | Warning variant background |
+| .m-badge | --badge-warning-border-color | var(--color-warning) | Warning variant border color |
+| .m-badge | --badge-warning-text-color | var(--color-text) | Warning variant text color |
+| .m-badge | --badge-line-height | var(--line-height-none) | Line height |
+| .m-badge | --badge-min-width | 1.8em | Minimum width |
 
 ### Data Attributes
 
@@ -503,7 +506,7 @@ export const WithIcon: Story = {
     // Notification count badge
     const countBadge = document.createElement("div");
     countBadge.classList.add("m-badge", "--danger", "--small", "--rounded");
-    countBadge.textContent = "3";
+    countBadge.innerHTML = `<span class="icon">3</span>`;
 
     container.append(iconTextBadge, textIconBadge, iconOnlyBadge, countBadge);
     return container;

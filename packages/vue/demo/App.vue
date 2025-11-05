@@ -506,6 +506,9 @@ const isSnackbarOpen = ref<boolean>(false);
             <MBadge rounded>Rounded</MBadge>
             <MBadge variant="danger" small rounded>5</MBadge>
             <MBadge variant="primary" small rounded>99+</MBadge>
+            <MBadge as="button" variant="primary" small rounded class>
+              <span class="icon">×</span>
+            </MBadge>
           </div>
         </div>
 
