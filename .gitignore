@@ -13,6 +13,7 @@ __screenshots__
 node_modules
 dist-ssr
 *.local
+.eslintcache
 
 # Editor directories and files
 .vscode/*

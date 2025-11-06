@@ -34,8 +34,15 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - name: lint typecheck
         run: pnpm run lint:type-check
+      - name: cache lint js
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: node_modules/.cache/eslint
+          key: lint-js-v1-${{ github.ref_name }}-${{ github.sha }}
+          restore-keys: |
+            lint-js-v1-
       - name: lint js
-        run: pnpm run lint
+        run: pnpm run lint --cache-strategy content --cache-location node_modules/.cache/eslint/
       - name: lint css
         run: pnpm run lint:css
 

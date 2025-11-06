@@ -9,7 +9,7 @@
     "setup": "playwright install chromium --with-deps",
     "css": "pnpm --filter @madogiwa-ui/css",
     "vue": "pnpm --filter @madogiwa-ui/vue",
-    "lint": "eslint --cache --cache-location node_modules/.cache/eslint/",
+    "lint": "eslint --cache",
     "lint:css": "stylelint \"**/*.css\" --cache --cache-location node_modules/.cache/stylelint/ --ignore-path .stylelintignore",
     "lint:type-check": "tsc --noEmit && pnpm vue type-check"
   },
