@@ -9,7 +9,7 @@ export { MH1, MH2, MH3, MH4, MH5, MH6 } from "./components/MHeading";
 export { MInput } from "./components/MInput";
 export { MLabel } from "./components/MLabel";
 export { MLink } from "./components/MLink";
-export { MNavbar, MNavbarHamburger, MNavbarHamburgerMenu, MNavbarItem, MNavbarTitle } from "./components/MNavbar";
+export { MNavbar, MNavbarHamburger, MNavbarHamburgerMenu, MNavbarItem, MNavbarTitle, MNavbarItems } from "./components/MNavbar";
 export { MP } from "./components/MParagraph";
 export { MRadio } from "./components/MRadio";
 export { MSelect } from "./components/MSelect";

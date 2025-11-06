@@ -1,7 +1,7 @@
 <!-- eslint-disable-next-line vue/max-lines-per-block -->
 <script setup lang="ts">
 import { computed, ref, useTemplateRef, watchEffect } from "vue";
-import { MNavbarHamburger, MNavbarHamburgerMenu } from "./index";
+import { MNavbarHamburger, MNavbarHamburgerMenu, MNavbarItems } from "./index";
 import { useCloseOutsideClick } from "./composable";
 
 const { mobileMenuVariant = null, transition, id = "m-navbar", closeOutsideClick = false } = defineProps<{
@@ -11,7 +11,7 @@ const { mobileMenuVariant = null, transition, id = "m-navbar", closeOutsideClick
   id?: string;
 }>();
 
-const templateItems = useTemplateRef<HTMLElement | null>("items");
+const templateItems = useTemplateRef<InstanceType<typeof MNavbarItems> | null>("items");
 const templateHamburger = useTemplateRef<InstanceType<typeof MNavbarHamburger> | null>("hamburger");
 const hamburgerMenuOpen = ref(false);
 const hasHamburgerMenu = computed(() => mobileMenuVariant !== null);
@@ -27,7 +27,7 @@ const mobileMenuClass = computed(() => {
 const { attachOutsideClickListener, detachOutsideClickListener } = useCloseOutsideClick({
   // NOTE: It's unavoidable for $el to be any, so ignore
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  getInsideElements: () => [templateItems.value, templateHamburger.value?.$el].filter(Boolean) as HTMLElement[],
+  getInsideElements: () => [templateItems.value?.$el, templateHamburger.value?.$el].filter(Boolean) as HTMLElement[],
   onClose: () => { hamburgerMenuOpen.value = false; },
 });
 
@@ -46,9 +46,9 @@ watchEffect((onCleanup) => {
 <template>
   <nav :id class="m-navbar" :class="[mobileMenuClass, transition ? '--transition' : '']">
     <slot name="title" />
-    <ul ref="items" class="m-navbar__items">
+    <MNavbarItems ref="items">
       <slot name="items" />
-    </ul>
+    </MNavbarItems>
     <slot name="hamburger">
       <MNavbarHamburger v-if="hasHamburgerMenu" ref="hamburger">
         <MNavbarHamburgerMenu :show-menu="hamburgerMenuOpen" :aria-controls="id" @show-menu="hamburgerMenuOpen = $event" />
