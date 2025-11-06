@@ -12,8 +12,26 @@ export const useCloseOutsideClick = ({ getInsideElements, onClose }: {
     insideElements.value = getInsideElements();
   });
 
+  const attachOutsideClickListener = (listener: (event: MouseEvent) => void, target: Document | null): ReturnType<typeof setTimeout> | undefined => {
+    if (!target) return undefined;
+    // Use setTimeout to avoid immediate trigger from the same click that opened the menu
+    return setTimeout(() => {
+      target.addEventListener("click", listener);
+    }, 0);
+  };
+
+  const detachOutsideClickListener = (listener: (event: MouseEvent) => void, target: Document | null, listenerId?: ReturnType<typeof setTimeout>): void => {
+    if (listenerId !== undefined) clearTimeout(listenerId);
+    target?.removeEventListener("click", listener);
+  };
+
+  const attachDocumentOutsideClickListener = () => attachOutsideClickListener(handleClick, watchDocument.value);
+  const detachDocumentOutsideClickListener = (listenerId?: ReturnType<typeof setTimeout>) => {
+    detachOutsideClickListener(handleClick, watchDocument.value, listenerId);
+  };
+
   onUnmounted(() => {
-    detachOutsideClickListener();
+    detachDocumentOutsideClickListener();
   });
 
   const handleClickOutside = (event: MouseEvent, insideElements: HTMLElement[]) => {
@@ -28,21 +46,8 @@ export const useCloseOutsideClick = ({ getInsideElements, onClose }: {
     handleClickOutside(event, insideElements.value);
   };
 
-  const attachOutsideClickListener = (): ReturnType<typeof setTimeout> | undefined => {
-    if (!watchDocument.value) return undefined;
-    // Use setTimeout to avoid immediate trigger from the same click that opened the menu
-    return setTimeout(() => {
-      watchDocument.value?.addEventListener("click", handleClick);
-    }, 0);
-  };
-
-  const detachOutsideClickListener = (listenerId?: ReturnType<typeof setTimeout>): void => {
-    if (listenerId !== undefined) clearTimeout(listenerId);
-    watchDocument.value?.removeEventListener("click", handleClick);
-  };
-
   return {
-    attachOutsideClickListener,
-    detachOutsideClickListener,
+    attachOutsideClickListener: attachDocumentOutsideClickListener,
+    detachOutsideClickListener: detachDocumentOutsideClickListener,
   };
 };
