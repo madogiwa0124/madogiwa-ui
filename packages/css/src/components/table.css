@@ -1,0 +1,65 @@
+.m-table {
+  --table-bg-color: var(--color-white);
+  --table-hover-bg-color: var(--color-bg-light);
+  --table-border-color: var(--color-border);
+  --table-border-width: 1px;
+  --table-padding: var(--spacing-3) var(--spacing-4);
+  --table-stripe-bg-color: var(--color-bg-grey);
+  --table-hover-opacity: 0.8;
+  --table-th-font-weight: var(--font-weight-semibold);
+  --table-transition-duration: 0.2s;
+
+  border-collapse: collapse;
+  background-color: var(--table-bg-color);
+
+  th,
+  td {
+    padding: var(--table-padding);
+    border-bottom: var(--table-border-width) solid var(--table-border-color);
+    text-align: start;
+  }
+
+  th {
+    font-weight: var(--table-th-font-weight);
+  }
+
+  /* Hoverable modifier */
+  &.--hoverable {
+    tbody tr {
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--table-hover-bg-color);
+        opacity: var(--table-hover-opacity);
+      }
+    }
+  }
+
+  /* Stripe modifier */
+  &.--stripe {
+    tbody tr:nth-child(2n) {
+      background-color: var(--table-stripe-bg-color);
+    }
+  }
+
+  &.--bordered {
+    th,
+    td {
+      border: var(--table-border-width) solid var(--table-border-color);
+    }
+  }
+
+  &.--full-width {
+    width: 100%;
+  }
+
+  /* Transition modifier */
+  &.--transition {
+    &.--hoverable {
+      tbody tr {
+        transition: background-color var(--table-transition-duration) ease,
+          opacity var(--table-transition-duration) ease;
+      }
+    }
+  }
+}

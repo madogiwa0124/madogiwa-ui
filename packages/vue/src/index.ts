@@ -15,6 +15,7 @@ export { MRadio } from "./components/MRadio";
 export { MSelect } from "./components/MSelect";
 export { MSnackbar, MSnackbarActions, MSnackbarBody } from "./components/MSnackbar";
 export { MTabs, MTabsItem, MTabsList } from "./components/MTabs";
+export { MTable } from "./components/MTable";
 export { MTextarea } from "./components/MTextarea";
 export { MToggle } from "./components/MToggle";
 export { MColumns } from "./layouts/MColumns";

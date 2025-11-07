@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { MAccordion, MAlert, MBadge, MBtn, MCard, MCardImage, MCheckbox, MColumns, MContainer, MDialog, MH1, MH2, MH3, MInput, MLabel, MLink, MNavbar, MNavbarItem, MNavbarTitle, MP, MRadio, MSelect, MSnackbar, MTabs, MTabsItem, MTabsList, MTextarea, MToggle } from "../src/index";
+import { MAccordion, MAlert, MBadge, MBtn, MCard, MCardImage, MCheckbox, MColumns, MContainer, MDialog, MH1, MH2, MH3, MInput, MLabel, MLink, MNavbar, MNavbarItem, MNavbarTitle, MP, MRadio, MSelect, MSnackbar, MTable, MTabs, MTabsItem, MTabsList, MTextarea, MToggle } from "../src/index";
 const SampleImage = new URL("320x240.png", import.meta.url).href;
 
-type DemoTabs = "buttons" | "links" | "cards" | "modals" | "inputs" | "accordion" | "badge" | "snackbar" | "columns" | "alert";
+type DemoTabs = "buttons" | "links" | "cards" | "modals" | "inputs" | "accordion" | "badge" | "snackbar" | "columns" | "alert" | "table";
 const activeTab = ref<DemoTabs>("buttons");
 const checkboxValue = ref<boolean>(false);
 const radioValue = ref<string>("option1");
@@ -80,6 +80,9 @@ const isSnackbarOpen = ref<boolean>(false);
         </MTabsItem>
         <MTabsItem id="components-alert-tab" :active="activeTab === 'alert'" aria-controls="components-alert" @click="activeTab = 'alert'">
           Alert
+        </MTabsItem>
+        <MTabsItem id="components-table-tab" :active="activeTab === 'table'" aria-controls="components-table" @click="activeTab = 'table'">
+          Table
         </MTabsItem>
       </MTabsList>
     </MTabs>
@@ -644,6 +647,181 @@ const isSnackbarOpen = ref<boolean>(false);
           </template>
           This is a danger alert message.
         </MAlert>
+      </div>
+    </section>
+    <section id="components-table" role="tabpanel" aria-labelledby="components-table-tab" :class="{ 'm-hidden': activeTab !== 'table' }">
+      <MH2>
+        MTable
+      </MH2>
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-6);">
+        <div>
+          <MH3>
+            Basic Table
+          </MH3>
+          <MTable full-width transition>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John Doe</td>
+                <td>john@example.com</td>
+                <td>Developer</td>
+              </tr>
+              <tr>
+                <td>Jane Smith</td>
+                <td>jane@example.com</td>
+                <td>Designer</td>
+              </tr>
+              <tr>
+                <td>Bob Johnson</td>
+                <td>bob@example.com</td>
+                <td>Manager</td>
+              </tr>
+            </tbody>
+          </MTable>
+        </div>
+
+        <div>
+          <MH3>
+            Striped Table
+          </MH3>
+          <MTable stripe full-width transition>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Stock</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Laptop</td>
+                <td>$999</td>
+                <td>15</td>
+              </tr>
+              <tr>
+                <td>Mouse</td>
+                <td>$29</td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <td>Keyboard</td>
+                <td>$79</td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>Monitor</td>
+                <td>$299</td>
+                <td>8</td>
+              </tr>
+            </tbody>
+          </MTable>
+        </div>
+
+        <div>
+          <MH3>
+            Hoverable Table
+          </MH3>
+          <MTable hoverable full-width transition>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Task</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Design new homepage</td>
+                <td>In Progress</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Fix login bug</td>
+                <td>Completed</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Update documentation</td>
+                <td>Pending</td>
+              </tr>
+            </tbody>
+          </MTable>
+        </div>
+
+        <div>
+          <MH3>
+            Bordered Table
+          </MH3>
+          <MTable bordered full-width transition>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Basic</th>
+                <th>Pro</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Users</td>
+                <td>5</td>
+                <td>Unlimited</td>
+              </tr>
+              <tr>
+                <td>Storage</td>
+                <td>10GB</td>
+                <td>1TB</td>
+              </tr>
+              <tr>
+                <td>Support</td>
+                <td>Email</td>
+                <td>24/7 Phone</td>
+              </tr>
+            </tbody>
+          </MTable>
+        </div>
+
+        <div>
+          <MH3>
+            All Modifiers Combined
+          </MH3>
+          <MTable stripe bordered hoverable full-width transition>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Widget A</td>
+                <td>10</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Widget B</td>
+                <td>5</td>
+                <td>$250</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Widget C</td>
+                <td>8</td>
+                <td>$160</td>
+              </tr>
+            </tbody>
+          </MTable>
+        </div>
       </div>
     </section>
   </MContainer>
