@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2025-11-06T12:58:28.112Z
+generated_at: 2025-11-07T14:09:25.310Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -1218,6 +1218,83 @@ This component does not use data attributes for styling or behavior.
 
 ---
 
+## Table
+
+### Overview
+
+The Table component provides a structured way to display tabular data with various styling options. It implements BEM + CSS Nesting pattern with the m- prefix for Madogiwa UI.
+
+### Usage
+
+Use tables to display structured data in rows and columns. Apply the `--stripe` modifier for better readability in long tables, `--bordered` to add borders around all cells, and `--hoverable` to make rows interactive.
+
+### Example code
+
+```html
+<table class="m-table --stripe --hoverable --transition">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>John Doe</td>
+      <td>28</td>
+      <td>john@example.com</td>
+    </tr>
+    <tr>
+      <td>Jane Smith</td>
+      <td>34</td>
+      <td>jane@example.com</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Elements
+
+This component has no child elements - styling is applied directly to standard HTML table elements (th, td, tr, thead, tbody).
+
+### Modifiers
+
+| Target | Name | Description |
+|--- | ---- | ----------- |
+| .m-table | .--stripe | Apply alternating background color to even rows in tbody |
+| .m-table | .--bordered | Apply border to table and all cells (th, td) |
+| .m-table | .--hoverable | Enable hover effect on tbody rows with background color and opacity change |
+| .m-table | .--full-width | Make table take up full width (100%) of its container |
+| .m-table | .--transition | Enable smooth transition animations for hover effects |
+
+### CSS Variables
+
+| Target | Name | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| .m-table | --table-bg-color | var(--color-white) | Background color for table |
+| .m-table | --table-hover-bg-color | var(--color-bg-light) | Background color for hovered rows |
+| .m-table | --table-border-color | var(--color-border) | Border color for table and cells |
+| .m-table | --table-border-width | 1px | Border width for table and cells |
+| .m-table | --table-padding | var(--spacing-3) var(--spacing-4) | Padding for cells (vertical horizontal) |
+| .m-table | --table-stripe-bg-color | var(--color-bg-grey) | Background color for even rows in stripe mode |
+| .m-table | --table-hover-opacity | 0.8 | Opacity value for hovered rows |
+| .m-table | --table-th-font-weight | var(--font-weight-semibold) | Font weight for table headers |
+| .m-table | --table-transition-duration | 0.2s | Transition animation duration |
+
+### Data Attributes
+
+This component does not use data attributes for styling or behavior.
+
+### Caution
+
+- Use --transition modifier selectively to respect user motion preferences
+- Consider using --stripe for tables with many rows to improve readability
+- The --hoverable modifier is best suited for interactive tables where rows trigger actions
+- Use --bordered when you need clear cell separation with full borders
+
+---
+
 ## Tabs
 
 ### Overview
@@ -1613,4 +1690,4 @@ This component does not use data attributes for styling or behavior.
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 11/6/2025, 12:58:28 PM
+- Generated at: 11/7/2025, 2:09:25 PM
