@@ -15,15 +15,15 @@
   ref: https://tailwindcss.com/docs/display#screen-reader-only
 */
 .m-sr-only {
-position: absolute;
-width: 1px;
-height: 1px;
-padding: 0;
-/* stylelint-disable-next-line declaration-property-value-allowed-list */
-margin: -1px;
-overflow: hidden;
-/* stylelint-disable-next-line plugin/use-baseline, property-no-deprecated */
-clip: rect(0, 0, 0, 0);
-white-space: nowrap;
-border-width: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  /* stylelint-disable-next-line declaration-property-value-allowed-list */
+  margin: -1px;
+  overflow: hidden;
+  /* stylelint-disable-next-line plugin/use-baseline, property-no-deprecated */
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
