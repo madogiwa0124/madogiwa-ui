@@ -6,6 +6,7 @@
   --link-text-decoration: underline;
   --link-underline-offset: 0.2em;
 
+  cursor: pointer;
   color: var(--link-color);
   text-decoration: var(--link-text-decoration);
   text-underline-offset: var(--link-underline-offset);
