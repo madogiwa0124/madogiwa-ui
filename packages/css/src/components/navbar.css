@@ -72,11 +72,11 @@
       gap: var(--navbar-item-gap);
     }
 
-    &:has(a) {
+    &:has(>a) {
       padding: initial;
     }
 
-    a {
+    >a {
       display: inline-flex;
       width: 100%;
       height: 100%;
@@ -85,7 +85,7 @@
       text-decoration: none;
     }
 
-    &:has(a):hover {
+    &:has(>a):hover {
       background-color: var(--navbar-item-hover-bg-color);
       color: var(--navbar-item-hover-text-color);
     }
