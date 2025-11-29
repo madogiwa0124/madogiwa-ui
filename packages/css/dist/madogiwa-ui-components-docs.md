@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2025-11-24T11:38:36.241Z
+generated_at: 2025-11-29T13:45:43.052Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -384,7 +384,7 @@ Use cards to display content in organized, digestible sections and group related
     <h3>Card Title</h3>
     <p>Card content goes here with relevant information.</p>
   </div>
-  <div class="m-card__actions">
+  <div class="m-card__footer">
     <button class="m-btn">Cancel</button>
     <button class="m-btn --primary">Confirm</button>
   </div>
@@ -404,7 +404,7 @@ Use cards to display content in organized, digestible sections and group related
 | ---- | ----------- |
 | .m-card__image | Card image element with responsive sizing and proper aspect ratio |
 | .m-card__content | Main content area with proper padding for text and media |
-| .m-card__actions | Action area with flex layout for buttons and controls |
+| .m-card__footer | Footer area with flex layout for buttons and controls |
 
 ### Modifiers
 
@@ -421,10 +421,11 @@ Use cards to display content in organized, digestible sections and group related
 | --card-bg-color | var(--color-white) | Background color |
 | --card-border-color | var(--color-border) | Border color |
 | --card-content-padding | var(--spacing-2) | Padding for card content area |
-| --card-actions-padding | var(--spacing-1) | Padding for card actions area |
-| --card-actions-item-gap | var(--spacing-1) | Gap between action items |
-| --card-actions-justify | flex-end | Horizontal alignment of action items |
-| --card-actions-border-top | initial | Top border for card actions area |
+| --card-footer-flex-direction | row | Flex direction for footer items |
+| --card-footer-padding | var(--spacing-1) | Padding for card footer area |
+| --card-footer-item-gap | var(--spacing-1) | Gap between footer items |
+| --card-footer-justify | flex-end | Horizontal alignment of footer items |
+| --card-footer-border-top | initial | Top border for card footer area |
 
 ### Data Attributes
 
@@ -1567,7 +1568,7 @@ Use Columns for responsive grid layouts, card grids, dashboard widgets, and comp
   <div class="m-card" data-col-size="4" data-subgrid-rows="3">
     <img class="m-card__image" src="image.jpg" alt="">
     <div class="m-card__content"><h3>Title</h3><p>Content</p></div>
-    <div class="m-card__actions"><button>Action</button></div>
+    <div class="m-card__footer"><button>Action</button></div>
   </div>
 </div>
 ```
@@ -1690,4 +1691,4 @@ This component does not use data attributes for styling or behavior.
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 11/24/2025, 11:38:36 AM
+- Generated at: 11/29/2025, 1:45:43 PM

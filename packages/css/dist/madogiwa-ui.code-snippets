@@ -80,7 +80,7 @@
   "m-card": {
     "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
     "prefix": ".m-card",
-    "body": ".m-card${1|​,__image,__content,__actions|}${2|​,.--floating|}",
+    "body": ".m-card${1|​,__image,__content,__footer|}${2|​,.--floating|}",
     "description": "Madogiwa UI class .m-card"
   },
   "m-select": {

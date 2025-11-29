@@ -3,7 +3,6 @@ import { ComponentProvideOptions } from 'vue';
 import { DefineComponent } from 'vue';
 import { PublicProps } from 'vue';
 import { Variant } from './types';
-import { Variant as Variant_2 } from '../../types';
 
 declare const __VLS_base: DefineComponent<__VLS_Props, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
@@ -287,7 +286,7 @@ declare type __VLS_Props_19 = {
 };
 
 declare type __VLS_Props_2 = {
-    variant?: Variant_2 | "danger" | "warning";
+    variant?: Variant | "danger" | "warning";
     withProgress?: boolean;
     autoDismiss?: "3s" | "5s" | "10s" | "0s" | null;
 };
@@ -306,7 +305,7 @@ declare type __VLS_Props_21 = {
 
 declare type __VLS_Props_3 = {
     as?: "span" | "button" | "a";
-    variant?: Variant_2 | "danger" | "warning";
+    variant?: Variant | "danger" | "warning";
     outline?: boolean;
     small?: boolean;
     rounded?: boolean;
@@ -314,7 +313,7 @@ declare type __VLS_Props_3 = {
 };
 
 declare type __VLS_Props_4 = {
-    variant?: Variant_2;
+    variant?: Variant;
     outline?: boolean;
     block?: boolean;
     rounded?: boolean;
