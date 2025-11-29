@@ -2,7 +2,7 @@ export { MAccordion, MAccordionContent, MAccordionSummary } from "./components/M
 export { MAlert, MAlertActions, MAlertContent, MAlertIcons } from "./components/MAlert";
 export { MBadge } from "./components/MBadge";
 export { MBtn } from "./components/MButton";
-export { MCard, MCardActions, MCardContent, MCardImage } from "./components/MCard";
+export { MCard, MCardFooter, MCardContent, MCardImage } from "./components/MCard";
 export { MCheckbox } from "./components/MCheckbox";
 export { MDialog } from "./components/MDialog";
 export { MH1, MH2, MH3, MH4, MH5, MH6 } from "./components/MHeading";

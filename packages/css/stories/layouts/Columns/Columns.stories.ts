@@ -81,7 +81,7 @@ Use Columns for responsive grid layouts, card grids, dashboard widgets, and comp
   <div class="m-card" data-col-size="4" data-subgrid-rows="3">
     <img class="m-card__image" src="image.jpg" alt="">
     <div class="m-card__content"><h3>Title</h3><p>Content</p></div>
-    <div class="m-card__actions"><button>Action</button></div>
+    <div class="m-card__footer"><button>Action</button></div>
   </div>
 </div>
 \`\`\`
@@ -215,7 +215,7 @@ export const AlignmentNestedContentRows: Story = {
               This card demonstrates how images can be integrated with content. The image is responsive and maintains proper aspect ratio.
             </p>
           </div>
-          <div class="m-card__actions">
+          <div class="m-card__footer">
             <button class="m-btn --primary --rounded">Action</button>
           </div>
         `,
@@ -232,7 +232,7 @@ export const AlignmentNestedContentRows: Story = {
               This card has significantly more content than the others. It is designed to test the subgrid alignment feature, ensuring that despite varying content lengths, the action buttons remain perfectly aligned at the bottom of each card.
             </p>
           </div>
-          <div class="m-card__actions">
+          <div class="m-card__footer">
             <button class="m-btn --primary --rounded">Action</button>
           </div>
         `,
@@ -248,7 +248,7 @@ export const AlignmentNestedContentRows: Story = {
               This card demonstrates how images can be integrated with content.
             </p>
           </div>
-          <div class="m-card__actions">
+          <div class="m-card__footer">
             <button class="m-btn --primary --rounded">Action</button>
           </div>
         `,
@@ -315,7 +315,7 @@ export const AlignmentNestedContentRows: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Demonstrates CSS Subgrid alignment where cards with different content lengths have their action buttons perfectly aligned at the bottom. Toggle subgrid to see the difference.",
+        story: "Demonstrates CSS Subgrid alignment where cards with different content lengths have their footer content/buttons perfectly aligned at the bottom. Toggle subgrid to see the difference.",
       },
     },
   },

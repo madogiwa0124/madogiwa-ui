@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MCardActions, MCardContent } from "./index";
+import { MCardContent, MCardFooter } from "./index";
 const {
   floating = false,
 } = defineProps<{
@@ -18,8 +18,8 @@ const {
     <MCardContent v-if="$slots['default']">
       <slot />
     </MCardContent>
-    <MCardActions v-if="$slots['actions']">
-      <slot name="actions" />
-    </MCardActions>
+    <MCardFooter v-if="$slots['footer']">
+      <slot name="footer" />
+    </MCardFooter>
   </div>
 </template>

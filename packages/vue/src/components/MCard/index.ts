@@ -1,4 +1,4 @@
 export { default as MCard } from "./MCard.vue";
-export { MCardActions } from "./MCardActions";
+export { MCardFooter } from "./MCardFooter";
 export { MCardContent } from "./MCardContent";
 export { MCardImage } from "./MCardImage";

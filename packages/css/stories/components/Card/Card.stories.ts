@@ -7,8 +7,8 @@ type CardProperties = {
   floating: boolean;
   hasImage: boolean;
   imageAlt: string;
-  hasActions: boolean;
-  actionsJustify: "flex-start" | "center" | "flex-end" | "space-between";
+  hasFooter: boolean;
+  footerJustify: "flex-start" | "center" | "flex-end" | "space-between";
 };
 
 const meta: Meta<CardProperties> = {
@@ -31,17 +31,17 @@ const meta: Meta<CardProperties> = {
       control: { type: "text" },
       description: "The image alt text for the component",
     },
-    hasActions: {
+    hasFooter: {
       control: { type: "boolean" },
-      description: "The action buttons inclusion for the component",
+      description: "The footer area inclusion for the component",
     },
-    actionsJustify: {
+    footerJustify: {
       control: {
         type: "select",
       },
       options: ["flex-start", "center", "flex-end", "space-between"],
-      description: "The action buttons alignment for the component",
-      if: { arg: "hasActions", truthy: true },
+      description: "The footer content alignment for the component",
+      if: { arg: "hasFooter", truthy: true },
     },
   },
   parameters: {
@@ -65,7 +65,7 @@ Use cards to display content in organized, digestible sections and group related
     <h3>Card Title</h3>
     <p>Card content goes here with relevant information.</p>
   </div>
-  <div class="m-card__actions">
+  <div class="m-card__footer">
     <button class="m-btn">Cancel</button>
     <button class="m-btn --primary">Confirm</button>
   </div>
@@ -85,7 +85,7 @@ Use cards to display content in organized, digestible sections and group related
 | ---- | ----------- |
 | .m-card__image | Card image element with responsive sizing and proper aspect ratio |
 | .m-card__content | Main content area with proper padding for text and media |
-| .m-card__actions | Action area with flex layout for buttons and controls |
+| .m-card__footer | Footer area with flex layout for buttons and controls |
 
 ### Modifiers
 
@@ -102,10 +102,11 @@ Use cards to display content in organized, digestible sections and group related
 | --card-bg-color | var(--color-white) | Background color |
 | --card-border-color | var(--color-border) | Border color |
 | --card-content-padding | var(--spacing-2) | Padding for card content area |
-| --card-actions-padding | var(--spacing-1) | Padding for card actions area |
-| --card-actions-item-gap | var(--spacing-1) | Gap between action items |
-| --card-actions-justify | flex-end | Horizontal alignment of action items |
-| --card-actions-border-top | initial | Top border for card actions area |
+| --card-footer-flex-direction | row | Flex direction for footer items |
+| --card-footer-padding | var(--spacing-1) | Padding for card footer area |
+| --card-footer-item-gap | var(--spacing-1) | Gap between footer items |
+| --card-footer-justify | flex-end | Horizontal alignment of footer items |
+| --card-footer-border-top | initial | Top border for card footer area |
 
 ### Data Attributes
 
@@ -133,8 +134,8 @@ export const Default: Story = {
 
     const content = args["content"];
     const floating = args["floating"];
-    const hasActions = args["hasActions"];
-    const actionsJustify = args["actionsJustify"];
+    const hasFooter = args["hasFooter"];
+    const footerJustify = args["footerJustify"];
 
     if (floating) card.classList.add("--floating");
 
@@ -146,15 +147,15 @@ export const Default: Story = {
     `;
     card.append(contentElement);
 
-    if (hasActions) {
-      const actionsElement = document.createElement("div");
-      actionsElement.classList.add("m-card__actions");
-      actionsElement.style.setProperty("--card-actions-justify", actionsJustify);
-      actionsElement.innerHTML = `
+    if (hasFooter) {
+      const footerElement = document.createElement("div");
+      footerElement.classList.add("m-card__footer");
+      footerElement.style.setProperty("--card-footer-justify", footerJustify);
+      footerElement.innerHTML = `
         <button class="m-btn">Cancel</button>
         <button class="m-btn --primary">Confirm</button>
       `;
-      card.append(actionsElement);
+      card.append(footerElement);
     }
 
     container.append(card);
@@ -163,8 +164,8 @@ export const Default: Story = {
   args: {
     content: "This is a basic card with content. Cards are perfect for organizing related information in a clean, digestible format.",
     floating: false,
-    hasActions: false,
-    actionsJustify: "flex-end",
+    hasFooter: false,
+    footerJustify: "flex-end",
   },
   play: async ({ canvasElement, args }) => {
     const card = canvasElement.querySelector(".m-card") as HTMLDivElement;
@@ -186,14 +187,14 @@ export const Default: Story = {
       ? expect(card).toHaveClass("--floating")
       : expect(card).not.toHaveClass("--floating"));
 
-    // Test actions element if present
-    const hasActions = args["hasActions"];
-    const actions = canvasElement.querySelector(".m-card__actions");
-    if (hasActions) {
-      await expect(actions).toBeInTheDocument();
-      await expect(actions).toHaveClass("m-card__actions");
+    // Test footer element if present
+    const hasFooter = args["hasFooter"];
+    const footer = canvasElement.querySelector(".m-card__footer");
+    if (hasFooter) {
+      await expect(footer).toBeInTheDocument();
+      await expect(footer).toHaveClass("m-card__footer");
     } else {
-      await expect(actions).not.toBeInTheDocument();
+      await expect(footer).not.toBeInTheDocument();
     }
 
     // Test styling
@@ -282,10 +283,10 @@ export const FullCardSample: Story = {
     `;
 
     card.append(contentElement);
-    if (args["hasActions"]) {
-      const actionsElement = document.createElement("div");
-      actionsElement.classList.add("m-card__actions");
-      actionsElement.style.justifyContent = args["actionsJustify"];
+    if (args["hasFooter"]) {
+      const footerElement = document.createElement("div");
+      footerElement.classList.add("m-card__footer");
+      footerElement.style.justifyContent = args["footerJustify"];
 
       const cancelButton = document.createElement("button");
       cancelButton.classList.add("m-btn");
@@ -295,8 +296,8 @@ export const FullCardSample: Story = {
       confirmButton.classList.add("m-btn", "--primary");
       confirmButton.textContent = "Confirm";
 
-      actionsElement.append(cancelButton, confirmButton);
-      card.append(actionsElement);
+      footerElement.append(cancelButton, confirmButton);
+      card.append(footerElement);
     }
     container.append(card);
     return container;
@@ -305,8 +306,8 @@ export const FullCardSample: Story = {
     content: "This card demonstrates how images can be integrated with content. The image is responsive and maintains proper aspect ratio.",
     hasImage: true,
     imageAlt: "Example card image showing 320x240 placeholder",
-    hasActions: false,
-    actionsJustify: "flex-end",
+    hasFooter: false,
+    footerJustify: "flex-end",
     floating: false,
   },
   play: async ({ canvasElement, args }) => {
@@ -332,12 +333,12 @@ export const FullCardSample: Story = {
       await expect(imageStyle.objectFit).toBe("cover");
     }
 
-    if (args["hasActions"]) {
-      // Test actions area
-      const actions = canvasElement.querySelector(".m-card__actions") as HTMLDivElement;
-      await expect(actions).toBeInTheDocument();
-      await expect(actions).toHaveClass("m-card__actions");
-      await expect(actions).toHaveStyle(`justify-content: ${args["actionsJustify"]}`);
+    if (args["hasFooter"]) {
+      // Test footer area
+      const footer = canvasElement.querySelector(".m-card__footer") as HTMLDivElement;
+      await expect(footer).toBeInTheDocument();
+      await expect(footer).toHaveClass("m-card__footer");
+      await expect(footer).toHaveStyle(`justify-content: ${args["footerJustify"]}`);
     }
 
     // Test content

@@ -4,11 +4,14 @@
   --card-bg-color: var(--color-white);
   --card-border-color: var(--color-border);
   --card-content-padding: var(--spacing-2);
-  --card-actions-padding: var(--spacing-1);
-  --card-actions-item-gap: var(--spacing-1);
-  --card-actions-justify: flex-end;
-  --card-actions-border-top: initial;
+  --card-footer-flex-direction: row;
+  --card-footer-padding: var(--spacing-1);
+  --card-footer-item-gap: var(--spacing-1);
+  --card-footer-justify: flex-end;
+  --card-footer-border-top: initial;
 
+  display: flex;
+  flex-direction: column;
   background-color: var(--card-bg-color);
   border: 1px solid var(--card-border-color);
   border-radius: var(--card-radius);
@@ -24,12 +27,13 @@
     padding: var(--card-content-padding);
   }
 
-  .m-card__actions {
-    padding: var(--card-actions-padding);
+  .m-card__footer {
+    padding: var(--card-footer-padding);
     display: flex;
-    gap: var(--card-actions-item-gap);
-    justify-content: var(--card-actions-justify);
-    border-top: var(--card-actions-border-top);
+    flex-direction: var(--card-footer-flex-direction);
+    gap: var(--card-footer-item-gap);
+    justify-content: var(--card-footer-justify);
+    border-top: var(--card-footer-border-top);
   }
 
   &.--floating {

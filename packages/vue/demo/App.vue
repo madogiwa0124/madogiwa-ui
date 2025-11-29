@@ -125,9 +125,9 @@ const isSnackbarOpen = ref<boolean>(false);
             Card Title
           </MH3>
           <MP>
-            This is a basic card component with an image, content, and actions.
+            This is a basic card component with an image, content, and footer.
           </MP>
-          <template #actions>
+          <template #footer>
             <MBtn variant="primary">
               Action
             </MBtn>
@@ -144,7 +144,7 @@ const isSnackbarOpen = ref<boolean>(false);
           <MP>
             This card has a floating shadow effect with hover interaction.
           </MP>
-          <template #actions>
+          <template #footer>
             <MBtn variant="secondary">
               Learn More
             </MBtn>
