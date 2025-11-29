@@ -10,8 +10,6 @@
   --card-footer-justify: flex-end;
   --card-footer-border-top: initial;
 
-  display: flex;
-  flex-direction: column;
   background-color: var(--card-bg-color);
   border: 1px solid var(--card-border-color);
   border-radius: var(--card-radius);
