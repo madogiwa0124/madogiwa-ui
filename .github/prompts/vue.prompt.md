@@ -27,7 +27,7 @@ packages/vue/
     │       ├── index.ts
     │       ├── MContainer.vue
     │       └── MContainer.test.ts
-    ├── index.ts // exports all components
+    ├── index.ts // exports all components and types
     └── types/
 ```
 
@@ -153,6 +153,27 @@ describe("MButton", () => {
     expect(wrapper.emitted("click")).toHaveLength(1);
   });
 });
+```
+
+## Types
+
+Because relative paths remain in the `dist/types/index.d.ts` generated at release, users may not be able to resolve types. Therefore, when you want to reuse custom types in components, add them under `src/types`, export them from `src/index.ts`, and have each component import them from `src/index.ts`.
+
+```ts
+// src/types/variant.ts
+export type Variant = "primary" | "secondary" | "tertiary";
+```
+
+```vue
+<!-- src/components/MComponent/MComponent.vue -->
+<script lang="ts" setup>
+import type { Variant } from "../../index";
+const {
+  variant = "primary",
+} = defineProps<{
+  variant?: Variant;
+}>();
+</script>
 ```
 
 ## Accessibility

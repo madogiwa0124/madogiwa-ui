@@ -2,7 +2,8 @@ import { ComponentOptionsMixin } from 'vue';
 import { ComponentProvideOptions } from 'vue';
 import { DefineComponent } from 'vue';
 import { PublicProps } from 'vue';
-import { Variant } from '../../types';
+import { Variant } from './types';
+import { Variant as Variant_2 } from '../../types';
 
 declare const __VLS_base: DefineComponent<__VLS_Props, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
@@ -286,7 +287,7 @@ declare type __VLS_Props_19 = {
 };
 
 declare type __VLS_Props_2 = {
-    variant?: Variant | "danger" | "warning";
+    variant?: Variant_2 | "danger" | "warning";
     withProgress?: boolean;
     autoDismiss?: "3s" | "5s" | "10s" | "0s" | null;
 };
@@ -305,7 +306,7 @@ declare type __VLS_Props_21 = {
 
 declare type __VLS_Props_3 = {
     as?: "span" | "button" | "a";
-    variant?: Variant | "danger" | "warning";
+    variant?: Variant_2 | "danger" | "warning";
     outline?: boolean;
     small?: boolean;
     rounded?: boolean;
@@ -313,7 +314,7 @@ declare type __VLS_Props_3 = {
 };
 
 declare type __VLS_Props_4 = {
-    variant?: Variant;
+    variant?: Variant_2;
     outline?: boolean;
     block?: boolean;
     rounded?: boolean;
@@ -365,7 +366,7 @@ declare type __VLS_Slots_10 = {} & {
 } & {
     default?: (props: typeof __VLS_8) => any;
 } & {
-    actions?: (props: typeof __VLS_15) => any;
+    footer?: (props: typeof __VLS_15) => any;
 };
 
 declare type __VLS_Slots_11 = {} & {
@@ -762,9 +763,9 @@ export declare const MBtn: typeof __VLS_export_9;
 
 export declare const MCard: typeof __VLS_export_10;
 
-export declare const MCardActions: typeof __VLS_export_11;
-
 export declare const MCardContent: typeof __VLS_export_12;
+
+export declare const MCardFooter: typeof __VLS_export_11;
 
 export declare const MCardImage: typeof __VLS_export_13;
 
@@ -829,5 +830,7 @@ export declare const MTabsList: typeof __VLS_export_39;
 export declare const MTextarea: typeof __VLS_export_41;
 
 export declare const MToggle: typeof __VLS_export_42;
+
+export { Variant }
 
 export { }

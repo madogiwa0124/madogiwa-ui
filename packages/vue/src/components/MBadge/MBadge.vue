@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Variant } from "../../types";
+import type { Variant } from "../../index";
 import { computed } from "vue";
 
 const {

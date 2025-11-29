@@ -20,3 +20,4 @@ export { MTextarea } from "./components/MTextarea";
 export { MToggle } from "./components/MToggle";
 export { MColumns } from "./layouts/MColumns";
 export { MContainer } from "./layouts/MContainer";
+export type { Variant } from "./types";

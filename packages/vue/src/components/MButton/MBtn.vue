@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Variant } from "../../types";
+import type { Variant } from "../../index";
 const {
   variant = null,
   outline = false,
