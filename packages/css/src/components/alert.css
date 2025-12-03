@@ -84,6 +84,8 @@
 
   .m-alert__icons {
     grid-area: icon;
+    display: flex;
+    align-items: center;
   }
 
   .m-alert__content {
@@ -105,7 +107,7 @@
     width: var(--alert-icon-size);
     height: var(--alert-icon-size);
     /* NOTE: Align with text size to prevent misalignment when using strings as icons */
-    line-height: var(--line-height-none);
+    line-height: var(--line-height-one);
     font-size: var(--alert-icon-size);
   }
 

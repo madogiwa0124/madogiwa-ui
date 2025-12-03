@@ -57,3 +57,9 @@
   initial-value: 0;
   inherits: true;
 }
+
+@property --line-height-one {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: true;
+}

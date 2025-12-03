@@ -4,7 +4,13 @@ import { expect, within } from "storybook/test";
 type AlertProperties = {
   content: string;
   icon: string;
-  variant: "default" | "primary" | "secondary" | "tertiary" | "danger" | "warning";
+  variant:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "danger"
+    | "warning";
   autoDismiss: string;
   autoDismissProgress: boolean;
   hasActions: boolean;
@@ -24,7 +30,14 @@ const meta: Meta<AlertProperties> = {
     },
     variant: {
       control: { type: "select" },
-      options: ["default", "primary", "secondary", "tertiary", "danger", "warning"],
+      options: [
+        "default",
+        "primary",
+        "secondary",
+        "tertiary",
+        "danger",
+        "warning",
+      ],
       description: "The style variant for the component",
     },
     autoDismiss: {
@@ -173,7 +186,8 @@ export const Default: Story = {
     return container;
   },
   args: {
-    content: "This is a basic alert message providing important information to the user.",
+    content:
+      "This is a basic alert message providing important information to the user.",
     variant: "default",
   },
   play: async ({ canvasElement }) => {
@@ -197,12 +211,36 @@ export const AllVariants: Story = {
     container.style.gap = "1rem";
 
     const variants = [
-      { name: "default", class: "", message: "This is a default alert for general information." },
-      { name: "primary", class: "--primary", message: "This is a primary alert for important actions." },
-      { name: "secondary", class: "--secondary", message: "This is a secondary alert for supporting information." },
-      { name: "tertiary", class: "--tertiary", message: "This is a tertiary alert for subtle notifications." },
-      { name: "danger", class: "--danger", message: "This is a danger alert for errors and critical issues." },
-      { name: "warning", class: "--warning", message: "This is a warning alert for caution messages." },
+      {
+        name: "default",
+        class: "",
+        message: "This is a default alert for general information.",
+      },
+      {
+        name: "primary",
+        class: "--primary",
+        message: "This is a primary alert for important actions.",
+      },
+      {
+        name: "secondary",
+        class: "--secondary",
+        message: "This is a secondary alert for supporting information.",
+      },
+      {
+        name: "tertiary",
+        class: "--tertiary",
+        message: "This is a tertiary alert for subtle notifications.",
+      },
+      {
+        name: "danger",
+        class: "--danger",
+        message: "This is a danger alert for errors and critical issues.",
+      },
+      {
+        name: "warning",
+        class: "--warning",
+        message: "This is a warning alert for caution messages.",
+      },
     ];
 
     for (const variant of variants) {
@@ -224,7 +262,14 @@ export const AllVariants: Story = {
 
     await expect(alerts).toHaveLength(6);
 
-    const variants = ["default", "primary", "secondary", "tertiary", "danger", "warning"];
+    const variants = [
+      "default",
+      "primary",
+      "secondary",
+      "tertiary",
+      "danger",
+      "warning",
+    ];
 
     for (const [index, variant] of variants.entries()) {
       const alert = alerts[index];
@@ -245,7 +290,8 @@ export const AllVariants: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Showcase of all available alert variants with their respective styling and use cases.",
+        story:
+          "Showcase of all available alert variants with their respective styling and use cases.",
       },
     },
   },
@@ -267,7 +313,7 @@ export const WithIcon: Story = {
     }
 
     alert.innerHTML = `
-      <div class="m-alert__icons">${icon}</div>
+      <div class="m-alert__icons"><span class="icon">${icon}</span></div>
       <div class="m-alert__content">${content}</div>
     `;
 
@@ -275,7 +321,8 @@ export const WithIcon: Story = {
     return container;
   },
   args: {
-    content: "This alert includes an icon to provide visual context and improve recognition.",
+    content:
+      "This alert includes an icon to provide visual context and improve recognition.",
     icon: "ℹ️",
     variant: "primary",
   },
@@ -338,7 +385,8 @@ export const WithActions: Story = {
     return container;
   },
   args: {
-    content: "This alert includes action buttons that allow users to interact with or dismiss the message.",
+    content:
+      "This alert includes action buttons that allow users to interact with or dismiss the message.",
     icon: "⚠️",
     variant: "warning",
   },
@@ -359,7 +407,9 @@ export const WithActions: Story = {
     await expect(actionButton).toBeInTheDocument();
     await expect(actionButton).toHaveClass("m-btn");
 
-    const actionsContainer = alert.querySelector(".m-alert__actions") as HTMLElement;
+    const actionsContainer = alert.querySelector(
+      ".m-alert__actions",
+    ) as HTMLElement;
     await expect(actionsContainer).toBeInTheDocument();
     await expect(actionsContainer).toContainElement(actionButton);
 
@@ -400,7 +450,8 @@ export const AutoDismiss: Story = {
     return container;
   },
   args: {
-    content: "This alert will automatically dismiss after the specified duration. Watch the progress bar!",
+    content:
+      "This alert will automatically dismiss after the specified duration. Watch the progress bar!",
     variant: "primary",
     autoDismiss: "3s",
     autoDismissProgress: true,
@@ -427,7 +478,8 @@ export const AutoDismiss: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Alert with auto-dismiss functionality and optional progress bar. The alert will fade out after the specified duration.",
+        story:
+          "Alert with auto-dismiss functionality and optional progress bar. The alert will fade out after the specified duration.",
       },
     },
   },
@@ -476,7 +528,8 @@ export const MultipleAlerts: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Multiple alerts can be stacked to show different types of messages simultaneously.",
+        story:
+          "Multiple alerts can be stacked to show different types of messages simultaneously.",
       },
     },
   },
