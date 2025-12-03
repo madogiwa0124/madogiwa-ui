@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2025-12-03T02:20:22.632Z
+generated_at: 2025-12-03T03:01:54.849Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -244,7 +244,7 @@ This component has no child elements - it's a single-level component.
 
 | Target | Name | Default | Description |
 | ------ | ---- | ------- | ----------- |
-| .m-badge | --badge-padding | var(--spacing-1) | Internal padding |
+| .m-badge | --badge-padding | var(--spacing-3) var(--spacing-2) | Internal padding |
 | .m-badge | --badge-item-gap | var(--spacing-2) | Gap between badge elements |
 | .m-badge | --badge-text-color | var(--color-text) | Text color |
 | .m-badge | --badge-border-color | var(--color-border) | Border color |
@@ -256,6 +256,7 @@ This component has no child elements - it's a single-level component.
 | .m-badge | --badge-transition-duration | 0.2s | Transition duration |
 | .m-badge | --badge-transition-timing | ease | Transition timing function |
 | .m-badge | --badge-small-font-size | var(--text-xs) | Font size for small variant |
+| .m-badge | --badge-small-padding | var(--spacing-2) var(--spacing-1) | Padding for small variant |
 | .m-badge | --badge-primary-color | var(--color-primary) | Primary variant background |
 | .m-badge | --badge-primary-border-color | var(--color-primary) | Primary variant border color |
 | .m-badge | --badge-primary-text-color | var(--color-text-light) | Primary variant text color |
@@ -1691,4 +1692,4 @@ This component does not use data attributes for styling or behavior.
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 12/3/2025, 2:20:22 AM
+- Generated at: 12/3/2025, 3:01:54 AM

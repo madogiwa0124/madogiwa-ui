@@ -2177,6 +2177,12 @@
     "body": "--line-height-none",
     "description": "Madogiwa UI CSS variable --line-height-none"
   },
+  "--line-height-one": {
+    "scope": "css",
+    "prefix": "--line-height-one",
+    "body": "--line-height-one",
+    "description": "Madogiwa UI CSS variable --line-height-one"
+  },
   "--zindex-max": {
     "scope": "css",
     "prefix": "--zindex-max",
