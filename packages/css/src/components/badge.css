@@ -1,5 +1,5 @@
 .m-badge {
-  --badge-padding: var(--spacing-3) var(--spacing-2);
+  --badge-padding: var(--spacing-1);
   --badge-item-gap: var(--spacing-2);
   --badge-text-color: var(--color-text);
   --badge-border-color: var(--color-border);
@@ -11,7 +11,7 @@
   --badge-transition-duration: 0.2s;
   --badge-transition-timing: ease;
   --badge-small-font-size: var(--text-xs);
-  --badge-small-padding: var(--spacing-2) var(--spacing-1);
+  --badge-small-padding: var(--spacing-1);
   --badge-primary-color: var(--color-primary);
   --badge-primary-border-color: var(--color-primary);
   --badge-primary-text-color: var(--color-text-light);
@@ -27,7 +27,7 @@
   --badge-warning-color: var(--color-warning);
   --badge-warning-border-color: var(--color-warning);
   --badge-warning-text-color: var(--color-text);
-  --badge-line-height: var(--line-height-none);
+  --badge-line-height: var(--line-height-one);
   --badge-min-width: 1.8em;
 
   display: inline-flex;

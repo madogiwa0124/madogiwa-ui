@@ -144,7 +144,7 @@
   }
 
   &.--icon-only {
-    line-height: var(--line-height-none);
+    line-height: var(--line-height-one);
     padding: var(--btn-padding-y);
   }
 
