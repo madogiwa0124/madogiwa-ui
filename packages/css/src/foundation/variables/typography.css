@@ -54,6 +54,6 @@
 
 @property --line-height-none {
   syntax: "<number>";
-  initial-value: 1;
+  initial-value: 0;
   inherits: true;
 }
