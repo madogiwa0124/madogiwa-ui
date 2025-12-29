@@ -3,7 +3,7 @@
 }
 
 .m-visible {
-  display: block !important;
+  visibility: visible !important;
 }
 
 .m-invisible {
@@ -26,4 +26,144 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+@media (--media-breakpoint-sm) {
+  .m-hidden-sm {
+    display: none !important;
+  }
+
+  .m-visible-sm {
+    visibility: visible !important;
+  }
+
+  .m-invisible-sm {
+    visibility: hidden !important;
+  }
+}
+
+@media (--media-breakpoint-md) {
+  .m-hidden-md {
+    display: none !important;
+  }
+
+  .m-visible-md {
+    visibility: visible !important;
+  }
+
+  .m-invisible-md {
+    visibility: hidden !important;
+  }
+}
+
+@media (--media-breakpoint-lg) {
+  .m-hidden-lg {
+    display: none !important;
+  }
+
+  .m-visible-lg {
+    visibility: visible !important;
+  }
+
+  .m-invisible-lg {
+    visibility: hidden !important;
+  }
+}
+
+@media (--media-breakpoint-xl) {
+  .m-hidden-xl {
+    display: none !important;
+  }
+
+  .m-visible-xl {
+    visibility: visible !important;
+  }
+
+  .m-invisible-xl {
+    visibility: hidden !important;
+  }
+}
+
+@media (--media-breakpoint-2xl) {
+  .m-hidden-2xl {
+    display: none !important;
+  }
+
+  .m-visible-2xl {
+    visibility: visible !important;
+  }
+
+  .m-invisible-2xl {
+    visibility: hidden !important;
+  }
+}
+
+@media (--media-breakpoint-max-sm) {
+  .m-hidden-max-sm {
+    display: none !important;
+  }
+
+  .m-visible-max-sm {
+    visibility: visible !important;
+  }
+
+  .m-invisible-max-sm {
+    visibility: hidden !important;
+  }
+}
+
+@media (--media-breakpoint-max-md) {
+  .m-hidden-max-md {
+    display: none !important;
+  }
+
+  .m-visible-max-md {
+    visibility: visible !important;
+  }
+
+  .m-invisible-max-md {
+    visibility: hidden !important;
+  }
+}
+
+@media (--media-breakpoint-max-lg) {
+  .m-hidden-max-lg {
+    display: none !important;
+  }
+
+  .m-visible-max-lg {
+    visibility: visible !important;
+  }
+
+  .m-invisible-max-lg {
+    visibility: hidden !important;
+  }
+}
+
+@media (--media-breakpoint-max-xl) {
+  .m-hidden-max-xl {
+    display: none !important;
+  }
+
+  .m-visible-max-xl {
+    visibility: visible !important;
+  }
+
+  .m-invisible-max-xl {
+    visibility: hidden !important;
+  }
+}
+
+@media (--media-breakpoint-max-2xl) {
+  .m-hidden-max-2xl {
+    display: none !important;
+  }
+
+  .m-visible-max-2xl {
+    visibility: visible !important;
+  }
+
+  .m-invisible-max-2xl {
+    visibility: hidden !important;
+  }
 }
