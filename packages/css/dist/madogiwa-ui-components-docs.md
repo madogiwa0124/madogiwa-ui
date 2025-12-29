@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2025-12-03T03:14:52.411Z
+generated_at: 2025-12-29T12:59:51.918Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -1688,8 +1688,86 @@ This component does not use data attributes for styling or behavior.
 
 ---
 
+## Utils/Visibility
+
+### Overview
+
+Visibility utilities control the visibility and display behavior of elements, including responsive visibility based on breakpoints.
+
+### Usage
+
+Use visibility utilities to show or hide elements in different contexts:
+
+- Basic visibility control (hidden, visible, invisible)
+- Screen reader only content (sr-only)
+- Responsive visibility based on breakpoints
+
+Responsive utilities allow you to control visibility at different screen sizes, making it easy to create responsive layouts that adapt to various devices.
+
+### Example code
+
+```html
+<!-- Basic visibility -->
+<div class="m-hidden">Always hidden</div>
+<div class="m-visible">Always visible</div>
+<div class="m-invisible">Invisible but takes up space</div>
+
+<!-- Screen reader only -->
+<span class="m-sr-only">Hidden from visual users but available to screen readers</span>
+
+<!-- Hide on sm and above (≥ 40rem / 640px) -->
+<div class="m-hidden-sm">Hidden on small screens and above</div>
+
+<!-- Show on md and above (≥ 48rem / 768px) -->
+<div class="m-visible-md">Visible on medium screens and above</div>
+
+<!-- Hide below lg (< 64rem / 1024px) -->
+<div class="m-hidden-max-lg">Hidden on screens smaller than large</div>
+
+<!-- Show below xl (< 80rem / 1280px) -->
+<div class="m-visible-max-xl">Visible on screens smaller than extra large</div>
+```
+
+### Modifiers
+
+| Target | Name | Description |
+| ------ | ---- | ----------- |
+| - | .m-hidden | Hides the element completely (display: none) |
+| - | .m-visible | Sets visibility: visible on the element |
+| - | .m-invisible | Makes the element invisible but maintains its space |
+| - | .m-sr-only | Hides the element visually but keeps it accessible to screen readers |
+| - | .m-hidden-sm | Hides on screens ≥ 40rem (640px) and above |
+| - | .m-hidden-md | Hides on screens ≥ 48rem (768px) and above |
+| - | .m-hidden-lg | Hides on screens ≥ 64rem (1024px) and above |
+| - | .m-hidden-xl | Hides on screens ≥ 80rem (1280px) and above |
+| - | .m-hidden-2xl | Hides on screens ≥ 96rem (1536px) and above |
+| - | .m-visible-sm | Shows on screens ≥ 40rem (640px) and above |
+| - | .m-visible-md | Shows on screens ≥ 48rem (768px) and above |
+| - | .m-visible-lg | Shows on screens ≥ 64rem (1024px) and above |
+| - | .m-visible-xl | Shows on screens ≥ 80rem (1280px) and above |
+| - | .m-visible-2xl | Shows on screens ≥ 96rem (1536px) and above |
+| - | .m-hidden-max-sm | Hides on screens < 40rem (640px) |
+| - | .m-hidden-max-md | Hides on screens < 48rem (768px) |
+| - | .m-hidden-max-lg | Hides on screens < 64rem (1024px) |
+| - | .m-hidden-max-xl | Hides on screens < 80rem (1280px) |
+| - | .m-hidden-max-2xl | Hides on screens < 96rem (1536px) |
+| - | .m-visible-max-sm | Shows on screens < 40rem (640px) |
+| - | .m-visible-max-md | Shows on screens < 48rem (768px) |
+| - | .m-visible-max-lg | Shows on screens < 64rem (1024px) |
+| - | .m-visible-max-xl | Shows on screens < 80rem (1280px) |
+| - | .m-visible-max-2xl | Shows on screens < 96rem (1536px) |
+
+### Caution
+
+- All visibility utilities use `!important` to ensure they override other styles
+- The `.m-sr-only` class should be used for content that should only be available to screen readers
+- Responsive utilities work in conjunction with the breakpoints defined in the foundation
+- Consider using `.m-invisible` instead of `.m-hidden` when you want to maintain layout spacing
+
+---
+
 ## Usage Notes
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 12/3/2025, 3:14:52 AM
+- Generated at: 12/29/2025, 12:59:51 PM

@@ -185,6 +185,186 @@
     "body": ".m-sr-only",
     "description": "Madogiwa UI class .m-sr-only"
   },
+  "m-hidden-sm": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-hidden-sm",
+    "body": ".m-hidden-sm",
+    "description": "Madogiwa UI class .m-hidden-sm"
+  },
+  "m-visible-sm": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-visible-sm",
+    "body": ".m-visible-sm",
+    "description": "Madogiwa UI class .m-visible-sm"
+  },
+  "m-invisible-sm": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-invisible-sm",
+    "body": ".m-invisible-sm",
+    "description": "Madogiwa UI class .m-invisible-sm"
+  },
+  "m-hidden-md": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-hidden-md",
+    "body": ".m-hidden-md",
+    "description": "Madogiwa UI class .m-hidden-md"
+  },
+  "m-visible-md": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-visible-md",
+    "body": ".m-visible-md",
+    "description": "Madogiwa UI class .m-visible-md"
+  },
+  "m-invisible-md": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-invisible-md",
+    "body": ".m-invisible-md",
+    "description": "Madogiwa UI class .m-invisible-md"
+  },
+  "m-hidden-lg": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-hidden-lg",
+    "body": ".m-hidden-lg",
+    "description": "Madogiwa UI class .m-hidden-lg"
+  },
+  "m-visible-lg": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-visible-lg",
+    "body": ".m-visible-lg",
+    "description": "Madogiwa UI class .m-visible-lg"
+  },
+  "m-invisible-lg": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-invisible-lg",
+    "body": ".m-invisible-lg",
+    "description": "Madogiwa UI class .m-invisible-lg"
+  },
+  "m-hidden-xl": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-hidden-xl",
+    "body": ".m-hidden-xl",
+    "description": "Madogiwa UI class .m-hidden-xl"
+  },
+  "m-visible-xl": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-visible-xl",
+    "body": ".m-visible-xl",
+    "description": "Madogiwa UI class .m-visible-xl"
+  },
+  "m-invisible-xl": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-invisible-xl",
+    "body": ".m-invisible-xl",
+    "description": "Madogiwa UI class .m-invisible-xl"
+  },
+  "m-hidden-2xl": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-hidden-2xl",
+    "body": ".m-hidden-2xl",
+    "description": "Madogiwa UI class .m-hidden-2xl"
+  },
+  "m-visible-2xl": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-visible-2xl",
+    "body": ".m-visible-2xl",
+    "description": "Madogiwa UI class .m-visible-2xl"
+  },
+  "m-invisible-2xl": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-invisible-2xl",
+    "body": ".m-invisible-2xl",
+    "description": "Madogiwa UI class .m-invisible-2xl"
+  },
+  "m-hidden-max-sm": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-hidden-max-sm",
+    "body": ".m-hidden-max-sm",
+    "description": "Madogiwa UI class .m-hidden-max-sm"
+  },
+  "m-visible-max-sm": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-visible-max-sm",
+    "body": ".m-visible-max-sm",
+    "description": "Madogiwa UI class .m-visible-max-sm"
+  },
+  "m-invisible-max-sm": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-invisible-max-sm",
+    "body": ".m-invisible-max-sm",
+    "description": "Madogiwa UI class .m-invisible-max-sm"
+  },
+  "m-hidden-max-md": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-hidden-max-md",
+    "body": ".m-hidden-max-md",
+    "description": "Madogiwa UI class .m-hidden-max-md"
+  },
+  "m-visible-max-md": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-visible-max-md",
+    "body": ".m-visible-max-md",
+    "description": "Madogiwa UI class .m-visible-max-md"
+  },
+  "m-invisible-max-md": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-invisible-max-md",
+    "body": ".m-invisible-max-md",
+    "description": "Madogiwa UI class .m-invisible-max-md"
+  },
+  "m-hidden-max-lg": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-hidden-max-lg",
+    "body": ".m-hidden-max-lg",
+    "description": "Madogiwa UI class .m-hidden-max-lg"
+  },
+  "m-visible-max-lg": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-visible-max-lg",
+    "body": ".m-visible-max-lg",
+    "description": "Madogiwa UI class .m-visible-max-lg"
+  },
+  "m-invisible-max-lg": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-invisible-max-lg",
+    "body": ".m-invisible-max-lg",
+    "description": "Madogiwa UI class .m-invisible-max-lg"
+  },
+  "m-hidden-max-xl": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-hidden-max-xl",
+    "body": ".m-hidden-max-xl",
+    "description": "Madogiwa UI class .m-hidden-max-xl"
+  },
+  "m-visible-max-xl": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-visible-max-xl",
+    "body": ".m-visible-max-xl",
+    "description": "Madogiwa UI class .m-visible-max-xl"
+  },
+  "m-invisible-max-xl": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-invisible-max-xl",
+    "body": ".m-invisible-max-xl",
+    "description": "Madogiwa UI class .m-invisible-max-xl"
+  },
+  "m-hidden-max-2xl": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-hidden-max-2xl",
+    "body": ".m-hidden-max-2xl",
+    "description": "Madogiwa UI class .m-hidden-max-2xl"
+  },
+  "m-visible-max-2xl": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-visible-max-2xl",
+    "body": ".m-visible-max-2xl",
+    "description": "Madogiwa UI class .m-visible-max-2xl"
+  },
+  "m-invisible-max-2xl": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-invisible-max-2xl",
+    "body": ".m-invisible-max-2xl",
+    "description": "Madogiwa UI class .m-invisible-max-2xl"
+  },
   "--color-red-50": {
     "scope": "css",
     "prefix": "--color-red-50",
