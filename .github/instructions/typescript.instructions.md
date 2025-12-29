@@ -1,3 +1,7 @@
+---
+applyTo: "**/*.ts, **/*.tsx"
+---
+
 # TypeScript Guidelines for GitHub Copilot
 
 ## TypeScript Best Practices

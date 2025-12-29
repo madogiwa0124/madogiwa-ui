@@ -1,3 +1,8 @@
+---
+name: css-story-book
+description: Guide for developing Storybook stories for CSS components in `@madogiwa-ui/css`.
+---
+
 ## Storybook Development Guide
 
 - Each component has `.stories.ts` with interaction tests using `@storybook/test`

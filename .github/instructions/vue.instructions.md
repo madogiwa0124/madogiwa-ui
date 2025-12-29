@@ -1,3 +1,7 @@
+---
+applyTo: "packages/vue/**/*"
+---
+
 # `@madogiwa-ui/vue` Guide
 
 ## Directory Structure
@@ -178,7 +182,7 @@ const {
 
 ## Accessibility
 
-**For basic guidelines, see the corresponding [A11y Guideline](./a11y.prompt.md).**
+**For basic guidelines, see the corresponding [A11y Guideline](../prompts/a11y.prompt.md).**
 
 For Vue-specific accessibility best practices, refer to the [official Vue.js documentation](https://vuejs.org/guide/best-practices/accessibility.html#accessibility).
 

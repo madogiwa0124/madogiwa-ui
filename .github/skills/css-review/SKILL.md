@@ -1,4 +1,9 @@
-# CSS Component Review Prompt
+---
+name: css-review
+description: Guide for reviewing modern CSS framework. Use this when asked to review CSS in `packages/css`.
+---
+
+# CSS Review Prompt
 
 You are a specialized reviewer for modern CSS framework development. Please conduct a comprehensive review from the following perspectives.
 
@@ -8,7 +13,7 @@ Please refer to [copilot-instructions.md](../copilot-instructions.md).
 
 ## CSS Architecture
 
-Please refer to [css.prompt.md](./css.prompt.md).
+Please refer to [css.prompt.md](../../prompts/css.prompt.md).
 
 ## Review Criteria
 
@@ -23,7 +28,7 @@ Please refer to [css.prompt.md](./css.prompt.md).
 - **Logical Properties**: Usage of `inline-size`, `block-size`, etc.
 - **New Features**: Utilization of `:has()`, `@supports`, `@starting-style`, etc.
 
-### 3. **Component Design Principles**
+### 3. **Design Principles**
 - **Single Responsibility**: Clarity of component responsibilities
 - **Extensibility**: Design quality of variants (`--outline`, `--primary`, etc.)
 - **Reusability**: Ease of combination with other components
@@ -37,14 +42,14 @@ Please refer to [css.prompt.md](./css.prompt.md).
 
 ### 5. **Accessibility (WCAG 2.1 Level A Compliance)**
 
-Please refer to [a11y.prompt.md](./a11y.prompt.md).
+Please refer to [a11y.prompt.md](../../prompts/a11y.prompt.md).
 
 ### 6. 🎪 **Storybook Integration & Testing**
 - **Properties**: Consistency with TypeScript type definitions
 - **Variants**: Coverage of all states and variations
 - **Documentation**: Quality of usage examples and guidelines
 - **Accessibility Testing**: Validation status with Storybook addon-a11y
-- **Interaction Testing**: Proper implementation of user interaction tests using `@storybook/test`
+- **Interaction Testing**: Proper implementation of user interaction tests using `storybook/test`
 - **Test Coverage**: Comprehensive testing of component states, user interactions, and edge cases
 - **Test Quality**: Meaningful assertions that validate component behavior and accessibility
 

@@ -1,6 +1,10 @@
-## `@madogiwa-ui/css` Guide
+---
+applyTo: 'packages/css/**/*'
+---
 
-### Directory Structure
+# `@madogiwa-ui/css` Guide
+
+## Directory Structure
 
 FLOCSS inspired structure:
 
@@ -23,6 +27,8 @@ root
     ├── layouts
     └── utils
 ```
+
+## Architecture
 
 ### CSS Layer System (`src/main.css`)
 
@@ -113,11 +119,15 @@ Madogiwa UI provides optional CSS transitions for interactive components, consid
 <button class="m-btn --primary --transition">Primary Button</button>
 ```
 
-## Aceessibility
+## Accessibility
 
-**For basic guidelines, see the corresponding [A11y Guideline](./a11y.prompt.md).**
+**For basic guidelines, see the corresponding [A11y Guideline](../prompts/a11y.prompt.md).**
 
 ## Storybook-Driven Development
 
-**For basic guidelines, see the corresponding [Storybook Documentation](./storybook.prompt.md).**
+**For basic guidelines, see the corresponding [Storybook Documentation](../skills/css-story-book/SKILL.md).**
 
+
+## Review Guidelines
+
+**For css features review guidelines, see the corresponding [CSS Review Guidelines](../skills/css-review/SKILL.md).**

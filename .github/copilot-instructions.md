@@ -10,9 +10,9 @@ Madogiwa UI is a modern CSS framework leveraging cutting-edge CSS features like 
 
 - **Root**: Workspace management with pnpm, shared linting/formatting configs
 - **`packages/css/`**: Main CSS framework package with Storybook for development
-  - For guidelines, see [./prompts/css.prompt.md](./prompts/css.prompt.md)
+  - For guidelines, see [./instructions/css.instructions.md](./instructions/css.instructions.md)
 - **`packages/vue/`**: Vue component library wrapping `@madogiwa-ui/css`
-  - For guidelines, see [./prompts/vue.prompt.md](./prompts/vue.prompt.md)
+  - For guidelines, see [./instructions/vue.instructions.md](./instructions/vue.instructions.md)
 - **Future packages**: `react/` component libraries planned
 
 ## Architecture

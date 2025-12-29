@@ -1,3 +1,7 @@
+---
+model: GPT-5 mini (copilot)
+---
+
 # Commit Message Guidelines
 - Commit messages must be written in English.
 - Use Conventional Commits format
