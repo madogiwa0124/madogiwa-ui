@@ -1,7 +1,7 @@
 /** @type {import('stylelint').Config} */
 
 const designTokenValueMap = {
-  "/color/": ["/var/", "unset", "initial", "inherit", "transparent"],
+  "/^(?!--)color/": ["/var/", "unset", "initial", "inherit", "transparent"],
   "font-size": ["/var/", "unset", "initial", "inherit"],
   "font-weight": ["/var/", "unset", "initial", "inherit"],
   "box-shadow": ["/var/", "unset", "initial", "inherit"],
