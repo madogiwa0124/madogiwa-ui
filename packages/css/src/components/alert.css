@@ -30,30 +30,30 @@
 
 .m-alert {
   --alert-bg-color: var(--color-default);
-  --alert-text-color: var(--color-text);
+  --alert-text-color: var(--color-text-default);
   --alert-border-color: var(--color-border);
   --alert-border: 1px solid var(--color-border);
   --alert-padding: var(--spacing-2);
   --alert-item-gap: var(--spacing-2);
   --alert-icon-size: 1rem;
   --alert-primary-bg-color: var(--color-primary);
-  --alert-primary-text-color: var(--color-text-light);
+  --alert-primary-text-color: var(--color-text-inverse);
   --alert-primary-border-color: var(--color-primary);
   --alert-secondary-bg-color: var(--color-secondary);
-  --alert-secondary-text-color: var(--color-text-light);
+  --alert-secondary-text-color: var(--color-text-inverse);
   --alert-secondary-border-color: var(--color-secondary);
   --alert-tertiary-bg-color: var(--color-tertiary);
-  --alert-tertiary-text-color: var(--color-text);
+  --alert-tertiary-text-color: var(--color-text-default);
   --alert-tertiary-border-color: var(--color-tertiary);
   --alert-danger-bg-color: var(--color-danger);
-  --alert-danger-text-color: var(--color-text);
+  --alert-danger-text-color: var(--color-text-default);
   --alert-danger-border-color: var(--color-danger);
   --alert-warning-bg-color: var(--color-warning);
-  --alert-warning-text-color: var(--color-text);
+  --alert-warning-text-color: var(--color-text-default);
   --alert-warning-border-color: var(--color-warning);
   --alert-auto-dismiss-duration: 5s;
   --alert-auto-dismiss-fade-duration: 0.3s;
-  --alert-auto-dismiss-progress-bg-color: rgb(from var(--color-white) r g b / 40%);
+  --alert-auto-dismiss-progress-bg-color: rgb(from var(--color-bg-default) r g b / 40%);
   --alert-auto-dismiss-progress-height: 4px;
 
   background-color: var(--alert-bg-color);

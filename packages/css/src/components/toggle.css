@@ -3,9 +3,9 @@ input[type="checkbox"].m-toggle {
   --toggle-transition: 0.1s ease;
   --toggle-width: calc(var(--toggle-size) * 1.8);
   --toggle-checked-translate-x: calc(var(--toggle-size) * 0.8);
-  --toggle-bg-color: var(--color-dark);
+  --toggle-bg-color: var(--color-bg-inverse);
   --toggle-bg-color-checked: var(--color-primary);
-  --toggle-button-color: var(--color-light);
+  --toggle-button-color: var(--color-text-muted);
   --toggle-button-scale: 0.8;
   --toggle-lighter-brightness: 150%;
   --toggle-disabled-opacity: 0.5;

@@ -114,30 +114,30 @@ Use alerts to communicate important information that requires user attention but
 | Name | Default | Description |
 | ---- | ------- | ----------- |
 | --alert-bg-color | var(--color-default) | Background color for default alert |
-| --alert-text-color | var(--color-text) | Text color for default alert |
+| --alert-text-color | var(--color-text-default) | Text color for default alert |
 | --alert-border-color | var(--color-border) | Border color for default alert |
 | --alert-border | 1px solid var(--color-border) | Border style |
 | --alert-padding | var(--spacing-2) | Internal padding |
 | --alert-item-gap | var(--spacing-2) | Gap between alert elements |
 | --alert-icon-size | 1rem | Size of icons |
 | --alert-primary-bg-color | var(--color-primary) | Primary variant background |
-| --alert-primary-text-color | var(--color-text-light) | Primary variant text color |
+| --alert-primary-text-color | var(--color-text-inverse) | Primary variant text color |
 | --alert-primary-border-color | var(--color-primary) | Primary variant border color |
 | --alert-secondary-bg-color | var(--color-secondary) | Secondary variant background |
-| --alert-secondary-text-color | var(--color-text-light) | Secondary variant text color |
+| --alert-secondary-text-color | var(--color-text-inverse) | Secondary variant text color |
 | --alert-secondary-border-color | var(--color-secondary) | Secondary variant border color |
 | --alert-tertiary-bg-color | var(--color-tertiary) | Tertiary variant background |
-| --alert-tertiary-text-color | var(--color-text) | Tertiary variant text color |
+| --alert-tertiary-text-color | var(--color-text-default) | Tertiary variant text color |
 | --alert-tertiary-border-color | var(--color-tertiary) | Tertiary variant border color |
 | --alert-danger-bg-color | var(--color-danger) | Danger variant background |
-| --alert-danger-text-color | var(--color-text) | Danger variant text color |
+| --alert-danger-text-color | var(--color-text-default) | Danger variant text color |
 | --alert-danger-border-color | var(--color-danger) | Danger variant border color |
 | --alert-warning-bg-color | var(--color-warning) | Warning variant background |
-| --alert-warning-text-color | var(--color-text) | Warning variant text color |
+| --alert-warning-text-color | var(--color-text-default) | Warning variant text color |
 | --alert-warning-border-color | var(--color-warning) | Warning variant border color |
 | --alert-auto-dismiss-duration | 5s | Default auto dismiss duration |
 | --alert-auto-dismiss-fade-duration | 0.3s | Fade out animation duration |
-| --alert-auto-dismiss-progress-bg-color | rgb(from var(--color-white) r g b / 40%) | Progress bar background color |
+| --alert-auto-dismiss-progress-bg-color | rgb(from var(--color-bg-default) r g b / 40%) | Progress bar background color |
 | --alert-auto-dismiss-progress-height | 4px | Progress bar height |
 
 ### Data Attributes

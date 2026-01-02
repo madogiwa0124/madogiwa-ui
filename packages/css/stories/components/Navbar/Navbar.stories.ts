@@ -109,26 +109,26 @@ hamburgerMenu.addEventListener("click", () => {
 
 | Name | Default | Description |
 | ---- | ------- | ----------- |
-| --navbar-bg-color | var(--color-bg-light) | Background color of the navbar |
+| --navbar-bg-color | var(--color-bg-default) | Background color of the navbar |
 | --navbar-min-height | 56px | Minimum height of the navbar |
 | --navbar-item-padding | var(--spacing-2) var(--spacing-3) | Padding for navbar items |
 | --navbar-item-gap | var(--spacing-2) | Gap between items with content |
-| --navbar-item-text-color | var(--color-text) | Text color for navigation items |
+| --navbar-item-text-color | var(--color-text-default) | Text color for navigation items |
 | --navbar-item-hover-bg-color | var(--color-primary) | Background color on item hover |
-| --navbar-item-hover-text-color | var(--color-text-light) | Text color on item hover |
+| --navbar-item-hover-text-color | var(--color-text-inverse) | Text color on item hover |
 | --navbar-hamburger-icon-content | "☰" | Hamburger menu icon content |
 | --navbar-hamburger-icon-close-content | "×" | Close menu icon content |
 | --navbar-hamburger-icon-size | 1.5rem | Size of hamburger menu icons |
 | --navbar-hamburger-icon-padding | 0 var(--spacing-2) | Padding for hamburger icon |
-| --navbar-hamburger-icon-color | var(--color-text) | Color of hamburger icon |
+| --navbar-hamburger-icon-color | var(--color-text-default) | Color of hamburger icon |
 | --navbar-hamburger-icon-hover-bg-color | color(from var(--navbar-bg-color) srgb calc(r * 0.8) calc(g * 0.8) calc(b * 0.8)) | Hover background for icon |
 | --navbar-hamburger-icon-border-radius | var(--radius-sm) | Border radius for hamburger icon |
 | --navbar-hamburger-menu-size | 2.5rem | Size of hamburger menu button |
-| --navbar-hamburger-menu-bg-color | var(--color-bg-light) | Background of mobile menu |
-| --navbar-hamburger-menu-border | 2px solid var(--color-bg-light) | Border for hamburger menu |
+| --navbar-hamburger-menu-bg-color | var(--color-bg-default) | Background of mobile menu |
+| --navbar-hamburger-menu-border | 2px solid var(--color-bg-default) | Border for hamburger menu |
 | --navbar-hamburger-menu-border-radius | 0 0 var(--radius-sm) var(--radius-sm) | Border radius for menu |
 | --navbar-hamburger-menu-box-shadow | var(--shadow-md) | Box shadow for menu |
-| --navbar-hamburger-menu-item-separate-border | 1px solid var(--color-bg-light) | Border between menu items |
+| --navbar-hamburger-menu-item-separate-border | 1px solid var(--color-bg-default) | Border between menu items |
 | --navbar-base-zindex | var(--zindex-navbar) | Base z-index for navbar layering |
 | --navbar-backdrop-zindex | calc(var(--navbar-base-zindex) + 1) | Z-index for backdrop |
 | --navbar-menu-zindex | calc(var(--navbar-backdrop-zindex) + 1) | Z-index for menu items |

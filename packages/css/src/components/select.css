@@ -55,7 +55,7 @@ select.m-select {
     --select-option-bg-color: var(--select-bg-color);
     --select-option-padding: var(--spacing-2);
     --select-option-checked-bg-color: var(--color-tertiary);
-    --select-option-checked-text-color: var(--color-text);
+    --select-option-checked-text-color: var(--color-text-default);
     --select-option-hover-darker-rate: 0.9;
     --select-separator-color: var(--color-border);
     --select-separator-margin: var(--spacing-2) 0;

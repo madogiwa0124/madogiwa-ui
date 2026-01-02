@@ -3,7 +3,7 @@
   --accordion-summary-font-weight: var(--font-weight-bold);
   --accordion-summary-icon-gap: var(--spacing-2);
   --accordion-summary-icon-size: 0.6rem;
-  --accordion-summary-icon-color: var(--color-text);
+  --accordion-summary-icon-color: var(--color-text-default);
   --accordion-summary-icon-clip-path: polygon(0 0, 100% 50%, 0 100%);
   --accordion-summary-icon-open-transform: rotate(90deg);
   --accordion-content-padding: 0 var(--spacing-3) var(--spacing-3) var(--spacing-3);

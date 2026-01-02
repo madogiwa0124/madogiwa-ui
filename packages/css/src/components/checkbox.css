@@ -1,10 +1,10 @@
 input[type="checkbox"].m-checkbox {
   --checkbox-size: 1em;
-  --checkbox-border-color: var(--color-dark);
+  --checkbox-border-color: var(--color-text-default);
   --checkbox-mark-border: 2px solid transparent;
   --checkbox-mark-position-top: 0;
   --checkbox-mark-position-left: 20%;
-  --checkbox-bg-color: var(--color-light);
+  --checkbox-bg-color: var(--color-bg-muted);
   --checkbox-border-radius: 0.2em;
   --checkbox-lighter-brightness: 150%;
   --checkbox-disabled-opacity: 0.65;
@@ -41,7 +41,7 @@ input[type="checkbox"].m-checkbox {
     transition: background-color 0.2s ease;
 
     &::after {
-      border-color: var(--color-text-light);
+      border-color: var(--color-text-inverse);
       display: block;
     }
   }

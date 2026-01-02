@@ -7,15 +7,14 @@
   --color-tertiary: var(--color-emerald-500);
   --color-danger: var(--color-red-500);
   --color-warning: var(--color-yellow-400);
-  --color-light: var(--color-gray-100);
-  --color-dark: var(--color-gray-900);
   --color-border: var(--color-gray-300);
-  --color-text: var(--color-gray-900);
-  --color-text-muted: var(--color-gray-600);
-  --color-text-light: var(--color-gray-100);
-  --color-text-gray: var(--color-gray-400);
-  --color-bg-light: var(--color-gray-50);
-  --color-bg-grey: var(--color-gray-200);
-  --color-bg-dark: var(--color-gray-900);
-  --color-overlay: rgb(from var(--color-black) r g b / 50%);
+  --color-text-default: var(--color-gray-900);
+  --color-text-subtle: var(--color-gray-600);
+  --color-text-muted: var(--color-gray-400);
+  --color-text-inverse: var(--color-gray-100);
+  --color-bg-default: var(--color-gray-50);
+  --color-bg-subtle: var(--color-gray-100);
+  --color-bg-muted: var(--color-gray-200);
+  --color-bg-inverse: var(--color-gray-900);
+  --color-overlay: rgb(from var(--color-gray-950) r g b / 50%);
 }

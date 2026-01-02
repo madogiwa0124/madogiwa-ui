@@ -84,11 +84,11 @@ This component has no child elements - styling is applied directly to standard H
 | Target | Name | Default | Description |
 | ------ | ---- | ------- | ----------- |
 | .m-table | --table-bg-color | var(--color-white) | Background color for table |
-| .m-table | --table-hover-bg-color | var(--color-bg-light) | Background color for hovered rows |
+| .m-table | --table-hover-bg-color | var(--color-bg-subtle) | Background color for hovered rows |
 | .m-table | --table-border-color | var(--color-border) | Border color for table and cells |
 | .m-table | --table-border-width | 1px | Border width for table and cells |
 | .m-table | --table-padding | var(--spacing-3) var(--spacing-4) | Padding for cells (vertical horizontal) |
-| .m-table | --table-stripe-bg-color | var(--color-bg-grey) | Background color for even rows in stripe mode |
+| .m-table | --table-stripe-bg-color | var(--color-bg-muted) | Background color for even rows in stripe mode |
 | .m-table | --table-hover-opacity | 0.8 | Opacity value for hovered rows |
 | .m-table | --table-th-font-weight | var(--font-weight-semibold) | Font weight for table headers |
 | .m-table | --table-transition-duration | 0.2s | Transition animation duration |

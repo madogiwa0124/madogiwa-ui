@@ -1,5 +1,5 @@
 dialog.m-dialog {
-  --dialog-bg-color: var(--color-bg-light);
+  --dialog-bg-color: var(--color-bg-default);
   --dialog-zindex: var(--zindex-modal);
   --dialog-padding: var(--spacing-3);
   --dialog-border-radius: var(--radius-sm);

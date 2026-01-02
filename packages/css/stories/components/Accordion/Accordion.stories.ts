@@ -86,7 +86,7 @@ Use accordions to organize content into expandable sections that help users focu
 | --accordion-summary-font-weight | var(--font-weight-bold) | Font weight of the summary text |
 | --accordion-summary-icon-gap | var(--spacing-2) | Gap between icon and summary text |
 | --accordion-summary-icon-size | 0.6rem | Size of the expand/collapse icon |
-| --accordion-summary-icon-color | var(--color-text) | Color of the expand/collapse icon |
+| --accordion-summary-icon-color | var(--color-text-default) | Color of the expand/collapse icon |
 | --accordion-summary-icon-clip-path | polygon(0 0, 100% 50%, 0 100%) | Shape of the expand/collapse icon |
 | --accordion-summary-icon-open-transform | rotate(90deg) | Transform applied to icon when open |
 | --accordion-content-padding | 0 var(--spacing-3) var(--spacing-3) var(--spacing-3) | Padding for the accordion content area |

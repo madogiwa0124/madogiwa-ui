@@ -3,10 +3,10 @@
   --btn-color-primary: var(--color-primary);
   --btn-color-secondary: var(--color-secondary);
   --btn-color-tertiary: var(--color-tertiary);
-  --btn-text-color-default: var(--color-text);
-  --btn-text-color-primary: var(--color-text-light);
-  --btn-text-color-secondary: var(--color-text-light);
-  --btn-text-color-tertiary: var(--color-text);
+  --btn-text-color-default: var(--color-text-default);
+  --btn-text-color-primary: var(--color-text-inverse);
+  --btn-text-color-secondary: var(--color-text-inverse);
+  --btn-text-color-tertiary: var(--color-text-default);
   --btn-outline-text-color-default: color(from var(--btn-color-default) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5));
   --btn-outline-text-color-primary: color(from var(--btn-color-primary) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5));
   --btn-outline-text-color-secondary: color(from var(--btn-color-secondary) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5));

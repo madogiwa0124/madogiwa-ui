@@ -65,9 +65,9 @@ This component has no modifiers.
 | --toggle-transition | 0.1s ease | Animation timing for state changes |
 | --toggle-width | calc(var(--toggle-size) * 1.8) | Width of the toggle track |
 | --toggle-checked-translate-x | calc(var(--toggle-size) * 0.8) | Translation distance when checked |
-| --toggle-bg-color | var(--color-dark) | Background color when unchecked |
+| --toggle-bg-color | var(--color-bg-inverse) | Background color when unchecked |
 | --toggle-bg-color-checked | var(--color-primary) | Background color when checked |
-| --toggle-button-color | var(--color-light) | Color of the sliding button |
+| --toggle-button-color | var(--color-text-muted) | Color of the sliding button |
 | --toggle-button-scale | 0.8 | Scale factor for the button |
 | --toggle-lighter-brightness | 150% | Brightness for hover/focus states |
 | --toggle-disabled-opacity | 0.5 | Opacity when disabled |

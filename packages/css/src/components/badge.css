@@ -1,7 +1,7 @@
 .m-badge {
   --badge-padding: var(--spacing-1);
   --badge-item-gap: var(--spacing-2);
-  --badge-text-color: var(--color-text);
+  --badge-text-color: var(--color-text-default);
   --badge-border-color: var(--color-border);
   --badge-border: 1px solid var(--badge-border-color);
   --badge-border-radius: var(--radius-sm);
@@ -14,19 +14,19 @@
   --badge-small-padding: var(--spacing-1);
   --badge-primary-color: var(--color-primary);
   --badge-primary-border-color: var(--color-primary);
-  --badge-primary-text-color: var(--color-text-light);
+  --badge-primary-text-color: var(--color-text-inverse);
   --badge-secondary-color: var(--color-secondary);
   --badge-secondary-border-color: var(--color-secondary);
-  --badge-secondary-text-color: var(--color-text-light);
+  --badge-secondary-text-color: var(--color-text-inverse);
   --badge-tertiary-color: var(--color-tertiary);
   --badge-tertiary-border-color: var(--color-tertiary);
-  --badge-tertiary-text-color: var(--color-text);
+  --badge-tertiary-text-color: var(--color-text-default);
   --badge-danger-color: var(--color-danger);
   --badge-danger-border-color: var(--color-danger);
-  --badge-danger-text-color: var(--color-text);
+  --badge-danger-text-color: var(--color-text-default);
   --badge-warning-color: var(--color-warning);
   --badge-warning-border-color: var(--color-warning);
-  --badge-warning-text-color: var(--color-text);
+  --badge-warning-text-color: var(--color-text-default);
   --badge-line-height: var(--line-height-one);
   --badge-min-width: 1.8em;
 

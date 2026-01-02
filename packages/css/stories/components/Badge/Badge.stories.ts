@@ -107,7 +107,7 @@ This component has no child elements - it's a single-level component.
 | ------ | ---- | ------- | ----------- |
 | .m-badge | --badge-padding |var(--spacing-1) | Internal padding |
 | .m-badge | --badge-item-gap | var(--spacing-2) | Gap between badge elements |
-| .m-badge | --badge-text-color | var(--color-text) | Text color |
+| .m-badge | --badge-text-color | var(--color-text-default) | Text color |
 | .m-badge | --badge-border-color | var(--color-border) | Border color |
 | .m-badge | --badge-border | 1px solid var(--badge-border-color) | Border style |
 | .m-badge | --badge-border-radius | var(--radius-sm) | Border radius |
@@ -120,19 +120,19 @@ This component has no child elements - it's a single-level component.
 | .m-badge | --badge-small-padding | var(--spacing-1) | Padding for small variant |
 | .m-badge | --badge-primary-color | var(--color-primary) | Primary variant background |
 | .m-badge | --badge-primary-border-color | var(--color-primary) | Primary variant border color |
-| .m-badge | --badge-primary-text-color | var(--color-text-light) | Primary variant text color |
+| .m-badge | --badge-primary-text-color | var(--color-text-inverse) | Primary variant text color |
 | .m-badge | --badge-secondary-color | var(--color-secondary) | Secondary variant background |
 | .m-badge | --badge-secondary-border-color | var(--color-secondary) | Secondary variant border color |
-| .m-badge | --badge-secondary-text-color | var(--color-text-light) | Secondary variant text color |
+| .m-badge | --badge-secondary-text-color | var(--color-text-inverse) | Secondary variant text color |
 | .m-badge | --badge-tertiary-color | var(--color-tertiary) | Tertiary variant background |
 | .m-badge | --badge-tertiary-border-color | var(--color-tertiary) | Tertiary variant border color |
-| .m-badge | --badge-tertiary-text-color | var(--color-text) | Tertiary variant text color |
+| .m-badge | --badge-tertiary-text-color | var(--color-text-default) | Tertiary variant text color |
 | .m-badge | --badge-danger-color | var(--color-danger) | Danger variant background |
 | .m-badge | --badge-danger-border-color | var(--color-danger) | Danger variant border color |
-| .m-badge | --badge-danger-text-color | var(--color-text) | Danger variant text color |
+| .m-badge | --badge-danger-text-color | var(--color-text-default) | Danger variant text color |
 | .m-badge | --badge-warning-color | var(--color-warning) | Warning variant background |
 | .m-badge | --badge-warning-border-color | var(--color-warning) | Warning variant border color |
-| .m-badge | --badge-warning-text-color | var(--color-text) | Warning variant text color |
+| .m-badge | --badge-warning-text-color | var(--color-text-default) | Warning variant text color |
 | .m-badge | --badge-line-height | var(--line-height-one) | Line height |
 | .m-badge | --badge-min-width | 1.8em | Minimum width |
 

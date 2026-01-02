@@ -211,7 +211,7 @@ export const AlignmentNestedContentRows: Story = {
           <img class="m-card__image" src="/stories/components/Card/320x240.png" alt="Example card image showing 320x240 placeholder">
           <div class="m-card__content">
             <h3 class="m-h3">Image Card</h3>
-            <p class="m-p" style="color: var(--color-text-gray)">
+            <p class="m-p" style="color: var(--color-text-muted)">
               This card demonstrates how images can be integrated with content. The image is responsive and maintains proper aspect ratio.
             </p>
           </div>
@@ -228,7 +228,7 @@ export const AlignmentNestedContentRows: Story = {
           <img class="m-card__image" src="/stories/components/Card/320x240.png" alt="Example card image showing 320x240 placeholder">
           <div class="m-card__content">
             <h3 class="m-h3">Image Card</h3>
-            <p class="m-p" style="color: var(--color-text-gray)">
+            <p class="m-p" style="color: var(--color-text-muted)">
               This card has significantly more content than the others. It is designed to test the subgrid alignment feature, ensuring that despite varying content lengths, the action buttons remain perfectly aligned at the bottom of each card.
             </p>
           </div>
@@ -244,7 +244,7 @@ export const AlignmentNestedContentRows: Story = {
           <img class="m-card__image" src="/stories/components/Card/320x240.png" alt="Example card image showing 320x240 placeholder">
           <div class="m-card__content">
             <h3 class="m-h3">Image Card</h3>
-            <p class="m-p" style="color: var(--color-text-gray)">
+            <p class="m-p" style="color: var(--color-text-muted)">
               This card demonstrates how images can be integrated with content.
             </p>
           </div>

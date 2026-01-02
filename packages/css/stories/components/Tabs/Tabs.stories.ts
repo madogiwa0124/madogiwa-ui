@@ -66,7 +66,7 @@ Use Tabs for organizing content into separate views that users can switch betwee
 | --tabs-hover-item-filter | brightness(0.95) | Visual filter for hover state |
 | --tabs-disabled-item-filter | brightness(0.65) | Visual filter for disabled tabs |
 | --tabs-hover-transition | 0.3s ease | Transition timing for hover effects |
-| --tabs-item-background-color | var(--color-bg-light) | Background color for tab items |
+| --tabs-item-background-color | var(--color-bg-default) | Background color for tab items |
 
 ### Data Attributes
 

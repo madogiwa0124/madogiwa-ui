@@ -1,10 +1,10 @@
 .m-table {
-  --table-bg-color: var(--color-white);
-  --table-hover-bg-color: var(--color-bg-light);
+  --table-bg-color: var(--color-bg-default);
+  --table-hover-bg-color: var(--color-bg-subtle);
   --table-border-color: var(--color-border);
   --table-border-width: 1px;
   --table-padding: var(--spacing-3) var(--spacing-4);
-  --table-stripe-bg-color: var(--color-bg-grey);
+  --table-stripe-bg-color: var(--color-bg-muted);
   --table-hover-opacity: 0.8;
   --table-th-font-weight: var(--font-weight-semibold);
   --table-transition-duration: 0.2s;
