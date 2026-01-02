@@ -143,7 +143,7 @@ export const Default: Story = {
     contentElement.classList.add("m-card__content");
     contentElement.innerHTML = `
       <h3 style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600;">Card Title</h3>
-      <p style="margin: 0; color: #666; line-height: 1.5;">${content}</p>
+      <p style="margin: 0; color: var(--color-text-subtle); line-height: 1.5;">${content}</p>
     `;
     card.append(contentElement);
 
@@ -216,7 +216,7 @@ export const Floating: Story = {
     contentElement.classList.add("m-card__content");
     contentElement.innerHTML = `
       <h3 style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600;">Floating Card</h3>
-      <p style="margin: 0; color: #666; line-height: 1.5;">${content}</p>
+      <p style="margin: 0; color: var(--color-text-subtle); line-height: 1.5;">${content}</p>
     `;
 
     card.append(contentElement);
@@ -279,7 +279,7 @@ export const FullCardSample: Story = {
     contentElement.classList.add("m-card__content");
     contentElement.innerHTML = `
       <h3 style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600;">Image Card</h3>
-      <p style="margin: 0; color: #666; line-height: 1.5;">${content}</p>
+      <p style="margin: 0; color: var(--color-text-subtle); line-height: 1.5;">${content}</p>
     `;
 
     card.append(contentElement);

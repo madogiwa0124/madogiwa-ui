@@ -117,11 +117,11 @@ export const Default: Story = {
     if (args.padding) container.classList.add("--padding");
     if (args.noCentering) container.classList.add("--no-centering");
 
-    container.style.backgroundColor = "#ffffff";
+    container.style.backgroundColor = "var(--color-bg-default)";
     container.innerHTML = `<p>${args.content}</p>`;
 
     // Wrapper for visual context
-    wrapper.style.backgroundColor = "#f5f5f5";
+    wrapper.style.backgroundColor = "var(--color-bg-subtle)";
     wrapper.style.padding = "1rem";
     wrapper.style.minHeight = "200px";
 
@@ -169,7 +169,7 @@ export const ResponsiveDemo: Story = {
   },
   render: (args) => {
     const wrapper = document.createElement("div");
-    wrapper.style.backgroundColor = "#f0f0f0";
+    wrapper.style.backgroundColor = "var(--color-bg-subtle)";
     wrapper.style.padding = "1rem";
     wrapper.style.fontFamily = "system-ui, sans-serif";
 
@@ -179,11 +179,11 @@ export const ResponsiveDemo: Story = {
     title.style.marginBottom = "2rem";
 
     const containers = [
-      { label: "Small", width: "40rem", bgColor: "#e3f2fd", padding: "0 var(--spacing-2)" },
-      { label: "Medium", width: "48rem", bgColor: "#f3e5f5", padding: "0 var(--spacing-3)" },
-      { label: "Large", width: "64rem", bgColor: "#e8f5e8", padding: "0 var(--spacing-4)" },
-      { label: "X Large", width: "80rem", bgColor: "#fff3e0", padding: "0 var(--spacing-5)" },
-      { label: "2X Large", width: "96rem", bgColor: "#fce4ec", padding: "0 var(--spacing-6)" },
+      { label: "Small", width: "40rem", bgColor: "var(--color-bg-subtle)", padding: "0 var(--spacing-2)" },
+      { label: "Medium", width: "48rem", bgColor: "var(--color-bg-subtle)", padding: "0 var(--spacing-3)" },
+      { label: "Large", width: "64rem", bgColor: "var(--color-bg-subtle)", padding: "0 var(--spacing-4)" },
+      { label: "X Large", width: "80rem", bgColor: "var(--color-bg-subtle)", padding: "0 var(--spacing-5)" },
+      { label: "2X Large", width: "96rem", bgColor: "var(--color-bg-subtle)", padding: "0 var(--spacing-6)" },
     ];
 
     for (const { label, width, bgColor, padding } of containers) {
@@ -198,7 +198,7 @@ export const ResponsiveDemo: Story = {
       const container = document.createElement("div");
       container.classList.add("m-container");
       container.style.backgroundColor = bgColor;
-      container.style.border = "2px dashed #666";
+      container.style.border = "2px dashed var(--color-text-muted)";
       container.style.setProperty("--container-2xl-max-width", width);
       container.style.setProperty("--container-xl-max-width", width);
       container.style.setProperty("--container-lg-max-width", width);
@@ -267,34 +267,34 @@ export const NestedContent: Story = {
     if (args.padding) container.classList.add("--padding");
     if (args.noCentering) container.classList.add("--no-centering");
 
-    container.style.backgroundColor = "#f5f5f5";
+    container.style.backgroundColor = "var(--color-bg-subtle)";
 
     // Create realistic content structure
     container.innerHTML = `
-      <header style="margin-bottom: 2rem; padding: 1rem; background: #e0e0e0; border-radius: 4px;">
+      <header style="margin-bottom: 2rem; padding: 1rem; background: var(--color-bg-muted); border-radius: 4px;">
         <h1 style="margin: 0; font-size: 2rem;">Page Header</h1>
-        <p style="margin: 0.5rem 0 0 0; color: #333;">Subtitle or description</p>
+        <p style="margin: 0.5rem 0 0 0; color: var(--color-text-default);">Subtitle or description</p>
       </header>
 
       <main style="margin-bottom: 2rem;">
-        <article style="margin-bottom: 2rem; padding: 1.5rem; background: white; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <article style="margin-bottom: 2rem; padding: 1.5rem; background: var(--color-bg-default); border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
           <h2>Article Title</h2>
           <p>${args.content}</p>
           <p>This demonstrates how the container works with realistic nested content structure and responsive padding.</p>
         </article>
 
-        <section style="padding: 1.5rem; background: white; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <section style="padding: 1.5rem; background: var(--color-bg-default); border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
           <h3>Section Title</h3>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
-            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+            <div style="padding: 1rem; background: var(--color-bg-muted); border-radius: 4px;">
               <h4 style="margin-top: 0;">Card 1</h4>
               <p style="margin-bottom: 0;">Card content here.</p>
             </div>
-            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+            <div style="padding: 1rem; background: var(--color-bg-muted); border-radius: 4px;">
               <h4 style="margin-top: 0;">Card 2</h4>
               <p style="margin-bottom: 0;">Card content here.</p>
             </div>
-            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+            <div style="padding: 1rem; background: var(--color-bg-muted); border-radius: 4px;">
               <h4 style="margin-top: 0;">Card 3</h4>
               <p style="margin-bottom: 0;">Card content here.</p>
             </div>
@@ -302,12 +302,12 @@ export const NestedContent: Story = {
         </section>
       </main>
 
-      <footer style="padding: 1rem; background: #e0e0e0; border-radius: 4px; text-align: center;">
-        <p style="margin: 0; color: #333;">&copy; 2025 Example Footer</p>
+      <footer style="padding: 1rem; background: var(--color-bg-muted); border-radius: 4px; text-align: center;">
+        <p style="margin: 0; color: var(--color-text-default);">&copy; 2025 Example Footer</p>
       </footer>
     `;
 
-    wrapper.style.backgroundColor = "#fafafa";
+    wrapper.style.backgroundColor = "var(--color-bg-default)";
     wrapper.style.padding = "1rem";
     wrapper.append(container);
 

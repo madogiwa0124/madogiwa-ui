@@ -181,9 +181,9 @@ export const AllHeadings: Story = {
       section.style.flexDirection = "column";
       section.style.gap = "0.5rem";
       section.style.padding = "1rem";
-      section.style.border = "1px solid #e5e7eb";
+      section.style.border = "1px solid var(--color-border)";
       section.style.borderRadius = "0.375rem";
-      section.style.backgroundColor = "#f9fafb";
+      section.style.backgroundColor = "var(--color-bg-muted)";
 
       const levelString = data.level.toString();
       const heading = document.createElement(`h${levelString}`);
@@ -194,7 +194,7 @@ export const AllHeadings: Story = {
       description.textContent = data.description;
       description.style.margin = "0";
       description.style.fontSize = "0.875rem";
-      description.style.color = "#6b7280";
+      description.style.color = "var(--color-text-subtle)";
       description.style.fontStyle = "italic";
 
       section.append(heading, description);

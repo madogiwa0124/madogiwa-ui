@@ -148,9 +148,9 @@ export const Default: Story = {
   render: (args) => {
     const children = Array.from({ length: args.itemCount }, (_, index) => ({
       content: `
-        <div style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; text-align: center;">
+        <div style="background: var(--color-bg-subtle); padding: 1rem; border-radius: 6px; border: 1px solid var(--color-border); text-align: center;">
           <strong>Item ${String(index + 1)}</strong><br>
-          <small style="color: #64748b;">Column span: ${String(args.itemColSize)}</small>
+          <small style="color: var(--color-text-subtle);">Column span: ${String(args.itemColSize)}</small>
         </div>
       `,
       colSize: args.itemColSize,

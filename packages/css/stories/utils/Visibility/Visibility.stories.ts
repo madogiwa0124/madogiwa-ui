@@ -171,15 +171,15 @@ const createExample = (variant: string): HTMLElement => {
   const info = document.createElement("p");
   info.style.marginBottom = "16px";
   info.style.padding = "12px";
-  info.style.backgroundColor = "#e3f2fd";
+  info.style.backgroundColor = "var(--color-bg-subtle)";
   info.style.borderRadius = "4px";
   info.style.fontSize = "14px";
 
   const box = document.createElement("div");
   box.className = `m-${variant}`;
   box.style.padding = "20px";
-  box.style.backgroundColor = "#4caf50";
-  box.style.color = "white";
+  box.style.backgroundColor = "var(--color-primary)";
+  box.style.color = "var(--color-text-inverse)";
   box.style.borderRadius = "4px";
   box.style.fontWeight = "bold";
   box.textContent = `Element with .m-${variant}`;
@@ -187,8 +187,8 @@ const createExample = (variant: string): HTMLElement => {
   // Add reference box for comparison
   const referenceBox = document.createElement("div");
   referenceBox.style.padding = "20px";
-  referenceBox.style.backgroundColor = "#2196f3";
-  referenceBox.style.color = "white";
+  referenceBox.style.backgroundColor = "var(--color-secondary)";
+  referenceBox.style.color = "var(--color-text-inverse)";
   referenceBox.style.borderRadius = "4px";
   referenceBox.style.fontWeight = "bold";
   referenceBox.style.marginTop = "16px";
@@ -318,7 +318,7 @@ export const ResponsiveDemo: Story = {
     const info = document.createElement("p");
     info.style.marginBottom = "16px";
     info.style.padding = "12px";
-    info.style.backgroundColor = "#e3f2fd";
+    info.style.backgroundColor = "var(--color-bg-subtle)";
     info.style.borderRadius = "4px";
     info.style.fontSize = "14px";
     info.textContent
@@ -333,7 +333,7 @@ export const ResponsiveDemo: Story = {
       box.className = className;
       box.style.padding = "16px";
       box.style.backgroundColor = color;
-      box.style.color = "white";
+      box.style.color = "var(--color-text-inverse)";
       box.style.borderRadius = "4px";
       box.style.marginBottom = "12px";
       box.style.fontWeight = "bold";
@@ -385,7 +385,7 @@ export const MatrixDemo: Story = {
     docs: {
       description: {
         story:
-          "Matrix view showing which classes are visible (🟢) or hidden (🔴) at different breakpoints. Resize your browser to see the current breakpoint highlighted.",
+          "Matrix view showing which classes are visible or hidden at different breakpoints. Resize your browser to see the current breakpoint highlighted.",
       },
     },
   },
@@ -394,20 +394,24 @@ export const MatrixDemo: Story = {
     container.style.padding = "20px";
     container.style.fontFamily = "system-ui, sans-serif";
     container.style.overflowX = "auto";
+    const noEffectColor = "var(--color-bg-muted)"; // Light gray
+    const visibleColor = "var(--color-primary)"; // Light green
+    const hiddenColor = "var(--color-danger)"; // Light red
+    const invisibleColor = "var(--color-default)"; // Light gray
 
     const info = document.createElement("p");
     info.style.marginBottom = "20px";
     info.style.padding = "12px";
-    info.style.backgroundColor = "#e3f2fd";
+    info.style.backgroundColor = "var(--color-bg-muted)";
     info.style.borderRadius = "4px";
     info.style.fontSize = "14px";
     info.innerHTML = `
       <strong>Legend:</strong>
-      <span style="background: #c8e6c9; padding: 2px 8px; border-radius: 3px; margin: 0 4px;">display: block</span>
-      <span style="background: #ffcdd2; padding: 2px 8px; border-radius: 3px; margin: 0 4px;">display: none</span>
-      <span style="background: #e0e0e0; padding: 2px 8px; border-radius: 3px; margin: 0 4px;">visibility: hidden</span>
+      <span style="background: ${visibleColor}; padding: 2px 8px; border-radius: 3px; margin: 0 4px;">display: block</span>
+      <span style="background: ${hiddenColor}; padding: 2px 8px; border-radius: 3px; margin: 0 4px;">display: none</span>
+      <span style="background: ${invisibleColor}; padding: 2px 8px; border-radius: 3px; margin: 0 4px;">visibility: hidden</span>
       <br>
-      <strong>Current breakpoint:</strong> <span id="current-breakpoint" style="font-weight: bold; color: #1976d2;"></span>
+      <strong>Current breakpoint:</strong> <span id="current-breakpoint" style="font-weight: bold; color: var(--color-primary);"></span>
     `;
 
     // Update current breakpoint indicator
@@ -433,13 +437,13 @@ export const MatrixDemo: Story = {
     table.style.width = "100%";
     table.style.borderCollapse = "collapse";
     table.style.marginTop = "16px";
-    table.style.backgroundColor = "white";
+    table.style.backgroundColor = "var(--color-bg-default)";
     table.style.boxShadow = "0 2px 4px rgba(0,0,0,0.1)";
 
     // Table header
     const thead = document.createElement("thead");
     const headerRow = document.createElement("tr");
-    headerRow.style.backgroundColor = "#f5f5f5";
+    headerRow.style.backgroundColor = "var(--color-bg-muted)";
 
     const headers = [
       "Class",
@@ -454,7 +458,7 @@ export const MatrixDemo: Story = {
     for (const header of headers) {
       const th = document.createElement("th");
       th.style.padding = "12px 8px";
-      th.style.borderBottom = "2px solid #ddd";
+      th.style.borderBottom = "2px solid var(--color-border)";
       th.style.fontSize = "12px";
       th.style.fontWeight = "bold";
       th.style.textAlign = header === "Class" ? "left" : "center";
@@ -477,360 +481,360 @@ export const MatrixDemo: Story = {
       {
         class: ".m-hidden-sm",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
         ],
         description: "Hidden on sm and above",
       },
       {
         class: ".m-hidden-md",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
         ],
         description: "Hidden on md and above",
       },
       {
         class: ".m-hidden-lg",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
         ],
         description: "Hidden on lg and above",
       },
       {
         class: ".m-hidden-xl",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
         ],
         description: "Hidden on xl and above",
       },
       {
         class: ".m-hidden-2xl",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "display: none (applied)", color: hiddenColor },
         ],
         description: "Hidden on 2xl and above",
       },
       {
         class: ".m-visible-sm",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
         ],
         description: "Visible on sm and above",
       },
       {
         class: ".m-visible-md",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
         ],
         description: "Visible on md and above",
       },
       {
         class: ".m-visible-lg",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
         ],
         description: "Visible on lg and above",
       },
       {
         class: ".m-visible-xl",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
         ],
         description: "Visible on xl and above",
       },
       {
         class: ".m-visible-2xl",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
         ],
         description: "Visible on 2xl and above",
       },
       {
         class: ".m-hidden-max-sm",
         states: [
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Hidden below sm",
       },
       {
         class: ".m-hidden-max-md",
         states: [
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Hidden below md",
       },
       {
         class: ".m-hidden-max-lg",
         states: [
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Hidden below lg",
       },
       {
         class: ".m-hidden-max-xl",
         states: [
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Hidden below xl",
       },
       {
         class: ".m-hidden-max-2xl",
         states: [
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "display: none (applied)", color: "#ffcdd2" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "display: none (applied)", color: hiddenColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Hidden below 2xl",
       },
       {
         class: ".m-visible-max-sm",
         states: [
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Visible below sm",
       },
       {
         class: ".m-visible-max-md",
         states: [
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Visible below md",
       },
       {
         class: ".m-visible-max-lg",
         states: [
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Visible below lg",
       },
       {
         class: ".m-visible-max-xl",
         states: [
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Visible below xl",
       },
       {
         class: ".m-visible-max-2xl",
         states: [
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "visibility: visible (applied)", color: "#c8e6c9" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "visibility: visible (applied)", color: visibleColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Visible below 2xl",
       },
       {
         class: ".m-invisible-sm",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
         ],
         description: "Invisible on sm and above",
       },
       {
         class: ".m-invisible-md",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
         ],
         description: "Invisible on md and above",
       },
       {
         class: ".m-invisible-lg",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
         ],
         description: "Invisible on lg and above",
       },
       {
         class: ".m-invisible-xl",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
         ],
         description: "Invisible on xl and above",
       },
       {
         class: ".m-invisible-2xl",
         states: [
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
         ],
         description: "Invisible on 2xl and above",
       },
       {
         class: ".m-invisible-max-sm",
         states: [
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Invisible below sm",
       },
       {
         class: ".m-invisible-max-md",
         states: [
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Invisible below md",
       },
       {
         class: ".m-invisible-max-lg",
         states: [
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Invisible below lg",
       },
       {
         class: ".m-invisible-max-xl",
         states: [
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Invisible below xl",
       },
       {
         class: ".m-invisible-max-2xl",
         states: [
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "visibility: hidden (applied)", color: "#e0e0e0" },
-          { value: "No effect (inherits parent)", color: "#f5f5f5" },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "visibility: hidden (applied)", color: hiddenColor },
+          { value: "No effect (inherits parent)", color: noEffectColor },
         ],
         description: "Invisible below 2xl",
       },
@@ -838,7 +842,7 @@ export const MatrixDemo: Story = {
 
     for (const item of classStates) {
       const row = document.createElement("tr");
-      row.style.borderBottom = "1px solid #eee";
+      row.style.borderBottom = "1px solid var(--color-border)";
 
       // Class name cell
       const classCell = document.createElement("td");
@@ -846,7 +850,8 @@ export const MatrixDemo: Story = {
       classCell.style.fontFamily = "monospace";
       classCell.style.fontSize = "13px";
       classCell.style.fontWeight = "600";
-      classCell.innerHTML = `${item.class}<br><span style="font-size: 11px; color: #666; font-weight: normal;">${item.description}</span>`;
+      classCell.style.backgroundColor = "var(--color-bg-muted)";
+      classCell.innerHTML = `${item.class}<br><span style="font-size: 11px; color: var(--color-bg-muted); font-weight: normal;">${item.description}</span>`;
       row.append(classCell);
 
       // State cells
