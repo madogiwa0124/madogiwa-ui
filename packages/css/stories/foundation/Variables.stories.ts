@@ -51,6 +51,10 @@ Base color values used as building blocks for semantic colors.
 
 #### Semantic Colors
 Context-aware colors that convey meaning (primary, success, error, etc.).
+- **Dark Mode Support**: Automatically adjusts for \`prefers-color-scheme: dark\`
+  - Text colors become lighter in dark mode for accessibility
+  - Background colors become darker to maintain contrast
+  - Status colors are adjusted for readability in dark mode
 
 #### Spacing
 Consistent spacing values for margins, padding, and layout gaps.
@@ -72,6 +76,10 @@ Media query breakpoints for responsive design implementation.
 - Color contrast may vary in Storybook examples
 - Use semantic colors instead of primitive colors when possible
 - Breakpoints are defined using rem units for better accessibility
+- **Dark Mode**: Semantic colors automatically adapt to \`prefers-color-scheme: dark\` media query
+  - No need to override color variables in dark mode
+  - Component text colors and backgrounds are handled automatically through variable substitution
+  - Provides consistent contrast ratios across all color schemes
         `,
       },
     },
@@ -121,7 +129,7 @@ export const SemanticColor: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Shows semantic color tokens that convey meaning and context. These are the colors that should be used in components to maintain consistent visual hierarchy.",
+        story: "Shows semantic color tokens that convey meaning and context. These are the colors that should be used in components to maintain consistent visual hierarchy. Color values automatically adjust based on the user's color scheme preference (light/dark mode).",
       },
     },
   },

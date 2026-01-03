@@ -105,6 +105,7 @@ This component has no child elements - it's a single-level component.
 
 | Name | Default | Description |
 | ---- | ------- | ----------- |
+| --dialog-text-color | var(--color-text-default) | Dialog text color |
 | --dialog-bg-color | var(--color-bg-default) | Dialog background color |
 | --dialog-zindex | var(--zindex-modal) | Z-index for dialog stacking |
 | --dialog-padding | var(--spacing-3) | Internal padding of the dialog |

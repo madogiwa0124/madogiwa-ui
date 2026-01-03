@@ -60,13 +60,16 @@ Use Tabs for organizing content into separate views that users can switch betwee
 | --tabs-scrollbar-color | rgb(from var(--color-primary) r g b / 50%) transparent | Scrollbar color scheme |
 | --tabs-item-padding | var(--spacing-2) var(--spacing-4) | Internal padding for tab items |
 | --tabs-active-item-border-color | var(--color-primary) | Border color for active tabs |
+| --tabs-active-item-border-dark-color | var(--color-secondary) | Border color for active tabs when prefers-color-scheme: dark |
 | --tabs-active-item-border | 2px solid transparent | Border specification for active state |
 | --tabs-active-item-filter | brightness(0.95) | Visual filter for active tabs |
 | --tabs-active-item-color | var(--color-primary) | Text color for active tabs |
+| --tabs-active-item-dark-color | var(--color-secondary) | Text color for active tabs when prefers-color-scheme: dark |
 | --tabs-hover-item-filter | brightness(0.95) | Visual filter for hover state |
 | --tabs-disabled-item-filter | brightness(0.65) | Visual filter for disabled tabs |
 | --tabs-hover-transition | 0.3s ease | Transition timing for hover effects |
 | --tabs-item-background-color | var(--color-bg-default) | Background color for tab items |
+| --tabs-item-background-dark-color | var(--color-bg-subtle) | Background color for tab items when prefers-color-scheme: dark |
 
 ### Data Attributes
 

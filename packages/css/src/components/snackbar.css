@@ -5,11 +5,16 @@
   --snackbar-margin-for-small-screens: var(--spacing-2);
   --snackbar-bg-color: var(--color-primary);
   --snackbar-text-color: var(--color-text-inverse);
+  --snackbar-text-dark-color: var(--color-text-default);
   --snackbar-border-radius: var(--radius-sm);
   --snackbar-box-shadow: var(--shadow-md);
   --snackbar-inner-spacing: var(--spacing-3);
   --snackbar-action-spacing: var(--spacing-2);
   --snackbar-transition-duration: 0.2s;
+
+  @media(prefers-color-scheme: dark) {
+    --snackbar-text-color: var(--snackbar-text-dark-color);
+  }
 
   position: fixed;
   inset: auto auto var(--snackbar-position-y) var(--snackbar-position-x);
@@ -17,6 +22,7 @@
   padding: 0;
   box-shadow: var(--snackbar-box-shadow);
   z-index: var(--snackbar-zindex);
+  background-color: transparent;
 
   .m-snackbar__body {
     display: flex;

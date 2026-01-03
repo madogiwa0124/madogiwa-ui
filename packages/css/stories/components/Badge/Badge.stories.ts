@@ -121,9 +121,11 @@ This component has no child elements - it's a single-level component.
 | .m-badge | --badge-primary-color | var(--color-primary) | Primary variant background |
 | .m-badge | --badge-primary-border-color | var(--color-primary) | Primary variant border color |
 | .m-badge | --badge-primary-text-color | var(--color-text-inverse) | Primary variant text color |
+| .m-badge | --badge-primary-text-dark-color | var(--color-text-default) | Primary variant text color when prefers-color-scheme: dark |
 | .m-badge | --badge-secondary-color | var(--color-secondary) | Secondary variant background |
 | .m-badge | --badge-secondary-border-color | var(--color-secondary) | Secondary variant border color |
 | .m-badge | --badge-secondary-text-color | var(--color-text-inverse) | Secondary variant text color |
+| .m-badge | --badge-secondary-text-dark-color | var(--color-text-default) | Secondary variant text color when prefers-color-scheme: dark |
 | .m-badge | --badge-tertiary-color | var(--color-tertiary) | Tertiary variant background |
 | .m-badge | --badge-tertiary-border-color | var(--color-tertiary) | Tertiary variant border color |
 | .m-badge | --badge-tertiary-text-color | var(--color-text-default) | Tertiary variant text color |

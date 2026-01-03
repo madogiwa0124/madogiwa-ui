@@ -116,6 +116,7 @@ hamburgerMenu.addEventListener("click", () => {
 | --navbar-item-text-color | var(--color-text-default) | Text color for navigation items |
 | --navbar-item-hover-bg-color | var(--color-primary) | Background color on item hover |
 | --navbar-item-hover-text-color | var(--color-text-inverse) | Text color on item hover |
+| --navbar-item-hover-text-dark-color | var(--color-text-default) | Text color on item hover when prefers-color-scheme: dark |
 | --navbar-hamburger-icon-content | "☰" | Hamburger menu icon content |
 | --navbar-hamburger-icon-close-content | "×" | Close menu icon content |
 | --navbar-hamburger-icon-size | 1.5rem | Size of hamburger menu icons |
