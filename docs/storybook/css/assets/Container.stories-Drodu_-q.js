@@ -63,35 +63,35 @@ This component does not use data attributes for styling or behavior.
 - Responsive breakpoints are managed through CSS custom media queries
 - Padding modifier provides different spacing at each breakpoint
 - Consider content hierarchy when nesting containers
-        `}}}},m={parameters:{docs:{description:{story:"Basic container with centered layout and responsive max-width constraints."}}},render:r=>{const e=document.createElement("div"),n=document.createElement("div");return n.classList.add("m-container"),r.padding&&n.classList.add("--padding"),r.noCentering&&n.classList.add("--no-centering"),n.style.backgroundColor="#ffffff",n.innerHTML=`<p>${r.content}</p>`,e.style.backgroundColor="#f5f5f5",e.style.padding="1rem",e.style.minHeight="200px",e.append(n),e},args:{content:"This is content inside the container. Resize the viewport to see responsive behavior and padding changes.",padding:!1,noCentering:!1},play:async({canvasElement:r,args:e})=>{const n=r.querySelector(".m-container");await t(n).toBeInTheDocument(),await t(n).toHaveClass("m-container");const d=n.querySelector("p");await t(d).toBeInTheDocument(),await t(d).toHaveTextContent(e.content);const o=getComputedStyle(n),i=o.getPropertyValue("--container-sm-max-width").trim(),l=o.getPropertyValue("--container-md-max-width").trim(),s=o.getPropertyValue("--container-lg-max-width").trim(),p=o.getPropertyValue("--container-xl-max-width").trim(),c=o.getPropertyValue("--container-2xl-max-width").trim();await t(i).toBe("40rem"),await t(l).toBe("48rem"),await t(s).toBe("64rem"),await t(p).toBe("80rem"),await t(c).toBe("96rem")}},g={parameters:{docs:{description:{story:"Demonstrates container behavior across different breakpoints with visual indicators for max-width values."}}},render:r=>{const e=document.createElement("div");e.style.backgroundColor="#f0f0f0",e.style.padding="1rem",e.style.fontFamily="system-ui, sans-serif";const n=document.createElement("h2");n.textContent="Container Responsive Breakpoints",n.style.textAlign="center",n.style.marginBottom="2rem";const d=[{label:"Small",width:"40rem",bgColor:"#e3f2fd",padding:"0 var(--spacing-2)"},{label:"Medium",width:"48rem",bgColor:"#f3e5f5",padding:"0 var(--spacing-3)"},{label:"Large",width:"64rem",bgColor:"#e8f5e8",padding:"0 var(--spacing-4)"},{label:"X Large",width:"80rem",bgColor:"#fff3e0",padding:"0 var(--spacing-5)"},{label:"2X Large",width:"96rem",bgColor:"#fce4ec",padding:"0 var(--spacing-6)"}];for(const{label:o,width:i,bgColor:l,padding:s}of d){const p=document.createElement("div");p.style.marginBottom="2rem";const c=document.createElement("h3");c.textContent=o,c.style.marginBottom="0.5rem",c.style.fontSize="1rem";const a=document.createElement("div");a.classList.add("m-container"),a.style.backgroundColor=l,a.style.border="2px dashed #666",a.style.setProperty("--container-2xl-max-width",i),a.style.setProperty("--container-xl-max-width",i),a.style.setProperty("--container-lg-max-width",i),a.style.setProperty("--container-md-max-width",i),a.style.setProperty("--container-sm-max-width",i),a.style.setProperty("--container-default-padding",s),a.style.setProperty("--container-sm-padding",s),a.style.setProperty("--container-md-padding",s),a.style.setProperty("--container-lg-padding",s),a.style.setProperty("--container-xl-padding",s),a.style.setProperty("--container-2xl-padding",s),r.padding&&a.classList.add("--padding"),r.noCentering&&a.classList.add("--no-centering");const u=document.createElement("div");u.innerHTML=`
-        <p><strong>Max-width:</strong> ${i}</p>
+        `}}}},m={parameters:{docs:{description:{story:"Basic container with centered layout and responsive max-width constraints."}}},render:r=>{const e=document.createElement("div"),n=document.createElement("div");return n.classList.add("m-container"),r.padding&&n.classList.add("--padding"),r.noCentering&&n.classList.add("--no-centering"),n.style.backgroundColor="var(--color-bg-default)",n.innerHTML=`<p>${r.content}</p>`,e.style.backgroundColor="var(--color-bg-subtle)",e.style.padding="1rem",e.style.minHeight="200px",e.append(n),e},args:{content:"This is content inside the container. Resize the viewport to see responsive behavior and padding changes.",padding:!1,noCentering:!1},play:async({canvasElement:r,args:e})=>{const n=r.querySelector(".m-container");await t(n).toBeInTheDocument(),await t(n).toHaveClass("m-container");const d=n.querySelector("p");await t(d).toBeInTheDocument(),await t(d).toHaveTextContent(e.content);const i=getComputedStyle(n),o=i.getPropertyValue("--container-sm-max-width").trim(),l=i.getPropertyValue("--container-md-max-width").trim(),s=i.getPropertyValue("--container-lg-max-width").trim(),p=i.getPropertyValue("--container-xl-max-width").trim(),c=i.getPropertyValue("--container-2xl-max-width").trim();await t(o).toBe("40rem"),await t(l).toBe("48rem"),await t(s).toBe("64rem"),await t(p).toBe("80rem"),await t(c).toBe("96rem")}},g={parameters:{docs:{description:{story:"Demonstrates container behavior across different breakpoints with visual indicators for max-width values."}}},render:r=>{const e=document.createElement("div");e.style.backgroundColor="var(--color-bg-subtle)",e.style.padding="1rem",e.style.fontFamily="system-ui, sans-serif";const n=document.createElement("h2");n.textContent="Container Responsive Breakpoints",n.style.textAlign="center",n.style.marginBottom="2rem";const d=[{label:"Small",width:"40rem",bgColor:"var(--color-bg-subtle)",padding:"0 var(--spacing-2)"},{label:"Medium",width:"48rem",bgColor:"var(--color-bg-subtle)",padding:"0 var(--spacing-3)"},{label:"Large",width:"64rem",bgColor:"var(--color-bg-subtle)",padding:"0 var(--spacing-4)"},{label:"X Large",width:"80rem",bgColor:"var(--color-bg-subtle)",padding:"0 var(--spacing-5)"},{label:"2X Large",width:"96rem",bgColor:"var(--color-bg-subtle)",padding:"0 var(--spacing-6)"}];for(const{label:i,width:o,bgColor:l,padding:s}of d){const p=document.createElement("div");p.style.marginBottom="2rem";const c=document.createElement("h3");c.textContent=i,c.style.marginBottom="0.5rem",c.style.fontSize="1rem";const a=document.createElement("div");a.classList.add("m-container"),a.style.backgroundColor=l,a.style.border="2px dashed var(--color-text-muted)",a.style.setProperty("--container-2xl-max-width",o),a.style.setProperty("--container-xl-max-width",o),a.style.setProperty("--container-lg-max-width",o),a.style.setProperty("--container-md-max-width",o),a.style.setProperty("--container-sm-max-width",o),a.style.setProperty("--container-default-padding",s),a.style.setProperty("--container-sm-padding",s),a.style.setProperty("--container-md-padding",s),a.style.setProperty("--container-lg-padding",s),a.style.setProperty("--container-xl-padding",s),a.style.setProperty("--container-2xl-padding",s),r.padding&&a.classList.add("--padding"),r.noCentering&&a.classList.add("--no-centering");const h=document.createElement("div");h.innerHTML=`
+        <p><strong>Max-width:</strong> ${o}</p>
         <p>This container demonstrates responsive behavior with both width and padding changes.</p>
         <p><code>margin-inline: auto</code> centers the container horizontally.</p>
-      `,a.append(u),p.append(c,a),e.append(p)}return e.prepend(n),e},args:{padding:!1,noCentering:!1},play:async({canvasElement:r})=>{const e=r.querySelectorAll(".m-container");await t(e).toHaveLength(5);for(const n of e){await t(n).toHaveClass("m-container");const d=getComputedStyle(n),o=d.marginInlineStart,i=d.marginInlineEnd;await t(o).not.toBe("auto"),await t(i).not.toBe("auto")}}},h={parameters:{docs:{description:{story:"Container with realistic nested content structure showing how it works with complex layouts including headers, articles, and grid systems."}}},render:r=>{const e=document.createElement("div"),n=document.createElement("div");return n.classList.add("m-container"),r.padding&&n.classList.add("--padding"),r.noCentering&&n.classList.add("--no-centering"),n.style.backgroundColor="#f5f5f5",n.innerHTML=`
-      <header style="margin-bottom: 2rem; padding: 1rem; background: #e0e0e0; border-radius: 4px;">
+      `,a.append(h),p.append(c,a),e.append(p)}return e.prepend(n),e},args:{padding:!1,noCentering:!1},play:async({canvasElement:r})=>{const e=r.querySelectorAll(".m-container");await t(e).toHaveLength(5);for(const n of e){await t(n).toHaveClass("m-container");const d=getComputedStyle(n),i=d.marginInlineStart,o=d.marginInlineEnd;await t(i).not.toBe("auto"),await t(o).not.toBe("auto")}}},u={parameters:{docs:{description:{story:"Container with realistic nested content structure showing how it works with complex layouts including headers, articles, and grid systems."}}},render:r=>{const e=document.createElement("div"),n=document.createElement("div");return n.classList.add("m-container"),r.padding&&n.classList.add("--padding"),r.noCentering&&n.classList.add("--no-centering"),n.style.backgroundColor="var(--color-bg-subtle)",n.innerHTML=`
+      <header style="margin-bottom: 2rem; padding: 1rem; background: var(--color-bg-muted); border-radius: 4px;">
         <h1 style="margin: 0; font-size: 2rem;">Page Header</h1>
-        <p style="margin: 0.5rem 0 0 0; color: #333;">Subtitle or description</p>
+        <p style="margin: 0.5rem 0 0 0; color: var(--color-text-default);">Subtitle or description</p>
       </header>
 
       <main style="margin-bottom: 2rem;">
-        <article style="margin-bottom: 2rem; padding: 1.5rem; background: white; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <article style="margin-bottom: 2rem; padding: 1.5rem; background: var(--color-bg-default); border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
           <h2>Article Title</h2>
           <p>${r.content}</p>
           <p>This demonstrates how the container works with realistic nested content structure and responsive padding.</p>
         </article>
 
-        <section style="padding: 1.5rem; background: white; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <section style="padding: 1.5rem; background: var(--color-bg-default); border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
           <h3>Section Title</h3>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
-            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+            <div style="padding: 1rem; background: var(--color-bg-muted); border-radius: 4px;">
               <h4 style="margin-top: 0;">Card 1</h4>
               <p style="margin-bottom: 0;">Card content here.</p>
             </div>
-            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+            <div style="padding: 1rem; background: var(--color-bg-muted); border-radius: 4px;">
               <h4 style="margin-top: 0;">Card 2</h4>
               <p style="margin-bottom: 0;">Card content here.</p>
             </div>
-            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+            <div style="padding: 1rem; background: var(--color-bg-muted); border-radius: 4px;">
               <h4 style="margin-top: 0;">Card 3</h4>
               <p style="margin-bottom: 0;">Card content here.</p>
             </div>
@@ -99,10 +99,10 @@ This component does not use data attributes for styling or behavior.
         </section>
       </main>
 
-      <footer style="padding: 1rem; background: #e0e0e0; border-radius: 4px; text-align: center;">
-        <p style="margin: 0; color: #333;">&copy; 2025 Example Footer</p>
+      <footer style="padding: 1rem; background: var(--color-bg-muted); border-radius: 4px; text-align: center;">
+        <p style="margin: 0; color: var(--color-text-default);">&copy; 2025 Example Footer</p>
       </footer>
-    `,e.style.backgroundColor="#fafafa",e.style.padding="1rem",e.append(n),e},args:{content:"This article content shows how the container constrains width while maintaining readability with responsive padding for complex layouts.",padding:!1,noCentering:!1},play:async({canvasElement:r})=>{const e=r.querySelector(".m-container");await t(e).toBeInTheDocument(),await t(e).toHaveClass("m-container");const n=e.querySelector("header"),d=e.querySelector("main"),o=e.querySelector("footer");await t(n).toBeInTheDocument(),await t(d).toBeInTheDocument(),await t(o).toBeInTheDocument();const i=e.querySelector("[style*='grid-template-columns']");await t(i).toBeInTheDocument();const l=i.querySelectorAll("div");await t(l.length).toBeGreaterThanOrEqual(3);const s=getComputedStyle(e);await t(s.marginInlineStart).not.toBe("auto"),await t(s.marginInlineEnd).not.toBe("auto")}};m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
+    `,e.style.backgroundColor="var(--color-bg-default)",e.style.padding="1rem",e.append(n),e},args:{content:"This article content shows how the container constrains width while maintaining readability with responsive padding for complex layouts.",padding:!1,noCentering:!1},play:async({canvasElement:r})=>{const e=r.querySelector(".m-container");await t(e).toBeInTheDocument(),await t(e).toHaveClass("m-container");const n=e.querySelector("header"),d=e.querySelector("main"),i=e.querySelector("footer");await t(n).toBeInTheDocument(),await t(d).toBeInTheDocument(),await t(i).toBeInTheDocument();const o=e.querySelector("[style*='grid-template-columns']");await t(o).toBeInTheDocument();const l=o.querySelectorAll("div");await t(l.length).toBeGreaterThanOrEqual(3);const s=getComputedStyle(e);await t(s.marginInlineStart).not.toBe("auto"),await t(s.marginInlineEnd).not.toBe("auto")}};m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
   parameters: {
     docs: {
       description: {
@@ -116,11 +116,11 @@ This component does not use data attributes for styling or behavior.
     container.classList.add("m-container");
     if (args.padding) container.classList.add("--padding");
     if (args.noCentering) container.classList.add("--no-centering");
-    container.style.backgroundColor = "#ffffff";
+    container.style.backgroundColor = "var(--color-bg-default)";
     container.innerHTML = \`<p>\${args.content}</p>\`;
 
     // Wrapper for visual context
-    wrapper.style.backgroundColor = "#f5f5f5";
+    wrapper.style.backgroundColor = "var(--color-bg-subtle)";
     wrapper.style.padding = "1rem";
     wrapper.style.minHeight = "200px";
     wrapper.append(container);
@@ -165,7 +165,7 @@ This component does not use data attributes for styling or behavior.
   },
   render: args => {
     const wrapper = document.createElement("div");
-    wrapper.style.backgroundColor = "#f0f0f0";
+    wrapper.style.backgroundColor = "var(--color-bg-subtle)";
     wrapper.style.padding = "1rem";
     wrapper.style.fontFamily = "system-ui, sans-serif";
     const title = document.createElement("h2");
@@ -175,27 +175,27 @@ This component does not use data attributes for styling or behavior.
     const containers = [{
       label: "Small",
       width: "40rem",
-      bgColor: "#e3f2fd",
+      bgColor: "var(--color-bg-subtle)",
       padding: "0 var(--spacing-2)"
     }, {
       label: "Medium",
       width: "48rem",
-      bgColor: "#f3e5f5",
+      bgColor: "var(--color-bg-subtle)",
       padding: "0 var(--spacing-3)"
     }, {
       label: "Large",
       width: "64rem",
-      bgColor: "#e8f5e8",
+      bgColor: "var(--color-bg-subtle)",
       padding: "0 var(--spacing-4)"
     }, {
       label: "X Large",
       width: "80rem",
-      bgColor: "#fff3e0",
+      bgColor: "var(--color-bg-subtle)",
       padding: "0 var(--spacing-5)"
     }, {
       label: "2X Large",
       width: "96rem",
-      bgColor: "#fce4ec",
+      bgColor: "var(--color-bg-subtle)",
       padding: "0 var(--spacing-6)"
     }];
     for (const {
@@ -213,7 +213,7 @@ This component does not use data attributes for styling or behavior.
       const container = document.createElement("div");
       container.classList.add("m-container");
       container.style.backgroundColor = bgColor;
-      container.style.border = "2px dashed #666";
+      container.style.border = "2px dashed var(--color-text-muted)";
       container.style.setProperty("--container-2xl-max-width", width);
       container.style.setProperty("--container-xl-max-width", width);
       container.style.setProperty("--container-lg-max-width", width);
@@ -260,7 +260,7 @@ This component does not use data attributes for styling or behavior.
       await expect(marginInlineEnd).not.toBe("auto");
     }
   }
-}`,...g.parameters?.docs?.source}}};h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
+}`,...g.parameters?.docs?.source}}};u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
   parameters: {
     docs: {
       description: {
@@ -274,34 +274,34 @@ This component does not use data attributes for styling or behavior.
     container.classList.add("m-container");
     if (args.padding) container.classList.add("--padding");
     if (args.noCentering) container.classList.add("--no-centering");
-    container.style.backgroundColor = "#f5f5f5";
+    container.style.backgroundColor = "var(--color-bg-subtle)";
 
     // Create realistic content structure
     container.innerHTML = \`
-      <header style="margin-bottom: 2rem; padding: 1rem; background: #e0e0e0; border-radius: 4px;">
+      <header style="margin-bottom: 2rem; padding: 1rem; background: var(--color-bg-muted); border-radius: 4px;">
         <h1 style="margin: 0; font-size: 2rem;">Page Header</h1>
-        <p style="margin: 0.5rem 0 0 0; color: #333;">Subtitle or description</p>
+        <p style="margin: 0.5rem 0 0 0; color: var(--color-text-default);">Subtitle or description</p>
       </header>
 
       <main style="margin-bottom: 2rem;">
-        <article style="margin-bottom: 2rem; padding: 1.5rem; background: white; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <article style="margin-bottom: 2rem; padding: 1.5rem; background: var(--color-bg-default); border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
           <h2>Article Title</h2>
           <p>\${args.content}</p>
           <p>This demonstrates how the container works with realistic nested content structure and responsive padding.</p>
         </article>
 
-        <section style="padding: 1.5rem; background: white; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <section style="padding: 1.5rem; background: var(--color-bg-default); border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
           <h3>Section Title</h3>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
-            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+            <div style="padding: 1rem; background: var(--color-bg-muted); border-radius: 4px;">
               <h4 style="margin-top: 0;">Card 1</h4>
               <p style="margin-bottom: 0;">Card content here.</p>
             </div>
-            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+            <div style="padding: 1rem; background: var(--color-bg-muted); border-radius: 4px;">
               <h4 style="margin-top: 0;">Card 2</h4>
               <p style="margin-bottom: 0;">Card content here.</p>
             </div>
-            <div style="padding: 1rem; background: #c9c9c9; border-radius: 4px;">
+            <div style="padding: 1rem; background: var(--color-bg-muted); border-radius: 4px;">
               <h4 style="margin-top: 0;">Card 3</h4>
               <p style="margin-bottom: 0;">Card content here.</p>
             </div>
@@ -309,11 +309,11 @@ This component does not use data attributes for styling or behavior.
         </section>
       </main>
 
-      <footer style="padding: 1rem; background: #e0e0e0; border-radius: 4px; text-align: center;">
-        <p style="margin: 0; color: #333;">&copy; 2025 Example Footer</p>
+      <footer style="padding: 1rem; background: var(--color-bg-muted); border-radius: 4px; text-align: center;">
+        <p style="margin: 0; color: var(--color-text-default);">&copy; 2025 Example Footer</p>
       </footer>
     \`;
-    wrapper.style.backgroundColor = "#fafafa";
+    wrapper.style.backgroundColor = "var(--color-bg-default)";
     wrapper.style.padding = "1rem";
     wrapper.append(container);
     return wrapper;
@@ -349,4 +349,4 @@ This component does not use data attributes for styling or behavior.
     await expect(computedStyle.marginInlineStart).not.toBe("auto");
     await expect(computedStyle.marginInlineEnd).not.toBe("auto");
   }
-}`,...h.parameters?.docs?.source}}};const w=["Default","ResponsiveDemo","NestedContent"];export{m as Default,h as NestedContent,g as ResponsiveDemo,w as __namedExportsOrder,y as default};
+}`,...u.parameters?.docs?.source}}};const b=["Default","ResponsiveDemo","NestedContent"];export{m as Default,u as NestedContent,g as ResponsiveDemo,b as __namedExportsOrder,y as default};

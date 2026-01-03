@@ -53,7 +53,7 @@ Use Snackbars for brief confirmations, error messages, and status updates that d
 | --snackbar-zindex | var(--zindex-snackbar) | Z-index for proper layering |
 | --snackbar-margin-for-small-screens | var(--spacing-2) | Margin on mobile devices |
 | --snackbar-bg-color | var(--color-primary) | Background color of the snackbar |
-| --snackbar-text-color | var(--color-text-light) | Text color for message content |
+| --snackbar-text-color | var(--color-text-inverse) | Text color for message content |
 | --snackbar-border-radius | var(--radius-sm) | Border radius for rounded corners |
 | --snackbar-box-shadow | var(--shadow-md) | Drop shadow for elevation |
 | --snackbar-inner-spacing | var(--spacing-3) | Internal padding and gaps |

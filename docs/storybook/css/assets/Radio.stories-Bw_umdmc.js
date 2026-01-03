@@ -46,8 +46,8 @@ This component has no modifiers.
 | Name | Default | Description |
 | ---- | ------- | ----------- |
 | --radio-size | 1em | Size of the radio button |
-| --radio-border-color | var(--color-dark) | Border color of the radio button |
-| --radio-bg-color | var(--color-light) | Background color when unchecked |
+| --radio-border-color | var(--color-text-default) | Border color of the radio button |
+| --radio-bg-color | var(--color-bg-muted) | Background color when unchecked |
 | --radio-lighter-brightness | 150% | Brightness for hover/focus states |
 | --radio-disabled-opacity | 0.65 | Opacity when disabled |
 

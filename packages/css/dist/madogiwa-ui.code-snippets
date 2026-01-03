@@ -1865,29 +1865,17 @@
     "body": "--color-warning",
     "description": "Madogiwa UI CSS variable --color-warning"
   },
-  "--color-light": {
+  "--color-text-default": {
     "scope": "css",
-    "prefix": "--color-light",
-    "body": "--color-light",
-    "description": "Madogiwa UI CSS variable --color-light"
+    "prefix": "--color-text-default",
+    "body": "--color-text-default",
+    "description": "Madogiwa UI CSS variable --color-text-default"
   },
-  "--color-dark": {
+  "--color-text-subtle": {
     "scope": "css",
-    "prefix": "--color-dark",
-    "body": "--color-dark",
-    "description": "Madogiwa UI CSS variable --color-dark"
-  },
-  "--color-border": {
-    "scope": "css",
-    "prefix": "--color-border",
-    "body": "--color-border",
-    "description": "Madogiwa UI CSS variable --color-border"
-  },
-  "--color-text": {
-    "scope": "css",
-    "prefix": "--color-text",
-    "body": "--color-text",
-    "description": "Madogiwa UI CSS variable --color-text"
+    "prefix": "--color-text-subtle",
+    "body": "--color-text-subtle",
+    "description": "Madogiwa UI CSS variable --color-text-subtle"
   },
   "--color-text-muted": {
     "scope": "css",
@@ -1895,35 +1883,41 @@
     "body": "--color-text-muted",
     "description": "Madogiwa UI CSS variable --color-text-muted"
   },
-  "--color-text-light": {
+  "--color-text-inverse": {
     "scope": "css",
-    "prefix": "--color-text-light",
-    "body": "--color-text-light",
-    "description": "Madogiwa UI CSS variable --color-text-light"
+    "prefix": "--color-text-inverse",
+    "body": "--color-text-inverse",
+    "description": "Madogiwa UI CSS variable --color-text-inverse"
   },
-  "--color-text-gray": {
+  "--color-bg-default": {
     "scope": "css",
-    "prefix": "--color-text-gray",
-    "body": "--color-text-gray",
-    "description": "Madogiwa UI CSS variable --color-text-gray"
+    "prefix": "--color-bg-default",
+    "body": "--color-bg-default",
+    "description": "Madogiwa UI CSS variable --color-bg-default"
   },
-  "--color-bg-light": {
+  "--color-bg-subtle": {
     "scope": "css",
-    "prefix": "--color-bg-light",
-    "body": "--color-bg-light",
-    "description": "Madogiwa UI CSS variable --color-bg-light"
+    "prefix": "--color-bg-subtle",
+    "body": "--color-bg-subtle",
+    "description": "Madogiwa UI CSS variable --color-bg-subtle"
   },
-  "--color-bg-grey": {
+  "--color-bg-muted": {
     "scope": "css",
-    "prefix": "--color-bg-grey",
-    "body": "--color-bg-grey",
-    "description": "Madogiwa UI CSS variable --color-bg-grey"
+    "prefix": "--color-bg-muted",
+    "body": "--color-bg-muted",
+    "description": "Madogiwa UI CSS variable --color-bg-muted"
   },
-  "--color-bg-dark": {
+  "--color-bg-inverse": {
     "scope": "css",
-    "prefix": "--color-bg-dark",
-    "body": "--color-bg-dark",
-    "description": "Madogiwa UI CSS variable --color-bg-dark"
+    "prefix": "--color-bg-inverse",
+    "body": "--color-bg-inverse",
+    "description": "Madogiwa UI CSS variable --color-bg-inverse"
+  },
+  "--color-border": {
+    "scope": "css",
+    "prefix": "--color-border",
+    "body": "--color-border",
+    "description": "Madogiwa UI CSS variable --color-border"
   },
   "--color-overlay": {
     "scope": "css",

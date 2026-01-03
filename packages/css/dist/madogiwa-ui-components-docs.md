@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2025-12-29T12:59:51.918Z
+generated_at: 2026-01-03T13:02:25.113Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -59,7 +59,7 @@ Use accordions to organize content into expandable sections that help users focu
 | --accordion-summary-font-weight | var(--font-weight-bold) | Font weight of the summary text |
 | --accordion-summary-icon-gap | var(--spacing-2) | Gap between icon and summary text |
 | --accordion-summary-icon-size | 0.6rem | Size of the expand/collapse icon |
-| --accordion-summary-icon-color | var(--color-text) | Color of the expand/collapse icon |
+| --accordion-summary-icon-color | var(--color-text-default) | Color of the expand/collapse icon |
 | --accordion-summary-icon-clip-path | polygon(0 0, 100% 50%, 0 100%) | Shape of the expand/collapse icon |
 | --accordion-summary-icon-open-transform | rotate(90deg) | Transform applied to icon when open |
 | --accordion-content-padding | 0 var(--spacing-3) var(--spacing-3) var(--spacing-3) | Padding for the accordion content area |
@@ -149,30 +149,30 @@ Use alerts to communicate important information that requires user attention but
 | Name | Default | Description |
 | ---- | ------- | ----------- |
 | --alert-bg-color | var(--color-default) | Background color for default alert |
-| --alert-text-color | var(--color-text) | Text color for default alert |
+| --alert-text-color | var(--color-text-default) | Text color for default alert |
 | --alert-border-color | var(--color-border) | Border color for default alert |
 | --alert-border | 1px solid var(--color-border) | Border style |
 | --alert-padding | var(--spacing-2) | Internal padding |
 | --alert-item-gap | var(--spacing-2) | Gap between alert elements |
 | --alert-icon-size | 1rem | Size of icons |
 | --alert-primary-bg-color | var(--color-primary) | Primary variant background |
-| --alert-primary-text-color | var(--color-text-light) | Primary variant text color |
+| --alert-primary-text-color | var(--color-text-inverse) | Primary variant text color |
 | --alert-primary-border-color | var(--color-primary) | Primary variant border color |
 | --alert-secondary-bg-color | var(--color-secondary) | Secondary variant background |
-| --alert-secondary-text-color | var(--color-text-light) | Secondary variant text color |
+| --alert-secondary-text-color | var(--color-text-inverse) | Secondary variant text color |
 | --alert-secondary-border-color | var(--color-secondary) | Secondary variant border color |
 | --alert-tertiary-bg-color | var(--color-tertiary) | Tertiary variant background |
-| --alert-tertiary-text-color | var(--color-text) | Tertiary variant text color |
+| --alert-tertiary-text-color | var(--color-text-default) | Tertiary variant text color |
 | --alert-tertiary-border-color | var(--color-tertiary) | Tertiary variant border color |
 | --alert-danger-bg-color | var(--color-danger) | Danger variant background |
-| --alert-danger-text-color | var(--color-text) | Danger variant text color |
+| --alert-danger-text-color | var(--color-text-default) | Danger variant text color |
 | --alert-danger-border-color | var(--color-danger) | Danger variant border color |
 | --alert-warning-bg-color | var(--color-warning) | Warning variant background |
-| --alert-warning-text-color | var(--color-text) | Warning variant text color |
+| --alert-warning-text-color | var(--color-text-default) | Warning variant text color |
 | --alert-warning-border-color | var(--color-warning) | Warning variant border color |
 | --alert-auto-dismiss-duration | 5s | Default auto dismiss duration |
 | --alert-auto-dismiss-fade-duration | 0.3s | Fade out animation duration |
-| --alert-auto-dismiss-progress-bg-color | rgb(from var(--color-white) r g b / 40%) | Progress bar background color |
+| --alert-auto-dismiss-progress-bg-color | rgb(from var(--color-bg-default) r g b / 40%) | Progress bar background color |
 | --alert-auto-dismiss-progress-height | 4px | Progress bar height |
 
 ### Data Attributes
@@ -246,7 +246,7 @@ This component has no child elements - it's a single-level component.
 | ------ | ---- | ------- | ----------- |
 | .m-badge | --badge-padding |var(--spacing-1) | Internal padding |
 | .m-badge | --badge-item-gap | var(--spacing-2) | Gap between badge elements |
-| .m-badge | --badge-text-color | var(--color-text) | Text color |
+| .m-badge | --badge-text-color | var(--color-text-default) | Text color |
 | .m-badge | --badge-border-color | var(--color-border) | Border color |
 | .m-badge | --badge-border | 1px solid var(--badge-border-color) | Border style |
 | .m-badge | --badge-border-radius | var(--radius-sm) | Border radius |
@@ -259,19 +259,19 @@ This component has no child elements - it's a single-level component.
 | .m-badge | --badge-small-padding | var(--spacing-1) | Padding for small variant |
 | .m-badge | --badge-primary-color | var(--color-primary) | Primary variant background |
 | .m-badge | --badge-primary-border-color | var(--color-primary) | Primary variant border color |
-| .m-badge | --badge-primary-text-color | var(--color-text-light) | Primary variant text color |
+| .m-badge | --badge-primary-text-color | var(--color-text-inverse) | Primary variant text color |
 | .m-badge | --badge-secondary-color | var(--color-secondary) | Secondary variant background |
 | .m-badge | --badge-secondary-border-color | var(--color-secondary) | Secondary variant border color |
-| .m-badge | --badge-secondary-text-color | var(--color-text-light) | Secondary variant text color |
+| .m-badge | --badge-secondary-text-color | var(--color-text-inverse) | Secondary variant text color |
 | .m-badge | --badge-tertiary-color | var(--color-tertiary) | Tertiary variant background |
 | .m-badge | --badge-tertiary-border-color | var(--color-tertiary) | Tertiary variant border color |
-| .m-badge | --badge-tertiary-text-color | var(--color-text) | Tertiary variant text color |
+| .m-badge | --badge-tertiary-text-color | var(--color-text-default) | Tertiary variant text color |
 | .m-badge | --badge-danger-color | var(--color-danger) | Danger variant background |
 | .m-badge | --badge-danger-border-color | var(--color-danger) | Danger variant border color |
-| .m-badge | --badge-danger-text-color | var(--color-text) | Danger variant text color |
+| .m-badge | --badge-danger-text-color | var(--color-text-default) | Danger variant text color |
 | .m-badge | --badge-warning-color | var(--color-warning) | Warning variant background |
 | .m-badge | --badge-warning-border-color | var(--color-warning) | Warning variant border color |
-| .m-badge | --badge-warning-text-color | var(--color-text) | Warning variant text color |
+| .m-badge | --badge-warning-text-color | var(--color-text-default) | Warning variant text color |
 | .m-badge | --badge-line-height | var(--line-height-one) | Line height |
 | .m-badge | --badge-min-width | 1.8em | Minimum width |
 
@@ -333,10 +333,10 @@ This component has no child elements - it's a single-level component.
 | .m-btn | --btn-color-primary | var(--color-primary) | Primary variant background color |
 | .m-btn | --btn-color-secondary | var(--color-secondary) | Secondary variant background color |
 | .m-btn | --btn-color-tertiary | var(--color-tertiary) | Tertiary variant background color |
-| .m-btn | --btn-text-color-default | var(--color-text) | Default variant text color |
-| .m-btn | --btn-text-color-primary | var(--color-text-light) | Primary variant text color |
-| .m-btn | --btn-text-color-secondary | var(--color-text-light) | Secondary variant text color |
-| .m-btn | --btn-text-color-tertiary | var(--color-text) | Tertiary variant text color |
+| .m-btn | --btn-text-color-default | var(--color-text-default) | Default variant text color |
+| .m-btn | --btn-text-color-primary | var(--color-text-inverse) | Primary variant text color |
+| .m-btn | --btn-text-color-secondary | var(--color-text-inverse) | Secondary variant text color |
+| .m-btn | --btn-text-color-tertiary | var(--color-text-default) | Tertiary variant text color |
 | .m-btn | --btn-outline-text-color-default | color(from var(--btn-color-default) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5)) | Outline default variant text color |
 | .m-btn | --btn-outline-text-color-primary | color(from var(--btn-color-primary) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5)) | Outline primary variant text color |
 | .m-btn | --btn-outline-text-color-secondary | color(from var(--btn-color-secondary) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5)) | Outline secondary variant text color |
@@ -476,11 +476,11 @@ This component does not have modifiers - styling is handled through states.
 | Target | Name | Default | Description |
 | ------ | ---- | ------- | ----------- |
 | .m-checkbox | --checkbox-size | 1em | Size of the checkbox |
-| .m-checkbox | --checkbox-border-color | var(--color-dark) | Border color |
+| .m-checkbox | --checkbox-border-color | var(--color-text-default) | Border color |
 | .m-checkbox | --checkbox-mark-border | 2px solid transparent | Border style for the checkmark |
 | .m-checkbox | --checkbox-mark-position-top | 0 | Top position of the checkmark |
 | .m-checkbox | --checkbox-mark-position-left | 20% | Left position of the checkmark |
-| .m-checkbox | --checkbox-bg-color | var(--color-light) | Background color |
+| .m-checkbox | --checkbox-bg-color | var(--color-bg-muted) | Background color |
 | .m-checkbox | --checkbox-border-radius | 0.2em | Border radius |
 | .m-checkbox | --checkbox-lighter-brightness | 150% | Brightness on hover/focus |
 | .m-checkbox | --checkbox-disabled-opacity | 0.65 | Opacity when disabled |
@@ -553,7 +553,7 @@ This component has no child elements - it's a single-level component.
 
 | Name | Default | Description |
 | ---- | ------- | ----------- |
-| --dialog-bg-color | var(--color-bg-light) | Dialog background color |
+| --dialog-bg-color | var(--color-bg-default) | Dialog background color |
 | --dialog-zindex | var(--zindex-modal) | Z-index for dialog stacking |
 | --dialog-padding | var(--spacing-3) | Internal padding of the dialog |
 | --dialog-border-radius | var(--radius-sm) | Border radius of the dialog |
@@ -904,26 +904,26 @@ hamburgerMenu.addEventListener("click", () => {
 
 | Name | Default | Description |
 | ---- | ------- | ----------- |
-| --navbar-bg-color | var(--color-bg-light) | Background color of the navbar |
+| --navbar-bg-color | var(--color-bg-default) | Background color of the navbar |
 | --navbar-min-height | 56px | Minimum height of the navbar |
 | --navbar-item-padding | var(--spacing-2) var(--spacing-3) | Padding for navbar items |
 | --navbar-item-gap | var(--spacing-2) | Gap between items with content |
-| --navbar-item-text-color | var(--color-text) | Text color for navigation items |
+| --navbar-item-text-color | var(--color-text-default) | Text color for navigation items |
 | --navbar-item-hover-bg-color | var(--color-primary) | Background color on item hover |
-| --navbar-item-hover-text-color | var(--color-text-light) | Text color on item hover |
+| --navbar-item-hover-text-color | var(--color-text-inverse) | Text color on item hover |
 | --navbar-hamburger-icon-content | "☰" | Hamburger menu icon content |
 | --navbar-hamburger-icon-close-content | "×" | Close menu icon content |
 | --navbar-hamburger-icon-size | 1.5rem | Size of hamburger menu icons |
 | --navbar-hamburger-icon-padding | 0 var(--spacing-2) | Padding for hamburger icon |
-| --navbar-hamburger-icon-color | var(--color-text) | Color of hamburger icon |
+| --navbar-hamburger-icon-color | var(--color-text-default) | Color of hamburger icon |
 | --navbar-hamburger-icon-hover-bg-color | color(from var(--navbar-bg-color) srgb calc(r * 0.8) calc(g * 0.8) calc(b * 0.8)) | Hover background for icon |
 | --navbar-hamburger-icon-border-radius | var(--radius-sm) | Border radius for hamburger icon |
 | --navbar-hamburger-menu-size | 2.5rem | Size of hamburger menu button |
-| --navbar-hamburger-menu-bg-color | var(--color-bg-light) | Background of mobile menu |
-| --navbar-hamburger-menu-border | 2px solid var(--color-bg-light) | Border for hamburger menu |
+| --navbar-hamburger-menu-bg-color | var(--color-bg-default) | Background of mobile menu |
+| --navbar-hamburger-menu-border | 2px solid var(--color-bg-default) | Border for hamburger menu |
 | --navbar-hamburger-menu-border-radius | 0 0 var(--radius-sm) var(--radius-sm) | Border radius for menu |
 | --navbar-hamburger-menu-box-shadow | var(--shadow-md) | Box shadow for menu |
-| --navbar-hamburger-menu-item-separate-border | 1px solid var(--color-bg-light) | Border between menu items |
+| --navbar-hamburger-menu-item-separate-border | 1px solid var(--color-bg-default) | Border between menu items |
 | --navbar-base-zindex | var(--zindex-navbar) | Base z-index for navbar layering |
 | --navbar-backdrop-zindex | calc(var(--navbar-base-zindex) + 1) | Z-index for backdrop |
 | --navbar-menu-zindex | calc(var(--navbar-backdrop-zindex) + 1) | Z-index for menu items |
@@ -1043,8 +1043,8 @@ This component has no modifiers.
 | Name | Default | Description |
 | ---- | ------- | ----------- |
 | --radio-size | 1em | Size of the radio button |
-| --radio-border-color | var(--color-dark) | Border color of the radio button |
-| --radio-bg-color | var(--color-light) | Background color when unchecked |
+| --radio-border-color | var(--color-text-default) | Border color of the radio button |
+| --radio-bg-color | var(--color-bg-muted) | Background color when unchecked |
 | --radio-lighter-brightness | 150% | Brightness for hover/focus states |
 | --radio-disabled-opacity | 0.65 | Opacity when disabled |
 
@@ -1128,7 +1128,7 @@ This component has no child elements - it's a single-level component.
 | --select-option-bg-color | var(--select-bg-color) | Background color for option elements (inherited from select) |
 | --select-option-padding | var(--spacing-2) | Padding for option elements |
 | --select-option-checked-bg-color | var(--color-tertiary) | Background color for checked options |
-| --select-option-checked-text-color | var(--color-text) | Text color for checked options |
+| --select-option-checked-text-color | var(--color-text-default) | Text color for checked options |
 | --select-option-hover-darker-rate | 0.9 | Darkness rate for option hover state |
 
 ### Data Attributes
@@ -1200,7 +1200,7 @@ Use Snackbars for brief confirmations, error messages, and status updates that d
 | --snackbar-zindex | var(--zindex-snackbar) | Z-index for proper layering |
 | --snackbar-margin-for-small-screens | var(--spacing-2) | Margin on mobile devices |
 | --snackbar-bg-color | var(--color-primary) | Background color of the snackbar |
-| --snackbar-text-color | var(--color-text-light) | Text color for message content |
+| --snackbar-text-color | var(--color-text-inverse) | Text color for message content |
 | --snackbar-border-radius | var(--radius-sm) | Border radius for rounded corners |
 | --snackbar-box-shadow | var(--shadow-md) | Drop shadow for elevation |
 | --snackbar-inner-spacing | var(--spacing-3) | Internal padding and gaps |
@@ -1275,11 +1275,11 @@ This component has no child elements - styling is applied directly to standard H
 | Target | Name | Default | Description |
 | ------ | ---- | ------- | ----------- |
 | .m-table | --table-bg-color | var(--color-white) | Background color for table |
-| .m-table | --table-hover-bg-color | var(--color-bg-light) | Background color for hovered rows |
+| .m-table | --table-hover-bg-color | var(--color-bg-subtle) | Background color for hovered rows |
 | .m-table | --table-border-color | var(--color-border) | Border color for table and cells |
 | .m-table | --table-border-width | 1px | Border width for table and cells |
 | .m-table | --table-padding | var(--spacing-3) var(--spacing-4) | Padding for cells (vertical horizontal) |
-| .m-table | --table-stripe-bg-color | var(--color-bg-grey) | Background color for even rows in stripe mode |
+| .m-table | --table-stripe-bg-color | var(--color-bg-muted) | Background color for even rows in stripe mode |
 | .m-table | --table-hover-opacity | 0.8 | Opacity value for hovered rows |
 | .m-table | --table-th-font-weight | var(--font-weight-semibold) | Font weight for table headers |
 | .m-table | --table-transition-duration | 0.2s | Transition animation duration |
@@ -1342,7 +1342,7 @@ Use Tabs for organizing content into separate views that users can switch betwee
 | --tabs-hover-item-filter | brightness(0.95) | Visual filter for hover state |
 | --tabs-disabled-item-filter | brightness(0.65) | Visual filter for disabled tabs |
 | --tabs-hover-transition | 0.3s ease | Transition timing for hover effects |
-| --tabs-item-background-color | var(--color-bg-light) | Background color for tab items |
+| --tabs-item-background-color | var(--color-bg-default) | Background color for tab items |
 
 ### Data Attributes
 
@@ -1471,9 +1471,9 @@ This component has no modifiers.
 | --toggle-transition | 0.1s ease | Animation timing for state changes |
 | --toggle-width | calc(var(--toggle-size) * 1.8) | Width of the toggle track |
 | --toggle-checked-translate-x | calc(var(--toggle-size) * 0.8) | Translation distance when checked |
-| --toggle-bg-color | var(--color-dark) | Background color when unchecked |
+| --toggle-bg-color | var(--color-bg-inverse) | Background color when unchecked |
 | --toggle-bg-color-checked | var(--color-primary) | Background color when checked |
-| --toggle-button-color | var(--color-light) | Color of the sliding button |
+| --toggle-button-color | var(--color-text-muted) | Color of the sliding button |
 | --toggle-button-scale | 0.8 | Scale factor for the button |
 | --toggle-lighter-brightness | 150% | Brightness for hover/focus states |
 | --toggle-disabled-opacity | 0.5 | Opacity when disabled |
@@ -1770,4 +1770,4 @@ Responsive utilities allow you to control visibility at different screen sizes, 
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 12/29/2025, 12:59:51 PM
+- Generated at: 1/3/2026, 1:02:25 PM

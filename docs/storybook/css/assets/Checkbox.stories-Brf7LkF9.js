@@ -33,11 +33,11 @@ This component does not have modifiers - styling is handled through states.
 | Target | Name | Default | Description |
 | ------ | ---- | ------- | ----------- |
 | .m-checkbox | --checkbox-size | 1em | Size of the checkbox |
-| .m-checkbox | --checkbox-border-color | var(--color-dark) | Border color |
+| .m-checkbox | --checkbox-border-color | var(--color-text-default) | Border color |
 | .m-checkbox | --checkbox-mark-border | 2px solid transparent | Border style for the checkmark |
 | .m-checkbox | --checkbox-mark-position-top | 0 | Top position of the checkmark |
 | .m-checkbox | --checkbox-mark-position-left | 20% | Left position of the checkmark |
-| .m-checkbox | --checkbox-bg-color | var(--color-light) | Background color |
+| .m-checkbox | --checkbox-bg-color | var(--color-bg-muted) | Background color |
 | .m-checkbox | --checkbox-border-radius | 0.2em | Border radius |
 | .m-checkbox | --checkbox-lighter-brightness | 150% | Brightness on hover/focus |
 | .m-checkbox | --checkbox-disabled-opacity | 0.65 | Opacity when disabled |

@@ -64,7 +64,7 @@ This component has no child elements - it's a single-level component.
 | --select-option-bg-color | var(--select-bg-color) | Background color for option elements (inherited from select) |
 | --select-option-padding | var(--spacing-2) | Padding for option elements |
 | --select-option-checked-bg-color | var(--color-tertiary) | Background color for checked options |
-| --select-option-checked-text-color | var(--color-text) | Text color for checked options |
+| --select-option-checked-text-color | var(--color-text-default) | Text color for checked options |
 | --select-option-hover-darker-rate | 0.9 | Darkness rate for option hover state |
 
 ### Data Attributes

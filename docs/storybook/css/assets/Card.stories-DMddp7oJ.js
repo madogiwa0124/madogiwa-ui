@@ -70,16 +70,16 @@ This component does not use data attributes for styling or behavior.
 - Consider loading performance when using multiple image cards
         `}}}},l={render:n=>{const a=document.createElement("div"),t=document.createElement("div");t.classList.add("m-card");const o=n.content,c=n.floating,i=n.hasFooter,s=n.footerJustify;c&&t.classList.add("--floating");const r=document.createElement("div");if(r.classList.add("m-card__content"),r.innerHTML=`
       <h3 style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600;">Card Title</h3>
-      <p style="margin: 0; color: #666; line-height: 1.5;">${o}</p>
+      <p style="margin: 0; color: var(--color-text-subtle); line-height: 1.5;">${o}</p>
     `,t.append(r),i){const d=document.createElement("div");d.classList.add("m-card__footer"),d.style.setProperty("--card-footer-justify",s),d.innerHTML=`
         <button class="m-btn">Cancel</button>
         <button class="m-btn --primary">Confirm</button>
       `,t.append(d)}return a.append(t),a},args:{content:"This is a basic card with content. Cards are perfect for organizing related information in a clean, digestible format.",floating:!1,hasFooter:!1,footerJustify:"flex-end"},play:async({canvasElement:n,args:a})=>{const t=n.querySelector(".m-card"),o=n.querySelector(".m-card__content");await e(t).toBeInTheDocument(),await e(t).toHaveClass("m-card"),await e(o).toBeInTheDocument(),await e(o).toHaveClass("m-card__content"),await e(o).toHaveTextContent("Card Title"),await e(o).toHaveTextContent(/basic card with content/),await(a.floating?e(t).toHaveClass("--floating"):e(t).not.toHaveClass("--floating"));const i=a.hasFooter,s=n.querySelector(".m-card__footer");i?(await e(s).toBeInTheDocument(),await e(s).toHaveClass("m-card__footer")):await e(s).not.toBeInTheDocument();const r=globalThis.getComputedStyle(t);await e(r.backgroundColor).not.toBe("rgba(0, 0, 0, 0)"),await e(r.borderRadius).not.toBe("0px")}},m={render:n=>{const a=document.createElement("div"),t=document.createElement("div");t.classList.add("m-card","--floating");const o=n.content,c=document.createElement("div");return c.classList.add("m-card__content"),c.innerHTML=`
       <h3 style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600;">Floating Card</h3>
-      <p style="margin: 0; color: #666; line-height: 1.5;">${o}</p>
+      <p style="margin: 0; color: var(--color-text-subtle); line-height: 1.5;">${o}</p>
     `,t.append(c),a.append(t),a},args:{content:"This card uses the floating modifier to add an elevated shadow effect. Hover over it to see the interaction."},play:async({canvasElement:n})=>{const a=n.querySelector(".m-card");await e(a).toBeInTheDocument(),await e(a).toHaveClass("m-card"),await e(a).toHaveClass("--floating");const t=globalThis.getComputedStyle(a);await e(t.boxShadow).not.toBe("none"),await u.hover(a),await e(a).toHaveClass("--floating"),await u.unhover(a)},parameters:{docs:{description:{story:"Card with floating shadow effect and hover interaction."}}}},f={render:n=>{const a=document.createElement("div"),t=document.createElement("div");t.classList.add("m-card"),t.style.width="320px",n.floating&&t.classList.add("--floating");const o=n.hasImage,c=n.content,i=n.imageAlt;if(o){const r=document.createElement("img");r.classList.add("m-card__image"),r.src=p,r.alt=i,t.append(r)}const s=document.createElement("div");if(s.classList.add("m-card__content"),s.innerHTML=`
       <h3 style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600;">Image Card</h3>
-      <p style="margin: 0; color: #666; line-height: 1.5;">${c}</p>
+      <p style="margin: 0; color: var(--color-text-subtle); line-height: 1.5;">${c}</p>
     `,t.append(s),n.hasFooter){const r=document.createElement("div");r.classList.add("m-card__footer"),r.style.justifyContent=n.footerJustify;const d=document.createElement("button");d.classList.add("m-btn"),d.textContent="Cancel";const g=document.createElement("button");g.classList.add("m-btn","--primary"),g.textContent="Confirm",r.append(d,g),t.append(r)}return a.append(t),a},args:{content:"This card demonstrates how images can be integrated with content. The image is responsive and maintains proper aspect ratio.",hasImage:!0,imageAlt:"Example card image showing 320x240 placeholder",hasFooter:!1,footerJustify:"flex-end",floating:!1},play:async({canvasElement:n,args:a})=>{const t=n.querySelector(".m-card"),o=n.querySelector(".m-card__image"),c=n.querySelector(".m-card__content");if(await e(t).toBeInTheDocument(),await e(t).toHaveClass("m-card"),await e(c).toBeInTheDocument(),a.hasImage){await e(o).toBeInTheDocument(),await e(o).toHaveClass("m-card__image"),await e(o).toHaveAttribute("src",p),await e(o).toHaveAttribute("alt",a.imageAlt);const i=globalThis.getComputedStyle(o);await e(i.width).toBe("318px"),await e(i.objectFit).toBe("cover")}if(a.hasFooter){const i=n.querySelector(".m-card__footer");await e(i).toBeInTheDocument(),await e(i).toHaveClass("m-card__footer"),await e(i).toHaveStyle(`justify-content: ${a.footerJustify}`)}await e(c).toHaveTextContent("Image Card"),await e(c).toHaveTextContent(/image/)},parameters:{docs:{description:{story:"Card with image header and content area."}}}};l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
   render: args => {
     const container = document.createElement("div");
@@ -94,7 +94,7 @@ This component does not use data attributes for styling or behavior.
     contentElement.classList.add("m-card__content");
     contentElement.innerHTML = \`
       <h3 style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600;">Card Title</h3>
-      <p style="margin: 0; color: #666; line-height: 1.5;">\${content}</p>
+      <p style="margin: 0; color: var(--color-text-subtle); line-height: 1.5;">\${content}</p>
     \`;
     card.append(contentElement);
     if (hasFooter) {
@@ -162,7 +162,7 @@ This component does not use data attributes for styling or behavior.
     contentElement.classList.add("m-card__content");
     contentElement.innerHTML = \`
       <h3 style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600;">Floating Card</h3>
-      <p style="margin: 0; color: #666; line-height: 1.5;">\${content}</p>
+      <p style="margin: 0; color: var(--color-text-subtle); line-height: 1.5;">\${content}</p>
     \`;
     card.append(contentElement);
     container.append(card);
@@ -220,7 +220,7 @@ This component does not use data attributes for styling or behavior.
     contentElement.classList.add("m-card__content");
     contentElement.innerHTML = \`
       <h3 style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600;">Image Card</h3>
-      <p style="margin: 0; color: #666; line-height: 1.5;">\${content}</p>
+      <p style="margin: 0; color: var(--color-text-subtle); line-height: 1.5;">\${content}</p>
     \`;
     card.append(contentElement);
     if (args["hasFooter"]) {
@@ -290,4 +290,4 @@ This component does not use data attributes for styling or behavior.
       }
     }
   }
-}`,...f.parameters?.docs?.source}}};const w=["Default","Floating","FullCardSample"];export{l as Default,m as Floating,f as FullCardSample,w as __namedExportsOrder,h as default};
+}`,...f.parameters?.docs?.source}}};const v=["Default","Floating","FullCardSample"];export{l as Default,m as Floating,f as FullCardSample,v as __namedExportsOrder,h as default};
