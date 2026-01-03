@@ -1,20 +1,29 @@
 @import "./primitive.css";
 
 :root {
+  /* brand */
   --color-default: var(--color-gray-400);
   --color-primary: var(--color-emerald-900);
   --color-secondary: var(--color-emerald-700);
   --color-tertiary: var(--color-emerald-500);
+
+  /* status */
   --color-danger: var(--color-red-500);
   --color-warning: var(--color-yellow-400);
+
+  /* text */
+  --color-text-default: var(--color-neutral-900);
+  --color-text-subtle: var(--color-neutral-600);
+  --color-text-muted: var(--color-neutral-400);
+  --color-text-inverse: var(--color-neutral-100);
+
+  /* background */
+  --color-bg-default: var(--color-neutral-50);
+  --color-bg-subtle: var(--color-neutral-100);
+  --color-bg-muted: var(--color-neutral-200);
+  --color-bg-inverse: var(--color-neutral-900);
+
+  /* other */
   --color-border: var(--color-gray-300);
-  --color-text-default: var(--color-gray-900);
-  --color-text-subtle: var(--color-gray-600);
-  --color-text-muted: var(--color-gray-400);
-  --color-text-inverse: var(--color-gray-100);
-  --color-bg-default: var(--color-gray-50);
-  --color-bg-subtle: var(--color-gray-100);
-  --color-bg-muted: var(--color-gray-200);
-  --color-bg-inverse: var(--color-gray-900);
   --color-overlay: rgb(from var(--color-gray-950) r g b / 50%);
 }
