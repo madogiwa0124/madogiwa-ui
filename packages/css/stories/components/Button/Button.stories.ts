@@ -92,12 +92,16 @@ This component has no child elements - it's a single-level component.
 | .m-btn | --btn-color-tertiary | var(--color-tertiary) | Tertiary variant background color |
 | .m-btn | --btn-text-color-default | var(--color-text-default) | Default variant text color |
 | .m-btn | --btn-text-color-primary | var(--color-text-inverse) | Primary variant text color |
+| .m-btn | --btn-text-dark-color-primary | var(--color-text-default) | Primary variant text color when prefers-color-scheme: dark |
 | .m-btn | --btn-text-color-secondary | var(--color-text-inverse) | Secondary variant text color |
+| .m-btn | --btn-text-dark-color-secondary | var(--color-text-default) | Secondary variant text color when prefers-color-scheme: dark |
 | .m-btn | --btn-text-color-tertiary | var(--color-text-default) | Tertiary variant text color |
-| .m-btn | --btn-outline-text-color-default | color(from var(--btn-color-default) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5)) | Outline default variant text color |
-| .m-btn | --btn-outline-text-color-primary | color(from var(--btn-color-primary) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5)) | Outline primary variant text color |
-| .m-btn | --btn-outline-text-color-secondary | color(from var(--btn-color-secondary) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5)) | Outline secondary variant text color |
-| .m-btn | --btn-outline-text-color-tertiary | color(from var(--btn-color-tertiary) srgb calc(r * 0.55) calc(g * 0.55) calc(b * 0.55)) | Outline tertiary variant text color |
+| .m-btn | --btn-outline-text-color-factor | 0.5 | Color factor for outline text |
+| .m-btn | --btn-outline-text-dark-color-factor | 2.3 | Color factor for outline text when prefers-color-scheme: dark |
+| .m-btn | --btn-outline-text-color-default | color(from var(--btn-color-default) srgb calc(r * var(--btn-outline-text-color-factor)) calc(g * var(--btn-outline-text-color-factor)) calc(b * var(--btn-outline-text-color-factor))) | Outline default variant text color |
+| .m-btn | --btn-outline-text-color-primary | color(from var(--btn-color-primary) srgb calc(r * var(--btn-outline-text-color-factor)) calc(g * var(--btn-outline-text-color-factor)) calc(b * var(--btn-outline-text-color-factor))) | Outline primary variant text color |
+| .m-btn | --btn-outline-text-color-secondary | color(from var(--btn-color-secondary) srgb calc(r * var(--btn-outline-text-color-factor)) calc(g * var(--btn-outline-text-color-factor)) calc(b * var(--btn-outline-text-color-factor))) | Outline secondary variant text color |
+| .m-btn | --btn-outline-text-color-tertiary | color(from var(--btn-color-tertiary) srgb calc(r * var(--btn-outline-text-color-factor)) calc(g * var(--btn-outline-text-color-factor)) calc(b * var(--btn-outline-text-color-factor))) | Outline tertiary variant text color |
 | .m-btn | --btn-darker-brightness | 90% | Darker brightness filter value |
 | .m-btn | --btn-lighter-brightness | 110% | Hover brightness filter value |
 | .m-btn | --btn-disabled-opacity | 0.65 | Disabled state opacity |

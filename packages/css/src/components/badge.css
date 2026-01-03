@@ -2,7 +2,7 @@
   --badge-padding: var(--spacing-1);
   --badge-item-gap: var(--spacing-2);
   --badge-text-color: var(--color-text-default);
-  --badge-border-color: var(--color-border);
+  --badge-border-color: var(--color-default);
   --badge-border: 1px solid var(--badge-border-color);
   --badge-border-radius: var(--radius-sm);
   --badge-bg-color: var(--color-default);
@@ -15,9 +15,11 @@
   --badge-primary-color: var(--color-primary);
   --badge-primary-border-color: var(--color-primary);
   --badge-primary-text-color: var(--color-text-inverse);
+  --badge-primary-text-dark-color: var(--color-text-default);
   --badge-secondary-color: var(--color-secondary);
   --badge-secondary-border-color: var(--color-secondary);
   --badge-secondary-text-color: var(--color-text-inverse);
+  --badge-secondary-text-dark-color: var(--color-text-default);
   --badge-tertiary-color: var(--color-tertiary);
   --badge-tertiary-border-color: var(--color-tertiary);
   --badge-tertiary-text-color: var(--color-text-default);
@@ -29,6 +31,12 @@
   --badge-warning-text-color: var(--color-text-default);
   --badge-line-height: var(--line-height-one);
   --badge-min-width: 1.8em;
+
+
+  @media (prefers-color-scheme: dark) {
+    --badge-primary-text-color: var(--badge-primary-text-dark-color);
+    --badge-secondary-text-color: var(--badge-secondary-text-dark-color);
+  }
 
   display: inline-flex;
   align-items: center;
@@ -42,7 +50,6 @@
   text-decoration: none;
   line-height: var(--badge-line-height);
   color: var(--badge-text-color);
-
 
   &:has(.icon, svg) {
     flex-shrink: 0;

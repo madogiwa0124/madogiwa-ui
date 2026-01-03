@@ -119,6 +119,25 @@ Madogiwa UI provides optional CSS transitions for interactive components, consid
 <button class="m-btn --primary --transition">Primary Button</button>
 ```
 
+### Dark Mode Support
+
+Madogiwa UI components automatically adapt to dark mode using the `prefers-color-scheme: dark` media query.
+Semantic colors adjust accordingly to maintain accessibility and visual consistency.
+
+If automatic adjustments are insufficient, use custom CSS variables to override colors for specific components. Define custom CSS variables for dark mode explicitly and apply them within the `prefers-color-scheme: dark` media query.
+
+```css
+--component-text-color: var(--color-text-default);
+--component-text-dark-color: var(--color-text-inverse);
+--component-bg-color: var(--color-bg-default);
+--component-dark-bg-color: var(--color-bg-dark);
+
+@media(prefers-color-scheme: dark) {
+  --component-text-color: var(--component-text-dark-color);
+  --component-bg-color: var(--component-dark-bg-color);
+}
+```
+
 ## Accessibility
 
 **For basic guidelines, see the corresponding [A11y Guideline](../prompts/a11y.prompt.md).**

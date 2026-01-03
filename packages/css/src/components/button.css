@@ -5,12 +5,16 @@
   --btn-color-tertiary: var(--color-tertiary);
   --btn-text-color-default: var(--color-text-default);
   --btn-text-color-primary: var(--color-text-inverse);
+  --btn-text-dark-color-primary: var(--color-text-default);
   --btn-text-color-secondary: var(--color-text-inverse);
+  --btn-text-dark-color-secondary: var(--color-text-default);
   --btn-text-color-tertiary: var(--color-text-default);
-  --btn-outline-text-color-default: color(from var(--btn-color-default) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5));
-  --btn-outline-text-color-primary: color(from var(--btn-color-primary) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5));
-  --btn-outline-text-color-secondary: color(from var(--btn-color-secondary) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5));
-  --btn-outline-text-color-tertiary: color(from var(--btn-color-tertiary) srgb calc(r * 0.55) calc(g * 0.55) calc(b * 0.55));
+  --btn-outline-text-color-factor: 0.5;
+  --btn-outline-text-dark-color-factor: 2.3;
+  --btn-outline-text-color-default: color(from var(--btn-color-default) srgb calc(r * var(--btn-outline-text-color-factor)) calc(g * var(--btn-outline-text-color-factor)) calc(b * var(--btn-outline-text-color-factor)));
+  --btn-outline-text-color-primary: color(from var(--btn-color-primary) srgb calc(r * var(--btn-outline-text-color-factor)) calc(g * var(--btn-outline-text-color-factor)) calc(b * var(--btn-outline-text-color-factor)));
+  --btn-outline-text-color-secondary: color(from var(--btn-color-secondary) srgb calc(r * var(--btn-outline-text-color-factor)) calc(g * var(--btn-outline-text-color-factor)) calc(b * var(--btn-outline-text-color-factor)));
+  --btn-outline-text-color-tertiary: color(from var(--btn-color-tertiary) srgb calc(r * var(--btn-outline-text-color-factor)) calc(g * var(--btn-outline-text-color-factor)) calc(b * var(--btn-outline-text-color-factor)));
   --btn-darker-brightness: 90%;
   --btn-lighter-brightness: 110%;
   --btn-disabled-opacity: 0.65;
@@ -22,6 +26,12 @@
   --btn-border-width: var(--border-width);
   --btn-active-transform: translateY(1px);
   --btn-transition-duration: 0.2s;
+
+  @media (prefers-color-scheme: dark) {
+    --btn-text-color-primary: var(--btn-text-dark-color-primary);
+    --btn-text-color-secondary: var(--btn-text-dark-color-secondary);
+    --btn-outline-text-color-factor: var(--btn-outline-text-dark-color-factor);
+  }
 
   display: inline-flex;
   align-items: center;

@@ -6,6 +6,7 @@
   --navbar-item-text-color: var(--color-text-default);
   --navbar-item-hover-bg-color: var(--color-primary);
   --navbar-item-hover-text-color: var(--color-text-inverse);
+  --navbar-item-hover-text-dark-color: var(--color-text-default);
   --navbar-hamburger-icon-content: "☰";
   --navbar-hamburger-icon-close-content: "×";
   --navbar-hamburger-icon-size: 1.5rem;
@@ -32,6 +33,10 @@
   --navbar-hamburger-side-menu-min-width: 40vw;
   --navbar-hamburger-side-menu-backdrop-color: var(--color-overlay);
   --navbar-hamburger-side-menu-backdrop-filter: blur(2px);
+
+  @media(prefers-color-scheme: dark) {
+    --navbar-item-hover-text-color: var(--navbar-item-hover-text-dark-color);
+  }
 
   min-width: 100%;
   width: max-content;

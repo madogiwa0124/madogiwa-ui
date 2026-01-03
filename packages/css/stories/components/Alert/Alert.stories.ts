@@ -122,18 +122,22 @@ Use alerts to communicate important information that requires user attention but
 | --alert-icon-size | 1rem | Size of icons |
 | --alert-primary-bg-color | var(--color-primary) | Primary variant background |
 | --alert-primary-text-color | var(--color-text-inverse) | Primary variant text color |
+| --alert-primary-text-dark-color | var(--color-text-default) | Primary variant text color when [1mprefers-color-scheme: dark[0m |
 | --alert-primary-border-color | var(--color-primary) | Primary variant border color |
 | --alert-secondary-bg-color | var(--color-secondary) | Secondary variant background |
 | --alert-secondary-text-color | var(--color-text-inverse) | Secondary variant text color |
+| --alert-secondary-text-dark-color | var(--color-text-default) | Secondary variant text color when [1mprefers-color-scheme: dark[0m |
 | --alert-secondary-border-color | var(--color-secondary) | Secondary variant border color |
 | --alert-tertiary-bg-color | var(--color-tertiary) | Tertiary variant background |
 | --alert-tertiary-text-color | var(--color-text-default) | Tertiary variant text color |
+| --alert-tertiary-text-dark-color | var(--color-text-inverse) | Tertiary variant text color when [1mprefers-color-scheme: dark[0m |
 | --alert-tertiary-border-color | var(--color-tertiary) | Tertiary variant border color |
 | --alert-danger-bg-color | var(--color-danger) | Danger variant background |
 | --alert-danger-text-color | var(--color-text-default) | Danger variant text color |
 | --alert-danger-border-color | var(--color-danger) | Danger variant border color |
 | --alert-warning-bg-color | var(--color-warning) | Warning variant background |
 | --alert-warning-text-color | var(--color-text-default) | Warning variant text color |
+| --alert-warning-text-dark-color | var(--color-text-inverse) | Warning variant text color when [1mprefers-color-scheme: dark[0m |
 | --alert-warning-border-color | var(--color-warning) | Warning variant border color |
 | --alert-auto-dismiss-duration | 5s | Default auto dismiss duration |
 | --alert-auto-dismiss-fade-duration | 0.3s | Fade out animation duration |

@@ -3,13 +3,16 @@
   --tabs-scrollbar-color: rgb(from var(--color-primary) r g b / 50%) transparent;
   --tabs-item-padding: var(--spacing-2) var(--spacing-4);
   --tabs-active-item-border-color: var(--color-primary);
+  --tabs-active-item-border-dark-color: var(--color-secondary);
   --tabs-active-item-border: 2px solid transparent;
   --tabs-active-item-filter: brightness(0.95);
   --tabs-active-item-color: var(--color-primary);
+  --tabs-active-item-dark-color: var(--color-secondary);
   --tabs-hover-item-filter: brightness(0.95);
   --tabs-disabled-item-filter: brightness(0.65);
   --tabs-hover-transition: 0.3s ease;
   --tabs-item-background-color: var(--color-bg-default);
+  --tabs-item-background-dark-color: var(--color-bg-subtle);
 
   /* ScrollHint */
   --tabs-scrollhint-width: 32px;
@@ -19,6 +22,12 @@
   --tabs-scrollhint-shadow-opacity: 0.4;
   --tabs-scrollhint-item-opacity: 50%;
   --tabs-scrollhint-shadow-color: rgb(0 0 0 / var(--tabs-scrollhint-shadow-opacity));
+
+  @media(prefers-color-scheme: dark) {
+    --tabs-active-item-color: var(--tabs-active-item-dark-color);
+    --tabs-active-item-border-color: var(--tabs-active-item-border-dark-color);
+    --tabs-item-background-color: var(--tabs-item-background-dark-color);
+  }
 
   .m-tabs__list,
   [role="tablist"] {
