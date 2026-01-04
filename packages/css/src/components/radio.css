@@ -1,6 +1,8 @@
 input[type="radio"].m-radio {
   --radio-size: 1em;
   --radio-border-color: var(--color-text-default);
+  --radio-mark-bg-color: var(--color-text-inverse);
+  --radio-mark-color: var(--color-primary);
   --radio-bg-color: var(--color-bg-muted);
   --radio-lighter-brightness: 150%;
   --radio-disabled-opacity: 0.65;
@@ -32,11 +34,11 @@ input[type="radio"].m-radio {
   }
 
   &:checked {
-    background-color: var(--color-text-inverse);
+    background-color: var(--radio-mark-bg-color);
     transition: background-color 0.2s ease;
 
     &::after {
-      background-color: var(--color-primary);
+      background-color: var(--radio-mark-color);
       display: block;
     }
   }

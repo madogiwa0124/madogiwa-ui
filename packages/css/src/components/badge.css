@@ -2,7 +2,7 @@
   --badge-padding: var(--spacing-1);
   --badge-item-gap: var(--spacing-2);
   --badge-text-color: var(--color-text-default);
-  --badge-border-color: var(--color-border);
+  --badge-border-color: var(--color-default);
   --badge-border: 1px solid var(--badge-border-color);
   --badge-border-radius: var(--radius-sm);
   --badge-bg-color: var(--color-default);
@@ -42,7 +42,6 @@
   text-decoration: none;
   line-height: var(--badge-line-height);
   color: var(--badge-text-color);
-
 
   &:has(.icon, svg) {
     flex-shrink: 0;

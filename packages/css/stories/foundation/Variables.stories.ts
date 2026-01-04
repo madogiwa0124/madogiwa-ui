@@ -39,6 +39,8 @@ The Variables system provides a comprehensive collection of design tokens that f
 
 Design tokens are CSS custom properties that maintain consistent visual design across your application. They can be referenced in CSS using \`var()\` syntax and are organized into semantic categories for easy maintenance.
 
+Dark mode tokens apply automatically when the root element has \`data-theme="dark"\`, enabling semantic colors and related values to switch without additional overrides.
+
 ### Sort Modes
 
 - **Natural**: Prioritizes size variants (xs→sm→md→lg→xl) for intuitive size progression
