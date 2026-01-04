@@ -47,11 +47,6 @@
     padding: var(--navbar-item-padding);
     text-decoration: none;
     flex-shrink: 0;
-
-    &:hover {
-      background-color: initial;
-      color: initial;
-    }
   }
 
   .m-navbar__items {
