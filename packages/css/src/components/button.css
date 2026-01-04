@@ -7,10 +7,11 @@
   --btn-text-color-primary: var(--color-text-inverse);
   --btn-text-color-secondary: var(--color-text-inverse);
   --btn-text-color-tertiary: var(--color-text-default);
-  --btn-outline-text-color-default: color(from var(--btn-color-default) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5));
-  --btn-outline-text-color-primary: color(from var(--btn-color-primary) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5));
-  --btn-outline-text-color-secondary: color(from var(--btn-color-secondary) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5));
-  --btn-outline-text-color-tertiary: color(from var(--btn-color-tertiary) srgb calc(r * 0.55) calc(g * 0.55) calc(b * 0.55));
+  --btn-outline-text-color-factor: 0.5;
+  --btn-outline-text-color-default: var(--color-default);
+  --btn-outline-text-color-primary: var(--color-primary);
+  --btn-outline-text-color-secondary: var(--color-secondary);
+  --btn-outline-text-color-tertiary: var(--color-tertiary);
   --btn-darker-brightness: 90%;
   --btn-lighter-brightness: 110%;
   --btn-disabled-opacity: 0.65;

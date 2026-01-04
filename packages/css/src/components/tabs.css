@@ -9,12 +9,12 @@
   --tabs-hover-item-filter: brightness(0.95);
   --tabs-disabled-item-filter: brightness(0.65);
   --tabs-hover-transition: 0.3s ease;
-  --tabs-item-background-color: var(--color-bg-default);
+  --tabs-item-background-color: var(--color-bg-subtle);
 
   /* ScrollHint */
   --tabs-scrollhint-width: 32px;
   --tabs-scrollhint-mask-stop: 32px;
-  --tabs-scrollhint-mask-color: var(--color-bg-default);
+  --tabs-scrollhint-mask-color: var(--color-bg-subtle);
   --tabs-scrollhint-mask-width: calc(var(--tabs-scrollhint-width) * 1.5);
   --tabs-scrollhint-shadow-opacity: 0.4;
   --tabs-scrollhint-item-opacity: 50%;
