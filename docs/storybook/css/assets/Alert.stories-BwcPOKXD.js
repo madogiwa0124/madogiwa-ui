@@ -56,8 +56,8 @@ Use alerts to communicate important information that requires user attention but
 | ---- | ------- | ----------- |
 | --alert-bg-color | var(--color-default) | Background color for default alert |
 | --alert-text-color | var(--color-text-default) | Text color for default alert |
-| --alert-border-color | var(--color-border) | Border color for default alert |
-| --alert-border | 1px solid var(--color-border) | Border style |
+| --alert-border-color | var(--color-default) | Border color for default alert |
+| --alert-border | 1px solid var(--alert-border-color) | Border style |
 | --alert-padding | var(--spacing-2) | Internal padding |
 | --alert-item-gap | var(--spacing-2) | Gap between alert elements |
 | --alert-icon-size | 1rem | Size of icons |

@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2026-01-03T13:02:25.113Z
+generated_at: 2026-01-04T11:54:39.648Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -150,8 +150,8 @@ Use alerts to communicate important information that requires user attention but
 | ---- | ------- | ----------- |
 | --alert-bg-color | var(--color-default) | Background color for default alert |
 | --alert-text-color | var(--color-text-default) | Text color for default alert |
-| --alert-border-color | var(--color-border) | Border color for default alert |
-| --alert-border | 1px solid var(--color-border) | Border style |
+| --alert-border-color | var(--color-default) | Border color for default alert |
+| --alert-border | 1px solid var(--alert-border-color) | Border style |
 | --alert-padding | var(--spacing-2) | Internal padding |
 | --alert-item-gap | var(--spacing-2) | Gap between alert elements |
 | --alert-icon-size | 1rem | Size of icons |
@@ -247,7 +247,7 @@ This component has no child elements - it's a single-level component.
 | .m-badge | --badge-padding |var(--spacing-1) | Internal padding |
 | .m-badge | --badge-item-gap | var(--spacing-2) | Gap between badge elements |
 | .m-badge | --badge-text-color | var(--color-text-default) | Text color |
-| .m-badge | --badge-border-color | var(--color-border) | Border color |
+| .m-badge | --badge-border-color | var(--color-default) | Border color |
 | .m-badge | --badge-border | 1px solid var(--badge-border-color) | Border style |
 | .m-badge | --badge-border-radius | var(--radius-sm) | Border radius |
 | .m-badge | --badge-bg-color | var(--color-default) | Background color |
@@ -337,10 +337,11 @@ This component has no child elements - it's a single-level component.
 | .m-btn | --btn-text-color-primary | var(--color-text-inverse) | Primary variant text color |
 | .m-btn | --btn-text-color-secondary | var(--color-text-inverse) | Secondary variant text color |
 | .m-btn | --btn-text-color-tertiary | var(--color-text-default) | Tertiary variant text color |
-| .m-btn | --btn-outline-text-color-default | color(from var(--btn-color-default) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5)) | Outline default variant text color |
-| .m-btn | --btn-outline-text-color-primary | color(from var(--btn-color-primary) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5)) | Outline primary variant text color |
-| .m-btn | --btn-outline-text-color-secondary | color(from var(--btn-color-secondary) srgb calc(r * 0.5) calc(g * 0.5) calc(b * 0.5)) | Outline secondary variant text color |
-| .m-btn | --btn-outline-text-color-tertiary | color(from var(--btn-color-tertiary) srgb calc(r * 0.55) calc(g * 0.55) calc(b * 0.55)) | Outline tertiary variant text color |
+| .m-btn | --btn-outline-text-color-factor | 0.5 | Multiplier for deriving outline text colors |
+| .m-btn | --btn-outline-text-color-default | var(--color-default) | Outline default variant text color |
+| .m-btn | --btn-outline-text-color-primary | var(--color-primary) | Outline primary variant text color |
+| .m-btn | --btn-outline-text-color-secondary | var(--color-secondary) | Outline secondary variant text color |
+| .m-btn | --btn-outline-text-color-tertiary | var(--color-tertiary) | Outline tertiary variant text color |
 | .m-btn | --btn-darker-brightness | 90% | Darker brightness filter value |
 | .m-btn | --btn-lighter-brightness | 110% | Hover brightness filter value |
 | .m-btn | --btn-disabled-opacity | 0.65 | Disabled state opacity |
@@ -477,6 +478,8 @@ This component does not have modifiers - styling is handled through states.
 | ------ | ---- | ------- | ----------- |
 | .m-checkbox | --checkbox-size | 1em | Size of the checkbox |
 | .m-checkbox | --checkbox-border-color | var(--color-text-default) | Border color |
+| .m-checkbox | --checkbox-mark-bg-color | var(--color-primary) | Background color when checked |
+| .m-checkbox | --checkbox-mark-color | var(--color-text-inverse) | Checkmark color |
 | .m-checkbox | --checkbox-mark-border | 2px solid transparent | Border style for the checkmark |
 | .m-checkbox | --checkbox-mark-position-top | 0 | Top position of the checkmark |
 | .m-checkbox | --checkbox-mark-position-left | 20% | Left position of the checkmark |
@@ -553,6 +556,7 @@ This component has no child elements - it's a single-level component.
 
 | Name | Default | Description |
 | ---- | ------- | ----------- |
+| --dialog-text-color | var(--color-text-default) | Dialog text color |
 | --dialog-bg-color | var(--color-bg-default) | Dialog background color |
 | --dialog-zindex | var(--zindex-modal) | Z-index for dialog stacking |
 | --dialog-padding | var(--spacing-3) | Internal padding of the dialog |
@@ -1044,6 +1048,8 @@ This component has no modifiers.
 | ---- | ------- | ----------- |
 | --radio-size | 1em | Size of the radio button |
 | --radio-border-color | var(--color-text-default) | Border color of the radio button |
+| --radio-mark-bg-color | var(--color-text-inverse) | Background color when checked |
+| --radio-mark-color | var(--color-primary) | Inner mark color when checked |
 | --radio-bg-color | var(--color-bg-muted) | Background color when unchecked |
 | --radio-lighter-brightness | 150% | Brightness for hover/focus states |
 | --radio-disabled-opacity | 0.65 | Opacity when disabled |
@@ -1342,7 +1348,7 @@ Use Tabs for organizing content into separate views that users can switch betwee
 | --tabs-hover-item-filter | brightness(0.95) | Visual filter for hover state |
 | --tabs-disabled-item-filter | brightness(0.65) | Visual filter for disabled tabs |
 | --tabs-hover-transition | 0.3s ease | Transition timing for hover effects |
-| --tabs-item-background-color | var(--color-bg-default) | Background color for tab items |
+| --tabs-item-background-color | var(--color-bg-subtle) | Background color for tab items |
 
 ### Data Attributes
 
@@ -1473,7 +1479,7 @@ This component has no modifiers.
 | --toggle-checked-translate-x | calc(var(--toggle-size) * 0.8) | Translation distance when checked |
 | --toggle-bg-color | var(--color-bg-inverse) | Background color when unchecked |
 | --toggle-bg-color-checked | var(--color-primary) | Background color when checked |
-| --toggle-button-color | var(--color-text-muted) | Color of the sliding button |
+| --toggle-button-color | var(--color-text-inverse) | Color of the sliding button |
 | --toggle-button-scale | 0.8 | Scale factor for the button |
 | --toggle-lighter-brightness | 150% | Brightness for hover/focus states |
 | --toggle-disabled-opacity | 0.5 | Opacity when disabled |
@@ -1500,6 +1506,8 @@ The Variables system provides a comprehensive collection of design tokens that f
 ### Usage
 
 Design tokens are CSS custom properties that maintain consistent visual design across your application. They can be referenced in CSS using `var()` syntax and are organized into semantic categories for easy maintenance.
+
+Dark mode tokens apply automatically when the root element has `data-theme="dark"`, enabling semantic colors and related values to switch without additional overrides.
 
 ### Sort Modes
 
@@ -1770,4 +1778,4 @@ Responsive utilities allow you to control visibility at different screen sizes, 
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 1/3/2026, 1:02:25 PM
+- Generated at: 1/4/2026, 11:54:39 AM

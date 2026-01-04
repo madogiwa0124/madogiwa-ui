@@ -51,7 +51,7 @@ This component has no child elements - it's a single-level component.
 | .m-badge | --badge-padding |var(--spacing-1) | Internal padding |
 | .m-badge | --badge-item-gap | var(--spacing-2) | Gap between badge elements |
 | .m-badge | --badge-text-color | var(--color-text-default) | Text color |
-| .m-badge | --badge-border-color | var(--color-border) | Border color |
+| .m-badge | --badge-border-color | var(--color-default) | Border color |
 | .m-badge | --badge-border | 1px solid var(--badge-border-color) | Border style |
 | .m-badge | --badge-border-radius | var(--radius-sm) | Border radius |
 | .m-badge | --badge-bg-color | var(--color-default) | Background color |

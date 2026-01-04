@@ -1,4 +1,4 @@
-function d(e={}){const{name:n="radio",value:a="radio",id:t,checked:i=!1,disabled:c=!1,className:b="m-radio"}=e,r=document.createElement("input");return r.type="radio",r.className=b,r.name=n,r.value=a,r.checked=i,r.disabled=c,t&&(r.id=t),r}function v(e){const{text:n,htmlFor:a,cursor:t="pointer",userSelect:i="none"}=e,c=document.createElement("label");return c.htmlFor=a,c.textContent=n,c.style.cursor=t,c.style.userSelect=i,c}function w(e,n){const a=document.createElement("div");a.style.display="flex",a.style.alignItems="center",a.style.gap="0.5rem";const t=d(e),i=v({text:n,htmlFor:e.id});return a.append(t),a.append(i),a}const{expect:o,userEvent:h,within:m}=__STORYBOOK_MODULE_TEST__,f={title:"Components/Radio",tags:["autodocs"],argTypes:{name:{control:"text",description:"The name attribute for the component"},value:{control:"text",description:"The value attribute for the component"},checked:{control:"boolean",description:"The checked state for the component"},disabled:{control:"boolean",description:"The disabled state for the component"}},parameters:{docs:{description:{component:`
+function d(e={}){const{name:n="radio",value:a="radio",id:t,checked:i=!1,disabled:c=!1,className:b="m-radio"}=e,r=document.createElement("input");return r.type="radio",r.className=b,r.name=n,r.value=a,r.checked=i,r.disabled=c,t&&(r.id=t),r}function v(e){const{text:n,htmlFor:a,cursor:t="pointer",userSelect:i="none"}=e,c=document.createElement("label");return c.htmlFor=a,c.textContent=n,c.style.cursor=t,c.style.userSelect=i,c}function w(e,n){const a=document.createElement("div");a.style.display="flex",a.style.alignItems="center",a.style.gap="0.5rem";const t=d(e),i=v({text:n,htmlFor:e.id});return a.append(t),a.append(i),a}const{expect:o,userEvent:h,within:m}=__STORYBOOK_MODULE_TEST__,k={title:"Components/Radio",tags:["autodocs"],argTypes:{name:{control:"text",description:"The name attribute for the component"},value:{control:"text",description:"The value attribute for the component"},checked:{control:"boolean",description:"The checked state for the component"},disabled:{control:"boolean",description:"The disabled state for the component"}},parameters:{docs:{description:{component:`
 ### Overview
 
 The Radio component provides a circular selection input for exclusive choices within a group. It offers clear visual feedback and smooth interactions for single-choice scenarios.
@@ -47,6 +47,8 @@ This component has no modifiers.
 | ---- | ------- | ----------- |
 | --radio-size | 1em | Size of the radio button |
 | --radio-border-color | var(--color-text-default) | Border color of the radio button |
+| --radio-mark-bg-color | var(--color-text-inverse) | Background color when checked |
+| --radio-mark-color | var(--color-primary) | Inner mark color when checked |
 | --radio-bg-color | var(--color-bg-muted) | Background color when unchecked |
 | --radio-lighter-brightness | 150% | Brightness for hover/focus states |
 | --radio-disabled-opacity | 0.65 | Opacity when disabled |
@@ -201,4 +203,4 @@ This component does not use data attributes for styling or behavior.
     await userEvent.click(label);
     await expect(radio).toBeChecked();
   }
-}`,...p.parameters?.docs?.source}}};const k=["Default","Checked","Disabled","WithLabel"];export{l as Checked,s as Default,u as Disabled,p as WithLabel,k as __namedExportsOrder,f as default};
+}`,...p.parameters?.docs?.source}}};const f=["Default","Checked","Disabled","WithLabel"];export{l as Checked,s as Default,u as Disabled,p as WithLabel,f as __namedExportsOrder,k as default};
