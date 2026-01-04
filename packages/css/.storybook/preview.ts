@@ -1,7 +1,10 @@
-import type { Preview } from "@storybook/html";
+import type {Preview } from "@storybook/html";
 import "../src/main.css";
+import { withThemeByBackground } from "./decorators/withThemeByBackground";
+
 
 const preview: Preview = {
+  decorators: [withThemeByBackground],
   parameters: {
     controls: {
       matchers: {
