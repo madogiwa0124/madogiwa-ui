@@ -17,6 +17,7 @@
   padding: 0;
   box-shadow: var(--snackbar-box-shadow);
   z-index: var(--snackbar-zindex);
+  background-color: transparent;
 
   .m-snackbar__body {
     display: flex;
