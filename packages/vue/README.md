@@ -52,7 +52,7 @@ import { MButton, MHeading, MContainer } from "@madogiwa-ui/vue";
 
 ## 🏗️ Architecture
 
-[Architecture Documentation](../../.github/prompts/vue.prompt.md)
+[Architecture Documentation](../../.github/instructions/vue.instructions.md)
 
 ## 💻 Development
 

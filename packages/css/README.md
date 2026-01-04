@@ -82,7 +82,7 @@ To use Madogiwa UI CSS snippets in VS Code, place the `dist/madogiwa-ui.code-sni
 
 ## 🏗️ Architecture
 
-[Architecture Documentation](../../.github/prompts/css.prompt.md)
+[Architecture Documentation](../../.github/instructions/css.instructions.md)
 
 ## 🌐 Browser Support
 
