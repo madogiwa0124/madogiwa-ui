@@ -14,21 +14,21 @@
     "lint:type-check": "tsc --noEmit && pnpm vue type-check"
   },
   "devDependencies": {
-    "@eslint/js": "^9.38.0",
-    "@playwright/test": "^1.56.1",
-    "@stylistic/eslint-plugin": "^5.5.0",
+    "@eslint/js": "^9.39.2",
+    "@playwright/test": "^1.57.0",
+    "@stylistic/eslint-plugin": "^5.6.1",
     "@stylistic/stylelint-plugin": "^4.0.0",
-    "@tsconfig/strictest": "^2.0.6",
-    "eslint": "^9.38.0",
-    "eslint-plugin-unicorn": "60.0.0",
-    "eslint-plugin-vue": "^10.5.1",
-    "globals": "^16.4.0",
-    "stylelint": "^16.25.0",
+    "@tsconfig/strictest": "^2.0.8",
+    "eslint": "^9.39.2",
+    "eslint-plugin-unicorn": "62.0.0",
+    "eslint-plugin-vue": "^10.6.2",
+    "globals": "^17.0.0",
+    "stylelint": "^16.26.1",
     "stylelint-config-standard": "^39.0.1",
-    "stylelint-plugin-use-baseline": "^1.0.3",
-    "typescript": "~5.9.3",
-    "typescript-eslint": "^8.46.2",
+    "stylelint-plugin-use-baseline": "^1.1.5",
+    "typescript": "catalog:",
+    "typescript-eslint": "^8.52.0",
     "vue-eslint-parser": "^10.2.0"
   },
-  "packageManager": "pnpm@10.19.0"
+  "packageManager": "pnpm@10.27.0"
 }

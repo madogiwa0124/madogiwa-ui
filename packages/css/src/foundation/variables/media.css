@@ -12,6 +12,8 @@
   --media-sm-max-width: 40rem; /* 640px */
 }
 
+/* NOTE: Polyfills are applied by PostCSS, so there is no problem */
+/* stylelint-disable plugin/use-baseline */
 @custom-media --media-breakpoint-2xl (width >=96rem);
 @custom-media --media-breakpoint-xl (width >=80rem);
 @custom-media --media-breakpoint-lg (width >=64rem);
@@ -22,3 +24,4 @@
 @custom-media --media-breakpoint-max-lg (width < 64rem);
 @custom-media --media-breakpoint-max-md (width < 48rem);
 @custom-media --media-breakpoint-max-sm (width < 40rem);
+/* stylelint-enable plugin/use-baseline */

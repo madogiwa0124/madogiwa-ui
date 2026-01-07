@@ -128,7 +128,7 @@ const buildRootCSSVariableSnippets = ({ descriptionPrefix, variableRegex = CSS_V
   if (!rootMatch) return [];
 
   const snippets: { [name: string]: SnippetItem }[] = [];
-  let cssVariables = new Set<string>([]);
+  let cssVariables = new Set<string>();
   for (const match of rootMatch) {
     cssVariables = cssVariables.union(extractCSSVariables(match, variableRegex));
   }
@@ -166,8 +166,7 @@ export const buildSnippets = ({ descriptionPrefix, classRegex, cssContent, initS
   initScope: string;
   outputRootCSSVariables: boolean;
 }) => {
-  const snippets: { [name: string]: SnippetItem }[] = [];
-  snippets.push(...buildClassSnippets({ descriptionPrefix, classRegex, cssContent, initScope }));
+  const snippets: { [name: string]: SnippetItem }[] = [...buildClassSnippets({ descriptionPrefix, classRegex, cssContent, initScope })];
   if (outputRootCSSVariables) snippets.push(...buildRootCSSVariableSnippets({ descriptionPrefix, cssContent, initScope: CSS_VARIABLES_SNIPPET_SCOPE }));
   return snippets;
 };

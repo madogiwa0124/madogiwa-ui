@@ -36,7 +36,9 @@ export const customProperties = (
     styleType: calcStyleType(name, prefixStyleMapping),
   }));
 
-  return sortMode === "natural" ? mappedProperties.sort(naturalSort) : mappedProperties.sort(numericSort);
+  return sortMode === "natural"
+    ? mappedProperties.toSorted(naturalSort)
+    : mappedProperties.toSorted(numericSort);
 };
 
 // Natural sort function for CSS variables with numeric values and size variants

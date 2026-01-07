@@ -1,11 +1,11 @@
 packages:
   - packages/*
 
-onlyBuiltDependencies:
-  - "@swc/core"
-  - esbuild
-
 catalog:
-  vite: ^7.1.11
-  postcss-preset-env: ^10.4.0
+  postcss-preset-env: ^10.6.0
   typescript: ~5.9.3
+  vite: ^7.3.0
+
+onlyBuiltDependencies:
+  - '@swc/core'
+  - esbuild

@@ -94,7 +94,7 @@ const generateMarkdown = (documents: ComponentDocument[], frontMatter: Record<st
     .join("\n");
 
   const componentsSection = documents
-    .sort((a, b) => a.title.localeCompare(b.title))
+    .toSorted((a, b) => a.title.localeCompare(b.title))
     .map((document) => {
       const componentName = document.title.replace("Components/", "");
       return `## ${componentName}\n\n${document.description}\n\n---\n`;

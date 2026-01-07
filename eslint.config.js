@@ -160,6 +160,8 @@ export default defineConfig([
       ],
       "@typescript-eslint/no-redundant-type-constituents": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
+      // NOTE: Disabled because default assignment by Reactive Props Destructure causes an error
+      "@typescript-eslint/no-useless-default-assignment": "off"
     }
   },
   {

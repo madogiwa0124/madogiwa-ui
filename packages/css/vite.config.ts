@@ -14,7 +14,7 @@ export default defineConfig({
         - Ends the match before `{` or `,` (to exclude pseudo-classes and descendant selectors)
         - Examples: `.m-btn`, `.m-btn.--primary`, `.m-btn:hover`, `.m-card__image` → `.m-btn`, `.m-btn.--primary`, `.m-card__image`
       */
-      targetSelectorRegexp: `\\.m-([a-zA-Z0-9_-]+(?:__[a-zA-Z0-9_-]+)?)(?:\\.--[a-zA-Z0-9_-]+)*(?=[\\s,{])`,
+      targetSelectorRegexp: String.raw`\.m-([a-zA-Z0-9_-]+(?:__[a-zA-Z0-9_-]+)?)(?:\.--[a-zA-Z0-9_-]+)*(?=[\s,{])`,
       snippetFileName: "dist/madogiwa-ui.code-snippets",
       descriptionPrefix: "Madogiwa UI",
       outputRootCSSVariables: true,

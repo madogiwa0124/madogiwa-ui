@@ -6,7 +6,7 @@ import { buildSnippets } from "./outputCssSnippetFilePlugin.ts";
 
 void describe("outputCssSnippetFilePlugin", () => {
   void test("buildSnippets", async (t: TestContext) => {
-    const targetSelectorRegexp = `\\.m-([a-zA-Z0-9_-]+(?:__[a-zA-Z0-9_-]+)?)(?:\\.--[a-zA-Z0-9_-]+)*(?=[\\s,{])`;
+    const targetSelectorRegexp = String.raw`\.m-([a-zA-Z0-9_-]+(?:__[a-zA-Z0-9_-]+)?)(?:\.--[a-zA-Z0-9_-]+)*(?=[\s,{])`;
     const classRegex = new RegExp(targetSelectorRegexp, "g");
     const cssContent = `
       :root {
