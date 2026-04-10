@@ -2,7 +2,6 @@ import { ComponentOptionsMixin } from 'vue';
 import { ComponentProvideOptions } from 'vue';
 import { DefineComponent } from 'vue';
 import { PublicProps } from 'vue';
-import { Variant } from './types';
 
 declare const __VLS_base: DefineComponent<__VLS_Props, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
@@ -355,17 +354,17 @@ declare type __VLS_PublicProps_2 = __VLS_Props_14 & __VLS_ModelProps_4;
 declare type __VLS_PublicProps_3 = __VLS_Props_19 & __VLS_ModelProps_5;
 
 declare type __VLS_Slots = {} & {
-    summary?: (props: typeof __VLS_6) => any;
+    summary?: (props: typeof __VLS_7) => any;
 } & {
-    default?: (props: typeof __VLS_13) => any;
+    default?: (props: typeof __VLS_15) => any;
 };
 
 declare type __VLS_Slots_10 = {} & {
     image?: (props: typeof __VLS_1) => any;
 } & {
-    default?: (props: typeof __VLS_8) => any;
+    default?: (props: typeof __VLS_9) => any;
 } & {
-    footer?: (props: typeof __VLS_15) => any;
+    footer?: (props: typeof __VLS_17) => any;
 };
 
 declare type __VLS_Slots_11 = {} & {
@@ -419,9 +418,9 @@ declare type __VLS_Slots_21 = {} & {
 declare type __VLS_Slots_22 = {} & {
     title?: (props: typeof __VLS_1) => any;
 } & {
-    items?: (props: typeof __VLS_10) => any;
+    items?: (props: typeof __VLS_11) => any;
 } & {
-    hamburger?: (props: typeof __VLS_12) => any;
+    hamburger?: (props: typeof __VLS_13) => any;
 };
 
 declare type __VLS_Slots_23 = {} & {
@@ -451,9 +450,9 @@ declare type __VLS_Slots_28 = {} & {
 };
 
 declare type __VLS_Slots_29 = {} & {
-    default?: (props: typeof __VLS_6) => any;
+    default?: (props: typeof __VLS_7) => any;
 } & {
-    actions?: (props: typeof __VLS_13) => any;
+    actions?: (props: typeof __VLS_15) => any;
 };
 
 declare type __VLS_Slots_3 = {} & {
@@ -493,11 +492,11 @@ declare type __VLS_Slots_37 = {} & {
 };
 
 declare type __VLS_Slots_4 = {} & {
-    icons?: (props: typeof __VLS_6) => any;
+    icons?: (props: typeof __VLS_7) => any;
 } & {
-    default?: (props: typeof __VLS_13) => any;
+    default?: (props: typeof __VLS_15) => any;
 } & {
-    actions?: (props: typeof __VLS_20) => any;
+    actions?: (props: typeof __VLS_23) => any;
 };
 
 declare type __VLS_Slots_5 = {} & {
@@ -513,7 +512,7 @@ declare type __VLS_Slots_7 = {} & {
 };
 
 declare type __VLS_Slots_8 = {} & {
-    default?: (props: typeof __VLS_7) => any;
+    default?: (props: typeof __VLS_8) => any;
 };
 
 declare type __VLS_Slots_9 = {} & {
@@ -830,6 +829,6 @@ export declare const MTextarea: typeof __VLS_export_41;
 
 export declare const MToggle: typeof __VLS_export_42;
 
-export { Variant }
+export declare type Variant = "primary" | "secondary" | "tertiary";
 
 export { }
