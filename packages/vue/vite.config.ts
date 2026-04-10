@@ -59,15 +59,11 @@ const base = (mode: string) => {
 
 export default defineConfig(({ mode }) => ({
   base: base(mode),
-  plugins: [
-    ...plugins(mode),
-  ],
+  plugins: [...plugins(mode)],
   build: build(mode),
   css: {
     postcss: {
-      plugins: [
-        postcssPresetEnv(),
-      ],
+      plugins: [postcssPresetEnv()],
     },
   },
 }));

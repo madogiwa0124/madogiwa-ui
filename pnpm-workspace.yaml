@@ -3,7 +3,9 @@ packages:
 
 catalog:
   postcss-preset-env: ^11.2.0
-  typescript: ~6.0.2
+  # NOTE: Pinned to match the TypeScript version bundled in @microsoft/api-extractor (7.58.2).
+  # Upgrading beyond 5.9.x will break bundleTypes in unplugin-dts and produce an empty dist/types/index.d.ts.
+  typescript: ~5.9.3
   vite: ^8.0.8
 
 onlyBuiltDependencies:
