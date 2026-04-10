@@ -6,7 +6,9 @@
     }
   },
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/copilot-cli:1": {},
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
   },
   "customizations": {
     "vscode": {
@@ -23,10 +25,5 @@
       ]
     }
   },
-  "appPort": [
-    3000,
-    3001,
-    5173,
-    6006
-  ]
+  "appPort": [3000, 3001, 5173, 6006]
 }
