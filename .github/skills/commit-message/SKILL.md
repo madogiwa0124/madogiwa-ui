@@ -1,8 +1,10 @@
 ---
-model: GPT-5 mini (copilot)
+name: commit-message
+description: Guidelines for writing commit messages in English using the Conventional Commits format. Use this when asked to write or review commit messages for the project.
 ---
 
 # Commit Message Guidelines
+
 - Commit messages must be written in English.
 - Use Conventional Commits format
   - Prefixes: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`

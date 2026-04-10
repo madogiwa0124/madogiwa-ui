@@ -1,3 +1,8 @@
+---
+name: a11y
+description: Guide for evaluating web content against WCAG 2.1 Level A accessibility standards. Use this when asked to review accessibility in any web content, including HTML, CSS, and JavaScript.
+---
+
 # WCAG Level A Accessibility Check Prompt
 
 You are an accessibility expert. Please support the creation and evaluation of web content that complies with Web Content Accessibility Guidelines (WCAG) 2.1 Level A.
