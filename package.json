@@ -10,7 +10,7 @@
     "css": "pnpm --filter @madogiwa-ui/css",
     "vue": "pnpm --filter @madogiwa-ui/vue",
     "lint": "eslint --cache",
-    "lint:css": "stylelint \"**/*.css\" --cache --cache-location node_modules/.cache/stylelint/ --ignore-path .stylelintignore",
+    "lint:css": "stylelint \"packages/**/*.css\" --cache --cache-location node_modules/.cache/stylelint/ --ignore-path .stylelintignore",
     "lint:type-check": "tsc --noEmit && pnpm vue type-check"
   },
   "devDependencies": {

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { MAccordion, MAlert, MBadge, MBtn, MCard, MCardImage, MCheckbox, MColumns, MContainer, MDialog, MH1, MH2, MH3, MInput, MLabel, MLink, MNavbar, MNavbarItem, MNavbarTitle, MP, MRadio, MSelect, MSnackbar, MTable, MTabs, MTabsItem, MTabsList, MTextarea, MToggle } from "../src/index";
+import { MAccordion, MAlert, MBadge, MBtn, MCard, MCardImage, MCheckbox, MColumns, MContainer, MDialog, MH1, MH2, MH3, MInput, MLabel, MLi, MLink, MNavbar, MNavbarItem, MNavbarTitle, MOl, MP, MRadio, MSelect, MSnackbar, MTable, MTabs, MTabsItem, MTabsList, MTextarea, MToggle, MUl } from "../src/index";
 const SampleImage = new URL("320x240.png", import.meta.url).href;
 
-type DemoTabs = "buttons" | "links" | "cards" | "modals" | "inputs" | "accordion" | "badge" | "snackbar" | "columns" | "alert" | "table";
+type DemoTabs = "buttons" | "links" | "cards" | "modals" | "inputs" | "accordion" | "badge" | "snackbar" | "columns" | "alert" | "table" | "list";
 const activeTab = ref<DemoTabs>("buttons");
 const checkboxValue = ref<boolean>(false);
 const radioValue = ref<string>("option1");
@@ -83,6 +83,9 @@ const isSnackbarOpen = ref<boolean>(false);
         </MTabsItem>
         <MTabsItem id="components-table-tab" :active="activeTab === 'table'" aria-controls="components-table" @click="activeTab = 'table'">
           Table
+        </MTabsItem>
+        <MTabsItem id="components-list-tab" :active="activeTab === 'list'" aria-controls="components-list" @click="activeTab = 'list'">
+          List
         </MTabsItem>
       </MTabsList>
     </MTabs>
@@ -821,6 +824,70 @@ const isSnackbarOpen = ref<boolean>(false);
               </tr>
             </tbody>
           </MTable>
+        </div>
+      </div>
+    </section>
+    <section id="components-list" role="tabpanel" aria-labelledby="components-list-tab" :class="{ 'm-hidden': activeTab !== 'list' }">
+      <MH2>
+        MList
+      </MH2>
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-6);">
+        <div>
+          <MH3>
+            MOl (Ordered List)
+          </MH3>
+          <MOl role="list">
+            <MLi>First item</MLi>
+            <MLi>Second item</MLi>
+            <MLi>Third item</MLi>
+          </MOl>
+        </div>
+
+        <div>
+          <MH3>
+            MUl (Unordered List)
+          </MH3>
+          <MUl role="list">
+            <MLi>First item</MLi>
+            <MLi>Second item</MLi>
+            <MLi>Third item</MLi>
+          </MUl>
+        </div>
+
+        <div>
+          <MH3>
+            None (no marker)
+          </MH3>
+          <div style="display: flex; gap: var(--spacing-6);">
+            <MOl none role="list">
+              <MLi>First item</MLi>
+              <MLi>Second item</MLi>
+              <MLi>Third item</MLi>
+            </MOl>
+            <MUl none role="list">
+              <MLi>First item</MLi>
+              <MLi>Second item</MLi>
+              <MLi>Third item</MLi>
+            </MUl>
+          </div>
+        </div>
+
+        <div>
+          <MH3>
+            Inline
+          </MH3>
+          <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
+            <MOl inline role="list">
+              <MLi>First item</MLi>
+              <MLi>Second item</MLi>
+              <MLi>Third item</MLi>
+            </MOl>
+            <MUl inline role="list">
+              <MLi>First item</MLi>
+              <MLi>Second item</MLi>
+              <MLi>Third item</MLi>
+            </MUl>
+          </div>
         </div>
       </div>
     </section>

@@ -1,0 +1,75 @@
+.m-li {
+  --li-marker-gap: var(--spacing-2);
+
+  display: flex;
+  align-items: start;
+  gap: var(--li-marker-gap);
+
+  /* Nested list indentation */
+  :where(.m-ol, .m-ul) {
+    --list-nested-padding: var(--spacing-4);
+
+    padding-inline-start: var(--list-nested-padding);
+    width: 100%;
+  }
+}
+
+.m-ol,
+.m-ul {
+  --list-item-gap: var(--spacing-2);
+  --list-marker-color: var(--color-primary);
+  --list-marker-font-weight: var(--font-weight-bold);
+
+  list-style-type: ""; /* VoiceOver-friendly */
+  display: flex;
+  flex-direction: column;
+  gap: var(--list-item-gap);
+
+  &.--inline {
+    flex-flow: row wrap;
+  }
+}
+
+.m-ol {
+  --ol-counter-suffix: ".";
+
+  counter-reset: list-counter;
+
+  .m-li {
+    counter-increment: list-counter;
+
+    &::before {
+      content: counter(list-counter) var(--ol-counter-suffix);
+      color: var(--list-marker-color);
+      font-weight: var(--list-marker-font-weight);
+    }
+  }
+
+  /* Nested unordered list */
+  :where(.m-ul) {
+    counter-reset: none;
+  }
+}
+
+.m-ul {
+  --ul-marker-content: "●";
+  --ul-marker-size: 0.75em;
+
+  .m-li::before {
+    content: var(--ul-marker-content);
+    color: var(--list-marker-color);
+    font-weight: var(--list-marker-font-weight);
+    font-size: var(--ul-marker-size);
+  }
+
+  /* Nested ordered list */
+  :where(.m-ol) {
+    counter-reset: list-counter;
+  }
+}
+
+/* --none: hide markers — placed after all ::before definitions to avoid descending specificity */
+.m-ol.--none .m-li::before,
+.m-ul.--none .m-li::before {
+  content: none;
+}

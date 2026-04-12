@@ -3,7 +3,7 @@ import js from "@eslint/js";
 import ts from "typescript-eslint";
 import unicorn from "eslint-plugin-unicorn";
 import globals from "globals";
-import stylistic from '@stylistic/eslint-plugin'
+import stylistic from "@stylistic/eslint-plugin";
 import vue from "eslint-plugin-vue";
 import vueParser from "vue-eslint-parser";
 
@@ -14,6 +14,7 @@ const ignoredFiles = [
   "**/storybook-static/**",
   "**/dist/**",
   "**/node_modules/**",
+  "**/.pnpm-store/**",
   "docs/**",
 ];
 
@@ -33,15 +34,18 @@ const jsRules = {
       ignoreMemberSort: false,
     },
   ],
-}
+};
 
 const tsRules = {
   "@typescript-eslint/no-import-type-side-effects": "error",
   "@typescript-eslint/prefer-nullish-coalescing": "error",
   "@typescript-eslint/prefer-optional-chain": "error",
-  "@typescript-eslint/consistent-type-imports": ["error", {
-    prefer: "type-imports"
-  }],
+  "@typescript-eslint/consistent-type-imports": [
+    "error",
+    {
+      prefer: "type-imports",
+    },
+  ],
   "@typescript-eslint/no-unused-vars": [
     "warn",
     {
@@ -50,7 +54,7 @@ const tsRules = {
       caughtErrorsIgnorePattern: "^_",
     },
   ],
-}
+};
 
 const unicornRules = {
   "unicorn/no-null": "off",
@@ -67,7 +71,7 @@ const unicornRules = {
   ],
   // NOTE: Adopting file names like `MBtn` makes it difficult to properly ignore, so it is disabled.
   "unicorn/prevent-abbreviations": "off",
-}
+};
 
 export default defineConfig([
   globalIgnores(ignoredFiles),
@@ -82,7 +86,7 @@ export default defineConfig([
         quotes: "double",
         semi: true,
         braceStyle: "1tbs",
-      })
+      }),
     ],
     languageOptions: {
       parserOptions: {
@@ -141,7 +145,10 @@ export default defineConfig([
       "vue/component-api-style": ["error", ["script-setup"]],
       // NOTE: The style block is prohibited because it is managed by `@madogiwa-ui/css`.
       "vue/no-restricted-block": ["error", "style"],
-      "vue/block-order": ["error", { order: [["script", "template"], "style"] }],
+      "vue/block-order": [
+        "error",
+        { order: [["script", "template"], "style"] },
+      ],
       "vue/max-attributes-per-line": [
         "error",
         {
@@ -161,8 +168,8 @@ export default defineConfig([
       "@typescript-eslint/no-redundant-type-constituents": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
       // NOTE: Disabled because default assignment by Reactive Props Destructure causes an error
-      "@typescript-eslint/no-useless-default-assignment": "off"
-    }
+      "@typescript-eslint/no-useless-default-assignment": "off",
+    },
   },
   {
     files: ["**/MHeading/**/*", "**/MParagraph/**/*"],
