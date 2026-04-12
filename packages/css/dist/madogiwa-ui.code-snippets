@@ -161,6 +161,24 @@
     "body": ".m-table${2|​,.--hoverable,.--stripe,.--bordered,.--full-width,.--transition|}",
     "description": "Madogiwa UI class .m-table"
   },
+  "m-li": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-li",
+    "body": ".m-li",
+    "description": "Madogiwa UI class .m-li"
+  },
+  "m-ol": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-ol",
+    "body": ".m-ol${2|​,.--none|}",
+    "description": "Madogiwa UI class .m-ol"
+  },
+  "m-ul": {
+    "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+    "prefix": ".m-ul",
+    "body": ".m-ul${2|​,.--none|}",
+    "description": "Madogiwa UI class .m-ul"
+  },
   "m-hidden": {
     "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
     "prefix": ".m-hidden",

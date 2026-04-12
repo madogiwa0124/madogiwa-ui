@@ -35,49 +35,55 @@ declare const __VLS_base_20: DefineComponent<__VLS_Props_9, {}, {}, {}, {}, Comp
 
 declare const __VLS_base_21: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-declare const __VLS_base_22: DefineComponent<__VLS_Props_10, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_10> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
+declare const __VLS_base_22: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-declare const __VLS_base_23: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+declare const __VLS_base_23: DefineComponent<__VLS_Props_10, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_10> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
-declare const __VLS_base_24: DefineComponent<__VLS_Props_12, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_12> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
+declare const __VLS_base_24: DefineComponent<__VLS_Props_11, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_11> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
-declare const __VLS_base_25: DefineComponent<__VLS_Props_13, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_13> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
+declare const __VLS_base_25: DefineComponent<__VLS_Props_12, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_12> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
 declare const __VLS_base_26: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-declare const __VLS_base_27: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+declare const __VLS_base_27: DefineComponent<__VLS_Props_14, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_14> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
-declare const __VLS_base_28: DefineComponent<__VLS_PublicProps_2, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-"update:modelValue": (value: string | number | undefined) => any;
-}, string, PublicProps, Readonly<__VLS_PublicProps_2> & Readonly<{
-"onUpdate:modelValue"?: (value: string | number | undefined) => any;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
+declare const __VLS_base_28: DefineComponent<__VLS_Props_15, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_15> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
-declare const __VLS_base_29: DefineComponent<__VLS_Props_15, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_15> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
+declare const __VLS_base_29: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 declare const __VLS_base_3: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 declare const __VLS_base_30: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-declare const __VLS_base_31: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
-
-declare const __VLS_base_32: DefineComponent<__VLS_Props_16, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_16> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-
-declare const __VLS_base_33: DefineComponent<__VLS_Props_17, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {} & {
-click: (event: MouseEvent) => any;
-}, string, PublicProps, Readonly<__VLS_Props_17> & Readonly<{
-onClick?: (event: MouseEvent) => any;
+declare const __VLS_base_31: DefineComponent<__VLS_PublicProps_2, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+"update:modelValue": (value: string | number | undefined) => any;
+}, string, PublicProps, Readonly<__VLS_PublicProps_2> & Readonly<{
+"onUpdate:modelValue"?: (value: string | number | undefined) => any;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
+
+declare const __VLS_base_32: DefineComponent<__VLS_Props_17, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_17> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
+
+declare const __VLS_base_33: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 declare const __VLS_base_34: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 declare const __VLS_base_35: DefineComponent<__VLS_Props_18, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_18> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
-declare const __VLS_base_36: DefineComponent<__VLS_Props_20, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_20> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
+declare const __VLS_base_36: DefineComponent<__VLS_Props_19, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {} & {
+click: (event: MouseEvent) => any;
+}, string, PublicProps, Readonly<__VLS_Props_19> & Readonly<{
+onClick?: (event: MouseEvent) => any;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
-declare const __VLS_base_37: DefineComponent<__VLS_Props_21, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_21> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
+declare const __VLS_base_37: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+declare const __VLS_base_38: DefineComponent<__VLS_Props_20, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_20> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
+
+declare const __VLS_base_39: DefineComponent<__VLS_Props_22, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_22> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
 declare const __VLS_base_4: DefineComponent<__VLS_Props_2, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_2> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
+
+declare const __VLS_base_40: DefineComponent<__VLS_Props_23, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_23> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
 declare const __VLS_base_5: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
@@ -135,33 +141,33 @@ declare const __VLS_export_25: __VLS_WithSlots_22<typeof __VLS_base_22, __VLS_Sl
 
 declare const __VLS_export_26: __VLS_WithSlots_23<typeof __VLS_base_23, __VLS_Slots_23>;
 
-declare const __VLS_export_27: DefineComponent<__VLS_Props_11, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {} & {
-showMenu: (value: boolean) => any;
-}, string, PublicProps, Readonly<__VLS_Props_11> & Readonly<{
-onShowMenu?: (value: boolean) => any;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
+declare const __VLS_export_27: __VLS_WithSlots_24<typeof __VLS_base_24, __VLS_Slots_24>;
 
-declare const __VLS_export_28: __VLS_WithSlots_24<typeof __VLS_base_24, __VLS_Slots_24>;
+declare const __VLS_export_28: __VLS_WithSlots_25<typeof __VLS_base_25, __VLS_Slots_25>;
 
-declare const __VLS_export_29: __VLS_WithSlots_25<typeof __VLS_base_25, __VLS_Slots_25>;
+declare const __VLS_export_29: __VLS_WithSlots_26<typeof __VLS_base_26, __VLS_Slots_26>;
 
 declare const __VLS_export_3: __VLS_WithSlots_3<typeof __VLS_base_3, __VLS_Slots_3>;
 
-declare const __VLS_export_30: __VLS_WithSlots_26<typeof __VLS_base_26, __VLS_Slots_26>;
+declare const __VLS_export_30: DefineComponent<__VLS_Props_13, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {} & {
+showMenu: (value: boolean) => any;
+}, string, PublicProps, Readonly<__VLS_Props_13> & Readonly<{
+onShowMenu?: (value: boolean) => any;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
 declare const __VLS_export_31: __VLS_WithSlots_27<typeof __VLS_base_27, __VLS_Slots_27>;
 
-declare const __VLS_export_32: DefineComponent<__VLS_ModelProps_3, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+declare const __VLS_export_32: __VLS_WithSlots_28<typeof __VLS_base_28, __VLS_Slots_28>;
+
+declare const __VLS_export_33: __VLS_WithSlots_29<typeof __VLS_base_29, __VLS_Slots_29>;
+
+declare const __VLS_export_34: __VLS_WithSlots_30<typeof __VLS_base_30, __VLS_Slots_30>;
+
+declare const __VLS_export_35: DefineComponent<__VLS_ModelProps_3, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 "update:modelValue": (value: string | undefined) => any;
 }, string, PublicProps, Readonly<__VLS_ModelProps_3> & Readonly<{
 "onUpdate:modelValue"?: (value: string | undefined) => any;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-
-declare const __VLS_export_33: __VLS_WithSlots_28<typeof __VLS_base_28, __VLS_Slots_28>;
-
-declare const __VLS_export_34: __VLS_WithSlots_29<typeof __VLS_base_29, __VLS_Slots_29>;
-
-declare const __VLS_export_35: __VLS_WithSlots_30<typeof __VLS_base_30, __VLS_Slots_30>;
 
 declare const __VLS_export_36: __VLS_WithSlots_31<typeof __VLS_base_31, __VLS_Slots_31>;
 
@@ -175,21 +181,27 @@ declare const __VLS_export_4: __VLS_WithSlots_4<typeof __VLS_base_4, __VLS_Slots
 
 declare const __VLS_export_40: __VLS_WithSlots_35<typeof __VLS_base_35, __VLS_Slots_35>;
 
-declare const __VLS_export_41: DefineComponent<__VLS_PublicProps_3, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+declare const __VLS_export_41: __VLS_WithSlots_36<typeof __VLS_base_36, __VLS_Slots_36>;
+
+declare const __VLS_export_42: __VLS_WithSlots_37<typeof __VLS_base_37, __VLS_Slots_37>;
+
+declare const __VLS_export_43: __VLS_WithSlots_38<typeof __VLS_base_38, __VLS_Slots_38>;
+
+declare const __VLS_export_44: DefineComponent<__VLS_PublicProps_3, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 "update:modelValue": (value: string | undefined) => any;
 }, string, PublicProps, Readonly<__VLS_PublicProps_3> & Readonly<{
 "onUpdate:modelValue"?: (value: string | undefined) => any;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
-declare const __VLS_export_42: DefineComponent<__VLS_ModelProps_6, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+declare const __VLS_export_45: DefineComponent<__VLS_ModelProps_6, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 "update:modelValue": (value: boolean | undefined) => any;
 }, string, PublicProps, Readonly<__VLS_ModelProps_6> & Readonly<{
 "onUpdate:modelValue"?: (value: boolean | undefined) => any;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
-declare const __VLS_export_43: __VLS_WithSlots_36<typeof __VLS_base_36, __VLS_Slots_36>;
+declare const __VLS_export_46: __VLS_WithSlots_39<typeof __VLS_base_39, __VLS_Slots_39>;
 
-declare const __VLS_export_44: __VLS_WithSlots_37<typeof __VLS_base_37, __VLS_Slots_37>;
+declare const __VLS_export_47: __VLS_WithSlots_40<typeof __VLS_base_40, __VLS_Slots_40>;
 
 declare const __VLS_export_5: __VLS_WithSlots_5<typeof __VLS_base_5, __VLS_Slots_5>;
 
@@ -231,57 +243,53 @@ declare type __VLS_Props = {
 };
 
 declare type __VLS_Props_10 = {
+    none?: boolean;
+    inline?: boolean;
+};
+
+declare type __VLS_Props_11 = {
+    none?: boolean;
+    inline?: boolean;
+};
+
+declare type __VLS_Props_12 = {
     mobileMenuVariant?: null | "float" | "side" | "side-left";
     closeOutsideClick?: boolean;
     transition?: boolean;
     id?: string;
 };
 
-declare type __VLS_Props_11 = {
+declare type __VLS_Props_13 = {
     showMenu?: boolean;
     closeLabel?: string;
     openLabel?: string;
 };
 
-declare type __VLS_Props_12 = {
+declare type __VLS_Props_14 = {
     end?: boolean;
 };
 
-declare type __VLS_Props_13 = {
+declare type __VLS_Props_15 = {
     href?: string;
 };
 
-declare type __VLS_Props_14 = {
+declare type __VLS_Props_16 = {
     error?: boolean;
 };
 
-declare type __VLS_Props_15 = {
+declare type __VLS_Props_17 = {
     open?: boolean;
     transition?: boolean;
     position?: "right-bottom" | "left-top" | "right-top" | null;
 };
 
-declare type __VLS_Props_16 = {
+declare type __VLS_Props_18 = {
     transition?: boolean;
     scrollhint?: boolean;
 };
 
-declare type __VLS_Props_17 = {
-    active?: boolean;
-};
-
-declare type __VLS_Props_18 = {
-    stripe?: boolean;
-    bordered?: boolean;
-    hoverable?: boolean;
-    fullWidth?: boolean;
-    transition?: boolean;
-};
-
 declare type __VLS_Props_19 = {
-    block?: boolean;
-    error?: boolean;
-    autoFit?: boolean;
+    active?: boolean;
 };
 
 declare type __VLS_Props_2 = {
@@ -291,13 +299,27 @@ declare type __VLS_Props_2 = {
 };
 
 declare type __VLS_Props_20 = {
+    stripe?: boolean;
+    bordered?: boolean;
+    hoverable?: boolean;
+    fullWidth?: boolean;
+    transition?: boolean;
+};
+
+declare type __VLS_Props_21 = {
+    block?: boolean;
+    error?: boolean;
+    autoFit?: boolean;
+};
+
+declare type __VLS_Props_22 = {
     columnsLength?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | null;
     autoFit?: boolean;
     noGap?: boolean;
     alignRows?: boolean;
 };
 
-declare type __VLS_Props_21 = {
+declare type __VLS_Props_23 = {
     padding?: boolean;
     noCentering?: boolean;
 };
@@ -349,9 +371,9 @@ declare type __VLS_Props_9 = {
 
 declare type __VLS_PublicProps = __VLS_Props_8 & __VLS_ModelProps_2;
 
-declare type __VLS_PublicProps_2 = __VLS_Props_14 & __VLS_ModelProps_4;
+declare type __VLS_PublicProps_2 = __VLS_Props_16 & __VLS_ModelProps_4;
 
-declare type __VLS_PublicProps_3 = __VLS_Props_19 & __VLS_ModelProps_5;
+declare type __VLS_PublicProps_3 = __VLS_Props_21 & __VLS_ModelProps_5;
 
 declare type __VLS_Slots = {} & {
     summary?: (props: typeof __VLS_7) => any;
@@ -416,11 +438,7 @@ declare type __VLS_Slots_21 = {} & {
 };
 
 declare type __VLS_Slots_22 = {} & {
-    title?: (props: typeof __VLS_1) => any;
-} & {
-    items?: (props: typeof __VLS_11) => any;
-} & {
-    hamburger?: (props: typeof __VLS_13) => any;
+    default?: (props: typeof __VLS_1) => any;
 };
 
 declare type __VLS_Slots_23 = {} & {
@@ -432,9 +450,11 @@ declare type __VLS_Slots_24 = {} & {
 };
 
 declare type __VLS_Slots_25 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+    title?: (props: typeof __VLS_1) => any;
 } & {
-    default?: (props: typeof __VLS_3) => any;
+    items?: (props: typeof __VLS_11) => any;
+} & {
+    hamburger?: (props: typeof __VLS_13) => any;
 };
 
 declare type __VLS_Slots_26 = {} & {
@@ -447,12 +467,12 @@ declare type __VLS_Slots_27 = {} & {
 
 declare type __VLS_Slots_28 = {} & {
     default?: (props: typeof __VLS_1) => any;
+} & {
+    default?: (props: typeof __VLS_3) => any;
 };
 
 declare type __VLS_Slots_29 = {} & {
-    default?: (props: typeof __VLS_7) => any;
-} & {
-    actions?: (props: typeof __VLS_15) => any;
+    default?: (props: typeof __VLS_1) => any;
 };
 
 declare type __VLS_Slots_3 = {} & {
@@ -468,7 +488,9 @@ declare type __VLS_Slots_31 = {} & {
 };
 
 declare type __VLS_Slots_32 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+    default?: (props: typeof __VLS_7) => any;
+} & {
+    actions?: (props: typeof __VLS_15) => any;
 };
 
 declare type __VLS_Slots_33 = {} & {
@@ -491,12 +513,24 @@ declare type __VLS_Slots_37 = {} & {
     default?: (props: typeof __VLS_1) => any;
 };
 
+declare type __VLS_Slots_38 = {} & {
+    default?: (props: typeof __VLS_1) => any;
+};
+
+declare type __VLS_Slots_39 = {} & {
+    default?: (props: typeof __VLS_1) => any;
+};
+
 declare type __VLS_Slots_4 = {} & {
     icons?: (props: typeof __VLS_7) => any;
 } & {
     default?: (props: typeof __VLS_15) => any;
 } & {
     actions?: (props: typeof __VLS_23) => any;
+};
+
+declare type __VLS_Slots_40 = {} & {
+    default?: (props: typeof __VLS_1) => any;
 };
 
 declare type __VLS_Slots_5 = {} & {
@@ -705,7 +739,25 @@ declare type __VLS_WithSlots_37<T, S> = T & {
     };
 };
 
+declare type __VLS_WithSlots_38<T, S> = T & {
+    new (): {
+        $slots: S;
+    };
+};
+
+declare type __VLS_WithSlots_39<T, S> = T & {
+    new (): {
+        $slots: S;
+    };
+};
+
 declare type __VLS_WithSlots_4<T, S> = T & {
+    new (): {
+        $slots: S;
+    };
+};
+
+declare type __VLS_WithSlots_40<T, S> = T & {
     new (): {
         $slots: S;
     };
@@ -769,9 +821,9 @@ export declare const MCardImage: typeof __VLS_export_13;
 
 export declare const MCheckbox: typeof __VLS_export_14;
 
-export declare const MColumns: typeof __VLS_export_43;
+export declare const MColumns: typeof __VLS_export_46;
 
-export declare const MContainer: typeof __VLS_export_44;
+export declare const MContainer: typeof __VLS_export_47;
 
 export declare const MDialog: typeof __VLS_export_15;
 
@@ -791,43 +843,49 @@ export declare const MInput: typeof __VLS_export_22;
 
 export declare const MLabel: typeof __VLS_export_23;
 
+export declare const MLi: typeof __VLS_export_25;
+
 export declare const MLink: typeof __VLS_export_24;
 
-export declare const MNavbar: typeof __VLS_export_25;
+export declare const MNavbar: typeof __VLS_export_28;
 
-export declare const MNavbarHamburger: typeof __VLS_export_26;
+export declare const MNavbarHamburger: typeof __VLS_export_29;
 
-export declare const MNavbarHamburgerMenu: typeof __VLS_export_27;
+export declare const MNavbarHamburgerMenu: typeof __VLS_export_30;
 
-export declare const MNavbarItem: typeof __VLS_export_28;
+export declare const MNavbarItem: typeof __VLS_export_31;
 
-export declare const MNavbarItems: typeof __VLS_export_30;
+export declare const MNavbarItems: typeof __VLS_export_33;
 
-export declare const MNavbarTitle: typeof __VLS_export_29;
+export declare const MNavbarTitle: typeof __VLS_export_32;
 
-export declare const MP: typeof __VLS_export_31;
+export declare const MOl: typeof __VLS_export_26;
 
-export declare const MRadio: typeof __VLS_export_32;
+export declare const MP: typeof __VLS_export_34;
 
-export declare const MSelect: typeof __VLS_export_33;
+export declare const MRadio: typeof __VLS_export_35;
 
-export declare const MSnackbar: typeof __VLS_export_34;
+export declare const MSelect: typeof __VLS_export_36;
 
-export declare const MSnackbarActions: typeof __VLS_export_35;
+export declare const MSnackbar: typeof __VLS_export_37;
 
-export declare const MSnackbarBody: typeof __VLS_export_36;
+export declare const MSnackbarActions: typeof __VLS_export_38;
 
-export declare const MTable: typeof __VLS_export_40;
+export declare const MSnackbarBody: typeof __VLS_export_39;
 
-export declare const MTabs: typeof __VLS_export_37;
+export declare const MTable: typeof __VLS_export_43;
 
-export declare const MTabsItem: typeof __VLS_export_38;
+export declare const MTabs: typeof __VLS_export_40;
 
-export declare const MTabsList: typeof __VLS_export_39;
+export declare const MTabsItem: typeof __VLS_export_41;
 
-export declare const MTextarea: typeof __VLS_export_41;
+export declare const MTabsList: typeof __VLS_export_42;
 
-export declare const MToggle: typeof __VLS_export_42;
+export declare const MTextarea: typeof __VLS_export_44;
+
+export declare const MToggle: typeof __VLS_export_45;
+
+export declare const MUl: typeof __VLS_export_27;
 
 export declare type Variant = "primary" | "secondary" | "tertiary";
 

@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2026-04-10T14:25:53.975Z
+generated_at: 2026-04-12T06:14:47.866Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -831,6 +831,75 @@ This component does not use data attributes for styling or behavior.
 - Ensure sufficient color contrast for accessibility
 - Test link visibility in different states (hover, active, visited)
 - Provide meaningful link text that describes the destination
+
+---
+
+## List
+
+### Overview
+
+The List components provide styled ordered and unordered list elements with consistent spacing. They follow the BEM + CSS Nesting pattern with the `m-` prefix.
+
+### Usage
+
+Use `.m-ol` for ordered (numbered) lists, `.m-ul` for unordered (bulleted) lists, and `.m-li` for list items.
+
+### Example code
+
+```html
+<ol class="m-ol">
+  <li class="m-li">First item</li>
+  <li class="m-li">Second item</li>
+</ol>
+
+<ul class="m-ul">
+  <li class="m-li">First item</li>
+  <li class="m-li">Second item</li>
+</ul>
+
+<ul class="m-ul --none">
+  <li class="m-li">No bullet item</li>
+</ul>
+```
+
+### Accessibility
+
+Safari with VoiceOver may strip the list semantics when `list-style: none` is applied.
+It is recommended to explicitly add `role="list"` to preserve accessibility.
+
+```html
+<ul class="m-ul" role="list">
+  <li class="m-li">First item</li>
+</ul>
+```
+
+### Elements
+
+| Name | Description |
+| ---- | ----------- |
+| .m-ol | Ordered list element |
+| .m-ul | Unordered list element |
+| .m-li | List item element |
+
+### Modifiers
+
+| Target | Name | Description |
+| ------ | ---- | ----------- |
+| .m-ol, .m-ul | .--none | Remove list style and inline padding |
+| .m-ol, .m-ul | .--inline | Display list items in a row |
+
+### CSS Variables
+
+| Target | Name | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| .m-ol, .m-ul | --list-item-gap | var(--spacing-2) | Gap between list items |
+| .m-ol, .m-ul | --list-marker-color | var(--color-primary) | Color of list markers |
+| .m-ol, .m-ul | --list-marker-font-weight | var(--font-weight-bold) | Font weight of list markers |
+| .m-ol | --ol-counter-suffix | "." | Suffix appended after the counter number |
+| .m-ul | --ul-marker-content | "●" | Bullet character for unordered list |
+| .m-ul | --ul-marker-size | 0.75em | Font size of the bullet marker |
+| .m-li | --li-marker-gap | var(--spacing-2) | Gap between marker and item content |
+| .m-li .m-ol, .m-li .m-ul | --list-nested-padding | var(--spacing-4) | Inline start padding for nested lists |
 
 ---
 
@@ -1778,4 +1847,4 @@ Responsive utilities allow you to control visibility at different screen sizes, 
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 4/10/2026, 2:25:53 PM
+- Generated at: 4/12/2026, 6:14:47 AM
