@@ -55,6 +55,11 @@ export default defineConfig({
       formats: ["es"],
     },
     cssCodeSplit: false,
+    // NOTE: Use esbuild instead of the default lightningcss to avoid a known bug where
+    // standalone @layer ordering declarations (e.g. `@layer base, layout, components;`) are
+    // silently dropped when the same layer names also appear in @layer blocks.
+    // See: https://github.com/parcel-bundler/lightningcss/issues/1222
+    cssMinify: "esbuild",
     emptyOutDir: true,
   },
   css: {
