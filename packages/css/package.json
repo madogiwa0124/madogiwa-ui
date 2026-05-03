@@ -4,9 +4,11 @@
   "type": "module",
   "main": "./dist/madogiwa-ui.min.css",
   "style": "./dist/madogiwa-ui.min.css",
+  "types": "./dist/madogiwa-ui.d.ts",
   "exports": {
     ".": {
       "style": "./dist/madogiwa-ui.min.css",
+      "types": "./dist/madogiwa-ui.d.ts",
       "default": "./dist/madogiwa-ui.min.css"
     },
     "./dist/*": "./dist/*",

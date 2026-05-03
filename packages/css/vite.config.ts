@@ -7,7 +7,8 @@ import { outputStoryDocumentPlugin } from "./plugins/vite/outputStoryDocumentPlu
 export default defineConfig({
   plugins: [
     outputCssSnippetFilePlugin({
-      scope: "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
+      scope:
+        "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
       /*
         NOTE: Regular expression that matches class names starting with a specific prefix
         - Includes modifier classes starting with `--` and Elements (__)
@@ -24,11 +25,27 @@ export default defineConfig({
       storiesPattern: "stories/**/*.stories.@(js|ts)",
       frontMatter: {
         title: "Madogiwa UI Components Documentation",
-        description: "Auto-generated documentation from Storybook stories for AI context",
+        description:
+          "Auto-generated documentation from Storybook stories for AI context",
         generated: true,
       },
     }),
     removeFilePlugin("dist/*.js"),
+    /*
+      NOTE: Generate an empty type declaration file so that TypeScript (v6+) does not raise
+      TS2882 ("Cannot find module or type declarations for side-effect import") when
+      consumers import this CSS-only package (e.g. `import "@madogiwa-ui/css"`).
+    */
+    {
+      name: "output-dts",
+      generateBundle() {
+        this.emitFile({
+          type: "asset",
+          fileName: "madogiwa-ui.d.ts",
+          source: "export {};\n",
+        });
+      },
+    },
   ],
   build: {
     lib: {
@@ -42,9 +59,7 @@ export default defineConfig({
   },
   css: {
     postcss: {
-      plugins: [
-        postcssPresetEnv(),
-      ],
+      plugins: [postcssPresetEnv()],
     },
   },
 });
