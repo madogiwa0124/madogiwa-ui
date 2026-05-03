@@ -241,7 +241,7 @@ export const ResponsiveDemo: Story = {
     for (const container of containers) {
       await expect(container).toHaveClass("m-container");
 
-      const computedStyle = getComputedStyle(container as HTMLElement);
+      const computedStyle = getComputedStyle(container);
       const marginInlineStart = computedStyle.marginInlineStart;
       const marginInlineEnd = computedStyle.marginInlineEnd;
 

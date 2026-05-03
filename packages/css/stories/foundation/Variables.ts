@@ -125,7 +125,7 @@ export const designTokens = (properties: Property[]): DesignToken => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
   const result = Object.groupBy(tokens, property => property.styleType);
-  return result as DesignToken;
+  return result;
 };
 
 export const createColorElement: CreatePropertyElement = (property) => {
