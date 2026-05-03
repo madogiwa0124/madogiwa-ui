@@ -1,14 +1,13 @@
 packages:
   - packages/*
+allowBuilds:
+  "@swc/core": true
+  esbuild: true
+  unrs-resolver: true
 
 catalog:
-  postcss-preset-env: ^11.2.0
+  postcss-preset-env: ^11.2.1
   # NOTE: Pinned to match the TypeScript version bundled in @microsoft/api-extractor (7.58.2).
   # Upgrading beyond 5.9.x will break bundleTypes in unplugin-dts and produce an empty dist/types/index.d.ts.
-  typescript: ~5.9.3
-  vite: ^8.0.8
-
-onlyBuiltDependencies:
-  - '@swc/core'
-  - esbuild
-  - unrs-resolver
+  typescript: ~6.0.3
+  vite: ^8.0.10
