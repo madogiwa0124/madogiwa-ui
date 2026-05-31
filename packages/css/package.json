@@ -59,6 +59,7 @@
     "@storybook/html": "^10.3.6",
     "@storybook/html-vite": "^10.3.6",
     "@storybook/test-runner": "^0.24.3",
+    "postcss": "^8.5.15",
     "postcss-preset-env": "catalog:",
     "storybook": "^10.3.6",
     "vite": "catalog:"
