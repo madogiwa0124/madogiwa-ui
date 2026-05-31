@@ -6,7 +6,17 @@ allowBuilds:
   unrs-resolver: true
 
 overrides:
+  # NOTE: vite@8 bundles postcss@8.5.13 internally while postcss-preset-env requires postcss@8.5.15,
+  # causing TypeScript type incompatibilities between the two versions.
+  # Forcing a single version resolves the type mismatch.
   postcss: ^8.5.15
+  # NOTE: @storybook/test-runner@0.24.3 declares `playwright` and `playwright-core` as direct
+  # dependencies (not peer deps), so it resolves its own versions independently from the
+  # workspace's @playwright/test. Without this override, the test-runner uses playwright-core@1.59.1
+  # while @playwright/test uses 1.60.0, requiring two separate Chromium binaries to be installed in CI.
+  # Forcing a unified version means only one Chromium binary is needed.
+  playwright: ^1.60.0
+  playwright-core: ^1.60.0
 
 catalog:
   postcss-preset-env: ^11.2.1
