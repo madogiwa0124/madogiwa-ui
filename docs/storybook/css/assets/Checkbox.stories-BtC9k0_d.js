@@ -55,7 +55,7 @@ This component does not use data attributes for styling or behavior.
 - Maintain consistent sizing and spacing in forms
 - Test across different browsers for consistent appearance
 - Always associate labels with inputs for accessibility
-        `}},a11y:{config:{rules:[{id:`label`,enabled:!1}]}}}},i={render:e=>{let t=document.createElement(`div`),n=document.createElement(`input`);n.type=`checkbox`,n.classList.add(`m-checkbox`);let r=e.checked?!!e.checked:!1,i=e.disabled?!!e.disabled:!1,a=e.name?String(e.name):`checkbox`,o=e.value?String(e.value):`checkbox`;return n.name=a,n.value=o,n.checked=r,n.disabled=i,t.append(n),t},args:{checked:!1,disabled:!1,name:`example`,value:`example-value`},play:async({canvasElement:e,args:r})=>{let i=e.querySelector(`input[type='checkbox']`);await t(i).toBeInTheDocument(),await t(i).toHaveClass(`m-checkbox`),await t(i).toHaveAttribute(`name`,String(r.name)),await t(i).toHaveAttribute(`value`,String(r.value));let a=!!r.checked,o=!!r.disabled;await t(i.checked).toBe(a),o?await t(i).toBeDisabled():(await t(i).not.toBeDisabled(),await n.click(i),await t(i.checked).toBe(!a),await n.click(i),await t(i.checked).toBe(a));let s=globalThis.getComputedStyle(i);await t(s.appearance).toBe(`none`),await t(s.cursor).toBe(o?`not-allowed`:`pointer`)}},a={render:e=>{let t=document.createElement(`div`),n=document.createElement(`input`);return n.type=`checkbox`,n.classList.add(`m-checkbox`),n.name=`checkbox-checked`,n.value=`checked-value`,n.checked=!0,t.append(n),t},args:{checked:!0},play:async({canvasElement:e})=>{let r=e.querySelector(`input[type='checkbox']`);await t(r).toBeInTheDocument(),await t(r).toHaveClass(`m-checkbox`),await t(r).toBeChecked(),await t(r).not.toBeDisabled(),await n.click(r),await t(r).not.toBeChecked(),await n.click(r),await t(r).toBeChecked(),await t(globalThis.getComputedStyle(r).backgroundColor).not.toBe(`rgba(0, 0, 0, 0)`)},parameters:{docs:{description:{story:`Checkbox in checked state by default.`}}}},o={render:()=>{let e=document.createElement(`div`),t=document.createElement(`input`);return t.type=`checkbox`,t.classList.add(`m-checkbox`),t.name=`checkbox-disabled`,t.value=`disabled-value`,t.disabled=!0,e.append(t),e},play:async({canvasElement:e})=>{let r=e.querySelector(`input[type='checkbox']`);await t(r).toBeInTheDocument(),await t(r).toHaveClass(`m-checkbox`),await t(r).not.toBeChecked(),await t(r).toBeDisabled();let i=r.checked;await n.click(r),await t(r.checked).toBe(i);let a=globalThis.getComputedStyle(r);await t(a.cursor).toBe(`not-allowed`),await t(Number.parseFloat(a.opacity)).toBeLessThan(1)},parameters:{docs:{description:{story:`Disabled checkbox that cannot be interacted with.`}}}},s={render:()=>{let e=document.createElement(`div`),t=document.createElement(`input`);return t.type=`checkbox`,t.classList.add(`m-checkbox`),t.name=`checkbox-checked-disabled`,t.value=`checked-disabled-value`,t.checked=!0,t.disabled=!0,e.append(t),e},play:async({canvasElement:e})=>{let r=e.querySelector(`input[type='checkbox']`);await t(r).toBeInTheDocument(),await t(r).toHaveClass(`m-checkbox`),await t(r).toBeChecked(),await t(r).toBeDisabled(),await n.click(r),await t(r).toBeChecked();let i=globalThis.getComputedStyle(r);await t(i.cursor).toBe(`not-allowed`),await t(Number.parseFloat(i.opacity)).toBeLessThan(1)},parameters:{docs:{description:{story:`Disabled checkbox in checked state.`}}}},c={render:e=>{let t=document.createElement(`div`);t.style.display=`flex`,t.style.alignItems=`center`,t.style.gap=`0.5rem`;let n=document.createElement(`input`);n.type=`checkbox`,n.classList.add(`m-checkbox`),n.id=`checkbox-with-label`,n.name=`agreement`,n.value=`agreed`;let r=e.label?String(e.label):`I agree to the terms of service`,i=document.createElement(`label`);return i.htmlFor=`checkbox-with-label`,i.textContent=r,i.style.cursor=`pointer`,i.style.userSelect=`none`,t.append(n,i),t},args:{label:`I agree to the terms of service`},play:async({canvasElement:e,args:r})=>{let i=e.querySelector(`input[type='checkbox']`),a=e.querySelector(`label`);await t(i).toBeInTheDocument(),await t(a).toBeInTheDocument(),await t(a).toHaveAttribute(`for`,`checkbox-with-label`),await t(a).toHaveTextContent(String(r.label)),await t(i.id).toBe(`checkbox-with-label`),await t(i).not.toBeChecked(),await n.click(a),await t(i).toBeChecked(),await n.click(a),await t(i).not.toBeChecked(),a.focus(),await n.keyboard(` `),await t(i).toBeChecked(),await t(globalThis.getComputedStyle(a).cursor).toBe(`pointer`)},parameters:{docs:{description:{story:`Checkbox with associated label for improved accessibility and usability.`}}}},i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`{
+        `}},a11y:{config:{rules:[{id:`label`,enabled:!1}]}}}},i={render:e=>{let t=document.createElement(`div`),n=document.createElement(`input`);n.type=`checkbox`,n.classList.add(`m-checkbox`);let r=e.checked?!!e.checked:!1,i=e.disabled?!!e.disabled:!1,a=e.name?String(e.name):`checkbox`,o=e.value?String(e.value):`checkbox`;return n.name=a,n.value=o,n.checked=r,n.disabled=i,t.append(n),t},args:{checked:!1,disabled:!1,name:`example`,value:`example-value`},play:async({canvasElement:e,args:r})=>{let i=e.querySelector(`input[type='checkbox']`);await t(i).toBeInTheDocument(),await t(i).toHaveClass(`m-checkbox`),await t(i).toHaveAttribute(`name`,String(r.name)),await t(i).toHaveAttribute(`value`,String(r.value));let a=!!r.checked,o=!!r.disabled;await t(i.checked).toBe(a),o?await t(i).toBeDisabled():(await t(i).not.toBeDisabled(),await n.click(i),await t(i.checked).toBe(!a),await n.click(i),await t(i.checked).toBe(a));let s=getComputedStyle(i);await t(s.appearance).toBe(`none`),await t(s.cursor).toBe(o?`not-allowed`:`pointer`)}},a={render:e=>{let t=document.createElement(`div`),n=document.createElement(`input`);return n.type=`checkbox`,n.classList.add(`m-checkbox`),n.name=`checkbox-checked`,n.value=`checked-value`,n.checked=!0,t.append(n),t},args:{checked:!0},play:async({canvasElement:e})=>{let r=e.querySelector(`input[type='checkbox']`);await t(r).toBeInTheDocument(),await t(r).toHaveClass(`m-checkbox`),await t(r).toBeChecked(),await t(r).not.toBeDisabled(),await n.click(r),await t(r).not.toBeChecked(),await n.click(r),await t(r).toBeChecked(),await t(getComputedStyle(r).backgroundColor).not.toBe(`rgba(0, 0, 0, 0)`)},parameters:{docs:{description:{story:`Checkbox in checked state by default.`}}}},o={render:()=>{let e=document.createElement(`div`),t=document.createElement(`input`);return t.type=`checkbox`,t.classList.add(`m-checkbox`),t.name=`checkbox-disabled`,t.value=`disabled-value`,t.disabled=!0,e.append(t),e},play:async({canvasElement:e})=>{let r=e.querySelector(`input[type='checkbox']`);await t(r).toBeInTheDocument(),await t(r).toHaveClass(`m-checkbox`),await t(r).not.toBeChecked(),await t(r).toBeDisabled();let i=r.checked;await n.click(r),await t(r.checked).toBe(i);let a=getComputedStyle(r);await t(a.cursor).toBe(`not-allowed`),await t(Number(a.opacity)).toBeLessThan(1)},parameters:{docs:{description:{story:`Disabled checkbox that cannot be interacted with.`}}}},s={render:()=>{let e=document.createElement(`div`),t=document.createElement(`input`);return t.type=`checkbox`,t.classList.add(`m-checkbox`),t.name=`checkbox-checked-disabled`,t.value=`checked-disabled-value`,t.checked=!0,t.disabled=!0,e.append(t),e},play:async({canvasElement:e})=>{let r=e.querySelector(`input[type='checkbox']`);await t(r).toBeInTheDocument(),await t(r).toHaveClass(`m-checkbox`),await t(r).toBeChecked(),await t(r).toBeDisabled(),await n.click(r),await t(r).toBeChecked();let i=getComputedStyle(r);await t(i.cursor).toBe(`not-allowed`),await t(Number(i.opacity)).toBeLessThan(1)},parameters:{docs:{description:{story:`Disabled checkbox in checked state.`}}}},c={render:e=>{let t=document.createElement(`div`);t.style.display=`flex`,t.style.alignItems=`center`,t.style.gap=`0.5rem`;let n=document.createElement(`input`);n.type=`checkbox`,n.classList.add(`m-checkbox`),n.id=`checkbox-with-label`,n.name=`agreement`,n.value=`agreed`;let r=e.label?String(e.label):`I agree to the terms of service`,i=document.createElement(`label`);return i.htmlFor=`checkbox-with-label`,i.textContent=r,i.style.cursor=`pointer`,i.style.userSelect=`none`,t.append(n,i),t},args:{label:`I agree to the terms of service`},play:async({canvasElement:e,args:r})=>{let i=e.querySelector(`input[type='checkbox']`),a=e.querySelector(`label`);await t(i).toBeInTheDocument(),await t(a).toBeInTheDocument(),await t(a).toHaveAttribute(`for`,`checkbox-with-label`),await t(a).toHaveTextContent(String(r.label)),await t(i.id).toBe(`checkbox-with-label`),await t(i).not.toBeChecked(),await n.click(a),await t(i).toBeChecked(),await n.click(a),await t(i).not.toBeChecked(),a.focus(),await n.keyboard(` `),await t(i).toBeChecked(),await t(getComputedStyle(a).cursor).toBe(`pointer`)},parameters:{docs:{description:{story:`Checkbox with associated label for improved accessibility and usability.`}}}},i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`{
   render: args => {
     const container = document.createElement("div");
     const checkbox = document.createElement("input");
@@ -107,7 +107,7 @@ This component does not use data attributes for styling or behavior.
     }
 
     // Test styling
-    const computedStyle = globalThis.getComputedStyle(checkbox);
+    const computedStyle = getComputedStyle(checkbox);
     await expect(computedStyle.appearance).toBe("none");
     await expect(computedStyle.cursor).toBe(isDisabled ? "not-allowed" : "pointer");
   }
@@ -146,7 +146,7 @@ This component does not use data attributes for styling or behavior.
     await expect(checkbox).toBeChecked();
 
     // Test styling for checked state
-    const computedStyle = globalThis.getComputedStyle(checkbox);
+    const computedStyle = getComputedStyle(checkbox);
     // When checked, background should change to primary color
     await expect(computedStyle.backgroundColor).not.toBe("rgba(0, 0, 0, 0)");
   },
@@ -186,9 +186,9 @@ This component does not use data attributes for styling or behavior.
     await expect(checkbox.checked).toBe(initialChecked);
 
     // Test disabled styling
-    const computedStyle = globalThis.getComputedStyle(checkbox);
+    const computedStyle = getComputedStyle(checkbox);
     await expect(computedStyle.cursor).toBe("not-allowed");
-    await expect(Number.parseFloat(computedStyle.opacity)).toBeLessThan(1);
+    await expect(Number(computedStyle.opacity)).toBeLessThan(1);
   },
   parameters: {
     docs: {
@@ -226,9 +226,9 @@ This component does not use data attributes for styling or behavior.
     await expect(checkbox).toBeChecked(); // Should remain checked
 
     // Test styling combines both states
-    const computedStyle = globalThis.getComputedStyle(checkbox);
+    const computedStyle = getComputedStyle(checkbox);
     await expect(computedStyle.cursor).toBe("not-allowed");
-    await expect(Number.parseFloat(computedStyle.opacity)).toBeLessThan(1);
+    await expect(Number(computedStyle.opacity)).toBeLessThan(1);
   },
   parameters: {
     docs: {
@@ -290,7 +290,7 @@ This component does not use data attributes for styling or behavior.
     await expect(checkbox).toBeChecked();
 
     // Test label styling
-    const labelStyle = globalThis.getComputedStyle(label);
+    const labelStyle = getComputedStyle(label);
     await expect(labelStyle.cursor).toBe("pointer");
   },
   parameters: {

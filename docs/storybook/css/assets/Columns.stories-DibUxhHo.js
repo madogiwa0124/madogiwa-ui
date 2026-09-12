@@ -81,7 +81,7 @@ This component has no child elements - it's a single-level component that acts a
           <strong>Item ${String(n+1)}</strong><br>
           <small style="color: var(--color-text-subtle);">Column span: ${String(e.itemColSize)}</small>
         </div>
-      `,colSize:e.itemColSize}));return t({gap:e.gap,subgrid:e.alignRows,autoFit:e.autoFit,autoFitMin:e.autoFitMin,children:n,...e.columnsLength!==12&&{columnsLength:e.columnsLength}})},args:{columnsLength:12,gap:!0,alignRows:!1,itemCount:8,itemColSize:1,autoFit:!1,autoFitMin:`0`},play:async({args:e})=>{let t=document.querySelector(`.m-columns`);if(await r(t).toBeInTheDocument(),await r(t).toHaveClass(`m-columns`),e.gap||await r(t).toHaveClass(`--no-gap`),e.alignRows&&await r(t).toHaveClass(`--subgrid`),e.columnsLength!==12&&await r(t).toHaveAttribute(`data-columns-length`,String(e.columnsLength)),!t)return;let n=t.querySelectorAll(`& > div`);await r(n).toHaveLength(e.itemCount);for(let t of n)await r(t).toHaveAttribute(`data-col-size`,String(e.itemColSize))}},o={render:e=>{let n={content:`
+      `,colSize:e.itemColSize}));return t({gap:e.gap,subgrid:e.alignRows,autoFit:e.autoFit,autoFitMin:e.autoFitMin,children:n,...e.columnsLength!==12&&{columnsLength:e.columnsLength}})},args:{columnsLength:12,gap:!0,alignRows:!1,itemCount:8,itemColSize:1,autoFit:!1,autoFitMin:`0`},play:async({args:e})=>{let t=document.querySelector(`.m-columns`);if(await r(t).toBeInTheDocument(),await r(t).toHaveClass(`m-columns`),e.gap||await r(t).toHaveClass(`--no-gap`),e.alignRows&&await r(t).toHaveClass(`--subgrid`),e.columnsLength!==12&&await r(t).toHaveAttribute(`data-columns-length`,String(e.columnsLength)),!t)return;let n=t.querySelectorAll(`:scope > div`);await r(n).toHaveLength(e.itemCount);for(let t of n)await r(t).toHaveAttribute(`data-col-size`,String(e.itemColSize))}},o={render:e=>{let n={content:`
           <img class="m-card__image" src="/stories/components/Card/320x240.png" alt="Example card image showing 320x240 placeholder">
           <div class="m-card__content">
             <h3 class="m-h3">Image Card</h3>
@@ -171,7 +171,7 @@ This component has no child elements - it's a single-level component that acts a
       await expect(columnsContainer).toHaveAttribute("data-columns-length", String(args.columnsLength));
     }
     if (!columnsContainer) return;
-    const items = columnsContainer.querySelectorAll("& > div");
+    const items = columnsContainer.querySelectorAll(":scope > div");
     await expect(items).toHaveLength(args.itemCount);
     for (const item of items) {
       await expect(item).toHaveAttribute("data-col-size", String(args.itemColSize));

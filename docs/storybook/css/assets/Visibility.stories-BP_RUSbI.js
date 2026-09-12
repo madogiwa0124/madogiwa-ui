@@ -79,7 +79,7 @@ Responsive utilities allow you to control visibility at different screen sizes, 
       <span style="background: var(--color-default); padding: 2px 8px; border-radius: 3px; margin: 0 4px;">visibility: hidden</span>
       <br>
       <strong>Current breakpoint:</strong> <span id="current-breakpoint" style="font-weight: bold; color: var(--color-primary);"></span>
-    `;let a=()=>{let e=window.innerWidth,t=`< 40rem (640px) - xs`;e>=1536?t=`≥ 96rem (1536px) - 2xl`:e>=1280?t=`≥ 80rem (1280px) - xl`:e>=1024?t=`≥ 64rem (1024px) - lg`:e>=768?t=`≥ 48rem (768px) - md`:e>=640&&(t=`≥ 40rem (640px) - sm`);let n=document.querySelector(`#current-breakpoint`);n&&(n.textContent=t)};a(),window.addEventListener(`resize`,a);let o=document.createElement(`table`);o.style.width=`100%`,o.style.borderCollapse=`collapse`,o.style.marginTop=`16px`,o.style.backgroundColor=`var(--color-bg-default)`,o.style.boxShadow=`0 2px 4px rgba(0,0,0,0.1)`;let s=document.createElement(`thead`),c=document.createElement(`tr`);c.style.backgroundColor=`var(--color-bg-muted)`;for(let e of[`Class`,`< 40rem
+    `;let a=()=>{let e=window.innerWidth,t=`< 40rem (640px) - xs`;e>=1536?t=`≥ 96rem (1536px) - 2xl`:e>=1280?t=`≥ 80rem (1280px) - xl`:e>=1024?t=`≥ 64rem (1024px) - lg`:e>=768?t=`≥ 48rem (768px) - md`:e>=640&&(t=`≥ 40rem (640px) - sm`);let n=document.querySelector(`#current-breakpoint`);n&&(n.textContent=t)};a(),new ResizeObserver(a).observe(document.documentElement);let o=document.createElement(`table`);o.style.width=`100%`,o.style.borderCollapse=`collapse`,o.style.marginTop=`16px`,o.style.backgroundColor=`var(--color-bg-default)`,o.style.boxShadow=`0 2px 4px rgba(0,0,0,0.1)`;let s=document.createElement(`thead`),c=document.createElement(`tr`);c.style.backgroundColor=`var(--color-bg-muted)`;for(let e of[`Class`,`< 40rem
 (640px)`,`≥ 40rem
 (640px)`,`≥ 48rem
 (768px)`,`≥ 64rem
@@ -247,7 +247,8 @@ Responsive utilities allow you to control visibility at different screen sizes, 
       }
     };
     updateBreakpoint();
-    window.addEventListener("resize", updateBreakpoint);
+    const resizeObserver = new ResizeObserver(updateBreakpoint);
+    resizeObserver.observe(document.documentElement);
     const table = document.createElement("table");
     table.style.width = "100%";
     table.style.borderCollapse = "collapse";

@@ -1,4 +1,4 @@
-import{n as e}from"./chunk-DnJy8xQt.js";var t,n,r,i,a;e((()=>{({expect:t}=__STORYBOOK_MODULE_TEST__),n={title:`Components/Heading`,tags:[`autodocs`],argTypes:{text:{control:{type:`text`},description:`The text content of the heading`},level:{control:{type:`select`},options:[1,2,3,4,5,6],description:`The semantic heading level (h1-h6)`},className:{control:{type:`text`},description:`Additional CSS classes to apply`}},parameters:{docs:{description:{component:`
+import{n as e}from"./chunk-DnJy8xQt.js";var t,n,r,i,a,o;e((()=>{({expect:t}=__STORYBOOK_MODULE_TEST__),n={title:`Components/Heading`,tags:[`autodocs`],argTypes:{text:{control:{type:`text`},description:`The text content of the heading`},level:{control:{type:`select`},options:[1,2,3,4,5,6],description:`The semantic heading level (h1-h6)`},className:{control:{type:`text`},description:`Additional CSS classes to apply`}},parameters:{docs:{description:{component:`
 ### Overview
 
 The Heading component provides semantically correct heading elements (h1-h6) with consistent typography and spacing. Each heading level follows a clear visual hierarchy while maintaining proper semantic structure for accessibility.
@@ -64,7 +64,7 @@ Use headings to:
 - Use only one h1 per page for the main title
 - Don't skip heading levels (h1 → h3 without h2)
 - Ensure headings are descriptive and meaningful
-        `}}}},r={render:e=>{let t=e.text||`Default Heading`,n=e.level,r=e.className||``,i=Math.max(1,Math.min(6,n)).toString(),a=document.createElement(`h${i}`);return a.textContent=t,a.classList.add(`m-h${i}`),r&&a.classList.add(...r.split(` `).filter(e=>e.trim())),a},args:{text:`Default Heading`,level:1,className:``},play:async({canvasElement:e,args:n})=>{let r=n.level,i=Math.max(1,Math.min(6,r)),a=n.text||`Default Heading`,o=i.toString(),s=e.querySelector(`h${o}`);await t(s).toBeInTheDocument(),await t(s).toHaveClass(`m-h${o}`),await t(s).toHaveTextContent(a),await t(s.tagName.toLowerCase()).toBe(`h${o}`);let c=globalThis.getComputedStyle(s);await t(c.marginTop).toBe(`0px`),await t(Number.parseFloat(c.marginBottom)).toBeGreaterThan(0),i<=3?await t(Number.parseInt(c.fontWeight)).toBeGreaterThanOrEqual(700):(await t(Number.parseInt(c.fontWeight)).toBeGreaterThanOrEqual(500),await t(Number.parseInt(c.fontWeight)).toBeLessThan(700))}},i={render:()=>{let e=document.createElement(`div`);e.style.display=`flex`,e.style.flexDirection=`column`,e.style.gap=`1.5rem`,e.style.padding=`1rem`;for(let t of[{level:1,text:`Heading Level 1 - Main Title`,description:`Primary page heading, used once per page`},{level:2,text:`Heading Level 2 - Section Title`,description:`Major section headings`},{level:3,text:`Heading Level 3 - Subsection`,description:`Subsection headings`},{level:4,text:`Heading Level 4 - Minor Heading`,description:`Component titles and labels`},{level:5,text:`Heading Level 5 - Small Heading`,description:`Small headings and labels`},{level:6,text:`Heading Level 6 - Caption`,description:`Smallest headings and captions`}]){let n=document.createElement(`div`);n.style.display=`flex`,n.style.flexDirection=`column`,n.style.gap=`0.5rem`,n.style.padding=`1rem`,n.style.border=`1px solid var(--color-border)`,n.style.borderRadius=`0.375rem`,n.style.backgroundColor=`var(--color-bg-muted)`;let r=t.level.toString(),i=document.createElement(`h${r}`);i.textContent=t.text,i.classList.add(`m-h${r}`);let a=document.createElement(`p`);a.textContent=t.description,a.style.margin=`0`,a.style.fontSize=`0.875rem`,a.style.color=`var(--color-text-subtle)`,a.style.fontStyle=`italic`,n.append(i,a),e.append(n)}return e},play:async({canvasElement:e})=>{for(let n=1;n<=6;n++){let r=n.toString(),i=e.querySelector(`h${r}`);await t(i).toBeInTheDocument(),await t(i).toHaveClass(`m-h${r}`),await t(i).toHaveTextContent(`Heading Level ${r}`),await t(i.tagName.toLowerCase()).toBe(`h${r}`);let a=globalThis.getComputedStyle(i),o=Number.parseFloat(a.fontSize);switch(n){case 1:await t(o).toBeGreaterThan(20);break;case 2:await t(o).toBeGreaterThan(18);break;case 3:await t(o).toBeGreaterThan(16);break;case 4:await t(o).toBeGreaterThan(16);break;default:await t(o).toBeGreaterThanOrEqual(16);break}let s=Number.parseInt(a.fontWeight);n<=3?await t(s).toBeGreaterThanOrEqual(700):(await t(s).toBeGreaterThanOrEqual(500),await t(s).toBeLessThan(700))}},parameters:{docs:{description:{story:`Overview of all heading levels showing the visual hierarchy and usage guidelines.`}}}},r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
+        `}}}},r={render:e=>{let t=e.text||`Default Heading`,n=e.level,r=e.className||``,i=Math.max(1,Math.min(6,n)).toString(),a=document.createElement(`h${i}`);return a.textContent=t,a.classList.add(`m-h${i}`),r&&a.classList.add(...r.split(` `).filter(e=>e.trim())),a},args:{text:`Default Heading`,level:1,className:``},play:async({canvasElement:e,args:n})=>{let r=n.level,i=Math.max(1,Math.min(6,r)),a=n.text||`Default Heading`,o=i.toString(),s=e.querySelector(`h${o}`);await t(s).toBeInTheDocument(),await t(s).toHaveClass(`m-h${o}`),await t(s).toHaveTextContent(a),await t(s.tagName.toLowerCase()).toBe(`h${o}`);let c=getComputedStyle(s);await t(c.marginTop).toBe(`0px`),await t(Number.parseFloat(c.marginBottom)).toBeGreaterThan(0),i<=3?await t(Number(c.fontWeight)).toBeGreaterThanOrEqual(700):(await t(Number(c.fontWeight)).toBeGreaterThanOrEqual(500),await t(Number(c.fontWeight)).toBeLessThan(700))}},i=async(e,n)=>{switch(e){case 1:await t(n).toBeGreaterThan(20);break;case 2:await t(n).toBeGreaterThan(18);break;case 3:await t(n).toBeGreaterThan(16);break;case 4:await t(n).toBeGreaterThan(16);break;default:await t(n).toBeGreaterThanOrEqual(16);break}},a={render:()=>{let e=document.createElement(`div`);e.style.display=`flex`,e.style.flexDirection=`column`,e.style.gap=`1.5rem`,e.style.padding=`1rem`;for(let t of[{level:1,text:`Heading Level 1 - Main Title`,description:`Primary page heading, used once per page`},{level:2,text:`Heading Level 2 - Section Title`,description:`Major section headings`},{level:3,text:`Heading Level 3 - Subsection`,description:`Subsection headings`},{level:4,text:`Heading Level 4 - Minor Heading`,description:`Component titles and labels`},{level:5,text:`Heading Level 5 - Small Heading`,description:`Small headings and labels`},{level:6,text:`Heading Level 6 - Caption`,description:`Smallest headings and captions`}]){let n=document.createElement(`div`);n.style.display=`flex`,n.style.flexDirection=`column`,n.style.gap=`0.5rem`,n.style.padding=`1rem`,n.style.border=`1px solid var(--color-border)`,n.style.borderRadius=`0.375rem`,n.style.backgroundColor=`var(--color-bg-muted)`;let r=t.level.toString(),i=document.createElement(`h${r}`);i.textContent=t.text,i.classList.add(`m-h${r}`);let a=document.createElement(`p`);a.textContent=t.description,a.style.margin=`0`,a.style.fontSize=`0.875rem`,a.style.color=`var(--color-text-subtle)`,a.style.fontStyle=`italic`,n.append(i,a),e.append(n)}return e},play:async({canvasElement:e})=>{for(let n=1;n<=6;n++){let r=n.toString(),a=e.querySelector(`h${r}`);await t(a).toBeInTheDocument(),await t(a).toHaveClass(`m-h${r}`),await t(a).toHaveTextContent(`Heading Level ${r}`),await t(a.tagName.toLowerCase()).toBe(`h${r}`);let o=getComputedStyle(a),s=Number.parseFloat(o.fontSize);await i(n,s);let c=Number(o.fontWeight);n<=3?await t(c).toBeGreaterThanOrEqual(700):(await t(c).toBeGreaterThanOrEqual(500),await t(c).toBeLessThan(700))}},parameters:{docs:{description:{story:`Overview of all heading levels showing the visual hierarchy and usage guidelines.`}}}},r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
   render: args => {
     const text = args["text"] || "Default Heading";
     const level = args["level"];
@@ -101,21 +101,22 @@ Use headings to:
     await expect(heading.tagName.toLowerCase()).toBe(\`h\${levelString}\`);
 
     // Test styling
-    const computedStyle = globalThis.getComputedStyle(heading);
+    const computedStyle = getComputedStyle(heading);
     await expect(computedStyle.marginTop).toBe("0px");
+    // eslint-disable-next-line unicorn/prefer-number-coercion -- marginBottom has a "px" unit suffix, Number() would yield NaN
     await expect(Number.parseFloat(computedStyle.marginBottom)).toBeGreaterThan(0);
 
     // Test font properties based on level
     if (safeLevel <= 3) {
       // h1, h2, h3 should be bold
-      await expect(Number.parseInt(computedStyle.fontWeight)).toBeGreaterThanOrEqual(700);
+      await expect(Number(computedStyle.fontWeight)).toBeGreaterThanOrEqual(700);
     } else {
       // h4, h5, h6 should be medium weight
-      await expect(Number.parseInt(computedStyle.fontWeight)).toBeGreaterThanOrEqual(500);
-      await expect(Number.parseInt(computedStyle.fontWeight)).toBeLessThan(700);
+      await expect(Number(computedStyle.fontWeight)).toBeGreaterThanOrEqual(500);
+      await expect(Number(computedStyle.fontWeight)).toBeLessThan(700);
     }
   }
-}`,...r.parameters?.docs?.source}}},i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`{
+}`,...r.parameters?.docs?.source}}},a.parameters={...a.parameters,docs:{...a.parameters?.docs,source:{originalSource:`{
   render: () => {
     const container = document.createElement("div");
     container.style.display = "flex";
@@ -184,43 +185,13 @@ Use headings to:
       await expect(heading.tagName.toLowerCase()).toBe(\`h\${levelString}\`);
 
       // Test visual hierarchy - larger levels should have larger font sizes
-      const computedStyle = globalThis.getComputedStyle(heading);
+      const computedStyle = getComputedStyle(heading);
+      // eslint-disable-next-line unicorn/prefer-number-coercion -- fontSize has a "px" unit suffix, Number() would yield NaN
       const fontSize = Number.parseFloat(computedStyle.fontSize);
-      switch (level) {
-        case 1:
-          {
-            // h1 should be the largest (text-3xl)
-            await expect(fontSize).toBeGreaterThan(20); // Significantly larger than base
-            break;
-          }
-        case 2:
-          {
-            // h2 should be smaller than h1 but larger than h3 (text-2xl)
-            await expect(fontSize).toBeGreaterThan(18); // Larger than h3
-            break;
-          }
-        case 3:
-          {
-            // h3 should be larger than h4 (text-xl)
-            await expect(fontSize).toBeGreaterThan(16); // Larger than base
-            break;
-          }
-        case 4:
-          {
-            // h4 should be slightly larger than base (text-lg)
-            await expect(fontSize).toBeGreaterThan(16); // Slightly larger than base
-            break;
-          }
-        default:
-          {
-            // h5-h6 use base font size
-            await expect(fontSize).toBeGreaterThanOrEqual(16); // Base font size
-            break;
-          }
-      }
+      await expectFontSizeForLevel(level, fontSize);
 
       // Test font weight
-      const fontWeight = Number.parseInt(computedStyle.fontWeight);
+      const fontWeight = Number(computedStyle.fontWeight);
       if (level <= 3) {
         await expect(fontWeight).toBeGreaterThanOrEqual(700); // Bold
       } else {
@@ -236,4 +207,4 @@ Use headings to:
       }
     }
   }
-}`,...i.parameters?.docs?.source}}},a=[`Default`,`AllHeadings`]}))();export{i as AllHeadings,r as Default,a as __namedExportsOrder,n as default};
+}`,...a.parameters?.docs?.source}}},o=[`Default`,`AllHeadings`]}))();export{a as AllHeadings,r as Default,o as __namedExportsOrder,n as default};

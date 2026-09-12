@@ -56,9 +56,9 @@ declare const __VLS_base_3: DefineComponent<{}, {}, {}, {}, {}, ComponentOptions
 declare const __VLS_base_30: DefineComponent<{}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 declare const __VLS_base_31: DefineComponent<__VLS_PublicProps_2, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-    "update:modelValue": (value: string | number | undefined) => any;
+    "update:modelValue": (value: string | number) => any;
 }, string, PublicProps, Readonly<__VLS_PublicProps_2> & Readonly<{
-    "onUpdate:modelValue"?: (value: string | number | undefined) => any;
+    "onUpdate:modelValue"?: (value: string | number) => any;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
 declare const __VLS_base_32: DefineComponent<__VLS_Props_17, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props_17> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
@@ -128,9 +128,9 @@ declare const __VLS_export_20: __VLS_WithSlots_18<typeof __VLS_base_18, __VLS_Sl
 declare const __VLS_export_21: __VLS_WithSlots_19<typeof __VLS_base_19, __VLS_Slots_19>;
 
 declare const __VLS_export_22: DefineComponent<__VLS_PublicProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-    "update:modelValue": (value: string | number | undefined) => any;
+    "update:modelValue": (value: string | number) => any;
 }, string, PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
-    "onUpdate:modelValue"?: (value: string | number | undefined) => any;
+    "onUpdate:modelValue"?: (value: string | number) => any;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
 declare const __VLS_export_23: __VLS_WithSlots_20<typeof __VLS_base_20, __VLS_Slots_20>;
@@ -164,9 +164,9 @@ declare const __VLS_export_33: __VLS_WithSlots_29<typeof __VLS_base_29, __VLS_Sl
 declare const __VLS_export_34: __VLS_WithSlots_30<typeof __VLS_base_30, __VLS_Slots_30>;
 
 declare const __VLS_export_35: DefineComponent<__VLS_ModelProps_3, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-    "update:modelValue": (value: string | undefined) => any;
+    "update:modelValue": (value: string) => any;
 }, string, PublicProps, Readonly<__VLS_ModelProps_3> & Readonly<{
-    "onUpdate:modelValue"?: (value: string | undefined) => any;
+    "onUpdate:modelValue"?: (value: string) => any;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
 declare const __VLS_export_36: __VLS_WithSlots_31<typeof __VLS_base_31, __VLS_Slots_31>;
@@ -188,9 +188,9 @@ declare const __VLS_export_42: __VLS_WithSlots_37<typeof __VLS_base_37, __VLS_Sl
 declare const __VLS_export_43: __VLS_WithSlots_38<typeof __VLS_base_38, __VLS_Slots_38>;
 
 declare const __VLS_export_44: DefineComponent<__VLS_PublicProps_3, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-    "update:modelValue": (value: string | undefined) => any;
+    "update:modelValue": (value: string) => any;
 }, string, PublicProps, Readonly<__VLS_PublicProps_3> & Readonly<{
-    "onUpdate:modelValue"?: (value: string | undefined) => any;
+    "onUpdate:modelValue"?: (value: string) => any;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
 declare const __VLS_export_45: DefineComponent<__VLS_ModelProps_6, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {

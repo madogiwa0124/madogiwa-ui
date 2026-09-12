@@ -120,12 +120,12 @@ This component does not use data attributes for styling or behavior.
       inputType: "file" as const,
       accept: ".txt, .pdf"
     }];
-    for (const props of inputs) {
-      const createInputArguments = {
+    for (const properties of inputs) {
+      const inputArguments = {
         ...args,
-        ...props
+        ...properties
       };
-      container.append(createInput(createInputArguments));
+      container.append(createInput(inputArguments));
     }
     return container;
   },
