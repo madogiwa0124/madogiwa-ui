@@ -15,8 +15,8 @@ overrides:
   # workspace's @playwright/test. Without this override, the test-runner uses playwright-core@1.59.1
   # while @playwright/test uses 1.60.0, requiring two separate Chromium binaries to be installed in CI.
   # Forcing a unified version means only one Chromium binary is needed.
-  playwright: ^1.60.0
-  playwright-core: ^1.60.0
+  playwright: ^1.63.0
+  playwright-core: ^1.63.0
 
 catalog:
   postcss-preset-env: ^11.2.1
