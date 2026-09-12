@@ -185,9 +185,9 @@ export const Types: Story = {
       { inputType: "file" as const, accept: ".txt, .pdf" },
     ];
 
-    for (const props of inputs) {
-      const createInputArguments = { ...args, ...props };
-      container.append(createInput(createInputArguments));
+    for (const properties of inputs) {
+      const inputArguments = { ...args, ...properties };
+      container.append(createInput(inputArguments));
     }
 
     return container;

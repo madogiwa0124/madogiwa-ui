@@ -12,7 +12,7 @@ type SnippetItem = {
 // NOTE: We might need to create placeholders for each modifier length here
 // Currently, only one placeholder is created when there are multiple modifiers, so once you select one, you can't select other modifiers
 // Example) `.m-btn.--primary.--large` → `.m-btn${2|.--primary,.--large|}${3|.--primary,.--large|}` might be more user-friendly?
-const ZERO_WIDTH_SPACE = "\u200B" as const;
+const ZERO_WIDTH_SPACE = "\u{200B}" as const;
 const PLACEHOLDER_INDEX_BASE = 1 as const;
 const buildSnippetItem = ({ description, initBody, initPrefix, scope, placeholders }: {
   description: string;
@@ -103,9 +103,8 @@ const buildClassSnippets = ({ descriptionPrefix, classRegex, cssContent, initSco
   while ((match = classRegex.exec(cssContent)) !== null) classNames.add(match[0]);
   const bemClassStructures = parseBEMClasses(classNames);
   const classSnippetSource = transformBemClassesToSnippetSource(bemClassStructures, `${descriptionPrefix} class`);
-  for (const snippetName of Object.keys(classSnippetSource)) {
-    if (!classSnippetSource[snippetName]) continue;
-    const { initBody, prefix: initPrefix, placeholders, description } = classSnippetSource[snippetName];
+  for (const [snippetName, snippetSourceItem] of Object.entries(classSnippetSource)) {
+    const { initBody, prefix: initPrefix, placeholders, description } = snippetSourceItem;
     const snippetItem = buildSnippetItem({ description, initBody, initPrefix, scope: initScope, placeholders });
     const { scope, prefix, body } = snippetItem;
     snippets.push({ [snippetName]: { scope, prefix, body, description } });
@@ -132,7 +131,8 @@ const buildRootCSSVariableSnippets = ({ descriptionPrefix, variableRegex = CSS_V
   for (const match of rootMatch) {
     cssVariables = cssVariables.union(extractCSSVariables(match, variableRegex));
   }
-  for (const match of cssContent.match(CSS_AT_PROPERTY_REGEXP) ?? []) {
+  const atPropertyMatches = cssContent.match(CSS_AT_PROPERTY_REGEXP) ?? [];
+  for (const match of atPropertyMatches) {
     cssVariables = cssVariables.union(extractCSSVariables(match, variableRegex));
   }
   if (cssVariables.size === 0) return [];

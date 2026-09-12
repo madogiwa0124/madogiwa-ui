@@ -302,7 +302,8 @@ export const Breakpoint: Story = {
     };
 
     updateCurrentBreakpoint();
-    window.addEventListener("resize", updateCurrentBreakpoint);
+    const resizeObserver = new ResizeObserver(updateCurrentBreakpoint);
+    resizeObserver.observe(document.documentElement);
     container.append(currentIndicator);
 
     // Breakpoints table
@@ -383,7 +384,7 @@ export const Breakpoint: Story = {
     await expect(title?.textContent).toContain("Media Breakpoints");
     await expect(table).toBeTruthy();
 
-    const rows = canvasElement.querySelectorAll("tbody tr");
+    const rows = canvasElement.querySelectorAll(":scope tbody tr");
     await expect(rows).toHaveLength(10);
 
     // Verify table headers

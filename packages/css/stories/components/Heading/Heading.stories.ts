@@ -142,20 +142,51 @@ export const Default: Story = {
     await expect(heading.tagName.toLowerCase()).toBe(`h${levelString}`);
 
     // Test styling
-    const computedStyle = globalThis.getComputedStyle(heading);
+    const computedStyle = getComputedStyle(heading);
     await expect(computedStyle.marginTop).toBe("0px");
+    // eslint-disable-next-line unicorn/prefer-number-coercion -- marginBottom has a "px" unit suffix, Number() would yield NaN
     await expect(Number.parseFloat(computedStyle.marginBottom)).toBeGreaterThan(0);
 
     // Test font properties based on level
     if (safeLevel <= 3) {
       // h1, h2, h3 should be bold
-      await expect(Number.parseInt(computedStyle.fontWeight)).toBeGreaterThanOrEqual(700);
+      await expect(Number(computedStyle.fontWeight)).toBeGreaterThanOrEqual(700);
     } else {
       // h4, h5, h6 should be medium weight
-      await expect(Number.parseInt(computedStyle.fontWeight)).toBeGreaterThanOrEqual(500);
-      await expect(Number.parseInt(computedStyle.fontWeight)).toBeLessThan(700);
+      await expect(Number(computedStyle.fontWeight)).toBeGreaterThanOrEqual(500);
+      await expect(Number(computedStyle.fontWeight)).toBeLessThan(700);
     }
   },
+};
+
+const expectFontSizeForLevel = async (level: number, fontSize: number) => {
+  switch (level) {
+    case 1: {
+      // h1 should be the largest (text-3xl)
+      await expect(fontSize).toBeGreaterThan(20); // Significantly larger than base
+      break;
+    }
+    case 2: {
+      // h2 should be smaller than h1 but larger than h3 (text-2xl)
+      await expect(fontSize).toBeGreaterThan(18); // Larger than h3
+      break;
+    }
+    case 3: {
+      // h3 should be larger than h4 (text-xl)
+      await expect(fontSize).toBeGreaterThan(16); // Larger than base
+      break;
+    }
+    case 4: {
+      // h4 should be slightly larger than base (text-lg)
+      await expect(fontSize).toBeGreaterThan(16); // Slightly larger than base
+      break;
+    }
+    default: {
+      // h5-h6 use base font size
+      await expect(fontSize).toBeGreaterThanOrEqual(16); // Base font size
+      break;
+    }
+  }
 };
 
 export const AllHeadings: Story = {
@@ -214,39 +245,14 @@ export const AllHeadings: Story = {
       await expect(heading.tagName.toLowerCase()).toBe(`h${levelString}`);
 
       // Test visual hierarchy - larger levels should have larger font sizes
-      const computedStyle = globalThis.getComputedStyle(heading);
+      const computedStyle = getComputedStyle(heading);
+      // eslint-disable-next-line unicorn/prefer-number-coercion -- fontSize has a "px" unit suffix, Number() would yield NaN
       const fontSize = Number.parseFloat(computedStyle.fontSize);
 
-      switch (level) {
-        case 1: {
-          // h1 should be the largest (text-3xl)
-          await expect(fontSize).toBeGreaterThan(20); // Significantly larger than base
-          break;
-        }
-        case 2: {
-          // h2 should be smaller than h1 but larger than h3 (text-2xl)
-          await expect(fontSize).toBeGreaterThan(18); // Larger than h3
-          break;
-        }
-        case 3: {
-          // h3 should be larger than h4 (text-xl)
-          await expect(fontSize).toBeGreaterThan(16); // Larger than base
-          break;
-        }
-        case 4: {
-          // h4 should be slightly larger than base (text-lg)
-          await expect(fontSize).toBeGreaterThan(16); // Slightly larger than base
-          break;
-        }
-        default: {
-          // h5-h6 use base font size
-          await expect(fontSize).toBeGreaterThanOrEqual(16); // Base font size
-          break;
-        }
-      }
+      await expectFontSizeForLevel(level, fontSize);
 
       // Test font weight
-      const fontWeight = Number.parseInt(computedStyle.fontWeight);
+      const fontWeight = Number(computedStyle.fontWeight);
       if (level <= 3) {
         await expect(fontWeight).toBeGreaterThanOrEqual(700); // Bold
       } else {

@@ -195,7 +195,7 @@ export const Default: Story = {
     }
 
     if (!columnsContainer) return;
-    const items = columnsContainer.querySelectorAll("& > div");
+    const items = columnsContainer.querySelectorAll(":scope > div");
     await expect(items).toHaveLength(args.itemCount);
 
     for (const item of items) {

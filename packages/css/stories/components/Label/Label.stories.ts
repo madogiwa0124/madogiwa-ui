@@ -11,7 +11,7 @@ export interface LabelProperties {
 }
 
 const createLabel = (
-  props: LabelProperties = {},
+  properties: LabelProperties = {},
 ): HTMLLabelElement => {
   const {
     text = "Label",
@@ -19,7 +19,7 @@ const createLabel = (
     required = false,
     disabled = false,
     className = "",
-  } = props;
+  } = properties;
 
   const label = document.createElement("label");
   label.className = `m-label ${className}`.trim();
@@ -173,13 +173,13 @@ export const Default: Story = {
     }
 
     // Test CSS properties
-    const computedStyle = globalThis.getComputedStyle(label);
+    const computedStyle = getComputedStyle(label);
     await expect(computedStyle.display).toBe("block");
-    await expect(Number.parseInt(computedStyle.fontWeight, 10)).toBeGreaterThanOrEqual(500);
+    await expect(Number(computedStyle.fontWeight)).toBeGreaterThanOrEqual(500);
 
     // Test disabled styling
     if (args.disabled) {
-      await expect(Number.parseFloat(computedStyle.opacity)).toBeLessThan(1);
+      await expect(Number(computedStyle.opacity)).toBeLessThan(1);
       await expect(computedStyle.cursor).toBe("not-allowed");
     }
   },
@@ -289,7 +289,7 @@ export const Required: Story = {
     await expect(helpText).toBeInTheDocument();
 
     // Test CSS required indicator
-    const pseudoElement = globalThis.getComputedStyle(label, "::after");
+    const pseudoElement = getComputedStyle(label, "::after");
     await expect(pseudoElement.content).toBe("\"*\"");
 
     // Test interaction behavior
@@ -386,8 +386,8 @@ export const Disabled: Story = {
     await expect(disabledLabel).toHaveClass("--disabled");
 
     // Test disabled styling
-    const disabledStyle = globalThis.getComputedStyle(disabledLabel);
-    await expect(Number.parseFloat(disabledStyle.opacity)).toBeLessThan(1);
+    const disabledStyle = getComputedStyle(disabledLabel);
+    await expect(Number(disabledStyle.opacity)).toBeLessThan(1);
     await expect(disabledStyle.cursor).toBe("not-allowed");
 
     // Test that disabled label doesn't focus disabled input

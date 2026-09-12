@@ -110,10 +110,10 @@ const generateMarkdown = (documents: ComponentDocument[], frontMatter: Record<st
 const buildStorybookDocumentMarkdown = (
   frontMatterSection: string,
   componentsSection: string,
-  timeStamp: Date,
+  timestamp: Date,
 ) => `---
 ${frontMatterSection}
-generated_at: ${timeStamp.toISOString()}
+generated_at: ${timestamp.toISOString()}
 ---
 
 # Madogiwa UI Components Documentation
@@ -125,5 +125,5 @@ ${componentsSection}
 
 - This documentation is auto-generated from \`parameters.docs.description.component\` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: ${timeStamp.toLocaleString()}
+- Generated at: ${timestamp.toLocaleString()}
 `;

@@ -71,6 +71,10 @@ const unicornRules = {
   ],
   // NOTE: Adopting file names like `MBtn` makes it difficult to properly ignore, so it is disabled.
   "unicorn/prevent-abbreviations": "off",
+  // NOTE: Forcing is/has/etc. prefixes on every local boolean (Storybook args destructuring, etc.) creates noisy renames, so it is disabled.
+  "unicorn/consistent-boolean-name": "off",
+  // NOTE: `args`/`props` are conventional Storybook/component parameter names, `el`/`ref` are common short names for DOM elements and refs, and `e` is the conventional event-handler parameter name; don't force these to their longer forms.
+  "unicorn/name-replacements": ["error", { replacements: { args: false, props: false, el: false, els: false, ref: false, refs: false, e: false } }],
 };
 
 export default defineConfig([
@@ -176,6 +180,13 @@ export default defineConfig([
     rules: {
       // NOTE: MHeading wraps components such as `h1` and `p`, so we disable it because we use file names such as `MH1` and `MP`.
       "unicorn/filename-case": "off",
+    },
+  },
+  {
+    files: ["**/MButton/**/*", "**/demo/**/*"],
+    rules: {
+      // NOTE: `MBtn` intentionally matches the CSS `.m-btn` block name (see vue.instructions.md), so keep the abbreviated name.
+      "unicorn/name-replacements": "off",
     },
   },
 ]);

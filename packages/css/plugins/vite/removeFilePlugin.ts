@@ -15,7 +15,7 @@ export const removeFilePlugin = (glob: string, silent: boolean = false): Plugin 
             rmSync(file, { force: true });
             if (!silent) console.info(`Removed file: ${file}`);
           }
-          if (files.length === 0 && !silent) {
+          if (!silent && files.length === 0) {
             console.info(`No files matched pattern: ${glob}`);
           }
         } catch (error) {

@@ -67,12 +67,12 @@ export const createTabs = (
 
   // Create tab panels
   for (const tabProperties of props.tabs) {
-    if (tabProperties.ariaControls) {
-      const panel = document.createElement("div");
-      panel.id = tabProperties.ariaControls;
-      panel.setAttribute("role", "tabpanel");
-      container.append(panel);
-    }
+    if (!tabProperties.ariaControls) continue;
+
+    const panel = document.createElement("div");
+    panel.id = tabProperties.ariaControls;
+    panel.setAttribute("role", "tabpanel");
+    container.append(panel);
   }
 
   return container;

@@ -26,7 +26,7 @@ export const customProperties = (
   sortMode: "natural" | "numeric" = "natural",
 ): Property[] => {
   const htmlStyle = element.computedStyleMap();
-  const entries = [...htmlStyle.entries()];
+  const entries = htmlStyle.entries().toArray();
   const properties = entries.filter(([propertyName, _]) =>
     propertyName.startsWith("--"),
   );
@@ -275,7 +275,7 @@ const convertPxToRem = (
 ): string | undefined => {
   const match = value.match(/^([\d.]+)px$/);
   if (match?.[1]) {
-    const pxValue = Number.parseFloat(match[1]);
+    const pxValue = Number(match[1]);
     const remValue = pxValue / rootFontSize;
     return `${remValue.toFixed(3)}rem`;
   }

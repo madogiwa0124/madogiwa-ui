@@ -38,7 +38,9 @@ export default defineConfig({
     */
     {
       name: "output-dts",
+
       generateBundle() {
+        // eslint-disable-next-line unicorn/no-this-outside-of-class -- Rollup plugin hooks receive `this` as the plugin context
         this.emitFile({
           type: "asset",
           fileName: "madogiwa-ui.d.ts",

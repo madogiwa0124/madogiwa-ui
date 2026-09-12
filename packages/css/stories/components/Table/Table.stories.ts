@@ -141,7 +141,7 @@ export const Default: Story = {
     const headers = table?.querySelectorAll("th");
     await expect(headers).toHaveLength(3);
 
-    const rows = table?.querySelectorAll("tbody tr");
+    const rows = table?.querySelectorAll(":scope tbody tr");
     await expect(rows).toHaveLength(3);
   },
 };

@@ -161,7 +161,7 @@ export const Default: Story = {
     }
 
     // Test styling
-    const computedStyle = globalThis.getComputedStyle(checkbox);
+    const computedStyle = getComputedStyle(checkbox);
     await expect(computedStyle.appearance).toBe("none");
     await expect(computedStyle.cursor).toBe(isDisabled ? "not-allowed" : "pointer");
   },
@@ -201,7 +201,7 @@ export const Checked: Story = {
     await expect(checkbox).toBeChecked();
 
     // Test styling for checked state
-    const computedStyle = globalThis.getComputedStyle(checkbox);
+    const computedStyle = getComputedStyle(checkbox);
     // When checked, background should change to primary color
     await expect(computedStyle.backgroundColor).not.toBe("rgba(0, 0, 0, 0)");
   },
@@ -242,9 +242,9 @@ export const Disabled: Story = {
     await expect(checkbox.checked).toBe(initialChecked);
 
     // Test disabled styling
-    const computedStyle = globalThis.getComputedStyle(checkbox);
+    const computedStyle = getComputedStyle(checkbox);
     await expect(computedStyle.cursor).toBe("not-allowed");
-    await expect(Number.parseFloat(computedStyle.opacity)).toBeLessThan(1);
+    await expect(Number(computedStyle.opacity)).toBeLessThan(1);
   },
   parameters: {
     docs: {
@@ -283,9 +283,9 @@ export const CheckedDisabled: Story = {
     await expect(checkbox).toBeChecked(); // Should remain checked
 
     // Test styling combines both states
-    const computedStyle = globalThis.getComputedStyle(checkbox);
+    const computedStyle = getComputedStyle(checkbox);
     await expect(computedStyle.cursor).toBe("not-allowed");
-    await expect(Number.parseFloat(computedStyle.opacity)).toBeLessThan(1);
+    await expect(Number(computedStyle.opacity)).toBeLessThan(1);
   },
   parameters: {
     docs: {
@@ -351,7 +351,7 @@ export const WithLabel: Story = {
     await expect(checkbox).toBeChecked();
 
     // Test label styling
-    const labelStyle = globalThis.getComputedStyle(label);
+    const labelStyle = getComputedStyle(label);
     await expect(labelStyle.cursor).toBe("pointer");
   },
   parameters: {

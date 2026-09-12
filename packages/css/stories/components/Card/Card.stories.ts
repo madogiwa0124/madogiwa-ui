@@ -198,7 +198,7 @@ export const Default: Story = {
     }
 
     // Test styling
-    const computedStyle = globalThis.getComputedStyle(card);
+    const computedStyle = getComputedStyle(card);
     await expect(computedStyle.backgroundColor).not.toBe("rgba(0, 0, 0, 0)");
     await expect(computedStyle.borderRadius).not.toBe("0px");
   },
@@ -235,7 +235,7 @@ export const Floating: Story = {
     await expect(card).toHaveClass("--floating");
 
     // Test shadow effect
-    const computedStyle = globalThis.getComputedStyle(card);
+    const computedStyle = getComputedStyle(card);
     await expect(computedStyle.boxShadow).not.toBe("none");
 
     // Test hover interaction
@@ -328,7 +328,7 @@ export const FullCardSample: Story = {
       await expect(image).toHaveAttribute("alt", args["imageAlt"]);
 
       // Test image styling
-      const imageStyle = globalThis.getComputedStyle(image);
+      const imageStyle = getComputedStyle(image);
       await expect(imageStyle.width).toBe("318px"); // Should be 100% of container minus borders
       await expect(imageStyle.objectFit).toBe("cover");
     }

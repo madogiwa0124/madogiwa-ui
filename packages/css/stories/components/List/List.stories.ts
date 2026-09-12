@@ -189,8 +189,8 @@ export const NoStyle: Story = {
 
     await expect(olLi).not.toBeNull();
     await expect(ulLi).not.toBeNull();
-    await expect(globalThis.getComputedStyle(olLi as Element, "::before").content).toBe("none");
-    await expect(globalThis.getComputedStyle(ulLi as Element, "::before").content).toBe("none");
+    await expect(getComputedStyle(olLi as Element, "::before").content).toBe("none");
+    await expect(getComputedStyle(ulLi as Element, "::before").content).toBe("none");
   },
 };
 
@@ -223,7 +223,7 @@ export const InlineList: Story = {
 
     await expect(ol).not.toBeNull();
     await expect(ul).not.toBeNull();
-    await expect(globalThis.getComputedStyle(ol as Element).flexDirection).toBe("row");
-    await expect(globalThis.getComputedStyle(ul as Element).flexDirection).toBe("row");
+    await expect(getComputedStyle(ol as Element).flexDirection).toBe("row");
+    await expect(getComputedStyle(ul as Element).flexDirection).toBe("row");
   },
 };

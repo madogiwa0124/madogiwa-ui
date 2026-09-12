@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const modelValue = defineModel<string | number>();
+const modelValue = defineModel<string | number>({ default: "" });
 
 defineProps<{
   error?: boolean;

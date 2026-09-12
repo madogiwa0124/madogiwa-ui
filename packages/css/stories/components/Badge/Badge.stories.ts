@@ -295,8 +295,8 @@ export const AllVariants: Story = {
     const primaryBadge = canvasElement.querySelector(".m-badge.--primary") as HTMLElement;
     const secondaryBadge = canvasElement.querySelector(".m-badge.--secondary") as HTMLElement;
 
-    const primaryStyle = globalThis.getComputedStyle(primaryBadge);
-    const secondaryStyle = globalThis.getComputedStyle(secondaryBadge);
+    const primaryStyle = getComputedStyle(primaryBadge);
+    const secondaryStyle = getComputedStyle(secondaryBadge);
 
     // Ensure different variants have different styling
     if (!args["outline"]) {
@@ -384,7 +384,7 @@ export const Interactive: Story = {
     if (args["disabled"]) {
       await expect(buttonBadge).toBeDisabled();
       // Test that disabled button has proper opacity
-      const buttonStyle = globalThis.getComputedStyle(buttonBadge);
+      const buttonStyle = getComputedStyle(buttonBadge);
       await expect(buttonStyle.opacity).toBe("0.65");
     } else {
       await expect(buttonBadge).not.toBeDisabled();
@@ -448,7 +448,7 @@ export const OutlineStyle: Story = {
         }
 
         // Test outline styles
-        const computedStyle = globalThis.getComputedStyle(badge);
+        const computedStyle = getComputedStyle(badge);
         await expect(computedStyle.backgroundColor).toBe("rgba(0, 0, 0, 0)"); // transparent
 
         // Verify border exists for outline style
@@ -460,8 +460,8 @@ export const OutlineStyle: Story = {
     // Test visual distinction between outline variants
     const primaryBadge = canvasElement.querySelector(".m-badge.--primary") as HTMLElement;
     const dangerBadge = canvasElement.querySelector(".m-badge.--danger") as HTMLElement;
-    const primaryStyle = globalThis.getComputedStyle(primaryBadge);
-    const dangerStyle = globalThis.getComputedStyle(dangerBadge);
+    const primaryStyle = getComputedStyle(primaryBadge);
+    const dangerStyle = getComputedStyle(dangerBadge);
 
     // Different variants should have different border colors
     await expect(primaryStyle.borderColor).not.toBe(dangerStyle.borderColor);
@@ -577,13 +577,14 @@ export const WithIcon: Story = {
     await expect(countBadge).toHaveTextContent("3");
 
     // Test small size styling
-    const computedStyle = globalThis.getComputedStyle(countBadge);
+    const computedStyle = getComputedStyle(countBadge);
     // Small badges should have smaller font size
+    // eslint-disable-next-line unicorn/prefer-number-coercion -- fontSize has a "px" unit suffix, Number() would yield NaN
     const fontSize = Number.parseFloat(computedStyle.fontSize);
     await expect(fontSize).toBeLessThan(16); // Assuming base font size is 16px
 
     // Test gap spacing between icon and text
-    const computedStyleIconText = globalThis.getComputedStyle(iconTextBadge);
+    const computedStyleIconText = getComputedStyle(iconTextBadge);
     await expect(computedStyleIconText.gap).not.toBe("0px");
   },
   parameters: {
@@ -630,10 +631,12 @@ export const SizeComparison: Story = {
     await expect(smallBadge).toHaveClass("--small");
 
     // Test size differences
-    const defaultStyle = globalThis.getComputedStyle(defaultBadge);
-    const smallStyle = globalThis.getComputedStyle(smallBadge);
+    const defaultStyle = getComputedStyle(defaultBadge);
+    const smallStyle = getComputedStyle(smallBadge);
 
+    // eslint-disable-next-line unicorn/prefer-number-coercion -- fontSize has a "px" unit suffix, Number() would yield NaN
     const defaultFontSize = Number.parseFloat(defaultStyle.fontSize);
+    // eslint-disable-next-line unicorn/prefer-number-coercion -- fontSize has a "px" unit suffix, Number() would yield NaN
     const smallFontSize = Number.parseFloat(smallStyle.fontSize);
 
     // Small badge should have smaller font size
@@ -686,10 +689,12 @@ export const ShapeVariations: Story = {
     await expect(roundedBadge).toHaveClass("--rounded");
 
     // Test border radius differences
-    const defaultStyle = globalThis.getComputedStyle(defaultBadge);
-    const roundedStyle = globalThis.getComputedStyle(roundedBadge);
+    const defaultStyle = getComputedStyle(defaultBadge);
+    const roundedStyle = getComputedStyle(roundedBadge);
 
+    // eslint-disable-next-line unicorn/prefer-number-coercion -- borderRadius has a "px" unit suffix, Number() would yield NaN
     const defaultRadius = Number.parseFloat(defaultStyle.borderRadius);
+    // eslint-disable-next-line unicorn/prefer-number-coercion -- borderRadius has a "px" unit suffix, Number() would yield NaN
     const roundedRadius = Number.parseFloat(roundedStyle.borderRadius);
 
     // Rounded badge should have larger border radius
@@ -699,6 +704,7 @@ export const ShapeVariations: Story = {
     await expect(defaultStyle.backgroundColor).toBe(roundedStyle.backgroundColor);
 
     // Test that rounded badge has pill-like appearance
+    // eslint-disable-next-line unicorn/prefer-number-coercion -- height has a "px" unit suffix, Number() would yield NaN
     const roundedHeight = Number.parseFloat(roundedStyle.height);
     // For fully rounded badges, border-radius should be at least half the height
     await expect(roundedRadius).toBeGreaterThanOrEqual(roundedHeight / 2);
@@ -810,8 +816,8 @@ export const UseCaseExamples: Story = {
     await expect(javascriptBadge).toHaveClass("m-badge", "--outline", "--warning");
 
     // Test visual differences between sections
-    const onlineStyle = globalThis.getComputedStyle(onlineBadge);
-    const reactStyle = globalThis.getComputedStyle(reactBadge);
+    const onlineStyle = getComputedStyle(onlineBadge);
+    const reactStyle = getComputedStyle(reactBadge);
 
     // Status badges should have background color, category badges should be transparent
     await expect(onlineStyle.backgroundColor).not.toBe("rgba(0, 0, 0, 0)");

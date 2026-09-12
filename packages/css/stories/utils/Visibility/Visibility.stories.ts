@@ -431,7 +431,8 @@ export const MatrixDemo: Story = {
     };
 
     updateBreakpoint();
-    window.addEventListener("resize", updateBreakpoint);
+    const resizeObserver = new ResizeObserver(updateBreakpoint);
+    resizeObserver.observe(document.documentElement);
 
     const table = document.createElement("table");
     table.style.width = "100%";

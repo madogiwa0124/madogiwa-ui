@@ -19,6 +19,7 @@ const buildTestComponent = (insideElementsCount: number, onClose: () => void) =>
       };
     },
     render() {
+      // eslint-disable-next-line unicorn/no-this-outside-of-class -- Vue Options API render() receives the component instance as `this`
       return h("div", this.insideRefs.map((insideRef, index) =>
         h("div", { ref: insideRef, class: `inside${String(index + 1)}` }, `Inside ${String(index + 1)}`),
       ));
