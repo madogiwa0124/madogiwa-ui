@@ -33,8 +33,7 @@ const { attachOutsideClickListener, detachOutsideClickListener } = useCloseOutsi
 
 // Add/remove click listener based on menu state and variant
 watchEffect((onCleanup) => {
-  if (!closeOutsideClick) return;
-  if (!mobileMenuVariant || !hamburgerMenuOpen.value) return;
+  if (!closeOutsideClick || !mobileMenuVariant || !hamburgerMenuOpen.value) return;
   const timeoutId = attachOutsideClickListener();
 
   onCleanup(() => {

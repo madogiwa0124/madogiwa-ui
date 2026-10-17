@@ -1,3 +1,4 @@
+import { nextTick } from "vue";
 import { mount } from "@vue/test-utils";
 import { MNavbarHamburgerMenu } from "./index";
 import { describe, expect, it } from "vitest";
@@ -50,13 +51,13 @@ describe("MNavbarHamburgerMenu", () => {
 
     // Update prop from parent (simulating external state change)
     await wrapper.setProps({ showMenu: true });
-    await wrapper.vm.$nextTick();
+    await nextTick();
     expect(wrapper.attributes("aria-expanded")).toBe("true");
     expect(wrapper.attributes("aria-label")).toBe("Close menu");
 
     // Update prop back to false
     await wrapper.setProps({ showMenu: false });
-    await wrapper.vm.$nextTick();
+    await nextTick();
     expect(wrapper.attributes("aria-expanded")).toBe("false");
     expect(wrapper.attributes("aria-label")).toBe("Open menu");
   });

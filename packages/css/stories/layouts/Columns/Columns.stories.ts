@@ -302,14 +302,14 @@ export const AlignmentNestedContentRows: Story = {
     await expect(columnsContainer).toBeInTheDocument();
     await expect(columnsContainer).toHaveClass("m-columns");
 
-    if (args.alignRows) {
-      await expect(columnsContainer).toHaveClass("--align-rows");
+    if (!args.alignRows) return;
 
-      if (!columnsContainer) return;
-      const items = columnsContainer.querySelectorAll("div.m-card");
-      for (const item of items) {
-        await expect(item).toHaveAttribute("data-subgrid-rows", "3");
-      }
+    await expect(columnsContainer).toHaveClass("--align-rows");
+
+    if (!columnsContainer) return;
+    const items = columnsContainer.querySelectorAll("div.m-card");
+    for (const item of items) {
+      await expect(item).toHaveAttribute("data-subgrid-rows", "3");
     }
   },
   parameters: {

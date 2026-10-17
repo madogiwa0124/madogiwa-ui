@@ -270,14 +270,14 @@ export const Default: Story = {
       await expect(dialog.open).toBe(false);
     }
 
-    if (showConfirm && !showCancel) {
-      const confirmButton = await within(dialog).findByText(confirmText);
-      await expect(confirmButton).toBeInTheDocument();
+    if (!showConfirm || showCancel) return;
 
-      // Test confirm functionality
-      await userEvent.click(confirmButton);
-      await expect(dialog.open).toBe(false);
-    }
+    const confirmButton = await within(dialog).findByText(confirmText);
+    await expect(confirmButton).toBeInTheDocument();
+
+    // Test confirm functionality
+    await userEvent.click(confirmButton);
+    await expect(dialog.open).toBe(false);
   },
 };
 

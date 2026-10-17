@@ -189,4 +189,11 @@ export default defineConfig([
       "unicorn/name-replacements": "off",
     },
   },
+  {
+    files: ["**/vite.config.ts", "**/vitest.config.ts"],
+    rules: {
+      // NOTE: Tool config files must `export default defineConfig(...)`, which this rule flags as a top-level side effect.
+      "unicorn/no-top-level-side-effects": "off",
+    },
+  },
 ]);

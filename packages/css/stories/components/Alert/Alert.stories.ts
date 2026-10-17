@@ -273,18 +273,18 @@ export const AllVariants: Story = {
 
     for (const [index, variant] of variants.entries()) {
       const alert = alerts[index];
-      if (alert) {
-        await expect(alert).toBeInTheDocument();
-        await expect(alert).toHaveClass("m-alert");
+      if (!alert) continue;
 
-        if (variant !== "default") {
-          await expect(alert).toHaveClass(`--${variant}`);
-        }
+      await expect(alert).toBeInTheDocument();
+      await expect(alert).toHaveClass("m-alert");
 
-        const content = alert.querySelector(".m-alert__content") as HTMLElement;
-        await expect(content).toBeInTheDocument();
-        await expect(content).toHaveTextContent(new RegExp(variant));
+      if (variant !== "default") {
+        await expect(alert).toHaveClass(`--${variant}`);
       }
+
+      const content = alert.querySelector(".m-alert__content") as HTMLElement;
+      await expect(content).toBeInTheDocument();
+      await expect(content).toHaveTextContent(new RegExp(variant));
     }
   },
   parameters: {

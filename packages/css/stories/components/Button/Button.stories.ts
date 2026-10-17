@@ -201,11 +201,13 @@ export const Variants: Story = {
 
     for (const [index, button] of buttons.entries()) {
       const variant = expectedVariants[index];
-      if (variant) {
-        await expect(button).toHaveClass("m-btn");
-        await expect(button).toHaveClass(`--${variant}`);
-        await expect(button).toHaveTextContent(variant);
+      if (!variant) {
+        continue;
       }
+
+      await expect(button).toHaveClass("m-btn");
+      await expect(button).toHaveClass(`--${variant}`);
+      await expect(button).toHaveTextContent(variant);
     }
   },
 };
@@ -249,12 +251,14 @@ export const OutlineButtons: Story = {
 
     for (const [index, button] of buttons.entries()) {
       const variant = expectedVariants[index];
-      if (variant) {
-        await expect(button).toHaveClass("m-btn");
-        await expect(button).toHaveClass(`--${variant}`);
-        await expect(button).toHaveClass("--outline");
-        await expect(button).toHaveTextContent(variant);
+      if (!variant) {
+        continue;
       }
+
+      await expect(button).toHaveClass("m-btn");
+      await expect(button).toHaveClass(`--${variant}`);
+      await expect(button).toHaveClass("--outline");
+      await expect(button).toHaveTextContent(variant);
     }
   },
 };

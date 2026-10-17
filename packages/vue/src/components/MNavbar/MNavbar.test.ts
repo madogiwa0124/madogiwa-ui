@@ -1,3 +1,4 @@
+import { nextTick } from "vue";
 import { mount } from "@vue/test-utils";
 import { MNavbar, MNavbarHamburger } from "./index";
 import { describe, expect, it } from "vitest";
@@ -45,7 +46,7 @@ describe("MNavbar", () => {
     expect(wrapper.classes()).toContain("--slide-left");
 
     await wrapper.setProps({ mobileMenuVariant: "side" });
-    await wrapper.vm.$nextTick();
+    await nextTick();
     expect(wrapper.classes()).toContain("--mobile-side-menu");
     expect(wrapper.classes()).not.toContain("--mobile-float-menu");
     expect(wrapper.classes()).not.toContain("--slide-left");
@@ -67,7 +68,7 @@ describe("MNavbar", () => {
     // Open the menu by clicking hamburger button
     const hamburgerButton = wrapper.find(".m-navbar__hamburger-menu");
     await hamburgerButton.trigger("click");
-    await wrapper.vm.$nextTick();
+    await nextTick();
     expect(hamburgerButton.attributes("aria-expanded")).toBe("true");
 
     // Wait for the setTimeout to complete (click listener registration)
@@ -80,7 +81,7 @@ describe("MNavbar", () => {
     document.body.append(outsideElement);
     const clickEvent = new MouseEvent("click", { bubbles: true, cancelable: true });
     outsideElement.dispatchEvent(clickEvent);
-    await wrapper.vm.$nextTick();
+    await nextTick();
 
     // Menu should be closed
     expect(hamburgerButton.attributes("aria-expanded")).toBe("false");
@@ -105,7 +106,7 @@ describe("MNavbar", () => {
     // Open the menu by clicking hamburger button
     const hamburgerButton = wrapper.find(".m-navbar__hamburger-menu");
     await hamburgerButton.trigger("click");
-    await wrapper.vm.$nextTick();
+    await nextTick();
     expect(hamburgerButton.attributes("aria-expanded")).toBe("true");
 
     // Wait for the setTimeout to complete (would register listener if enabled)
@@ -118,7 +119,7 @@ describe("MNavbar", () => {
     document.body.append(outsideElement);
     const clickEvent = new MouseEvent("click", { bubbles: true, cancelable: true });
     outsideElement.dispatchEvent(clickEvent);
-    await wrapper.vm.$nextTick();
+    await nextTick();
 
     // Menu should still be open
     expect(hamburgerButton.attributes("aria-expanded")).toBe("true");

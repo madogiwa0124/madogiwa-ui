@@ -113,8 +113,8 @@ export const Default: Story = {
     checkbox.type = "checkbox";
     checkbox.classList.add("m-checkbox");
 
-    const checked = args["checked"] ? Boolean(args["checked"]) : false;
-    const disabled = args["disabled"] ? Boolean(args["disabled"]) : false;
+    const checked = Boolean(args["checked"]);
+    const disabled = Boolean(args["disabled"]);
     const name = args["name"] ? String(args["name"]) : "checkbox";
     const value = args["value"] ? String(args["value"]) : "checkbox";
 

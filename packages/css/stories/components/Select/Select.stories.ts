@@ -243,10 +243,12 @@ export const Group: Story = {
       await expect(optgroups[0].label).toBe("Group 1");
       await expect(optgroups[0].querySelectorAll("option").length).toBe(2);
     }
-    if (optgroups[1]) {
-      await expect(optgroups[1].label).toBe("Group 2");
-      await expect(optgroups[1].querySelectorAll("option").length).toBe(2);
+    if (!optgroups[1]) {
+      return;
     }
+
+    await expect(optgroups[1].label).toBe("Group 2");
+    await expect(optgroups[1].querySelectorAll("option").length).toBe(2);
   },
 };
 

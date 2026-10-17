@@ -36,9 +36,7 @@ export const customProperties = (
     styleType: calcStyleType(name, prefixStyleMapping),
   }));
 
-  return sortMode === "natural"
-    ? mappedProperties.toSorted(naturalSort)
-    : mappedProperties.toSorted(numericSort);
+  return mappedProperties.toSorted(sortMode === "natural" ? naturalSort : numericSort);
 };
 
 // Natural sort function for CSS variables with numeric values and size variants
@@ -73,14 +71,14 @@ const naturalSort = (a: Property, b: Property): number => {
       const aNumber = Number(aPart);
       const bNumber = Number(bPart);
 
-      if (!Number.isNaN(aNumber) && !Number.isNaN(bNumber)) {
-        if (aNumber !== bNumber) {
-          return aNumber - bNumber;
-        }
-      } else {
+      if (Number.isNaN(aNumber) || Number.isNaN(bNumber)) {
         // Compare as strings
         if (aPart !== bPart) {
           return aPart.localeCompare(bPart);
+        }
+      } else {
+        if (aNumber !== bNumber) {
+          return aNumber - bNumber;
         }
       }
     }
@@ -105,14 +103,14 @@ const numericSort = (a: Property, b: Property): number => {
     const aNumber = Number(aPart);
     const bNumber = Number(bPart);
 
-    if (!Number.isNaN(aNumber) && !Number.isNaN(bNumber)) {
-      if (aNumber !== bNumber) {
-        return aNumber - bNumber;
-      }
-    } else {
+    if (Number.isNaN(aNumber) || Number.isNaN(bNumber)) {
       // Compare as strings
       if (aPart !== bPart) {
         return aPart.localeCompare(bPart);
+      }
+    } else {
+      if (aNumber !== bNumber) {
+        return aNumber - bNumber;
       }
     }
   }

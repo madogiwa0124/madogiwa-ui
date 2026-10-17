@@ -47,7 +47,7 @@ void describe("outputCssSnippetFilePlugin", () => {
           "m-btn": {
             scope: "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
             prefix: ".m-btn",
-            body: ".m-btn${2|​,.--primary,.--secondary,.--outline,.--default|}",
+            body: ".m-btn${2|\u{200B},.--primary,.--secondary,.--outline,.--default|}",
             description: "Madogiwa UI class .m-btn",
           },
         },
@@ -55,7 +55,7 @@ void describe("outputCssSnippetFilePlugin", () => {
           "m-accordion": {
             scope: "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
             prefix: ".m-accordion",
-            body: ".m-accordion${1|​,__summary|}${2|​,.--transition|}",
+            body: ".m-accordion${1|\u{200B},__summary|}${2|\u{200B},.--transition|}",
             description: "Madogiwa UI class .m-accordion",
           },
         },
@@ -63,7 +63,7 @@ void describe("outputCssSnippetFilePlugin", () => {
           "m-navbar": {
             scope: "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
             prefix: ".m-navbar",
-            body: ".m-navbar${1|​,__item|}${2|​,.--end|}",
+            body: ".m-navbar${1|\u{200B},__item|}${2|\u{200B},.--end|}",
             description: "Madogiwa UI class .m-navbar",
           },
         },
@@ -71,7 +71,7 @@ void describe("outputCssSnippetFilePlugin", () => {
           "m-card": {
             scope: "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
             prefix: ".m-card",
-            body: ".m-card${1|​,__content,__image|}",
+            body: ".m-card${1|\u{200B},__content,__image|}",
             description: "Madogiwa UI class .m-card",
           },
         },

@@ -105,8 +105,7 @@ const buildClassSnippets = ({ descriptionPrefix, classRegex, cssContent, initSco
   const classSnippetSource = transformBemClassesToSnippetSource(bemClassStructures, `${descriptionPrefix} class`);
   for (const [snippetName, snippetSourceItem] of Object.entries(classSnippetSource)) {
     const { initBody, prefix: initPrefix, placeholders, description } = snippetSourceItem;
-    const snippetItem = buildSnippetItem({ description, initBody, initPrefix, scope: initScope, placeholders });
-    const { scope, prefix, body } = snippetItem;
+    const { scope, prefix, body } = buildSnippetItem({ description, initBody, initPrefix, scope: initScope, placeholders });
     snippets.push({ [snippetName]: { scope, prefix, body, description } });
   }
   return snippets;

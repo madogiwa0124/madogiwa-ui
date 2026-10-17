@@ -269,25 +269,27 @@ export const AllVariants: Story = {
 
     for (const [index, badge] of badges.entries()) {
       const variant = variants[index];
-      if (variant) {
-        // Test basic class
-        await expect(badge).toHaveClass("m-badge");
+      if (!variant) {
+        continue;
+      }
 
-        // Test variant class
-        if (variant.name !== "default") {
-          await expect(badge).toHaveClass(`--${variant.name}`);
-        }
+      // Test basic class
+      await expect(badge).toHaveClass("m-badge");
 
-        // Test content
-        await expect(badge).toHaveTextContent(variant.expectedText);
+      // Test variant class
+      if (variant.name !== "default") {
+        await expect(badge).toHaveClass(`--${variant.name}`);
+      }
 
-        // Test modifier classes from args
-        if (args["outline"]) {
-          await expect(badge).toHaveClass("--outline");
-        }
-        if (args["rounded"]) {
-          await expect(badge).toHaveClass("--rounded");
-        }
+      // Test content
+      await expect(badge).toHaveTextContent(variant.expectedText);
+
+      // Test modifier classes from args
+      if (args["outline"]) {
+        await expect(badge).toHaveClass("--outline");
+      }
+      if (args["rounded"]) {
+        await expect(badge).toHaveClass("--rounded");
       }
     }
 
@@ -432,29 +434,29 @@ export const OutlineStyle: Story = {
     for (const [index, badge] of badges.entries()) {
       const variant = variants[index];
 
-      if (variant) {
-        // Test basic classes
-        await expect(badge).toHaveClass("m-badge");
-        await expect(badge).toHaveClass("--outline");
-        await expect(badge).toHaveClass(`--${variant}`);
+      if (!variant) continue;
 
-        // Test content
-        const expectedText = variant.charAt(0).toUpperCase() + variant.slice(1);
-        await expect(badge).toHaveTextContent(expectedText);
+      // Test basic classes
+      await expect(badge).toHaveClass("m-badge");
+      await expect(badge).toHaveClass("--outline");
+      await expect(badge).toHaveClass(`--${variant}`);
 
-        // Test rounded modifier if applied
-        if (args["rounded"]) {
-          await expect(badge).toHaveClass("--rounded");
-        }
+      // Test content
+      const expectedText = variant.charAt(0).toUpperCase() + variant.slice(1);
+      await expect(badge).toHaveTextContent(expectedText);
 
-        // Test outline styles
-        const computedStyle = getComputedStyle(badge);
-        await expect(computedStyle.backgroundColor).toBe("rgba(0, 0, 0, 0)"); // transparent
-
-        // Verify border exists for outline style
-        const borderWidth = computedStyle.borderWidth;
-        await expect(borderWidth).not.toBe("0px");
+      // Test rounded modifier if applied
+      if (args["rounded"]) {
+        await expect(badge).toHaveClass("--rounded");
       }
+
+      // Test outline styles
+      const computedStyle = getComputedStyle(badge);
+      await expect(computedStyle.backgroundColor).toBe("rgba(0, 0, 0, 0)"); // transparent
+
+      // Verify border exists for outline style
+      const borderWidth = computedStyle.borderWidth;
+      await expect(borderWidth).not.toBe("0px");
     }
 
     // Test visual distinction between outline variants

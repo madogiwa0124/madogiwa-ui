@@ -178,10 +178,12 @@ export const Default: Story = {
     await expect(Number(computedStyle.fontWeight)).toBeGreaterThanOrEqual(500);
 
     // Test disabled styling
-    if (args.disabled) {
-      await expect(Number(computedStyle.opacity)).toBeLessThan(1);
-      await expect(computedStyle.cursor).toBe("not-allowed");
+    if (!args.disabled) {
+      return;
     }
+
+    await expect(Number(computedStyle.opacity)).toBeLessThan(1);
+    await expect(computedStyle.cursor).toBe("not-allowed");
   },
 };
 

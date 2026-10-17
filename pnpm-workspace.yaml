@@ -1,26 +1,21 @@
 packages:
   - packages/*
 allowBuilds:
+  "@parcel/watcher": true
   "@swc/core": true
   esbuild: true
   unrs-resolver: true
 
 overrides:
-  # NOTE: vite@8 bundles postcss@8.5.13 internally while postcss-preset-env requires postcss@8.5.15,
-  # causing TypeScript type incompatibilities between the two versions.
-  # Forcing a single version resolves the type mismatch.
-  postcss: ^8.5.15
-  # NOTE: @storybook/test-runner@0.24.3 declares `playwright` and `playwright-core` as direct
-  # dependencies (not peer deps), so it resolves its own versions independently from the
-  # workspace's @playwright/test. Without this override, the test-runner uses playwright-core@1.59.1
-  # while @playwright/test uses 1.60.0, requiring two separate Chromium binaries to be installed in CI.
-  # Forcing a unified version means only one Chromium binary is needed.
-  playwright: ^1.63.0
-  playwright-core: ^1.63.0
+  # NOTE: jest-runtime@30.5.0+ throws on `module.register()`, which Storybook's config loader calls
+  # when @storybook/test-runner reads `.storybook/test-runner.ts`, so every story suite fails to run.
+  # Keep jest-runtime below 30.5 until Storybook or the test-runner stops relying on it.
+  jest-runtime: ~30.4.2
 
 catalog:
-  postcss-preset-env: ^11.2.1
-  # NOTE: Pinned to match the TypeScript version bundled in @microsoft/api-extractor (7.58.2).
-  # Upgrading beyond 5.9.x will break bundleTypes in unplugin-dts and produce an empty dist/types/index.d.ts.
+  postcss-preset-env: ^11.6.1
+  # NOTE: @microsoft/api-extractor pins its own bundled TypeScript (5.9.3), independent of this version.
+  # unplugin-dts bundleTypes has been verified to work with TypeScript 6.0.x; if dist/types/index.d.ts
+  # becomes empty after upgrading, check compatibility with api-extractor's bundled TypeScript.
   typescript: ~6.0.3
-  vite: ^8.0.10
+  vite: ^8.3.4
