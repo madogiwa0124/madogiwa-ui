@@ -12,6 +12,7 @@ defineProps<{
     :class="[
       { '--error': error }
     ]"
+    :aria-invalid="error || undefined"
   >
     <slot />
   </select>

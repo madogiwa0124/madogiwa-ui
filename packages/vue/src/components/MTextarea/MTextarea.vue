@@ -16,5 +16,6 @@ defineProps<{
       { '--error': error },
       { '--auto-fit': autoFit }
     ]"
+    :aria-invalid="error || undefined"
   />
 </template>

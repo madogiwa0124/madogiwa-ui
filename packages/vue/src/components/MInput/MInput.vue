@@ -18,5 +18,6 @@ defineProps<{
       { '--error': error },
       { '--transition': transition }
     ]"
+    :aria-invalid="error || undefined"
   >
 </template>
