@@ -168,6 +168,8 @@ export const UnorderedList: Story = {
 
     for (const item of items) {
       await expect(item).toHaveClass("m-li");
+      // The smaller bullet shares the item's line box so that it is vertically centered on the first line
+      await expect(getComputedStyle(item, "::before").lineHeight).toBe(getComputedStyle(item).lineHeight);
     }
   },
 };

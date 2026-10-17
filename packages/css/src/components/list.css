@@ -1,5 +1,17 @@
+/*
+  Line height of the list item resolved to an absolute length.
+  Registered as <length> so that `1lh` is computed on .m-li (not on ::before)
+  and the marker can share the item's first line box even when its font size differs.
+*/
+@property --li-line-height {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0;
+}
+
 .m-li {
   --li-marker-gap: var(--spacing-2);
+  --li-line-height: 1lh;
 
   /* Containing block for the absolutely positioned marker (::before) */
   position: relative;
@@ -71,6 +83,7 @@
   & > .m-li::before {
     content: var(--ul-marker-content);
     font-size: var(--ul-marker-size);
+    line-height: var(--li-line-height); /* Vertically center the smaller bullet on the first line */
   }
 }
 
