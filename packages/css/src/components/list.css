@@ -1,16 +1,15 @@
 .m-li {
   --li-marker-gap: var(--spacing-2);
 
-  display: flex;
-  align-items: start;
-  gap: var(--li-marker-gap);
+  /* Containing block for the absolutely positioned marker (::before) */
+  position: relative;
 
   /* Nested list indentation */
   :where(.m-ol, .m-ul) {
     --list-nested-padding: var(--spacing-4);
 
     padding-inline-start: var(--list-nested-padding);
-    width: 100%;
+    margin-block-start: var(--list-item-gap);
   }
 }
 
@@ -25,6 +24,23 @@
   flex-direction: column;
   gap: var(--list-item-gap);
 
+  /*
+    Use the child combinator so that markers and counters of a nested list
+    are not affected by the rules of its ancestor lists.
+  */
+  & > .m-li {
+    padding-inline-start: calc(var(--list-marker-width) + var(--li-marker-gap));
+
+    &::before {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      color: var(--list-marker-color);
+      font-weight: var(--list-marker-font-weight);
+      white-space: nowrap;
+    }
+  }
+
   &.--inline {
     flex-flow: row wrap;
   }
@@ -32,44 +48,38 @@
 
 .m-ol {
   --ol-counter-suffix: ".";
+  --list-marker-width: 3ch;
 
   counter-reset: list-counter;
 
-  .m-li {
+  & > .m-li {
     counter-increment: list-counter;
 
     &::before {
       content: counter(list-counter) var(--ol-counter-suffix);
-      color: var(--list-marker-color);
-      font-weight: var(--list-marker-font-weight);
+      inline-size: var(--list-marker-width);
+      text-align: end;
     }
-  }
-
-  /* Nested unordered list */
-  :where(.m-ul) {
-    counter-reset: none;
   }
 }
 
 .m-ul {
   --ul-marker-content: "●";
   --ul-marker-size: 0.75em;
+  --list-marker-width: 1em;
 
-  .m-li::before {
+  & > .m-li::before {
     content: var(--ul-marker-content);
-    color: var(--list-marker-color);
-    font-weight: var(--list-marker-font-weight);
     font-size: var(--ul-marker-size);
-  }
-
-  /* Nested ordered list */
-  :where(.m-ol) {
-    counter-reset: list-counter;
   }
 }
 
 /* --none: hide markers — placed after all ::before definitions to avoid descending specificity */
-.m-ol.--none .m-li::before,
-.m-ul.--none .m-li::before {
-  content: none;
+.m-ol.--none > .m-li,
+.m-ul.--none > .m-li {
+  padding-inline-start: 0;
+
+  &::before {
+    content: none;
+  }
 }
