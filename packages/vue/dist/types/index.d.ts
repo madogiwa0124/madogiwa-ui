@@ -452,9 +452,9 @@ declare type __VLS_Slots_24 = {} & {
 declare type __VLS_Slots_25 = {} & {
     title?: (props: typeof __VLS_1) => any;
 } & {
-    items?: (props: typeof __VLS_11) => any;
+    items?: (props: typeof __VLS_9) => any;
 } & {
-    hamburger?: (props: typeof __VLS_13) => any;
+    hamburger?: (props: typeof __VLS_11) => any;
 };
 
 declare type __VLS_Slots_26 = {} & {
@@ -546,7 +546,7 @@ declare type __VLS_Slots_7 = {} & {
 };
 
 declare type __VLS_Slots_8 = {} & {
-    default?: (props: typeof __VLS_8) => any;
+    default?: (props: typeof __VLS_7) => any;
 };
 
 declare type __VLS_Slots_9 = {} & {

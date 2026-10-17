@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2026-09-12T13:16:44.324Z
+generated_at: 2026-10-17T13:33:39.554Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -862,6 +862,20 @@ Use `.m-ol` for ordered (numbered) lists, `.m-ul` for unordered (bulleted) lists
 </ul>
 ```
 
+Item content (text and inline elements such as `<strong>`) flows as normal inline content, and a nested list is placed below the item text.
+Lists can be nested in any combination; a nested list is not affected by the markers or counters of its ancestor lists.
+
+```html
+<ol class="m-ol">
+  <li class="m-li">
+    <strong>Parent</strong> item
+    <ul class="m-ul">
+      <li class="m-li">Child item</li>
+    </ul>
+  </li>
+</ol>
+```
+
 ### Accessibility
 
 Safari with VoiceOver may strip the list semantics when `list-style: none` is applied.
@@ -898,6 +912,8 @@ It is recommended to explicitly add `role="list"` to preserve accessibility.
 | .m-ol | --ol-counter-suffix | "." | Suffix appended after the counter number |
 | .m-ul | --ul-marker-content | "●" | Bullet character for unordered list |
 | .m-ul | --ul-marker-size | 0.75em | Font size of the bullet marker |
+| .m-ol | --list-marker-width | 3ch | Width reserved for the number marker (increase it for lists with 100+ items) |
+| .m-ul | --list-marker-width | 1em | Width reserved for the bullet marker |
 | .m-li | --li-marker-gap | var(--spacing-2) | Gap between marker and item content |
 | .m-li .m-ol, .m-li .m-ul | --list-nested-padding | var(--spacing-4) | Inline start padding for nested lists |
 
@@ -1847,4 +1863,4 @@ Responsive utilities allow you to control visibility at different screen sizes, 
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 9/12/2026, 1:16:44 PM
+- Generated at: 10/17/2026, 1:33:39 PM

@@ -170,13 +170,13 @@
   "m-ol": {
     "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
     "prefix": ".m-ol",
-    "body": ".m-ol${2|​,.--none|}",
+    "body": ".m-ol",
     "description": "Madogiwa UI class .m-ol"
   },
   "m-ul": {
     "scope": "html,javascript,typescript,vue,haml,erb,css,scss,sass,less,stylus",
     "prefix": ".m-ul",
-    "body": ".m-ul${2|​,.--none|}",
+    "body": ".m-ul",
     "description": "Madogiwa UI class .m-ul"
   },
   "m-hidden": {
@@ -2398,5 +2398,11 @@
     "prefix": "--zindex-snackbar",
     "body": "--zindex-snackbar",
     "description": "Madogiwa UI CSS variable --zindex-snackbar"
+  },
+  "--li-line-height": {
+    "scope": "css",
+    "prefix": "--li-line-height",
+    "body": "--li-line-height",
+    "description": "Madogiwa UI CSS variable --li-line-height"
   }
 }
