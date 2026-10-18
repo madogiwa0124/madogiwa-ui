@@ -49,4 +49,9 @@ describe("MSelect", () => {
     await wrapper.setValue("option2");
     expect(modelValue).toBe("option2");
   });
+  it("sets aria-invalid only when error is true", () => {
+    expect(mount(MSelect, { props: { error: true } }).attributes("aria-invalid")).toBe("true");
+    expect(mount(MSelect, { props: { error: false } }).attributes("aria-invalid")).toBeUndefined();
+    expect(mount(MSelect).attributes("aria-invalid")).toBeUndefined();
+  });
 });

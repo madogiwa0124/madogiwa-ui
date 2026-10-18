@@ -43,4 +43,9 @@ describe("MTextarea", () => {
     await wrapper.setValue("test message");
     expect(modelValue).toBe("test message");
   });
+  it("sets aria-invalid only when error is true", () => {
+    expect(mount(MTextarea, { props: { error: true } }).attributes("aria-invalid")).toBe("true");
+    expect(mount(MTextarea, { props: { error: false } }).attributes("aria-invalid")).toBeUndefined();
+    expect(mount(MTextarea).attributes("aria-invalid")).toBeUndefined();
+  });
 });

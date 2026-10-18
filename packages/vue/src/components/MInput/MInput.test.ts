@@ -53,4 +53,9 @@ describe("MInput", () => {
     });
     expect(wrapper.attributes("type")).toBe("email");
   });
+  it("sets aria-invalid only when error is true", () => {
+    expect(mount(MInput, { props: { error: true } }).attributes("aria-invalid")).toBe("true");
+    expect(mount(MInput, { props: { error: false } }).attributes("aria-invalid")).toBeUndefined();
+    expect(mount(MInput).attributes("aria-invalid")).toBeUndefined();
+  });
 });
