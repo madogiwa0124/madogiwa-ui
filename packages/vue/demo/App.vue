@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { MAccordion, MAlert, MBadge, MBtn, MCard, MCardImage, MCheckbox, MColumns, MContainer, MDialog, MH1, MH2, MH3, MInput, MLabel, MLi, MLink, MNavbar, MNavbarItem, MNavbarTitle, MOl, MP, MRadio, MSelect, MSnackbar, MTable, MTabs, MTabsItem, MTabsList, MTextarea, MToggle, MUl } from "../src/index";
+import { computed, ref } from "vue";
+import { MAccordion, MAlert, MBadge, MBtn, MCard, MCardImage, MCheckbox, MColumns, MContainer, MDialog, MField, MFieldError, MFieldHelp, MH1, MH2, MH3, MInput, MLabel, MLi, MLink, MNavbar, MNavbarItem, MNavbarTitle, MOl, MP, MRadio, MSelect, MSnackbar, MTable, MTabs, MTabsItem, MTabsList, MTextarea, MToggle, MUl } from "../src/index";
 const SampleImage = new URL("320x240.png", import.meta.url).href;
 
 type DemoTabs = "buttons" | "links" | "cards" | "modals" | "inputs" | "accordion" | "badge" | "snackbar" | "columns" | "alert" | "table" | "list";
@@ -10,6 +10,7 @@ const radioValue = ref<string>("option1");
 const toggleValue = ref<boolean>(false);
 const inputValue = ref<string>("");
 const emailValue = ref<string>("");
+const emailError = computed(() => (emailValue.value && !emailValue.value.includes("@") ? "Enter a valid email address." : ""));
 const selectValue = ref<string>("");
 const textareaValue = ref<string>("");
 
@@ -209,27 +210,26 @@ const isSnackbarOpen = ref<boolean>(false);
             }"
           >
             <!-- Name -->
-            <div style="display: grid; gap: var(--spacing-1);">
-              <MLabel for="form-name" required>
+            <MField>
+              <MLabel required>
                 Name
               </MLabel>
-              <MInput id="form-name" v-model="inputValue" block transition placeholder="John Doe" required />
-            </div>
+              <MInput v-model="inputValue" block transition placeholder="John Doe" required />
+            </MField>
 
-            <div style="display: grid; gap: var(--spacing-1);">
-              <MLabel for="form-name" disabled>
+            <MField>
+              <MLabel disabled>
                 Address
               </MLabel>
-              <MInput id="form-address" v-model="inputValue" block transition placeholder="123 Main St" disabled />
-            </div>
+              <MInput v-model="inputValue" block transition placeholder="123 Main St" disabled />
+            </MField>
 
             <!-- Email -->
-            <div style="display: grid; gap: var(--spacing-1);">
-              <MLabel for="form-email">
+            <MField>
+              <MLabel>
                 Email
               </MLabel>
               <MInput
-                id="form-email"
                 v-model="emailValue"
                 type="email"
                 block
@@ -237,7 +237,13 @@ const isSnackbarOpen = ref<boolean>(false);
                 placeholder="you@example.com"
                 required
               />
-            </div>
+              <MFieldHelp>
+                We never share your email.
+              </MFieldHelp>
+              <MFieldError>
+                {{ emailError }}
+              </MFieldError>
+            </MField>
 
             <!-- Plan (Radio) -->
             <div style="display: grid; gap: var(--spacing-1);">
