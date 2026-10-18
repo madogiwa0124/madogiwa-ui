@@ -1,0 +1,44 @@
+.m-field {
+  --field-gap: var(--spacing-1);
+  --field-text-font-size: var(--text-sm);
+  --field-text-line-height: var(--text-sm--line-height);
+  --field-help-color: var(--color-text-subtle);
+  /* NOTE: --color-danger (red-500) does not meet the 4.5:1 text contrast ratio on the default background. */
+  --field-error-color: var(--color-red-700);
+  --field-error-dark-color: var(--color-red-400);
+
+  display: block;
+
+  /* NOTE: Margins are used instead of flex/grid gap so that controls keep their own width and an empty error element takes no space. */
+  & > * {
+    margin-block: 0;
+  }
+
+  & > * + * {
+    margin-block-start: var(--field-gap);
+  }
+
+  .m-field__help,
+  .m-field__error {
+    font-size: var(--field-text-font-size);
+    line-height: var(--field-text-line-height);
+  }
+
+  .m-field__help {
+    color: var(--field-help-color);
+  }
+
+  .m-field__error {
+    color: var(--field-error-color);
+
+    /* NOTE: Keep the element rendered (not display: none) so that it works as a live region. */
+    &:empty {
+      margin-block-start: 0;
+    }
+  }
+}
+
+/* Dark mode */
+:root[data-theme="dark"] .m-field {
+  --field-error-color: var(--field-error-dark-color);
+}

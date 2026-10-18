@@ -20,6 +20,7 @@
 @import "./components/input.css" layer(components);
 @import "./components/textarea.css" layer(components);
 @import "./components/label.css" layer(components);
+@import "./components/field.css" layer(components);
 @import "./components/toggle.css" layer(components);
 @import "./components/dialog.css" layer(components);
 @import "./components/tabs.css" layer(components);
