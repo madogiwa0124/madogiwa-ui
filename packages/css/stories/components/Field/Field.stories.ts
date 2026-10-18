@@ -128,8 +128,7 @@ This component does not use modifiers.
 | .m-field | --field-text-font-size | var(--text-sm) | Font size of the help text and the error message |
 | .m-field | --field-text-line-height | var(--text-sm--line-height) | Line height of the help text and the error message |
 | .m-field | --field-help-color | var(--color-text-subtle) | Text color of the help text |
-| .m-field | --field-error-color | var(--color-red-700) | Text color of the error message |
-| .m-field | --field-error-dark-color | var(--color-red-400) | Text color of the error message in dark mode |
+| .m-field | --field-error-color | var(--color-danger) | Text color of the error message |
 
 ### Data Attributes
 

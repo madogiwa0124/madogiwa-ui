@@ -3,9 +3,7 @@
   --field-text-font-size: var(--text-sm);
   --field-text-line-height: var(--text-sm--line-height);
   --field-help-color: var(--color-text-subtle);
-  /* NOTE: --color-danger (red-500) does not meet the 4.5:1 text contrast ratio on the default background. */
-  --field-error-color: var(--color-red-700);
-  --field-error-dark-color: var(--color-red-400);
+  --field-error-color: var(--color-danger);
 
   display: block;
 
@@ -36,9 +34,4 @@
       margin-block-start: 0;
     }
   }
-}
-
-/* Dark mode */
-:root[data-theme="dark"] .m-field {
-  --field-error-color: var(--field-error-dark-color);
 }
