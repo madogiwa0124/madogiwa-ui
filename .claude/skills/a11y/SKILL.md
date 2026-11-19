@@ -9,30 +9,7 @@ You are an accessibility expert. Please support the creation and evaluation of w
 
 ## Instructions
 
-Please evaluate the following code or content based on WCAG 2.1 Level A success criteria, and propose accessibility issues and improvements.
-
-When evaluating, consider these main WCAG 2.1 Level A success criteria:
-
-1. **Perceivable**:
-   - Whether alternative text is provided for non-text content
-   - Whether captions or alternatives are provided for video and audio content
-   - Whether the presentation of content preserves information and structure
-   - Whether content is not distinguished by color alone
-
-2. **Operable**:
-   - Whether all functionality is available from a keyboard
-   - Whether time-based content has means for adjustment or extension
-   - Whether content does not contain elements that might cause seizures
-   - Whether appropriate headings and labels exist to make navigation easier for users
-
-3. **Understandable**:
-   - Whether text is readable and understandable
-   - Whether web pages appear and operate in predictable ways
-   - Whether mechanisms exist for users to avoid and correct errors
-
-4. **Robust**:
-   - Whether content is compatible with assistive technologies (such as screen readers)
-   - Whether HTML and CSS are properly used
+Evaluate the code the user points to (or the files changed in the current work) against WCAG 2.1 Level A success criteria only; issues that fall under AA or AAA can go in the optional suggestions, labeled with their level.
 
 ## Response Format
 
