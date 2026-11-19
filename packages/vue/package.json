@@ -56,19 +56,19 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.59.4",
-    "@vitejs/plugin-vue": "^6.0.10",
-    "@vitest/browser-playwright": "^5.0.5",
-    "@vue/test-utils": "^2.5.1",
+    "@microsoft/api-extractor": "^7.60.1",
+    "@vitejs/plugin-vue": "^6.0.11",
+    "@vitest/browser-playwright": "^5.1.0",
+    "@vue/test-utils": "^2.6.0",
     "@vue/tsconfig": "^0.9.1",
-    "postcss": "^8.5.30",
+    "postcss": "^8.5.33",
     "postcss-preset-env": "catalog:",
     "typescript": "catalog:",
     "unplugin-dts": "1.1.2",
     "vite": "catalog:",
-    "vitest": "^5.0.5",
+    "vitest": "^5.1.0",
     "vitest-browser-vue": "^3.1.0",
-    "vue-tsc": "^3.3.13"
+    "vue-tsc": "^3.3.14"
   },
   "browserslist": [
     "baseline newly available"

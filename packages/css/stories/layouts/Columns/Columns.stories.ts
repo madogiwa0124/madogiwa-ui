@@ -44,7 +44,7 @@ const meta: Meta<ColumnsStoryProperties> = {
       control: { type: "text" },
       description: "The minimum column size for auto-fit in the component",
       if: { arg: "autoFit", truthy: true },
-      defaultValue: "0",
+      table: { defaultValue: { summary: "0" } },
     },
   },
   parameters: {

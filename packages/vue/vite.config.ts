@@ -27,7 +27,7 @@ const build = (mode: string): BuildEnvironmentOptions => {
     return {
       outDir: "dist/demo",
       emptyOutDir: false,
-      rollupOptions: {
+      rolldownOptions: {
         input: "./index.html",
       },
     };
@@ -40,7 +40,7 @@ const build = (mode: string): BuildEnvironmentOptions => {
       fileName: "madogiwa-ui-vue.min",
       formats: ["es"],
     },
-    rollupOptions: {
+    rolldownOptions: {
       external: ["vue", "@madogiwa-ui/css"],
       output: {
         globals: {

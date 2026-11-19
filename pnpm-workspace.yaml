@@ -13,9 +13,9 @@ overrides:
   jest-runtime: ~30.4.2
 
 catalog:
-  postcss-preset-env: ^11.6.1
+  postcss-preset-env: ^11.6.3
   # NOTE: @microsoft/api-extractor pins its own bundled TypeScript (5.9.3), independent of this version.
   # unplugin-dts bundleTypes has been verified to work with TypeScript 6.0.x; if dist/types/index.d.ts
   # becomes empty after upgrading, check compatibility with api-extractor's bundled TypeScript.
   typescript: ~6.0.3
-  vite: ^8.3.4
+  vite: ^8.3.8

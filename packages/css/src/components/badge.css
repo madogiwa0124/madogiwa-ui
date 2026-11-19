@@ -61,12 +61,12 @@
         filter: var(--badge-hover-filter);
       }
     }
+  }
 
-    /* stylelint-disable-next-line no-descending-specificity */
-    &:disabled {
-      cursor: not-allowed;
-      opacity: var(--badge-disabled-opacity);
-    }
+  /* stylelint-disable-next-line no-descending-specificity */
+  &:where(button):disabled {
+    cursor: not-allowed;
+    opacity: var(--badge-disabled-opacity);
   }
 
   &.--outline {
