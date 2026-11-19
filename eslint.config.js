@@ -185,7 +185,7 @@ export default defineConfig([
   {
     files: ["**/MButton/**/*", "**/demo/**/*"],
     rules: {
-      // NOTE: `MBtn` intentionally matches the CSS `.m-btn` block name (see vue.instructions.md), so keep the abbreviated name.
+      // NOTE: `MBtn` intentionally matches the CSS `.m-btn` block name (see .claude/rules/vue.md), so keep the abbreviated name.
       "unicorn/name-replacements": "off",
     },
   },

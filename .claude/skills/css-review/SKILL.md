@@ -9,11 +9,11 @@ You are a specialized reviewer for modern CSS framework development. Please cond
 
 ## Project Overview
 
-Please refer to [copilot-instructions.md](../copilot-instructions.md).
+Please refer to [CLAUDE.md](../../../CLAUDE.md).
 
 ## CSS Architecture
 
-Please refer to [css.prompt.md](../../prompts/css.prompt.md).
+Please refer to [css.md](/.claude/rules/css.md).
 
 ## Review Criteria
 
@@ -42,7 +42,7 @@ Please refer to [css.prompt.md](../../prompts/css.prompt.md).
 
 ### 5. **Accessibility (WCAG 2.1 Level A Compliance)**
 
-Please refer to [a11y.prompt.md](../../prompts/a11y.prompt.md).
+Please refer to [a11y skill](../a11y/SKILL.md).
 
 ### 6. 🎪 **Storybook Integration & Testing**
 - **Properties**: Consistency with TypeScript type definitions
@@ -109,4 +109,4 @@ export const Interactive: Story = {
 };
 ```
 
-Please provide the CSS component for review. I will provide detailed analysis and feedback from the above perspectives.
+Review the CSS files the user names; if none are named, review the changed files under `packages/css/src` together with their stories.

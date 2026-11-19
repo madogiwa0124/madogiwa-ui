@@ -5,7 +5,7 @@ description: Guide for developing Storybook stories for CSS components in `@mado
 
 ## Storybook Development Guide
 
-- Each component has `.stories.ts` with interaction tests using `@storybook/test`
+- Each component has `.stories.ts` with interaction tests using `storybook/test`
 - Stories include accessibility testing via `@storybook/addon-a11y`
 - Use Interaction Tests each story with `canvasElement` pattern for DOM interaction testing.
   But if `canvasElement` does not work well, please use `document.querySelector`, etc.
