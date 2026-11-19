@@ -13,7 +13,8 @@ Madogiwa UI is a modern CSS framework leveraging cutting-edge CSS features like 
   - For guidelines, see [.claude/rules/css.md](/.claude/rules/css.md)
 - **`packages/vue/`**: Vue component library wrapping `@madogiwa-ui/css`
   - For guidelines, see [.claude/rules/vue.md](/.claude/rules/vue.md)
-- **Future packages**: `react/` component libraries planned
+- **`packages/react/`**: React component library wrapping `@madogiwa-ui/css`
+  - For guidelines, see [.claude/rules/react.md](/.claude/rules/react.md)
 
 ## Architecture
 
@@ -23,7 +24,7 @@ Madogiwa UI is a modern CSS framework leveraging cutting-edge CSS features like 
 madogiwa-ui/
 └── packages/
   ├── css/
-  ├── react/ # Future implementation
+  ├── react/
   └── vue/
 ```
 
@@ -32,7 +33,7 @@ madogiwa-ui/
 ### Essential Commands
 
 - **Setup**: `pnpm i && pnpm run setup` (installs Playwright for testing)
-- **Linting**: `pnpm lint` (`@eslint/js`, `typescript-eslint`, `eslint-plugin-vue`, `eslint-plugin-unicorn`, `@stylistic/eslint-plugin`), `pnpm lint:css` (Stylelint with baseline checks), `pnpm lint:type-check` (TypeScript strictest type checking)
+- **Linting**: `pnpm lint` (`@eslint/js`, `typescript-eslint`, `eslint-plugin-vue`, `@eslint-react/eslint-plugin`, `eslint-plugin-react-hooks`, `eslint-plugin-unicorn`, `@stylistic/eslint-plugin`), `pnpm lint:css` (Stylelint with baseline checks), `pnpm lint:type-check` (TypeScript strictest type checking)
 - **CSS Development**: `pnpm css storybook` (launches Storybook at :6006)
 - **CSS Build**: `pnpm css build` (outputs to `dist/` with VS Code snippets), `pnpm css build:docs` (builds the static Storybook site)
 - **CSS Unit Testing**: `pnpm css test` (Node.js unit tests for build plugins)
@@ -40,3 +41,6 @@ madogiwa-ui/
 - **Vue Development**: `pnpm vue dev` (launches Vue app at :5173)
 - **Vue Build**: `pnpm vue build` (outputs to `dist/`)
 - **Vue Unit Testing**: `pnpm vue test` (Vitest + Vue Test Utils)
+- **React Development**: `pnpm react dev` (launches React demo app at :5173)
+- **React Build**: `pnpm react build` (outputs to `dist/`)
+- **React Unit Testing**: `pnpm react test` (Vitest + vitest-browser-react)

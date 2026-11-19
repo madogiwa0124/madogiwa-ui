@@ -1,0 +1,81 @@
+{
+  "name": "@madogiwa-ui/react",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/madogiwa-ui-react.min.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/madogiwa-ui-react.min.js",
+      "default": "./dist/madogiwa-ui-react.min.js"
+    },
+    "./dist/*": "./dist/*",
+    "./src/*": "./src/*"
+  },
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:demo": "vite build --mode demo",
+    "preview:demo": "pnpm dlx http-server dist/demo",
+    "test": "vitest run",
+    "test:watch": "vitest --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "description": "A flexible, accessible, next-generation UI framework leveraging cutting-edge CSS features",
+  "keywords": [
+    "css",
+    "css-framework",
+    "ui-library",
+    "modern-css",
+    "react"
+  ],
+  "author": "madogiwa0124",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madogiwa0124/madogiwa-ui.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/madogiwa0124/madogiwa-ui#readme",
+  "bugs": {
+    "url": "https://github.com/madogiwa0124/madogiwa-ui/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "browserslist": [
+    "baseline newly available"
+  ],
+  "dependencies": {
+    "clsx": "^2.1.1"
+  },
+  "devDependencies": {
+    "@madogiwa-ui/css": "workspace:*",
+    "@microsoft/api-extractor": "catalog:",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "@vitest/browser-playwright": "catalog:",
+    "postcss": "catalog:",
+    "postcss-preset-env": "catalog:",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "typescript": "catalog:",
+    "unplugin-dts": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:",
+    "vitest-browser-react": "^2.3.0"
+  },
+  "peerDependencies": {
+    "@madogiwa-ui/css": "workspace:*",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
