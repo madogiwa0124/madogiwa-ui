@@ -28,8 +28,7 @@ export const customProperties = (
   const htmlStyle = element.computedStyleMap();
   const entries = htmlStyle.entries().toArray();
   const properties = entries.filter(([propertyName, _]) =>
-    propertyName.startsWith("--"),
-  );
+    propertyName.startsWith("--"));
   const mappedProperties = properties.map(([name, value]) => ({
     name,
     value: [...value].join(", "),
@@ -43,9 +42,22 @@ export const customProperties = (
 const naturalSort = (a: Property, b: Property): number => {
   // Define size order mapping
   const sizeOrder = {
-    "xs": 1, "sm": 2, "md": 3, "lg": 4, "xl": 5, "2xl": 6, "3xl": 7, "4xl": 8, "5xl": 9,
-    "tiny": 1, "small": 2, "medium": 3, "large": 4, "huge": 5,
-    "none": 0, "auto": 100,
+    "xs": 1,
+    "sm": 2,
+    "md": 3,
+    "lg": 4,
+    "xl": 5,
+    "2xl": 6,
+    "3xl": 7,
+    "4xl": 8,
+    "5xl": 9,
+    "tiny": 1,
+    "small": 2,
+    "medium": 3,
+    "large": 4,
+    "huge": 5,
+    "none": 0,
+    "auto": 100,
   };
 
   const regex = /(\\d+|xs|sm|md|lg|xl|\\d*xl|tiny|small|medium|large|huge|none|auto)/g;
@@ -271,7 +283,7 @@ const convertPxToRem = (
   value: string,
   rootFontSize: number,
 ): string | undefined => {
-  const match = value.match(/^([\d.]+)px$/);
+  const match = /^([\d.]+)px$/.exec(value);
   if (match?.[1]) {
     const pxValue = Number(match[1]);
     const remValue = pxValue / rootFontSize;

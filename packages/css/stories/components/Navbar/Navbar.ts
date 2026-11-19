@@ -39,12 +39,10 @@ export const createNavbar = (
     : "";
 
   const navigationItems = items.map(item =>
-    `<li class="m-navbar__item${item.end ? " --end" : ""}"><a href="${item.href}" class="m-navbar__link">${item.text}</a></li>`,
-  ).join("");
+    `<li class="m-navbar__item${item.end ? " --end" : ""}"><a href="${item.href}" class="m-navbar__link">${item.text}</a></li>`).join("");
 
   const actionButtons = buttons.map(button =>
-    `<button class="m-btn${button.variant === "primary" ? " --primary" : ""}">${button.text}</button>`,
-  ).join("");
+    `<button class="m-btn${button.variant === "primary" ? " --primary" : ""}">${button.text}</button>`).join("");
 
   const buttonsSection = buttons.length > 0
     ? `

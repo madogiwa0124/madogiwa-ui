@@ -320,7 +320,7 @@ export const Disabled: Story = {
 
     const initialValue = (select as HTMLSelectElement).value;
     await userEvent.click(select);
-    await expect((select as HTMLSelectElement)).toHaveValue(initialValue);
+    await expect(select as HTMLSelectElement).toHaveValue(initialValue);
   },
 };
 
