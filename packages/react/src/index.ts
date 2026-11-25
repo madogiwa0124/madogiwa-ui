@@ -13,6 +13,7 @@ export { MLi, MOl, MUl, type MLiProps, type MOlProps, type MUlProps } from "./co
 export { MP, type MPProps } from "./components/MParagraph";
 export { MRadio, type MRadioProps } from "./components/MRadio";
 export { MSelect, type MSelectProps } from "./components/MSelect";
+export { MSnackbar, MSnackbarActions, MSnackbarBody, type MSnackbarActionsProps, type MSnackbarBodyProps, type MSnackbarPosition, type MSnackbarProps } from "./components/MSnackbar";
 export { MTable, type MTableProps } from "./components/MTable";
 export { MTabs, MTabsItem, MTabsList, type MTabsItemProps, type MTabsListProps, type MTabsProps } from "./components/MTabs";
 export { MTextarea, type MTextareaProps } from "./components/MTextarea";
