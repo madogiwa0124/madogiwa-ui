@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "pnpm css build && pnpm vue build && pnpm react build",
-    "build:docs": "pnpm css build:docs --output-dir=../../docs/storybook/css; pnpm vue build:demo; mkdir -p ./docs/demo/vue && rsync -a --delete ./packages/vue/dist/demo/ ./docs/demo/vue/",
+    "build:docs": "pnpm css build:docs --output-dir=../../docs/storybook/css; pnpm vue build:demo; mkdir -p ./docs/demo/vue && rsync -a --delete ./packages/vue/dist/demo/ ./docs/demo/vue/; pnpm react build:demo; mkdir -p ./docs/demo/react && rsync -a --delete ./packages/react/dist/demo/ ./docs/demo/react/",
     "setup": "playwright install chromium --with-deps",
     "css": "pnpm --filter @madogiwa-ui/css",
     "vue": "pnpm --filter @madogiwa-ui/vue",
