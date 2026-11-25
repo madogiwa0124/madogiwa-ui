@@ -18,6 +18,7 @@ yarn add @madogiwa-ui/css @madogiwa-ui/react
 
 * [Storybook](https://madogiwa0124.github.io/madogiwa-ui/storybook/css/)
   - [Markdown](https://github.com/madogiwa0124/madogiwa-ui/blob/main/packages/css/dist/madogiwa-ui-components-docs.md)
+* [Demo](https://madogiwa0124.github.io/madogiwa-ui/demo/react/): every React component on one page
 
 ## 🚀 Quick Start
 
