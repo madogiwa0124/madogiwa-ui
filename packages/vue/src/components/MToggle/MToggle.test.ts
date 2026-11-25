@@ -11,7 +11,8 @@ describe("MToggle", () => {
     });
     expect(wrapper.classes()).toContain("m-toggle");
     expect(wrapper.attributes("type")).toBe("checkbox");
-    expect(wrapper.html()).toMatchInlineSnapshot(`"<input type="checkbox" class="m-toggle">"`);
+    expect(wrapper.attributes("role")).toBe("switch");
+    expect(wrapper.html()).toMatchInlineSnapshot(`"<input type="checkbox" role="switch" class="m-toggle">"`);
   });
 
   it("updates v-model on change", async () => {

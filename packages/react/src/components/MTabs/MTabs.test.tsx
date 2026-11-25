@@ -1,6 +1,7 @@
 import { MTabs, MTabsItem, MTabsList } from "./index";
 import { describe, expect, it, vi } from "vitest";
 import { render } from "vitest-browser-react";
+import { userEvent } from "vitest/browser";
 
 describe("MTabs", () => {
   it("renders the tabs container with modifier classes", async () => {
@@ -41,5 +42,65 @@ describe("MTabsItem", () => {
     const screen = await render(<MTabsList aria-label="Components"><MTabsItem onClick={onClick}>Links</MTabsItem></MTabsList>);
     await screen.getByRole("tab").click();
     expect(onClick).toHaveBeenCalledOnce();
+  });
+});
+
+const renderTabs = async (onClick = vi.fn()) => render(
+  <MTabsList aria-label="Components">
+    <MTabsItem active onClick={onClick}>Buttons</MTabsItem>
+    <MTabsItem onClick={onClick}>Links</MTabsItem>
+    <MTabsItem disabled onClick={onClick}>Cards</MTabsItem>
+    <MTabsItem onClick={onClick}>Modals</MTabsItem>
+  </MTabsList>,
+);
+
+describe("MTabsList keyboard navigation", () => {
+  it("moves focus to the next tab with ArrowRight and skips disabled tabs", async () => {
+    const screen = await renderTabs();
+    screen.getByRole("tab", { name: "Buttons" }).element().focus();
+    await userEvent.keyboard("{ArrowRight}");
+    await expect.element(screen.getByRole("tab", { name: "Links" })).toHaveFocus();
+    await userEvent.keyboard("{ArrowRight}");
+    await expect.element(screen.getByRole("tab", { name: "Modals" })).toHaveFocus();
+  });
+
+  it("wraps around at both ends", async () => {
+    const screen = await renderTabs();
+    screen.getByRole("tab", { name: "Buttons" }).element().focus();
+    await userEvent.keyboard("{ArrowLeft}");
+    await expect.element(screen.getByRole("tab", { name: "Modals" })).toHaveFocus();
+    await userEvent.keyboard("{ArrowRight}");
+    await expect.element(screen.getByRole("tab", { name: "Buttons" })).toHaveFocus();
+  });
+
+  it("moves focus to the first and last tabs with Home and End", async () => {
+    const screen = await renderTabs();
+    screen.getByRole("tab", { name: "Links" }).element().focus();
+    await userEvent.keyboard("{End}");
+    await expect.element(screen.getByRole("tab", { name: "Modals" })).toHaveFocus();
+    await userEvent.keyboard("{Home}");
+    await expect.element(screen.getByRole("tab", { name: "Buttons" })).toHaveFocus();
+  });
+
+  it("does not activate tabs while moving focus, but activates the focused tab with Enter", async () => {
+    const onClick = vi.fn();
+    const screen = await renderTabs(onClick);
+    screen.getByRole("tab", { name: "Buttons" }).element().focus();
+    await userEvent.keyboard("{ArrowRight}");
+    expect(onClick).not.toHaveBeenCalled();
+    await userEvent.keyboard("{Enter}");
+    expect(onClick).toHaveBeenCalledOnce();
+  });
+
+  it("still calls the consumer's onKeyDown", async () => {
+    const onKeyDown = vi.fn();
+    const screen = await render(
+      <MTabsList aria-label="Components" onKeyDown={onKeyDown}>
+        <MTabsItem active>Buttons</MTabsItem>
+      </MTabsList>,
+    );
+    screen.getByRole("tab").element().focus();
+    await userEvent.keyboard("{ArrowRight}");
+    expect(onKeyDown).toHaveBeenCalledOnce();
   });
 });
