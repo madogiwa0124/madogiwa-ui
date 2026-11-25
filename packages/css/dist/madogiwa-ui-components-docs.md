@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2026-10-17T13:33:39.554Z
+generated_at: 2026-11-25T04:41:15.343Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -1524,24 +1524,26 @@ The Toggle component provides a switch-style checkbox input with smooth animatio
 
 Use Toggle components for binary choices, settings toggles, and feature enable/disable controls. Perfect for on/off settings, preferences, and boolean state controls with clear visual feedback.
 
+Add `role="switch"` so that assistive technologies announce the control as an on/off switch, matching its appearance, instead of as a checkbox. The styles target `input[type="checkbox"]`, so the role does not change how it looks.
+
 ### Example code
 
 ```html
 <!-- Basic toggle -->
 <label>
-  <input type="checkbox" class="m-toggle">
+  <input type="checkbox" role="switch" class="m-toggle">
   Enable notifications
 </label>
 
 <!-- Checked toggle -->
 <label>
-  <input type="checkbox" class="m-toggle" checked>
+  <input type="checkbox" role="switch" class="m-toggle" checked>
   Dark mode enabled
 </label>
 
 <!-- Disabled toggle -->
 <label>
-  <input type="checkbox" class="m-toggle" disabled>
+  <input type="checkbox" role="switch" class="m-toggle" disabled>
   Feature unavailable
 </label>
 ```
@@ -1863,4 +1865,4 @@ Responsive utilities allow you to control visibility at different screen sizes, 
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 10/17/2026, 1:33:39 PM
+- Generated at: 11/25/2026, 4:41:15 AM

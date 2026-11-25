@@ -375,182 +375,342 @@ declare type __VLS_PublicProps_2 = __VLS_Props_16 & __VLS_ModelProps_4;
 
 declare type __VLS_PublicProps_3 = __VLS_Props_21 & __VLS_ModelProps_5;
 
-declare type __VLS_Slots = {} & {
-    summary?: (props: typeof __VLS_7) => any;
-} & {
-    default?: (props: typeof __VLS_15) => any;
+declare type __VLS_Slots = ReturnType<typeof __VLS_template>['__VLS_Slots'];
+
+declare type __VLS_Slots_10 = ReturnType<typeof __VLS_template_10>['__VLS_Slots'];
+
+declare type __VLS_Slots_11 = ReturnType<typeof __VLS_template_11>['__VLS_Slots'];
+
+declare type __VLS_Slots_12 = ReturnType<typeof __VLS_template_12>['__VLS_Slots'];
+
+declare type __VLS_Slots_13 = ReturnType<typeof __VLS_template_13>['__VLS_Slots'];
+
+declare type __VLS_Slots_14 = ReturnType<typeof __VLS_template_14>['__VLS_Slots'];
+
+declare type __VLS_Slots_15 = ReturnType<typeof __VLS_template_15>['__VLS_Slots'];
+
+declare type __VLS_Slots_16 = ReturnType<typeof __VLS_template_16>['__VLS_Slots'];
+
+declare type __VLS_Slots_17 = ReturnType<typeof __VLS_template_17>['__VLS_Slots'];
+
+declare type __VLS_Slots_18 = ReturnType<typeof __VLS_template_18>['__VLS_Slots'];
+
+declare type __VLS_Slots_19 = ReturnType<typeof __VLS_template_19>['__VLS_Slots'];
+
+declare type __VLS_Slots_2 = ReturnType<typeof __VLS_template_2>['__VLS_Slots'];
+
+declare type __VLS_Slots_20 = ReturnType<typeof __VLS_template_20>['__VLS_Slots'];
+
+declare type __VLS_Slots_21 = ReturnType<typeof __VLS_template_21>['__VLS_Slots'];
+
+declare type __VLS_Slots_22 = ReturnType<typeof __VLS_template_22>['__VLS_Slots'];
+
+declare type __VLS_Slots_23 = ReturnType<typeof __VLS_template_23>['__VLS_Slots'];
+
+declare type __VLS_Slots_24 = ReturnType<typeof __VLS_template_24>['__VLS_Slots'];
+
+declare type __VLS_Slots_25 = ReturnType<typeof __VLS_template_25>['__VLS_Slots'];
+
+declare type __VLS_Slots_26 = ReturnType<typeof __VLS_template_26>['__VLS_Slots'];
+
+declare type __VLS_Slots_27 = ReturnType<typeof __VLS_template_27>['__VLS_Slots'];
+
+declare type __VLS_Slots_28 = ReturnType<typeof __VLS_template_28>['__VLS_Slots'];
+
+declare type __VLS_Slots_29 = ReturnType<typeof __VLS_template_29>['__VLS_Slots'];
+
+declare type __VLS_Slots_3 = ReturnType<typeof __VLS_template_3>['__VLS_Slots'];
+
+declare type __VLS_Slots_30 = ReturnType<typeof __VLS_template_30>['__VLS_Slots'];
+
+declare type __VLS_Slots_31 = ReturnType<typeof __VLS_template_31>['__VLS_Slots'];
+
+declare type __VLS_Slots_32 = ReturnType<typeof __VLS_template_32>['__VLS_Slots'];
+
+declare type __VLS_Slots_33 = ReturnType<typeof __VLS_template_33>['__VLS_Slots'];
+
+declare type __VLS_Slots_34 = ReturnType<typeof __VLS_template_34>['__VLS_Slots'];
+
+declare type __VLS_Slots_35 = ReturnType<typeof __VLS_template_35>['__VLS_Slots'];
+
+declare type __VLS_Slots_36 = ReturnType<typeof __VLS_template_36>['__VLS_Slots'];
+
+declare type __VLS_Slots_37 = ReturnType<typeof __VLS_template_37>['__VLS_Slots'];
+
+declare type __VLS_Slots_38 = ReturnType<typeof __VLS_template_38>['__VLS_Slots'];
+
+declare type __VLS_Slots_39 = ReturnType<typeof __VLS_template_39>['__VLS_Slots'];
+
+declare type __VLS_Slots_4 = ReturnType<typeof __VLS_template_4>['__VLS_Slots'];
+
+declare type __VLS_Slots_40 = ReturnType<typeof __VLS_template_40>['__VLS_Slots'];
+
+declare type __VLS_Slots_5 = ReturnType<typeof __VLS_template_5>['__VLS_Slots'];
+
+declare type __VLS_Slots_6 = ReturnType<typeof __VLS_template_6>['__VLS_Slots'];
+
+declare type __VLS_Slots_7 = ReturnType<typeof __VLS_template_7>['__VLS_Slots'];
+
+declare type __VLS_Slots_8 = ReturnType<typeof __VLS_template_8>['__VLS_Slots'];
+
+declare type __VLS_Slots_9 = ReturnType<typeof __VLS_template_9>['__VLS_Slots'];
+
+declare const __VLS_template: () => {
+    __VLS_Slots: {
+        summary?: (props: {}) => any;
+    } & {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_10 = {} & {
-    image?: (props: typeof __VLS_1) => any;
-} & {
-    default?: (props: typeof __VLS_9) => any;
-} & {
-    footer?: (props: typeof __VLS_17) => any;
+declare const __VLS_template_10: () => {
+    __VLS_Slots: {
+        image?: (props: {}) => any;
+    } & {
+        default?: (props: {}) => any;
+    } & {
+        footer?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_11 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_11: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_12 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_12: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_13 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_13: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_14 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_14: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_15 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_15: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_16 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_16: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_17 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_17: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_18 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_18: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_19 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_19: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_2 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_2: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_20 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_20: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_21 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_21: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_22 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_22: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_23 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_23: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_24 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_24: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_25 = {} & {
-    title?: (props: typeof __VLS_1) => any;
-} & {
-    items?: (props: typeof __VLS_9) => any;
-} & {
-    hamburger?: (props: typeof __VLS_11) => any;
+declare const __VLS_template_25: () => {
+    __VLS_Slots: {
+        title?: (props: {}) => any;
+    } & {
+        items?: (props: {}) => any;
+    } & {
+        hamburger?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_26 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_26: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_27 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_27: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_28 = {} & {
-    default?: (props: typeof __VLS_1) => any;
-} & {
-    default?: (props: typeof __VLS_3) => any;
+declare const __VLS_template_28: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    } & {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_29 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_29: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_3 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_3: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_30 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_30: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_31 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_31: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_32 = {} & {
-    default?: (props: typeof __VLS_7) => any;
-} & {
-    actions?: (props: typeof __VLS_15) => any;
+declare const __VLS_template_32: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    } & {
+        actions?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_33 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_33: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_34 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_34: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_35 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_35: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_36 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_36: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_37 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_37: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_38 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_38: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_39 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_39: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_4 = {} & {
-    icons?: (props: typeof __VLS_7) => any;
-} & {
-    default?: (props: typeof __VLS_15) => any;
-} & {
-    actions?: (props: typeof __VLS_23) => any;
+declare const __VLS_template_4: () => {
+    __VLS_Slots: {
+        icons?: (props: {}) => any;
+    } & {
+        default?: (props: {}) => any;
+    } & {
+        actions?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_40 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_40: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_5 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_5: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_6 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_6: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_7 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_7: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_8 = {} & {
-    default?: (props: typeof __VLS_7) => any;
+declare const __VLS_template_8: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
-declare type __VLS_Slots_9 = {} & {
-    default?: (props: typeof __VLS_1) => any;
+declare const __VLS_template_9: () => {
+    __VLS_Slots: {
+        default?: (props: {}) => any;
+    };
 };
 
 declare type __VLS_WithSlots<T, S> = T & {
