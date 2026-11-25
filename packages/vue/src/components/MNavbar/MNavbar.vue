@@ -1,10 +1,12 @@
 <!-- eslint-disable-next-line vue/max-lines-per-block -->
 <script setup lang="ts">
-import { computed, ref, useTemplateRef, watchEffect } from "vue";
+import { computed, ref, useId, useTemplateRef, watch, watchEffect } from "vue";
 import { MNavbarHamburger, MNavbarHamburgerMenu, MNavbarItems } from "./index";
 import { useCloseOutsideClick } from "./composable";
 
-const { mobileMenuVariant = null, transition, id = "m-navbar", closeOutsideClick = false } = defineProps<{
+// NOTE: id is only rendered when given; it no longer defaults to "m-navbar", which collided when several navbars were rendered.
+// eslint-disable-next-line unicorn/no-useless-undefined
+const { mobileMenuVariant = null, transition, id = undefined, closeOutsideClick = false } = defineProps<{
   mobileMenuVariant?: null | "float" | "side" | "side-left";
   closeOutsideClick?: boolean;
   transition?: boolean;
@@ -14,6 +16,13 @@ const { mobileMenuVariant = null, transition, id = "m-navbar", closeOutsideClick
 const templateItems = useTemplateRef<InstanceType<typeof MNavbarItems> | null>("items");
 const templateHamburger = useTemplateRef<InstanceType<typeof MNavbarHamburger> | null>("hamburger");
 const hamburgerMenuOpen = ref(false);
+// NOTE: The hamburger is re-created when the variant comes back, and MNavbarHamburgerMenu starts from show-menu, so a stale `true` would reopen the menu.
+// The default "pre" flush resets it before the re-render, so the hamburger never shows aria-expanded="true" for a frame.
+watch(() => mobileMenuVariant, () => {
+  hamburgerMenuOpen.value = false;
+});
+// NOTE: aria-controls points to the items list it expands; a generated id stays unique when several navbars are rendered.
+const itemsId = useId();
 const hasHamburgerMenu = computed(() => mobileMenuVariant !== null);
 const mobileMenuClass = computed(() => {
   if (!mobileMenuVariant) return "";
@@ -45,12 +54,12 @@ watchEffect((onCleanup) => {
 <template>
   <nav :id class="m-navbar" :class="[mobileMenuClass, transition ? '--transition' : '']">
     <slot name="title" />
-    <MNavbarItems ref="items">
+    <MNavbarItems :id="itemsId" ref="items">
       <slot name="items" />
     </MNavbarItems>
     <slot name="hamburger">
       <MNavbarHamburger v-if="hasHamburgerMenu" ref="hamburger">
-        <MNavbarHamburgerMenu :show-menu="hamburgerMenuOpen" :aria-controls="id" @show-menu="hamburgerMenuOpen = $event" />
+        <MNavbarHamburgerMenu :show-menu="hamburgerMenuOpen" :aria-controls="itemsId" @show-menu="hamburgerMenuOpen = $event" />
       </MNavbarHamburger>
     </slot>
   </nav>
