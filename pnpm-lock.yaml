@@ -343,7 +343,7 @@ importers:
         specifier: workspace:*
         version: link:../css
       vue:
-        specifier: ^3.0.0
+        specifier: ^3.5.0
         version: 3.5.45(typescript@6.0.3)
     devDependencies:
       '@microsoft/api-extractor':

@@ -7,11 +7,11 @@ Pure CSS framework leveraging cutting-edge CSS features.
 ## 📦 Installation
 
 ```bash
-npm install @medogiwa-ui/css @madogiwa-ui/vue
+npm install @madogiwa-ui/css @madogiwa-ui/vue
 # or
-pnpm add @medogiwa-ui/css @madogiwa-ui/vue
+pnpm add @madogiwa-ui/css @madogiwa-ui/vue
 # or
-yarn add @medogiwa-ui/css @madogiwa-ui/vue
+yarn add @madogiwa-ui/css @madogiwa-ui/vue
 ```
 
 ## 📕 Documentation
@@ -35,17 +35,17 @@ Then, you can use Madogiwa UI components like below:
 
 ```vue
 <script setup lang="ts">
-import { MButton, MHeading, MContainer } from "@madogiwa-ui/vue";
+import { MBtn, MContainer, MH1 } from "@madogiwa-ui/vue";
 </script>
 
 <template>
-  <MHeading level="1">
+  <MH1>
     Madogiwa UI - Vue
-  </MHeading>
+  </MH1>
   <MContainer>
-    <MButton variant="primary">
+    <MBtn variant="primary">
       Primary Button
-    </MButton>
+    </MBtn>
   </MContainer>
 </template>
 ```
@@ -63,18 +63,18 @@ pnpm install
 pnpm dev
 ```
 
-For development, `index.html`, `index.ts`, and `App.vue` are provided in the root directory.
+For development, `index.html`, `index.ts`, and `demo/App.vue` are provided.
 
-Since `@madogiwa-ui/css` is imported in `index.ts`, you can use Madogiwa UI components by modifying `App.vue`.
+Since `@madogiwa-ui/css` is imported in `index.ts`, you can use Madogiwa UI components by modifying `demo/App.vue`.
 
 ```vue
 <script setup lang="ts">
-import { MButton } from "@madogiwa-ui/vue";
+import { MBtn } from "@madogiwa-ui/vue";
 </script>
 <template>
-  <MButton variant="primary">
+  <MBtn variant="primary">
     Primary Button
-  </MButton>
+  </MBtn>
 </template>
 ```
 

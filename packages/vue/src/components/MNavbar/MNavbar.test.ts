@@ -1,4 +1,4 @@
-import { nextTick } from "vue";
+import { h, nextTick } from "vue";
 import { mount } from "@vue/test-utils";
 import { MNavbar, MNavbarHamburger } from "./index";
 import { describe, expect, it } from "vitest";
@@ -17,12 +17,12 @@ describe("MNavbar", () => {
     });
     expect(wrapper.classes()).toContain("m-navbar");
     expect(wrapper.html()).toMatchInlineSnapshot(`
-      "<nav id="m-navbar" class="m-navbar --mobile-float-menu --transition"><span>Navbar Title</span>
-        <ul class="m-navbar__items">
+      "<nav class="m-navbar --mobile-float-menu --transition"><span>Navbar Title</span>
+        <ul class="m-navbar__items" id="v-0">
           <li>Item 1</li>
           <li>Item 2</li>
         </ul>
-        <div class="m-navbar__hamburger"><button type="button" class="m-navbar__hamburger-menu" aria-label="Open menu" aria-expanded="false" aria-controls="m-navbar"></button></div>
+        <div class="m-navbar__hamburger"><button type="button" class="m-navbar__hamburger-menu" aria-label="Open menu" aria-expanded="false" aria-controls="v-0"></button></div>
       </nav>"
     `);
   });
@@ -126,5 +126,36 @@ describe("MNavbar", () => {
 
     outsideElement.remove();
     wrapper.unmount();
+  });
+
+  it("closes the menu when the mobile menu variant changes", async () => {
+    const wrapper = mount(MNavbar, {
+      props: { mobileMenuVariant: "side" },
+      slots: { items: "<li>Item 1</li>" },
+    });
+    await wrapper.find(".m-navbar__hamburger-menu").trigger("click");
+    expect(wrapper.find(".m-navbar__hamburger-menu").attributes("aria-expanded")).toBe("true");
+
+    await wrapper.setProps({ mobileMenuVariant: null });
+    await wrapper.setProps({ mobileMenuVariant: "side" });
+
+    expect(wrapper.find(".m-navbar__hamburger-menu").attributes("aria-expanded")).toBe("false");
+  });
+
+  it("points aria-controls of the hamburger to the items list", () => {
+    const wrapper = mount(MNavbar, {
+      props: { mobileMenuVariant: "side" },
+      slots: { items: "<li>Item 1</li>" },
+    });
+    const itemsId = wrapper.find(".m-navbar__items").attributes("id");
+    expect(itemsId).toBeTruthy();
+    expect(wrapper.find(".m-navbar__hamburger-menu").attributes("aria-controls")).toBe(itemsId);
+  });
+
+  it("gives each navbar in the same app a unique items id", () => {
+    const wrapper = mount(() => [h(MNavbar, { mobileMenuVariant: "side" }), h(MNavbar, { mobileMenuVariant: "side" })]);
+    const ids = wrapper.findAll(".m-navbar__items").map(items => items.attributes("id"));
+    expect(ids).toHaveLength(2);
+    expect(new Set(ids).size).toBe(2);
   });
 });

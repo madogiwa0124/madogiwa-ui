@@ -197,7 +197,7 @@ const isSnackbarOpen = ref<boolean>(false);
         <MH3>
           Sample Form
         </MH3>
-        <MP>
+        <div>
           <form
             style="padding: var(--spacing-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); display: flex; flex-direction: column; gap: var(--spacing-3); max-width: 520px;"
             @submit.prevent="event => {
@@ -217,7 +217,7 @@ const isSnackbarOpen = ref<boolean>(false);
             </div>
 
             <div style="display: grid; gap: var(--spacing-1);">
-              <MLabel for="form-name" disabled>
+              <MLabel for="form-address" disabled>
                 Address
               </MLabel>
               <MInput id="form-address" v-model="inputValue" block transition placeholder="123 Main St" disabled />
@@ -311,7 +311,7 @@ const isSnackbarOpen = ref<boolean>(false);
               </MBtn>
             </div>
           </form>
-        </MP>
+        </div>
       </div>
       <div>
         <MH3>
@@ -342,7 +342,7 @@ const isSnackbarOpen = ref<boolean>(false);
           </MLabel>
         </MP>
         <MP>
-          value: {{ radioValue }}<MP />
+          value: {{ radioValue }}
         </MP>
       </div>
       <div>
@@ -363,7 +363,7 @@ const isSnackbarOpen = ref<boolean>(false);
         <MH3>
           MInput
         </MH3>
-        <MP style="display: flex; flex-direction: column; gap: var(--spacing-2);">
+        <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
           <div>
             <MLabel for="text-input">
               Text Input
@@ -376,7 +376,7 @@ const isSnackbarOpen = ref<boolean>(false);
             </MLabel>
             <MInput id="email-input" v-model="emailValue" type="email" block transition placeholder="your@email.com" />
           </div>
-        </MP>
+        </div>
         <MP>
           Text value: {{ inputValue }}<br>
           Email value: {{ emailValue }}
@@ -512,7 +512,7 @@ const isSnackbarOpen = ref<boolean>(false);
             <MBadge rounded>Rounded</MBadge>
             <MBadge variant="danger" small rounded>5</MBadge>
             <MBadge variant="primary" small rounded>99+</MBadge>
-            <MBadge as="button" variant="primary" small rounded class>
+            <MBadge as="button" variant="primary" small rounded aria-label="Remove">
               <span class="icon">×</span>
             </MBadge>
           </div>
@@ -526,7 +526,7 @@ const isSnackbarOpen = ref<boolean>(false);
             <MBadge as="button" variant="primary" transition>
               Button Badge
             </MBadge>
-            <MBadge as="a" variant="secondary" transition>
+            <MBadge as="a" href="#" variant="secondary" transition>
               Link Badge
             </MBadge>
           </div>
@@ -554,7 +554,7 @@ const isSnackbarOpen = ref<boolean>(false);
       <MSnackbar :open="isSnackbarOpen" transition @close="isSnackbarOpen = false">
         This is a snackbar notification.
         <template #actions>
-          <MBtn variant="secondary" icon-only rounded @click="isSnackbarOpen = false">
+          <MBtn variant="secondary" icon-only rounded aria-label="Close" @click="isSnackbarOpen = false">
             <span class="icon">×</span>
           </MBtn>
         </template>
@@ -625,7 +625,7 @@ const isSnackbarOpen = ref<boolean>(false);
         MAlert
       </MH2>
       <div style="display: flex; flex-direction: column; gap: var(--spacing-4);">
-        <MAlert variant="primary" transition>
+        <MAlert variant="primary">
           <template #icons>
             ℹ️
           </template>
@@ -637,14 +637,14 @@ const isSnackbarOpen = ref<boolean>(false);
           </template>
         </MAlert>
 
-        <MAlert variant="warning" transition>
+        <MAlert variant="warning">
           <template #icons>
             ⚠️
           </template>
           This is a warning alert message.
         </MAlert>
 
-        <MAlert variant="danger" transition auto-dismiss="5s" with-progress>
+        <MAlert variant="danger" auto-dismiss="5s" with-progress>
           <template #icons>
             ❌
           </template>
