@@ -10,6 +10,7 @@ export { MInput, type MInputProps } from "./components/MInput";
 export { MLabel, type MLabelProps } from "./components/MLabel";
 export { MLink, type MLinkProps } from "./components/MLink";
 export { MLi, MOl, MUl, type MLiProps, type MOlProps, type MUlProps } from "./components/MList";
+export { MNavbar, MNavbarHamburger, MNavbarHamburgerMenu, MNavbarItem, MNavbarItems, MNavbarTitle, type MNavbarHamburgerMenuProps, type MNavbarHamburgerProps, type MNavbarItemProps, type MNavbarItemsProps, type MNavbarMobileMenuVariant, type MNavbarProps, type MNavbarTitleProps } from "./components/MNavbar";
 export { MP, type MPProps } from "./components/MParagraph";
 export { MRadio, type MRadioProps } from "./components/MRadio";
 export { MSelect, type MSelectProps } from "./components/MSelect";
