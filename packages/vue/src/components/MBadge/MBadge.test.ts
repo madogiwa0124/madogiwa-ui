@@ -25,7 +25,7 @@ describe("MBadge", () => {
       },
     });
     expect((wrapper.element as HTMLElement).tagName).toBe("BUTTON");
-    expect(wrapper.html()).toMatchInlineSnapshot(`"<button class="m-badge">Click me</button>"`);
+    expect(wrapper.html()).toMatchInlineSnapshot(`"<button class="m-badge" type="button">Click me</button>"`);
   });
 
   it("renders as anchor when as='a'", () => {
@@ -61,5 +61,20 @@ describe("MBadge", () => {
     expect(wrapper.classes()).toContain("--rounded");
     expect(wrapper.classes()).toContain("--transition");
     expect(wrapper.html()).toMatchInlineSnapshot(`"<span class="m-badge --primary --outline --small --rounded --transition">Badge</span>"`);
+  });
+
+  it("defaults type to button when rendered as a button", () => {
+    const wrapper = mount(MBadge, { props: { as: "button" } });
+    expect(wrapper.attributes("type")).toBe("button");
+  });
+
+  it("lets the consumer override type when rendered as a button", () => {
+    const wrapper = mount(MBadge, { props: { as: "button" }, attrs: { type: "submit" } });
+    expect(wrapper.attributes("type")).toBe("submit");
+  });
+
+  it("does not add type to non-button elements", () => {
+    const wrapper = mount(MBadge, { props: { as: "a" } });
+    expect(wrapper.attributes("type")).toBeUndefined();
   });
 });

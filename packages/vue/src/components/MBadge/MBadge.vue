@@ -26,12 +26,16 @@ const classes = computed(() => [
   { "--rounded": rounded },
   { "--transition": transition },
 ]);
+
+// NOTE: Same default as MBtn: a native <button> submits its form when type is omitted. A type passed by the consumer falls through and wins.
+const buttonType = computed(() => as === "button" ? "button" : undefined);
 </script>
 
 <template>
   <component
     :is="as"
     :class="classes"
+    :type="buttonType"
   >
     <slot />
   </component>
