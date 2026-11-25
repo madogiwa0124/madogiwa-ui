@@ -6,6 +6,8 @@ import globals from "globals";
 import stylistic from "@stylistic/eslint-plugin";
 import vue from "eslint-plugin-vue";
 import vueParser from "vue-eslint-parser";
+import eslintReact from "@eslint-react/eslint-plugin";
+import reactHooks from "eslint-plugin-react-hooks";
 
 const ignoredFiles = [
   "eslint.config.js",
@@ -174,6 +176,15 @@ export default defineConfig([
       // NOTE: Disabled because default assignment by Reactive Props Destructure causes an error
       "@typescript-eslint/no-useless-default-assignment": "off",
     },
+  },
+  {
+    files: ["packages/react/**/*.ts", "packages/react/**/*.tsx"],
+    extends: [
+      eslintReact.configs["strict-type-checked"],
+      // NOTE: @eslint-react ships its own hooks rules; defer to the official react-hooks plugin (which also carries the React Compiler checks) to avoid duplicate reports.
+      eslintReact.configs["disable-conflict-eslint-plugin-react-hooks"],
+      reactHooks.configs.flat["recommended-latest"],
+    ],
   },
   {
     files: ["**/MHeading/**/*", "**/MParagraph/**/*"],

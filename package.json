@@ -4,22 +4,25 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "pnpm css build && pnpm vue build",
+    "build": "pnpm css build && pnpm vue build && pnpm react build",
     "build:docs": "pnpm css build:docs --output-dir=../../docs/storybook/css; pnpm vue build:demo; mkdir -p ./docs/demo/vue && rsync -a --delete ./packages/vue/dist/demo/ ./docs/demo/vue/",
     "setup": "playwright install chromium --with-deps",
     "css": "pnpm --filter @madogiwa-ui/css",
     "vue": "pnpm --filter @madogiwa-ui/vue",
+    "react": "pnpm --filter @madogiwa-ui/react",
     "lint": "eslint --cache",
     "lint:css": "stylelint \"packages/**/*.css\" --cache --cache-location node_modules/.cache/stylelint/ --ignore-path .stylelintignore",
-    "lint:type-check": "tsc --noEmit && pnpm vue type-check"
+    "lint:type-check": "tsc --noEmit && pnpm vue type-check && pnpm react type-check"
   },
   "devDependencies": {
+    "@eslint-react/eslint-plugin": "^5.30.4",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.65.1",
     "@stylistic/eslint-plugin": "^6.0.1",
     "@stylistic/stylelint-plugin": "^6.0.1",
     "@tsconfig/strictest": "^2.0.9",
     "eslint": "^10.15.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-unicorn": "80.0.0",
     "eslint-plugin-vue": "^10.12.1",
     "globals": "^17.14.0",

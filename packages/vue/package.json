@@ -56,17 +56,17 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.60.1",
+    "@microsoft/api-extractor": "catalog:",
     "@vitejs/plugin-vue": "^6.0.11",
-    "@vitest/browser-playwright": "^5.1.0",
+    "@vitest/browser-playwright": "catalog:",
     "@vue/test-utils": "^2.6.0",
     "@vue/tsconfig": "^0.9.1",
-    "postcss": "^8.5.33",
+    "postcss": "catalog:",
     "postcss-preset-env": "catalog:",
     "typescript": "catalog:",
-    "unplugin-dts": "1.1.2",
+    "unplugin-dts": "catalog:",
     "vite": "catalog:",
-    "vitest": "^5.1.0",
+    "vitest": "catalog:",
     "vitest-browser-vue": "^3.1.0",
     "vue-tsc": "^3.3.14"
   },
