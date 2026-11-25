@@ -10,8 +10,7 @@
       "import": "./dist/madogiwa-ui-vue.min.js",
       "default": "./dist/madogiwa-ui-vue.min.js"
     },
-    "./dist/*": "./dist/*",
-    "./src/*": "./src/*"
+    "./dist/*": "./dist/*"
   },
   "scripts": {
     "dev": "vite --host",
@@ -52,7 +51,7 @@
   ],
   "sideEffects": false,
   "peerDependencies": {
-    "@madogiwa-ui/css": "workspace:*",
+    "@madogiwa-ui/css": "workspace:^",
     "vue": "^3.5.0"
   },
   "devDependencies": {

@@ -10,8 +10,7 @@
       "import": "./dist/madogiwa-ui-react.min.js",
       "default": "./dist/madogiwa-ui-react.min.js"
     },
-    "./dist/*": "./dist/*",
-    "./src/*": "./src/*"
+    "./dist/*": "./dist/*"
   },
   "scripts": {
     "dev": "vite --host",
@@ -74,7 +73,7 @@
     "vitest-browser-react": "^2.3.0"
   },
   "peerDependencies": {
-    "@madogiwa-ui/css": "workspace:*",
+    "@madogiwa-ui/css": "workspace:^",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   }

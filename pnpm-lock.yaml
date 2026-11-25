@@ -340,7 +340,7 @@ importers:
   packages/vue:
     dependencies:
       '@madogiwa-ui/css':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../css
       vue:
         specifier: ^3.5.0
