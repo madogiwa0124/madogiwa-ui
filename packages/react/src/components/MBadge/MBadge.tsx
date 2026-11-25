@@ -27,8 +27,11 @@ export const MBadge = <T extends MBadgeElement = "span">({
   ...props
 }: MBadgeProps<T>) => {
   const Element = (as ?? "span") as ElementType;
+  // NOTE: Same default as MBtn: a native <button> submits its form when type is omitted. Placed before the spread so consumers can still pass type="submit".
+  const defaultType = as === "button" ? { type: "button" } : {};
   return (
     <Element
+      {...defaultType}
       className={clsx(
         "m-badge",
         variant && `--${variant}`,

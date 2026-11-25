@@ -43,6 +43,11 @@ const build = (mode: string): BuildEnvironmentOptions => {
     rolldownOptions: {
       // NOTE: Bundling the JSX runtime or clsx would ship a second copy alongside the consumer's, so leave every dependency to the consumer's bundler.
       external: ["react", "react-dom", "react/jsx-runtime", "clsx", "@madogiwa-ui/css"],
+      output: {
+        // NOTE: The library is bundled into a single file that imports hooks (useState, useEffect, ...), which the react-server build does not export.
+        // Marking the whole bundle as a client module lets React Server Components import any component from it; per-file directives would be dropped by bundling.
+        banner: "\"use client\";",
+      },
     },
     emptyOutDir: true,
   };

@@ -20,9 +20,17 @@ describe("MBadge", () => {
     await expect.element(screen.getByRole("link", { name: "New" })).toHaveAttribute("href", "/news");
   });
 
-  it("renders as a button when as is button", async () => {
-    const screen = await render(<MBadge as="button" type="button">New</MBadge>);
-    await expect.element(screen.getByRole("button", { name: "New" })).toHaveClass("m-badge");
+  it("renders as a button with type button by default when as is button", async () => {
+    // eslint-disable-next-line @eslint-react/dom-no-missing-button-type -- type is omitted on purpose to verify the default MBadge adds.
+    const screen = await render(<MBadge as="button">New</MBadge>);
+    const button = screen.getByRole("button", { name: "New" });
+    await expect.element(button).toHaveClass("m-badge");
+    await expect.element(button).toHaveAttribute("type", "button");
+  });
+
+  it("allows overriding the type when as is button", async () => {
+    const screen = await render(<MBadge as="button" type="submit">New</MBadge>);
+    await expect.element(screen.getByRole("button")).toHaveAttribute("type", "submit");
   });
 
   it("type-checks props against the element chosen by as", () => {

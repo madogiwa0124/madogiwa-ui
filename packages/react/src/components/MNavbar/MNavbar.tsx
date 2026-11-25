@@ -36,6 +36,13 @@ export const MNavbar = ({
   ...props
 }: MNavbarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [previousVariant, setPreviousVariant] = useState(mobileMenuVariant);
+  // NOTE: Reset during render rather than in an effect, so the hamburger never renders one frame with a stale aria-expanded="true".
+  // https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes
+  if (previousVariant !== mobileMenuVariant) {
+    setPreviousVariant(mobileMenuVariant);
+    setMenuOpen(false);
+  }
   const itemsId = useId();
   const itemsRef = useRef<HTMLUListElement>(null);
   const hamburgerRef = useRef<HTMLDivElement>(null);

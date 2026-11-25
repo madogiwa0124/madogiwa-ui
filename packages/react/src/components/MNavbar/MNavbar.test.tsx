@@ -48,6 +48,14 @@ describe("MNavbar", () => {
     await expect.element(screen.getByRole("button", { name: "Open menu" })).toHaveAttribute("aria-expanded", "false");
   });
 
+  it("closes the menu when the mobile menu variant changes", async () => {
+    const screen = await render(<MNavbar mobileMenuVariant="side">{items}</MNavbar>);
+    await screen.getByRole("button", { name: "Open menu" }).click();
+    await screen.rerender(<MNavbar>{items}</MNavbar>);
+    await screen.rerender(<MNavbar mobileMenuVariant="side">{items}</MNavbar>);
+    await expect.element(screen.getByRole("button", { name: "Open menu" })).toHaveAttribute("aria-expanded", "false");
+  });
+
   it("uses the given menu labels", async () => {
     const screen = await render(<MNavbar mobileMenuVariant="side" openMenuLabel="メニューを開く">{items}</MNavbar>);
     await expect.element(screen.getByRole("button", { name: "メニューを開く" })).toBeInTheDocument();
