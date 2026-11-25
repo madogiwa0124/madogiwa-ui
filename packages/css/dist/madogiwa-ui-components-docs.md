@@ -2,7 +2,7 @@
 title: "Madogiwa UI Components Documentation"
 description: "Auto-generated documentation from Storybook stories for AI context"
 generated: true
-generated_at: 2026-11-25T04:41:15.343Z
+generated_at: 2026-11-25T07:06:06.704Z
 ---
 
 # Madogiwa UI Components Documentation
@@ -1865,4 +1865,4 @@ Responsive utilities allow you to control visibility at different screen sizes, 
 
 - This documentation is auto-generated from `parameters.docs.description.component` in Storybook stories
 - For the most up-to-date information, refer to the actual Storybook stories
-- Generated at: 11/25/2026, 4:41:15 AM
+- Generated at: 11/25/2026, 7:06:06 AM
