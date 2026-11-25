@@ -5,6 +5,7 @@ const modelValue = defineModel<boolean>();
   <input
     v-model="modelValue"
     type="checkbox"
+    role="switch"
     class="m-toggle"
   >
 </template>

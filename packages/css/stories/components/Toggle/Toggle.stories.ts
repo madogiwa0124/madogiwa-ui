@@ -27,24 +27,26 @@ The Toggle component provides a switch-style checkbox input with smooth animatio
 
 Use Toggle components for binary choices, settings toggles, and feature enable/disable controls. Perfect for on/off settings, preferences, and boolean state controls with clear visual feedback.
 
+Add \`role="switch"\` so that assistive technologies announce the control as an on/off switch, matching its appearance, instead of as a checkbox. The styles target \`input[type="checkbox"]\`, so the role does not change how it looks.
+
 ### Example code
 
 \`\`\`html
 <!-- Basic toggle -->
 <label>
-  <input type="checkbox" class="m-toggle">
+  <input type="checkbox" role="switch" class="m-toggle">
   Enable notifications
 </label>
 
 <!-- Checked toggle -->
 <label>
-  <input type="checkbox" class="m-toggle" checked>
+  <input type="checkbox" role="switch" class="m-toggle" checked>
   Dark mode enabled
 </label>
 
 <!-- Disabled toggle -->
 <label>
-  <input type="checkbox" class="m-toggle" disabled>
+  <input type="checkbox" role="switch" class="m-toggle" disabled>
   Feature unavailable
 </label>
 \`\`\`
@@ -119,7 +121,7 @@ export const Default: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const toggle = canvas.getByRole("checkbox");
+    const toggle = canvas.getByRole("switch");
 
     await expect(toggle).not.toBeNull();
     await expect(toggle).toHaveClass("m-toggle");
@@ -144,7 +146,7 @@ export const Checked: Story = {
   render: () => createToggle({ checked: true }),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const toggle = canvas.getByRole("checkbox");
+    const toggle = canvas.getByRole("switch");
 
     await expect(toggle).not.toBeNull();
     await expect(toggle).toHaveClass("m-toggle");
@@ -172,7 +174,7 @@ export const Disabled: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const toggles = canvas.getAllByRole("checkbox");
+    const toggles = canvas.getAllByRole("switch");
     for (const toggle of toggles) {
       await expect(toggle).not.toBeNull();
       await expect(toggle).toHaveClass("m-toggle");

@@ -12,6 +12,7 @@ export const createToggle = (
 ): HTMLInputElement => {
   const toggle = document.createElement("input");
   toggle.type = "checkbox";
+  toggle.setAttribute("role", "switch");
   toggle.classList.add("m-toggle");
 
   // Set attributes
