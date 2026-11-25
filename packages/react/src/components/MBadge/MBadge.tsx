@@ -1,12 +1,12 @@
 import type { ComponentProps, ElementType } from "react";
-import type { Variant } from "../../types";
+import type { StatusVariant } from "../../types";
 import { clsx } from "clsx";
 
 export type MBadgeElement = "span" | "button" | "a";
 
 export type MBadgeProps<T extends MBadgeElement = "span"> = ComponentProps<T> & {
   as?: T;
-  variant?: Variant | "danger" | "warning";
+  variant?: StatusVariant;
   outline?: boolean;
   small?: boolean;
   rounded?: boolean;
